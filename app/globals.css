@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+
+  @keyframes editorial-bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+  }
+}
+
+@utility animate-editorial-bounce {
+  animation: editorial-bounce 2s infinite;
+}
+
+@layer base {
+  body {
+    @apply selection:bg-[#EF4444] selection:text-white;
+  }
+}
