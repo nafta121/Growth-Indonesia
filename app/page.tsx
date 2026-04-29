@@ -8,6 +8,7 @@ import Approach from '@/components/approach';
 import Services from '@/components/services';
 import Pricing from '@/components/pricing';
 import TrustSignals from '@/components/trust-signals';
+import OutboundGallery from '@/components/outbound-gallery';
 import Contact from '@/components/contact';
 import Footer from '@/components/footer';
 import WhatsAppFAB from '@/components/whatsapp-fab';
@@ -23,6 +24,7 @@ export default function Home() {
       <Approach />
       <Services />
       <Pricing onSelect={setSelectedPackage} />
+      <OutboundGallery />
       <TrustSignals />
       <Contact initialPackage={selectedPackage} />
       <Footer />
