@@ -95,35 +95,53 @@ Rencana Tanggal: ${formData.date || 'TBC'}`;
             </p>
 
             <div className="space-y-8">
-              <div className="flex gap-6 group">
+              <a 
+                href="https://maps.app.goo.gl/s5sLVajjti61reWw8?g_st=ac"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex gap-6 group"
+                aria-label="Lihat lokasi Growth Indonesia di Google Maps"
+              >
                 <div className="w-14 h-14 rounded-2xl bg-gray-50 flex items-center justify-center text-[#EF4444] group-hover:bg-[#EF4444] group-hover:text-white transition-all duration-300">
                   <MapPin className="w-6 h-6" />
                 </div>
                 <div>
                   <h3 className="font-bold text-gray-900 mb-1">Kantor Pusat</h3>
-                  <p className="text-gray-600">Jl. Mujair No.3, Nambangan Kidul,<br />Kota Madiun, Jawa Timur</p>
+                  <address className="not-italic text-gray-600 group-hover:text-[#EF4444] transition-colors duration-200">
+                    Jl. Mujair No.3, Nambangan Kidul,<br />Kota Madiun, Jawa Timur
+                  </address>
                 </div>
-              </div>
+              </a>
 
-              <div className="flex gap-6 group">
+              <a 
+                href="https://wa.me/6285704748186"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex gap-6 group"
+                aria-label="Hubungi Growth Indonesia via WhatsApp"
+              >
                 <div className="w-14 h-14 rounded-2xl bg-gray-50 flex items-center justify-center text-[#EF4444] group-hover:bg-[#EF4444] group-hover:text-white transition-all duration-300">
                   <Phone className="w-6 h-6" />
                 </div>
                 <div>
                   <h3 className="font-bold text-gray-900 mb-1">WhatsApp & Telepon</h3>
-                  <p className="text-gray-600">+62 857-0474-8186</p>
+                  <p className="text-gray-600 group-hover:text-[#EF4444] transition-colors duration-200">+62 857-0474-8186</p>
                 </div>
-              </div>
+              </a>
 
-              <div className="flex gap-6 group">
+              <a 
+                href="mailto:info@growthindonesia.my.id"
+                className="flex gap-6 group focus:outline-none"
+                aria-label="Kirim email ke Growth Indonesia"
+              >
                 <div className="w-14 h-14 rounded-2xl bg-gray-50 flex items-center justify-center text-[#EF4444] group-hover:bg-[#EF4444] group-hover:text-white transition-all duration-300">
                   <MessageCircle className="w-6 h-6" />
                 </div>
                 <div>
                   <h3 className="font-bold text-gray-900 mb-1">Email Resmi</h3>
-                  <p className="text-gray-600">info@growthindonesia.id</p>
+                  <p className="text-gray-600 group-hover:text-[#EF4444] transition-colors duration-200">info@growthindonesia.my.id</p>
                 </div>
-              </div>
+              </a>
             </div>
           </motion.div>
 

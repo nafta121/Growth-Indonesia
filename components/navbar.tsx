@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Mail, MapPin, Phone } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { cn } from '@/lib/utils';
 
@@ -96,9 +96,38 @@ export default function Navbar() {
               ))}
             </ul>
 
+            {/* Contact Info for Mobile Menu */}
+            <div className="absolute bottom-20 left-0 right-0 flex flex-col items-center gap-4 px-8 border-t border-gray-100 pt-8 mt-auto">
+              <a 
+                href="https://wa.me/6285704748186"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-gray-800 font-bold hover:text-[#EF4444] transition-colors"
+                aria-label="Hubungi Growth Indonesia via WhatsApp"
+              >
+                <Phone className="w-4 h-4 text-[#EF4444]" /> +62 857-0474-8186
+              </a>
+              <a 
+                href="mailto:info@growthindonesia.my.id"
+                className="flex items-center gap-2 text-gray-600 text-sm hover:text-[#EF4444] transition-colors"
+                aria-label="Kirim email ke Growth Indonesia"
+              >
+                <Mail className="w-4 h-4 text-[#EF4444]" /> info@growthindonesia.my.id
+              </a>
+              <a 
+                href="https://maps.app.goo.gl/s5sLVajjti61reWw8?g_st=ac"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-gray-500 text-xs text-center hover:text-[#EF4444] transition-colors"
+                aria-label="Lihat lokasi Growth Indonesia di Google Maps"
+              >
+                <MapPin className="w-4 h-4 text-[#EF4444]" /> Jl. Mujair No.3, Madiun
+              </a>
+            </div>
+
             {/* Decoration for Mobile Menu */}
-            <div className="absolute bottom-10 left-0 right-0 flex justify-center opacity-5 pointer-events-none">
-              <span className="text-8xl font-display font-black whitespace-nowrap text-gray-900">GROWTH INDONESIA</span>
+            <div className="absolute bottom-6 left-0 right-0 flex justify-center opacity-5 pointer-events-none">
+              <span className="text-6xl font-display font-black whitespace-nowrap text-gray-900">GROWTH INDONESIA</span>
             </div>
           </motion.div>
         )}

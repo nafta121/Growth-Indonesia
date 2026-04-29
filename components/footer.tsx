@@ -48,21 +48,45 @@ export default function Footer() {
           {/* Contact Details */}
           <div>
             <h3 className="text-white font-bold mb-6 tracking-wide uppercase text-sm">Alamat Kantor</h3>
-            <p className="text-gray-500 leading-relaxed">
-              Jl. Mujair No.3, Nambangan Kidul, Kota Madiun, Jawa Timur 63128
-            </p>
+            <address className="not-italic">
+              <a 
+                href="https://maps.app.goo.gl/s5sLVajjti61reWw8?g_st=ac"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-500 hover:text-[#EF4444] transition-colors duration-200 leading-relaxed block"
+                aria-label="Lihat lokasi Growth Indonesia di Google Maps"
+              >
+                Jl. Mujair No.3, Nambangan Kidul, Kota Madiun, Jawa Timur 63128
+              </a>
+            </address>
           </div>
 
           {/* Social */}
           <div>
             <h3 className="text-white font-bold mb-6 tracking-wide uppercase text-sm">Hubungi Kami</h3>
-            <p className="text-gray-500 mb-2">WhatsApp:</p>
-            <Link 
-              href="https://wa.me/6285704748186" 
-              className="text-[#EF4444] font-black text-lg block mb-4"
-            >
-              +62 857-0474-8186
-            </Link>
+            <div className="space-y-4">
+              <div>
+                <p className="text-gray-500 mb-1 text-xs uppercase tracking-wider">WhatsApp:</p>
+                <a 
+                  href="https://wa.me/6285704748186" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#EF4444] font-black text-lg block hover:scale-105 transition-transform origin-left"
+                >
+                  +62 857-0474-8186
+                </a>
+              </div>
+              <div>
+                <p className="text-gray-500 mb-1 text-xs uppercase tracking-wider">Email:</p>
+                <a 
+                  href="mailto:info@growthindonesia.my.id"
+                  className="text-gray-500 hover:text-[#EF4444] transition-colors duration-200 block underline underline-offset-4"
+                  aria-label="Kirim email ke Growth Indonesia"
+                >
+                  info@growthindonesia.my.id
+                </a>
+              </div>
+            </div>
           </div>
         </div>
 
