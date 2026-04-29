@@ -24,31 +24,32 @@ export default function Navbar() {
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b bg-white shadow-md border-gray-100 h-20'
       )}
     >
-      <div className="container mx-auto h-full px-4 md:px-12">
+      <div className="max-w-7xl mx-auto h-full px-6 md:px-12">
         <nav className="flex items-center justify-between h-full">
           {/* Logo */}
-          <Link href="/" className="relative z-50 flex items-center" aria-label="Growth Indonesia Home">
-            <Image 
-              src="https://nafta121.sirv.com/Screenshot_20260423_192944_My%20Files.jpg" 
-              alt="Growth Indonesia Logo" 
-              width={200} 
-              height={48} 
-              className="h-12 w-auto object-contain"
-              referrerPolicy="no-referrer"
-              priority
-            />
+          <Link href="/" className="relative z-50 flex items-center group active:scale-95 transition-transform" aria-label="Growth Indonesia Home">
+              <Image 
+                src="https://nafta121.sirv.com/Screenshot_20260423_192944_My%20Files.jpg" 
+                alt="Growth Indonesia Logo" 
+                width={200} 
+                height={48} 
+                className="h-10 md:h-12 w-auto object-contain transition-all duration-300 group-hover:brightness-110"
+                style={{ width: 'auto' }}
+                referrerPolicy="no-referrer"
+                priority={true}
+              />
           </Link>
 
           {/* Desktop Nav */}
-          <ul className="hidden md:flex items-center gap-10">
+          <ul className="hidden md:flex items-center gap-8 lg:gap-10">
             {NAV_LINKS.map((link) => (
               <li key={link.name}>
                 <Link
                   href={link.href}
-                  className="group relative py-1 text-sm font-semibold tracking-wide text-gray-700 transition-colors hover:text-[#EF4444] focus:outline-none focus:ring-2 focus:ring-[#EF4444] rounded-sm px-1"
+                  className="group relative py-1 text-sm font-bold tracking-tight text-gray-800 transition-all duration-300 hover:text-[#EF4444] focus:outline-none focus:ring-2 focus:ring-[#EF4444]/20 rounded-sm px-2"
                 >
                   {link.name}
-                  <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-[#EF4444] transition-all duration-300 group-hover:w-full" />
+                  <span className="absolute -bottom-1 left-2 h-0.5 w-0 bg-[#EF4444] transition-all duration-300 ease-out group-hover:w-[calc(100%-1rem)]" />
                 </Link>
               </li>
             ))}
@@ -57,11 +58,24 @@ export default function Navbar() {
           {/* Mobile Toggle */}
           <button
             id="mobile-menu-toggle"
-            className="relative z-50 p-2 text-slate-900 md:hidden focus:outline-none focus:ring-2 focus:ring-[#EF4444] rounded-md transition-all active:scale-95"
+            className="relative z-50 p-2.5 text-slate-900 md:hidden focus:outline-none bg-gray-50 rounded-xl transition-all active:scale-90"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            <div className="relative w-6 h-6 flex items-center justify-center">
+              <motion.div
+                animate={isOpen ? { rotate: 45, y: 0 } : { rotate: 0, y: -6 }}
+                className="absolute w-6 h-0.5 bg-gray-900 rounded-full"
+              />
+              <motion.div
+                animate={isOpen ? { opacity: 0, x: -20 } : { opacity: 1, x: 0 }}
+                className="absolute w-6 h-0.5 bg-gray-900 rounded-full"
+              />
+              <motion.div
+                animate={isOpen ? { rotate: -45, y: 0 } : { rotate: 0, y: 6 }}
+                className="absolute w-6 h-0.5 bg-gray-900 rounded-full"
+              />
+            </div>
           </button>
         </nav>
       </div>
@@ -70,11 +84,11 @@ export default function Navbar() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3, ease: 'easeInOut' }}
-            className="fixed inset-0 z-40 flex flex-col items-center justify-center bg-white md:hidden"
+            initial={{ opacity: 0, x: '100%' }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: '100%' }}
+            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+            className="fixed inset-0 z-40 flex flex-col bg-white md:hidden"
           >
             <ul className="flex flex-col items-center gap-6 w-full px-8">
               {NAV_LINKS.map((link, i) => (
@@ -97,37 +111,47 @@ export default function Navbar() {
             </ul>
 
             {/* Contact Info for Mobile Menu */}
-            <div className="absolute bottom-20 left-0 right-0 flex flex-col items-center gap-4 px-8 border-t border-gray-100 pt-8 mt-auto">
+            <div className="mt-auto w-full px-8 pb-12 flex flex-col gap-6">
+              <div className="h-px w-full bg-gray-100 mb-4" />
+              
               <a 
                 href="https://wa.me/6285704748186"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-gray-800 font-bold hover:text-[#EF4444] transition-colors"
-                aria-label="Hubungi Growth Indonesia via WhatsApp"
+                className="group flex items-center gap-4 p-4 rounded-2xl bg-gray-50 border border-gray-100 hover:bg-[#EF4444] hover:text-white transition-all active:scale-95"
               >
-                <Phone className="w-4 h-4 text-[#EF4444]" /> +62 857-0474-8186
+                <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-[#EF4444] shadow-sm">
+                  <Phone className="w-5 h-5" />
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-[10px] font-bold uppercase tracking-widest opacity-60">WhatsApp Kami</span>
+                  <span className="text-sm font-bold tracking-tight">+62 857-0474-8186</span>
+                </div>
               </a>
-              <a 
-                href="mailto:info@growthindonesia.my.id"
-                className="flex items-center gap-2 text-gray-600 text-sm hover:text-[#EF4444] transition-colors"
-                aria-label="Kirim email ke Growth Indonesia"
-              >
-                <Mail className="w-4 h-4 text-[#EF4444]" /> info@growthindonesia.my.id
-              </a>
-              <a 
-                href="https://maps.app.goo.gl/s5sLVajjti61reWw8?g_st=ac"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-gray-500 text-xs text-center hover:text-[#EF4444] transition-colors"
-                aria-label="Lihat lokasi Growth Indonesia di Google Maps"
-              >
-                <MapPin className="w-4 h-4 text-[#EF4444]" /> Jl. Mujair No.3, Madiun
-              </a>
+
+              <div className="grid grid-cols-2 gap-3">
+                <a 
+                  href="mailto:info@growthindonesia.my.id"
+                  className="flex flex-col items-center gap-2 p-4 rounded-2xl bg-gray-50 border border-gray-100 hover:bg-gray-100 transition-colors text-center"
+                >
+                  <Mail className="w-5 h-5 text-[#EF4444]" />
+                  <span className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Email</span>
+                </a>
+                <a 
+                  href="https://maps.app.goo.gl/s5sLVajjti61reWw8?g_st=ac"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex flex-col items-center gap-2 p-4 rounded-2xl bg-gray-50 border border-gray-100 hover:bg-gray-100 transition-colors text-center"
+                >
+                  <MapPin className="w-5 h-5 text-[#EF4444]" />
+                  <span className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Location</span>
+                </a>
+              </div>
             </div>
 
             {/* Decoration for Mobile Menu */}
             <div className="absolute bottom-6 left-0 right-0 flex justify-center opacity-5 pointer-events-none">
-              <span className="text-6xl font-display font-black whitespace-nowrap text-gray-900">GROWTH INDONESIA</span>
+              <span className="text-6xl font-display font-extrabold whitespace-nowrap text-gray-900">GROWTH INDONESIA</span>
             </div>
           </motion.div>
         )}

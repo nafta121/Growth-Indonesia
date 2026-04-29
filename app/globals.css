@@ -16,6 +16,23 @@
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-1 * (100% / 3))); }
+  }
+  .animate-marquee {
+    animation: marquee 40s linear infinite;
+  }
+  @keyframes glare {
+    0% { transform: translateX(-100%) skewX(-12deg); }
+    20%, 100% { transform: translateX(200%) skewX(-12deg); }
+  }
+  .animate-glare {
+    animation: glare 7s ease-in-out infinite;
+  }
   body {
     @apply selection:bg-[#EF4444] selection:text-white;
   }

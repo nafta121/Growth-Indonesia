@@ -6,6 +6,8 @@ import { motion, AnimatePresence } from 'motion/react';
 import { X, ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
+import { Badge } from '@/components/ui/badge';
+
 const outboundPhotos = [
   { id: 1, url: 'https://nafta121.sirv.com/OUTBOUND/2022-10-22%2009-00-09.jpeg', alt: 'Kegiatan Outbound Growth Indonesia 1' },
   { id: 2, url: 'https://nafta121.sirv.com/OUTBOUND/2022-11-05%2006-52-48.jpeg', alt: 'Kegiatan Outbound Growth Indonesia 2' },
@@ -65,37 +67,39 @@ export default function OutboundGallery() {
   }, [currentIndex, handleClose, handleNext, handlePrev]);
 
   return (
-    <section id="galeri" className="py-24 bg-gray-50" aria-labelledby="galeri-title">
-      <div className="container mx-auto px-4 md:px-12">
-        <div className="text-center mb-16">
-          <span className="inline-block mb-4 text-[#EF4444] font-bold uppercase tracking-widest text-xs">Our Moments</span>
-          <h2 id="galeri-title" className="font-display text-4xl md:text-5xl font-black text-[#0A1628] leading-tight mb-4">
+    <section id="galeri" className="py-20 md:py-32 bg-gray-50 overflow-hidden" aria-labelledby="galeri-title">
+      <div className="max-w-7xl mx-auto px-4 md:px-12">
+        <div className="text-center mb-16 md:mb-24">
+          <Badge className="mb-4">Our Moments</Badge>
+          <h2 id="galeri-title" className="font-display text-4xl md:text-5xl lg:text-6xl font-black text-[#0A1628] leading-[1.1] mb-6">
             Dokumentasi <span className="text-[#EF4444]">Kegiatan</span>
           </h2>
-          <div className="w-24 h-1.5 bg-[#EF4444] mx-auto rounded-full" />
+          <div className="w-16 h-2 bg-[#EF4444] mx-auto rounded-full" />
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
           {outboundPhotos.map((photo, index) => (
             <motion.div
               key={photo.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.05 }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ delay: index * 0.03 }}
               viewport={{ once: true }}
               onClick={() => setCurrentIndex(index)}
-              className="group relative aspect-square overflow-hidden rounded-2xl cursor-pointer bg-gray-200"
+              className="group relative aspect-square overflow-hidden rounded-xl md:rounded-[2rem] cursor-pointer bg-white shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 active:scale-95"
             >
               <Image
                 src={photo.url}
                 alt={photo.alt}
                 fill
-                className="object-cover transition-transform duration-500 group-hover:scale-110"
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
                 sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
                 referrerPolicy="no-referrer"
               />
-              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                <Maximize2 className="text-white w-8 h-8" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                <div className="bg-white/20 backdrop-blur-md p-3 md:p-4 rounded-xl border border-white/30 scale-50 group-hover:scale-100 transition-all duration-500">
+                  <Maximize2 className="text-white w-6 h-6 md:w-8 md:h-8" />
+                </div>
               </div>
             </motion.div>
           ))}

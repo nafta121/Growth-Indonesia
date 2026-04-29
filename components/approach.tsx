@@ -1,7 +1,6 @@
-'use client';
-
-import { motion } from 'motion/react';
 import { Users, UserCheck, Award, ShieldCheck } from 'lucide-react';
+import ScrollReveal from '@/components/ui/scroll-reveal';
+import { Badge } from '@/components/ui/badge';
 
 const PILLARS = [
   {
@@ -26,84 +25,48 @@ const PILLARS = [
   },
 ];
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: 'easeOut' as const,
-    },
-  },
-};
-
 export default function Approach() {
   return (
-    <section id="approach" className="py-24 bg-gray-50 border-y border-gray-100">
-      <div className="container mx-auto px-4 md:px-12">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <motion.span
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="inline-block mb-3 text-[#EF4444] font-bold uppercase tracking-[0.2em] text-xs"
-          >
+    <section id="approach" className="py-20 md:py-32 bg-gray-50 border-y border-gray-100 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 md:px-12">
+        <ScrollReveal delay={0} duration={0.8} yOffset={20} className="text-center max-w-3xl mx-auto mb-16 md:mb-24">
+          <Badge className="mb-4 md:mb-6">
             How We Work
-          </motion.span>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="font-display text-4xl md:text-5xl font-black text-gray-900 mb-6"
+          </Badge>
+          <h2
+            className="font-display text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-8 tracking-tight"
           >
-            Our Approach
-          </motion.h2>
-          <motion.div
-            initial={{ opacity: 0, scaleX: 0 }}
-            whileInView={{ opacity: 1, scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2, duration: 0.8 }}
-            className="h-1.5 w-24 bg-[#EF4444] mx-auto rounded-full"
+            Our <span className="text-gray-400">Approach</span>
+          </h2>
+          <div
+            className="h-2 w-16 bg-[#EF4444] mx-auto rounded-full"
           />
-        </div>
+        </ScrollReveal>
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
           {PILLARS.map((pillar, idx) => (
-            <motion.div
+            <ScrollReveal
               key={idx}
-              variants={itemVariants}
-              className="group bg-white p-8 rounded-2xl shadow-sm border border-gray-100 transition-all duration-300 hover:shadow-xl hover:-translate-y-2 hover:scale-[1.02]"
+              delay={0.2 + idx * 0.2}
+              duration={0.6}
+              yOffset={30}
+              className="group relative bg-white p-8 md:p-10 rounded-3xl md:rounded-[2.5rem] border border-gray-100 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(0,0,0,0.06)] active:scale-[0.98] cursor-default"
             >
-              <div className="mb-6 inline-flex p-3 rounded-xl bg-gray-50 text-[#EF4444] transition-colors group-hover:bg-[#EF4444] group-hover:text-white">
-                <pillar.icon className="w-8 h-8" />
+              <div className="mb-8 inline-flex p-4 rounded-2xl bg-gray-50 text-[#EF4444] transition-all duration-500 group-hover:bg-[#EF4444] group-hover:text-white group-hover:-translate-y-2 shadow-sm">
+                <pillar.icon className="w-8 h-8 md:w-9 md:h-9" />
               </div>
-              <h3 className="font-display text-xl font-bold text-gray-900 mb-4 group-hover:text-[#EF4444] transition-colors">
+              <h3 className="font-display text-xl md:text-2xl font-extrabold text-gray-900 mb-4 group-hover:text-[#EF4444] transition-colors duration-300 tracking-tight">
                 {pillar.title}
               </h3>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-gray-500 leading-relaxed font-medium text-sm md:text-base">
                 {pillar.description}
               </p>
-            </motion.div>
+              <div className="absolute bottom-4 right-4 text-[40px] font-extrabold text-gray-50 opacity-[0.05] group-hover:opacity-10 transition-opacity">
+                0{idx + 1}
+              </div>
+            </ScrollReveal>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

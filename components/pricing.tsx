@@ -1,8 +1,9 @@
-'use client';
-
-import { motion } from 'motion/react';
 import { Check, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import Link from 'next/link';
+import ScrollReveal from '@/components/ui/scroll-reveal';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 
 const PACKAGES = [
   {
@@ -31,82 +32,74 @@ const PACKAGES = [
   },
 ];
 
-interface PricingProps {
-  onSelect: (pkgId: string) => void;
-}
-
-export default function Pricing({ onSelect }: PricingProps) {
-  const handleSelect = (pkgId: string) => {
-    onSelect(pkgId);
-    const contactSection = document.getElementById('kontak');
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
+export default function Pricing() {
   return (
-    <section id="paket" className="py-24 bg-gray-50 overflow-hidden" aria-labelledby="paket-title">
-      <div className="container mx-auto px-4 md:px-12">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="inline-block mb-3 text-[#EF4444] font-bold uppercase tracking-[0.2em] text-xs">Invest in Growth</span>
-          <h2 id="paket-title" className="font-display text-4xl md:text-5xl font-black text-gray-900 mb-6">Program & Investasi</h2>
-          <p className="text-gray-600">Pilih paket pengembangan yang sesuai dengan kebutuhan dan target transformasi tim Anda.</p>
-        </div>
+    <section id="paket" className="py-20 md:py-32 bg-gray-50 overflow-hidden" aria-labelledby="paket-title">
+      <div className="max-w-7xl mx-auto px-4 md:px-12">
+        <ScrollReveal delay={0} duration={0.8} className="text-center max-w-3xl mx-auto mb-16 md:mb-24">
+          <Badge className="mb-4 text-xs">Invest in Growth</Badge>
+          <h2 id="paket-title" className="font-display text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-8 leading-[1.1]">
+            Program & <span className="text-[#EF4444]">Investasi</span>
+          </h2>
+          <p className="text-gray-600 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
+            Pilih paket pengembangan yang sesuai dengan kebutuhan dan target transformasi tim Anda. 
+            Membangun fundamental SDM yang tangguh melalui metode experiential learning.
+          </p>
+        </ScrollReveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10 items-stretch">
           {PACKAGES.map((pkg, idx) => (
-            <motion.div
+            <ScrollReveal
               key={pkg.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1, duration: 0.6 }}
+              delay={idx * 0.1}
+              duration={0.6}
               className={cn(
-                "group relative flex flex-col p-8 rounded-3xl bg-white border border-gray-100 transition-all duration-500",
-                "hover:scale-[1.02] hover:shadow-2xl hover:border-[#EF4444]/20",
-                pkg.popular && "ring-2 ring-[#EF4444] shadow-xl"
+                "group relative flex flex-col p-8 md:p-10 rounded-[2.5rem] md:rounded-[3rem] bg-white border border-gray-100 transition-all duration-500",
+                "hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)] hover:border-[#EF4444]/20",
+                pkg.popular && "ring-[3px] ring-[#EF4444] shadow-2xl shadow-[#EF4444]/10"
               )}
             >
               {pkg.popular && (
-                <div className="absolute top-0 right-10 -translate-y-1/2 bg-[#EF4444] text-white text-[10px] font-black uppercase tracking-widest px-4 py-1.5 rounded-full shadow-lg">
-                  Most Popular
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#EF4444] text-white text-[10px] font-bold uppercase tracking-[0.2em] px-6 py-2 rounded-full shadow-lg overflow-hidden">
+                  <div className="relative z-10">Most Popular</div>
+                  <div className="absolute inset-0 bg-white/20 animate-glare" />
                 </div>
               )}
               
               <div className="mb-8">
-                <h3 className="font-display text-xl font-black text-gray-900 mb-2 leading-tight uppercase tracking-tight">{pkg.title}</h3>
+                <h3 className="font-display text-xl font-extrabold text-gray-900 mb-3 leading-tight uppercase tracking-tight group-hover:text-[#EF4444] transition-colors">{pkg.title}</h3>
                 <div className="flex items-baseline gap-1">
-                  <span className="text-3xl font-black text-[#EF4444] tracking-tight">{pkg.price}</span>
-                  <span className="text-gray-400 text-sm font-medium">/ pax</span>
+                  <span className="text-3xl md:text-4xl font-extrabold text-gray-900 whitespace-nowrap tracking-tighter">{pkg.price}</span>
+                  <span className="text-gray-400 text-sm font-bold">/pax</span>
                 </div>
               </div>
 
-              <p className="text-gray-600 text-sm leading-relaxed mb-8 h-12 overflow-hidden">
+              <p className="text-gray-500 text-sm leading-relaxed mb-10 h-auto">
                 {pkg.description}
               </p>
 
-              <div className="space-y-4 mb-auto">
+              <div className="space-y-5 mb-auto">
                 {pkg.features.map((feat) => (
-                  <div key={feat} className="flex items-center gap-3 text-sm text-gray-700">
-                    <Check className="w-4 h-4 text-[#EF4444]" />
-                    <span>{feat}</span>
+                  <div key={feat} className="flex items-start gap-4 text-sm text-gray-700 group/item">
+                    <div className="w-5 h-5 rounded-full bg-green-50 flex items-center justify-center shrink-0 group-hover/item:bg-green-500 group-hover/item:text-white transition-colors">
+                      <Check className="w-3 h-3 text-green-500 group-hover/item:text-white transition-colors" />
+                    </div>
+                    <span className="font-medium">{feat}</span>
                   </div>
                 ))}
               </div>
 
-              <button
-                onClick={() => handleSelect(pkg.id)}
-                className={cn(
-                  "mt-10 group/btn flex items-center justify-center gap-2 py-4 rounded-xl font-bold transition-all duration-300",
-                  pkg.popular 
-                    ? "bg-[#EF4444] text-white hover:bg-[#d63d3d] shadow-lg shadow-[#EF4444]/30" 
-                    : "bg-gray-900 text-white hover:bg-black focus:ring-2 focus:ring-gray-900 focus:ring-offset-2"
-                )}
+              <Button
+                asChild
+                variant={pkg.popular ? "default" : "outline"}
+                className={cn("mt-12 w-full flex items-center justify-center gap-2 font-bold uppercase tracking-wider text-sm", pkg.popular && "bg-red-600 hover:bg-red-700 text-white")}
               >
-                Pilih Paket
-                <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-              </button>
-            </motion.div>
+                <Link href={`/?package=${pkg.id}#kontak`} scroll={false}>
+                  <span className="relative z-10">Pilih Paket</span>
+                  <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+                </Link>
+              </Button>
+            </ScrollReveal>
           ))}
         </div>
       </div>

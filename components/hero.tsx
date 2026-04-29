@@ -1,15 +1,15 @@
-'use client';
-
-import { motion } from 'motion/react';
 import { ChevronDown } from 'lucide-react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
+import ScrollReveal from '@/components/ui/scroll-reveal';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 
 export default function Hero() {
   return (
     <section 
       id="hero" 
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0A1628] pt-20"
+      className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-[#0A1628] py-20 md:py-32"
     >
       {/* Background Decor */}
       <div className="absolute inset-0 z-0">
@@ -17,65 +17,57 @@ export default function Hero() {
         <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-blue-600/5 rounded-full blur-[150px] animate-pulse delay-700" />
       </div>
 
-      <div className="container relative z-10 mx-auto px-4 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
-          className="max-w-5xl mx-auto"
+      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 text-center">
+        <ScrollReveal
+          delay={0}
+          duration={1}
+          className="max-w-5xl mx-auto flex flex-col items-center"
         >
           {/* Headline */}
-          <h1 className="font-display text-7xl md:text-8xl lg:text-[10rem] font-extrabold text-white leading-[0.9] mb-10 tracking-tighter">
-            <span className="block text-xl md:text-2xl text-[#EF4444] mb-6 tracking-[0.3em] font-sans font-bold uppercase">Provider Outbound Madiun</span>
-            Let&apos;s Grow <br />
-            <span className="text-[#EF4444]">Together!</span>
+          <h1 className="font-display text-6xl sm:text-7xl md:text-8xl lg:text-[10rem] font-black text-white leading-[1.1] mb-8 md:mb-12 tracking-tighter uppercase sm:whitespace-nowrap lg:whitespace-normal">
+            <Badge variant="dark" className="mb-4 md:mb-8 font-sans">Provider Outbound Madiun</Badge>
+            <span className="block mt-4 relative">
+              Let&apos;s Grow 
+              <div 
+                className="absolute -bottom-2 md:-bottom-4 left-0 h-1.5 md:h-2 bg-[#EF4444]/20 rounded-full w-full animate-pulse"
+              />
+            </span>
+            <span className="text-[#EF4444] inline-block relative">Together!</span>
           </h1>
 
           {/* Subheadline */}
-          <p className="text-gray-200 text-xl md:text-2xl font-medium md:max-w-3xl mx-auto leading-relaxed mb-12">
+          <p className="text-gray-300 text-base md:text-xl lg:text-2xl font-medium max-w-2xl mx-auto leading-relaxed mb-10 md:mb-16 px-4">
             Berdayakan potensi terbaik tim Anda melalui solusi pengembangan SDM, 
             modul pelatihan inovatif, dan program outbound strategis untuk menghadapi era digital.
           </p>
 
           {/* CTA Button */}
-          <div className="flex justify-center">
-            <Link
-              href="#paket"
-              className={cn(
-                "group relative overflow-hidden rounded-full bg-[#EF4444] px-10 py-5 text-lg font-bold text-white transition-all duration-300 uppercase tracking-widest shadow-xl",
-                "hover:scale-[1.02] hover:shadow-[0_15px_30px_-5px_rgba(239,68,68,0.4)] active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#EF4444] focus:ring-offset-2 focus:ring-offset-[#0A1628]"
-              )}
-            >
-              <span className="relative z-10">
+          <div className="flex justify-center items-center">
+            <Button asChild size="lg" className="w-full sm:w-auto min-w-[280px] group">
+              <Link href="#paket">
                 Lihat Paket Program
-              </span>
-              <div className="absolute inset-0 h-full w-0 bg-white/10 transition-all duration-300 group-hover:w-full" />
-            </Link>
+                <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </Link>
+            </Button>
           </div>
-        </motion.div>
+        </ScrollReveal>
       </div>
-
-      {/* Scroll Indicator */}
-      <motion.div
-        id="scroll-indicator"
-        className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1 }}
-      >
-        <Link href="#tentang" className="group flex flex-col items-center gap-3 focus:outline-none focus:ring-2 focus:ring-[#EF4444] rounded-full p-2">
-          <div className="animate-editorial-bounce text-[#EF4444]">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="m7 13 5 5 5-5"/><path d="m7 6 5 5 5-5"/>
-            </svg>
-          </div>
-        </Link>
-      </motion.div>
 
       {/* Grid Pattern Overlay */}
       <div className="absolute inset-0 z-1 pointer-events-none opacity-[0.03]" 
            style={{ backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '40px 40px' }} 
       />
+
+      {/* Scroll Indicator */}
+      <ScrollReveal
+        delay={2}
+        duration={1}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 pointer-events-none"
+      >
+        <ChevronDown className="w-6 h-6 text-gray-400 animate-bounce" />
+      </ScrollReveal>
     </section>
   );
 }
