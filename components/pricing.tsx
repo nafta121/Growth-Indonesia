@@ -45,11 +45,11 @@ export default function Pricing({ onSelect }: PricingProps) {
   };
 
   return (
-    <section id="paket" className="py-24 bg-gray-50 overflow-hidden">
+    <section id="paket" className="py-24 bg-gray-50 overflow-hidden" aria-labelledby="paket-title">
       <div className="container mx-auto px-4 md:px-12">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="inline-block mb-3 text-[#EF4444] font-bold uppercase tracking-[0.2em] text-xs">Invest in Growth</span>
-          <h2 className="font-display text-4xl md:text-5xl font-black text-gray-900 mb-6">Program & Investasi</h2>
+          <h2 id="paket-title" className="font-display text-4xl md:text-5xl font-black text-gray-900 mb-6">Program & Investasi</h2>
           <p className="text-gray-600">Pilih paket pengembangan yang sesuai dengan kebutuhan dan target transformasi tim Anda.</p>
         </div>
 

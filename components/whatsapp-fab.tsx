@@ -11,6 +11,7 @@ export default function WhatsAppFAB() {
       target="_blank"
       rel="noopener noreferrer"
       className="md:hidden fixed bottom-24 right-6 z-[60]"
+      aria-label="Chat with Growth Indonesia on WhatsApp"
     >
       <motion.div
         initial={{ scale: 0 }}

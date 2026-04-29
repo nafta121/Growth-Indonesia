@@ -65,11 +65,11 @@ export default function OutboundGallery() {
   }, [currentIndex, handleClose, handleNext, handlePrev]);
 
   return (
-    <section id="galeri" className="py-24 bg-gray-50">
+    <section id="galeri" className="py-24 bg-gray-50" aria-labelledby="galeri-title">
       <div className="container mx-auto px-4 md:px-12">
         <div className="text-center mb-16">
           <span className="inline-block mb-4 text-[#EF4444] font-bold uppercase tracking-widest text-xs">Our Moments</span>
-          <h2 className="font-display text-4xl md:text-5xl font-black text-[#0A1628] leading-tight mb-4">
+          <h2 id="galeri-title" className="font-display text-4xl md:text-5xl font-black text-[#0A1628] leading-tight mb-4">
             Dokumentasi <span className="text-[#EF4444]">Kegiatan</span>
           </h2>
           <div className="w-24 h-1.5 bg-[#EF4444] mx-auto rounded-full" />
@@ -141,7 +141,6 @@ export default function OutboundGallery() {
                   alt={outboundPhotos[currentIndex].alt}
                   fill
                   className="object-contain"
-                  priority
                   referrerPolicy="no-referrer"
                 />
               </motion.div>

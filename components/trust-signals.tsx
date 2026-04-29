@@ -4,10 +4,10 @@ import { motion } from 'motion/react';
 
 export default function TrustSignals() {
   return (
-    <section className="py-20 bg-white border-b border-gray-100">
+    <section className="py-20 bg-white border-b border-gray-100" aria-labelledby="trust-title">
       <div className="container mx-auto px-4 md:px-12">
         <div className="text-center mb-12">
-          <h3 className="text-gray-900 font-display text-2xl md:text-3xl font-bold tracking-tight">
+          <h3 id="trust-title" className="text-gray-900 font-display text-2xl md:text-3xl font-bold tracking-tight">
             Dipercaya oleh <span className="text-[#EF4444]">100+ Perusahaan</span> & Instansi
           </h3>
         </div>

@@ -100,7 +100,7 @@ Rencana Tanggal: ${formData.date || 'TBC'}`;
                   <MapPin className="w-6 h-6" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-gray-900 mb-1">Kantor Pusat</h4>
+                  <h3 className="font-bold text-gray-900 mb-1">Kantor Pusat</h3>
                   <p className="text-gray-600">Jl. Mujair No.3, Nambangan Kidul,<br />Kota Madiun, Jawa Timur</p>
                 </div>
               </div>
@@ -110,7 +110,7 @@ Rencana Tanggal: ${formData.date || 'TBC'}`;
                   <Phone className="w-6 h-6" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-gray-900 mb-1">WhatsApp & Telepon</h4>
+                  <h3 className="font-bold text-gray-900 mb-1">WhatsApp & Telepon</h3>
                   <p className="text-gray-600">+62 857-0474-8186</p>
                 </div>
               </div>
@@ -120,7 +120,7 @@ Rencana Tanggal: ${formData.date || 'TBC'}`;
                   <MessageCircle className="w-6 h-6" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-gray-900 mb-1">Email Resmi</h4>
+                  <h3 className="font-bold text-gray-900 mb-1">Email Resmi</h3>
                   <p className="text-gray-600">info@growthindonesia.id</p>
                 </div>
               </div>
@@ -146,7 +146,7 @@ Rencana Tanggal: ${formData.date || 'TBC'}`;
                 >
                   <div className="mb-8">
                     <div className="flex justify-between items-end mb-2">
-                      <span className="text-xs font-bold text-[#EF4444] uppercase tracking-widest">Booking Form</span>
+                       <h3 id="kontak-form-title" className="text-xs font-bold text-[#EF4444] uppercase tracking-widest">Booking Form</h3>
                       <span className="text-[10px] text-gray-400 font-bold">STEP 1 OF 2</span>
                     </div>
                     <div className="h-1.5 w-full bg-gray-200 rounded-full overflow-hidden">
@@ -158,13 +158,14 @@ Rencana Tanggal: ${formData.date || 'TBC'}`;
                     </div>
                   </div>
 
-                  <form onSubmit={handleSubmit} className="space-y-6">
+                  <form onSubmit={handleSubmit} className="space-y-6" aria-labelledby="kontak-form-title">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-2">
-                        <label className="text-sm font-bold text-gray-700 flex items-center gap-2">
+                        <label htmlFor="name" className="text-sm font-bold text-gray-700 flex items-center gap-2">
                           <User className="w-4 h-4 text-gray-400" /> Nama Lengkap
                         </label>
                         <input
+                          id="name"
                           required
                           name="name"
                           type="text"
@@ -175,10 +176,11 @@ Rencana Tanggal: ${formData.date || 'TBC'}`;
                         />
                       </div>
                       <div className="space-y-2">
-                        <label className="text-sm font-bold text-gray-700 flex items-center gap-2">
+                        <label htmlFor="company" className="text-sm font-bold text-gray-700 flex items-center gap-2">
                           <Building2 className="w-4 h-4 text-gray-400" /> Perusahaan / Instansi
                         </label>
                         <input
+                          id="company"
                           required
                           name="company"
                           type="text"
@@ -191,10 +193,11 @@ Rencana Tanggal: ${formData.date || 'TBC'}`;
                     </div>
 
                     <div className="space-y-2">
-                      <label className="text-sm font-bold text-gray-700 flex items-center gap-2">
+                      <label htmlFor="whatsapp" className="text-sm font-bold text-gray-700 flex items-center gap-2">
                         <Phone className="w-4 h-4 text-gray-400" /> Nomor WhatsApp
                       </label>
                       <input
+                        id="whatsapp"
                         required
                         name="whatsapp"
                         type="tel"
@@ -210,10 +213,11 @@ Rencana Tanggal: ${formData.date || 'TBC'}`;
                     </div>
 
                     <div className="space-y-2">
-                      <label className="text-sm font-bold text-gray-700 flex items-center gap-2">
+                      <label htmlFor="package" className="text-sm font-bold text-gray-700 flex items-center gap-2">
                         Pilih Paket Program
                       </label>
                       <select
+                        id="package"
                         required
                         name="package"
                         value={formData.package}
@@ -228,10 +232,11 @@ Rencana Tanggal: ${formData.date || 'TBC'}`;
                     </div>
 
                     <div className="space-y-2">
-                      <label className="text-sm font-bold text-gray-700 flex items-center gap-2">
+                      <label htmlFor="date" className="text-sm font-bold text-gray-700 flex items-center gap-2">
                         <Calendar className="w-4 h-4 text-gray-400" /> Rencana Tanggal Kegiatan
                       </label>
                       <input
+                        id="date"
                         name="date"
                         type="date"
                         value={formData.date}

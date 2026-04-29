@@ -26,6 +26,7 @@ export default function Hero() {
         >
           {/* Headline */}
           <h1 className="font-display text-7xl md:text-8xl lg:text-[10rem] font-extrabold text-white leading-[0.9] mb-10 tracking-tighter">
+            <span className="block text-xl md:text-2xl text-[#EF4444] mb-6 tracking-[0.3em] font-sans font-bold uppercase">Provider Outbound Madiun</span>
             Let&apos;s Grow <br />
             <span className="text-[#EF4444]">Together!</span>
           </h1>

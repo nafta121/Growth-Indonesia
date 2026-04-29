@@ -33,14 +33,14 @@ export default function Services() {
   const [activeTab, setActiveTab] = useState<typeof CATEGORIES[number]['id']>('training');
 
   return (
-    <section id="layanan" className="py-24 bg-[#0A1628] relative overflow-hidden">
+    <section id="layanan" className="py-24 bg-[#0A1628] relative overflow-hidden" aria-labelledby="layanan-title">
       {/* Background elements */}
       <div className="absolute top-0 right-0 w-1/3 h-full bg-[#EF4444]/5 skew-x-12 translate-x-20" />
       
       <div className="container mx-auto px-4 md:px-12 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="inline-block mb-3 text-[#EF4444] font-bold uppercase tracking-[0.2em] text-xs">Excellence in Execution</span>
-          <h2 className="font-display text-4xl md:text-5xl font-black text-white mb-8 uppercase tracking-tight">Our Services</h2>
+          <h2 id="layanan-title" className="font-display text-4xl md:text-5xl font-black text-white mb-8 uppercase tracking-tight">Our Services</h2>
           
           {/* Category Toggle */}
           <div className="relative inline-flex p-1.5 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 w-full max-w-2xl mx-auto">
@@ -85,7 +85,7 @@ export default function Services() {
                     {activeTab === 'training' ? <Star className="w-6 h-6" /> : <Sparkles className="w-6 h-6" />}
                   </div>
                   <div>
-                    <h4 className="text-lg font-bold text-white mb-1 uppercase tracking-tight">{item.title}</h4>
+                    <h3 className="text-lg font-bold text-white mb-1 uppercase tracking-tight">{item.title}</h3>
                     <p className="text-gray-400 text-sm">{item.desc}</p>
                   </div>
                 </div>

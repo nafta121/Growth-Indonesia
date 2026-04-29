@@ -11,7 +11,7 @@ const MISSIONS = [
 
 export default function AboutUs() {
   return (
-    <section id="tentang" className="py-24 bg-white overflow-hidden">
+    <section id="tentang" className="py-24 bg-white overflow-hidden" aria-labelledby="tentang-title">
       <div className="container mx-auto px-4 md:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           {/* Vision Section */}
@@ -22,7 +22,7 @@ export default function AboutUs() {
             transition={{ duration: 0.8 }}
           >
             <span className="inline-block mb-4 text-[#EF4444] font-bold uppercase tracking-widest text-xs">Vision</span>
-            <h2 className="font-display text-4xl md:text-5xl font-black text-gray-900 leading-tight mb-8">
+            <h2 id="tentang-title" className="font-display text-4xl md:text-5xl font-black text-gray-900 leading-tight mb-8">
               Membangun Kualitas <span className="text-[#EF4444]">SDM Unggul</span> & Bermental Positif.
             </h2>
             <p className="text-gray-600 text-lg md:text-xl leading-relaxed">

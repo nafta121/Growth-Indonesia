@@ -12,13 +12,15 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* Brand Column */}
           <div className="lg:col-span-1">
-            <Link href="/" className="inline-flex items-center gap-3 mb-6">
-              <div className="relative w-12 h-12 overflow-hidden rounded-lg bg-white flex items-center justify-center">
-                <div className="w-full h-full bg-[#EF4444] flex items-center justify-center font-black text-white text-2xl italic leading-none">GI</div>
-              </div>
-              <span className="font-display font-extrabold text-2xl tracking-tighter uppercase text-white">
-                GROWTH <span className="text-[#EF4444]">INDONESIA</span>
-              </span>
+            <Link href="/" className="inline-flex items-center mb-6">
+              <Image 
+                src="https://nafta121.sirv.com/Screenshot_20260423_192944_My%20Files.jpg" 
+                alt="Growth Indonesia Logo" 
+                width={200} 
+                height={56} 
+                className="h-14 w-auto object-contain"
+                referrerPolicy="no-referrer"
+              />
             </Link>
             <p className="text-gray-400 leading-relaxed max-w-xs">
               Transforming organizations through human-centric development and 
@@ -28,7 +30,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-white font-bold mb-6 tracking-wide uppercase text-sm">NavigasiCepat</h4>
+            <h3 className="text-white font-bold mb-6 tracking-wide uppercase text-sm">Navigasi Cepat</h3>
             <ul className="space-y-4">
               {['Beranda', 'Tentang Kami', 'Layanan', 'Paket Program', 'Kontak'].map((link) => (
                 <li key={link}>
@@ -45,7 +47,7 @@ export default function Footer() {
 
           {/* Contact Details */}
           <div>
-            <h4 className="text-white font-bold mb-6 tracking-wide uppercase text-sm">AlamatKantor</h4>
+            <h3 className="text-white font-bold mb-6 tracking-wide uppercase text-sm">Alamat Kantor</h3>
             <p className="text-gray-500 leading-relaxed">
               Jl. Mujair No.3, Nambangan Kidul, Kota Madiun, Jawa Timur 63128
             </p>
@@ -53,7 +55,7 @@ export default function Footer() {
 
           {/* Social */}
           <div>
-            <h4 className="text-white font-bold mb-6 tracking-wide uppercase text-sm">Hubungi Kami</h4>
+            <h3 className="text-white font-bold mb-6 tracking-wide uppercase text-sm">Hubungi Kami</h3>
             <p className="text-gray-500 mb-2">WhatsApp:</p>
             <Link 
               href="https://wa.me/6285704748186" 

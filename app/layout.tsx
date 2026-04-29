@@ -15,8 +15,21 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: 'Growth Indonesia | HR & Outbound Agency',
-  description: 'Unlocking human potential through corporate training and outbound development.',
+  title: 'Provider Outbound Madiun & Jawa Timur | Growth Indonesia',
+  description: 'Growth Indonesia adalah jasa outbound profesional & training SDM di Madiun & Jawa Timur. Melayani outbound training, LDK OSIS, team building, dan leadership training.',
+  keywords: 'Provider Outbound Madiun, Outbound Jawa Timur, Training SDM, LDK OSIS, Jasa Outbound Madiun, Outbound Madiun, Jasa Outbound Profesional',
+  openGraph: {
+    title: 'Provider Outbound Madiun & Jawa Timur | Growth Indonesia',
+    description: 'Jasa outbound profesional & training SDM terbaik di Madiun & Jawa Timur.',
+    url: 'https://growth-indonesia.com',
+    siteName: 'Growth Indonesia',
+    locale: 'id_ID',
+    type: 'website',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({

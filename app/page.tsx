@@ -17,16 +17,18 @@ export default function Home() {
   const [selectedPackage, setSelectedPackage] = useState<string>('');
 
   return (
-    <main className="relative min-h-screen selection:bg-[#EF4444] selection:text-white">
+    <div className="relative min-h-screen selection:bg-[#EF4444] selection:text-white">
       <Navbar />
-      <Hero />
-      <AboutUs />
-      <Approach />
-      <Services />
-      <Pricing onSelect={setSelectedPackage} />
-      <OutboundGallery />
-      <TrustSignals />
-      <Contact initialPackage={selectedPackage} />
+      <main>
+        <Hero />
+        <AboutUs />
+        <Approach />
+        <Services />
+        <Pricing onSelect={setSelectedPackage} />
+        <OutboundGallery />
+        <TrustSignals />
+        <Contact initialPackage={selectedPackage} />
+      </main>
       <Footer />
       
       <WhatsAppFAB />
@@ -37,6 +39,6 @@ export default function Home() {
         <div className="h-full w-1/4 bg-white" />
         <div className="h-full w-1/6 bg-[#EF4444]/50" />
       </div>
-    </main>
+    </div>
   );
 }
