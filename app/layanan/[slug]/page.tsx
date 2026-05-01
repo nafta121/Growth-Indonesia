@@ -125,6 +125,44 @@ export async function generateStaticParams() {
   }));
 }
 
+function SchemaMarkup({ cityName, slug }: { cityName: string; slug: string }) {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'LocalBusiness',
+        '@id': `https://growthindonesia.my.id/layanan/${slug}#localbusiness`,
+        name: `Growth Indonesia - Provider Outbound, Training dan Pengembangan SDM ${cityName}`,
+        areaServed: `${cityName}, East Java, Indonesia`,
+        telephone: '+6285704748186',
+        priceRange: 'Rp (Rupiah)',
+        aggregateRating: {
+          '@type': 'AggregateRating',
+          ratingValue: 5,
+          reviewCount: 100
+        }
+      },
+      {
+        '@type': 'Service',
+        '@id': `https://growthindonesia.my.id/layanan/${slug}#service`,
+        serviceType: 'Outbound, Training, Fun Games, Gathering, LDK OSIS & Team Building',
+        description: `Layanan pengembangan SDM dan outbound profesional untuk perusahaan, instansi dan sekolah di ${cityName}.`,
+        provider: {
+          '@type': 'LocalBusiness',
+          name: 'Growth Indonesia'
+        }
+      }
+    ]
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
+  );
+}
+
 export default async function OutboundLocationPage({ params }: Props) {
   const { slug } = await params;
   const decodedSlug = decodeURIComponent(slug).toLowerCase();
@@ -141,7 +179,9 @@ export default async function OutboundLocationPage({ params }: Props) {
   }
 
   return (
-    <main className="flex-1 w-full flex flex-col pt-[72px] md:pt-[88px]">
+    <>
+      <SchemaMarkup cityName={cityData.name} slug={decodedSlug} />
+      <main className="flex-1 w-full flex flex-col pt-[72px] md:pt-[88px]">
       {/* Hero Section */}
       <section className="relative pt-20 pb-20 md:pt-32 md:pb-28 bg-[#0A1628] overflow-hidden">
         <div className="absolute inset-0 z-0">
@@ -303,5 +343,6 @@ export default async function OutboundLocationPage({ params }: Props) {
          </div>
       </section>
     </main>
+    </>
   );
 }
