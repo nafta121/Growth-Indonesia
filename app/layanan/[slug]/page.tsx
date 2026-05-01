@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
-import { MapPin, Users, Target, ShieldCheck, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { MapPin, Users, Target, ShieldCheck, ArrowRight, CheckCircle2, MessageCircle, Star } from 'lucide-react';
 import ScrollReveal from '@/components/ui/scroll-reveal';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -158,16 +158,32 @@ export default async function OutboundLocationPage({ params }: Props) {
         
         <div className="max-w-7xl mx-auto px-4 md:px-12 relative z-10">
           <ScrollReveal delay={0} yOffset={20} className="max-w-3xl">
-            <Badge variant="dark" className="mb-6"><MapPin className="w-3 h-3 mr-2 inline-block" /> Wilayah Jangkauan Khusus</Badge>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/10 mb-8">
+              <div className="flex text-yellow-400">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4 fill-current" />
+                ))}
+              </div>
+              <span className="text-sm font-medium text-white/90">Dipercaya 100+ Perusahaan dan Instansi</span>
+            </div>
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-white mb-8 leading-[1.1]">
               Provider Outbound Corporate Premium di <span className="text-[#EF4444]">{cityData.name}</span>
             </h1>
-            <p className="text-xl md:text-2xl text-slate-300 font-medium leading-relaxed mb-10">
+            <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-10">
               {cityData.description} Transformasi budaya perusahaan dan semangat kolaborasi tim Anda bersama instruktur profesional Growth Indonesia.
             </p>
-            <Button size="lg" className="h-14 px-8 text-base shadow-red-500/25" asChild>
-              <Link href="/#kontak">Konsultasi Program {cityData.name} Sekarang <ArrowRight className="w-5 h-5 ml-2" /></Link>
-            </Button>
+            <div className="flex flex-wrap items-center gap-4">
+              <Button size="lg" className="h-14 px-8 rounded-full bg-[#EF4444] text-white hover:bg-red-600 shadow-lg shadow-red-600/30 transition-all duration-300 active:scale-95 flex items-center justify-center gap-2" asChild>
+                <Link href="/#kontak" className="text-xs sm:text-sm font-bold">
+                  KONSULTASI PROGRAM {cityData.name.toUpperCase()} <ArrowRight className="w-5 h-5" />
+                </Link>
+              </Button>
+              <Button size="lg" asChild className="h-14 px-8 rounded-full bg-transparent border border-white/30 text-white hover:bg-white/10 transition-all duration-300 active:scale-95 flex items-center justify-center">
+                <Link href="/#paket" className="text-xs sm:text-sm font-bold">
+                  Lihat Paket Harga
+                </Link>
+              </Button>
+            </div>
           </ScrollReveal>
         </div>
       </section>
@@ -198,19 +214,19 @@ export default async function OutboundLocationPage({ params }: Props) {
 
             <ScrollReveal delay={0.3} xOffset={30}>
               <Badge className="mb-4">Keunggulan Spesifik Kami</Badge>
-              <h2 className="font-display text-3xl md:text-5xl font-black text-gray-900 leading-[1.1] mb-6">
+              <h2 className="font-display text-3xl md:text-5xl font-black tracking-tight text-gray-900 leading-[1.1] mb-6">
                 Menciptakan Impact Nyata Bagi SDM <span className="text-[#EF4444]">{cityData.name}</span>
               </h2>
-              <p className="text-gray-600 text-lg leading-relaxed mb-8">
+              <p className="text-slate-500 text-lg leading-relaxed mb-8">
                 Sebagai provider outbound B2B pilihan, kami tidak sekadar menghadirkan "fun games". Kami merancang program dengan pendekatan <em>experiential learning</em> yang 100% selaras dengan visi dan misi institusi serta budaya kerja Anda.
               </p>
               
               {/* Dynamic USP - Vital for SEO / Avoiding Doorway Page penalty */}
-              <div className="bg-red-50 border border-red-100 rounded-2xl p-6 md:p-8 mb-8 relative overflow-hidden group">
+              <div className="bg-red-50 border border-red-100 rounded-3xl p-6 md:p-8 mb-10 relative overflow-hidden group transition-all duration-500 hover:shadow-xl hover:shadow-red-500/5 hover:-translate-y-1">
                 <div className="relative z-10">
                   <div className="flex items-center gap-3 mb-4">
                     <MapPin className="text-red-600 w-6 h-6" />
-                    <h3 className="font-bold text-gray-900 text-xl">Layanan Eksklusif di {cityData.name}</h3>
+                    <h3 className="font-display font-extrabold tracking-tight text-gray-900 text-2xl">Layanan Eksklusif di {cityData.name}</h3>
                   </div>
                   <p className="text-gray-800 leading-relaxed font-medium">
                     {cityData.uniqueSellingPoint}
@@ -221,13 +237,18 @@ export default async function OutboundLocationPage({ params }: Props) {
                 </div>
               </div>
 
-              <div className="space-y-4">
-                <h4 className="font-bold text-gray-900 text-lg mb-4">Rekomendasi Venue Favorit Klien di {cityData.name}:</h4>
-                <div className="flex flex-wrap gap-3">
+              <div className="space-y-6">
+                <h4 className="font-display font-extrabold tracking-tight text-gray-900 text-2xl mb-2">Venue Favorit di {cityData.name}:</h4>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {cityData.popularVenues.map((venue, i) => (
-                    <div key={i} className="flex items-center gap-2 bg-gray-50 px-4 py-2.5 rounded-xl border border-gray-100">
-                      <CheckCircle2 className="w-4 h-4 text-green-500" />
-                      <span className="font-semibold text-gray-700 text-sm">{venue}</span>
+                    <div 
+                      key={i} 
+                      className="group flex items-center gap-4 bg-white p-4 rounded-3xl border border-gray-100 hover:-translate-y-1 hover:shadow-xl hover:shadow-red-500/5 transition-all duration-500"
+                    >
+                      <div className="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center text-red-600 group-hover:bg-red-50 transition-colors">
+                        <MapPin className="w-5 h-5" />
+                      </div>
+                      <span className="font-bold text-gray-800 text-base">{venue}</span>
                     </div>
                   ))}
                 </div>
@@ -240,7 +261,7 @@ export default async function OutboundLocationPage({ params }: Props) {
       {/* Value Proposition */}
       <section className="py-20 bg-gray-50 border-t border-gray-100">
          <div className="max-w-7xl mx-auto px-4 md:px-12 text-center">
-            <h2 className="font-display text-3xl font-black text-gray-900 mb-12">
+            <h2 className="font-display text-3xl md:text-5xl font-black tracking-tight text-gray-900 mb-16">
               Mengapa Memilih Kami untuk Program di <span className="text-[#EF4444]">{cityData.name}?</span>
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -249,12 +270,12 @@ export default async function OutboundLocationPage({ params }: Props) {
                 { icon: Target, title: 'Tailor-Made Program', desc: 'Setiap materi dirancang menyesuaikan dengan budaya perusahaan serta KPI dan Core Values dari manajemen.' },
                 { icon: Users, title: 'Zero Accident Policy', desc: 'Keselamatan dan keamanan adalah prioritas mutlak. Kami merancang aktivitas dengan rasio risiko yang sangat terukur.' },
               ].map((feat, idx) => (
-                <div key={idx} className="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                <div key={idx} className="bg-white p-8 rounded-[2.5rem] border border-gray-100 hover:shadow-xl hover:shadow-red-500/5 hover:-translate-y-1 transition-all duration-500">
                   <div className="w-14 h-14 bg-red-50 text-red-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
                     <feat.icon className="w-7 h-7" />
                   </div>
-                  <h3 className="font-bold text-xl text-gray-900 mb-3">{feat.title}</h3>
-                  <p className="text-gray-600">{feat.desc}</p>
+                  <h3 className="font-display font-extrabold tracking-tight text-2xl text-gray-900 mb-3">{feat.title}</h3>
+                  <p className="text-slate-500 leading-relaxed">{feat.desc}</p>
                 </div>
               ))}
             </div>
@@ -262,18 +283,21 @@ export default async function OutboundLocationPage({ params }: Props) {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 md:py-32 bg-[#EF4444] relative overflow-hidden">
-         <div className="absolute inset-0 bg-[url('https://nafta121.sirv.com/OUTBOUND/2022-10-22%2009-00-09.jpeg')] opacity-10 mix-blend-overlay bg-cover bg-center" />
+      <section className="py-24 md:py-32 bg-[#0A1628] relative overflow-hidden">
+         <div className="absolute inset-0 bg-[url('https://nafta121.sirv.com/OUTBOUND/2022-10-22%2009-00-09.jpeg')] opacity-20 mix-blend-overlay bg-cover bg-center" />
          <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
-            <h2 className="font-display text-4xl md:text-5xl font-black text-white mb-6 leading-tight">
+            <h2 className="font-display text-4xl md:text-6xl font-black tracking-tight text-white mb-6 leading-tight">
               Wujudkan Agenda Company Gathering Impian di {cityData.name}
             </h2>
-            <p className="text-xl text-white/90 mb-10 font-medium max-w-2xl mx-auto">
+            <p className="text-xl text-slate-300 mb-12 font-medium max-w-2xl mx-auto leading-relaxed">
               Konsultasikan kebutuhan spesifik tim Anda bersama tenaga ahli kami. Kami akan siapkan proposal komprehensif tanpa biaya!
             </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Button size="lg" className="h-16 px-10 text-base rounded-2xl bg-white text-red-600 font-bold hover:bg-white/90 shadow-xl" asChild>
-                <Link href={`https://wa.me/6285704748186?text=Halo tim Growth Indonesia, saya ingin berdiskusi mengenai program outbound corporate untuk wilayah ${cityData.name}.`} target="_blank">Chat WhatsApp Sekarang</Link>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Button size="lg" className="h-16 px-8 rounded-full bg-[#EF4444] text-white hover:bg-red-600 shadow-lg shadow-red-600/30 transition-all duration-300 active:scale-95 flex items-center justify-center gap-2" asChild>
+                <Link href={`https://wa.me/6285704748186?text=Halo tim Growth Indonesia, saya ingin berdiskusi mengenai program outbound corporate untuk wilayah ${cityData.name}.`} target="_blank" className="font-bold text-xs sm:text-sm">
+                  <MessageCircle className="w-5 h-5" />
+                  KONSULTASI PROGRAM {cityData.name.toUpperCase()}
+                </Link>
               </Button>
             </div>
          </div>
