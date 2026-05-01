@@ -49,6 +49,9 @@ export const metadata: Metadata = {
     shortcut: 'https://nafta121.sirv.com/1777610357326.png',
     apple: 'https://nafta121.sirv.com/1777610357326.png',
   },
+  verification: {
+    google: '9tNB4XyeDckwcV1Iau651TCM4PfD-IW3Dnyna-_aZj8',
+  },
 };
 
 export default function RootLayout({
@@ -57,7 +60,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${outfit.variable}`}>
+    <html lang="id" className={`${inter.variable} ${outfit.variable}`}>
       <body suppressHydrationWarning className="font-sans antialiased bg-[#0A1628] text-white">
         {children}
       </body>
