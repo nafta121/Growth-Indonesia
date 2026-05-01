@@ -1,13 +1,15 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+const CITIES = ['madiun', 'ponorogo', 'magetan', 'ngawi', 'nganjuk', 'pacitan', 'kediri'];
+
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
     <footer className="bg-[#0A1628] pt-20 pb-28 md:pb-12 border-t border-white/5">
       <div className="container mx-auto px-4 md:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
           {/* Brand Column */}
           <div className="lg:col-span-1">
             <Link href="/" className="inline-flex items-center mb-6">
@@ -38,6 +40,23 @@ export default function Footer() {
                     className="text-gray-500 hover:text-[#EF4444] transition-colors"
                   >
                     {link}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Area Layanan */}
+          <div>
+            <h3 className="text-white font-bold mb-6 tracking-wide uppercase text-sm">Area Layanan</h3>
+            <ul className="space-y-4">
+              {CITIES.map((city) => (
+                <li key={city}>
+                  <Link 
+                    href={`/layanan/outbound-${city}`} 
+                    className="text-gray-500 hover:text-[#EF4444] transition-colors"
+                  >
+                    Outbound {city.charAt(0).toUpperCase() + city.slice(1)}
                   </Link>
                 </li>
               ))}
