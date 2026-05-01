@@ -24,7 +24,7 @@ export default function Hero() {
           className="max-w-5xl mx-auto flex flex-col items-center"
         >
           {/* Headline */}
-          <h1 className="font-display text-6xl sm:text-7xl md:text-8xl lg:text-[10rem] font-black text-white leading-[1.1] mb-8 md:mb-12 tracking-tighter uppercase sm:whitespace-nowrap lg:whitespace-normal">
+          <h1 className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-[9rem] font-black text-white leading-[1.1] mb-8 md:mb-12 tracking-tighter uppercase sm:whitespace-nowrap lg:whitespace-normal">
             <Badge variant="dark" className="mb-4 md:mb-8 font-sans">Provider Outbound Madiun</Badge>
             <span className="block mt-4 relative">
               Let&apos;s Grow 
@@ -32,11 +32,11 @@ export default function Hero() {
                 className="absolute -bottom-2 md:-bottom-4 left-0 h-1.5 md:h-2 bg-[#EF4444]/20 rounded-full w-full animate-pulse"
               />
             </span>
-            <span className="text-[#EF4444] inline-block relative">Together!</span>
+            <span className="text-[#EF4444] inline-block relative font-bold">Together!</span>
           </h1>
 
           {/* Subheadline */}
-          <p className="text-gray-300 text-base md:text-xl lg:text-2xl font-medium max-w-2xl mx-auto leading-relaxed mb-10 md:mb-16 px-4">
+          <p className="text-slate-100 text-sm sm:text-base md:text-xl lg:text-2xl font-medium max-w-2xl mx-auto leading-relaxed mb-10 md:mb-16 px-4">
             Berdayakan potensi terbaik tim Anda melalui solusi pengembangan SDM, 
             modul pelatihan inovatif, dan program outbound strategis untuk menghadapi era digital.
           </p>

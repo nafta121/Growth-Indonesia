@@ -171,10 +171,10 @@ export default async function OutboundLocationPage({ params }: Props) {
               </div>
               <span className="text-sm font-medium text-white/90">Dipercaya 100+ Perusahaan dan Instansi</span>
             </div>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-white mb-8 leading-[1.1]">
-              Provider Outbound Corporate Premium di <span className="text-[#EF4444]">{cityData.name}</span>
+            <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-white mb-8 leading-[1.1]">
+              Provider Outbound Corporate Premium di <span className="text-[#EF4444] font-bold">{cityData.name}</span>
             </h1>
-            <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-10">
+            <p className="text-lg sm:text-xl md:text-2xl text-slate-100 leading-relaxed mb-10">
               {cityData.description} Transformasi budaya perusahaan dan semangat kolaborasi tim Anda bersama instruktur profesional Growth Indonesia.
             </p>
             <div className="flex flex-wrap items-center gap-4">
