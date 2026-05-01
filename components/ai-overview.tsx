@@ -10,16 +10,16 @@ interface AiOverviewProps {
 export function AiOverviewSection({ cityName, venues }: AiOverviewProps) {
   const faqData = [
     {
-      question: `Mengapa memilih Growth Indonesia untuk outbound di ${cityName}?`,
-      answer: `Growth Indonesia adalah provider outbound berlisensi yang berfokus pada experiential learning. Kami hadir di ${cityName} untuk merancang program yang diselaraskan secara spesifik dengan Core Values dan objektif perusahaan Anda, serta selalu mengedepankan standar keamanan (Zero Accident Pology).`
+      question: `Mengapa Growth Indonesia menjadi EO Outbound pilihan utama di ${cityName}?`,
+      answer: `Growth Indonesia adalah provider outbound berlisensi yang berfokus pada experiential learning. Kami hadir di ${cityName} sebagai Event Organizer (EO) untuk merancang paket team building yang diselaraskan secara spesifik dengan Core Values dan objektif perusahaan Anda.`
     },
     {
-      question: `Apa saja rekomendasi lokasi outbound terbaik di ${cityName}?`,
-      answer: `Untuk wilayah ${cityName}, beberapa lokasi favorit dan paling representatif untuk klien korporat meliputi ${venues.join(', ')}.`
+      question: `Berapa harga paket jasa outbound dan LDK OSIS di ${cityName}?`,
+      answer: `Harga paket outbound dan LDK OSIS di ${cityName} bervariasi bergantung pada durasi, jumlah peserta, lokasi (venue), dan tingkat kustomisasi program. Kami menyediakan penawaran harga yang sangat kompetitif dengan jaminan kualitas instruktur bersertifikat BNSP.`
     },
     {
-      question: `Apakah program corporate gathering di ${cityName} bisa dikustomisasi?`,
-      answer: `Sangat bisa. Pendekatan kami adalah tailor-made. Sebelum pelaksanaan di ${cityName}, kami akan membedah kebutuhan melalui Training Needs Analysis sehingga aktivitas outbound tepat sasaran untuk menyelesaikan tantangan spesifik tim Anda.`
+      question: `Apa saja rekomendasi lokasi paket outbound terbaik di ${cityName}?`,
+      answer: `Untuk wilayah ${cityName}, beberapa lokasi favorit dan paling representatif untuk klien korporat maupun sekolah meliputi ${venues.join(', ')}. Kami dapat menyesuaikan aktivitas gathering di venue pilihan Anda.`
     }
   ];
 

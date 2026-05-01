@@ -78,8 +78,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     notFound();
   }
 
-  const title = `Provider Outbound Corporate di ${cityData.name} | Growth Indonesia`;
-  const description = `Growth Indonesia adalah provider outbound dan training SDM profesional di ${cityData.name}. ${cityData.description} Hubungi kami untuk program B2B berkualitas.`;
+  const title = `Provider & Jasa Outbound ${cityData.name} | EO Team Building - Growth Indonesia`;
+  const description = `Growth Indonesia adalah provider outbound dan penyedia jasa EO Team Building profesional di ${cityData.name}. ${cityData.description} Hubungi kami untuk harga paket outbound corporate & LDK OSIS berkualitas.`;
 
   return {
     title,
@@ -90,7 +90,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       'Outbound Training', 
       `Outbound ${cityData.name}`, 
       `Provider Outbound ${cityData.name}`, 
+      `Jasa Outbound ${cityData.name}`,
+      `Event Organizer Outbound ${cityData.name}`,
+      `EO Outbound ${cityData.name}`,
+      `Paket Team Building ${cityData.name}`,
+      `Paket Outbound ${cityData.name}`,
+      `Harga Outbound ${cityData.name}`,
       `LDK OSIS ${cityData.name}`, 
+      `Harga LDK OSIS ${cityData.name}`,
+      `Paket LDK OSIS ${cityData.name}`,
       `Team Building ${cityData.name}`,
       'HR Development'
     ],
@@ -178,7 +186,7 @@ export default async function OutboundLocationPage({ params }: Props) {
               Provider Outbound Corporate Premium di <span className="text-[#EF4444] font-bold">{cityData.name}</span>
             </h1>
             <p className="text-lg sm:text-xl md:text-2xl text-slate-100 leading-relaxed mb-10">
-              {cityData.description} Transformasi budaya perusahaan dan semangat kolaborasi tim Anda bersama instruktur profesional Growth Indonesia.
+              <strong className="font-semibold text-white">Growth Indonesia adalah Event Organizer (EO) dan penyedia jasa provider outbound profesional di {cityData.name}.</strong> {cityData.description} Transformasi budaya perusahaan dan semangat kolaborasi tim Anda bersama instruktur profesional Growth Indonesia.
             </p>
             <div className="flex flex-wrap items-center gap-4">
               <Button size="lg" className="h-14 px-8 rounded-full bg-[#EF4444] text-white hover:bg-red-600 shadow-lg shadow-red-600/30 transition-all duration-300 active:scale-95 flex items-center justify-center gap-2" asChild>
@@ -223,7 +231,7 @@ export default async function OutboundLocationPage({ params }: Props) {
             <ScrollReveal delay={0.3} xOffset={30}>
               <Badge className="mb-4">Keunggulan Spesifik Kami</Badge>
               <h2 className="font-display text-3xl md:text-5xl font-black tracking-tight text-gray-900 leading-[1.1] mb-6">
-                Menciptakan Impact Nyata Bagi SDM <span className="text-[#EF4444]">{cityData.name}</span>
+                Layanan, Jasa EO Outbound & Gathering Terbaik di <span className="text-[#EF4444]">{cityData.name}</span>
               </h2>
               <p className="text-slate-500 text-lg leading-relaxed mb-8">
                 Sebagai provider outbound B2B pilihan, kami tidak sekadar menghadirkan "fun games". Kami merancang program dengan pendekatan <em>experiential learning</em> yang 100% selaras dengan visi dan misi institusi serta budaya kerja Anda.
