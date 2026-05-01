@@ -15,13 +15,13 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: 'Premium Corporate Outbound & HR Training Partner | Growth Indonesia',
-  description: 'Transform your corporate team with Growth Indonesia\'s premium experiential learning and HR development programs. Trusted by 100+ top enterprises for team building and leadership acceleration.',
-  keywords: 'Corporate Outbound, HR Training, Team Building, Leadership Development, Experiential Learning, Growth Indonesia, Outbound Madiun, Company Gathering',
+  title: 'Provider Outbound Madiun & Jawa Timur | Growth Indonesia',
+  description: 'Growth Indonesia: Provider outbound Madiun & Jawa Timur terpercaya. Layanan profesional untuk outbound training, HR development, LDK OSIS & team building.',
+  keywords: ['Outbound', 'Training', 'Outbound Training', 'Outbound Madiun', 'Outbound Jawa Timur', 'Provider Outbound Madiun', 'Provider Outbound Jawa Timur', 'LDK OSIS', 'Team Building'],
   openGraph: {
-    title: 'Premium Corporate Outbound & HR Training | Growth Indonesia',
-    description: 'Elevate your team\'s potential with proven experiential learning, team building, and leadership development programs.',
-    url: 'https://growth-indonesia.com',
+    title: 'Provider Outbound Madiun & Jawa Timur | Growth Indonesia',
+    description: 'Growth Indonesia: Provider outbound Madiun & Jawa Timur terpercaya. Layanan profesional untuk outbound training, HR development, LDK OSIS & team building.',
+    url: 'https://growthindonesia.my.id',
     siteName: 'Growth Indonesia',
     locale: 'id_ID',
     type: 'website',
@@ -30,14 +30,14 @@ export const metadata: Metadata = {
         url: 'https://nafta121.sirv.com/Screenshot_20260430_171224_Chrome.jpg',
         width: 1200,
         height: 630,
-        alt: 'Growth Indonesia - Corporate Outbound & HR Development',
+        alt: 'Provider Outbound Madiun & Jawa Timur - Growth Indonesia',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Premium Corporate Outbound & HR Training | Growth Indonesia',
-    description: 'Transform your corporate team with our premium experiential learning and HR development programs.',
+    title: 'Provider Outbound Madiun & Jawa Timur | Growth Indonesia',
+    description: 'Growth Indonesia: Provider outbound Madiun & Jawa Timur terpercaya. Layanan profesional untuk outbound training, HR development, LDK OSIS & team building.',
     images: ['https://nafta121.sirv.com/Screenshot_20260430_171224_Chrome.jpg'],
   },
   robots: {
