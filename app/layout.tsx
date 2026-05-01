@@ -44,6 +44,11 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  icons: {
+    icon: 'https://nafta121.sirv.com/1777610357326.png',
+    shortcut: 'https://nafta121.sirv.com/1777610357326.png',
+    apple: 'https://nafta121.sirv.com/1777610357326.png',
+  },
 };
 
 export default function RootLayout({
