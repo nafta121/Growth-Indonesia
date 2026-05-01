@@ -44,11 +44,6 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-  icons: {
-    icon: 'https://nafta121.sirv.com/1777610357326.png',
-    shortcut: 'https://nafta121.sirv.com/1777610357326.png',
-    apple: 'https://nafta121.sirv.com/1777610357326.png',
-  },
   verification: {
     google: '9tNB4XyeDckwcV1Iau651TCM4PfD-IW3Dnyna-_aZj8',
   },
