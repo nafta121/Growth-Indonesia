@@ -118,33 +118,33 @@ export default function Navbar() {
                 href="https://wa.me/6285704748186"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-4 p-4 rounded-2xl bg-gray-50 border border-gray-100 hover:bg-[#EF4444] hover:text-white transition-all active:scale-95"
+                className="group flex items-center gap-4 p-4 rounded-2xl bg-slate-50 border border-gray-100 hover:bg-[#EF4444] hover:border-[#EF4444] transition-all active:scale-95"
               >
-                <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-[#EF4444] shadow-sm">
+                <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-red-600 shadow-sm transition-colors group-hover:text-[#EF4444]">
                   <Phone className="w-5 h-5" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[10px] font-bold uppercase tracking-widest opacity-60">WhatsApp Kami</span>
-                  <span className="text-sm font-bold tracking-tight">+62 857-0474-8186</span>
+                  <span className="text-[10px] font-bold text-slate-500 group-hover:text-white/80 uppercase tracking-widest transition-colors">WhatsApp Kami</span>
+                  <span className="text-sm font-bold text-gray-900 group-hover:text-white tracking-tight transition-colors">+62 857-0474-8186</span>
                 </div>
               </a>
 
               <div className="grid grid-cols-2 gap-3">
                 <a 
                   href="mailto:info@growthindonesia.my.id"
-                  className="flex flex-col items-center gap-2 p-4 rounded-2xl bg-gray-50 border border-gray-100 hover:bg-gray-100 transition-colors text-center"
+                  className="flex flex-col items-center gap-2 p-4 rounded-2xl bg-slate-50 border border-gray-100 hover:bg-gray-100 transition-colors text-center"
                 >
-                  <Mail className="w-5 h-5 text-[#EF4444]" />
-                  <span className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Email</span>
+                  <Mail className="w-5 h-5 text-red-600" />
+                  <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Email</span>
                 </a>
                 <a 
                   href="https://maps.app.goo.gl/s5sLVajjti61reWw8?g_st=ac"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex flex-col items-center gap-2 p-4 rounded-2xl bg-gray-50 border border-gray-100 hover:bg-gray-100 transition-colors text-center"
+                  className="flex flex-col items-center gap-2 p-4 rounded-2xl bg-slate-50 border border-gray-100 hover:bg-gray-100 transition-colors text-center"
                 >
-                  <MapPin className="w-5 h-5 text-[#EF4444]" />
-                  <span className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Location</span>
+                  <MapPin className="w-5 h-5 text-red-600" />
+                  <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Location</span>
                 </a>
               </div>
             </div>
