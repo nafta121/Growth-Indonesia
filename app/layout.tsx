@@ -44,6 +44,15 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  icons: {
+    icon: [
+      { url: '/icon.png', type: 'image/png' },
+      { url: '/icon.png', sizes: '512x512', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/icon.png', sizes: '512x512', type: 'image/png' },
+    ],
+  },
   verification: {
     google: '9tNB4XyeDckwcV1Iau651TCM4PfD-IW3Dnyna-_aZj8',
   },
