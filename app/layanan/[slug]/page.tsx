@@ -126,6 +126,7 @@ export async function generateStaticParams() {
 }
 
 import { CitySchema } from '@/components/city-schema';
+import { AiOverviewSection } from '@/components/ai-overview';
 
 export default async function OutboundLocationPage({ params }: Props) {
   const { slug } = await params;
@@ -261,6 +262,9 @@ export default async function OutboundLocationPage({ params }: Props) {
           </div>
         </div>
       </section>
+
+      {/* AI Overview & FAQ Section */}
+      <AiOverviewSection cityName={cityData.name} venues={cityData.popularVenues} />
 
       {/* Value Proposition */}
       <section className="py-20 bg-gray-50 border-t border-gray-100">
