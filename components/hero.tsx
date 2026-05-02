@@ -18,11 +18,7 @@ export default function Hero() {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 text-center">
-        <ScrollReveal
-          delay={0}
-          duration={1}
-          className="max-w-5xl mx-auto flex flex-col items-center"
-        >
+        <div className="max-w-5xl mx-auto flex flex-col items-center">
           {/* Headline */}
           <h1 className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-[9rem] font-black text-white leading-[1.1] mb-8 md:mb-12 tracking-tighter uppercase sm:whitespace-nowrap lg:whitespace-normal">
             <Badge variant="dark" className="mb-4 md:mb-8 font-sans">Provider Outbound Madiun</Badge>
@@ -52,7 +48,7 @@ export default function Hero() {
               </Link>
             </Button>
           </div>
-        </ScrollReveal>
+        </div>
       </div>
 
       {/* Grid Pattern Overlay */}
