@@ -8,6 +8,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { CITIES } from '@/lib/cities';
 import { AiOverviewSection } from '@/components/ai-overview';
+import TrustSection from '@/components/trust-section';
 import { BreadcrumbSchema } from '@/components/breadcrumb-schema';
 import { NearbyCities } from '@/components/nearby-cities';
 import KalkulatorBudget from '@/components/kalkulator-budget';
@@ -241,29 +242,8 @@ export default async function ProgrammaticSiloPage({ params }: Props) {
       {/* AI Overview & FAQ Section */}
       <AiOverviewSection cityName={kotaName} venues={cityData.popularVenues} />
 
-      {/* Value Proposition */}
-      <section className="py-20 bg-gray-50 border-t border-gray-100">
-         <div className="max-w-7xl mx-auto px-4 md:px-12 text-center">
-            <h2 className="font-display text-3xl md:text-5xl font-black tracking-tight text-gray-900 mb-16">
-              Mengapa Memilih Kami untuk Program {kategoriName} di <span className="text-[#EF4444]">{kotaName}?</span>
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {[
-                { icon: ShieldCheck, title: 'Fasilitator BNSP', desc: 'Instruktur kami adalah praktisi berpengalaman dan tersertifikasi secara nasional di bidang pelatihan SDM.' },
-                { icon: Target, title: 'Tailor-Made Program', desc: 'Setiap materi dirancang menyesuaikan dengan budaya perusahaan serta KPI dan Core Values dari manajemen.' },
-                { icon: Users, title: 'Zero Accident Policy', desc: 'Keselamatan dan keamanan adalah prioritas mutlak. Kami merancang aktivitas dengan rasio risiko yang sangat terukur.' },
-              ].map((feat, idx) => (
-                <div key={idx} className="bg-white p-8 rounded-[2.5rem] border border-gray-100 hover:shadow-xl hover:shadow-red-500/5 hover:-translate-y-1 transition-all duration-500">
-                  <div className="w-14 h-14 bg-red-50 text-red-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                    <feat.icon className="w-7 h-7" />
-                  </div>
-                  <h3 className="font-display font-extrabold tracking-tight text-2xl text-gray-900 mb-3">{feat.title}</h3>
-                  <p className="text-slate-500 leading-relaxed">{feat.desc}</p>
-                </div>
-              ))}
-            </div>
-         </div>
-      </section>
+      {/* Trust Section */}
+      <TrustSection kategoriName={kategoriName} kotaName={kotaName} />
 
       {/* CTA Section */}
       <section className="py-24 md:py-32 bg-[#0A1628] relative overflow-hidden">

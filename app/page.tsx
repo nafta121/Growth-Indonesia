@@ -7,6 +7,7 @@ import Pricing from '@/components/pricing';
 import Footer from '@/components/footer';
 import WhatsAppFAB from '@/components/whatsapp-fab';
 import TrustSignals from '@/components/trust-signals';
+import TrustSection from '@/components/trust-section';
 import OutboundGallery from '@/components/outbound-gallery';
 import Contact from '@/components/contact';
 
@@ -20,6 +21,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ p
       <main>
         <Hero />
         <TrustSignals />
+        <TrustSection />
         <OutboundGallery />
         <AboutUs />
         <Approach />
