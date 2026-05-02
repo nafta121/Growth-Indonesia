@@ -42,17 +42,18 @@ export default function AboutUs() {
             <Badge variant="dark" className="mb-4">Mission</Badge>
             <ul className="space-y-6 md:space-y-8">
               {MISSIONS.map((mission, idx) => (
-                <ScrollReveal
-                  key={idx}
-                  delay={0.4 + idx * 0.1}
-                  yOffset={10}
-                  className="flex gap-4 items-start group/item"
-                >
-                  <div className="mt-0.5 shrink-0 bg-slate-800 text-red-500 rounded-full w-8 h-8 flex items-center justify-center font-bold">
-                    {idx + 1}
-                  </div>
-                  <p className="text-gray-300 text-base md:text-lg leading-relaxed font-medium group-hover/item:text-white transition-colors duration-300">{mission}</p>
-                </ScrollReveal>
+                <li key={idx}>
+                  <ScrollReveal
+                    delay={0.4 + idx * 0.1}
+                    yOffset={10}
+                    className="flex gap-4 items-start group/item"
+                  >
+                    <div className="mt-0.5 shrink-0 bg-slate-800 text-red-500 rounded-full w-8 h-8 flex items-center justify-center font-bold">
+                      {idx + 1}
+                    </div>
+                    <p className="text-gray-300 text-base md:text-lg leading-relaxed font-medium group-hover/item:text-white transition-colors duration-300">{mission}</p>
+                  </ScrollReveal>
+                </li>
               ))}
             </ul>
           </ScrollReveal>

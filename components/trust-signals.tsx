@@ -127,10 +127,10 @@ export default function TrustSignals() {
       <div className="max-w-7xl mx-auto px-4 md:px-12 mb-16 md:mb-24">
         <div className="text-center">
           <Badge className="mb-4">Strategic Partners</Badge>
-          <h3 id="trust-title" className="text-gray-900 font-display text-3xl md:text-5xl font-black tracking-tight leading-tight">
+          <h2 id="trust-title" className="text-gray-900 font-display text-3xl md:text-5xl font-black tracking-tight leading-tight">
             Dipercaya oleh <span className="text-[#EF4444]">100+ Perusahaan</span>
-          </h3>
-          <p className="text-gray-500 mt-4 text-sm md:text-base max-w-xl mx-auto">Mitra strategis dalam pengembangan sumber daya manusia melalui metode yang kreatif dan berkelanjutan.</p>
+          </h2>
+          <p className="text-gray-600 mt-4 text-sm md:text-base max-w-xl mx-auto">Mitra strategis dalam pengembangan sumber daya manusia melalui metode yang kreatif dan berkelanjutan.</p>
         </div>
       </div>
 
@@ -148,7 +148,7 @@ export default function TrustSignals() {
               <div className={`${client.color} opacity-40 group-hover:opacity-100 transition-opacity duration-500`}>
                 {client.icon}
               </div>
-              <span className="font-display font-extrabold text-gray-400 group-hover:text-gray-900 transition-colors duration-500 uppercase tracking-tight text-xs md:text-sm">
+              <span className="font-display font-extrabold text-gray-600 group-hover:text-gray-900 transition-colors duration-500 uppercase tracking-tight text-xs md:text-sm">
                 {client.name}
               </span>
             </div>
@@ -160,9 +160,9 @@ export default function TrustSignals() {
       <div className="max-w-7xl mx-auto px-4 md:px-12 mt-20 md:mt-32">
         <div className="text-center mb-12">
           <Badge className="mb-4">Testimoni Klien</Badge>
-          <h3 className="text-gray-900 font-display text-2xl md:text-4xl font-extrabold tracking-tight leading-tight">
+          <h2 className="text-gray-900 font-display text-2xl md:text-4xl font-extrabold tracking-tight leading-tight">
             Kisah Sukses Transformasi <span className="text-[#EF4444]">SDM</span>
-          </h3>
+          </h2>
         </div>
         
         {/* CSS Scroll Snapping Carousel */}
@@ -180,7 +180,7 @@ export default function TrustSignals() {
                   {t.quote}
                 </p>
                 <div className="flex items-center gap-4 border-t border-gray-50 pt-6 mt-auto">
-                  <div className="w-12 h-12 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center shrink-0 text-slate-400 font-black font-display text-lg">
+                  <div className="w-12 h-12 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center shrink-0 text-slate-600 font-black font-display text-lg">
                     {t.name.charAt(0)}
                   </div>
                   <div>

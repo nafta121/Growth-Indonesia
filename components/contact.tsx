@@ -154,7 +154,7 @@ Rencana Tanggal: ${data.date || 'TBC'}`;
                   <div className="mb-10">
                     <div className="flex justify-between items-end mb-3">
                        <h3 id="kontak-form-title" className="text-[10px] font-extrabold text-[#EF4444] uppercase tracking-[0.3em]">Booking Form</h3>
-                      <span className="text-[10px] text-gray-400 font-extrabold uppercase tracking-widest">Growth Intake</span>
+                      <span className="text-[10px] text-gray-600 font-extrabold uppercase tracking-widest">Growth Intake</span>
                     </div>
                     <div className="h-1.5 w-full bg-gray-200 rounded-full overflow-hidden p-[2px]">
                       <motion.div 
@@ -230,7 +230,7 @@ Rencana Tanggal: ${data.date || 'TBC'}`;
                           <option key={pkg.id} value={pkg.id}>{pkg.label}</option>
                         ))}
                       </select>
-                      <div className="absolute right-6 bottom-[19px] pointer-events-none md:bottom-[23px] text-gray-400">
+                      <div className="absolute right-6 bottom-[19px] pointer-events-none md:bottom-[23px] text-gray-600">
                         <CheckCircle2 className="w-4 h-4" />
                       </div>
                       {errors.package && <span className="text-xs text-red-500 mt-1 block px-1">{errors.package.message}</span>}

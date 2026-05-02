@@ -70,11 +70,11 @@ export default function Pricing() {
                 <h3 className="font-display text-xl font-extrabold text-gray-900 mb-3 leading-tight uppercase tracking-tight group-hover:text-[#EF4444] transition-colors">{pkg.title}</h3>
                 <div className="flex items-baseline gap-1">
                   <span className="text-3xl md:text-4xl font-extrabold text-gray-900 whitespace-nowrap tracking-tighter">{pkg.price}</span>
-                  <span className="text-gray-400 text-sm font-bold">/pax</span>
+                  <span className="text-gray-600 text-sm font-bold">/pax</span>
                 </div>
               </div>
 
-              <p className="text-gray-500 text-sm leading-relaxed mb-10 h-auto">
+              <p className="text-gray-600 text-sm leading-relaxed mb-10 h-auto">
                 {pkg.description}
               </p>
 
@@ -94,7 +94,7 @@ export default function Pricing() {
                 variant={pkg.popular ? "default" : "outline"}
                 className={cn("mt-12 w-full flex items-center justify-center gap-2 font-bold uppercase tracking-wider text-sm", pkg.popular && "bg-red-600 hover:bg-red-700 text-white")}
               >
-                <Link href={`/?package=${pkg.id}#kontak`} scroll={false}>
+                <Link href={`/?package=${pkg.id}#kontak`} scroll={false} aria-label={`Pilih Paket ${pkg.title}`}>
                   <span className="relative z-10">Pilih Paket</span>
                   <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
                 </Link>
