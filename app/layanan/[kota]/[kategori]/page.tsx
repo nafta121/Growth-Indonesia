@@ -106,14 +106,69 @@ export default async function ProgrammaticSiloPage({ params }: Props) {
 
   const schemaLd = {
     "@context": "https://schema.org",
-    "@type": "Service",
-    "name": `${kategoriName} di ${kotaName}`,
-    "description": `Layanan profesional provider ${kategoriName.toLowerCase()} dan EO terbaik di ${kotaName} bersama Growth Indonesia. ${cityData.description}`,
-    "provider": {
-      "@type": "LocalBusiness",
-      "name": "Growth Indonesia"
-    },
-    "areaServed": kotaName
+    "@graph": [
+      {
+        "@type": "Service",
+        "name": `${kategoriName} di ${kotaName}`,
+        "description": `Layanan profesional provider ${kategoriName.toLowerCase()} dan EO terbaik di ${kotaName} bersama Growth Indonesia. ${cityData.description}`,
+        "provider": {
+          "@type": "LocalBusiness",
+          "name": "Growth Indonesia"
+        },
+        "areaServed": kotaName
+      },
+      {
+        "@type": "LocalBusiness",
+        "name": "Growth Indonesia",
+        "image": "https://nafta121.sirv.com/Screenshot_20260423_192944_My%20Files.jpg",
+        "telephone": "+6285704748186",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Jl. Mujair No.3",
+          "addressLocality": "Madiun",
+          "addressRegion": "Jawa Timur",
+          "postalCode": "63128",
+          "addressCountry": "ID"
+        },
+        "areaServed": [
+          { "@type": "City", "name": "Madiun" },
+          { "@type": "City", "name": "Magetan" },
+          { "@type": "City", "name": "Ponorogo" },
+          { "@type": "City", "name": "Ngawi" },
+          { "@type": "City", "name": "Pacitan" },
+          { "@type": "City", "name": "Kediri" },
+          { "@type": "City", "name": "Surabaya" },
+          { "@type": "City", "name": kotaName }
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Layanan Growth Indonesia",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Outbound Training & Team Building"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Corporate Gathering"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "LDK OSIS & Edukasi"
+              }
+            }
+          ]
+        }
+      }
+    ]
   };
 
   return (

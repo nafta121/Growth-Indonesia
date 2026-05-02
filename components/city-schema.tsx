@@ -21,6 +21,7 @@ export function CitySchema({ cityName, slug }: { cityName: string; slug: string 
         '@type': 'LocalBusiness',
         '@id': `https://growthindonesia.my.id/layanan/${slug}#localbusiness`,
         name: `Growth Indonesia - Provider Outbound, Training dan Pengembangan SDM ${cityName}`,
+        image: "https://nafta121.sirv.com/Screenshot_20260423_192944_My%20Files.jpg",
         telephone: '+6285704748186',
         priceRange: 'Rp (Rupiah)',
         address: {
@@ -28,6 +29,7 @@ export function CitySchema({ cityName, slug }: { cityName: string; slug: string 
           streetAddress: 'Jl. Mujair No.3',
           addressLocality: 'Madiun',
           addressRegion: 'East Java',
+          postalCode: '63128',
           addressCountry: 'ID'
         },
         ...(geo ? {
@@ -37,14 +39,47 @@ export function CitySchema({ cityName, slug }: { cityName: string; slug: string 
             longitude: geo.long
           }
         } : {}),
-        areaServed: {
-          '@type': 'AdministrativeArea',
-          name: `${cityName}, East Java, Indonesia`
-        },
+        areaServed: [
+          { "@type": "City", "name": "Madiun" },
+          { "@type": "City", "name": "Magetan" },
+          { "@type": "City", "name": "Ponorogo" },
+          { "@type": "City", "name": "Ngawi" },
+          { "@type": "City", "name": "Pacitan" },
+          { "@type": "City", "name": "Kediri" },
+          { "@type": "City", "name": "Surabaya" },
+          { '@type': 'AdministrativeArea', name: `${cityName}, East Java, Indonesia` }
+        ],
         aggregateRating: {
           '@type': 'AggregateRating',
           ratingValue: 5,
           reviewCount: 100
+        },
+        hasOfferCatalog: {
+          '@type': 'OfferCatalog',
+          name: 'Layanan Growth Indonesia',
+          itemListElement: [
+            {
+              '@type': 'Offer',
+              itemOffered: {
+                '@type': 'Service',
+                name: 'Outbound Training & Team Building'
+              }
+            },
+            {
+              '@type': 'Offer',
+              itemOffered: {
+                '@type': 'Service',
+                name: 'Corporate Gathering'
+              }
+            },
+            {
+              '@type': 'Offer',
+              itemOffered: {
+                '@type': 'Service',
+                name: 'LDK OSIS & Edukasi'
+              }
+            }
+          ]
         }
       },
       {
