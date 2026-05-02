@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter, Outfit } from 'next/font/google';
+import Script from 'next/script';
 import './globals.css';
 
 const inter = Inter({
@@ -13,6 +14,7 @@ const outfit = Outfit({
   variable: '--font-display',
   display: 'swap',
 });
+
 
 export const metadata: Metadata = {
   title: 'Provider Outbound Madiun & Jawa Timur | Growth Indonesia',
@@ -67,6 +69,18 @@ export default function RootLayout({
     <html lang="id" className={`${inter.variable} ${outfit.variable}`}>
       <body suppressHydrationWarning className="font-sans antialiased bg-[#0A1628] text-white">
         {children}
+        <Script 
+          src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX" 
+          strategy="afterInteractive" 
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-XXXXXXXXXX');
+          `}
+        </Script>
       </body>
     </html>
   );

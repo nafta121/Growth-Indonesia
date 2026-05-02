@@ -88,6 +88,8 @@ export async function generateStaticParams() {
   );
 }
 
+export const revalidate = 3600;
+
 export default async function ProgrammaticSiloPage({ params }: Props) {
   const { kota, kategori } = await params;
   const decodedKota = decodeURIComponent(kota).toLowerCase();
@@ -131,6 +133,7 @@ export default async function ProgrammaticSiloPage({ params }: Props) {
             alt={`Background ${kategoriName}`}
             fill
             priority
+            sizes="(max-width: 768px) 100vw, 50vw"
             className="object-cover opacity-20"
             referrerPolicy="no-referrer"
           />

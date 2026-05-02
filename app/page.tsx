@@ -11,6 +11,8 @@ import TrustSection from '@/components/trust-section';
 import OutboundGallery from '@/components/outbound-gallery';
 import Contact from '@/components/contact';
 
+export const revalidate = 3600;
+
 export default async function Home({ searchParams }: { searchParams: Promise<{ package?: string }> }) {
   const params = await searchParams;
   const selectedPackage = params.package || '';
