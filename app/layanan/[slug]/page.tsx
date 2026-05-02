@@ -137,6 +137,7 @@ import { CitySchema } from '@/components/city-schema';
 import { AiOverviewSection } from '@/components/ai-overview';
 import { BreadcrumbSchema } from '@/components/breadcrumb-schema';
 import { NearbyCities } from '@/components/nearby-cities';
+import KalkulatorBudget from '@/components/kalkulator-budget';
 
 export default async function OutboundLocationPage({ params }: Props) {
   const { slug } = await params;
@@ -320,6 +321,21 @@ export default async function OutboundLocationPage({ params }: Props) {
               </Button>
             </div>
          </div>
+      </section>
+
+      {/* Kalkulator Budget Estimasi */}
+      <section className="py-20 bg-white border-t border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 md:px-12">
+          <div className="text-center mb-12">
+            <h2 className="font-display text-3xl md:text-5xl font-black tracking-tight text-gray-900 leading-[1.1] mb-6">
+              Kalkulator <span className="text-[#EF4444]">Investasi</span>
+            </h2>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto font-medium">
+               Simulasikan estimasi budget program Anda secara instan sebelum berkonsultasi dengan tim kami.
+            </p>
+          </div>
+          <KalkulatorBudget />
+        </div>
       </section>
 
       {/* Nearby Cities */}
