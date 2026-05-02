@@ -122,6 +122,7 @@ export default async function ProgrammaticSiloPage({ params }: Props) {
         "name": "Growth Indonesia",
         "image": "https://nafta121.sirv.com/Screenshot_20260423_192944_My%20Files.jpg",
         "telephone": "+6285704748186",
+        "priceRange": "Rp 150.000 - Rp 4.500.000",
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "Jl. Mujair No.3",
