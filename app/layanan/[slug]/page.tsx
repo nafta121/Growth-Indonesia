@@ -6,58 +6,7 @@ import { MapPin, Users, Target, ShieldCheck, ArrowRight, CheckCircle2, MessageCi
 import ScrollReveal from '@/components/ui/scroll-reveal';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-
-type CityData = {
-  name: string;
-  uniqueSellingPoint: string;
-  popularVenues: string[];
-  description: string;
-};
-
-const CITIES: Record<string, CityData> = {
-  madiun: {
-    name: 'Madiun',
-    uniqueSellingPoint: 'Sebagai pusat operasional utama kami, Growth Indonesia memiliki jaringan terluas di Madiun dengan berbagai pilihan venue berkapasitas besar untuk ratusan hingga ribuan peserta, sangat ideal untuk family gathering besar.',
-    popularVenues: ['Wana Wisata Graha', 'Sun City', 'Nongko Ijo', 'Wana Wisata Grape'],
-    description: 'Pusat layanan outbound dan HR development terbaik.',
-  },
-  ponorogo: {
-    name: 'Ponorogo',
-    uniqueSellingPoint: 'Kami menggabungkan nilai-nilai kepemimpinan dengan filosofi ketangguhan budaya lokal Ponorogo, memberikan pengalaman outbound yang berkesan, transformatif, dan selaras dengan budaya kearifan lokal.',
-    popularVenues: ['Telaga Ngebel', 'Mloko Sewu', 'Nyawiji Park'],
-    description: 'Layanan team building dengan sentuhan kearifan lokal.',
-  },
-  magetan: {
-    name: 'Magetan',
-    uniqueSellingPoint: 'Kami memiliki akses langsung ke venue atau playground premium di kawasan Telaga Sarangan dan lereng Gunung Lawu, memberikan udara pegunungan yang sejuk dan ideal untuk refreshment karyawan Anda.',
-    popularVenues: ['Telaga Sarangan', 'Lawu Green Forest', 'Mojosemi Forest Park'],
-    description: 'Rasakan sensasi outbound di area sejuk kaki pegunungan.',
-  },
-  ngawi: {
-    name: 'Ngawi',
-    uniqueSellingPoint: 'Nikmati program capacity building di kawasan asri Ngawi dengan berbagai program petualangan (adventure) seperti jeep offroad dan susur kebun teh yang dirancang khusus untuk memacu kolaborasi tim.',
-    popularVenues: ['Srambang Park', 'Kebun Teh Jamus', 'Air Terjun Suwono'],
-    description: 'Sinergi tim berbalut keindahan alam yang menakjubkan.',
-  },
-  nganjuk: {
-    name: 'Nganjuk',
-    uniqueSellingPoint: 'Program outbound kami di Nganjuk didesain khusus untuk mengoptimalkan potensi bentang alam perbukitan Wilis dan keindahan air terjun sebagai sarana belajar yang menantang sekaligus asri.',
-    popularVenues: ['Air Terjun Sedudo', 'Bukit Wilis', 'Margo Mulyo'],
-    description: 'Program akselerasi SDM di tengah pesona alam perbukitan.',
-  },
-  pacitan: {
-    name: 'Pacitan',
-    uniqueSellingPoint: 'Growth Indonesia menghadirkan konsep beach-outbound dan cave-exploration eksklusif di Pacitan, mengasah kekompakan tim Anda dengan latar pesisir pantai selatan yang magis dan memukau.',
-    popularVenues: ['Pantai Klayar', 'Goa Gong', 'Pantai Teleng Ria'],
-    description: 'Keseruan outbound tak terlupakan bernuansa pantai tropis.',
-  },
-  kediri: {
-    name: 'Kediri',
-    uniqueSellingPoint: 'Bagi perusahaan di area Kediri Raya, kami menyediakan fasilitator bersertifikat BNSP yang siap mengadakan program in-house training maupun outdoor team building di lereng Gunung Kelud.',
-    popularVenues: ['Gunung Kelud', 'Kawasan Besuki', 'Simpang Lima Gumul'],
-    description: 'Pilihan venue premium dan fasilitator tersertifikasi standar nasional.',
-  }
-};
+import { CITIES } from '@/lib/cities';
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -235,7 +184,7 @@ export default async function OutboundLocationPage({ params }: Props) {
                 Layanan, Jasa EO Outbound & Gathering Terbaik di <span className="text-[#EF4444]">{cityData.name}</span>
               </h2>
               <p className="text-slate-500 text-lg leading-relaxed mb-8">
-                Sebagai provider outbound B2B pilihan, kami tidak sekadar menghadirkan "fun games". Kami merancang program dengan pendekatan <em>experiential learning</em> yang 100% selaras dengan visi dan misi institusi serta budaya kerja Anda.
+                Sebagai provider outbound B2B pilihan, kami tidak sekadar menghadirkan &quot;fun games&quot;. Kami merancang program dengan pendekatan <em>experiential learning</em> yang 100% selaras dengan visi dan misi institusi serta budaya kerja Anda.
               </p>
               
               {/* Dynamic USP - Vital for SEO / Avoiding Doorway Page penalty */}

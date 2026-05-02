@@ -10,16 +10,20 @@ interface AiOverviewProps {
 export function AiOverviewSection({ cityName, venues }: AiOverviewProps) {
   const faqData = [
     {
-      question: `Mengapa Growth Indonesia menjadi EO Outbound pilihan utama di ${cityName}?`,
-      answer: `Growth Indonesia adalah provider outbound berlisensi yang berfokus pada experiential learning. Kami hadir di ${cityName} sebagai Event Organizer (EO) untuk merancang paket team building yang diselaraskan secara spesifik dengan Core Values dan objektif perusahaan Anda.`
+      question: `Mengapa Growth Indonesia menjadi EO Outbound pilihan di ${cityName}?`,
+      answer: `Growth Indonesia adalah provider dan penyedia jasa outbound berlisensi yang berfokus pada experiential learning. Kami hadir sebagai EO Outbound pilihan di ${cityName} untuk merancang paket team building yang diselaraskan secara spesifik dengan Core Values dan objektif instansi maupun perusahaan Anda.`
     },
     {
-      question: `Berapa harga paket jasa outbound dan LDK OSIS di ${cityName}?`,
-      answer: `Harga paket outbound dan LDK OSIS di ${cityName} bervariasi bergantung pada durasi, jumlah peserta, lokasi (venue), dan tingkat kustomisasi program. Kami menyediakan penawaran harga yang sangat kompetitif dengan jaminan kualitas instruktur bersertifikat BNSP.`
+      question: `Berapa harga paket jasa outbound di ${cityName}?`,
+      answer: `Harga paket jasa outbound di ${cityName} sangat bervariasi bergantung pada durasi, jumlah peserta, lokasi (venue), kapasitas, dan tingkat kustomisasi program. Kami menyediakan penawaran harga paket outbound yang sangat terjangkau dengan jaminan jaminan kualitas program dan impact bisnis yang nyata.`
     },
     {
-      question: `Apa saja rekomendasi lokasi paket outbound terbaik di ${cityName}?`,
-      answer: `Untuk wilayah ${cityName}, beberapa lokasi favorit dan paling representatif untuk klien korporat maupun sekolah meliputi ${venues.join(', ')}. Kami dapat menyesuaikan aktivitas gathering di venue pilihan Anda.`
+      question: `Berapa kisaran harga outbound di ${cityName} dan LDK OSIS terbaru saat ini?`,
+      answer: `Untuk mendapatkan update harga outbound di ${cityName} dan penawaran harga paket LDK OSIS secara detail, silakan hubungi admin kami. Kami siap memberikan penawaran khusus dan RAB rinci, diampu langsung oleh fasilitator & instruktur bersertifikat BNSP.`
+    },
+    {
+      question: `Selain pelatihan SDM, apakah tersedia layanan jasa outbound di ${cityName} untuk program fun games atau gathering?`,
+      answer: `Tentu saja. Sebagai penyedia layanan jasa outbound di ${cityName} profesional, kami juga ahli merancang acara company outing, capacity building, fun games seru, dan family gathering di berbagai destinasi favorit seperti ${venues.join(', ')} hingga area bebas pilihan Anda.`
     }
   ];
 

@@ -49,9 +49,20 @@ export function CitySchema({ cityName, slug }: { cityName: string; slug: string 
       },
       {
         '@type': 'Service',
-        '@id': `https://growthindonesia.my.id/layanan/${slug}#service`,
-        serviceType: 'Outbound, Training, Fun Games, Gathering, LDK OSIS & Team Building',
-        description: `Layanan pengembangan SDM dan outbound profesional untuk perusahaan, instansi dan sekolah di ${cityName}.`,
+        '@id': `https://growthindonesia.my.id/layanan/${slug}#service-outbound`,
+        name: `Jasa Outbound di ${cityName}`,
+        serviceType: 'Corporate Outbound & Team Building',
+        description: `Layanan provider outbound profesional dan corporate gathering di ${cityName} untuk meningkatkan produktivitas dan kekompakan tim perusahaan Anda.`,
+        provider: {
+          '@id': `https://growthindonesia.my.id/layanan/${slug}#localbusiness`
+        }
+      },
+      {
+        '@type': 'Service',
+        '@id': `https://growthindonesia.my.id/layanan/${slug}#service-fungame`,
+        name: `Fun Game di ${cityName}`,
+        serviceType: 'Fun Games & Refreshment',
+        description: `Pilihan paket fun game di ${cityName} yang seru, menghibur, dan penuh makna untuk acara employee gathering maupun family gathering.`,
         provider: {
           '@id': `https://growthindonesia.my.id/layanan/${slug}#localbusiness`
         }
@@ -59,9 +70,9 @@ export function CitySchema({ cityName, slug }: { cityName: string; slug: string 
       {
         '@type': 'Service',
         '@id': `https://growthindonesia.my.id/layanan/${slug}#ldk-osis`,
-        name: `Program LDK OSIS & LDKS ${cityName}`,
+        name: `LDK OSIS ${cityName}`,
         serviceType: 'Latihan Dasar Kepemimpinan Siswa (LDKS) & LDK OSIS',
-        description: `Layanan edukatif Latihan Dasar Kepemimpinan (LDK) OSIS untuk membentuk karakter, kedisiplinan, dan jiwa kepemimpinan pelajar di ${cityName}.`,
+        description: `Program LDK OSIS di ${cityName} yang edukatif untuk membentuk karakter, kedisiplinan, dan jiwa kepemimpinan unggul bagi pelajar tingkat SMP dan SMA.`,
         provider: {
           '@id': `https://growthindonesia.my.id/layanan/${slug}#localbusiness`
         }

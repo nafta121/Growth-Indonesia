@@ -1,7 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { CITIES as CITIES_OBJ } from '@/lib/cities';
 
-const CITIES = ['madiun', 'ponorogo', 'magetan', 'ngawi', 'nganjuk', 'pacitan', 'kediri'];
+const CITIES = Object.keys(CITIES_OBJ);
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();

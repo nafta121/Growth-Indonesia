@@ -62,6 +62,16 @@ export function NearbyCities({ currentCityKey, allCities }: NearbyCitiesProps) {
               </Link>
             ))}
           </div>
+
+          <div className="mt-12 text-center">
+            <Link 
+              href="/layanan" 
+              className="inline-flex items-center justify-center h-14 px-8 rounded-full bg-slate-900 text-white font-bold text-lg hover:bg-[#EF4444] hover:shadow-lg hover:shadow-red-500/30 transition-all duration-300 active:scale-95 group"
+            >
+              Lihat Semua Lokasi
+              <ArrowRight className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+            </Link>
+          </div>
         </ScrollReveal>
       </div>
     </section>
