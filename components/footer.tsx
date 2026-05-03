@@ -24,7 +24,7 @@ export default function Footer() {
                 referrerPolicy="no-referrer"
               />
             </Link>
-            <p className="text-gray-400 leading-relaxed max-w-xs">
+            <p className="text-gray-300 leading-relaxed max-w-xs">
               Transforming organizations through human-centric development and 
               experiential learning since 2018.
             </p>
@@ -38,7 +38,7 @@ export default function Footer() {
                 <li key={link}>
                   <Link 
                     href={`#${link.toLowerCase().replace(' ', '-')}`} 
-                    className="text-gray-500 hover:text-[#EF4444] transition-colors"
+                    className="text-gray-300 hover:text-white transition-colors"
                   >
                     {link}
                   </Link>
@@ -55,7 +55,7 @@ export default function Footer() {
                 <li key={city}>
                   <Link 
                     href={`/layanan/${city}/outbound`} 
-                    className="text-gray-500 hover:text-[#EF4444] transition-colors"
+                    className="text-gray-300 hover:text-white transition-colors"
                   >
                     Outbound {city.charAt(0).toUpperCase() + city.slice(1)}
                   </Link>
@@ -72,7 +72,7 @@ export default function Footer() {
                 href="https://maps.app.goo.gl/s5sLVajjti61reWw8?g_st=ac"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-500 hover:text-[#EF4444] transition-colors duration-200 leading-relaxed block"
+                className="text-gray-300 hover:text-white transition-colors duration-200 leading-relaxed block"
                 aria-label="Lihat lokasi Growth Indonesia di Google Maps"
               >
                 Jl. Mujair No.3, Nambangan Kidul, Kota Madiun, Jawa Timur 63128
@@ -85,7 +85,7 @@ export default function Footer() {
             <h3 className="text-white font-bold mb-6 tracking-wide uppercase text-sm">Hubungi Kami</h3>
             <div className="space-y-4">
               <div>
-                <p className="text-gray-500 mb-1 text-xs uppercase tracking-wider">WhatsApp:</p>
+                <p className="text-gray-400 mb-1 text-xs uppercase tracking-wider">WhatsApp:</p>
                 <a 
                   href="https://wa.me/6285704748186" 
                   target="_blank"
@@ -96,10 +96,10 @@ export default function Footer() {
                 </a>
               </div>
               <div>
-                <p className="text-gray-500 mb-1 text-xs uppercase tracking-wider">Email:</p>
+                <p className="text-gray-400 mb-1 text-xs uppercase tracking-wider">Email:</p>
                 <a 
                   href="mailto:info@growthindonesia.my.id"
-                  className="text-gray-500 hover:text-[#EF4444] transition-colors duration-200 block underline underline-offset-4"
+                  className="text-gray-300 hover:text-white transition-colors duration-200 block underline underline-offset-4"
                   aria-label="Kirim email ke Growth Indonesia"
                 >
                   info@growthindonesia.my.id
@@ -110,12 +110,12 @@ export default function Footer() {
         </div>
 
         <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-gray-600 text-xs text-center md:text-left">
-            &copy; {currentYear} GROWTH INDONESIA. All rights reserved.
+          <p className="text-gray-400 text-xs text-center md:text-left">
+            © {currentYear} GROWTH INDONESIA. All rights reserved.
           </p>
           <div className="flex gap-6">
-            <Link href="#" className="text-gray-600 hover:text-white text-xs transition-colors">Privacy Policy</Link>
-            <Link href="#" className="text-gray-600 hover:text-white text-xs transition-colors">Terms of Service</Link>
+            <Link href="#" className="text-gray-400 hover:text-white text-xs transition-colors">Privacy Policy</Link>
+            <Link href="#" className="text-gray-400 hover:text-white text-xs transition-colors">Terms of Service</Link>
           </div>
         </div>
       </div>
