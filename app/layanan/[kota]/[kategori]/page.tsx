@@ -284,7 +284,7 @@ export default async function ProgrammaticSiloPage({ params }: Props) {
         <div className="absolute inset-0 z-0">
           <Image 
             src="https://nafta121.sirv.com/OUTBOUND/2022-10-22%2009-00-09.jpeg"
-            alt={`Background ${kategoriName}`}
+              alt={`Peserta ${kategoriName} di ${kotaName} Mengikuti Sesi Character Building bersama Growth Indonesia`}
             fill
             priority
             fetchPriority="high"
