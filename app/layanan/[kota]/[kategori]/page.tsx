@@ -26,6 +26,32 @@ function formatSlug(slug: string): string {
     .join(' ');
 }
 
+function getContentVariations(kategori: string, kotaName: string) {
+  const contentMap: Record<string, { h1: JSX.Element; subheadline: string }> = {
+    'outbound': {
+      h1: <>Provider Outbound Training & Team Building Premium di <span className="text-[#EF4444] font-bold">{kotaName}</span></>,
+      subheadline: `Tingkatkan soliditas tim dan kapasitas kepemimpinan melalui program outbound team building di ${kotaName}. Didukung oleh fasilitator tersertifikasi BNSP, kami merancang kegiatan luar ruang yang interaktif, aman, dan berdampak nyata bagi produktivitas perusahaan Anda. Hubungi Growth Indonesia untuk desain penawaran eksklusif!`
+    },
+    'training': {
+      h1: <>Pusat Pelatihan & In-House Training Berdampak di <span className="text-[#EF4444] font-bold">{kotaName}</span></>,
+      subheadline: `Growth Indonesia adalah pionir penyelenggara training pengembangan SDM terpercaya di ${kotaName}. Dari soft skills, leadership, hingga character building, modul pelatihan kami dirancang khusus dan aplikatif untuk menjawab tantangan spesifik organisasi Anda. Mari transformasikan potensi tim Anda hari ini!`
+    },
+    'fun-games': {
+      h1: <>Jasa Fun Games & Employee Gathering Spesial di <span className="text-[#EF4444] font-bold">{kotaName}</span></>,
+      subheadline: `Cairkan suasana dan bangun keakraban tanpa batas melalui paket fun games energik di ${kotaName}. Kami menyajikan aktivitas ice breaking dan permainan interaktif yang menghibur sekaligus menanamkan nilai kolaborasi. Jadikan agenda gathering tahunan perusahaan Anda momen tak terlupakan!`
+    },
+    'ldk-osis': {
+      h1: <>Lembaga LDK OSIS & Edukasi Karakter Tangguh di <span className="text-[#EF4444] font-bold">{kotaName}</span></>,
+      subheadline: `Bentuk mental kepemimpinan generasi muda yang tangguh dengan program Latihan Dasar Kepemimpinan (LDK) OSIS di ${kotaName}. Fasilitator kami membina kedisiplinan, kemandirian, dan problem solving melalui kurikulum edukasi karakter intensif berstandar tinggi. Percayakan pembinaan siswa Anda kepada ahlinya!`
+    }
+  };
+
+  return contentMap[kategori.toLowerCase()] || {
+    h1: <>Provider {formatSlug(kategori)} Premium di <span className="text-[#EF4444] font-bold">{kotaName}</span></>,
+    subheadline: `Growth Indonesia adalah Event Organizer (EO) yang menghadirkan layanan profesional ${formatSlug(kategori).toLowerCase()} di ${kotaName}. Transformasi budaya perusahaan dan semangat kolaborasi tim Anda bersama instruktur profesional Growth Indonesia untuk hasil yang terukur dan berkesinambungan.`
+  };
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { kota, kategori } = await params;
   const decodedKota = decodeURIComponent(kota).toLowerCase();
@@ -172,6 +198,39 @@ export default async function ProgrammaticSiloPage({ params }: Props) {
     ]
   };
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": `Siapa provider ${kategoriName} terbaik dan tersertifikasi di ${kotaName}?`,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": `Growth Indonesia adalah provider ${kategoriName} di ${kotaName} dengan fasilitator tersertifikasi BNSP yang profesional dan sarat pengalaman meng-handle berbagai jenis project instansi maupun korporasi berskala regional hingga nasional.`
+        }
+      },
+      {
+        "@type": "Question",
+        "name": `Berapa estimasi harga paket ${kategoriName} di ${kotaName}?`,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": `Harga paket ${kategoriName} di ${kotaName} sangat fleksibel menyesuaikan dengan kebutuhan tim, durasi kegiatan, dan kompleksitas acara Anda. Anda bisa mensimulasikannya via Kalkulator Budget Growth Indonesia.`
+        }
+      },
+      {
+        "@type": "Question",
+        "name": `Apakah kegiatan ${kategoriName} di ${kotaName} aman?`,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": `Ya, Growth Indonesia menerapkan 'Zero Accident Policy' untuk seluruh aktivitas outdoor learning maupun in-class. Area observasi yang berada di wilayah ${kotaName} selalu dipastikan kelayakannya secara periodik.`
+        }
+      }
+    ]
+  };
+
+  const content = getContentVariations(decodedKategori, kotaName);
+
   return (
     <>
       <BreadcrumbSchema cityName={kotaName} cityKey={decodedKota} />
@@ -179,6 +238,10 @@ export default async function ProgrammaticSiloPage({ params }: Props) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <main className="flex-1 w-full flex flex-col pt-[72px] md:pt-[88px]">
       {/* Hero Section */}
@@ -207,10 +270,10 @@ export default async function ProgrammaticSiloPage({ params }: Props) {
               <span className="text-sm font-medium text-white/90">Dipercaya 100+ Perusahaan dan Instansi</span>
             </div>
             <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-white mb-8 leading-[1.1]">
-              Provider {kategoriName} Premium di <span className="text-[#EF4444] font-bold">{kotaName}</span>
+              {content.h1}
             </h1>
             <p className="text-lg sm:text-xl md:text-2xl text-slate-100 leading-relaxed mb-10">
-              <strong className="font-semibold text-white">Growth Indonesia adalah Event Organizer (EO) dan penyedia jasa {kategoriName.toLowerCase()} profesional di {kotaName}.</strong> {cityData.description} Transformasi budaya perusahaan dan semangat kolaborasi tim Anda bersama instruktur profesional Growth Indonesia.
+              <strong className="font-semibold text-white">{content.subheadline}</strong> {cityData.description}
             </p>
             <div className="flex flex-wrap items-center gap-4">
               <Button size="lg" className="h-14 px-8 rounded-full bg-[#EF4444] text-white hover:bg-red-600 shadow-lg shadow-red-600/30 transition-all duration-300 active:scale-95 flex items-center justify-center gap-2" asChild>
