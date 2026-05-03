@@ -214,7 +214,7 @@ export default function TrustSignals() {
         <div className="text-center mb-12">
           <Badge className="mb-4">Testimoni Klien</Badge>
           <h2 className="text-gray-900 font-display text-2xl md:text-4xl font-extrabold tracking-tight leading-tight">
-            Kisah Sukses Transformasi <span className="text-[#EF4444]">SDM</span>
+            Kisah Sukses Transformasi <span className="text-red-700">SDM</span>
           </h2>
         </div>
         
