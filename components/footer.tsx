@@ -54,7 +54,7 @@ export default function Footer() {
               {CITIES.map((city) => (
                 <li key={city}>
                   <Link 
-                    href={`/layanan/outbound-${city}`} 
+                    href={`/layanan/${city}/outbound`} 
                     className="text-gray-500 hover:text-[#EF4444] transition-colors"
                   >
                     Outbound {city.charAt(0).toUpperCase() + city.slice(1)}
