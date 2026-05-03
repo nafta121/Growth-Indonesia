@@ -253,6 +253,7 @@ export default async function ProgrammaticSiloPage({ params }: Props) {
             alt={`Background ${kategoriName}`}
             fill
             priority
+            fetchPriority="high"
             sizes="(max-width: 768px) 100vw, 50vw"
             className="object-cover opacity-20"
             referrerPolicy="no-referrer"

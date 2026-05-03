@@ -116,6 +116,7 @@ export default async function OutboundLocationPage({ params }: Props) {
             alt="Background Outbound"
             fill
             priority
+            fetchPriority="high"
             className="object-cover opacity-20"
             referrerPolicy="no-referrer"
           />

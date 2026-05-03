@@ -67,6 +67,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="id" className={`${inter.variable} ${outfit.variable}`}>
+      <head>
+        <link rel="preconnect" href="https://nafta121.sirv.com" />
+        <link rel="dns-prefetch" href="https://nafta121.sirv.com" />
+      </head>
       <body suppressHydrationWarning className="font-sans antialiased bg-[#0A1628] text-white">
         {children}
         <GoogleTagManager gtmId="G-XXXXXXXXXX" />
