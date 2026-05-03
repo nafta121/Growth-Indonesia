@@ -1,6 +1,7 @@
 import Navbar from '@/components/navbar';
 import Hero from '@/components/hero';
 import AboutUs from '@/components/about-us';
+import OurImpact from '@/components/our-impact';
 import Approach from '@/components/approach';
 import Services from '@/components/services';
 import Pricing from '@/components/pricing';
@@ -26,6 +27,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ p
         <TrustSection />
         <OutboundGallery />
         <AboutUs />
+        <OurImpact />
         <Approach />
         <Services />
         <Pricing />
