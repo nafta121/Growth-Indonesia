@@ -13,12 +13,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  const dynamicRoutes: MetadataRoute.Sitemap = Object.keys(CITIES).map((city) => ({
-    url: `${BASE_URL}/layanan/outbound-${city}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly',
-    priority: 0.8,
-  }));
+  const KATEGORIES = ['outbound', 'training', 'fun-games', 'ldk-osis', 'gathering'];
+
+  const dynamicRoutes: MetadataRoute.Sitemap = [];
+  
+  Object.keys(CITIES).forEach((city) => {
+    KATEGORIES.forEach((kategori) => {
+      dynamicRoutes.push({
+        url: `${BASE_URL}/layanan/${city}/${kategori}`,
+        lastModified: new Date(),
+        changeFrequency: 'monthly',
+        priority: 0.8,
+      });
+    });
+  });
 
   return [...staticRoutes, ...dynamicRoutes];
 }
