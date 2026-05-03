@@ -135,6 +135,29 @@ export default async function ProgrammaticSiloPage({ params }: Props) {
     "@context": "https://schema.org",
     "@graph": [
       {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://growthindonesia.my.id/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": `Layanan ${kotaName}`,
+            "item": `https://growthindonesia.my.id/layanan/${decodedKota}`
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": `${kategoriName} ${kotaName}`,
+            "item": `https://growthindonesia.my.id/layanan/${decodedKota}/${decodedKategori}`
+          }
+        ]
+      },
+      {
         "@type": "Service",
         "name": `${kategoriName} di ${kotaName}`,
         "description": `Layanan profesional provider ${kategoriName.toLowerCase()} dan EO terbaik di ${kotaName} bersama Growth Indonesia. ${cityData.description}`,
