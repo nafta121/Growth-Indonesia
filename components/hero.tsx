@@ -1,7 +1,6 @@
 import { ChevronDown } from 'lucide-react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
-import ScrollReveal from '@/components/ui/scroll-reveal';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 
@@ -20,7 +19,7 @@ export default function Hero() {
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 text-center">
         <div className="max-w-5xl mx-auto flex flex-col items-center">
           {/* Headline */}
-          <h1 className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-[9rem] font-black text-white leading-[1.1] mb-8 md:mb-12 tracking-tighter uppercase sm:whitespace-nowrap lg:whitespace-normal">
+          <h1 className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-[9rem] font-black text-white leading-[1.1] mb-8 md:mb-12 tracking-tighter uppercase sm:whitespace-nowrap lg:whitespace-normal opacity-0 animate-fade-in">
             <Badge variant="dark" className="mb-4 md:mb-8 font-sans">Provider Outbound Madiun</Badge>
             <span className="block mt-4 relative">
               Let&apos;s Grow 
@@ -32,13 +31,13 @@ export default function Hero() {
           </h1>
 
           {/* Subheadline */}
-          <p className="text-slate-100 text-sm sm:text-base md:text-xl lg:text-2xl font-medium max-w-2xl mx-auto leading-relaxed mb-10 md:mb-16 px-4">
+          <p className="text-slate-100 text-sm sm:text-base md:text-xl lg:text-2xl font-medium max-w-2xl mx-auto leading-relaxed mb-10 md:mb-16 px-4 opacity-0 animate-fade-in delay-200">
             Berdayakan potensi terbaik tim Anda melalui solusi pengembangan SDM, 
             modul pelatihan inovatif, dan program outbound strategis untuk menghadapi era digital.
           </p>
 
           {/* CTA Button */}
-          <div className="flex justify-center items-center">
+          <div className="flex justify-center items-center opacity-0 animate-fade-in delay-[400ms]">
             <Button asChild size="lg" className="w-full sm:w-auto min-w-[280px] group">
               <Link href="#paket">
                 Lihat Paket Program
@@ -57,13 +56,9 @@ export default function Hero() {
       />
 
       {/* Scroll Indicator */}
-      <ScrollReveal
-        delay={2}
-        duration={1}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 pointer-events-none"
-      >
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 pointer-events-none opacity-0 animate-[fade-in_1s_ease-out_forwards] delay-[1s]">
         <ChevronDown className="w-6 h-6 text-gray-400 animate-bounce" />
-      </ScrollReveal>
+      </div>
     </section>
   );
 }
