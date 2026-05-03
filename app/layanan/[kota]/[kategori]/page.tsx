@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
@@ -27,7 +28,7 @@ function formatSlug(slug: string): string {
 }
 
 function getContentVariations(kategori: string, kotaName: string) {
-  const contentMap: Record<string, { h1: JSX.Element; subheadline: string }> = {
+  const contentMap: Record<string, { h1: ReactNode; subheadline: string }> = {
     'outbound': {
       h1: <>Provider Outbound Training & Team Building Premium di <span className="text-[#EF4444] font-bold">{kotaName}</span></>,
       subheadline: `Tingkatkan soliditas tim dan kapasitas kepemimpinan melalui program outbound team building di ${kotaName}. Didukung oleh fasilitator tersertifikasi BNSP, kami merancang kegiatan luar ruang yang interaktif, aman, dan berdampak nyata bagi produktivitas perusahaan Anda. Hubungi Growth Indonesia untuk desain penawaran eksklusif!`
