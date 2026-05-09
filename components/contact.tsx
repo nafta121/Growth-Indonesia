@@ -7,6 +7,7 @@ import { cn } from '@/lib/utils';
 import { useForm } from 'react-hook-form';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import { PACKAGES } from '@/lib/packages';
 import { COMPANY_INFO } from '@/lib/constants';
 
@@ -162,12 +163,12 @@ Rencana Tanggal: ${data.date || 'TBC'}`;
                         <label htmlFor="name" className="text-xs font-bold text-gray-900 uppercase tracking-widest flex items-center gap-2 px-1">
                           <User className="w-3.5 h-3.5 text-[#EF4444]" /> Nama Lengkap
                         </label>
-                        <input
+                        <Input
                           id="name"
                           type="text"
                           {...register("name", { required: "Nama lengkap wajib diisi" })}
                           placeholder="John Doe"
-                          className="w-full h-14 md:h-16 px-6 bg-white border border-gray-200 rounded-2xl focus:ring-2 focus:ring-[#EF4444]/10 focus:border-[#EF4444] outline-none transition-all duration-300 text-sm md:text-base font-medium placeholder:text-gray-300"
+                          error={!!errors.name}
                         />
                         {errors.name && <span className="text-xs text-red-500 mt-1 block px-1">{errors.name.message}</span>}
                       </div>
@@ -175,12 +176,12 @@ Rencana Tanggal: ${data.date || 'TBC'}`;
                         <label htmlFor="company" className="text-xs font-bold text-gray-900 uppercase tracking-widest flex items-center gap-2 px-1">
                           <Building2 className="w-3.5 h-3.5 text-[#EF4444]" /> Instansi
                         </label>
-                        <input
+                        <Input
                           id="company"
                           type="text"
                           {...register("company", { required: "Instansi wajib diisi" })}
                           placeholder="PT Growth Indonesia"
-                          className="w-full h-14 md:h-16 px-6 bg-white border border-gray-200 rounded-2xl focus:ring-2 focus:ring-[#EF4444]/10 focus:border-[#EF4444] outline-none transition-all duration-300 text-sm md:text-base font-medium placeholder:text-gray-300"
+                          error={!!errors.company}
                         />
                         {errors.company && <span className="text-xs text-red-500 mt-1 block px-1">{errors.company.message}</span>}
                       </div>
@@ -190,7 +191,7 @@ Rencana Tanggal: ${data.date || 'TBC'}`;
                       <label htmlFor="whatsapp" className="text-xs font-bold text-gray-900 uppercase tracking-widest flex items-center gap-2 px-1">
                         <Phone className="w-3.5 h-3.5 text-[#EF4444]" /> WhatsApp
                       </label>
-                      <input
+                      <Input
                         id="whatsapp"
                         type="tel"
                         {...register("whatsapp", { 
@@ -198,10 +199,7 @@ Rencana Tanggal: ${data.date || 'TBC'}`;
                           minLength: { value: 10, message: "Minimal 10 angka" }
                         })}
                         placeholder="+62 8xx-xxxx-xxxx"
-                        className={cn(
-                          "w-full h-14 md:h-16 px-6 bg-white border rounded-2xl focus:ring-2 focus:ring-[#EF4444]/10 focus:border-[#EF4444] outline-none transition-all duration-300 text-sm md:text-base font-medium placeholder:text-gray-300",
-                          errors.whatsapp ? "border-red-500 bg-red-50/10" : "border-gray-200"
-                        )}
+                        error={!!errors.whatsapp}
                       />
                       {errors.whatsapp && <span className="text-xs text-red-500 mt-1 block px-1">{errors.whatsapp.message}</span>}
                     </div>
@@ -230,11 +228,10 @@ Rencana Tanggal: ${data.date || 'TBC'}`;
                       <label htmlFor="date" className="text-xs font-bold text-gray-900 uppercase tracking-widest flex items-center gap-2 px-1">
                         <Calendar className="w-3.5 h-3.5 text-[#EF4444]" /> Rencana Tanggal
                       </label>
-                      <input
+                      <Input
                         id="date"
                         type="date"
                         {...register("date")}
-                        className="w-full h-14 md:h-16 px-6 bg-white border border-gray-200 rounded-2xl focus:ring-2 focus:ring-[#EF4444]/10 focus:border-[#EF4444] outline-none transition-all duration-300 text-sm md:text-base font-medium"
                       />
                     </div>
 
