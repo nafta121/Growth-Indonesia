@@ -1,5 +1,7 @@
 import { Building2, Globe, GraduationCap, HardHat, Landmark, Ship, TowerControl as Tower, Truck, Quote } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
+import { getLocalBusinessSchema } from '@/lib/schema';
+import { COMPANY_INFO } from '@/lib/constants';
 
 const CLIENTS = [
   { name: 'Petrokimia Gresik', icon: <HardHat className="w-5 h-5" />, color: 'text-green-600' },
@@ -114,60 +116,10 @@ export default function TrustSignals() {
         },
         "itemReviewed": {
           "@type": "Organization",
-          "name": "Growth Indonesia"
+          "name": COMPANY_INFO.brand_name
         }
       })),
-      {
-        "@type": "LocalBusiness",
-        "name": "Growth Indonesia",
-        "image": "https://nafta121.sirv.com/Screenshot_20260423_192944_My%20Files.jpg",
-        "telephone": "+6285704748186",
-        "priceRange": "Rp 150.000 - Rp 4.500.000",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Jl. Mujair No.3",
-          "addressLocality": "Madiun",
-          "addressRegion": "Jawa Timur",
-          "postalCode": "63128",
-          "addressCountry": "ID"
-        },
-        "areaServed": [
-          { "@type": "City", "name": "Madiun" },
-          { "@type": "City", "name": "Magetan" },
-          { "@type": "City", "name": "Ponorogo" },
-          { "@type": "City", "name": "Ngawi" },
-          { "@type": "City", "name": "Pacitan" },
-          { "@type": "City", "name": "Kediri" },
-          { "@type": "City", "name": "Surabaya" }
-        ],
-        "hasOfferCatalog": {
-          "@type": "OfferCatalog",
-          "name": "Layanan Growth Indonesia",
-          "itemListElement": [
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Service",
-                "name": "Outbound Training & Team Building"
-              }
-            },
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Service",
-                "name": "Corporate Gathering"
-              }
-            },
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Service",
-                "name": "LDK OSIS & Edukasi"
-              }
-            }
-          ]
-        }
-      }
+      getLocalBusinessSchema()
     ]
   };
 

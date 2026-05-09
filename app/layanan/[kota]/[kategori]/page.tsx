@@ -13,6 +13,8 @@ import TrustSection from '@/components/trust-section';
 import { BreadcrumbSchema } from '@/components/breadcrumb-schema';
 import { NearbyCities } from '@/components/nearby-cities';
 import KalkulatorBudget from '@/components/kalkulator-budget';
+import { getLocalBusinessSchema, getFaqSchema } from '@/lib/schema';
+import { COMPANY_INFO } from '@/lib/constants';
 
 type Props = {
   params: Promise<{ kota: string; kategori: string }>;
@@ -56,9 +58,9 @@ function getContentVariations(kategori: string, kotaName: string) {
   };
 
   return contentMap[kategori.toLowerCase()] || {
-    title: `Provider & Jasa ${formatSlug(kategori)} ${kotaName} | EO - Growth Indonesia`,
+    title: `Provider & Jasa ${formatSlug(kategori)} ${kotaName} | EO - ${COMPANY_INFO.brand_name}`,
     h1: <>Provider {formatSlug(kategori)} Premium di <span className="text-[#EF4444] font-bold">{kotaName}</span></>,
-    subheadline: `Growth Indonesia adalah Event Organizer (EO) yang menghadirkan layanan profesional ${formatSlug(kategori).toLowerCase()} di ${kotaName}. Transformasi budaya perusahaan dan semangat kolaborasi tim Anda bersama instruktur profesional Growth Indonesia untuk hasil yang terukur dan berkesinambungan.`,
+    subheadline: `${COMPANY_INFO.brand_name} adalah Event Organizer (EO) yang menghadirkan layanan profesional ${formatSlug(kategori).toLowerCase()} di ${kotaName}. Transformasi budaya perusahaan dan semangat kolaborasi tim Anda bersama instruktur profesional ${COMPANY_INFO.brand_name} untuk hasil yang terukur dan berkesinambungan.`,
     providerType: `penyedia layanan ${formatSlug(kategori).toLowerCase()}`
   };
 }
@@ -79,7 +81,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const content = getContentVariations(decodedKategori, kotaName);
 
   const title = content.title;
-  const description = `Growth Indonesia adalah provider ${kategoriName.toLowerCase()} dan penyedia jasa EO profesional di ${kotaName}. ${cityData.description} Hubungi kami untuk penawaran terbaik.`;
+  const description = `${COMPANY_INFO.brand_name} adalah provider ${kategoriName.toLowerCase()} dan penyedia jasa EO profesional di ${kotaName}. ${cityData.description} Hubungi kami untuk penawaran terbaik.`;
 
   return {
     title,
@@ -171,98 +173,18 @@ export default async function ProgrammaticSiloPage({ params }: Props) {
       {
         "@type": "Service",
         "name": `${kategoriName} di ${kotaName}`,
-        "description": `Layanan profesional provider ${kategoriName.toLowerCase()} dan EO terbaik di ${kotaName} bersama Growth Indonesia. ${cityData.description}`,
+        "description": `Layanan profesional provider ${kategoriName.toLowerCase()} dan EO terbaik di ${kotaName} bersama ${COMPANY_INFO.brand_name}. ${cityData.description}`,
         "provider": {
           "@type": "LocalBusiness",
-          "name": "Growth Indonesia"
+          "name": COMPANY_INFO.brand_name
         },
         "areaServed": kotaName
       },
-      {
-        "@type": "LocalBusiness",
-        "name": "Growth Indonesia",
-        "image": "https://nafta121.sirv.com/Screenshot_20260423_192944_My%20Files.jpg",
-        "telephone": "+6285704748186",
-        "priceRange": "Rp 150.000 - Rp 4.500.000",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Jl. Mujair No.3",
-          "addressLocality": "Madiun",
-          "addressRegion": "Jawa Timur",
-          "postalCode": "63128",
-          "addressCountry": "ID"
-        },
-        "areaServed": [
-          { "@type": "City", "name": "Madiun" },
-          { "@type": "City", "name": "Magetan" },
-          { "@type": "City", "name": "Ponorogo" },
-          { "@type": "City", "name": "Ngawi" },
-          { "@type": "City", "name": "Pacitan" },
-          { "@type": "City", "name": "Kediri" },
-          { "@type": "City", "name": "Surabaya" },
-          { "@type": "City", "name": kotaName }
-        ],
-        "hasOfferCatalog": {
-          "@type": "OfferCatalog",
-          "name": "Layanan Growth Indonesia",
-          "itemListElement": [
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Service",
-                "name": "Outbound Training & Team Building"
-              }
-            },
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Service",
-                "name": "Corporate Gathering"
-              }
-            },
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Service",
-                "name": "LDK OSIS & Edukasi"
-              }
-            }
-          ]
-        }
-      }
+      getLocalBusinessSchema(kotaName)
     ]
   };
 
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": `Siapa provider ${kategoriName} terbaik dan tersertifikasi di ${kotaName}?`,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": `Growth Indonesia adalah provider ${kategoriName} di ${kotaName} dengan fasilitator tersertifikasi BNSP yang profesional dan sarat pengalaman meng-handle berbagai jenis project instansi maupun korporasi berskala regional hingga nasional.`
-        }
-      },
-      {
-        "@type": "Question",
-        "name": `Berapa estimasi harga paket ${kategoriName} di ${kotaName}?`,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": `Harga paket ${kategoriName} di ${kotaName} sangat fleksibel menyesuaikan dengan kebutuhan tim, durasi kegiatan, dan kompleksitas acara Anda. Anda bisa mensimulasikannya via Kalkulator Budget Growth Indonesia.`
-        }
-      },
-      {
-        "@type": "Question",
-        "name": `Apakah kegiatan ${kategoriName} di ${kotaName} aman?`,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": `Ya, Growth Indonesia menerapkan 'Zero Accident Policy' untuk seluruh aktivitas outdoor learning maupun in-class. Area observasi yang berada di wilayah ${kotaName} selalu dipastikan kelayakannya secara periodik.`
-        }
-      }
-    ]
-  };
+  const faqSchema = getFaqSchema(kategoriName, kotaName);
 
   const content = getContentVariations(decodedKategori, kotaName);
 
