@@ -4,33 +4,7 @@ import Link from 'next/link';
 import ScrollReveal from '@/components/ui/scroll-reveal';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-
-const PACKAGES = [
-  {
-    id: 'leaders',
-    title: 'GROWTH LEADERS TRAINING',
-    price: 'Rp. 4.500.000',
-    description: 'Menciptakan pemimpin percaya diri dan berkarakter untuk menggerakkan perubahan positif di perusahaan Anda.',
-    features: ['Leadership Core', 'Strategic Thinking', 'Conflict Resolution', 'Mental Agility'],
-    popular: false
-  },
-  {
-    id: 'generation',
-    title: 'GROWTH GENERATION',
-    price: 'Rp. 4.000.000',
-    description: 'Membentuk generasi baru yang cepat beradaptasi, inovatif, dan memiliki daya saing tinggi di era modern.',
-    features: ['Adaptive Mindset', 'Digital Literacy', 'Collaborative Skills', 'Personal Growth'],
-    popular: true
-  },
-  {
-    id: 'fun',
-    title: "FUN, PLAY 'N GROW",
-    price: 'Rp. 3.500.000',
-    description: 'Menciptakan kebersamaan, me-refresh pikiran, dan membangun sinergi tim melalui kegembiraan.',
-    features: ['Ice Breaking', 'Team Synergy', 'Stress Relief', 'Fun Adventure'],
-    popular: false
-  },
-];
+import { PACKAGES } from '@/lib/packages';
 
 export default function Pricing() {
   return (
@@ -48,7 +22,7 @@ export default function Pricing() {
         </ScrollReveal>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10 items-stretch">
-          {PACKAGES.map((pkg, idx) => (
+          {PACKAGES.filter(pkg => pkg.id !== 'other').map((pkg, idx) => (
             <ScrollReveal
               key={pkg.id}
               delay={idx * 0.1}

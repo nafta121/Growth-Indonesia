@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { CITIES as CITIES_OBJ } from '@/lib/cities';
+import { COMPANY_INFO } from '@/lib/constants';
 
 const CITIES = Object.keys(CITIES_OBJ);
 
@@ -15,8 +16,8 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <Link href="/" className="inline-flex items-center mb-6">
               <Image 
-                src="https://nafta121.sirv.com/Screenshot_20260423_192944_My%20Files.jpg" 
-                alt="Growth Indonesia Logo" 
+                src={COMPANY_INFO.logo_url} 
+                alt={`${COMPANY_INFO.brand_name} Logo`} 
                 width={200} 
                 height={56} 
                 className="h-14 w-auto object-contain"
@@ -24,7 +25,7 @@ export default function Footer() {
                 referrerPolicy="no-referrer"
               />
             </Link>
-            <p className="text-gray-300 leading-relaxed max-w-xs">
+            <p className="text-gray-400 leading-relaxed max-w-xs">
               Transforming organizations through human-centric development and 
               experiential learning since 2018.
             </p>
@@ -38,7 +39,7 @@ export default function Footer() {
                 <li key={link}>
                   <Link 
                     href={`#${link.toLowerCase().replace(' ', '-')}`} 
-                    className="text-gray-300 hover:text-white transition-colors"
+                    className="text-gray-500 hover:text-[#EF4444] transition-colors"
                   >
                     {link}
                   </Link>
@@ -55,7 +56,7 @@ export default function Footer() {
                 <li key={city}>
                   <Link 
                     href={`/layanan/${city}/outbound`} 
-                    className="text-gray-300 hover:text-white transition-colors"
+                    className="text-gray-500 hover:text-[#EF4444] transition-colors"
                   >
                     Outbound {city.charAt(0).toUpperCase() + city.slice(1)}
                   </Link>
@@ -69,13 +70,13 @@ export default function Footer() {
             <h3 className="text-white font-bold mb-6 tracking-wide uppercase text-sm">Alamat Kantor</h3>
             <address className="not-italic">
               <a 
-                href="https://maps.app.goo.gl/s5sLVajjti61reWw8?g_st=ac"
+                href={COMPANY_INFO.maps_url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-300 hover:text-white transition-colors duration-200 leading-relaxed block"
-                aria-label="Lihat lokasi Growth Indonesia di Google Maps"
+                className="text-gray-500 hover:text-[#EF4444] transition-colors duration-200 leading-relaxed block"
+                aria-label={`Lihat lokasi ${COMPANY_INFO.brand_name} di Google Maps`}
               >
-                Jl. Mujair No.3, Nambangan Kidul, Kota Madiun, Jawa Timur 63128
+                {COMPANY_INFO.address}
               </a>
             </address>
           </div>
@@ -85,24 +86,24 @@ export default function Footer() {
             <h3 className="text-white font-bold mb-6 tracking-wide uppercase text-sm">Hubungi Kami</h3>
             <div className="space-y-4">
               <div>
-                <p className="text-gray-400 mb-1 text-xs uppercase tracking-wider">WhatsApp:</p>
+                <p className="text-gray-500 mb-1 text-xs uppercase tracking-wider">WhatsApp:</p>
                 <a 
-                  href="https://wa.me/6285704748186" 
+                  href={`https://wa.me/${COMPANY_INFO.whatsapp_number}`} 
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[#EF4444] font-black text-lg block hover:scale-105 transition-transform origin-left"
                 >
-                  +62 857-0474-8186
+                  {COMPANY_INFO.whatsapp_display}
                 </a>
               </div>
               <div>
-                <p className="text-gray-400 mb-1 text-xs uppercase tracking-wider">Email:</p>
+                <p className="text-gray-500 mb-1 text-xs uppercase tracking-wider">Email:</p>
                 <a 
-                  href="mailto:info@growthindonesia.my.id"
-                  className="text-gray-300 hover:text-white transition-colors duration-200 block underline underline-offset-4"
-                  aria-label="Kirim email ke Growth Indonesia"
+                  href={`mailto:${COMPANY_INFO.email}`}
+                  className="text-gray-500 hover:text-[#EF4444] transition-colors duration-200 block underline underline-offset-4"
+                  aria-label={`Kirim email ke ${COMPANY_INFO.brand_name}`}
                 >
-                  info@growthindonesia.my.id
+                  {COMPANY_INFO.email}
                 </a>
               </div>
             </div>
@@ -110,12 +111,12 @@ export default function Footer() {
         </div>
 
         <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-gray-400 text-xs text-center md:text-left">
-            © {currentYear} GROWTH INDONESIA. All rights reserved.
+          <p className="text-gray-600 text-xs text-center md:text-left">
+            &copy; {currentYear} {COMPANY_INFO.brand_name}. All rights reserved.
           </p>
           <div className="flex gap-6">
-            <Link href="#" className="text-gray-400 hover:text-white text-xs transition-colors">Privacy Policy</Link>
-            <Link href="#" className="text-gray-400 hover:text-white text-xs transition-colors">Terms of Service</Link>
+            <Link href="#" className="text-gray-600 hover:text-white text-xs transition-colors">Privacy Policy</Link>
+            <Link href="#" className="text-gray-600 hover:text-white text-xs transition-colors">Terms of Service</Link>
           </div>
         </div>
       </div>

@@ -62,7 +62,7 @@ export default function TrustSection({
         <ScrollReveal className="text-center max-w-4xl mx-auto mb-16 md:mb-24">
           <Badge className="mb-4">E-E-A-T & Proven Track Record</Badge>
           <h2 className="font-display text-3xl md:text-5xl font-black tracking-tight text-[#0A1628] leading-[1.15]">
-            {headingText} <span className="text-red-700">Growth Indonesia?</span>
+            {headingText} <span className="text-[#EF4444]">Growth Indonesia?</span>
           </h2>
           <p className="mt-6 text-lg text-slate-600 font-medium">
             Kami bukan sekadar Event Organizer. Kami adalah mitra strategis untuk akselerasi budaya kerja, peningkatan kapasitas kolaborasi, dan regenerasi kepemimpinan.
@@ -113,7 +113,7 @@ export default function TrustSection({
               {comparisonData.map((row, idx) => (
                 <div key={idx} className={`grid grid-cols-12 p-6 items-center ${idx !== comparisonData.length - 1 ? 'border-b border-slate-100' : ''} hover:bg-slate-50/50 transition-colors`}>
                   <div className="col-span-4 font-bold text-[#0A1628]">{row.feature}</div>
-                  <div className="col-span-4 text-center font-semibold text-red-700 bg-red-50/50 py-3 rounded-xl">
+                  <div className="col-span-4 text-center font-semibold text-[#EF4444] bg-red-50/50 py-3 rounded-xl">
                     {row.us}
                   </div>
                   <div className="col-span-4 text-center text-slate-500 font-medium">
@@ -134,7 +134,7 @@ export default function TrustSection({
                     <div className="bg-red-50 rounded-2xl p-4 text-center border border-red-100 flex flex-col items-center justify-center">
                       <div className="font-bold text-[#0A1628] text-xs mb-2 uppercase tracking-wide opacity-50">Growth ID</div>
                       <CheckCircle2 className="w-6 h-6 text-[#EF4444] mx-auto mb-2" />
-                      <div className="font-bold text-red-700 text-sm leading-snug">{row.us}</div>
+                      <div className="font-bold text-[#EF4444] text-sm leading-snug">{row.us}</div>
                     </div>
                     <div className="bg-slate-50 rounded-2xl p-4 text-center border border-slate-100 flex flex-col items-center justify-center">
                       <div className="font-bold text-slate-400 text-xs mb-2 uppercase tracking-wide">Provider Lain</div>

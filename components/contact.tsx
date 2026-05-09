@@ -7,17 +7,12 @@ import { cn } from '@/lib/utils';
 import { useForm } from 'react-hook-form';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { PACKAGES } from '@/lib/packages';
+import { COMPANY_INFO } from '@/lib/constants';
 
 interface ContactProps {
   initialPackage?: string;
 }
-
-const PACKAGES = [
-  { id: 'leaders', label: 'GROWTH LEADERS TRAINING' },
-  { id: 'generation', label: 'GROWTH GENERATION' },
-  { id: 'fun', label: "FUN, PLAY 'N GROW" },
-  { id: 'other', label: 'Other / Custom Development' },
-];
 
 type FormData = {
   name: string;
@@ -57,7 +52,7 @@ Rencana Tanggal: ${data.date || 'TBC'}`;
     await new Promise(resolve => setTimeout(resolve, 1000));
     
     // Redirect to WhatsApp
-    window.open(`https://wa.me/6285704748186?text=${encodedMessage}`, '_blank');
+    window.open(`https://wa.me/${COMPANY_INFO.whatsapp_number}?text=${encodedMessage}`, '_blank');
     
     setIsSubmitted(true);
   };
@@ -85,7 +80,7 @@ Rencana Tanggal: ${data.date || 'TBC'}`;
 
             <div className="space-y-6 md:space-y-8">
               <a 
-                href="https://maps.app.goo.gl/s5sLVajjti61reWw8?g_st=ac"
+                href={COMPANY_INFO.maps_url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex gap-5 md:gap-7 group items-center p-4 -ml-4 rounded-3xl hover:bg-gray-50 transition-all duration-300"
@@ -96,14 +91,15 @@ Rencana Tanggal: ${data.date || 'TBC'}`;
                 </div>
                 <div>
                   <h3 className="font-extrabold text-gray-900 mb-1 uppercase tracking-tight text-sm md:text-base">Kantor Pusat</h3>
-                  <address className="not-italic text-gray-500 group-hover:text-gray-900 transition-colors duration-300 text-sm md:text-base leading-snug">
-                    Jl. Mujair No.3, Nambangan Kidul,<br className="hidden md:block" /> Kota Madiun, Jawa Timur
-                  </address>
+                  <address 
+                    className="not-italic text-gray-500 group-hover:text-gray-900 transition-colors duration-300 text-sm md:text-base leading-snug"
+                    dangerouslySetInnerHTML={{ __html: COMPANY_INFO.address_html }}
+                  />
                 </div>
               </a>
 
               <a 
-                href="https://wa.me/6285704748186"
+                href={`https://wa.me/${COMPANY_INFO.whatsapp_number}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex gap-5 md:gap-7 group items-center p-4 -ml-4 rounded-3xl hover:bg-gray-50 transition-all duration-300"
@@ -114,12 +110,12 @@ Rencana Tanggal: ${data.date || 'TBC'}`;
                 </div>
                 <div>
                   <h3 className="font-extrabold text-gray-900 mb-1 uppercase tracking-tight text-sm md:text-base">WhatsApp & Telepon</h3>
-                  <p className="text-gray-500 group-hover:text-gray-900 transition-colors duration-300 text-sm md:text-base font-bold">+62 857-0474-8186</p>
+                  <p className="text-gray-500 group-hover:text-gray-900 transition-colors duration-300 text-sm md:text-base font-bold">{COMPANY_INFO.whatsapp_display}</p>
                 </div>
               </a>
 
               <a 
-                href="mailto:info@growthindonesia.my.id"
+                href={`mailto:${COMPANY_INFO.email}`}
                 className="flex gap-5 md:gap-7 group items-center p-4 -ml-4 rounded-3xl hover:bg-gray-50 transition-all duration-300 focus:outline-none"
                 aria-label="Kirim email ke Growth Indonesia"
               >
@@ -128,7 +124,7 @@ Rencana Tanggal: ${data.date || 'TBC'}`;
                 </div>
                 <div>
                   <h3 className="font-extrabold text-gray-900 mb-1 uppercase tracking-tight text-sm md:text-base">Email Resmi</h3>
-                  <p className="text-gray-500 group-hover:text-gray-900 transition-colors duration-300 text-sm md:text-base border-b border-transparent group-hover:border-gray-200">info@growthindonesia.my.id</p>
+                  <p className="text-gray-500 group-hover:text-gray-900 transition-colors duration-300 text-sm md:text-base border-b border-transparent group-hover:border-gray-200">{COMPANY_INFO.email}</p>
                 </div>
               </a>
             </div>

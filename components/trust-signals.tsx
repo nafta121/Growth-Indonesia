@@ -214,7 +214,7 @@ export default function TrustSignals() {
         <div className="text-center mb-12">
           <Badge className="mb-4">Testimoni Klien</Badge>
           <h2 className="text-gray-900 font-display text-2xl md:text-4xl font-extrabold tracking-tight leading-tight">
-            Kisah Sukses Transformasi <span className="text-red-700">SDM</span>
+            Kisah Sukses Transformasi <span className="text-[#EF4444]">SDM</span>
           </h2>
         </div>
         
@@ -238,7 +238,7 @@ export default function TrustSignals() {
                   </div>
                   <div>
                     <div className="font-bold text-gray-900 font-display text-sm md:text-base">{t.name}</div>
-                    <div className="text-xs md:text-sm font-semibold text-red-700 uppercase tracking-wider">{t.company}</div>
+                    <div className="text-xs md:text-sm font-semibold text-[#EF4444] uppercase tracking-wider">{t.company}</div>
                   </div>
                 </div>
               </div>
@@ -248,7 +248,7 @@ export default function TrustSignals() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 text-center mt-12 md:mt-16">
-        <p className="text-[10px] font-black uppercase tracking-[0.5em] text-gray-500">Sustainable Growth Partnerships &copy; 2026</p>
+        <p className="text-[10px] font-black uppercase tracking-[0.5em] text-gray-300">Sustainable Growth Partnerships &copy; 2026</p>
       </div>
     </section>
   );

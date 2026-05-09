@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { Menu, X, Mail, MapPin, Phone } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { cn } from '@/lib/utils';
+import { COMPANY_INFO } from '@/lib/constants';
 
 const NAV_LINKS = [
   { name: 'Beranda', href: '/' },
@@ -29,8 +30,8 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="relative z-50 flex items-center group active:scale-95 transition-transform" aria-label="Growth Indonesia Home">
               <Image 
-                src="https://nafta121.sirv.com/Screenshot_20260423_192944_My%20Files.jpg" 
-                alt="Growth Indonesia Logo" 
+                src={COMPANY_INFO.logo_url} 
+                alt={`${COMPANY_INFO.brand_name} Logo`} 
                 width={200} 
                 height={48} 
                 className="h-10 md:h-12 w-auto object-contain transition-all duration-300 group-hover:brightness-110"
@@ -115,7 +116,7 @@ export default function Navbar() {
               <div className="h-px w-full bg-gray-100 mb-4" />
               
               <a 
-                href="https://wa.me/6285704748186"
+                href={`https://wa.me/${COMPANY_INFO.whatsapp_number}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group flex items-center gap-4 p-4 rounded-2xl bg-slate-50 border border-gray-100 hover:bg-[#EF4444] hover:border-[#EF4444] transition-all active:scale-95"
@@ -125,20 +126,20 @@ export default function Navbar() {
                 </div>
                 <div className="flex flex-col">
                   <span className="text-[10px] font-bold text-slate-500 group-hover:text-white/80 uppercase tracking-widest transition-colors">WhatsApp Kami</span>
-                  <span className="text-sm font-bold text-gray-900 group-hover:text-white tracking-tight transition-colors">+62 857-0474-8186</span>
+                  <span className="text-sm font-bold text-gray-900 group-hover:text-white tracking-tight transition-colors">{COMPANY_INFO.whatsapp_display}</span>
                 </div>
               </a>
 
               <div className="grid grid-cols-2 gap-3">
                 <a 
-                  href="mailto:info@growthindonesia.my.id"
+                  href={`mailto:${COMPANY_INFO.email}`}
                   className="flex flex-col items-center gap-2 p-4 rounded-2xl bg-slate-50 border border-gray-100 hover:bg-gray-100 transition-colors text-center"
                 >
                   <Mail className="w-5 h-5 text-red-600" />
                   <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Email</span>
                 </a>
                 <a 
-                  href="https://maps.app.goo.gl/s5sLVajjti61reWw8?g_st=ac"
+                  href={COMPANY_INFO.maps_url}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex flex-col items-center gap-2 p-4 rounded-2xl bg-slate-50 border border-gray-100 hover:bg-gray-100 transition-colors text-center"
@@ -151,7 +152,7 @@ export default function Navbar() {
 
             {/* Decoration for Mobile Menu */}
             <div className="absolute bottom-6 left-0 right-0 flex justify-center opacity-5 pointer-events-none">
-              <span className="text-6xl font-display font-extrabold whitespace-nowrap text-gray-900">GROWTH INDONESIA</span>
+              <span className="text-6xl font-display font-extrabold whitespace-nowrap text-gray-900">{COMPANY_INFO.brand_name}</span>
             </div>
           </motion.div>
         )}
