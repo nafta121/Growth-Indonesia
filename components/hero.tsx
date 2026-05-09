@@ -8,11 +8,11 @@ export default function Hero() {
   return (
     <section 
       id="hero" 
-      className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-[#0A1628] py-20 md:py-32"
+      className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-navy py-20 md:py-32"
     >
       {/* Background Decor */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#EF4444]/5 rounded-full blur-[120px] animate-pulse" />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-brand/5 rounded-full blur-[120px] animate-pulse" />
         <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-blue-600/5 rounded-full blur-[150px] animate-pulse delay-700" />
       </div>
 
@@ -24,10 +24,10 @@ export default function Hero() {
             <span className="block mt-4 relative">
               Let&apos;s Grow 
               <div 
-                className="absolute -bottom-2 md:-bottom-4 left-0 h-1.5 md:h-2 bg-[#EF4444]/20 rounded-full w-full animate-pulse"
+                className="absolute -bottom-2 md:-bottom-4 left-0 h-1.5 md:h-2 bg-brand/20 rounded-full w-full animate-pulse"
               />
             </span>
-            <span className="text-[#EF4444] inline-block relative font-bold">Together!</span>
+            <span className="text-brand inline-block relative font-bold">Together!</span>
           </h1>
 
           {/* Subheadline */}

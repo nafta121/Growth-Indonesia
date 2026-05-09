@@ -47,10 +47,10 @@ export default function Navbar() {
               <li key={link.name}>
                 <Link
                   href={link.href}
-                  className="group relative py-1 text-sm font-bold tracking-tight text-gray-800 transition-all duration-300 hover:text-[#EF4444] focus:outline-none focus:ring-2 focus:ring-[#EF4444]/20 rounded-sm px-2"
+                  className="group relative py-1 text-sm font-bold tracking-tight text-gray-800 transition-all duration-300 hover:text-brand focus:outline-none focus:ring-2 focus:ring-brand/20 rounded-sm px-2"
                 >
                   {link.name}
-                  <span className="absolute -bottom-1 left-2 h-0.5 w-0 bg-[#EF4444] transition-all duration-300 ease-out group-hover:w-[calc(100%-1rem)]" />
+                  <span className="absolute -bottom-1 left-2 h-0.5 w-0 bg-brand transition-all duration-300 ease-out group-hover:w-[calc(100%-1rem)]" />
                 </Link>
               </li>
             ))}
@@ -103,7 +103,7 @@ export default function Navbar() {
                   <Link
                     href={link.href}
                     onClick={() => setIsOpen(false)}
-                    className="block py-4 text-3xl font-display font-bold text-gray-800 hover:text-[#EF4444] active:scale-95 transition-all focus:outline-none focus:ring-2 focus:ring-[#EF4444] rounded-xl"
+                    className="block py-4 text-3xl font-display font-bold text-gray-800 hover:text-brand active:scale-95 transition-all focus:outline-none focus:ring-2 focus:ring-brand rounded-xl"
                   >
                     {link.name}
                   </Link>
@@ -119,9 +119,9 @@ export default function Navbar() {
                 href={`https://wa.me/${COMPANY_INFO.whatsapp_number}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-4 p-4 rounded-2xl bg-slate-50 border border-gray-100 hover:bg-[#EF4444] hover:border-[#EF4444] transition-all active:scale-95"
+                className="group flex items-center gap-4 p-4 rounded-2xl bg-slate-50 border border-gray-100 hover:bg-brand hover:border-brand transition-all active:scale-95"
               >
-                <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-red-600 shadow-sm transition-colors group-hover:text-[#EF4444]">
+                <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-red-600 shadow-sm transition-colors group-hover:text-brand">
                   <Phone className="w-5 h-5" />
                 </div>
                 <div className="flex flex-col">
