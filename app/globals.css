@@ -18,6 +18,11 @@
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
   }
+
+  @keyframes fab-enter {
+    from { opacity: 0; transform: scale(0) translateY(20px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
 }
 
 @utility animate-editorial-bounce {
@@ -26,6 +31,10 @@
 
 @utility animate-fade-in {
   animation: fade-in 1s ease-out forwards;
+}
+
+@utility animate-fab-enter {
+  animation: fab-enter 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
 @layer base {
