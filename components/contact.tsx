@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { MapPin, Phone, MessageCircle, Send, CheckCircle2, Calendar, Building2, User } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -25,16 +25,10 @@ type FormData = {
 export default function Contact({ initialPackage }: ContactProps) {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const { register, handleSubmit, formState: { errors, isValid, isSubmitting }, setValue } = useForm<FormData>({
+  const { register, handleSubmit, formState: { errors, isValid, isSubmitting } } = useForm<FormData>({
     defaultValues: { package: initialPackage || '' },
     mode: "onChange"
   });
-
-  useEffect(() => {
-    if (initialPackage) {
-      setValue('package', initialPackage);
-    }
-  }, [initialPackage, setValue]);
 
   const onSubmit = async (data: FormData) => {
     // Construction of WhatsApp message
