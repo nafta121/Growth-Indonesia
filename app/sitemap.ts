@@ -1,30 +1,52 @@
 import { MetadataRoute } from 'next';
 import { CITIES } from '@/lib/cities';
-import { PACKAGES } from '@/lib/packages';
+import { KATEGORI } from '@/lib/categories';
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  // Use the siteUrl, defaulting to the branded domain
+const PRIORITY_CITIES = ['madiun', 'surabaya', 'kediri', 'malang', 'magetan', 'ponorogo'];
+
+export function generateSitemaps() {
+  return [{ id: 'priority' }, { id: 'secondary' }];
+}
+
+export default function sitemap({ id }: { id: string }): MetadataRoute.Sitemap {
   const baseUrl = 'https://growthindonesia.my.id';
   
-  const cities = Object.keys(CITIES);
+  const allCities = Object.keys(CITIES);
   
-  // Dynamically generate URLs for the City Silo structure based on packages
-  const siloUrls: MetadataRoute.Sitemap = cities.flatMap((city) => 
-    PACKAGES.map((pkg) => ({
-      url: `${baseUrl}/layanan/${city}/${pkg.id}`,
-      lastModified: new Date(),
+  let targetCities: string[] = [];
+  
+  if (id === 'priority') {
+    targetCities = allCities.filter(city => PRIORITY_CITIES.includes(city));
+  } else if (id === 'secondary') {
+    targetCities = allCities.filter(city => !PRIORITY_CITIES.includes(city));
+  } else {
+    // Fallback if accessed without specific ID matching our generated ones
+    targetCities = allCities;
+  }
+
+  const fixedDate = new Date('2026-05-01');
+
+  const siloUrls: MetadataRoute.Sitemap = targetCities.flatMap((city) => 
+    KATEGORI.map((kategori) => ({
+      url: `${baseUrl}/layanan/${city}/${kategori}`,
+      lastModified: fixedDate,
       changeFrequency: 'monthly',
-      priority: 0.8,
+      priority: id === 'priority' ? 0.9 : 0.8,
     }))
   );
 
-  return [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 1,
-    },
-    ...siloUrls,
-  ];
+  // Add the base url only on the priority index
+  if (id === 'priority') {
+    return [
+      {
+        url: baseUrl,
+        lastModified: fixedDate,
+        changeFrequency: 'weekly',
+        priority: 1,
+      },
+      ...siloUrls,
+    ];
+  }
+
+  return siloUrls;
 }

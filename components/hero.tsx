@@ -1,4 +1,4 @@
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, MessageCircle, Star } from 'lucide-react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
@@ -19,33 +19,49 @@ export default function Hero() {
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 text-center">
         <div className="max-w-5xl mx-auto flex flex-col items-center">
           {/* Headline */}
-          <h1 className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-[9rem] font-black text-white leading-[1.1] mb-8 md:mb-12 tracking-tighter uppercase sm:whitespace-nowrap lg:whitespace-normal opacity-0 animate-fade-in">
-            <Badge variant="dark" className="mb-4 md:mb-8 font-sans">Provider Outbound Madiun</Badge>
+          <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black text-white leading-[1.2] mb-6 md:mb-8 tracking-tight opacity-0 animate-fade-in">
+            <Badge variant="dark" className="mb-4 md:mb-8 font-sans">Provider Outbound Profesional</Badge>
             <span className="block mt-4 relative">
-              Let&apos;s Grow 
-              <div 
-                className="absolute -bottom-2 md:-bottom-4 left-0 h-1.5 md:h-2 bg-brand/20 rounded-full w-full animate-pulse"
-              />
+              Transformasi SDM Perusahaan Melalui
             </span>
-            <span className="text-brand inline-block relative font-bold">Together!</span>
+            <span className="text-brand inline-block relative font-bold">
+              Program Outbound Terukur
+            </span>
           </h1>
 
           {/* Subheadline */}
-          <p className="text-slate-100 text-sm sm:text-base md:text-xl lg:text-2xl font-medium max-w-2xl mx-auto leading-relaxed mb-10 md:mb-16 px-4 opacity-0 animate-fade-in delay-200">
-            Berdayakan potensi terbaik tim Anda melalui solusi pengembangan SDM, 
-            modul pelatihan inovatif, dan program outbound strategis untuk menghadapi era digital.
+          <p className="text-slate-100 text-sm sm:text-base md:text-lg lg:text-xl font-medium max-w-3xl mx-auto leading-relaxed mb-10 md:mb-12 px-4 opacity-0 animate-fade-in delay-200">
+            Fasilitator bersertifikat BNSP, transparan harga, dan dipercaya oleh 100+ perusahaan BUMN & Swasta.
           </p>
 
-          {/* CTA Button */}
-          <div className="flex justify-center items-center opacity-0 animate-fade-in delay-[400ms]">
-            <Button asChild size="lg" className="w-full sm:w-auto min-w-[280px] group">
-              <Link href="#paket">
-                Lihat Paket Program
-                <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 w-full sm:w-auto opacity-0 animate-fade-in delay-[400ms] mb-12">
+            <Button asChild size="lg" className="w-full sm:w-auto min-w-[260px] group text-sm md:text-base h-14 rounded-xl">
+              <Link href="#kontak">
+                Dapatkan Proposal & RAB
+                <svg className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </Link>
             </Button>
+            <Button asChild variant="outline" size="lg" className="w-full sm:w-auto min-w-[260px] bg-transparent border-white/20 text-white hover:bg-white/10 transition-colors text-sm md:text-base h-14 rounded-xl">
+              <Link href="https://wa.me/6285704748186" target="_blank" rel="noopener noreferrer">
+                <MessageCircle className="w-5 h-5 mr-2" />
+                Chat via WhatsApp
+              </Link>
+            </Button>
+          </div>
+
+          {/* Trust Signals */}
+          <div className="flex items-center justify-center gap-3 opacity-0 animate-fade-in delay-[600ms]">
+            <div className="flex text-yellow-400">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="w-4 h-4 md:w-5 md:h-5 fill-current" />
+              ))}
+            </div>
+            <span className="text-sm md:text-base font-medium text-slate-300">
+              Dipercaya 250+ Perusahaan & Instansi Nasional
+            </span>
           </div>
         </div>
       </div>

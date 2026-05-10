@@ -158,6 +158,7 @@ export default async function ProgrammaticSiloPage({ params }: Props) {
         <CityHero 
           kategoriName={kategoriName} 
           kotaName={kotaName} 
+          cityKey={decodedKota}
           cityDescription={cityData.description} 
           content={content} 
         />
@@ -165,11 +166,12 @@ export default async function ProgrammaticSiloPage({ params }: Props) {
         <CityContent 
           kategoriName={kategoriName} 
           kotaName={kotaName} 
+          cityKey={decodedKota}
           cityData={cityData} 
         />
         
         {/* AI Overview & FAQ Section */}
-        <AiOverviewSection cityName={kotaName} venues={cityData.popularVenues} />
+        <AiOverviewSection cityName={kotaName} kategoriName={kategoriName} venues={cityData.popularVenues} />
 
         {/* Trust Section */}
         <TrustSection kategoriName={kategoriName} kotaName={kotaName} />
@@ -193,7 +195,7 @@ export default async function ProgrammaticSiloPage({ params }: Props) {
         </section>
 
         {/* Nearby Cities */}
-        <NearbyCities currentCityKey={decodedKota} allCities={CITIES} />
+        <NearbyCities currentCityKey={decodedKota} currentKategori={decodedKategori} allCities={CITIES} />
       </main>
     </>
   );

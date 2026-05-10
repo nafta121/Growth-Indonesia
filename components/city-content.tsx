@@ -2,17 +2,21 @@ import Image from 'next/image';
 import { Target, MapPin } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import ScrollReveal from '@/components/ui/scroll-reveal';
+import { getCityImage } from '@/lib/city-images';
 
 interface CityContentProps {
   kategoriName: string;
   kotaName: string;
+  cityKey: string;
   cityData: {
     uniqueSellingPoint: string;
     popularVenues: string[];
   };
 }
 
-export default function CityContent({ kategoriName, kotaName, cityData }: CityContentProps) {
+export default function CityContent({ kategoriName, kotaName, cityKey, cityData }: CityContentProps) {
+  const contentImage = getCityImage(cityKey);
+
   return (
     <section className="py-20 md:py-32 bg-white">
       <div className="max-w-7xl mx-auto px-4 md:px-12">
@@ -20,7 +24,7 @@ export default function CityContent({ kategoriName, kotaName, cityData }: CityCo
           <ScrollReveal delay={0.2} xOffset={-30} className="relative">
             <div className="aspect-[4/3] rounded-3xl overflow-hidden relative">
                <Image 
-                  src="https://nafta121.sirv.com/OUTBOUND/2022-11-05%2006-52-48.jpeg"
+                  src={contentImage}
                   alt={`${kategoriName} di ${kotaName}`}
                   fill
                   className="object-cover"

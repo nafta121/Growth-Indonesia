@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+import { KATEGORI } from '@/lib/categories';
 
 export function middleware(request: NextRequest) {
   const url = request.nextUrl.clone();
@@ -14,9 +15,7 @@ export function middleware(request: NextRequest) {
     if (segments.length === 2 && segments[0] === 'layanan') {
       const slug = segments[1];
       
-      const categories = ['outbound', 'training', 'fun-games', 'ldk-osis', 'gathering'];
-      
-      for (const category of categories) {
+      for (const category of KATEGORI) {
         if (slug.startsWith(`${category}-`)) {
           const city = slug.replace(`${category}-`, '');
           

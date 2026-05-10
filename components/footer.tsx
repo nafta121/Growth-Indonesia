@@ -1,9 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { CITIES as CITIES_OBJ } from '@/lib/cities';
 import { COMPANY_INFO } from '@/lib/constants';
-
-const CITIES = Object.keys(CITIES_OBJ);
+import { PRIORITY_CITIES } from '@/components/service-areas';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -38,7 +36,7 @@ export default function Footer() {
               {['Beranda', 'Tentang Kami', 'Layanan', 'Paket Program', 'Kontak'].map((link) => (
                 <li key={link}>
                   <Link 
-                    href={`#${link.toLowerCase().replace(' ', '-')}`} 
+                    href={link === 'Layanan' ? '/layanan' : `#${link.toLowerCase().replace(' ', '-')}`} 
                     className="text-gray-500 hover:text-[#EF4444] transition-colors"
                   >
                     {link}
@@ -50,15 +48,15 @@ export default function Footer() {
 
           {/* Area Layanan */}
           <div>
-            <h3 className="text-white font-bold mb-6 tracking-wide uppercase text-sm">Area Layanan</h3>
+            <h3 className="text-white font-bold mb-6 tracking-wide uppercase text-sm">Area Utama</h3>
             <ul className="space-y-4">
-              {CITIES.map((city) => (
+              {PRIORITY_CITIES.map((city) => (
                 <li key={city}>
                   <Link 
-                    href={`/layanan/${city}/outbound`} 
-                    className="text-gray-500 hover:text-[#EF4444] transition-colors"
+                    href={`/layanan/${city}`} 
+                    className="text-gray-500 hover:text-[#EF4444] transition-colors capitalize"
                   >
-                    Outbound {city.charAt(0).toUpperCase() + city.slice(1)}
+                    Layanan di {city}
                   </Link>
                 </li>
               ))}

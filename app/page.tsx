@@ -4,6 +4,7 @@ import AboutUs from '@/components/about-us';
 import OurImpact from '@/components/our-impact';
 import Approach from '@/components/approach';
 import Services from '@/components/services';
+import ServiceAreas from '@/components/service-areas';
 import Pricing from '@/components/pricing';
 import Footer from '@/components/footer';
 import WhatsAppFAB from '@/components/whatsapp-fab';
@@ -30,6 +31,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ p
         <OurImpact />
         <Approach />
         <Services />
+        <ServiceAreas />
         <Pricing />
         <Contact initialPackage={selectedPackage} />
       </main>

@@ -4,10 +4,12 @@ import Link from 'next/link';
 import { Star, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import ScrollReveal from '@/components/ui/scroll-reveal';
+import { getCityImage } from '@/lib/city-images';
 
 interface CityHeroProps {
   kategoriName: string;
   kotaName: string;
+  cityKey: string;
   cityDescription: string;
   content: {
     h1: ReactNode;
@@ -16,13 +18,15 @@ interface CityHeroProps {
   };
 }
 
-export default function CityHero({ kategoriName, kotaName, cityDescription, content }: CityHeroProps) {
+export default function CityHero({ kategoriName, kotaName, cityKey, cityDescription, content }: CityHeroProps) {
+  const heroImage = getCityImage(cityKey);
+
   return (
     <section className="relative pt-20 pb-20 md:pt-32 md:pb-28 bg-[#0A1628] overflow-hidden">
       <div className="absolute inset-0 z-0">
         <Image 
-          src="https://nafta121.sirv.com/OUTBOUND/2022-10-22%2009-00-09.jpeg"
-          alt={`Background ${kategoriName}`}
+          src={heroImage}
+          alt={`Background ${kategoriName} di ${kotaName}`}
           fill
           priority
           fetchPriority="high"
