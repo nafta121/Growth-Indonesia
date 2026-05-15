@@ -5,7 +5,6 @@ import { COMPANY_INFO } from '@/lib/constants';
 import { getLocalBusinessSchema, getFaqSchema } from '@/lib/schema';
 import { formatSlug } from '@/lib/format';
 import { getContentVariations } from '@/lib/content-variations';
-import { BreadcrumbSchema } from '@/components/breadcrumb-schema';
 import { NearbyCities } from '@/components/nearby-cities';
 import KalkulatorBudget from '@/components/kalkulator-budget';
 import { AiOverviewSection } from '@/components/ai-overview';
@@ -39,16 +38,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title,
     description,
-    keywords: [
-      kategoriName,
-      `${kategoriName} ${kotaName}`,
-      `Provider ${kategoriName} ${kotaName}`,
-      `Jasa ${kategoriName} ${kotaName}`,
-      `Event Organizer ${kategoriName} ${kotaName}`,
-      `EO ${kategoriName} ${kotaName}`,
-      `Paket ${kategoriName} ${kotaName}`,
-      `Harga ${kategoriName} ${kotaName}`
-    ],
+    alternates: {
+      canonical: `https://growthindonesia.my.id/layanan/${decodedKota}/${decodedKategori}`,
+      languages: {
+        'id-ID': `https://growthindonesia.my.id/layanan/${decodedKota}/${decodedKategori}`,
+      },
+    },
+    robots: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+    },
     openGraph: {
       title,
       description,
@@ -97,6 +97,8 @@ export default async function ProgrammaticSiloPage({ params }: Props) {
   const kotaName = formatSlug(decodedKota);
   const kategoriName = formatSlug(decodedKategori);
 
+  const faqSchema = getFaqSchema(kategoriName, kotaName);
+
   const schemaLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -133,51 +135,50 @@ export default async function ProgrammaticSiloPage({ params }: Props) {
         },
         "areaServed": kotaName
       },
-      getLocalBusinessSchema(kotaName)
+      getLocalBusinessSchema(kotaName),
+      faqSchema
     ]
   };
-
-  const faqSchema = getFaqSchema(kategoriName, kotaName);
 
   const content = getContentVariations(decodedKategori, kotaName);
 
   return (
     <>
-      <BreadcrumbSchema cityName={kotaName} cityKey={decodedKota} />
-      {/* Menggunakan Schema.org JSON-LD Langsung di Komponen Utama */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaLd) }}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <main className="flex-1 w-full flex flex-col pt-[72px] md:pt-[88px]">
         {/* Modularized Content Sections */}
-        <CityHero 
-          kategoriName={kategoriName} 
-          kotaName={kotaName} 
-          cityKey={decodedKota}
-          cityDescription={cityData.description} 
-          content={content} 
-        />
-        
-        <CityContent 
-          kategoriName={kategoriName} 
-          kotaName={kotaName} 
-          cityKey={decodedKota}
-          cityData={cityData} 
-        />
-        
-        {/* AI Overview & FAQ Section */}
-        <AiOverviewSection cityName={kotaName} kategoriName={kategoriName} venues={cityData.popularVenues} />
+        <article itemScope itemType="https://schema.org/Service">
+          <meta itemProp="name" content={`${kategoriName} di ${kotaName}`} />
+          <meta itemProp="provider" content={COMPANY_INFO.brand_name} />
+          <meta itemProp="areaServed" content={kotaName} />
+          
+          <CityHero 
+            kategoriName={kategoriName} 
+            kotaName={kotaName} 
+            cityKey={decodedKota}
+            cityDescription={cityData.description} 
+            content={content} 
+          />
+          
+          <CityContent 
+            kategoriName={kategoriName} 
+            kotaName={kotaName} 
+            cityKey={decodedKota}
+            cityData={cityData} 
+          />
+          
+          {/* AI Overview & FAQ Section */}
+          <AiOverviewSection cityName={kotaName} kategoriName={kategoriName} venues={cityData.popularVenues} />
 
-        {/* Trust Section */}
-        <TrustSection kategoriName={kategoriName} kotaName={kotaName} />
+          {/* Trust Section */}
+          <TrustSection kategoriName={kategoriName} kotaName={kotaName} />
 
-        {/* CTA Section */}
-        <CityCta kategoriName={kategoriName} kotaName={kotaName} />
+          {/* CTA Section */}
+          <CityCta kategoriName={kategoriName} kotaName={kotaName} />
+        </article>
 
         {/* Kalkulator Budget Estimasi */}
         <section className="py-20 bg-white border-t border-gray-100">

@@ -2,51 +2,41 @@ import { MetadataRoute } from 'next';
 import { CITIES } from '@/lib/cities';
 import { KATEGORI } from '@/lib/categories';
 
-const PRIORITY_CITIES = ['madiun', 'surabaya', 'kediri', 'malang', 'magetan', 'ponorogo'];
-
-export function generateSitemaps() {
-  return [{ id: 'priority' }, { id: 'secondary' }];
-}
-
-export default function sitemap({ id }: { id: string }): MetadataRoute.Sitemap {
+export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://growthindonesia.my.id';
-  
-  const allCities = Object.keys(CITIES);
-  
-  let targetCities: string[] = [];
-  
-  if (id === 'priority') {
-    targetCities = allCities.filter(city => PRIORITY_CITIES.includes(city));
-  } else if (id === 'secondary') {
-    targetCities = allCities.filter(city => !PRIORITY_CITIES.includes(city));
-  } else {
-    // Fallback if accessed without specific ID matching our generated ones
-    targetCities = allCities;
-  }
-
   const fixedDate = new Date('2026-05-01');
+  const allCities = Object.keys(CITIES);
 
-  const siloUrls: MetadataRoute.Sitemap = targetCities.flatMap((city) => 
+  const corePages: MetadataRoute.Sitemap = [
+    {
+      url: baseUrl,
+      lastModified: fixedDate,
+      changeFrequency: 'weekly',
+      priority: 1,
+    },
+    {
+      url: `${baseUrl}/layanan`,
+      lastModified: fixedDate,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+  ];
+
+  const cityHubPages: MetadataRoute.Sitemap = allCities.map((city) => ({
+    url: `${baseUrl}/layanan/${city}`,
+    lastModified: fixedDate,
+    changeFrequency: 'weekly',
+    priority: 0.8,
+  }));
+
+  const programmaticPages: MetadataRoute.Sitemap = allCities.flatMap((city) => 
     KATEGORI.map((kategori) => ({
       url: `${baseUrl}/layanan/${city}/${kategori}`,
       lastModified: fixedDate,
       changeFrequency: 'monthly',
-      priority: id === 'priority' ? 0.9 : 0.8,
+      priority: 0.7,
     }))
   );
 
-  // Add the base url only on the priority index
-  if (id === 'priority') {
-    return [
-      {
-        url: baseUrl,
-        lastModified: fixedDate,
-        changeFrequency: 'weekly',
-        priority: 1,
-      },
-      ...siloUrls,
-    ];
-  }
-
-  return siloUrls;
+  return [...corePages, ...cityHubPages, ...programmaticPages];
 }

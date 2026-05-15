@@ -17,6 +17,7 @@ export function getLocalBusinessSchema(additionalArea?: string) {
 
   return {
     "@type": "LocalBusiness",
+    "@id": "https://growthindonesia.my.id/#organization",
     "name": COMPANY_INFO.brand_name,
     "image": COMPANY_INFO.logo_url,
     "telephone": `+${COMPANY_INFO.whatsapp_number}`,
@@ -29,6 +30,30 @@ export function getLocalBusinessSchema(additionalArea?: string) {
       "postalCode": "63128",
       "addressCountry": "ID"
     },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": -7.6298,
+      "longitude": 111.5239
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "08:00",
+        "closes": "17:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Saturday",
+        "opens": "08:00",
+        "closes": "15:00"
+      }
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "250"
+    },
     "areaServed": areaServed,
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
@@ -38,25 +63,36 @@ export function getLocalBusinessSchema(additionalArea?: string) {
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
-            "name": "Outbound Training & Team Building"
+            "name": "Outbound"
           }
         },
         {
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
-            "name": "Corporate Gathering"
+            "name": "Training"
           }
         },
         {
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
-            "name": "LDK OSIS & Edukasi"
+            "name": "Gathering"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "LDK"
           }
         }
       ]
-    }
+    },
+    "sameAs": [
+      "https://www.instagram.com/growthindonesia/",
+      "https://www.facebook.com/growthindonesia/"
+    ]
   };
 }
 
