@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next';
 import { CITIES } from '@/lib/cities';
 import { KATEGORI } from '@/lib/categories';
+import { getArticleSlugs } from '@/lib/mdx';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://growthindonesia.my.id';
@@ -20,6 +21,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 0.9,
     },
+    {
+      url: `${baseUrl}/artikel`,
+      lastModified: fixedDate,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
   ];
 
   const cityHubPages: MetadataRoute.Sitemap = allCities.map((city) => ({
@@ -38,5 +45,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }))
   );
 
-  return [...corePages, ...cityHubPages, ...programmaticPages];
+  const articleSlugs = getArticleSlugs();
+  const articlePages: MetadataRoute.Sitemap = articleSlugs.map((slug) => {
+    const cleanSlug = slug.replace(/\.mdx$/, '');
+    return {
+      url: `${baseUrl}/artikel/${cleanSlug}`,
+      lastModified: fixedDate,
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    };
+  });
+
+  return [...corePages, ...cityHubPages, ...programmaticPages, ...articlePages];
 }
