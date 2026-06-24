@@ -16,8 +16,10 @@ export default function Hero() {
         <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-blue-600/5 rounded-full blur-[150px] animate-pulse delay-700" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 text-center">
-        <div className="max-w-5xl mx-auto flex flex-col items-center">
+      {/* Added w-full to ensure proper bounding box */}
+      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 text-center w-full">
+        <div className="max-w-5xl mx-auto flex flex-col items-center w-full">
+          
           {/* Headline */}
           <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black text-white leading-[1.2] mb-6 md:mb-8 tracking-tight opacity-0 animate-fade-in">
             <Badge variant="dark" className="mb-4 md:mb-8 font-sans">Provider Outbound Profesional</Badge>
@@ -34,8 +36,8 @@ export default function Hero() {
             Fasilitator bersertifikat BNSP, transparan harga, dan dipercaya oleh 100+ perusahaan BUMN & Swasta.
           </p>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 w-full sm:w-auto px-6 sm:px-0 opacity-0 animate-fade-in delay-[400ms] mb-12">
+          {/* CTA Buttons - FIX: Added max-w-md, mx-auto, and better px-handling for mobile breathing room */}
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 w-full max-w-md sm:max-w-none mx-auto px-2 sm:px-0 opacity-0 animate-fade-in delay-[400ms] mb-12">
             <Button asChild size="lg" className="w-full sm:w-auto min-w-[260px] group text-sm md:text-base h-14 rounded-xl">
               <Link href="#kontak">
                 Dapatkan Proposal & RAB
@@ -52,14 +54,14 @@ export default function Hero() {
             </Button>
           </div>
 
-          {/* Trust Signals */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 opacity-0 animate-fade-in delay-[600ms] px-4">
+          {/* Trust Signals - FIX: Added max-w-xs and leading-relaxed to force nice text wrapping on small phones */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 opacity-0 animate-fade-in delay-[600ms] px-4 w-full max-w-xs sm:max-w-none mx-auto">
             <div className="flex text-yellow-400 shrink-0">
               {[...Array(5)].map((_, i) => (
                 <Star key={i} className="w-4 h-4 md:w-5 md:h-5 fill-current" />
               ))}
             </div>
-            <span className="text-xs sm:text-sm md:text-base font-medium text-slate-300 text-center">
+            <span className="text-xs sm:text-sm md:text-base font-medium text-slate-300 text-center leading-relaxed">
               Dipercaya 250+ Perusahaan & Instansi Nasional
             </span>
           </div>
