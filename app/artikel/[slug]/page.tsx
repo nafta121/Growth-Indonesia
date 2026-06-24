@@ -117,7 +117,7 @@ export default async function ArtikelDetailPage({ params }: PageProps) {
 
       <main className="flex-grow pt-[72px] md:pt-[88px]">
         {/* Editorial Top Section */}
-        <section className="relative py-16 md:py-24 bg-[#0A1628] overflow-hidden">
+        <section className="relative pt-20 pb-36 md:pt-28 md:pb-48 bg-[#0A1628] overflow-hidden">
           <div className="absolute inset-0 z-0 opacity-20">
             <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628] via-brand/10 to-[#0A1628]" />
           </div>
@@ -126,7 +126,7 @@ export default async function ArtikelDetailPage({ params }: PageProps) {
             {/* Back to Hub */}
             <Link
               href="/artikel"
-              className="inline-flex items-center gap-2 text-sm font-bold text-slate-300 hover:text-brand transition-colors mb-8 group"
+              className="inline-flex items-center gap-2 text-sm font-bold text-slate-300 hover:text-brand transition-colors mb-10 group"
             >
               <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
               Kembali ke Artikel
@@ -134,11 +134,11 @@ export default async function ArtikelDetailPage({ params }: PageProps) {
 
             {/* Tags */}
             {article.frontmatter.tags && article.frontmatter.tags.length > 0 && (
-              <div className="flex flex-wrap gap-2 mb-6">
+              <div className="flex flex-wrap gap-2.5 mb-8">
                 {article.frontmatter.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-semibold text-slate-300"
+                    className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-xs font-semibold text-white hover:bg-white/20 transition-colors"
                   >
                     <Tag className="w-3 h-3 text-brand" />
                     {tag}
@@ -153,7 +153,7 @@ export default async function ArtikelDetailPage({ params }: PageProps) {
             </h1>
 
             {/* Meta Details */}
-            <div className="flex flex-wrap items-center gap-6 text-sm text-slate-300 font-medium">
+            <div className="flex flex-wrap items-center gap-6 text-sm text-slate-300 font-medium pt-6 border-t border-white/10">
               <div className="flex items-center gap-2">
                 <Calendar className="w-4 h-4 text-brand" />
                 <span>
@@ -177,9 +177,9 @@ export default async function ArtikelDetailPage({ params }: PageProps) {
         </section>
 
         {/* Featured Image Banner */}
-        <section className="bg-slate-50 relative">
-          <div className="max-w-4xl mx-auto px-6 -mt-10 md:-mt-16 relative z-20">
-            <div className="aspect-[21/10] w-full rounded-3xl overflow-hidden shadow-2xl relative bg-slate-100">
+        <section className="bg-slate-50 relative pb-4">
+          <div className="max-w-4xl mx-auto px-6 -mt-24 md:-mt-32 relative z-20">
+            <div className="aspect-[21/10] w-full rounded-3xl overflow-hidden shadow-2xl relative bg-slate-100 border border-white/10">
               <Image
                 src={article.frontmatter.image}
                 alt={article.frontmatter.title}
