@@ -35,7 +35,7 @@ export default function Hero() {
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 w-full sm:w-auto opacity-0 animate-fade-in delay-[400ms] mb-12">
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 w-full sm:w-auto px-6 sm:px-0 opacity-0 animate-fade-in delay-[400ms] mb-12">
             <Button asChild size="lg" className="w-full sm:w-auto min-w-[260px] group text-sm md:text-base h-14 rounded-xl">
               <Link href="#kontak">
                 Dapatkan Proposal & RAB
@@ -53,13 +53,13 @@ export default function Hero() {
           </div>
 
           {/* Trust Signals */}
-          <div className="flex items-center justify-center gap-3 opacity-0 animate-fade-in delay-[600ms]">
-            <div className="flex text-yellow-400">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 opacity-0 animate-fade-in delay-[600ms] px-4">
+            <div className="flex text-yellow-400 shrink-0">
               {[...Array(5)].map((_, i) => (
                 <Star key={i} className="w-4 h-4 md:w-5 md:h-5 fill-current" />
               ))}
             </div>
-            <span className="text-sm md:text-base font-medium text-slate-300">
+            <span className="text-xs sm:text-sm md:text-base font-medium text-slate-300 text-center">
               Dipercaya 250+ Perusahaan & Instansi Nasional
             </span>
           </div>
