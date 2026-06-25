@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { notFound } from 'next/navigation';
+import { notFound, permanentRedirect } from 'next/navigation';
 import Link from 'next/link';
 import { MapPin, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { CITIES } from '@/lib/cities';
@@ -13,12 +13,28 @@ type Props = {
   params: Promise<{ kota: string }>;
 };
 
+const CATEGORIES = ['outbound', 'training', 'fun-games', 'ldk-osis', 'gathering'];
+
+function getRedirectDestination(slug: string): string | null {
+  for (const cat of CATEGORIES) {
+    if (slug.startsWith(`${cat}-`)) {
+      const detectedCity = slug.replace(`${cat}-`, '');
+      return `/layanan/${detectedCity}/${cat}`;
+    }
+  }
+  return null;
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { kota } = await params;
   const decodedKota = decodeURIComponent(kota).toLowerCase();
   const cityData = CITIES[decodedKota];
   
   if (!cityData) {
+    const redirectUrl = getRedirectDestination(decodedKota);
+    if (redirectUrl) {
+      permanentRedirect(redirectUrl);
+    }
     notFound();
   }
 
@@ -47,6 +63,10 @@ export default async function CityHubPage({ params }: Props) {
   const cityData = CITIES[decodedKota];
 
   if (!cityData) {
+    const redirectUrl = getRedirectDestination(decodedKota);
+    if (redirectUrl) {
+      permanentRedirect(redirectUrl);
+    }
     notFound();
   }
 
