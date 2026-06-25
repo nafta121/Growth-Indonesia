@@ -97,13 +97,20 @@ export default async function ProgrammaticSiloPage({ params }: Props) {
   const kotaName = formatSlug(decodedKota);
   const kategoriName = formatSlug(decodedKategori);
 
-  const faqSchema = getFaqSchema(kategoriName, kotaName);
+  const rawFaqSchema = getFaqSchema(kategoriName, kotaName);
+  const faqSchema = {
+    ...rawFaqSchema,
+    "@id": "https://growthindonesia.my.id/#faq",
+    "name": "FAQ Seputar Layanan Growth Indonesia"
+  };
 
   const schemaLd = {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "BreadcrumbList",
+        "@id": "https://growthindonesia.my.id/#breadcrumb",
+        "name": "Navigasi Layanan Growth Indonesia",
         "itemListElement": [
           {
             "@type": "ListItem",
