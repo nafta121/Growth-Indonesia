@@ -6,8 +6,8 @@ import { Star, Sparkles } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const CATEGORIES = [
-  { id: 'training', label: 'TRAINING & DEVELOPMENT' },
-  { id: 'entertainment', label: 'NON-TRAINING & ENTERTAINING' },
+  { id: 'training', label: 'TRAINING & DEVELOPMENT', shortLabel: 'TRAINING' },
+  { id: 'entertainment', label: 'NON-TRAINING & ENTERTAINING', shortLabel: 'ENTERTAINING' },
 ] as const;
 
 export default function ServicesTabs({ services }: { services: Record<string, { title: string, desc: string }[]> }) {
@@ -15,17 +15,18 @@ export default function ServicesTabs({ services }: { services: Record<string, { 
 
   return (
     <>
-      <div className="relative flex flex-col sm:flex-row p-1.5 bg-white/5 backdrop-blur-sm rounded-2xl md:rounded-3xl border border-white/10 w-full max-w-2xl mx-auto mb-12 md:mb-20">
+      <div className="relative flex flex-nowrap overflow-x-auto p-1.5 bg-white/5 backdrop-blur-sm rounded-2xl md:rounded-3xl border border-white/10 w-full max-w-2xl mx-auto mb-12 md:mb-20 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory">
         {CATEGORIES.map((cat) => (
           <button
             key={cat.id}
             onClick={() => setActiveTab(cat.id)}
             className={cn(
-              "relative z-10 flex-1 py-4 md:py-5 px-6 text-xs md:text-sm font-bold tracking-[0.15em] transition-all duration-300 rounded-xl md:rounded-2xl focus:outline-none uppercase active:scale-95",
+              "relative z-10 flex-1 min-w-fit shrink-0 snap-center py-4 md:py-5 px-6 text-xs md:text-sm font-bold tracking-[0.15em] transition-all duration-300 rounded-xl md:rounded-2xl focus:outline-none uppercase active:scale-95",
               activeTab === cat.id ? "text-white" : "text-slate-300 hover:bg-slate-800 hover:text-white"
             )}
           >
-            {cat.label}
+            <span className="sm:hidden">{cat.shortLabel}</span>
+            <span className="hidden sm:inline">{cat.label}</span>
             {activeTab === cat.id && (
               <motion.div
                 layoutId="activeTab"

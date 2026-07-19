@@ -22,22 +22,24 @@ export default function Pricing() {
         </ScrollReveal>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10 items-stretch">
-          {PACKAGES.filter(pkg => pkg.id !== 'other').map((pkg, idx) => (
+          {PACKAGES.filter(pkg => pkg.id !== 'other').map((pkg, idx) => {
+            const isAnchor = idx === 1;
+            return (
             <ScrollReveal
               key={pkg.id}
               delay={idx * 0.1}
               duration={0.6}
               className={cn(
-                "group relative flex flex-col p-8 md:p-10 rounded-[2.5rem] md:rounded-[3rem] bg-white border border-gray-100 transition-all duration-500",
-                "hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)] hover:border-[#EF4444]/20",
-                pkg.popular && "ring-[3px] ring-[#EF4444] shadow-2xl shadow-[#EF4444]/10"
+                "group relative flex flex-col p-8 md:p-10 rounded-[2.5rem] md:rounded-[3rem] transition-all duration-500 hover:-translate-y-2",
+                isAnchor
+                  ? "border-2 border-[#EF4444] bg-[#EF4444]/5 lg:scale-105 shadow-xl shadow-red-500/10 z-10"
+                  : "bg-white border border-gray-100 hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)] hover:border-[#EF4444]/20"
               )}
             >
-              {pkg.popular && (
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#EF4444] text-white text-[10px] font-bold uppercase tracking-[0.2em] px-6 py-2 rounded-full shadow-lg overflow-hidden">
-                  <div className="relative z-10">Most Popular</div>
-                  <div className="absolute inset-0 bg-white/20 animate-glare" />
-                </div>
+              {isAnchor && (
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#EF4444] text-white px-4 py-1 text-xs md:text-sm rounded-full font-bold shadow-md whitespace-nowrap z-20">
+                  Paling Diminati
+                </span>
               )}
               
               <div className="mb-8">
@@ -65,8 +67,8 @@ export default function Pricing() {
 
               <Button
                 asChild
-                variant={pkg.popular ? "default" : "outline"}
-                className={cn("mt-12 w-full flex items-center justify-center gap-2 font-bold uppercase tracking-wider text-sm", pkg.popular && "bg-red-600 hover:bg-red-700 text-white")}
+                variant={(isAnchor || pkg.popular) ? "default" : "outline"}
+                className={cn("mt-12 w-full flex items-center justify-center gap-2 font-bold uppercase tracking-wider text-sm", (isAnchor || pkg.popular) && "bg-red-600 hover:bg-red-700 text-white")}
               >
                 <Link href={`/?package=${pkg.id}#kontak`} scroll={false} aria-label={`Pilih Paket ${pkg.title}`}>
                   <span className="relative z-10">Pilih Paket</span>
@@ -74,7 +76,8 @@ export default function Pricing() {
                 </Link>
               </Button>
             </ScrollReveal>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

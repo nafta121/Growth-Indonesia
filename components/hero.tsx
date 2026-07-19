@@ -36,18 +36,18 @@ export default function Hero() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4 w-full sm:w-auto px-4 sm:px-0 opacity-0 animate-fade-in delay-[400ms] mb-12">
-            <Button asChild size="lg" className="w-full sm:w-auto min-w-[240px] sm:min-w-[260px] group text-sm md:text-base h-14 rounded-xl">
-              <Link href="#kontak">
-                Dapatkan Proposal & RAB
-                <svg className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </Link>
-            </Button>
-            <Button asChild variant="outline" size="lg" className="w-full sm:w-auto min-w-[240px] sm:min-w-[260px] bg-transparent border-white/20 text-white hover:bg-white/10 transition-colors text-sm md:text-base h-14 rounded-xl">
+            <Button asChild size="lg" className="w-full sm:w-auto min-w-[240px] sm:min-w-[260px] bg-[#25D366] hover:bg-[#128C7E] text-white border-0 shadow-lg hover:shadow-xl transition-all group text-sm md:text-base h-14 rounded-xl">
               <Link href="https://wa.me/6285704748186" target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="w-5 h-5 mr-2" />
                 Chat via WhatsApp
+              </Link>
+            </Button>
+            <Button asChild variant="outline" size="lg" className="w-full sm:w-auto min-w-[240px] sm:min-w-[260px] bg-transparent border border-white/20 text-slate-300 hover:bg-white/10 hover:text-white transition-colors text-sm md:text-base h-14 rounded-xl group">
+              <Link href="#layanan">
+                Jelajahi Program
+                <svg className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
               </Link>
             </Button>
           </div>

@@ -41,6 +41,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 100px;
   }
   @keyframes marquee {
     0% { transform: translateX(0); }
