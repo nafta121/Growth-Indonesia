@@ -8,6 +8,8 @@ import WhatsAppFAB from '@/components/whatsapp-fab';
 import { getAllArticles } from '@/lib/mdx';
 import { COMPANY_INFO } from '@/lib/constants';
 
+export const dynamic = 'force-static';
+
 export const metadata: Metadata = {
   title: `Artikel & Edukasi Outbound Terbaik | ${COMPANY_INFO.brand_name}`,
   description: `Kumpulan artikel, tips, panduan, dan edukasi seputar program outbound, training, team building, dan pengembangan SDM perusahaan dari ${COMPANY_INFO.brand_name}.`,
