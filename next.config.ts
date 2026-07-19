@@ -8,6 +8,18 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: false,
   },
+  serverExternalPackages: [
+    'remark',
+    'remark-parse',
+    'remark-html',
+    'rehype',
+    'rehype-recma',
+    'unified',
+    'micromark',
+    'next-mdx-remote',
+    'unist',
+    'mdast',
+  ],
   // Allow access to remote image placeholder.
   images: {
     remotePatterns: [
