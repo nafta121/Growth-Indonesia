@@ -32,6 +32,21 @@ export async function GET() {
             description: 'XML Sitemap listing all active service areas, articles, and landing pages.',
           },
           {
+            path: '/.well-known/agent-skills/index.json',
+            method: 'GET',
+            description: 'Agent Skills Discovery Index (RFC v0.2.0) listing all supported agent skills and SHA-256 digests.',
+          },
+          {
+            path: 'navigator.modelContext',
+            method: 'CLIENT-WEBMCP',
+            description: 'WebMCP (W3C Web Machine Learning CG) browser client tools API provided via navigator.modelContext.provideContext().',
+          },
+          {
+            path: '/.well-known/agent-card.json',
+            method: 'GET',
+            description: 'A2A Agent Card specification for agent-to-agent discovery and skill registration.',
+          },
+          {
             path: '/.well-known/mcp/server-card.json',
             method: 'GET',
             description: 'MCP Server Card specification (SEP-1649) for Model Context Protocol agent discovery.',

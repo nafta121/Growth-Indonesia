@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter, Outfit } from 'next/font/google';
 import { GoogleTagManager } from '@next/third-parties/google';
+import { WebMCPProvider } from '@/components/webmcp-provider';
 import './globals.css';
 
 const inter = Inter({
@@ -72,6 +73,7 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://nafta121.sirv.com" />
       </head>
       <body suppressHydrationWarning className="font-sans antialiased bg-[#0A1628] text-white">
+        <WebMCPProvider />
         {children}
         <GoogleTagManager gtmId="G-XXXXXXXXXX" />
       </body>

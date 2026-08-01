@@ -29,6 +29,45 @@ export default function ApiDocsPage() {
           <h2 className="text-xl font-semibold text-emerald-400">Standard Discovery Resources</h2>
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="bg-slate-800/50 p-4 rounded-lg border border-slate-700/50 sm:col-span-2">
+              <span className="text-xs uppercase tracking-wider text-slate-400 font-mono">WebMCP Standard (W3C Web Machine Learning CG)</span>
+              <h3 className="font-semibold text-white mt-1">Client WebMCP Tools API</h3>
+              <p className="text-sm text-slate-300 mt-1">
+                Implementasi WebMCP melalui <code className="text-emerald-300">navigator.modelContext.provideContext()</code> menyediakan instrumen browser langsung untuk agen AI (kalkulator anggaran, pencarian layanan, cakupan kota, dan konsultasi WhatsApp).
+              </p>
+              <span className="mt-3 inline-block text-xs font-mono text-emerald-400">
+                Client API: navigator.modelContext.provideContext()
+              </span>
+            </div>
+
+            <div className="bg-slate-800/50 p-4 rounded-lg border border-slate-700/50 sm:col-span-2">
+              <span className="text-xs uppercase tracking-wider text-slate-400 font-mono">Agent Skills Discovery RFC v0.2.0</span>
+              <h3 className="font-semibold text-white mt-1">Agent Skills Index</h3>
+              <p className="text-sm text-slate-300 mt-1">
+                Indeks penemuan keahlian agen (Agent Skills Discovery RFC v0.2.0) yang menyediakan daftar nama keahlian, tipe, deskripsi, URL spesifikasi SKILL.md, dan nilai hash SHA-256.
+              </p>
+              <a
+                href="/.well-known/agent-skills/index.json"
+                className="mt-3 inline-block text-xs font-mono text-emerald-400 hover:underline"
+              >
+                /.well-known/agent-skills/index.json
+              </a>
+            </div>
+
+            <div className="bg-slate-800/50 p-4 rounded-lg border border-slate-700/50 sm:col-span-2">
+              <span className="text-xs uppercase tracking-wider text-slate-400 font-mono">Agent-to-Agent (A2A) Protocol</span>
+              <h3 className="font-semibold text-white mt-1">A2A Agent Card (Agent Discovery)</h3>
+              <p className="text-sm text-slate-300 mt-1">
+                Kartu agen A2A (Agent Card) yang mendeskripsikan kemampuan agen, antarmuka terdistribusi, versi protokol, dan daftar keahlian (skills) untuk penemuan antar agen AI.
+              </p>
+              <a
+                href="/.well-known/agent-card.json"
+                className="mt-3 inline-block text-xs font-mono text-emerald-400 hover:underline"
+              >
+                /.well-known/agent-card.json
+              </a>
+            </div>
+
+            <div className="bg-slate-800/50 p-4 rounded-lg border border-slate-700/50 sm:col-span-2">
               <span className="text-xs uppercase tracking-wider text-slate-400 font-mono">Model Context Protocol</span>
               <h3 className="font-semibold text-white mt-1">MCP Server Card (SEP-1649)</h3>
               <p className="text-sm text-slate-300 mt-1">
