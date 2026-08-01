@@ -29,10 +29,14 @@ export function middleware(request: NextRequest) {
     }
   }
 
-  return NextResponse.next();
+  const response = NextResponse.next();
+  response.headers.set(
+    'Link',
+    '</.well-known/api-catalog>; rel="api-catalog", </docs/api>; rel="service-doc", </sitemap.xml>; rel="sitemap"'
+  );
+  return response;
 }
 
 export const config = {
-  // Only execute middleware on paths starting with /layanan to save performance overhead
-  matcher: ['/layanan/:path*'],
+  matcher: ['/((?!_next/static|_next/image|favicon.ico).*)'],
 };
