@@ -32,6 +32,16 @@ export async function GET() {
             description: 'XML Sitemap listing all active service areas, articles, and landing pages.',
           },
           {
+            path: '/.well-known/openid-configuration',
+            method: 'GET',
+            description: 'OpenID Connect 1.0 discovery metadata specification for agent authentication.',
+          },
+          {
+            path: '/.well-known/oauth-authorization-server',
+            method: 'GET',
+            description: 'OAuth 2.0 Authorization Server metadata (RFC 8414).',
+          },
+          {
             path: '/.well-known/http-message-signatures-directory',
             method: 'GET',
             description: 'Web Bot Auth JWKS directory for HTTP message signature verification.',

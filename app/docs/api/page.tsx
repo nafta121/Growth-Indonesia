@@ -29,6 +29,30 @@ export default function ApiDocsPage() {
           <h2 className="text-xl font-semibold text-emerald-400">Standard Discovery Resources</h2>
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="bg-slate-800/50 p-4 rounded-lg border border-slate-700/50">
+              <span className="text-xs uppercase tracking-wider text-slate-400 font-mono">OpenID Connect Discovery</span>
+              <h3 className="font-semibold text-white mt-1">OpenID Configuration</h3>
+              <p className="text-sm text-slate-300 mt-1">Spesifikasi OIDC 1.0 Discovery untuk autentikasi agen otomatis.</p>
+              <a
+                href="/.well-known/openid-configuration"
+                className="mt-3 inline-block text-xs font-mono text-emerald-400 hover:underline"
+              >
+                /.well-known/openid-configuration
+              </a>
+            </div>
+
+            <div className="bg-slate-800/50 p-4 rounded-lg border border-slate-700/50">
+              <span className="text-xs uppercase tracking-wider text-slate-400 font-mono">OAuth 2.0 Metadata</span>
+              <h3 className="font-semibold text-white mt-1">OAuth Authorization Server</h3>
+              <p className="text-sm text-slate-300 mt-1">Metadata OAuth 2.0 Server Otorisasi (RFC 8414).</p>
+              <a
+                href="/.well-known/oauth-authorization-server"
+                className="mt-3 inline-block text-xs font-mono text-emerald-400 hover:underline"
+              >
+                /.well-known/oauth-authorization-server
+              </a>
+            </div>
+
+            <div className="bg-slate-800/50 p-4 rounded-lg border border-slate-700/50">
               <span className="text-xs uppercase tracking-wider text-slate-400 font-mono">rel=&quot;api-catalog&quot;</span>
               <h3 className="font-semibold text-white mt-1">API Catalog Endpoint</h3>
               <p className="text-sm text-slate-300 mt-1">RFC 9727 API Catalog JSON specification.</p>
