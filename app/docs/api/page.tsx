@@ -29,6 +29,20 @@ export default function ApiDocsPage() {
           <h2 className="text-xl font-semibold text-emerald-400">Standard Discovery Resources</h2>
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="bg-slate-800/50 p-4 rounded-lg border border-slate-700/50 sm:col-span-2">
+              <span className="text-xs uppercase tracking-wider text-slate-400 font-mono">Model Context Protocol</span>
+              <h3 className="font-semibold text-white mt-1">MCP Server Card (SEP-1649)</h3>
+              <p className="text-sm text-slate-300 mt-1">
+                Katalog penemuan server MCP (Model Context Protocol) berisi informasi server, endpoint transport HTTP/SSE, dan kemampuan instrumen.
+              </p>
+              <a
+                href="/.well-known/mcp/server-card.json"
+                className="mt-3 inline-block text-xs font-mono text-emerald-400 hover:underline"
+              >
+                /.well-known/mcp/server-card.json
+              </a>
+            </div>
+
+            <div className="bg-slate-800/50 p-4 rounded-lg border border-slate-700/50 sm:col-span-2">
               <span className="text-xs uppercase tracking-wider text-slate-400 font-mono">Agent Registration Protocol</span>
               <h3 className="font-semibold text-white mt-1">Auth.md Agent Authentication Specification</h3>
               <p className="text-sm text-slate-300 mt-1">

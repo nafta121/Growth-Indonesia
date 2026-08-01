@@ -32,6 +32,11 @@ export async function GET() {
             description: 'XML Sitemap listing all active service areas, articles, and landing pages.',
           },
           {
+            path: '/.well-known/mcp/server-card.json',
+            method: 'GET',
+            description: 'MCP Server Card specification (SEP-1649) for Model Context Protocol agent discovery.',
+          },
+          {
             path: '/auth.md',
             method: 'GET',
             description: 'Auth.md Agent Registration and Authentication Protocol specification.',
