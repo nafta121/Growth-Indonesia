@@ -2,5 +2,7 @@
   "name": "Growth Indonesia",
   "description": "Leading HR development and outbound agency specializing in corporate, government, and educational growth solutions.",
   "requestFramePermissions": [],
-  "majorCapabilities": []
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }
