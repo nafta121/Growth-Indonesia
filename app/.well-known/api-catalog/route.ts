@@ -32,6 +32,16 @@ export async function GET() {
             description: 'XML Sitemap listing all active service areas, articles, and landing pages.',
           },
           {
+            path: '/.well-known/http-message-signatures-directory',
+            method: 'GET',
+            description: 'Web Bot Auth JWKS directory for HTTP message signature verification.',
+          },
+          {
+            path: '/.well-known/dns-aid',
+            method: 'GET',
+            description: 'DNS-AID SVCB/HTTPS discovery record specifications.',
+          },
+          {
             path: '/robots.txt',
             method: 'GET',
             description: 'Robots specification for search engines and AI crawlers.',

@@ -5,33 +5,39 @@ import { getArticleSlugs } from '@/lib/mdx';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://growthindonesia.my.id';
-  const fixedDate = new Date('2026-05-01');
+  const currentDate = new Date();
   const allCities = Object.keys(CITIES);
 
   const corePages: MetadataRoute.Sitemap = [
     {
       url: baseUrl,
-      lastModified: fixedDate,
+      lastModified: currentDate,
       changeFrequency: 'weekly',
-      priority: 1,
+      priority: 1.0,
     },
     {
       url: `${baseUrl}/layanan`,
-      lastModified: fixedDate,
+      lastModified: currentDate,
       changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
       url: `${baseUrl}/artikel`,
-      lastModified: fixedDate,
+      lastModified: currentDate,
       changeFrequency: 'weekly',
       priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/docs/api`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.6,
     },
   ];
 
   const cityHubPages: MetadataRoute.Sitemap = allCities.map((city) => ({
     url: `${baseUrl}/layanan/${city}`,
-    lastModified: fixedDate,
+    lastModified: currentDate,
     changeFrequency: 'weekly',
     priority: 0.8,
   }));
@@ -39,7 +45,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const programmaticPages: MetadataRoute.Sitemap = allCities.flatMap((city) => 
     KATEGORI.map((kategori) => ({
       url: `${baseUrl}/layanan/${city}/${kategori}`,
-      lastModified: fixedDate,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.7,
     }))
@@ -47,10 +53,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const articleSlugs = getArticleSlugs();
   const articlePages: MetadataRoute.Sitemap = articleSlugs.map((slug) => {
-    const cleanSlug = slug.replace(/\.mdx$/, '');
+    const cleanSlug = slug.replace(/\.(mdx|md)$/, '');
     return {
       url: `${baseUrl}/artikel/${cleanSlug}`,
-      lastModified: fixedDate,
+      lastModified: currentDate,
       changeFrequency: 'weekly',
       priority: 0.7,
     };

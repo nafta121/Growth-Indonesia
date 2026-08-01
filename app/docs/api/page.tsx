@@ -53,6 +53,20 @@ export default function ApiDocsPage() {
             </div>
 
             <div className="bg-slate-800/50 p-4 rounded-lg border border-slate-700/50 sm:col-span-2">
+              <span className="text-xs uppercase tracking-wider text-slate-400 font-mono">Web Bot Auth Specification</span>
+              <h3 className="font-semibold text-white mt-1">HTTP Message Signatures Directory (JWKS)</h3>
+              <p className="text-sm text-slate-300 mt-1">
+                Kunci publik JWKS (Web Bot Auth) untuk verifikasi Tanda Tangan Pesan HTTP (HTTP Message Signatures) saat agen melakukan verifikasi identitas bot.
+              </p>
+              <a
+                href="/.well-known/http-message-signatures-directory"
+                className="mt-3 inline-block text-xs font-mono text-emerald-400 hover:underline"
+              >
+                /.well-known/http-message-signatures-directory
+              </a>
+            </div>
+
+            <div className="bg-slate-800/50 p-4 rounded-lg border border-slate-700/50 sm:col-span-2">
               <span className="text-xs uppercase tracking-wider text-slate-400 font-mono">DNS-AID Specification</span>
               <h3 className="font-semibold text-white mt-1">DNS for AI Discovery (RFC 9460 &amp; DNS-AID)</h3>
               <p className="text-sm text-slate-300 mt-1">
@@ -76,6 +90,33 @@ export default function ApiDocsPage() {
           <pre className="bg-slate-950 p-4 rounded-lg font-mono text-xs text-emerald-300 overflow-x-auto border border-slate-800">
 {`_index._agents.growthindonesia.my.id. 3600 IN HTTPS 1 growthindonesia.my.id. alpn="h2,h3" port=443 path="/.well-known/api-catalog"
 _a2a._agents.growthindonesia.my.id.   3600 IN HTTPS 1 growthindonesia.my.id. alpn="h2,h3" port=443 path="/docs/api"`}
+          </pre>
+        </div>
+
+        <div className="bg-slate-900/80 border border-slate-800 rounded-xl p-6 space-y-4">
+          <h2 className="text-xl font-semibold text-emerald-400">Markdown for Agents (Content Negotiation)</h2>
+          <p className="text-sm text-slate-300">
+            Situs ini mendukung negosiasi konten Markdown untuk AI Agent. Setiap permintaan dengan header <code className="text-emerald-300 font-mono">Accept: text/markdown</code> akan menerima konten berformat Markdown murni, header <code className="text-emerald-300 font-mono">Content-Type: text/markdown; charset=utf-8</code>, dan estimasi <code className="text-emerald-300 font-mono">x-markdown-tokens</code>.
+          </p>
+          <pre className="bg-slate-950 p-4 rounded-lg font-mono text-xs text-emerald-300 overflow-x-auto border border-slate-800">
+{`GET / HTTP/1.1
+Host: growthindonesia.my.id
+Accept: text/markdown
+
+HTTP/1.1 200 OK
+Content-Type: text/markdown; charset=utf-8
+x-markdown-tokens: 280
+Vary: Accept`}
+          </pre>
+        </div>
+
+        <div className="bg-slate-900/80 border border-slate-800 rounded-xl p-6 space-y-4">
+          <h2 className="text-xl font-semibold text-emerald-400">Content Signals (AI Usage Preferences)</h2>
+          <p className="text-sm text-slate-300">
+            Situs ini menyatakan preferensi lisensi dan penggunaan AI melalui direktif Content-Signal pada <code className="text-emerald-300 font-mono">/robots.txt</code>:
+          </p>
+          <pre className="bg-slate-950 p-4 rounded-lg font-mono text-xs text-emerald-300 overflow-x-auto border border-slate-800">
+{`Content-Signal: ai-train=no, search=yes, ai-input=yes`}
           </pre>
         </div>
 
