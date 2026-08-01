@@ -32,6 +32,16 @@ export async function GET() {
             description: 'XML Sitemap listing all active service areas, articles, and landing pages.',
           },
           {
+            path: '/auth.md',
+            method: 'GET',
+            description: 'Auth.md Agent Registration and Authentication Protocol specification.',
+          },
+          {
+            path: '/.well-known/oauth-protected-resource',
+            method: 'GET',
+            description: 'OAuth Protected Resource Metadata specification (RFC 9728).',
+          },
+          {
             path: '/.well-known/openid-configuration',
             method: 'GET',
             description: 'OpenID Connect 1.0 discovery metadata specification for agent authentication.',

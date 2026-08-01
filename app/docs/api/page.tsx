@@ -28,6 +28,34 @@ export default function ApiDocsPage() {
         <div className="bg-slate-900/80 border border-slate-800 rounded-xl p-6 space-y-4">
           <h2 className="text-xl font-semibold text-emerald-400">Standard Discovery Resources</h2>
           <div className="grid gap-4 sm:grid-cols-2">
+            <div className="bg-slate-800/50 p-4 rounded-lg border border-slate-700/50 sm:col-span-2">
+              <span className="text-xs uppercase tracking-wider text-slate-400 font-mono">Agent Registration Protocol</span>
+              <h3 className="font-semibold text-white mt-1">Auth.md Agent Authentication Specification</h3>
+              <p className="text-sm text-slate-300 mt-1">
+                Protokol registrasi dan autentikasi agen otomatis (Auth.md) berisi panduan kredensial, endpoint klaim, serta tipe identitas yang didukung.
+              </p>
+              <a
+                href="/auth.md"
+                className="mt-3 inline-block text-xs font-mono text-emerald-400 hover:underline"
+              >
+                /auth.md
+              </a>
+            </div>
+
+            <div className="bg-slate-800/50 p-4 rounded-lg border border-slate-700/50 sm:col-span-2">
+              <span className="text-xs uppercase tracking-wider text-slate-400 font-mono">OAuth Protected Resource Metadata</span>
+              <h3 className="font-semibold text-white mt-1">OAuth Protected Resource (RFC 9728)</h3>
+              <p className="text-sm text-slate-300 mt-1">
+                Metadata sumber daya terproteksi RFC 9728 yang memberitahu agen URL server otorisasi, scope yang didukung, dan metode token bearer.
+              </p>
+              <a
+                href="/.well-known/oauth-protected-resource"
+                className="mt-3 inline-block text-xs font-mono text-emerald-400 hover:underline"
+              >
+                /.well-known/oauth-protected-resource
+              </a>
+            </div>
+
             <div className="bg-slate-800/50 p-4 rounded-lg border border-slate-700/50">
               <span className="text-xs uppercase tracking-wider text-slate-400 font-mono">OpenID Connect Discovery</span>
               <h3 className="font-semibold text-white mt-1">OpenID Configuration</h3>
