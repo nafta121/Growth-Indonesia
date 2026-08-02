@@ -2,7 +2,7 @@ import { Metadata, Viewport } from 'next';
 import { notFound } from 'next/navigation';
 import { CITIES } from '@/lib/cities';
 import { COMPANY_INFO } from '@/lib/constants';
-import { getServicePageSchema } from '@/lib/schema';
+import { getServicePageSchema } from '@/lib/seo';
 import { formatSlug } from '@/lib/format';
 import { getContentVariations } from '@/lib/content-variations';
 import { NearbyCities } from '@/components/nearby-cities';
