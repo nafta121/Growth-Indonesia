@@ -5,6 +5,7 @@ import { Calendar, User, Clock, ArrowRight, BookOpen } from 'lucide-react';
 import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
 import WhatsAppFAB from '@/components/whatsapp-fab';
+import { Breadcrumb } from '@/components/breadcrumb';
 import { getAllArticles } from '@/lib/mdx';
 import { COMPANY_INFO } from '@/lib/constants';
 
@@ -38,7 +39,18 @@ export default function ArtikelHubPage() {
             <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628] via-brand/10 to-[#0A1628]" />
           </div>
           
-          <div className="max-w-5xl mx-auto px-6 relative z-10 text-center">
+          <div className="max-w-5xl mx-auto px-6 relative z-10 text-center flex flex-col items-center">
+            <div className="mb-6">
+              <Breadcrumb
+                items={[
+                  { label: 'Beranda', href: '/' },
+                  { label: 'Artikel & Edukasi' },
+                ]}
+                variant="dark"
+                includeSchema={true}
+              />
+            </div>
+
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6">
               <BookOpen className="w-5 h-5 text-brand" />
               <span className="text-xs md:text-sm font-bold text-slate-300 tracking-wider uppercase">Blog & Edukasi</span>

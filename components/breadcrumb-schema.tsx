@@ -1,4 +1,5 @@
 import React from 'react';
+import { Breadcrumb } from './breadcrumb';
 
 interface BreadcrumbSchemaProps {
   cityName: string;
@@ -6,35 +7,23 @@ interface BreadcrumbSchemaProps {
 }
 
 export function BreadcrumbSchema({ cityName, cityKey }: BreadcrumbSchemaProps) {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://growthindonesia.my.id"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Layanan",
-        "item": "https://growthindonesia.my.id/layanan"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": `Outbound ${cityName}`,
-        "item": `https://growthindonesia.my.id/layanan/outbound-${cityKey}`
-      }
-    ]
-  };
+  const items = [
+    { label: 'Beranda', href: '/' },
+    { label: 'Layanan', href: '/layanan' },
+  ];
+
+  if (cityName && cityKey) {
+    items.push({
+      label: `Outbound ${cityName}`,
+      href: `/layanan/${cityKey}`,
+    });
+  }
 
   return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    <Breadcrumb
+      items={items}
+      variant="dark"
+      includeSchema={true}
     />
   );
 }

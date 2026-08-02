@@ -5,6 +5,7 @@ import { Star, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import ScrollReveal from '@/components/ui/scroll-reveal';
 import { getCityImage } from '@/lib/city-images';
+import { Breadcrumb } from '@/components/breadcrumb';
 
 interface CityHeroProps {
   kategoriName: string;
@@ -39,6 +40,19 @@ export default function CityHero({ kategoriName, kotaName, cityKey, cityDescript
       
       <div className="max-w-7xl mx-auto px-4 md:px-12 relative z-10">
         <ScrollReveal delay={0} yOffset={20} className="max-w-3xl">
+          <div className="mb-6">
+            <Breadcrumb
+              items={[
+                { label: 'Beranda', href: '/' },
+                { label: 'Layanan', href: '/layanan' },
+                { label: kotaName, href: `/layanan/${cityKey}` },
+                { label: kategoriName },
+              ]}
+              variant="dark"
+              includeSchema={false}
+            />
+          </div>
+
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/10 mb-8">
             <div className="flex text-yellow-400">
               {[...Array(5)].map((_, i) => (

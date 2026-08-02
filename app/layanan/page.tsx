@@ -5,7 +5,7 @@ import { CITIES } from '@/lib/cities';
 import { COMPANY_INFO } from '@/lib/constants';
 import { formatSlug } from '@/lib/format';
 import TrustSection from '@/components/trust-section';
-import { BreadcrumbSchema } from '@/components/breadcrumb-schema';
+import { Breadcrumb } from '@/components/breadcrumb';
 
 export const metadata: Metadata = {
   title: `Area Layanan ${COMPANY_INFO.brand_name} - Provider Outbound & Pelatihan`,
@@ -28,7 +28,6 @@ export default function LayananHubPage() {
 
   return (
     <>
-      <BreadcrumbSchema cityName="" cityKey="" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaLd) }}
@@ -41,7 +40,17 @@ export default function LayananHubPage() {
             <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628] via-brand/10 to-[#0A1628]" />
           </div>
           
-          <div className="max-w-7xl mx-auto px-4 md:px-12 relative z-10 text-center">
+          <div className="max-w-7xl mx-auto px-4 md:px-12 relative z-10 text-center flex flex-col items-center">
+            <div className="mb-6">
+              <Breadcrumb
+                items={[
+                  { label: 'Beranda', href: '/' },
+                  { label: 'Area Layanan' },
+                ]}
+                variant="dark"
+                includeSchema={true}
+              />
+            </div>
             <h1 className="font-display text-4xl md:text-6xl font-black tracking-tight text-white mb-6">
               Area <span className="text-[#EF4444]">Layanan Kami</span>
             </h1>

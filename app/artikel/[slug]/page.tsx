@@ -7,6 +7,7 @@ import { ArrowLeft, Calendar, User, Clock, Tag, MessageSquare } from 'lucide-rea
 import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
 import WhatsAppFAB from '@/components/whatsapp-fab';
+import { Breadcrumb } from '@/components/breadcrumb';
 import { getArticleBySlug, getArticleSlugs } from '@/lib/mdx';
 import { COMPANY_INFO } from '@/lib/constants';
 
@@ -123,6 +124,19 @@ export default async function ArtikelDetailPage({ params }: PageProps) {
           </div>
 
           <div className="max-w-4xl mx-auto px-6 relative z-10">
+            {/* Breadcrumb Navigation */}
+            <div className="mb-8">
+              <Breadcrumb
+                items={[
+                  { label: 'Beranda', href: '/' },
+                  { label: 'Artikel', href: '/artikel' },
+                  { label: article.frontmatter.title },
+                ]}
+                variant="dark"
+                includeSchema={true}
+              />
+            </div>
+
             {/* Back to Hub */}
             <Link
               href="/artikel"

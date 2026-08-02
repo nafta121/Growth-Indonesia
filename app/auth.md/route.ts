@@ -1,7 +1,23 @@
 import { NextResponse } from 'next/server';
 
 export async function GET() {
-  const authMdContent = `# Auth.md
+  const authMdContent = `---
+agent_auth:
+  register_uri: https://growthindonesia.my.id/oauth/register
+  auth_md_uri: https://growthindonesia.my.id/auth.md
+  supported_identity_types:
+    - agent
+    - user
+    - organization
+  supported_credential_types:
+    - client_credentials
+    - jwt_bearer
+    - http_signature
+  claim_uri: https://growthindonesia.my.id/oauth/claim
+  revocation_uri: https://growthindonesia.my.id/oauth/revoke
+---
+
+# Auth.md
 
 ## Agent Registration & Authentication Protocol
 
@@ -48,3 +64,4 @@ https://growthindonesia.my.id/oauth/register
     },
   });
 }
+

@@ -7,7 +7,7 @@ import { KATEGORI } from '@/lib/categories';
 import { COMPANY_INFO } from '@/lib/constants';
 import { formatSlug } from '@/lib/format';
 import TrustSection from '@/components/trust-section';
-import { BreadcrumbSchema } from '@/components/breadcrumb-schema';
+import { Breadcrumb } from '@/components/breadcrumb';
 
 type Props = {
   params: Promise<{ kota: string }>;
@@ -86,12 +86,6 @@ export default async function CityHubPage({ params }: Props) {
 
   return (
     <>
-      <BreadcrumbSchema cityName={kotaName} cityKey={decodedKota} />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaLd) }}
-      />
-      
       <main className="flex-1 w-full flex flex-col pt-[72px] md:pt-[88px]">
         {/* City Hub Hero */}
         <section className="relative pt-20 pb-20 md:pt-32 md:pb-28 bg-[#0A1628] overflow-hidden">
@@ -99,7 +93,19 @@ export default async function CityHubPage({ params }: Props) {
             <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628] via-brand/10 to-[#0A1628]" />
           </div>
           
-          <div className="max-w-5xl mx-auto px-4 md:px-12 relative z-10 text-center">
+          <div className="max-w-5xl mx-auto px-4 md:px-12 relative z-10 text-center flex flex-col items-center">
+            <div className="mb-6">
+              <Breadcrumb
+                items={[
+                  { label: 'Beranda', href: '/' },
+                  { label: 'Layanan', href: '/layanan' },
+                  { label: kotaName },
+                ]}
+                variant="dark"
+                includeSchema={true}
+              />
+            </div>
+
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/10 mb-8">
                <MapPin className="w-5 h-5 text-brand" />
                <span className="text-sm font-bold text-white tracking-wider uppercase">Layanan Regional</span>
