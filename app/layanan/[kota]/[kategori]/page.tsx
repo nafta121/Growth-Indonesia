@@ -1,8 +1,8 @@
-import { Metadata } from 'next';
+import { Metadata, Viewport } from 'next';
 import { notFound } from 'next/navigation';
 import { CITIES } from '@/lib/cities';
 import { COMPANY_INFO } from '@/lib/constants';
-import { getLocalBusinessSchema, getFaqSchema } from '@/lib/schema';
+import { getServicePageSchema } from '@/lib/schema';
 import { formatSlug } from '@/lib/format';
 import { getContentVariations } from '@/lib/content-variations';
 import { NearbyCities } from '@/components/nearby-cities';
@@ -74,6 +74,27 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
+export async function generateViewport({ params }: Props): Promise<Viewport> {
+  const { kota } = await params;
+  const decodedKota = decodeURIComponent(kota).toLowerCase();
+  const cityData = CITIES[decodedKota];
+
+  if (!cityData) {
+    return {
+      themeColor: '#0A1628',
+      width: 'device-width',
+      initialScale: 1,
+    };
+  }
+
+  return {
+    themeColor: '#0A1628',
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 5,
+  };
+}
+
 export async function generateStaticParams() {
   const KATEGORI = ['outbound', 'training', 'fun-games', 'ldk-osis', 'gathering'];
   return Object.keys(CITIES).flatMap((kota) => 
@@ -97,55 +118,13 @@ export default async function ProgrammaticSiloPage({ params }: Props) {
   const kotaName = formatSlug(decodedKota);
   const kategoriName = formatSlug(decodedKategori);
 
-  const rawFaqSchema = getFaqSchema(kategoriName, kotaName);
-  const faqSchema = {
-    ...rawFaqSchema,
-    "@id": "https://growthindonesia.my.id/#faq",
-    "name": "FAQ Seputar Layanan Growth Indonesia"
-  };
-
-  const schemaLd = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "BreadcrumbList",
-        "@id": "https://growthindonesia.my.id/#breadcrumb",
-        "name": "Navigasi Layanan Growth Indonesia",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://growthindonesia.my.id/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": `Layanan ${kotaName}`,
-            "item": `https://growthindonesia.my.id/layanan/${decodedKota}`
-          },
-          {
-            "@type": "ListItem",
-            "position": 3,
-            "name": `${kategoriName} ${kotaName}`,
-            "item": `https://growthindonesia.my.id/layanan/${decodedKota}/${decodedKategori}`
-          }
-        ]
-      },
-      {
-        "@type": "Service",
-        "name": `${kategoriName} di ${kotaName}`,
-        "description": `Layanan profesional provider ${kategoriName.toLowerCase()} dan EO terbaik di ${kotaName} bersama ${COMPANY_INFO.brand_name}. ${cityData.description}`,
-        "provider": {
-          "@type": "LocalBusiness",
-          "name": COMPANY_INFO.brand_name
-        },
-        "areaServed": kotaName
-      },
-      getLocalBusinessSchema(kotaName),
-      faqSchema
-    ]
-  };
+  const schemaLd = getServicePageSchema({
+    kotaName,
+    cityKey: decodedKota,
+    kategoriName,
+    kategoriKey: decodedKategori,
+    cityDescription: cityData.description,
+  });
 
   const content = getContentVariations(decodedKategori, kotaName);
 
