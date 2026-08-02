@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 import { useInView } from 'motion/react';
 import ScrollReveal from '@/components/ui/scroll-reveal';
 import { Badge } from '@/components/ui/badge';
@@ -86,7 +87,15 @@ const IMPACT_STATS = [
 export default function OurImpact() {
   return (
     <section className="py-20 md:py-24 bg-gray-50 border-y border-gray-100 relative overflow-hidden" aria-labelledby="impact-title">
-      <div className="absolute inset-0 bg-[url('https://nafta121.sirv.com/OUTBOUND/2022-10-22%2009-00-09.jpeg')] opacity-5 mix-blend-overlay bg-cover bg-center" />
+      <Image
+        src="https://nafta121.sirv.com/OUTBOUND/2022-10-22%2009-00-09.jpeg"
+        alt="Background Our Impact Growth Indonesia"
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover object-center opacity-5 mix-blend-overlay absolute inset-0 -z-10"
+        referrerPolicy="no-referrer"
+      />
       <div className="max-w-7xl mx-auto px-4 md:px-12 relative z-10">
         <ScrollReveal className="text-center mb-16">
           <Badge className="mb-4">Our Impact</Badge>

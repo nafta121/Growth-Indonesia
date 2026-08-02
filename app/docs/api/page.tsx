@@ -29,6 +29,28 @@ export default function ApiDocsPage() {
           <h2 className="text-xl font-semibold text-emerald-400">Standard Discovery Resources</h2>
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="bg-slate-800/50 p-4 rounded-lg border border-slate-700/50 sm:col-span-2">
+              <span className="text-xs uppercase tracking-wider text-slate-400 font-mono">x402 Agent-Native Payment Protocol</span>
+              <h3 className="font-semibold text-white mt-1">x402 Payment Required Standard (HTTP 402)</h3>
+              <p className="text-sm text-slate-300 mt-1">
+                Protokol pembayaran native agen AI untuk akses API berbayar. Mengembalikan status HTTP 402 dengan rincian harga micropayment (USDC / ETH di jaringan Base) serta endpoint terlindungi untuk intelijen pasar.
+              </p>
+              <div className="mt-3 flex flex-wrap gap-4">
+                <a
+                  href="/.well-known/x402"
+                  className="text-xs font-mono text-emerald-400 hover:underline"
+                >
+                  /.well-known/x402
+                </a>
+                <a
+                  href="/api/x402/premium"
+                  className="text-xs font-mono text-emerald-400 hover:underline"
+                >
+                  /api/x402/premium (HTTP 402)
+                </a>
+              </div>
+            </div>
+
+            <div className="bg-slate-800/50 p-4 rounded-lg border border-slate-700/50 sm:col-span-2">
               <span className="text-xs uppercase tracking-wider text-slate-400 font-mono">WebMCP Standard (W3C Web Machine Learning CG)</span>
               <h3 className="font-semibold text-white mt-1">Client WebMCP Tools API</h3>
               <p className="text-sm text-slate-300 mt-1">

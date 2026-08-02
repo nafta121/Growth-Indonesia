@@ -32,6 +32,16 @@ export async function GET() {
             description: 'XML Sitemap listing all active service areas, articles, and landing pages.',
           },
           {
+            path: '/.well-known/x402',
+            method: 'GET',
+            description: 'x402 Agent-Native HTTP Payment Protocol discovery configuration metadata.',
+          },
+          {
+            path: '/api/x402/premium',
+            method: 'GET/POST',
+            description: 'x402 HTTP 402 protected endpoint returning premium market intelligence for AI agents.',
+          },
+          {
             path: '/.well-known/agent-skills/index.json',
             method: 'GET',
             description: 'Agent Skills Discovery Index (RFC v0.2.0) listing all supported agent skills and SHA-256 digests.',
