@@ -2,7 +2,7 @@ import { Metadata, Viewport } from 'next';
 import { notFound } from 'next/navigation';
 import { CITIES } from '@/lib/cities';
 import { COMPANY_INFO } from '@/lib/constants';
-import { getServicePageSchema } from '@/lib/seo';
+import { getServicePageSchema, getCategoryOgImage } from '@/lib/seo';
 import { formatSlug } from '@/lib/format';
 import { getContentVariations } from '@/lib/content-variations';
 import { NearbyCities } from '@/components/nearby-cities';
@@ -34,6 +34,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const title = content.title;
   const description = `${COMPANY_INFO.brand_name} adalah provider ${kategoriName.toLowerCase()} dan penyedia jasa EO profesional di ${kotaName}. ${cityData.description} Hubungi kami untuk penawaran terbaik.`;
+  const ogImages = getCategoryOgImage(decodedKategori, kotaName);
 
   return {
     title,
@@ -53,23 +54,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title,
       description,
       url: `https://growthindonesia.my.id/layanan/${decodedKota}/${decodedKategori}`,
-      siteName: 'Growth Indonesia',
+      siteName: COMPANY_INFO.brand_name,
       locale: 'id_ID',
       type: 'website',
-      images: [
-        {
-          url: 'https://nafta121.sirv.com/Screenshot_20260430_171224_Chrome.jpg',
-          width: 1200,
-          height: 630,
-          alt: `Provider ${kategoriName} di ${kotaName}`,
-        },
-      ],
+      images: ogImages,
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description,
-      images: ['https://nafta121.sirv.com/Screenshot_20260430_171224_Chrome.jpg'],
+      images: [ogImages[0].url],
     },
   };
 }

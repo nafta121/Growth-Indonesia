@@ -3,6 +3,7 @@ import { notFound, permanentRedirect } from 'next/navigation';
 import Link from 'next/link';
 import { MapPin, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { CITIES } from '@/lib/cities';
+import { getCityImage } from '@/lib/city-images';
 import { KATEGORI } from '@/lib/categories';
 import { COMPANY_INFO } from '@/lib/constants';
 import { formatSlug } from '@/lib/format';
@@ -41,12 +42,40 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const kotaName = formatSlug(decodedKota);
   const title = `Layanan Outbound & Training di ${kotaName} - ${COMPANY_INFO.brand_name}`;
   const description = `Pilihan layanan unggulan ${COMPANY_INFO.brand_name} di ${kotaName}. Menyediakan Outbound, Training, Fun Games & LDK OSIS. ${cityData.description}`;
+  const cityImage = getCityImage(decodedKota);
 
   return {
     title,
     description,
     alternates: {
       canonical: `https://growthindonesia.my.id/layanan/${decodedKota}`,
+    },
+    robots: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+    },
+    openGraph: {
+      title,
+      description,
+      url: `https://growthindonesia.my.id/layanan/${decodedKota}`,
+      siteName: COMPANY_INFO.brand_name,
+      locale: 'id_ID',
+      type: 'website',
+      images: [
+        {
+          url: cityImage,
+          width: 1200,
+          height: 630,
+          alt: `Layanan Outbound & Training di ${kotaName} - ${COMPANY_INFO.brand_name}`,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [cityImage],
     },
   };
 }

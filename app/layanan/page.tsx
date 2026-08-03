@@ -13,6 +13,28 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://growthindonesia.my.id/layanan',
   },
+  openGraph: {
+    title: `Area Layanan ${COMPANY_INFO.brand_name} - Provider Outbound & Pelatihan`,
+    description: `Temukan area layanan ${COMPANY_INFO.brand_name} di berbagai kota di Indonesia. Kami menyediakan program Outbound, Training, Fun Games & Team Building di lokasi terbaik.`,
+    url: 'https://growthindonesia.my.id/layanan',
+    siteName: COMPANY_INFO.brand_name,
+    locale: 'id_ID',
+    type: 'website',
+    images: [
+      {
+        url: 'https://nafta121.sirv.com/OUTBOUND/2022-10-22%2009-00-09.jpeg',
+        width: 1200,
+        height: 630,
+        alt: `Area Layanan ${COMPANY_INFO.brand_name}`,
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: `Area Layanan ${COMPANY_INFO.brand_name} - Provider Outbound & Pelatihan`,
+    description: `Temukan area layanan ${COMPANY_INFO.brand_name} di berbagai kota di Indonesia.`,
+    images: ['https://nafta121.sirv.com/OUTBOUND/2022-10-22%2009-00-09.jpeg'],
+  },
 };
 
 export default function LayananHubPage() {
