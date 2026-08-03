@@ -3,6 +3,8 @@ import { NextResponse } from 'next/server';
 export async function GET() {
   const robotsTxt = `User-agent: *
 Allow: /
+Allow: /2c11486128914291876d43ecd6d55580.txt
+Allow: /api/indexnow
 Disallow: /api/
 Disallow: /_next/
 
