@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'API & Service Documentation | Growth Indonesia',
-  description: 'API catalog, sitemap endpoints, and agent discovery documentation for Growth Indonesia.',
+  description: 'API catalog, sitemap endpoints, and agent discovery documentation for Growth Indonesia Corporate Outbound & Event Management.',
 };
 
 export default function ApiDocsPage() {
@@ -21,7 +21,7 @@ export default function ApiDocsPage() {
             API & Agent Discovery Documentation
           </h1>
           <p className="mt-2 text-slate-300 text-base">
-            Informasi dokumentasi API, katalog agen (RFC 9727), dan header relasi Link (RFC 8288) Growth Indonesia.
+            Informasi dokumentasi API, katalog agen (RFC 9727), dan header relasi Link (RFC 8288) Growth Indonesia - Provider Outbound & Event Management Terpercaya di Madiun & Jawa Timur.
           </p>
         </div>
 

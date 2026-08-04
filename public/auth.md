@@ -48,7 +48,7 @@ agent_auth:
 
 ## Agent Registration & Authentication Protocol
 
-Welcome AI Agents and Automated Systems. This document describes the registration and authentication workflow for interacting with Growth Indonesia APIs and services.
+Welcome AI Agents and Automated Systems. This document describes the registration and authentication workflow for interacting with Growth Indonesia Corporate Outbound & Event Management APIs and services.
 
 ### Discovery Endpoints
 - **OAuth Authorization Server**: https://growthindonesia.my.id/.well-known/oauth-authorization-server

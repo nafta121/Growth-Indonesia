@@ -6,12 +6,12 @@ export async function GET() {
     serverInfo: {
       name: 'Growth Indonesia MCP Server',
       version: '1.0.0',
-      description: 'Model Context Protocol (MCP) server providing digital growth services, market research, and SEO analytics for Indonesia.',
+      description: 'Model Context Protocol (MCP) server providing corporate outbound program discovery, venue coordination, experiential team building analytics, and event planning services for East Java.',
     },
     server: {
       name: 'Growth Indonesia MCP Server',
       version: '1.0.0',
-      description: 'Model Context Protocol (MCP) server providing digital growth services, market research, and SEO analytics for Indonesia.',
+      description: 'Model Context Protocol (MCP) server providing corporate outbound program discovery, venue coordination, experiential team building analytics, and event planning services for East Java.',
     },
     transports: [
       {

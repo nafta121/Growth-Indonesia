@@ -9,7 +9,7 @@ export async function GET(req: NextRequest) {
   if (!paymentProof) {
     const paymentRequirement = {
       error: 'Payment Required',
-      message: 'Access to Growth Indonesia Premium Market Intelligence requires x402 micropayment.',
+      message: 'Access to Growth Indonesia Premium Outbound Industry Intelligence requires x402 micropayment.',
       x402: {
         version: '1.0',
         amount: '0.10',
@@ -17,7 +17,7 @@ export async function GET(req: NextRequest) {
         network: 'base',
         recipient: '0x742d35Cc6634C0532925a3b844Bc454e4438f44e',
         facilitator: 'https://x402.org/facilitator',
-        description: 'Premium Growth Analytics & Competitor Intelligence API Access',
+        description: 'Premium Outbound Industry Intelligence & Venue Analytics API Access',
         tokenUrl: 'https://growthindonesia.my.id/api/x402/token',
       },
     };

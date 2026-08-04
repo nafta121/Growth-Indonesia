@@ -22,8 +22,8 @@ export async function GET() {
     ],
     services: [
       {
-        name: 'Growth Indonesia Services & Outbound API',
-        description: 'Catalog of available endpoints, sitemaps, and documentation for Growth Indonesia.',
+        name: 'Growth Indonesia Outbound & Event Management API Services',
+        description: 'Catalog of available discovery endpoints, sitemaps, and documentation for Growth Indonesia Corporate Outbound & Event Organizer.',
         documentation: '/docs/api',
         endpoints: [
           {

@@ -5,7 +5,7 @@ export async function GET() {
     $schema: 'https://a2a-protocol.org/schemas/v1/agent-card.json',
     name: 'Growth Indonesia AI Agent',
     version: '1.0.0',
-    description: 'Autonomous AI Agent for Growth Indonesia specializing in digital strategy, SEO audits, market intelligence, and business transformation consulting.',
+    description: 'Autonomous AI Agent for Growth Indonesia specializing in Corporate Outbound, Team Building, Experiential Leadership Training, Fun Games, and Outdoor Event Management across Madiun and East Java.',
     protocolVersion: '1.0.0',
     supportedInterfaces: [
       {
@@ -32,24 +32,24 @@ export async function GET() {
     },
     skills: [
       {
-        id: 'digital-growth-analytics',
-        name: 'Digital Growth & Market Analytics',
-        description: 'Provide digital market penetration strategies, growth benchmarks, and marketing performance evaluation in Indonesia.',
+        id: 'outbound-team-building-consulting',
+        name: 'Outbound & Team Building Program Consulting',
+        description: 'Provide customized corporate outbound packages, team building modules, and experiential learning itineraries in Madiun and East Java.',
       },
       {
-        id: 'seo-content-audit',
-        name: 'SEO & AI Readability Audit',
-        description: 'Audit website structure, content optimization, structured data schema, and AI agent discovery metadata.',
+        id: 'leadership-ldk-capacity-building',
+        name: 'Leadership & Character Building Training',
+        description: 'Design experiential leadership programs, LDK OSIS training for schools, and employee capacity building workshops guided by certified BNSP trainers.',
       },
       {
-        id: 'business-consulting-discovery',
-        name: 'Business Consulting & Partner Matching',
-        description: 'Match corporate growth objectives with specialized digital agency solutions and service proposals.',
+        id: 'event-venue-coordination-east-java',
+        name: 'Outdoor Event & Venue Coordination',
+        description: 'Coordinate outdoor event logistics, venue selections (Sarangan, Magetan, Batu, Madiun), and safety protocols following Zero Accident Policy standards.',
       },
       {
-        id: 'market-intelligence-indonesia',
-        name: 'Indonesian Market Intelligence',
-        description: 'Deliver actionable consumer behavior insights, regulatory compliance advice, and e-commerce growth trends in South East Asia.',
+        id: 'corporate-gathering-fun-games',
+        name: 'Corporate Gathering & Fun Games Organization',
+        description: 'Organize tailored corporate gatherings, family days, and engaging fun games designed to strengthen team synergy and morale.',
       },
     ],
     authentication: {

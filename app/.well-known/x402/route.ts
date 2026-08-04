@@ -5,7 +5,7 @@ export async function GET() {
     $schema: 'https://x402.org/schemas/v1/x402-config.json',
     version: '1.0',
     title: 'Growth Indonesia x402 Agent-Native Payment Protocol',
-    description: 'HTTP 402 Payment Required protocol integration for AI agents requesting premium growth intelligence, SEO reports, and corporate analytics.',
+    description: 'HTTP 402 Payment Required protocol integration for AI agents requesting premium outbound industry reports, venue intelligence, and corporate team building analytics.',
     facilitatorUrl: 'https://x402.org/facilitator',
     payToWallet: '0x742d35Cc6634C0532925a3b844Bc454e4438f44e',
     acceptedCurrencies: [
@@ -28,7 +28,7 @@ export async function GET() {
         path: '/api/x402/premium',
         method: 'GET',
         costUSD: 0.10,
-        description: 'Premium Indonesian Market Intelligence & Growth Strategy Data.',
+        description: 'Premium East Java Outbound Industry Intelligence & Team Building Market Data.',
       },
     ],
     documentationUrl: 'https://growthindonesia.my.id/docs/api',
