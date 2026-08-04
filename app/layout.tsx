@@ -19,9 +19,16 @@ const outfit = Outfit({
 
 
 export const metadata: Metadata = {
-  title: 'Provider Outbound Madiun & Jawa Timur | Growth Indonesia',
+  metadataBase: new URL('https://growthindonesia.my.id'),
+  title: {
+    default: 'Provider Outbound Madiun & Jawa Timur | Growth Indonesia',
+    template: '%s | Growth Indonesia',
+  },
   description: 'Growth Indonesia: Provider outbound Madiun & Jawa Timur terpercaya. Layanan profesional untuk outbound training, HR development, LDK OSIS & team building.',
   keywords: ['Outbound', 'Training', 'Outbound Training', 'Outbound Madiun', 'Outbound Jawa Timur', 'Provider Outbound Madiun', 'Provider Outbound Jawa Timur', 'LDK OSIS', 'Team Building'],
+  alternates: {
+    canonical: 'https://growthindonesia.my.id',
+  },
   openGraph: {
     title: 'Provider Outbound Madiun & Jawa Timur | Growth Indonesia',
     description: 'Growth Indonesia: Provider outbound Madiun & Jawa Timur terpercaya. Layanan profesional untuk outbound training, HR development, LDK OSIS & team building.',
@@ -31,7 +38,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: 'https://nafta121.sirv.com/Screenshot_20260430_171224_Chrome.jpg',
+        url: 'https://pub-50a5fd46ec724773a854a130ecf7860c.r2.dev/LOGO/SVG%20LOGO%20GROWTH.svg',
         width: 1200,
         height: 630,
         alt: 'Provider Outbound Madiun & Jawa Timur - Growth Indonesia',
@@ -42,11 +49,22 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Provider Outbound Madiun & Jawa Timur | Growth Indonesia',
     description: 'Growth Indonesia: Provider outbound Madiun & Jawa Timur terpercaya. Layanan profesional untuk outbound training, HR development, LDK OSIS & team building.',
-    images: ['https://nafta121.sirv.com/Screenshot_20260430_171224_Chrome.jpg'],
+    images: ['https://pub-50a5fd46ec724773a854a130ecf7860c.r2.dev/LOGO/SVG%20LOGO%20GROWTH.svg'],
   },
+  // GEO & Bing Copilot Optimization:
+  // Explicitly allow indexing, following, snippet generation, and caching for full AI grounding depth.
+  // Strictly avoid NOARCHIVE or NOCACHE directives.
   robots: {
     index: true,
     follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
   icons: {
     icon: [
