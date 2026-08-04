@@ -103,6 +103,11 @@ export default function RootLayout({
             `,
           }}
         />
+        <Script
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon='{"token": "c16a501011484d829b65425d7d7743f9"}'
+          strategy="afterInteractive"
+        />
       </head>
       <body suppressHydrationWarning className="font-sans antialiased bg-[#0A1628] text-white">
         <WebMCPProvider />
