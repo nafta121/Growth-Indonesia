@@ -45,5 +45,8 @@
     "last 2 versions",
     "not dead",
     "not ie <= 11"
-  ]
+  ],
+  "overrides": {
+    "@aws-sdk/credential-provider-login": "3.970.0"
+  }
 }
