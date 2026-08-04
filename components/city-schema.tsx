@@ -1,4 +1,5 @@
 import React from 'react';
+import { COMPANY_INFO } from '@/lib/constants';
 
 const CITY_GEO_DATA: Record<string, { lat: number; long: number }> = {
   madiun: { lat: -7.6298, long: 111.5239 },
@@ -21,7 +22,7 @@ export function CitySchema({ cityName, slug }: { cityName: string; slug: string 
         '@type': 'LocalBusiness',
         '@id': `https://growthindonesia.my.id/layanan/${slug}#localbusiness`,
         name: `Growth Indonesia - Provider Outbound, Training dan Pengembangan SDM ${cityName}`,
-        image: "https://nafta121.sirv.com/Screenshot_20260423_192944_My%20Files.jpg",
+        image: COMPANY_INFO.logo_url,
         telephone: '+6285704748186',
         priceRange: 'Rp (Rupiah)',
         address: {

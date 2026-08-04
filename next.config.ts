@@ -23,7 +23,16 @@ const nextConfig: NextConfig = {
   ],
   // Allow access to remote image placeholder.
   images: {
+    dangerouslyAllowSVG: true,
+    contentDispositionType: 'attachment',
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'pub-50a5fd46ec724773a854a130ecf7860c.r2.dev',
+        port: '',
+        pathname: '/**',
+      },
       {
         protocol: 'https',
         hostname: 'picsum.photos',
