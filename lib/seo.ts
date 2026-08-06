@@ -6,8 +6,14 @@ export interface BreadcrumbItemSchema {
   item: string;
 }
 
-export function getBreadcrumbListSchema(items: BreadcrumbItemSchema[]) {
+export interface BreadcrumbItem {
+  name: string;
+  url: string;
+}
+
+export function generateBreadcrumbSchema(items: BreadcrumbItem[]) {
   return {
+    "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "@id": "https://growthindonesia.my.id/#breadcrumb",
     "name": "Navigasi Layanan Growth Indonesia",
@@ -15,11 +21,17 @@ export function getBreadcrumbListSchema(items: BreadcrumbItemSchema[]) {
       "@type": "ListItem",
       "position": idx + 1,
       "name": crumb.name,
-      "item": crumb.item.startsWith('http')
-        ? crumb.item
-        : `https://growthindonesia.my.id${crumb.item.startsWith('/') ? '' : '/'}${crumb.item}`,
+      "item": crumb.url.startsWith('http')
+        ? crumb.url
+        : `https://growthindonesia.my.id${crumb.url.startsWith('/') ? '' : '/'}${crumb.url}`,
     })),
   };
+}
+
+export function getBreadcrumbListSchema(items: BreadcrumbItemSchema[]) {
+  return generateBreadcrumbSchema(
+    items.map((crumb) => ({ name: crumb.name, url: crumb.item }))
+  );
 }
 
 export function getServiceSchema(
@@ -70,6 +82,7 @@ export function getServicePageSchema({
 
   const breadcrumb = getBreadcrumbListSchema([
     { name: "Home", item: "https://growthindonesia.my.id/" },
+    { name: "Layanan", item: "https://growthindonesia.my.id/layanan" },
     { name: `Layanan ${kotaName}`, item: cityUrl },
     { name: `${kategoriName} ${kotaName}`, item: serviceUrl },
   ]);
