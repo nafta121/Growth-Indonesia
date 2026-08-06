@@ -16,6 +16,8 @@ export interface CaseStudy {
   client: string;
   location: string;
   date: string;
+  startDateISO?: string;
+  endDateISO?: string;
   participants: string;
   objective: string;
   outcomes: string[];
@@ -50,6 +52,8 @@ const CASE_STUDIES: CaseStudy[] = [
     client: 'SMP Negeri 1 Geger',
     location: 'Ndalem Prabu Sarangan, Kabupaten Magetan',
     date: '23 Juni 2026',
+    startDateISO: '2026-06-23T08:00:00+07:00',
+    endDateISO: '2026-06-23T17:00:00+07:00',
     participants: '350+ Siswa & Pengurus OSIS',
     objective: 'Membentuk karakter disiplin, menanamkan nilai nasionalisme, dan mengasah jiwa kepemimpinan generasi muda melalui pendekatan Experiential Learning.',
     outcomes: [
@@ -63,6 +67,8 @@ const CASE_STUDIES: CaseStudy[] = [
     client: 'Bank Jatim (Kantor Cabang Madiun & Ponorogo)',
     location: 'Kawasan Wisata Telaga Sarangan, Magetan',
     date: '25 Maret 2026',
+    startDateISO: '2026-03-25T08:00:00+07:00',
+    endDateISO: '2026-03-25T17:00:00+07:00',
     participants: '120 Karyawan & Manajemen',
     objective: 'Mencairkan sekat komunikasi (silokanisasi) antar divisi, membangun kepercayaan (trust building), serta meningkatkan motivasi kerja pasca-periode target tahunan.',
     outcomes: [
@@ -76,6 +82,8 @@ const CASE_STUDIES: CaseStudy[] = [
     client: 'Petrokimia Gresik & Semen Indonesia Group',
     location: 'Madiun & Batu, Jawa Timur',
     date: '12 November 2025',
+    startDateISO: '2025-11-12T08:00:00+07:00',
+    endDateISO: '2025-11-12T17:00:00+07:00',
     participants: '200+ Eksekutif & Staf Operasional',
     objective: 'Melatih kemampuan adaptasi di bawah tekanan, resolusi konflik internal, serta penguatan kepemimpinan transformasional bagi calon-calon manajer.',
     outcomes: [
@@ -184,16 +192,38 @@ export default function CredibilityPortfolio() {
       organizer: {
         '@type': 'Organization',
         name: COMPANY_INFO.brand_name,
+        url: 'https://growthindonesia.my.id',
       },
       sponsor: {
         '@type': 'Organization',
         name: cs.client,
       },
+      performer: {
+        '@type': 'Person',
+        name: 'Naftalyndho Mycha Grace Mirawandi',
+        jobTitle: 'Lead Facilitator',
+      },
       location: {
         '@type': 'Place',
         name: cs.location,
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: cs.location,
+          addressLocality: 'Madiun',
+          addressRegion: 'Jawa Timur',
+          postalCode: '63128',
+          addressCountry: 'ID',
+        },
       },
-      startDate: '2026-06-23',
+      startDate: cs.startDateISO || '2026-06-23T08:00:00+07:00',
+      endDate: cs.endDateISO || '2026-06-23T17:00:00+07:00',
+      offers: {
+        '@type': 'Offer',
+        url: 'https://growthindonesia.my.id/#kontak',
+        price: '150000',
+        priceCurrency: 'IDR',
+        availability: 'https://schema.org/InStock',
+      },
       description: `${cs.objective} Outcomes: ${cs.outcomes.join(' ')}`,
     })),
   };
