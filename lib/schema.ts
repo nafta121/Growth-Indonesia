@@ -96,37 +96,69 @@ export function getLocalBusinessSchema(additionalArea?: string) {
   };
 }
 
-export function getFaqSchema(kategoriName: string, kotaName: string) {
+export interface FaqQuestionItem {
+  question: string;
+  answer: string;
+}
+
+export function generateFaqSchema(faqs: FaqQuestionItem[], id?: string) {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": `Siapa provider ${kategoriName} terbaik dan tersertifikasi di ${kotaName}?`,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": `${COMPANY_INFO.brand_name} adalah provider ${kategoriName} di ${kotaName} dengan fasilitator tersertifikasi BNSP yang profesional dan sarat pengalaman meng-handle berbagai jenis project instansi maupun korporasi berskala regional hingga nasional.`
-        }
+    ...(id ? { "@id": id } : {}),
+    "mainEntity": faqs.map((faq) => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer,
       },
-      {
-        "@type": "Question",
-        "name": `Berapa estimasi harga paket ${kategoriName} di ${kotaName}?`,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": `Harga paket ${kategoriName} di ${kotaName} sangat fleksibel menyesuaikan dengan kebutuhan tim, durasi kegiatan, dan kompleksitas acara Anda. Anda bisa mensimulasikannya via Kalkulator Budget ${COMPANY_INFO.brand_name}.`
-        }
-      },
-      {
-        "@type": "Question",
-        "name": `Apakah kegiatan ${kategoriName} di ${kotaName} aman?`,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": `Ya, ${COMPANY_INFO.brand_name} menerapkan 'Zero Accident Policy' untuk seluruh aktivitas outdoor learning maupun in-class. Area observasi yang berada di wilayah ${kotaName} selalu dipastikan kelayakannya secara periodik.`
-        }
-      }
-    ]
+    })),
   };
+}
+
+export const HOMEPAGE_FAQS: FaqQuestionItem[] = [
+  {
+    question: "Mengapa memilih Growth Indonesia sebagai provider outbound & event organizer di Madiun?",
+    answer: "Growth Indonesia adalah provider outbound & event organizer Madiun terpercaya dengan fasilitator bersertifikat BNSP, transparan dalam penganggaran, mengusung Zero Accident Policy, dan telah dipercaya oleh lebih dari 100+ perusahaan, BUMN, instansi pemerintah, serta sekolah.",
+  },
+  {
+    question: "Layanan apa saja yang disediakan oleh Growth Indonesia?",
+    answer: "Kami menyediakan layanan Outbound Training & Team Building Corporate, Event Organizer (EO) Corporate & Employee Gathering, Family Gathering, LDK OSIS & Kemah Besar, Capacity Building, serta Fun Adventure & Outing.",
+  },
+  {
+    question: "Berapa estimasi biaya paket outbound dan event organizer di Madiun?",
+    answer: "Biaya paket sangat fleksibel mulai dari paket hemat hingga custom premium, disesuaikan dengan jumlah peserta, lokasi, dan kebutuhan fasilitas acara Anda. Anda juga dapat mensimulasikan anggaran dengan Kalkulator Budget di website kami.",
+  },
+  {
+    question: "Di wilayah mana saja Growth Indonesia melayani kegiatan outbound & event organizer?",
+    answer: "Growth Indonesia berbasis di Madiun dan melayani seluruh wilayah Jawa Timur, termasuk Magetan (Sarangan), Ponorogo, Ngawi, Pacitan, Kediri, Madiun, Surabaya, Malang, dan sekitarnya.",
+  },
+  {
+    question: "Apakah kegiatan outbound dari Growth Indonesia aman?",
+    answer: "Ya, kami berkomitmen pada Zero Accident Policy dengan standar keselamatan ketat, peralatan teruji, instruktur/fasilitator bersertifikat BNSP, serta tim medis siaga di setiap lokasi acara.",
+  },
+];
+
+export function getHomepageFaqSchema() {
+  return generateFaqSchema(HOMEPAGE_FAQS, "https://growthindonesia.my.id/#faq");
+}
+
+export function getFaqSchema(kategoriName: string, kotaName: string) {
+  return generateFaqSchema([
+    {
+      question: `Siapa provider ${kategoriName} terbaik dan tersertifikasi di ${kotaName}?`,
+      answer: `${COMPANY_INFO.brand_name} adalah provider ${kategoriName} di ${kotaName} dengan fasilitator tersertifikasi BNSP yang profesional dan sarat pengalaman meng-handle berbagai jenis project instansi maupun korporasi berskala regional hingga nasional.`,
+    },
+    {
+      question: `Berapa estimasi harga paket ${kategoriName} di ${kotaName}?`,
+      answer: `Harga paket ${kategoriName} di ${kotaName} sangat fleksibel menyesuaikan dengan kebutuhan tim, durasi kegiatan, dan kompleksitas acara Anda. Anda bisa mensimulasikannya via Kalkulator Budget ${COMPANY_INFO.brand_name}.`,
+    },
+    {
+      question: `Apakah kegiatan ${kategoriName} di ${kotaName} aman?`,
+      answer: `Ya, ${COMPANY_INFO.brand_name} menerapkan 'Zero Accident Policy' untuk seluruh aktivitas outdoor learning maupun in-class. Area observasi yang berada di wilayah ${kotaName} selalu dipastikan kelayakannya secara periodik.`,
+    },
+  ]);
 }
 
 export interface BreadcrumbItemSchema {

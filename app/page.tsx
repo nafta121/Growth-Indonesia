@@ -14,15 +14,23 @@ import TrustSignals from '@/components/trust-signals';
 import TrustSection from '@/components/trust-section';
 import OutboundGallery from '@/components/outbound-gallery';
 import Contact from '@/components/contact';
+import { getHomepageFaqSchema } from '@/lib/schema';
 
 export const revalidate = 3600;
 
 export default async function Home({ searchParams }: { searchParams: Promise<{ package?: string }> }) {
   const params = await searchParams;
   const selectedPackage = params.package || '';
+  const faqSchema = getHomepageFaqSchema();
 
   return (
     <div className="relative min-h-screen selection:bg-[#EF4444] selection:text-white">
+      {/* FAQ Schema for Homepage Rich Snippets */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+
       <Navbar />
       <main>
         <Hero />
