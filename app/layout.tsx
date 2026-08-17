@@ -94,11 +94,28 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const websiteSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': 'https://growthindonesia.my.id/#website',
+    'name': 'Growth Indonesia',
+    'alternateName': [
+      'Provider Outbound Madiun',
+      'Growth Indonesia Madiun',
+      'Event Organizer Madiun'
+    ],
+    'url': 'https://growthindonesia.my.id/',
+  };
+
   return (
     <html lang="id" className={`${inter.variable} ${outfit.variable}`}>
       <head>
         <link rel="preconnect" href="https://nafta121.sirv.com" />
         <link rel="dns-prefetch" href="https://nafta121.sirv.com" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
         <Script
           id="microsoft-clarity"
           strategy="afterInteractive"
