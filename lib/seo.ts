@@ -1,7 +1,7 @@
 import { COMPANY_INFO } from './constants';
 import { getLocalBusinessSchema, getFaqSchema, generateFaqSchema, HOMEPAGE_FAQS, getHomepageFaqSchema } from './schema';
 
-export { generateFaqSchema, HOMEPAGE_FAQS, getHomepageFaqSchema };
+export { COMPANY_INFO, generateFaqSchema, HOMEPAGE_FAQS, getHomepageFaqSchema };
 
 export interface BreadcrumbItemSchema {
   name: string;

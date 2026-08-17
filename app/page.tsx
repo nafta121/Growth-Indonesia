@@ -14,7 +14,7 @@ import TrustSignals from '@/components/trust-signals';
 import TrustSection from '@/components/trust-section';
 import OutboundGallery from '@/components/outbound-gallery';
 import Contact from '@/components/contact';
-import { getHomepageFaqSchema } from '@/lib/schema';
+import { getHomepageFaqSchema, getLocalBusinessSchema } from '@/lib/schema';
 
 export const revalidate = 3600;
 
@@ -22,13 +22,21 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ p
   const params = await searchParams;
   const selectedPackage = params.package || '';
   const faqSchema = getHomepageFaqSchema();
+  const localBusinessSchema = {
+    "@context": "https://schema.org",
+    ...getLocalBusinessSchema(),
+  };
 
   return (
     <div className="relative min-h-screen selection:bg-[#EF4444] selection:text-white">
-      {/* FAQ Schema for Homepage Rich Snippets */}
+      {/* Root Schemas for Homepage Rich Snippets & Local EEAT */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
       />
 
       <Navbar />

@@ -3,10 +3,29 @@ import { NextResponse } from 'next/server';
 export async function GET() {
   const robotsTxt = `User-agent: *
 Allow: /
+Allow: /_next/static/
 Allow: /2c11486128914291876d43ecd6d55580.txt
 Allow: /api/indexnow
 Disallow: /api/
-Disallow: /_next/
+
+# AI Search Bots & Crawlers (GEO Grounding)
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
 
 Content-Signal: ai-train=no, search=yes, ai-input=yes
 
