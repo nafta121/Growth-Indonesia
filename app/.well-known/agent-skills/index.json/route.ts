@@ -3,8 +3,20 @@ import { NextResponse } from 'next/server';
 export async function GET() {
   const agentSkillsIndex = {
     $schema: 'https://agentskills.io/schemas/v0.2.0/index.json',
+    agent_auth: {
+      skill: 'https://growthindonesia.my.id/auth.md',
+    },
     skills: [
       {
+        id: 'agent_auth',
+        name: 'agent_auth',
+        type: 'auth',
+        description: 'Agent Authentication and Registration Specification for Growth Indonesia AI Agent via auth.md.',
+        url: 'https://growthindonesia.my.id/auth.md',
+        sha256: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
+      },
+      {
+        id: 'outbound-team-building-consulting',
         name: 'outbound-team-building-consulting',
         type: 'api',
         description: 'Provide customized corporate outbound packages, team building modules, and experiential learning itineraries in Madiun and East Java.',

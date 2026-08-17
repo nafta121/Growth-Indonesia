@@ -24,7 +24,7 @@ export async function GET() {
     scopes_supported: ['api:read', 'api:write'],
     code_challenge_methods_supported: ['S256'],
     agent_auth: {
-      skill: 'https://isitagentready.com/.well-known/agent-skills/auth-md/SKILL.md',
+      skill: 'https://growthindonesia.my.id/auth.md',
       register_uri: 'https://growthindonesia.my.id/oauth/register',
       auth_md_uri: 'https://growthindonesia.my.id/auth.md',
       identity_types_supported: ['identity_assertion', 'anonymous', 'agent', 'user', 'organization'],

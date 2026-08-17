@@ -105,6 +105,14 @@ export default function RootLayout({
       'Event Organizer Madiun'
     ],
     'url': 'https://growthindonesia.my.id/',
+    'potentialAction': {
+      '@type': 'SearchAction',
+      'target': {
+        '@type': 'EntryPoint',
+        'urlTemplate': 'https://growthindonesia.my.id/artikel?q={search_term_string}',
+      },
+      'query-input': 'required name=search_term_string',
+    },
   };
 
   return (

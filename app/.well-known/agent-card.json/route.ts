@@ -30,7 +30,17 @@ export async function GET() {
       asyncProcessing: true,
       interactiveMode: true,
     },
+    agent_auth: {
+      skill: 'https://growthindonesia.my.id/auth.md',
+    },
     skills: [
+      {
+        id: 'agent_auth',
+        name: 'Agent Authentication & Registration Protocol',
+        type: 'auth',
+        description: 'Authentication, registration, and identity specifications for Growth Indonesia AI Agent via auth.md.',
+        url: 'https://growthindonesia.my.id/auth.md',
+      },
       {
         id: 'outbound-team-building-consulting',
         name: 'Outbound & Team Building Program Consulting',

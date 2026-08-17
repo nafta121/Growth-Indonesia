@@ -1,6 +1,6 @@
 ---
 agent_auth:
-  skill: https://isitagentready.com/.well-known/agent-skills/auth-md/SKILL.md
+  skill: https://growthindonesia.my.id/auth.md
   register_uri: https://growthindonesia.my.id/oauth/register
   auth_md_uri: https://growthindonesia.my.id/auth.md
   identity_types_supported:
