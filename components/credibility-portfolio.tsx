@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShieldCheck, Award, Users, CheckCircle2, MapPin, Calendar, Building2, GraduationCap, Briefcase } from 'lucide-react';
+import { ShieldCheck, Award, Users, CheckCircle2, MapPin, Calendar, Building2, GraduationCap, Briefcase, Star } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { COMPANY_INFO } from '@/lib/constants';
 
@@ -159,6 +159,57 @@ export default function CredibilityPortfolio() {
     },
     telephone: '+6285704748186',
     priceRange: 'Rp (Rupiah)',
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.9',
+      reviewCount: '150',
+      bestRating: '5',
+      worstRating: '1',
+    },
+    review: [
+      {
+        '@type': 'Review',
+        author: {
+          '@type': 'Organization',
+          name: 'Bank Jatim (Cabang Madiun & Ponorogo)',
+        },
+        datePublished: '2026-03-25',
+        reviewBody: 'Pelaksanaan Corporate Gathering & Capacity Building berjalan sangat sukses dengan Zero Accident Policy. Index kepuasan dan keterikatan karyawan meningkat hingga 98%.',
+        reviewRating: {
+          '@type': 'Rating',
+          ratingValue: '5',
+          bestRating: '5',
+        },
+      },
+      {
+        '@type': 'Review',
+        author: {
+          '@type': 'Organization',
+          name: 'SMP Negeri 1 Geger',
+        },
+        datePublished: '2026-06-23',
+        reviewBody: 'Kemah Besar & Character Building Outbound sangat efektif membentuk kedisiplinan dan kepemimpinan siswa melalui metode Experiential Learning.',
+        reviewRating: {
+          '@type': 'Rating',
+          ratingValue: '5',
+          bestRating: '5',
+        },
+      },
+      {
+        '@type': 'Review',
+        author: {
+          '@type': 'Organization',
+          name: 'Petrokimia Gresik & Semen Indonesia Group',
+        },
+        datePublished: '2025-11-12',
+        reviewBody: 'Program Leadership Development & High Performance Team Training memberikan evaluasi kualitatif dan rekomendasi konkret untuk pengembangan SDM perusahaan.',
+        reviewRating: {
+          '@type': 'Rating',
+          ratingValue: '5',
+          bestRating: '5',
+        },
+      },
+    ],
     employee: FACILITATORS.map((f) => ({
       '@type': 'Person',
       name: f.name,
@@ -238,9 +289,15 @@ export default function CredibilityPortfolio() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
         {/* Header Title */}
         <div className="text-center max-w-3xl mx-auto">
-          <Badge variant="default" className="mb-3 px-3 py-1 border border-red-500/30 text-red-600 bg-red-50 font-semibold">
-            Kredibilitas & Legalitas Resmi
-          </Badge>
+          <div className="flex flex-wrap items-center justify-center gap-2 mb-3">
+            <Badge variant="default" className="px-3 py-1 border border-red-500/30 text-red-600 bg-red-50 font-semibold">
+              Kredibilitas & Legalitas Resmi
+            </Badge>
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-amber-50 border border-amber-200 text-amber-800 rounded-full text-xs font-bold">
+              <Star className="w-3.5 h-3.5 fill-amber-500 text-amber-500" />
+              <span>4.9 / 5.0 (150+ Ulasan & Kepuasan Klien)</span>
+            </div>
+          </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight font-display">
             Profil Fasilitator, Studi Kasus & <span className="text-red-600">Portofolio Klien</span>
           </h2>

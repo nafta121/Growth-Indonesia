@@ -1,5 +1,6 @@
 import { ChevronDown, MessageCircle, Star } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -10,6 +11,21 @@ export default function Hero() {
       id="hero" 
       className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-navy py-20 md:py-32"
     >
+      {/* LCP Hero Background Image */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="https://nafta121.sirv.com/OUTBOUND/2022-10-22%2009-00-09.jpeg"
+          alt="Peserta Corporate Outbound dan Team Building Growth Indonesia di Madiun Jawa Timur"
+          fill
+          priority={true}
+          fetchPriority="high"
+          sizes="100vw"
+          className="object-cover opacity-20 pointer-events-none"
+          referrerPolicy="no-referrer"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628] via-[#0A1628]/80 to-[#0A1628]/60" />
+      </div>
+
       {/* Background Decor */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-brand/5 rounded-full blur-[120px] animate-pulse" />

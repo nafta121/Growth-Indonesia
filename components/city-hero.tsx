@@ -27,12 +27,12 @@ export default function CityHero({ kategoriName, kotaName, cityKey, cityDescript
       <div className="absolute inset-0 z-0">
         <Image 
           src={heroImage}
-          alt={`Background ${kategoriName} di ${kotaName}`}
+          alt={`Kegiatan ${kategoriName} dan Team Building Growth Indonesia di ${kotaName}`}
           fill
-          priority
+          priority={true}
           fetchPriority="high"
-          sizes="(max-width: 768px) 100vw, 50vw"
-          className="object-cover opacity-20"
+          sizes="100vw"
+          className="object-cover opacity-20 pointer-events-none"
           referrerPolicy="no-referrer"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628] via-[#0A1628]/80 to-transparent" />

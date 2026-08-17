@@ -154,8 +154,16 @@ export default async function CityHubPage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaLd) }}
       />
       <main className="flex-1 w-full flex flex-col pt-[72px] md:pt-[88px]">
-        {/* City Hub Hero */}
-        <section className="relative pt-20 pb-20 md:pt-32 md:pb-28 bg-[#0A1628] overflow-hidden">
+        <article itemScope itemType="https://schema.org/ProfessionalService">
+          <meta itemProp="name" content={`Layanan Outbound & Event Organizer di ${kotaName}`} />
+          <meta itemProp="description" content={`Provider outbound & event organizer (EO) profesional di ${kotaName} bersertifikat BNSP. ${cityData.description}`} />
+          <meta itemProp="provider" content={COMPANY_INFO.brand_name} />
+          <meta itemProp="areaServed" content={kotaName} />
+          <meta itemProp="award" content="Fasilitator & Instructor Tersertifikasi BNSP" />
+          <meta itemProp="serviceType" content="Corporate Outbound, Team Building & Event Organizer" />
+
+          {/* City Hub Hero */}
+          <section className="relative pt-20 pb-20 md:pt-32 md:pb-28 bg-[#0A1628] overflow-hidden">
           <div className="absolute inset-0 z-0">
             <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628] via-brand/10 to-[#0A1628]" />
           </div>
@@ -238,6 +246,7 @@ export default async function CityHubPage({ params }: Props) {
             </p>
           </div>
         </section>
+        </article>
 
         <TrustSection kategoriName="Program" kotaName={kotaName} />
       </main>
