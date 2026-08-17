@@ -40,15 +40,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   const kotaName = formatSlug(decodedKota);
-  const title = `Layanan Outbound & Training di ${kotaName} - ${COMPANY_INFO.brand_name}`;
-  const description = `Pilihan layanan unggulan ${COMPANY_INFO.brand_name} di ${kotaName}. Menyediakan Outbound, Training, Fun Games & LDK OSIS. ${cityData.description}`;
+  const title = `Layanan Outbound & Event Organizer di ${kotaName} | Growth Indonesia`;
+  const description = `Provider outbound & event organizer (EO) profesional di ${kotaName} bersertifikat BNSP. Melayani corporate gathering, team building, LDK OSIS & fun games di ${kotaName}. Konsultasi gratis!`;
   const cityImage = getCityImage(decodedKota);
+  const canonicalUrl = `https://growthindonesia.my.id/layanan/${decodedKota}`;
 
   return {
     title,
     description,
     alternates: {
-      canonical: `https://growthindonesia.my.id/layanan/${decodedKota}`,
+      canonical: canonicalUrl,
+      languages: {
+        'id-ID': canonicalUrl,
+      },
     },
     robots: {
       index: true,
@@ -58,7 +62,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title,
       description,
-      url: `https://growthindonesia.my.id/layanan/${decodedKota}`,
+      url: canonicalUrl,
       siteName: COMPANY_INFO.brand_name,
       locale: 'id_ID',
       type: 'website',
@@ -67,7 +71,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
           url: cityImage,
           width: 1200,
           height: 630,
-          alt: `Layanan Outbound & Training di ${kotaName} - ${COMPANY_INFO.brand_name}`,
+          alt: `Layanan Outbound & Event Organizer di ${kotaName} - ${COMPANY_INFO.brand_name}`,
         },
       ],
     },
@@ -101,20 +105,54 @@ export default async function CityHubPage({ params }: Props) {
 
   const kotaName = formatSlug(decodedKota);
 
-  const schemaLd = {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "name": `Layanan Outbound & Training di ${kotaName}`,
-    "description": cityData.description,
-    "url": `https://growthindonesia.my.id/layanan/${decodedKota}`,
-    "about": {
-      "@type": "Place",
-      "name": kotaName
+  const schemaLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "@id": `https://growthindonesia.my.id/layanan/${decodedKota}#webpage`,
+      "name": `Layanan Outbound & Event Organizer di ${kotaName}`,
+      "description": cityData.description,
+      "url": `https://growthindonesia.my.id/layanan/${decodedKota}`,
+      "about": {
+        "@type": "Place",
+        "name": kotaName
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "@id": "https://growthindonesia.my.id/#organization",
+      "name": COMPANY_INFO.brand_name,
+      "url": "https://growthindonesia.my.id",
+      "logo": "https://pub-50a5fd46ec724773a854a130ecf7860c.r2.dev/LOGO/SVG%20LOGO%20GROWTH.svg",
+      "image": getCityImage(decodedKota),
+      "description": `Provider Outbound Training, Team Building, dan Event Organizer (EO) profesional di ${kotaName}. ${cityData.uniqueSellingPoint}`,
+      "telephone": COMPANY_INFO.whatsapp_display,
+      "priceRange": "$$",
+      "areaServed": {
+        "@type": "City",
+        "name": kotaName
+      },
+      "knowsAbout": cityData.popularVenues,
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": `Katalog Layanan Outbound & Event Organizer ${kotaName}`,
+        "itemListElement": KATEGORI.map((kategori, index) => ({
+          "@type": "OfferCatalog",
+          "position": index + 1,
+          "name": `${formatSlug(kategori)} ${kotaName}`,
+          "url": `https://growthindonesia.my.id/layanan/${decodedKota}/${kategori}`
+        }))
+      }
     }
-  };
+  ];
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaLd) }}
+      />
       <main className="flex-1 w-full flex flex-col pt-[72px] md:pt-[88px]">
         {/* City Hub Hero */}
         <section className="relative pt-20 pb-20 md:pt-32 md:pb-28 bg-[#0A1628] overflow-hidden">

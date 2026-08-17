@@ -32,17 +32,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const kategoriName = formatSlug(decodedKategori);
   const content = getContentVariations(decodedKategori, kotaName);
 
-  const title = content.title;
-  const description = `${COMPANY_INFO.brand_name} adalah provider ${kategoriName.toLowerCase()} dan penyedia jasa EO profesional di ${kotaName}. ${cityData.description} Hubungi kami untuk penawaran terbaik.`;
+  const title = content.title.includes('Growth Indonesia') ? content.title : `${content.title} | ${COMPANY_INFO.brand_name}`;
+  const description = `Jasa ${kategoriName.toLowerCase()} & event organizer profesional di ${kotaName} bersertifikat BNSP. ${cityData.description} Hubungi ${COMPANY_INFO.brand_name} untuk penawaran harga terbaik!`;
   const ogImages = getCategoryOgImage(decodedKategori, kotaName);
+  const canonicalUrl = `https://growthindonesia.my.id/layanan/${decodedKota}/${decodedKategori}`;
 
   return {
     title,
     description,
     alternates: {
-      canonical: `https://growthindonesia.my.id/layanan/${decodedKota}/${decodedKategori}`,
+      canonical: canonicalUrl,
       languages: {
-        'id-ID': `https://growthindonesia.my.id/layanan/${decodedKota}/${decodedKategori}`,
+        'id-ID': canonicalUrl,
       },
     },
     robots: {
@@ -53,7 +54,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title,
       description,
-      url: `https://growthindonesia.my.id/layanan/${decodedKota}/${decodedKategori}`,
+      url: canonicalUrl,
       siteName: COMPANY_INFO.brand_name,
       locale: 'id_ID',
       type: 'website',
@@ -111,6 +112,7 @@ export default async function ProgrammaticSiloPage({ params }: Props) {
 
   const kotaName = formatSlug(decodedKota);
   const kategoriName = formatSlug(decodedKategori);
+  const description = `Jasa ${kategoriName.toLowerCase()} & event organizer profesional di ${kotaName} bersertifikat BNSP. ${cityData.description} Hubungi ${COMPANY_INFO.brand_name} untuk penawaran harga terbaik!`;
 
   const schemaLd = getServicePageSchema({
     kotaName,
@@ -132,8 +134,12 @@ export default async function ProgrammaticSiloPage({ params }: Props) {
         {/* Modularized Content Sections */}
         <article itemScope itemType="https://schema.org/Service">
           <meta itemProp="name" content={`${kategoriName} di ${kotaName}`} />
+          <meta itemProp="description" content={description} />
+          <meta itemProp="category" content={kategoriName} />
           <meta itemProp="provider" content={COMPANY_INFO.brand_name} />
           <meta itemProp="areaServed" content={kotaName} />
+          <meta itemProp="award" content="Fasilitator & Instructor Tersertifikasi BNSP" />
+          <meta itemProp="serviceType" content={`${kategoriName} Outbound & Event Organizer`} />
           
           <CityHero 
             kategoriName={kategoriName} 
