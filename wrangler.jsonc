@@ -1,11 +1,22 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "growth-indonesia",
+  "main": ".open-next/worker.js",
   "compatibility_date": "2026-08-17",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
   "observability": {
-    "enabled": true,
-    "traces": {
-      "enabled": true
+    "enabled": true
+  },
+  "services": [
+    {
+      "binding": "WORKER_SELF_REFERENCE",
+      "service": "growth-indonesia"
     }
-  }
+  ]
 }
