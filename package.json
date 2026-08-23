@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "node scripts/prebuild.js && next build",
+    "build:cf": "node scripts/prebuild.js && opennextjs-cloudflare build",
     "start": "next start",
     "lint": "eslint .",
     "clean": "next clean"
@@ -28,6 +29,7 @@
     "tailwind-merge": "^3.3.1"
   },
   "devDependencies": {
+    "@opennextjs/cloudflare": "^1.20.2",
     "@tailwindcss/postcss": "4.1.11",
     "@tailwindcss/typography": "^0.5.19",
     "@types/node": "^20",
