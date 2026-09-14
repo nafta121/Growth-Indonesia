@@ -94,7 +94,12 @@ export async function getArticleBySlug(slug: string): Promise<Article | null> {
   return null;
 }
 
+let allArticlesCache: Omit<Article, 'content'>[] | null = null;
+
 export async function getAllArticles(): Promise<Omit<Article, 'content'>[]> {
+  if (allArticlesCache) {
+    return allArticlesCache;
+  }
   const fs = getFs();
   if (fs && ARTICLES_PATH && fs.existsSync(ARTICLES_PATH)) {
     const slugs = await getArticleSlugs();
@@ -107,8 +112,10 @@ export async function getAllArticles(): Promise<Omit<Article, 'content'>[]> {
     const articlesArray = await Promise.all(articlesPromises);
     const articles = articlesArray.filter((article): article is Omit<Article, 'content'> => article !== null);
       
-    return articles.sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime());
+    allArticlesCache = articles.sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime());
+    return allArticlesCache;
   }
 
-  return articlesCache.map(({ content, ...rest }) => rest);
+  allArticlesCache = articlesCache.map(({ content, ...rest }) => rest);
+  return allArticlesCache;
 }

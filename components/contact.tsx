@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { MapPin, Phone, MessageCircle, Send, CheckCircle2, Calendar, Building2, User } from 'lucide-react';
-import { cn } from '@/lib/utils';
 import { useForm } from 'react-hook-form';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -43,8 +42,6 @@ Rencana Tanggal: ${data.date || 'TBC'}`;
 
     const encodedMessage = encodeURIComponent(message);
     
-    // Brief artificial delay for "loading" feel as requested
-    await new Promise(resolve => setTimeout(resolve, 1000));
     
     // Redirect to WhatsApp
     window.open(`https://wa.me/${COMPANY_INFO.whatsapp_number}?text=${encodedMessage}`, '_blank');

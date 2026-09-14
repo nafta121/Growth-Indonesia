@@ -1,4 +1,3 @@
-import React from 'react';
 import { ShieldCheck, Award, Users, CheckCircle2, MapPin, Calendar, Building2, GraduationCap, Briefcase, Star } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { COMPANY_INFO } from '@/lib/constants';
