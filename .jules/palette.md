@@ -1,0 +1,3 @@
+## 2023-11-20 - Adding Accessibility Support to Custom Lightbox Galleries
+**Learning:** Custom lightbox galleries in this application were missing aria-labels and keyboard focus indicators, making them difficult for screen reader users and keyboard-only users to navigate. Since Next.js `Image` components are typically placed inside custom wrappers (like `motion.div`), the wrapping component must assume the interactive role (`role="button"`, `tabIndex={0}`, `aria-label`).
+**Action:** Always ensure that custom wrappers meant to be clickable in a gallery include keyboard handlers (`onKeyDown`), proper ARIA roles/labels, and `focus-visible` styling to maintain a fully accessible user experience.
