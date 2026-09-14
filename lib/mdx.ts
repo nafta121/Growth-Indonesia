@@ -93,7 +93,13 @@ export function getArticleBySlug(slug: string): Article | null {
   return null;
 }
 
+let allArticlesCache: Omit<Article, 'content'>[] | null = null;
+
 export function getAllArticles(): Omit<Article, 'content'>[] {
+  if (allArticlesCache) {
+    return allArticlesCache;
+  }
+
   const fs = getFs();
   if (fs && ARTICLES_PATH && fs.existsSync(ARTICLES_PATH)) {
     const slugs = getArticleSlugs();
@@ -106,8 +112,10 @@ export function getAllArticles(): Omit<Article, 'content'>[] {
       })
       .filter((article): article is Omit<Article, 'content'> => article !== null);
       
-    return articles.sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime());
+    allArticlesCache = articles.sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime());
+    return allArticlesCache;
   }
 
-  return articlesCache.map(({ content, ...rest }) => rest);
+  allArticlesCache = articlesCache.map(({ content, ...rest }) => rest);
+  return allArticlesCache;
 }
