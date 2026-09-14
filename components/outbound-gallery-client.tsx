@@ -87,6 +87,7 @@ export default function OutboundGalleryClient({ photos, children }: OutboundGall
             <button
               onClick={handleClose}
               className="absolute top-6 right-6 text-white/70 hover:text-white transition-colors z-[110]"
+              aria-label="Tutup galeri"
             >
               <X className="w-10 h-10" />
             </button>
@@ -95,6 +96,7 @@ export default function OutboundGalleryClient({ photos, children }: OutboundGall
               <button
                 onClick={handlePrev}
                 className="absolute left-0 md:-left-12 text-white/50 hover:text-white transition-colors p-2 z-[110]"
+                aria-label="Foto sebelumnya"
               >
                 <ChevronLeft className="w-12 h-12" />
               </button>
@@ -120,6 +122,7 @@ export default function OutboundGalleryClient({ photos, children }: OutboundGall
               <button
                 onClick={handleNext}
                 className="absolute right-0 md:-right-12 text-white/50 hover:text-white transition-colors p-2 z-[110]"
+                aria-label="Foto selanjutnya"
               >
                 <ChevronRight className="w-12 h-12" />
               </button>
