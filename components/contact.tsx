@@ -43,8 +43,6 @@ Rencana Tanggal: ${data.date || 'TBC'}`;
 
     const encodedMessage = encodeURIComponent(message);
     
-    // Brief artificial delay for "loading" feel as requested
-    await new Promise(resolve => setTimeout(resolve, 1000));
     
     // Redirect to WhatsApp
     window.open(`https://wa.me/${COMPANY_INFO.whatsapp_number}?text=${encodedMessage}`, '_blank');
