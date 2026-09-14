@@ -1,4 +1,3 @@
-import React from 'react';
 import { COMPANY_INFO } from '@/lib/constants';
 
 const CITY_GEO_DATA: Record<string, { lat: number; long: number }> = {
