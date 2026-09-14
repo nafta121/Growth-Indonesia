@@ -1,4 +1,3 @@
-import React from 'react';
 import Link from 'next/link';
 import { MapPin, ArrowRight } from 'lucide-react';
 import ScrollReveal from '@/components/ui/scroll-reveal';
