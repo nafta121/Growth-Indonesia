@@ -43,15 +43,16 @@ function getPath() {
 
 const ARTICLES_PATH = isNode ? getPath()?.join(process.cwd(), 'content/artikel') : '';
 
-export function getArticleSlugs(): string[] {
+export async function getArticleSlugs(): Promise<string[]> {
   const fs = getFs();
   if (fs && ARTICLES_PATH && fs.existsSync(ARTICLES_PATH)) {
-    return fs.readdirSync(ARTICLES_PATH).filter((file: string) => file.endsWith('.mdx'));
+    const files = await fs.promises.readdir(ARTICLES_PATH);
+    return files.filter((file: string) => file.endsWith('.mdx'));
   }
   return articlesCache.map((art) => `${art.slug}.mdx`);
 }
 
-export function getArticleBySlug(slug: string): Article | null {
+export async function getArticleBySlug(slug: string): Promise<Article | null> {
   const realSlug = slug.replace(/\.mdx$/, '');
   
   const fs = getFs();
@@ -60,7 +61,7 @@ export function getArticleBySlug(slug: string): Article | null {
     const filePath = pathModule ? pathModule.join(ARTICLES_PATH, `${realSlug}.mdx`) : '';
     if (filePath && fs.existsSync(filePath)) {
       try {
-        const fileContents = fs.readFileSync(filePath, 'utf8');
+        const fileContents = await fs.promises.readFile(filePath, 'utf8');
         const { data, content } = matter(fileContents);
         
         const frontmatter: ArticleFrontmatter = {
@@ -93,18 +94,19 @@ export function getArticleBySlug(slug: string): Article | null {
   return null;
 }
 
-export function getAllArticles(): Omit<Article, 'content'>[] {
+export async function getAllArticles(): Promise<Omit<Article, 'content'>[]> {
   const fs = getFs();
   if (fs && ARTICLES_PATH && fs.existsSync(ARTICLES_PATH)) {
-    const slugs = getArticleSlugs();
-    const articles = slugs
-      .map((slug) => {
-        const article = getArticleBySlug(slug);
-        if (!article) return null;
-        const { content, ...rest } = article;
-        return rest;
-      })
-      .filter((article): article is Omit<Article, 'content'> => article !== null);
+    const slugs = await getArticleSlugs();
+
+    const articlesPromises = slugs.map(async (slug) => {
+      const article = await getArticleBySlug(slug);
+      if (!article) return null;
+      const { content, ...rest } = article;
+      return rest;
+    });
+
+    const articles = (await Promise.all(articlesPromises)).filter((article): article is Omit<Article, 'content'> => article !== null);
       
     return articles.sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime());
   }

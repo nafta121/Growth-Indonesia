@@ -87,7 +87,7 @@ ${PACKAGES.map((p) => `- **${p.title}**: ${p.description}`).join('\n')}
     const slug = parts[1];
 
     if (slug) {
-      const article = getArticleBySlug(slug);
+      const article = await getArticleBySlug(slug);
       if (article) {
         markdownContent = `# ${article.frontmatter.title}
 
@@ -103,7 +103,7 @@ ${article.content}
         markdownContent = `# Artikel Tidak Ditemukan\n\nArtikel dengan slug \`${slug}\` tidak ditemukan.`;
       }
     } else {
-      const articles = getAllArticles();
+      const articles = await getAllArticles();
       markdownContent = `# Artikel & Edukasi - Growth Indonesia
 
 Daftar panduan dan wawasan seputar outbound, team building, dan HR development:
