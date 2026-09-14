@@ -63,6 +63,15 @@ export default function OutboundGalleryClient({ photos, children }: OutboundGall
             viewport={{ once: true }}
             onClick={() => setCurrentIndex(index)}
             className="group relative aspect-square overflow-hidden rounded-xl md:rounded-[2rem] cursor-pointer bg-white shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 active:scale-95"
+            aria-label={`Lihat foto ${index + 1} dalam ukuran penuh`}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                setCurrentIndex(index);
+              }
+            }}
           >
             {child}
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
@@ -83,10 +92,14 @@ export default function OutboundGalleryClient({ photos, children }: OutboundGall
             exit={{ opacity: 0 }}
             onClick={handleClose}
             className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-md p-4 md:p-12"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Tampilan foto layar penuh"
           >
             <button
               onClick={handleClose}
-              className="absolute top-6 right-6 text-white/70 hover:text-white transition-colors z-[110]"
+              className="absolute top-6 right-6 text-white/70 hover:text-white transition-colors z-[110] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-lg p-1"
+              aria-label="Tutup galeri"
             >
               <X className="w-10 h-10" />
             </button>
@@ -94,7 +107,8 @@ export default function OutboundGalleryClient({ photos, children }: OutboundGall
             <div className="relative w-full h-full flex items-center justify-center">
               <button
                 onClick={handlePrev}
-                className="absolute left-0 md:-left-12 text-white/50 hover:text-white transition-colors p-2 z-[110]"
+                className="absolute left-0 md:-left-12 text-white/50 hover:text-white transition-colors p-2 z-[110] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-lg"
+                aria-label="Foto sebelumnya"
               >
                 <ChevronLeft className="w-12 h-12" />
               </button>
@@ -110,7 +124,7 @@ export default function OutboundGalleryClient({ photos, children }: OutboundGall
               >
                 <Image
                   src={photos[currentIndex].url}
-                  alt={photos[currentIndex].alt}
+                  alt={photos[currentIndex].alt || `Foto ${currentIndex + 1} dari ${photos.length}`}
                   fill
                   className="object-contain"
                   referrerPolicy="no-referrer"
@@ -119,14 +133,18 @@ export default function OutboundGalleryClient({ photos, children }: OutboundGall
 
               <button
                 onClick={handleNext}
-                className="absolute right-0 md:-right-12 text-white/50 hover:text-white transition-colors p-2 z-[110]"
+                className="absolute right-0 md:-right-12 text-white/50 hover:text-white transition-colors p-2 z-[110] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-lg"
+                aria-label="Foto selanjutnya"
               >
                 <ChevronRight className="w-12 h-12" />
               </button>
             </div>
 
             {/* Counter */}
-            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/70 font-mono text-sm">
+            <div
+              className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/70 font-mono text-sm"
+              aria-live="polite"
+            >
               {currentIndex + 1} / {photos.length}
             </div>
           </motion.div>

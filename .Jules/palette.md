@@ -1,0 +1,3 @@
+## 2024-09-14 - Accessible Gallery Lightbox Controls
+**Learning:** Found an accessibility issue pattern specific to `components/outbound-gallery-client.tsx` where icon-only buttons (prev, next, close) inside the full-screen lightbox lacked `aria-label`s. Because these are critical navigation controls for screen readers, they must have clear labels like "Tutup galeri", "Foto sebelumnya", and "Foto selanjutnya".
+**Action:** Always verify that interactive elements consisting solely of icons (`<button><Icon /></button>`) have appropriate `aria-label`s. Furthermore, `aria-expanded` and `aria-controls` were added to the mobile menu for context, and `aria-pressed` was added to toggle-like buttons in the budget calculator.

@@ -15,13 +15,21 @@ export default function ServicesTabs({ services }: { services: Record<string, { 
 
   return (
     <>
-      <div className="relative flex flex-nowrap overflow-x-auto p-1.5 bg-white/5 backdrop-blur-sm rounded-2xl md:rounded-3xl border border-white/10 w-full max-w-2xl mx-auto mb-12 md:mb-20 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory">
+      <div
+        className="relative flex flex-nowrap overflow-x-auto p-1.5 bg-white/5 backdrop-blur-sm rounded-2xl md:rounded-3xl border border-white/10 w-full max-w-2xl mx-auto mb-12 md:mb-20 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory"
+        role="tablist"
+        aria-label="Kategori Layanan"
+      >
         {CATEGORIES.map((cat) => (
           <button
             key={cat.id}
+            id={`tab-${cat.id}`}
+            role="tab"
+            aria-selected={activeTab === cat.id}
+            aria-controls={`panel-${cat.id}`}
             onClick={() => setActiveTab(cat.id)}
             className={cn(
-              "relative z-10 flex-1 min-w-fit shrink-0 snap-center py-4 md:py-5 px-6 text-xs md:text-sm font-bold tracking-[0.15em] transition-all duration-300 rounded-xl md:rounded-2xl focus:outline-none uppercase active:scale-95",
+              "relative z-10 flex-1 min-w-fit shrink-0 snap-center py-4 md:py-5 px-6 text-xs md:text-sm font-bold tracking-[0.15em] transition-all duration-300 rounded-xl md:rounded-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A1628] uppercase active:scale-95",
               activeTab === cat.id ? "text-white" : "text-slate-300 hover:bg-slate-800 hover:text-white"
             )}
           >
@@ -42,6 +50,9 @@ export default function ServicesTabs({ services }: { services: Record<string, { 
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}
+            id={`panel-${activeTab}`}
+            role="tabpanel"
+            aria-labelledby={`tab-${activeTab}`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
@@ -55,13 +66,13 @@ export default function ServicesTabs({ services }: { services: Record<string, { 
                 className="group relative flex flex-col p-8 rounded-3xl bg-white/5 border border-white/5 hover:border-[#EF4444]/30 hover:bg-white/[0.08] transition-all duration-500 overflow-hidden active:scale-[0.98] cursor-default"
               >
                 <div className="w-14 h-14 rounded-2xl bg-[#EF4444]/10 flex items-center justify-center text-[#EF4444] mb-6 group-hover:bg-[#EF4444] group-hover:text-white transition-all duration-500 shadow-lg shadow-black/20">
-                  {activeTab === 'training' ? <Star className="w-7 h-7" /> : <Sparkles className="w-7 h-7" />}
+                  {activeTab === 'training' ? <Star className="w-7 h-7" aria-hidden="true" /> : <Sparkles className="w-7 h-7" aria-hidden="true" />}
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-white mb-3 tracking-tight group-hover:text-[#EF4444] transition-colors duration-300">{item.title}</h3>
                   <p className="text-slate-300 text-sm leading-relaxed mb-4">{item.desc}</p>
                 </div>
-                <div className="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden="true">
                   <div className="w-2 h-2 bg-[#EF4444] rounded-full animate-pulse" />
                 </div>
               </motion.div>

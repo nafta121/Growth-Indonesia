@@ -1,19 +1,11 @@
 'use client';
 
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { MapPin, Phone, MessageCircle, Send, CheckCircle2, Calendar, Building2, User } from 'lucide-react';
-import { cn } from '@/lib/utils';
 import { useForm } from 'react-hook-form';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
+import { motion, AnimatePresence } from 'motion/react';
+import { Send, User, Building2, Phone, Calendar, CheckCircle2, MessageSquare } from 'lucide-react';
 import { Input } from '@/components/ui/input';
-import { PACKAGES } from '@/lib/packages';
-import { COMPANY_INFO } from '@/lib/constants';
-
-interface ContactProps {
-  initialPackage?: string;
-}
+import { Button } from '@/components/ui/button';
 
 type FormData = {
   name: string;
@@ -23,129 +15,133 @@ type FormData = {
   date: string;
 };
 
-export default function Contact({ initialPackage }: ContactProps) {
-  const [isSubmitted, setIsSubmitted] = useState(false);
+const PACKAGES = [
+  { id: 'fun-game', label: 'Fun Game (Rp 100k/pax)' },
+  { id: 'team-building', label: 'Team Building (Rp 250k/pax)' },
+  { id: 'ldk-osis', label: 'LDK OSIS (Rp 250k/pax)' },
+];
 
-  const { register, handleSubmit, formState: { errors, isValid, isSubmitting } } = useForm<FormData>({
-    defaultValues: { package: initialPackage || '' },
-    mode: "onChange"
+export default function Contact({ initialPackage }: { initialPackage?: string }) {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const { register, handleSubmit, formState: { errors, isValid } } = useForm<FormData>({
+    mode: 'onChange',
+    defaultValues: {
+      package: initialPackage || ''
+    }
   });
 
   const onSubmit = async (data: FormData) => {
-    // Construction of WhatsApp message
-    const selectedPkg = PACKAGES.find(p => p.id === data.package)?.label || data.package;
-    const message = `Halo tim GROWTH INDONESIA, saya berminat untuk reservasi program:
+    setIsSubmitting(true);
 
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    
+    // Format message for WhatsApp
+    const message = `Halo Growth Indonesia, saya ingin konsultasi program outbound:
+    
 Nama: ${data.name}
-Instansi/Perusahaan: ${data.company}
-Paket Pilihan: ${selectedPkg}
-Rencana Tanggal: ${data.date || 'TBC'}`;
+Instansi: ${data.company}
+WhatsApp: ${data.whatsapp}
+Program: ${PACKAGES.find(p => p.id === data.package)?.label}
+Rencana Tanggal: ${data.date || 'Belum ditentukan'}
 
-    const encodedMessage = encodeURIComponent(message);
+Mohon informasi lebih lanjut. Terima kasih.`;
+
+    // Open WhatsApp
+    window.open(`https://wa.me/6285704748186?text=${encodeURIComponent(message)}`, '_blank');
     
-    
-    // Redirect to WhatsApp
-    window.open(`https://wa.me/${COMPANY_INFO.whatsapp_number}?text=${encodedMessage}`, '_blank');
-    
+    setIsSubmitting(false);
     setIsSubmitted(true);
   };
 
   return (
-    <section id="kontak" className="py-20 md:py-32 bg-white relative overflow-hidden">
+    <section id="kontak" className="py-20 md:py-32 bg-slate-50 relative overflow-hidden" aria-labelledby="kontak-title">
+      {/* Background Elements */}
+      <div className="absolute top-0 right-0 w-1/2 h-full bg-[#0A1628] rounded-l-[100px] opacity-5 md:opacity-10 pointer-events-none transform translate-x-1/3" />
+      <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-[#EF4444]/10 rounded-full blur-[100px] pointer-events-none" />
+
       <div className="max-w-7xl mx-auto px-4 md:px-12 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           
-          {/* Left Side: Contact Info */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="lg:sticky lg:top-32"
-          >
-            <Badge className="mb-4">Get In Touch</Badge>
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 leading-[1.1] mb-8">
-              Siap untuk <span className="text-[#EF4444]">Bertransformasi?</span>
-            </h2>
-            <p className="text-gray-500 text-base md:text-lg leading-relaxed mb-12 max-w-xl">
-              Hubungi kami hari ini untuk konsultasi gratis dan temukan bagaimana kami dapat membantu tim Anda mencapai potensi maksimalnya melalui pengalaman outbound yang transformatif.
+          {/* Left Content */}
+          <div className="space-y-8 md:space-y-12">
+            <div>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#EF4444]/10 text-[#EF4444] font-bold text-sm tracking-widest uppercase mb-6">
+                <MessageSquare className="w-4 h-4" />
+                <span>Mari Berdiskusi</span>
+              </div>
+              <h2 id="kontak-title" className="font-display text-4xl md:text-5xl lg:text-6xl font-black text-[#0A1628] leading-[1.1] tracking-tight">
+                Siap Transformasi <br/><span className="text-[#EF4444] relative inline-block mt-2">
+                  Tim Anda?
+                  <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 100 20" preserveAspectRatio="none">
+                    <path d="M0 10 Q 50 20 100 10" fill="none" stroke="#EF4444" strokeWidth="4" strokeLinecap="round" className="animate-[dash_2s_ease-in-out_infinite] opacity-30" />
+                  </svg>
+                </span>
+              </h2>
+            </div>
+
+            <p className="text-gray-600 text-lg leading-relaxed max-w-lg font-medium">
+              Konsultasikan kebutuhan spesifik instansi Anda. Tim ahli kami siap merancang program outbound dan team building yang paling efektif.
             </p>
 
-            <div className="space-y-6 md:space-y-8">
-              <a 
-                href={COMPANY_INFO.maps_url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex gap-5 md:gap-7 group items-center p-4 -ml-4 rounded-3xl hover:bg-gray-50 transition-all duration-300"
-                aria-label="Lihat lokasi Growth Indonesia di Google Maps"
-              >
-                <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl md:rounded-[1.5rem] bg-gray-50 flex items-center justify-center text-[#EF4444] group-hover:bg-[#EF4444] group-hover:text-white transition-all duration-500 shadow-sm">
-                  <MapPin className="w-6 h-6 md:w-7 md:h-7" />
-                </div>
-                <div>
-                  <h3 className="font-extrabold text-gray-900 mb-1 uppercase tracking-tight text-sm md:text-base">Kantor Pusat</h3>
-                  <address 
-                    className="not-italic text-gray-500 group-hover:text-gray-900 transition-colors duration-300 text-sm md:text-base leading-snug"
-                    dangerouslySetInnerHTML={{ __html: COMPANY_INFO.address_html }}
-                  />
-                </div>
-              </a>
-
-              <a 
-                href={`https://wa.me/${COMPANY_INFO.whatsapp_number}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex gap-5 md:gap-7 group items-center p-4 -ml-4 rounded-3xl hover:bg-gray-50 transition-all duration-300"
-                aria-label="Hubungi Growth Indonesia via WhatsApp"
-              >
-                <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl md:rounded-[1.5rem] bg-gray-50 flex items-center justify-center text-[#EF4444] group-hover:bg-[#EF4444] group-hover:text-white transition-all duration-500 shadow-sm">
-                  <Phone className="w-6 h-6 md:w-7 md:h-7" />
-                </div>
-                <div>
-                  <h3 className="font-extrabold text-gray-900 mb-1 uppercase tracking-tight text-sm md:text-base">WhatsApp & Telepon</h3>
-                  <p className="text-gray-500 group-hover:text-gray-900 transition-colors duration-300 text-sm md:text-base font-bold">{COMPANY_INFO.whatsapp_display}</p>
-                </div>
-              </a>
-
-              <a 
-                href={`mailto:${COMPANY_INFO.email}`}
-                className="flex gap-5 md:gap-7 group items-center p-4 -ml-4 rounded-3xl hover:bg-gray-50 transition-all duration-300 focus:outline-none"
-                aria-label="Kirim email ke Growth Indonesia"
-              >
-                <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl md:rounded-[1.5rem] bg-gray-50 flex items-center justify-center text-[#EF4444] group-hover:bg-[#EF4444] group-hover:text-white transition-all duration-500 shadow-sm">
-                  <MessageCircle className="w-6 h-6 md:w-7 md:h-7" />
-                </div>
-                <div>
-                  <h3 className="font-extrabold text-gray-900 mb-1 uppercase tracking-tight text-sm md:text-base">Email Resmi</h3>
-                  <p className="text-gray-500 group-hover:text-gray-900 transition-colors duration-300 text-sm md:text-base border-b border-transparent group-hover:border-gray-200">{COMPANY_INFO.email}</p>
-                </div>
-              </a>
+            <div className="space-y-6">
+              {[
+                { title: 'Konsultasi Gratis', desc: 'Diskusi awal tanpa komitmen apapun.' },
+                { title: 'Custom Program', desc: 'Materi disesuaikan dengan goals perusahaan.' },
+                { title: 'Respon Cepat', desc: 'Dibalas dalam waktu kurang dari 1 jam pada jam kerja.' },
+              ].map((feature, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ delay: idx * 0.1 }}
+                  viewport={{ once: true }}
+                  className="flex gap-5 group"
+                >
+                  <div className="w-12 h-12 rounded-2xl bg-white shadow-lg border border-gray-100 flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:bg-[#EF4444] transition-all duration-300">
+                    <CheckCircle2 className="w-6 h-6 text-[#EF4444] group-hover:text-white transition-colors" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-gray-900 text-lg mb-1">{feature.title}</h3>
+                    <p className="text-gray-500 text-sm">{feature.desc}</p>
+                  </div>
+                </motion.div>
+              ))}
             </div>
-          </motion.div>
+          </div>
 
-          {/* Right Side: Lead Generation Form */}
+          {/* Right Form */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
             className="relative"
           >
+            <div className="absolute inset-0 bg-gradient-to-r from-[#EF4444]/20 to-blue-500/20 blur-3xl -z-10 rounded-full transform translate-y-10" />
+
             <AnimatePresence mode="wait">
               {!isSubmitted ? (
                 <motion.div
                   key="form"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  className="bg-gray-50 p-6 md:p-10 lg:p-12 rounded-[2.5rem] md:rounded-[3.5rem] border border-gray-100 shadow-sm active:shadow-md transition-shadow duration-500"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  className="bg-white p-8 md:p-10 lg:p-12 rounded-[2.5rem] md:rounded-[3rem] shadow-2xl border border-gray-100 relative"
                 >
-                  <div className="mb-10">
-                    <div className="flex justify-between items-end mb-3">
-                       <h3 id="kontak-form-title" className="text-[10px] font-extrabold text-[#EF4444] uppercase tracking-[0.3em]">Booking Form</h3>
+                  <div className="absolute top-8 right-8 text-gray-300 hidden sm:block">
+                    <svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M20 20 L80 20 L80 80 L20 80 Z" stroke="currentColor" strokeWidth="2" strokeDasharray="5 5" />
+                      <circle cx="50" cy="50" r="10" fill="currentColor" />
+                    </svg>
+                  </div>
+
+                  <div className="mb-8">
+                    <div className="flex items-center gap-3 mb-2">
+                      <div className="w-2 h-2 rounded-full bg-[#EF4444] animate-pulse" />
                       <span className="text-[10px] text-gray-600 font-extrabold uppercase tracking-widest">Growth Intake</span>
                     </div>
-                    <div className="h-1.5 w-full bg-gray-200 rounded-full overflow-hidden p-[2px]">
+                    <div className="h-1.5 w-full bg-gray-200 rounded-full overflow-hidden p-[2px]" aria-hidden="true">
                       <motion.div 
                         initial={{ width: 0 }}
                         animate={{ width: isValid ? '100%' : '50%' }}
@@ -156,10 +152,11 @@ Rencana Tanggal: ${data.date || 'TBC'}`;
                   </div>
 
                   <form onSubmit={handleSubmit(onSubmit)} className="space-y-5 md:space-y-6" aria-labelledby="kontak-form-title">
+                    <h3 id="kontak-form-title" className="sr-only">Formulir Kontak</h3>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-6">
                       <div className="space-y-2">
                         <label htmlFor="name" className="text-xs font-bold text-gray-900 uppercase tracking-widest flex items-center gap-2 px-1">
-                          <User className="w-3.5 h-3.5 text-[#EF4444]" /> Nama Lengkap
+                          <User className="w-3.5 h-3.5 text-[#EF4444]" aria-hidden="true" /> Nama Lengkap
                         </label>
                         <Input
                           id="name"
@@ -167,12 +164,14 @@ Rencana Tanggal: ${data.date || 'TBC'}`;
                           {...register("name", { required: "Nama lengkap wajib diisi" })}
                           placeholder="John Doe"
                           error={!!errors.name}
+                          aria-invalid={!!errors.name}
+                          aria-describedby={errors.name ? "name-error" : undefined}
                         />
-                        {errors.name && <span className="text-xs text-red-500 mt-1 block px-1">{errors.name.message}</span>}
+                        {errors.name && <span id="name-error" className="text-xs text-red-500 mt-1 block px-1" role="alert">{errors.name.message}</span>}
                       </div>
                       <div className="space-y-2">
                         <label htmlFor="company" className="text-xs font-bold text-gray-900 uppercase tracking-widest flex items-center gap-2 px-1">
-                          <Building2 className="w-3.5 h-3.5 text-[#EF4444]" /> Instansi
+                          <Building2 className="w-3.5 h-3.5 text-[#EF4444]" aria-hidden="true" /> Instansi
                         </label>
                         <Input
                           id="company"
@@ -180,14 +179,16 @@ Rencana Tanggal: ${data.date || 'TBC'}`;
                           {...register("company", { required: "Instansi wajib diisi" })}
                           placeholder="PT Growth Indonesia"
                           error={!!errors.company}
+                          aria-invalid={!!errors.company}
+                          aria-describedby={errors.company ? "company-error" : undefined}
                         />
-                        {errors.company && <span className="text-xs text-red-500 mt-1 block px-1">{errors.company.message}</span>}
+                        {errors.company && <span id="company-error" className="text-xs text-red-500 mt-1 block px-1" role="alert">{errors.company.message}</span>}
                       </div>
                     </div>
 
                     <div className="space-y-2">
                       <label htmlFor="whatsapp" className="text-xs font-bold text-gray-900 uppercase tracking-widest flex items-center gap-2 px-1">
-                        <Phone className="w-3.5 h-3.5 text-[#EF4444]" /> WhatsApp
+                        <Phone className="w-3.5 h-3.5 text-[#EF4444]" aria-hidden="true" /> WhatsApp
                       </label>
                       <Input
                         id="whatsapp"
@@ -198,8 +199,10 @@ Rencana Tanggal: ${data.date || 'TBC'}`;
                         })}
                         placeholder="+62 8xx-xxxx-xxxx"
                         error={!!errors.whatsapp}
+                        aria-invalid={!!errors.whatsapp}
+                        aria-describedby={errors.whatsapp ? "whatsapp-error" : undefined}
                       />
-                      {errors.whatsapp && <span className="text-xs text-red-500 mt-1 block px-1">{errors.whatsapp.message}</span>}
+                      {errors.whatsapp && <span id="whatsapp-error" className="text-xs text-red-500 mt-1 block px-1" role="alert">{errors.whatsapp.message}</span>}
                     </div>
 
                     <div className="space-y-2 relative">
@@ -210,21 +213,23 @@ Rencana Tanggal: ${data.date || 'TBC'}`;
                         id="package"
                         {...register("package", { required: "Program wajib dipilih" })}
                         className="w-full h-14 md:h-16 px-6 bg-white border border-gray-200 rounded-2xl focus:ring-2 focus:ring-[#EF4444]/10 focus:border-[#EF4444] outline-none transition-all duration-300 text-sm md:text-base font-medium appearance-none cursor-pointer"
+                        aria-invalid={!!errors.package}
+                        aria-describedby={errors.package ? "package-error" : undefined}
                       >
                         <option value="" disabled>Pilih Program...</option>
                         {PACKAGES.map((pkg) => (
                           <option key={pkg.id} value={pkg.id}>{pkg.label}</option>
                         ))}
                       </select>
-                      <div className="absolute right-6 bottom-[19px] pointer-events-none md:bottom-[23px] text-gray-600">
+                      <div className="absolute right-6 bottom-[19px] pointer-events-none md:bottom-[23px] text-gray-600" aria-hidden="true">
                         <CheckCircle2 className="w-4 h-4" />
                       </div>
-                      {errors.package && <span className="text-xs text-red-500 mt-1 block px-1">{errors.package.message}</span>}
+                      {errors.package && <span id="package-error" className="text-xs text-red-500 mt-1 block px-1" role="alert">{errors.package.message}</span>}
                     </div>
 
                     <div className="space-y-2">
                       <label htmlFor="date" className="text-xs font-bold text-gray-900 uppercase tracking-widest flex items-center gap-2 px-1">
-                        <Calendar className="w-3.5 h-3.5 text-[#EF4444]" /> Rencana Tanggal
+                        <Calendar className="w-3.5 h-3.5 text-[#EF4444]" aria-hidden="true" /> Rencana Tanggal
                       </label>
                       <Input
                         id="date"
@@ -245,13 +250,14 @@ Rencana Tanggal: ${data.date || 'TBC'}`;
                             animate={{ rotate: 360 }}
                             transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
                             className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full"
+                            aria-hidden="true"
                           />
                           <span>Mengirim...</span>
                         </>
                       ) : (
                         <>
                           Kirim Reservasi
-                          <Send className="w-5 h-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                          <Send className="w-5 h-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" aria-hidden="true" />
                         </>
                       )}
                     </Button>
@@ -263,6 +269,7 @@ Rencana Tanggal: ${data.date || 'TBC'}`;
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
                   className="bg-[#0A1628] p-10 md:p-14 lg:p-16 rounded-[3rem] md:rounded-[4rem] border border-white/10 text-center shadow-2xl relative overflow-hidden group"
+                  role="status"
                 >
                   <div className="absolute top-0 right-0 w-64 h-64 bg-[#EF4444]/10 rounded-full blur-[100px] -z-10 group-hover:bg-[#EF4444]/20 transition-all duration-700" />
                   
@@ -273,7 +280,7 @@ Rencana Tanggal: ${data.date || 'TBC'}`;
                       transition={{ type: "spring", damping: 15, stiffness: 200, delay: 0.2 }}
                       className="w-20 h-20 md:w-24 md:h-24 bg-[#EF4444] rounded-full mx-auto flex items-center justify-center mb-8 shadow-2xl shadow-[#EF4444]/40"
                     >
-                      <CheckCircle2 className="w-10 h-10 md:w-12 md:h-12 text-white" />
+                      <CheckCircle2 className="w-10 h-10 md:w-12 md:h-12 text-white" aria-hidden="true" />
                     </motion.div>
                     
                     <h3 className="font-display text-4xl md:text-5xl font-extrabold text-white mb-6 leading-tight">Terima Kasih!</h3>
@@ -293,7 +300,7 @@ Rencana Tanggal: ${data.date || 'TBC'}`;
                           transition={{ delay: 0.5 + i * 0.1 }}
                           className="flex gap-5"
                         >
-                          <div className="w-6 h-6 rounded-full bg-[#EF4444]/20 flex items-center justify-center text-[10px] font-bold text-[#EF4444] shrink-0 mt-1 border border-[#EF4444]/20">
+                          <div className="w-6 h-6 rounded-full bg-[#EF4444]/20 flex items-center justify-center text-[10px] font-bold text-[#EF4444] shrink-0 mt-1 border border-[#EF4444]/20" aria-hidden="true">
                             {s.step}
                           </div>
                           <div>
@@ -306,7 +313,7 @@ Rencana Tanggal: ${data.date || 'TBC'}`;
 
                     <button 
                       onClick={() => setIsSubmitted(false)}
-                      className="mt-12 text-gray-500 hover:text-[#EF4444] transition-colors text-[10px] font-bold uppercase tracking-[0.2em] underline underline-offset-8"
+                      className="mt-12 text-gray-500 hover:text-[#EF4444] transition-colors text-[10px] font-bold uppercase tracking-[0.2em] underline underline-offset-8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF4444] rounded"
                     >
                       Kirim Pesan Lain
                     </button>
