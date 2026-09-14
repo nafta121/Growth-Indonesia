@@ -35,33 +35,33 @@ export async function submitToIndexNow(urls: string[]) {
     urlList: formattedUrls,
   };
 
-  const results = [];
+  const results = await Promise.all(
+    INDEXNOW_ENDPOINTS.map(async (endpoint) => {
+      try {
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json; charset=utf-8',
+          },
+          body: JSON.stringify(payload),
+        });
 
-  for (const endpoint of INDEXNOW_ENDPOINTS) {
-    try {
-      const response = await fetch(endpoint, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json; charset=utf-8',
-        },
-        body: JSON.stringify(payload),
-      });
-
-      results.push({
-        endpoint,
-        status: response.status,
-        ok: response.ok,
-        statusText: response.statusText,
-      });
-    } catch (error) {
-      results.push({
-        endpoint,
-        status: 500,
-        ok: false,
-        error: error instanceof Error ? error.message : 'Fetch error',
-      });
-    }
-  }
+        return {
+          endpoint,
+          status: response.status,
+          ok: response.ok,
+          statusText: response.statusText,
+        };
+      } catch (error) {
+        return {
+          endpoint,
+          status: 500,
+          ok: false,
+          error: error instanceof Error ? error.message : 'Fetch error',
+        };
+      }
+    })
+  );
 
   const anySuccess = results.some((r) => r.ok || r.status === 200 || r.status === 202);
 
