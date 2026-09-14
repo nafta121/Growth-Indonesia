@@ -3,7 +3,7 @@ import { CITIES } from '@/lib/cities';
 import { KATEGORI } from '@/lib/categories';
 import { getArticleSlugs } from '@/lib/mdx';
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://growthindonesia.my.id';
   const currentDate = new Date();
   const allCities = Object.keys(CITIES);
@@ -57,7 +57,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }))
   );
 
-  const articleSlugs = getArticleSlugs();
+  const articleSlugs = await getArticleSlugs();
   const articlePages: MetadataRoute.Sitemap = articleSlugs.map((slug) => {
     const cleanSlug = slug.replace(/\.(mdx|md)$/, '');
     return {

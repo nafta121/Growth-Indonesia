@@ -16,7 +16,7 @@ interface PageProps {
 }
 
 export async function generateStaticParams() {
-  const slugs = getArticleSlugs();
+  const slugs = await getArticleSlugs();
   return slugs.map((slug) => ({
     slug: slug.replace(/\.mdx$/, ''),
   }));
@@ -24,7 +24,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const article = getArticleBySlug(slug);
+  const article = await getArticleBySlug(slug);
   
   if (!article) {
     return {
@@ -74,7 +74,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function ArtikelDetailPage({ params }: PageProps) {
   const { slug } = await params;
-  const article = getArticleBySlug(slug);
+  const article = await getArticleBySlug(slug);
 
   if (!article) {
     notFound();

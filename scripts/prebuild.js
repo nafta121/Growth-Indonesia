@@ -6,14 +6,15 @@ const ARTICLES_PATH = path.join(process.cwd(), 'content/artikel');
 const CACHE_DIR = path.join(process.cwd(), 'lib');
 const CACHE_PATH = path.join(CACHE_DIR, 'articles-cache.json');
 
-function getArticleSlugs() {
+async function getArticleSlugs() {
   if (!fs.existsSync(ARTICLES_PATH)) {
     return [];
   }
-  return fs.readdirSync(ARTICLES_PATH).filter((file) => file.endsWith('.mdx'));
+  const files = await fs.promises.readdir(ARTICLES_PATH);
+  return files.filter((file) => file.endsWith('.mdx'));
 }
 
-function getArticleBySlug(slug) {
+async function getArticleBySlug(slug) {
   try {
     const realSlug = slug.replace(/\.mdx$/, '');
     const filePath = path.join(ARTICLES_PATH, `${realSlug}.mdx`);
@@ -22,7 +23,7 @@ function getArticleBySlug(slug) {
       return null;
     }
     
-    const fileContents = fs.readFileSync(filePath, 'utf8');
+    const fileContents = await fs.promises.readFile(filePath, 'utf8');
     const { data, content } = matter(fileContents);
     
     const frontmatter = {
@@ -46,24 +47,26 @@ function getArticleBySlug(slug) {
   }
 }
 
-function getAllArticles() {
-  const slugs = getArticleSlugs();
-  const articles = slugs
-    .map((slug) => getArticleBySlug(slug))
-    .filter((article) => article !== null);
+async function getAllArticles() {
+  const slugs = await getArticleSlugs();
+  const articlesPromises = slugs.map(async (slug) => await getArticleBySlug(slug));
+  const articlesArray = await Promise.all(articlesPromises);
+  const articles = articlesArray.filter((article) => article !== null);
     
   return articles.sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime());
 }
 
-try {
-  if (!fs.existsSync(CACHE_DIR)) {
-    fs.mkdirSync(CACHE_DIR, { recursive: true });
+(async () => {
+  try {
+    if (!fs.existsSync(CACHE_DIR)) {
+      await fs.promises.mkdir(CACHE_DIR, { recursive: true });
+    }
+
+    const articles = await getAllArticles();
+    await fs.promises.writeFile(CACHE_PATH, JSON.stringify(articles, null, 2), 'utf8');
+    console.log(`Prebuild: Saved ${articles.length} articles to ${CACHE_PATH}`);
+  } catch (error) {
+    console.error('Error generating articles cache during prebuild:', error);
+    process.exit(1);
   }
-  
-  const articles = getAllArticles();
-  fs.writeFileSync(CACHE_PATH, JSON.stringify(articles, null, 2), 'utf8');
-  console.log(`Prebuild: Saved ${articles.length} articles to ${CACHE_PATH}`);
-} catch (error) {
-  console.error('Error generating articles cache during prebuild:', error);
-  process.exit(1);
-}
+})();
