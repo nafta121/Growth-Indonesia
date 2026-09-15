@@ -8,7 +8,8 @@
     "build:cf": "node scripts/prebuild.js && opennextjs-cloudflare build",
     "start": "next start",
     "lint": "eslint .",
-    "clean": "next clean"
+    "clean": "next clean",
+    "test": "pnpm dlx tsx --test lib/*.test.ts"
   },
   "dependencies": {
     "@google/genai": "^1.17.0",
