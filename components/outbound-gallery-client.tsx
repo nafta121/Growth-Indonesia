@@ -62,7 +62,16 @@ export default function OutboundGalleryClient({ photos, children }: OutboundGall
             transition={{ delay: index * 0.03 }}
             viewport={{ once: true }}
             onClick={() => setCurrentIndex(index)}
-            className="group relative aspect-square overflow-hidden rounded-xl md:rounded-[2rem] cursor-pointer bg-white shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 active:scale-95"
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                setCurrentIndex(index);
+              }
+            }}
+            role="button"
+            tabIndex={0}
+            aria-label={`Buka foto ${index + 1}`}
+            className="group relative aspect-square overflow-hidden rounded-xl md:rounded-[2rem] cursor-pointer bg-white shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 active:scale-95 focus-visible:ring-4 focus-visible:ring-[#EF4444] focus-visible:outline-none"
           >
             {child}
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
@@ -86,7 +95,8 @@ export default function OutboundGalleryClient({ photos, children }: OutboundGall
           >
             <button
               onClick={handleClose}
-              className="absolute top-6 right-6 text-white/70 hover:text-white transition-colors z-[110]"
+              aria-label="Tutup galeri"
+              className="absolute top-6 right-6 text-white/70 hover:text-white transition-colors z-[110] focus-visible:ring-2 focus-visible:ring-white rounded-full focus-visible:outline-none"
             >
               <X className="w-10 h-10" />
             </button>
@@ -94,7 +104,8 @@ export default function OutboundGalleryClient({ photos, children }: OutboundGall
             <div className="relative w-full h-full flex items-center justify-center">
               <button
                 onClick={handlePrev}
-                className="absolute left-0 md:-left-12 text-white/50 hover:text-white transition-colors p-2 z-[110]"
+                aria-label="Foto sebelumnya"
+                className="absolute left-0 md:-left-12 text-white/50 hover:text-white transition-colors p-2 z-[110] focus-visible:ring-2 focus-visible:ring-white rounded-full focus-visible:outline-none"
               >
                 <ChevronLeft className="w-12 h-12" />
               </button>
@@ -119,7 +130,8 @@ export default function OutboundGalleryClient({ photos, children }: OutboundGall
 
               <button
                 onClick={handleNext}
-                className="absolute right-0 md:-right-12 text-white/50 hover:text-white transition-colors p-2 z-[110]"
+                aria-label="Foto selanjutnya"
+                className="absolute right-0 md:-right-12 text-white/50 hover:text-white transition-colors p-2 z-[110] focus-visible:ring-2 focus-visible:ring-white rounded-full focus-visible:outline-none"
               >
                 <ChevronRight className="w-12 h-12" />
               </button>
