@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { useInView } from 'motion/react';
 import ScrollReveal from '@/components/ui/scroll-reveal';
@@ -15,7 +15,6 @@ interface CounterProps {
 }
 
 function Counter({ end, duration = 2500, suffix = '', prefix = '' }: CounterProps) {
-  const [count, setCount] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
   const isInView = useInView(ref, { once: true, margin: '-50px' });
 
@@ -31,24 +30,29 @@ function Counter({ end, duration = 2500, suffix = '', prefix = '' }: CounterProp
       
       // easeOutQuart easing function for smooth deceleration
       const easeOut = 1 - Math.pow(1 - progress, 4);
+      const currentCount = Math.floor(easeOut * end);
       
-      setCount(Math.floor(easeOut * end));
+      if (ref.current) {
+        ref.current.textContent = `${prefix}${currentCount.toLocaleString()}${suffix}`;
+      }
 
       if (progress < 1) {
         animationFrame = requestAnimationFrame(animate);
       } else {
-        setCount(end);
+        if (ref.current) {
+          ref.current.textContent = `${prefix}${end.toLocaleString()}${suffix}`;
+        }
       }
     };
 
     animationFrame = requestAnimationFrame(animate);
 
     return () => cancelAnimationFrame(animationFrame);
-  }, [end, duration, isInView]);
+  }, [end, duration, isInView, prefix, suffix]);
 
   return (
     <span ref={ref}>
-      {prefix}{count.toLocaleString()}{suffix}
+      {prefix}0{suffix}
     </span>
   );
 }
