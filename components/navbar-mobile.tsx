@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Mail, MapPin, Phone } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
@@ -14,14 +14,25 @@ interface NavLink {
 export default function NavbarMobile({ navLinks }: { navLinks: NavLink[] }) {
   const [isOpen, setIsOpen] = useState(false);
 
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isOpen) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen]);
+
   return (
     <>
       {/* Mobile Toggle */}
       <button
         id="mobile-menu-toggle"
-        className="relative z-50 p-2.5 text-slate-900 md:hidden focus:outline-none bg-gray-50 rounded-xl transition-all active:scale-90"
+        className="relative z-50 p-2.5 text-slate-900 md:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand bg-gray-50 rounded-xl transition-all active:scale-90"
         onClick={() => setIsOpen(!isOpen)}
-        aria-label="Toggle menu"
+        aria-label={isOpen ? "Tutup menu" : "Buka menu"}
+        aria-expanded={isOpen}
       >
         <div className="relative w-6 h-6 flex items-center justify-center">
           <motion.div
@@ -61,7 +72,7 @@ export default function NavbarMobile({ navLinks }: { navLinks: NavLink[] }) {
                   <Link
                     href={link.href}
                     onClick={() => setIsOpen(false)}
-                    className="block py-4 text-3xl font-display font-bold text-gray-800 hover:text-brand active:scale-95 transition-all focus:outline-none focus:ring-2 focus:ring-brand rounded-xl"
+                    className="block py-4 text-3xl font-display font-bold text-gray-800 hover:text-brand active:scale-95 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand rounded-xl"
                   >
                     {link.name}
                   </Link>

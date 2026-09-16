@@ -42,7 +42,7 @@ export default function Navbar() {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="group relative py-1 text-sm font-bold tracking-tight text-gray-800 transition-all duration-300 hover:text-brand focus:outline-none focus:ring-2 focus:ring-brand/20 rounded-sm px-2"
+                    className="group relative py-1 text-sm font-bold tracking-tight text-gray-800 transition-all duration-300 hover:text-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/20 rounded-sm px-2"
                   >
                     {link.name}
                     <span className="absolute -bottom-1 left-2 h-0.5 w-0 bg-brand transition-all duration-300 ease-out group-hover:w-[calc(100%-1rem)]" />
