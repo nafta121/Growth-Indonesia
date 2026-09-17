@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 import { Calculator, Users, Compass, Clock, MessageCircle } from 'lucide-react';
 
 const PROGRAMS = [
@@ -26,7 +26,8 @@ const formatRupiah = (amount: number) => {
   }).format(amount);
 };
 
-function KalkulatorHeader() {
+// ⚡ Bolt: Memoize static header to prevent re-renders on slider movement
+const KalkulatorHeader = memo(function KalkulatorHeader() {
   return (
     <div className="bg-[#0A1628] p-6 sm:p-8 text-white relative overflow-hidden">
       <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-bl-full opacity-50"></div>
@@ -41,9 +42,10 @@ function KalkulatorHeader() {
       </div>
     </div>
   );
-}
+});
 
-function PesertaSlider({ pax, setPax }: { pax: number, setPax: (pax: number) => void }) {
+// ⚡ Bolt: Memoize to prevent re-renders unless pax changes
+const PesertaSlider = memo(function PesertaSlider({ pax, setPax }: { pax: number, setPax: (pax: number) => void }) {
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
@@ -71,9 +73,10 @@ function PesertaSlider({ pax, setPax }: { pax: number, setPax: (pax: number) => 
       </div>
     </div>
   );
-}
+});
 
-function ProgramSelection({ program, setProgram }: { program: Program, setProgram: (program: Program) => void }) {
+// ⚡ Bolt: Memoize to prevent re-renders unless program changes
+const ProgramSelection = memo(function ProgramSelection({ program, setProgram }: { program: Program, setProgram: (program: Program) => void }) {
   return (
     <div className="space-y-4">
       <label className="flex items-center gap-2 font-bold text-gray-900">
@@ -98,9 +101,10 @@ function ProgramSelection({ program, setProgram }: { program: Program, setProgra
       </div>
     </div>
   );
-}
+});
 
-function DurationSelection({ duration, setDuration }: { duration: Duration, setDuration: (duration: Duration) => void }) {
+// ⚡ Bolt: Memoize to prevent re-renders unless duration changes
+const DurationSelection = memo(function DurationSelection({ duration, setDuration }: { duration: Duration, setDuration: (duration: Duration) => void }) {
   return (
     <div className="space-y-4">
       <label className="flex items-center gap-2 font-bold text-gray-900">
@@ -125,9 +129,10 @@ function DurationSelection({ duration, setDuration }: { duration: Duration, setD
       </div>
     </div>
   );
-}
+});
 
-function KalkulatorResult({
+// ⚡ Bolt: Memoize to prevent re-renders when other states change
+const KalkulatorResult = memo(function KalkulatorResult({
   totalEstimate,
   pax,
   program,
@@ -175,12 +180,15 @@ Apakah ada jadwal kosong?`;
        </button>
     </div>
   );
-}
+});
 
 export default function KalkulatorBudget() {
   const [pax, setPax] = useState<number>(50);
   const [program, setProgram] = useState<Program>(PROGRAMS[0]);
   const [duration, setDuration] = useState<Duration>(DURATIONS[0]);
+
+  // ⚡ Bolt: React state setters (setPax, setProgram, setDuration) are guaranteed by React to be stable across re-renders.
+  // Therefore, passing them directly as props to memoized components will not break memoization.
 
   const totalEstimate = pax * program.basePrice * duration.multiplier;
 
