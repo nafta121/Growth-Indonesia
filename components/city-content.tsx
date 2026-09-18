@@ -28,6 +28,7 @@ export default function CityContent({ kategoriName, kotaName, cityKey, cityData 
                   alt={`${kategoriName} di ${kotaName}`}
                   fill
                   className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                   referrerPolicy="no-referrer"
                 />
                 <div className="absolute inset-0 ring-1 ring-inset ring-gray-900/10 rounded-3xl" />
