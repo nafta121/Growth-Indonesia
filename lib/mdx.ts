@@ -58,6 +58,16 @@ export function getArticleBySlug(slug: string): Article | null {
   if (fs && ARTICLES_PATH) {
     const pathModule = getPath();
     const filePath = pathModule ? pathModule.join(ARTICLES_PATH, `${realSlug}.mdx`) : '';
+
+    // Prevent path traversal vulnerabilities
+    if (pathModule && filePath) {
+      const resolvedFilePath = pathModule.resolve(filePath);
+      const resolvedArticlesPath = pathModule.resolve(ARTICLES_PATH);
+      if (!resolvedFilePath.startsWith(resolvedArticlesPath)) {
+        return null;
+      }
+    }
+
     if (filePath && fs.existsSync(filePath)) {
       try {
         const fileContents = fs.readFileSync(filePath, 'utf8');
