@@ -147,7 +147,7 @@ export default function RootLayout({
       <body suppressHydrationWarning className="font-sans antialiased bg-[#0A1628] text-white">
         <WebMCPProvider />
         {children}
-        <GoogleTagManager gtmId="G-XXXXXXXXXX" />
+        {process.env.NEXT_PUBLIC_GTM_ID && <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />}
       </body>
     </html>
   );
