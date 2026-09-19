@@ -7,7 +7,7 @@ export default function WhatsAppFAB() {
       href="https://wa.me/6285704748186"
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-50 transition-all hover:scale-105 active:scale-95 animate-fab-enter"
+      className="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-50 transition-all hover:scale-105 active:scale-95 animate-fab-enter focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#25D366] focus-visible:ring-offset-2 rounded-2xl md:rounded-3xl"
       aria-label="Chat with Growth Indonesia on WhatsApp"
     >
       <div className="relative group">
