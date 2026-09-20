@@ -123,6 +123,7 @@ export default function OutboundGalleryClient({ photos, children }: OutboundGall
                   src={photos[currentIndex].url}
                   alt={photos[currentIndex].alt}
                   fill
+                  sizes="100vw"
                   className="object-contain"
                   referrerPolicy="no-referrer"
                 />
