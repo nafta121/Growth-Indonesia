@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function ApiDocsPage() {
   return (
-    <div className="min-h-screen bg-[#0A1628] text-white px-4 py-12 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-slate-900 text-white px-4 py-12 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto space-y-8">
         <div>
           <Link

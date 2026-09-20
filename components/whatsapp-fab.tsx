@@ -12,10 +12,10 @@ export default function WhatsAppFAB() {
     >
       <div className="relative group">
         {/* Pulsing Aura */}
-        <div className="absolute inset-0 bg-[#25D366] rounded-full animate-ping opacity-20 group-hover:opacity-30 transition-opacity" />
+        <div className="absolute inset-0 bg-green-500 rounded-full animate-ping opacity-20 group-hover:opacity-30 transition-opacity" />
         
         {/* Main Button */}
-        <div className="relative h-14 w-14 md:h-16 md:w-16 bg-[#25D366] rounded-2xl md:rounded-3xl shadow-[0_15px_30px_rgb(37,211,102,0.3)] flex items-center justify-center text-white border border-white/20">
+        <div className="relative h-14 w-14 md:h-16 md:w-16 bg-green-500 rounded-2xl md:rounded-3xl shadow-[0_15px_30px_rgb(37,211,102,0.3)] flex items-center justify-center text-white border border-white/20">
           <MessageCircle className="w-7 h-7 md:w-8 md:h-8 fill-white/10" />
         </div>
 

@@ -64,7 +64,7 @@ Rencana Tanggal: ${data.date || 'TBC'}`;
           >
             <Badge className="mb-4">Get In Touch</Badge>
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 leading-[1.1] mb-8">
-              Siap untuk <span className="text-[#EF4444]">Bertransformasi?</span>
+              Siap untuk <span className="text-red-500">Bertransformasi?</span>
             </h2>
             <p className="text-gray-500 text-base md:text-lg leading-relaxed mb-12 max-w-xl">
               Hubungi kami hari ini untuk konsultasi gratis dan temukan bagaimana kami dapat membantu tim Anda mencapai potensi maksimalnya melalui pengalaman outbound yang transformatif.
@@ -78,7 +78,7 @@ Rencana Tanggal: ${data.date || 'TBC'}`;
                 className="flex gap-5 md:gap-7 group items-center p-4 -ml-4 rounded-3xl hover:bg-gray-50 transition-all duration-300"
                 aria-label="Lihat lokasi Growth Indonesia di Google Maps"
               >
-                <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl md:rounded-[1.5rem] bg-gray-50 flex items-center justify-center text-[#EF4444] group-hover:bg-[#EF4444] group-hover:text-white transition-all duration-500 shadow-sm">
+                <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl md:rounded-[1.5rem] bg-gray-50 flex items-center justify-center text-red-500 group-hover:bg-red-500 group-hover:text-white transition-all duration-500 shadow-sm">
                   <MapPin className="w-6 h-6 md:w-7 md:h-7" />
                 </div>
                 <div>
@@ -97,7 +97,7 @@ Rencana Tanggal: ${data.date || 'TBC'}`;
                 className="flex gap-5 md:gap-7 group items-center p-4 -ml-4 rounded-3xl hover:bg-gray-50 transition-all duration-300"
                 aria-label="Hubungi Growth Indonesia via WhatsApp"
               >
-                <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl md:rounded-[1.5rem] bg-gray-50 flex items-center justify-center text-[#EF4444] group-hover:bg-[#EF4444] group-hover:text-white transition-all duration-500 shadow-sm">
+                <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl md:rounded-[1.5rem] bg-gray-50 flex items-center justify-center text-red-500 group-hover:bg-red-500 group-hover:text-white transition-all duration-500 shadow-sm">
                   <Phone className="w-6 h-6 md:w-7 md:h-7" />
                 </div>
                 <div>
@@ -108,10 +108,10 @@ Rencana Tanggal: ${data.date || 'TBC'}`;
 
               <a 
                 href={`mailto:${COMPANY_INFO.email}`}
-                className="flex gap-5 md:gap-7 group items-center p-4 -ml-4 rounded-3xl hover:bg-gray-50 transition-all duration-300 focus:outline-none"
+                className="flex gap-5 md:gap-7 group items-center p-4 -ml-4 rounded-3xl hover:bg-gray-50 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2"
                 aria-label="Kirim email ke Growth Indonesia"
               >
-                <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl md:rounded-[1.5rem] bg-gray-50 flex items-center justify-center text-[#EF4444] group-hover:bg-[#EF4444] group-hover:text-white transition-all duration-500 shadow-sm">
+                <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl md:rounded-[1.5rem] bg-gray-50 flex items-center justify-center text-red-500 group-hover:bg-red-500 group-hover:text-white transition-all duration-500 shadow-sm">
                   <MessageCircle className="w-6 h-6 md:w-7 md:h-7" />
                 </div>
                 <div>
@@ -141,7 +141,7 @@ Rencana Tanggal: ${data.date || 'TBC'}`;
                 >
                   <div className="mb-10">
                     <div className="flex justify-between items-end mb-3">
-                       <h3 id="kontak-form-title" className="text-[10px] font-extrabold text-[#EF4444] uppercase tracking-[0.3em]">Booking Form</h3>
+                       <h3 id="kontak-form-title" className="text-[10px] font-extrabold text-red-500 uppercase tracking-[0.3em]">Booking Form</h3>
                       <span className="text-[10px] text-gray-600 font-extrabold uppercase tracking-widest">Growth Intake</span>
                     </div>
                     <div className="h-1.5 w-full bg-gray-200 rounded-full overflow-hidden p-[2px]">
@@ -149,7 +149,7 @@ Rencana Tanggal: ${data.date || 'TBC'}`;
                         initial={{ width: 0 }}
                         animate={{ width: isValid ? '100%' : '50%' }}
                         transition={{ type: "spring", stiffness: 100 }}
-                        className="h-full bg-[#EF4444] rounded-full" 
+                        className="h-full bg-red-500 rounded-full"
                       />
                     </div>
                   </div>
@@ -158,7 +158,7 @@ Rencana Tanggal: ${data.date || 'TBC'}`;
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-6">
                       <div className="space-y-2">
                         <label htmlFor="name" className="text-xs font-bold text-gray-900 uppercase tracking-widest flex items-center gap-2 px-1">
-                          <User className="w-3.5 h-3.5 text-[#EF4444]" /> Nama Lengkap
+                          <User className="w-3.5 h-3.5 text-red-500" /> Nama Lengkap
                         </label>
                         <Input
                           id="name"
@@ -171,7 +171,7 @@ Rencana Tanggal: ${data.date || 'TBC'}`;
                       </div>
                       <div className="space-y-2">
                         <label htmlFor="company" className="text-xs font-bold text-gray-900 uppercase tracking-widest flex items-center gap-2 px-1">
-                          <Building2 className="w-3.5 h-3.5 text-[#EF4444]" /> Instansi
+                          <Building2 className="w-3.5 h-3.5 text-red-500" /> Instansi
                         </label>
                         <Input
                           id="company"
@@ -186,7 +186,7 @@ Rencana Tanggal: ${data.date || 'TBC'}`;
 
                     <div className="space-y-2">
                       <label htmlFor="whatsapp" className="text-xs font-bold text-gray-900 uppercase tracking-widest flex items-center gap-2 px-1">
-                        <Phone className="w-3.5 h-3.5 text-[#EF4444]" /> WhatsApp
+                        <Phone className="w-3.5 h-3.5 text-red-500" /> WhatsApp
                       </label>
                       <Input
                         id="whatsapp"
@@ -208,7 +208,7 @@ Rencana Tanggal: ${data.date || 'TBC'}`;
                       <select
                         id="package"
                         {...register("package", { required: "Program wajib dipilih" })}
-                        className="w-full h-14 md:h-16 px-6 bg-white border border-gray-200 rounded-2xl focus:ring-2 focus:ring-[#EF4444]/10 focus:border-[#EF4444] outline-none transition-all duration-300 text-sm md:text-base font-medium appearance-none cursor-pointer"
+                        className="w-full h-14 md:h-16 px-6 bg-white border border-gray-200 rounded-2xl focus:ring-2 focus:ring-red-500/10 focus:border-red-500 outline-none transition-all duration-300 text-sm md:text-base font-medium appearance-none cursor-pointer"
                       >
                         <option value="" disabled>Pilih Program...</option>
                         {PACKAGES.map((pkg) => (
@@ -223,7 +223,7 @@ Rencana Tanggal: ${data.date || 'TBC'}`;
 
                     <div className="space-y-2">
                       <label htmlFor="date" className="text-xs font-bold text-gray-900 uppercase tracking-widest flex items-center gap-2 px-1">
-                        <Calendar className="w-3.5 h-3.5 text-[#EF4444]" /> Rencana Tanggal
+                        <Calendar className="w-3.5 h-3.5 text-red-500" /> Rencana Tanggal
                       </label>
                       <Input
                         id="date"
@@ -261,16 +261,16 @@ Rencana Tanggal: ${data.date || 'TBC'}`;
                   key="success"
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="bg-[#0A1628] p-10 md:p-14 lg:p-16 rounded-[3rem] md:rounded-[4rem] border border-white/10 text-center shadow-2xl relative overflow-hidden group"
+                  className="bg-slate-900 p-10 md:p-14 lg:p-16 rounded-[3rem] md:rounded-[4rem] border border-white/10 text-center shadow-2xl relative overflow-hidden group"
                 >
-                  <div className="absolute top-0 right-0 w-64 h-64 bg-[#EF4444]/10 rounded-full blur-[100px] -z-10 group-hover:bg-[#EF4444]/20 transition-all duration-700" />
+                  <div className="absolute top-0 right-0 w-64 h-64 bg-red-500/10 rounded-full blur-[100px] -z-10 group-hover:bg-red-500/20 transition-all duration-700" />
                   
                   <div className="relative z-10">
                     <motion.div 
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
                       transition={{ type: "spring", damping: 15, stiffness: 200, delay: 0.2 }}
-                      className="w-20 h-20 md:w-24 md:h-24 bg-[#EF4444] rounded-full mx-auto flex items-center justify-center mb-8 shadow-2xl shadow-[#EF4444]/40"
+                      className="w-20 h-20 md:w-24 md:h-24 bg-red-500 rounded-full mx-auto flex items-center justify-center mb-8 shadow-2xl shadow-red-500/40"
                     >
                       <CheckCircle2 className="w-10 h-10 md:w-12 md:h-12 text-white" />
                     </motion.div>
@@ -279,7 +279,7 @@ Rencana Tanggal: ${data.date || 'TBC'}`;
                     <p className="text-gray-400 mb-12 text-base md:text-lg leading-relaxed max-w-sm mx-auto">Pesanan Anda telah kami terima. Tim Growth akan menghubungi Anda segera melalui WhatsApp.</p>
                     
                     <div className="space-y-6 text-left max-w-sm mx-auto bg-white/5 p-8 rounded-3xl border border-white/10">
-                      <h4 className="text-[10px] font-extrabold text-[#EF4444] uppercase tracking-[0.3em] text-center mb-6">What Happens Next</h4>
+                      <h4 className="text-[10px] font-extrabold text-red-500 uppercase tracking-[0.3em] text-center mb-6">What Happens Next</h4>
                       {[
                         { step: 1, title: 'Check Availability', desc: 'Kami memverifikasi jadwal pilihan Anda.' },
                         { step: 2, title: 'Growth Call', desc: 'Diskusi strategi program via WhatsApp.' },
@@ -292,7 +292,7 @@ Rencana Tanggal: ${data.date || 'TBC'}`;
                           transition={{ delay: 0.5 + i * 0.1 }}
                           className="flex gap-5"
                         >
-                          <div className="w-6 h-6 rounded-full bg-[#EF4444]/20 flex items-center justify-center text-[10px] font-bold text-[#EF4444] shrink-0 mt-1 border border-[#EF4444]/20">
+                          <div className="w-6 h-6 rounded-full bg-red-500/20 flex items-center justify-center text-[10px] font-bold text-red-500 shrink-0 mt-1 border border-red-500/20">
                             {s.step}
                           </div>
                           <div>
@@ -305,7 +305,7 @@ Rencana Tanggal: ${data.date || 'TBC'}`;
 
                     <button 
                       onClick={() => setIsSubmitted(false)}
-                      className="mt-12 text-gray-500 hover:text-[#EF4444] transition-colors text-[10px] font-bold uppercase tracking-[0.2em] underline underline-offset-8"
+                      className="mt-12 text-gray-500 hover:text-red-500 transition-colors text-[10px] font-bold uppercase tracking-[0.2em] underline underline-offset-8"
                     >
                       Kirim Pesan Lain
                     </button>
