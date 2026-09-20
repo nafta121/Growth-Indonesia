@@ -22,7 +22,7 @@ export default function Hero() {
           className="object-cover opacity-20 pointer-events-none"
           referrerPolicy="no-referrer"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628] via-[#0A1628]/80 to-[#0A1628]/60" />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/80 to-slate-900/60" />
       </div>
 
       {/* Background Decor */}
@@ -51,7 +51,7 @@ export default function Hero() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4 w-full sm:w-auto px-4 sm:px-0 opacity-0 animate-fade-in delay-[400ms] mb-12">
-            <Button asChild size="lg" className="w-full sm:w-auto min-w-[240px] sm:min-w-[260px] bg-[#25D366] hover:bg-[#128C7E] text-white border-0 shadow-lg hover:shadow-xl transition-all group text-sm md:text-base h-14 rounded-xl">
+            <Button asChild size="lg" className="w-full sm:w-auto min-w-[240px] sm:min-w-[260px] bg-green-500 hover:bg-green-600 text-white border-0 shadow-lg hover:shadow-xl transition-all group text-sm md:text-base h-14 rounded-xl">
               <Link href="https://wa.me/6285704748186" target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="w-5 h-5 mr-2" />
                 Chat via WhatsApp

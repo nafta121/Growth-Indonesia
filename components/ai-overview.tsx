@@ -33,10 +33,10 @@ export function AiOverviewSection({ cityName, kategoriName, venues }: AiOverview
         <ScrollReveal delay={0.1} yOffset={20}>
           {/* Quick Summary Block */}
           <div className="bg-slate-50 border border-slate-100 rounded-[2.5rem] p-8 md:p-10 mb-16 relative overflow-hidden shadow-sm">
-            <div className="absolute top-0 left-0 w-2 h-full bg-[#EF4444]"></div>
+            <div className="absolute top-0 left-0 w-2 h-full bg-red-500"></div>
             <div className="flex flex-col md:flex-row items-start gap-6">
               <div className="bg-red-100 p-4 rounded-2xl shrink-0">
-                <Sparkles className="w-8 h-8 text-[#EF4444]" />
+                <Sparkles className="w-8 h-8 text-red-500" />
               </div>
               <div>
                 <h3 className="font-display font-extrabold text-2xl text-gray-900 mb-4 tracking-tight">Ringkasan Layanan</h3>

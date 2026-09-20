@@ -28,10 +28,10 @@ const formatRupiah = (amount: number) => {
 
 function KalkulatorHeader() {
   return (
-    <div className="bg-[#0A1628] p-6 sm:p-8 text-white relative overflow-hidden">
+    <div className="bg-slate-900 p-6 sm:p-8 text-white relative overflow-hidden">
       <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-bl-full opacity-50"></div>
       <div className="flex items-center gap-4 relative z-10">
-        <div className="bg-[#EF4444] p-3 rounded-2xl shrink-0">
+        <div className="bg-red-500 p-3 rounded-2xl shrink-0">
           <Calculator className="w-6 h-6 text-white" />
         </div>
         <div>
@@ -48,10 +48,10 @@ function PesertaSlider({ pax, setPax }: { pax: number, setPax: (pax: number) => 
     <div className="space-y-4">
       <div className="flex items-center justify-between">
          <label htmlFor="pax-slider" className="flex items-center gap-2 font-bold text-gray-900 border-b-2 border-transparent">
-           <Users className="w-5 h-5 text-[#EF4444]" />
+           <Users className="w-5 h-5 text-red-500" />
            Jumlah Peserta
          </label>
-         <span className="font-display font-black text-2xl text-[#0A1628] bg-slate-100 px-4 py-1.5 rounded-full border border-slate-200">
+         <span className="font-display font-black text-2xl text-slate-900 bg-slate-100 px-4 py-1.5 rounded-full border border-slate-200">
            {pax} <span className="text-sm font-bold text-slate-500">Pax</span>
          </span>
       </div>
@@ -63,7 +63,7 @@ function PesertaSlider({ pax, setPax }: { pax: number, setPax: (pax: number) => 
         step="10"
         value={pax}
         onChange={(e) => setPax(Number(e.target.value))}
-        className="w-full h-3 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-[#EF4444] hover:accent-red-600 transition-all"
+        className="w-full h-3 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-red-500 hover:accent-red-600 transition-all"
       />
       <div className="flex justify-between text-xs font-semibold text-slate-400 px-1">
         <span>20</span>
@@ -77,7 +77,7 @@ function ProgramSelection({ program, setProgram }: { program: Program, setProgra
   return (
     <div className="space-y-4">
       <label className="flex items-center gap-2 font-bold text-gray-900">
-        <Compass className="w-5 h-5 text-[#EF4444]" />
+        <Compass className="w-5 h-5 text-red-500" />
         Tipe Program
       </label>
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -88,7 +88,7 @@ function ProgramSelection({ program, setProgram }: { program: Program, setProgra
               onClick={() => setProgram(p)}
               className={`px-4 py-3 rounded-2xl text-sm md:text-base font-bold transition-all duration-300 border-2 active:scale-95 ${
                 program.id === p.id
-                ? 'border-[#0A1628] bg-[#0A1628] text-white shadow-md shadow-[#0A1628]/20'
+                ? 'border-slate-900 bg-slate-900 text-white shadow-md shadow-slate-900/20'
                 : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:bg-slate-50'
               }`}
             >
@@ -104,7 +104,7 @@ function DurationSelection({ duration, setDuration }: { duration: Duration, setD
   return (
     <div className="space-y-4">
       <label className="flex items-center gap-2 font-bold text-gray-900">
-        <Clock className="w-5 h-5 text-[#EF4444]" />
+        <Clock className="w-5 h-5 text-red-500" />
         Durasi Program
       </label>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -115,7 +115,7 @@ function DurationSelection({ duration, setDuration }: { duration: Duration, setD
               onClick={() => setDuration(d)}
               className={`px-4 py-3 rounded-2xl text-sm md:text-base font-bold transition-all duration-300 border-2 active:scale-95 ${
                 duration.id === d.id
-                ? 'border-[#0A1628] bg-[#0A1628] text-white shadow-md shadow-[#0A1628]/20'
+                ? 'border-slate-900 bg-slate-900 text-white shadow-md shadow-slate-900/20'
                 : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:bg-slate-50'
               }`}
             >
@@ -153,10 +153,10 @@ Apakah ada jadwal kosong?`;
 
   return (
     <div className="bg-slate-50 border border-slate-200 rounded-[2rem] p-6 sm:p-8 text-center space-y-6 relative overflow-hidden">
-       <div className="absolute top-0 left-0 w-2 h-full bg-[#EF4444]"></div>
+       <div className="absolute top-0 left-0 w-2 h-full bg-red-500"></div>
        <div>
          <p className="font-bold text-slate-500 uppercase tracking-wider text-sm mb-2">Estimasi Total Investasi</p>
-         <p className="font-display font-black text-4xl sm:text-5xl text-[#0A1628] tracking-tight">
+         <p className="font-display font-black text-4xl sm:text-5xl text-slate-900 tracking-tight">
            {formatRupiah(totalEstimate)}
          </p>
        </div>
@@ -168,7 +168,7 @@ Apakah ada jadwal kosong?`;
        <button
          type="button"
          onClick={handleWhatsAppClick}
-         className="w-full flex items-center justify-center gap-3 bg-[#EF4444] hover:bg-red-600 text-white font-bold text-xl py-4 px-6 rounded-2xl transition-all duration-300 active:scale-95 shadow-xl shadow-red-500/25"
+         className="w-full flex items-center justify-center gap-3 bg-red-500 hover:bg-red-600 text-white font-bold text-xl py-4 px-6 rounded-2xl transition-all duration-300 active:scale-95 shadow-xl shadow-red-500/25"
        >
          <MessageCircle className="w-6 h-6" />
          Kirim Estimasi ke WhatsApp

@@ -17,11 +17,11 @@ export default function LatestArticles() {
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-500/5 border border-red-500/10 mb-4">
-            <BookOpen className="w-4 h-4 text-[#EF4444]" />
+            <BookOpen className="w-4 h-4 text-red-500" />
             <span className="text-xs font-bold text-slate-600 tracking-wider uppercase">Resource Center</span>
           </div>
           <h2 className="font-display text-3xl md:text-5xl font-black tracking-tight text-gray-900 mb-4">
-            Growth <span className="text-[#EF4444]">Insight</span>
+            Growth <span className="text-red-500">Insight</span>
           </h2>
           <p className="text-base md:text-lg text-slate-500 font-medium">
             Temukan insight terbaru, strategi andal, dan tips praktis seputar pengembangan SDM dan program outbound terbaik dari kami.
@@ -52,7 +52,7 @@ export default function LatestArticles() {
                 {/* Meta */}
                 <div className="flex flex-wrap items-center gap-4 text-xs font-medium text-slate-500 mb-3">
                   <div className="flex items-center gap-1.5">
-                    <Calendar className="w-4 h-4 text-[#EF4444]" />
+                    <Calendar className="w-4 h-4 text-red-500" />
                     <span>
                       {new Date(article.frontmatter.date).toLocaleDateString('id-ID', {
                         day: 'numeric',
@@ -62,13 +62,13 @@ export default function LatestArticles() {
                     </span>
                   </div>
                   <div className="flex items-center gap-1.5">
-                    <Clock className="w-4 h-4 text-[#EF4444]" />
+                    <Clock className="w-4 h-4 text-red-500" />
                     <span>{article.frontmatter.readTime}</span>
                   </div>
                 </div>
 
                 {/* Title */}
-                <h3 className="font-display font-bold text-xl text-gray-900 mb-2 group-hover:text-[#EF4444] transition-colors line-clamp-2 leading-tight">
+                <h3 className="font-display font-bold text-xl text-gray-900 mb-2 group-hover:text-red-500 transition-colors line-clamp-2 leading-tight">
                   {article.frontmatter.title}
                 </h3>
 
@@ -78,7 +78,7 @@ export default function LatestArticles() {
                 </p>
 
                 {/* Baca Selengkapnya Link */}
-                <span className="mt-auto inline-flex items-center text-xs font-extrabold text-[#EF4444] group-hover:text-red-700 uppercase tracking-wider">
+                <span className="mt-auto inline-flex items-center text-xs font-extrabold text-red-500 group-hover:text-red-700 uppercase tracking-wider">
                   Baca Selengkapnya
                   <ArrowRight className="w-3.5 h-3.5 ml-1 group-hover:translate-x-1 transition-transform" />
                 </span>
@@ -91,7 +91,7 @@ export default function LatestArticles() {
         <div className="text-center">
           <Link
             href="/artikel"
-            className="inline-flex items-center justify-center bg-[#0A1628] hover:bg-slate-800 text-white font-extrabold px-8 py-4 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-red-500/5 text-sm md:text-base uppercase tracking-wider"
+            className="inline-flex min-h-[48px] min-w-[48px] items-center justify-center bg-slate-900 hover:bg-slate-800 text-white font-extrabold px-8 py-4 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-red-500/5 text-sm md:text-base uppercase tracking-wider"
           >
             Lihat Semua Artikel
             <ArrowRight className="w-4 h-4 ml-2" />
