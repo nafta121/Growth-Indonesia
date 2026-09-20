@@ -43,6 +43,7 @@ export default function LatestArticles() {
                   alt={article.frontmatter.title}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  sizes="(max-width: 768px) 100vw, 33vw"
                   referrerPolicy="no-referrer"
                 />
               </div>
