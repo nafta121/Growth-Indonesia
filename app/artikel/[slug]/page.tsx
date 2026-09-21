@@ -171,7 +171,7 @@ export default async function ArtikelDetailPage({ params }: PageProps) {
   const articleSchema = isEventArticle ? [blogPostingSchema, eventSchema] : [blogPostingSchema];
 
   return (
-    <div className="relative min-h-screen flex flex-col bg-[#0A1628] text-white">
+    <div className="relative min-h-screen flex flex-col bg-slate-900 text-white">
       <Navbar />
 
       {/* Structured Schema */}
@@ -182,7 +182,7 @@ export default async function ArtikelDetailPage({ params }: PageProps) {
 
       <main className="flex-grow pt-[72px] md:pt-[88px]">
         {/* Editorial Top Section */}
-        <section className="relative pt-20 pb-36 md:pt-28 md:pb-48 bg-[#0A1628] overflow-hidden">
+        <section className="relative pt-20 pb-36 md:pt-28 md:pb-48 bg-slate-900 overflow-hidden">
           <div className="absolute inset-0 z-0 opacity-20">
             <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628] via-brand/10 to-[#0A1628]" />
           </div>
@@ -204,7 +204,7 @@ export default async function ArtikelDetailPage({ params }: PageProps) {
             {/* Back to Hub */}
             <Link
               href="/artikel"
-              className="inline-flex items-center gap-2 text-sm font-bold text-slate-300 hover:text-brand transition-colors mb-10 group"
+              className="inline-flex items-center gap-2 text-sm font-bold text-slate-300 hover:text-brand transition-colors mb-10 group min-h-[48px] py-3 px-4"
             >
               <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
               Kembali ke Artikel
@@ -262,7 +262,8 @@ export default async function ArtikelDetailPage({ params }: PageProps) {
                 src={article.frontmatter.image}
                 alt={article.frontmatter.title}
                 fill
-                priority
+                priority={true}
+                fetchPriority="high"
                 className="object-cover"
                 referrerPolicy="no-referrer"
               />

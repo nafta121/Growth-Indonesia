@@ -28,7 +28,7 @@ export default function Hero() {
       {/* Background Decor */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-brand/5 rounded-full blur-[120px] animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-blue-600/5 rounded-full blur-[150px] animate-pulse delay-700" />
+        <div className="absolute bottom-1/4 right-1/4 w-full max-w-lg h-auto aspect-square bg-blue-600/5 rounded-full blur-[150px] animate-pulse delay-700" />
       </div>
 
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-12 relative z-10 text-center">
@@ -51,13 +51,13 @@ export default function Hero() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4 w-full sm:w-auto px-4 sm:px-0 opacity-0 animate-fade-in delay-[400ms] mb-12">
-            <Button asChild size="lg" className="w-full sm:w-auto min-w-[240px] sm:min-w-[260px] bg-[#25D366] hover:bg-[#128C7E] text-white border-0 shadow-lg hover:shadow-xl transition-all group text-sm md:text-base h-14 rounded-xl">
+            <Button asChild size="lg" className="w-full sm:w-auto min-w-60 sm:min-w-64 bg-[#25D366] hover:bg-[#128C7E] text-white border-0 shadow-lg hover:shadow-xl transition-all group text-sm md:text-base h-14 rounded-xl">
               <Link href="https://wa.me/6285704748186" target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="w-5 h-5 mr-2" />
                 Chat via WhatsApp
               </Link>
             </Button>
-            <Button asChild variant="outline" size="lg" className="w-full sm:w-auto min-w-[240px] sm:min-w-[260px] bg-transparent border border-white/20 text-slate-300 hover:bg-white/10 hover:text-white transition-colors text-sm md:text-base h-14 rounded-xl group">
+            <Button asChild variant="outline" size="lg" className="w-full sm:w-auto min-w-60 sm:min-w-64 bg-transparent border border-white/20 text-slate-300 hover:bg-white/10 hover:text-white transition-colors text-sm md:text-base h-14 rounded-xl group">
               <Link href="#layanan">
                 Jelajahi Program
                 <svg className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">

@@ -32,6 +32,7 @@ export default function Navbar() {
                 style={{ width: 'auto' }}
                 referrerPolicy="no-referrer"
                 priority={true}
+                fetchPriority="high"
               />
           </Link>
 

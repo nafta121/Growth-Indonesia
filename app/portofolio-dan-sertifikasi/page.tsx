@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 
 export default function PortofolioPage() {
   return (
-    <div className="relative min-h-screen bg-slate-50 selection:bg-[#EF4444] selection:text-white">
+    <div className="relative min-h-screen bg-slate-50 selection:bg-red-500 selection:text-white">
       <Navbar />
       <main className="pt-24 pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">

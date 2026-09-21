@@ -93,7 +93,7 @@ export function Breadcrumb({
                 )}
                 {isLast || !item.href ? (
                   <span
-                    className={`inline-flex items-center gap-1.5 ${activeClasses} truncate max-w-[180px] sm:max-w-xs`}
+                    className={`inline-flex items-center gap-1.5 ${activeClasses} truncate max-w-44 sm:max-w-xs`}
                     aria-current={isLast ? 'page' : undefined}
                   >
                     {isFirst && <Home className="w-3.5 h-3.5 shrink-0" />}
@@ -102,7 +102,7 @@ export function Breadcrumb({
                 ) : (
                   <Link
                     href={item.href}
-                    className={`inline-flex items-center gap-1.5 ${linkClasses} truncate max-w-[140px] sm:max-w-xs`}
+                    className={`inline-flex items-center gap-1.5 ${linkClasses} truncate max-w-36 sm:max-w-xs`}
                   >
                     {isFirst && <Home className="w-3.5 h-3.5 shrink-0" />}
                     {item.label}
