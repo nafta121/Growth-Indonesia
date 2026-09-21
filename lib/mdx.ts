@@ -52,7 +52,7 @@ export function getArticleSlugs(): string[] {
 }
 
 export function getArticleBySlug(slug: string): Article | null {
-  const realSlug = slug.replace(/\.mdx$/, '');
+  const realSlug = slug.replace(/\.mdx$/, '').replace(/[^a-zA-Z0-9-_]/g, '');
   
   const fs = getFs();
   if (fs && ARTICLES_PATH) {
