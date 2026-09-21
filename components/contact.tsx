@@ -208,7 +208,7 @@ Rencana Tanggal: ${data.date || 'TBC'}`;
                       <select
                         id="package"
                         {...register("package", { required: "Program wajib dipilih" })}
-                        className="w-full h-14 md:h-16 px-6 bg-white border border-gray-200 rounded-2xl focus:ring-2 focus:ring-[#EF4444]/10 focus:border-[#EF4444] outline-none transition-all duration-300 text-sm md:text-base font-medium appearance-none cursor-pointer"
+                        className="w-full h-14 md:h-16 px-6 bg-white border border-gray-200 rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF4444]/10 focus-visible:border-[#EF4444] outline-none transition-all duration-300 text-sm md:text-base font-medium appearance-none cursor-pointer"
                       >
                         <option value="" disabled>Pilih Program...</option>
                         {PACKAGES.map((pkg) => (
