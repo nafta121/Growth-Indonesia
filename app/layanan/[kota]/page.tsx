@@ -163,7 +163,7 @@ export default async function CityHubPage({ params }: Props) {
           <meta itemProp="serviceType" content="Corporate Outbound, Team Building & Event Organizer" />
 
           {/* City Hub Hero */}
-          <section className="relative pt-20 pb-20 md:pt-32 md:pb-28 bg-[#0A1628] overflow-hidden">
+          <section className="relative pt-20 pb-20 md:pt-32 md:pb-28 bg-slate-900 overflow-hidden">
           <div className="absolute inset-0 z-0">
             <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628] via-brand/10 to-[#0A1628]" />
           </div>
@@ -186,7 +186,7 @@ export default async function CityHubPage({ params }: Props) {
                <span className="text-sm font-bold text-white tracking-wider uppercase">Layanan Regional</span>
             </div>
             <h1 className="font-display text-4xl sm:text-5xl md:text-7xl font-black tracking-tight text-white mb-6 leading-tight">
-              Layanan Outbound & Training di <span className="text-[#EF4444] break-words">{kotaName}</span>
+              Layanan Outbound & Training di <span className="text-red-500 break-words">{kotaName}</span>
             </h1>
             <p className="text-lg md:text-2xl text-slate-300 font-medium leading-relaxed max-w-3xl mx-auto">
               Berbagai pilihan program pengembangan SDM profesional dari {COMPANY_INFO.brand_name} yang dirancang khusus untuk memenuhi kebutuhan organisasi Anda di wilayah {kotaName}.

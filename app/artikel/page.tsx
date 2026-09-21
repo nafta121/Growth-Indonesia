@@ -29,12 +29,12 @@ export default function ArtikelHubPage() {
   const articles = getAllArticles();
 
   return (
-    <div className="relative min-h-screen flex flex-col bg-[#0A1628] text-white">
+    <div className="relative min-h-screen flex flex-col bg-slate-900 text-white">
       <Navbar />
       
       <main className="flex-grow pt-[72px] md:pt-[88px]">
         {/* Hub Hero Header */}
-        <section className="relative py-20 md:py-28 bg-[#0A1628] overflow-hidden">
+        <section className="relative py-20 md:py-28 bg-slate-900 overflow-hidden">
           <div className="absolute inset-0 z-0">
             <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628] via-brand/10 to-[#0A1628]" />
           </div>
@@ -89,7 +89,7 @@ export default function ArtikelHubPage() {
                         referrerPolicy="no-referrer"
                       />
                       {article.frontmatter.tags && article.frontmatter.tags[0] && (
-                        <span className="absolute top-4 left-4 bg-[#0A1628] text-white text-xs font-bold px-3.5 py-1.5 rounded-full shadow-sm">
+                        <span className="absolute top-4 left-4 bg-slate-900 text-white text-xs font-bold px-3.5 py-1.5 rounded-full shadow-sm">
                           {article.frontmatter.tags[0]}
                         </span>
                       )}
@@ -131,7 +131,7 @@ export default function ArtikelHubPage() {
                           <User className="w-3.5 h-3.5 text-brand" />
                           <span>{article.frontmatter.author}</span>
                         </div>
-                        <span className="inline-flex items-center text-xs font-extrabold text-[#EF4444] group-hover:text-red-700 uppercase tracking-wider">
+                        <span className="inline-flex items-center text-xs font-extrabold text-red-500 group-hover:text-red-700 uppercase tracking-wider">
                           Baca Lengkap
                           <ArrowRight className="w-3.5 h-3.5 ml-1 group-hover:translate-x-1 transition-transform" />
                         </span>

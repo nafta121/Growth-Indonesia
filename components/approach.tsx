@@ -39,7 +39,7 @@ export default function Approach() {
             Our <span className="text-gray-400">Approach</span>
           </h2>
           <div
-            className="h-2 w-16 bg-[#EF4444] mx-auto rounded-full"
+            className="h-2 w-16 bg-red-500 mx-auto rounded-full"
           />
         </ScrollReveal>
 
@@ -52,10 +52,10 @@ export default function Approach() {
               yOffset={30}
               className="group relative bg-white p-8 md:p-10 rounded-3xl md:rounded-[2.5rem] border border-gray-100 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(0,0,0,0.06)] active:scale-[0.98] cursor-default"
             >
-              <div className="mb-8 inline-flex p-4 rounded-2xl bg-gray-50 text-[#EF4444] transition-all duration-500 group-hover:bg-[#EF4444] group-hover:text-white group-hover:-translate-y-2 shadow-sm">
+              <div className="mb-8 inline-flex p-4 rounded-2xl bg-gray-50 text-red-500 transition-all duration-500 group-hover:bg-red-500 group-hover:text-white group-hover:-translate-y-2 shadow-sm">
                 <pillar.icon className="w-8 h-8 md:w-9 md:h-9" />
               </div>
-              <h3 className="font-display text-xl md:text-2xl font-extrabold text-gray-900 mb-4 group-hover:text-[#EF4444] transition-colors duration-300 tracking-tight">
+              <h3 className="font-display text-xl md:text-2xl font-extrabold text-gray-900 mb-4 group-hover:text-red-500 transition-colors duration-300 tracking-tight">
                 {pillar.title}
               </h3>
               <p className="text-gray-500 leading-relaxed font-medium text-sm md:text-base">
