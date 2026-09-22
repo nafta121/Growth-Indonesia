@@ -52,7 +52,10 @@ export function getArticleSlugs(): string[] {
 }
 
 export function getArticleBySlug(slug: string): Article | null {
-  const realSlug = slug.replace(/\.mdx$/, '');
+  // Security: Sanitize slug to prevent path traversal
+  // Allow periods for .mdx extensions, but block traversal sequences
+  const sanitizedSlug = slug.replace(/[^a-zA-Z0-9-_.]/g, '').replace(/\.\./g, '');
+  const realSlug = sanitizedSlug.replace(/\.mdx$/, '');
   
   const fs = getFs();
   if (fs && ARTICLES_PATH) {
