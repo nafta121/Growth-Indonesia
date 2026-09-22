@@ -1,0 +1,4 @@
+## 2026-09-22 - Path Traversal in MDX Reader Utility
+**Vulnerability:** The `getArticleBySlug` function in `lib/mdx.ts` uses the un-sanitized `slug` parameter directly in `fs.readFileSync` via `pathModule.join`. When this function is called by the `app/api/markdown/route.ts` API route which parses the slug from the URL without validation, it creates a severe path traversal vulnerability allowing arbitrary file reads from the server's filesystem.
+**Learning:** Relying solely on Next.js routing validation (like `[slug]`) is insufficient when utility functions accessing the filesystem are also exposed via dynamic API routes taking query parameters or wildcards.
+**Prevention:** Always forcefully sanitize file path inputs at the utility function level using regex (e.g., `slug.replace(/[^a-zA-Z0-9-_]/g, '')`) or by verifying that the resolved absolute path starts with the intended base directory.
