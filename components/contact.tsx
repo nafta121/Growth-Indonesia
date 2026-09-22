@@ -108,7 +108,7 @@ Rencana Tanggal: ${data.date || 'TBC'}`;
 
               <a 
                 href={`mailto:${COMPANY_INFO.email}`}
-                className="flex gap-5 md:gap-7 group items-center p-4 -ml-4 rounded-3xl hover:bg-gray-50 transition-all duration-300 focus:outline-none"
+                className="flex gap-5 md:gap-7 group items-center p-4 -ml-4 rounded-3xl hover:bg-gray-50 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF4444]"
                 aria-label="Kirim email ke Growth Indonesia"
               >
                 <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl md:rounded-[1.5rem] bg-gray-50 flex items-center justify-center text-[#EF4444] group-hover:bg-[#EF4444] group-hover:text-white transition-all duration-500 shadow-sm">
@@ -208,7 +208,7 @@ Rencana Tanggal: ${data.date || 'TBC'}`;
                       <select
                         id="package"
                         {...register("package", { required: "Program wajib dipilih" })}
-                        className="w-full h-14 md:h-16 px-6 bg-white border border-gray-200 rounded-2xl focus:ring-2 focus:ring-[#EF4444]/10 focus:border-[#EF4444] outline-none transition-all duration-300 text-sm md:text-base font-medium appearance-none cursor-pointer"
+                        className="w-full h-14 md:h-16 px-6 bg-white border border-gray-200 rounded-2xl focus-visible:ring-2 focus-visible:ring-[#EF4444]/10 focus-visible:border-[#EF4444] outline-none transition-all duration-300 text-sm md:text-base font-medium appearance-none cursor-pointer"
                       >
                         <option value="" disabled>Pilih Program...</option>
                         {PACKAGES.map((pkg) => (
