@@ -35,9 +35,9 @@ export default function Hero() {
         <div className="w-full max-w-5xl mx-auto flex flex-col items-center">
           {/* Headline */}
           <h1 className="w-full max-w-full font-display text-2xl sm:text-4xl md:text-5xl lg:text-7xl font-black text-white leading-[1.2] mb-6 md:mb-8 tracking-tight opacity-0 animate-fade-in break-words">
-            <Badge variant="dark" className="mb-4 md:mb-8 font-sans">Event Organizer & Provider Outbound Madiun</Badge>
+            <Badge variant="dark" className="mb-4 md:mb-8 font-sans">Let's Grow Together!</Badge>
             <span className="block mt-4 relative">
-              Solusi Event Organizer Madiun &
+              Event Organizer Madiun &
             </span>
             <span className="text-brand block sm:inline-block relative font-bold mt-2 sm:mt-0">
               Provider Outbound Team Building
@@ -46,7 +46,7 @@ export default function Hero() {
 
           {/* Subheadline */}
           <p className="w-full text-slate-100 text-sm sm:text-base md:text-lg lg:text-xl font-medium max-w-3xl mx-auto leading-relaxed mb-10 md:mb-12 px-2 sm:px-4 opacity-0 animate-fade-in delay-200 break-words">
-            Layanan profesional <strong>Event Organizer Madiun</strong>, <strong>Provider Outbound Training</strong>, dan <strong>Corporate Team Building</strong> bersertifikat BNSP. Garansi program terukur & Zero Accident Policy.
+            Layanan profesional <strong>Event Organizer Madiun</strong>, <strong>Provider Outbound Training</strong>, dan <strong>Team Building</strong> Garansi program terukur & Zero Accident Policy.
           </p>
 
           {/* CTA Buttons */}
