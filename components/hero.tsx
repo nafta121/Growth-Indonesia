@@ -35,7 +35,7 @@ export default function Hero() {
         <div className="w-full max-w-5xl mx-auto flex flex-col items-center">
           {/* Headline */}
           <h1 className="w-full max-w-full font-display text-2xl sm:text-4xl md:text-5xl lg:text-7xl font-black text-white leading-[1.2] mb-6 md:mb-8 tracking-tight opacity-0 animate-fade-in break-words">
-            <Badge variant="dark" className="mb-4 md:mb-8 font-sans">Let's Grow Together!</Badge>
+            <Badge variant="dark" className="mb-4 md:mb-8 font-sans">Let&apos;s Grow Together!</Badge>
             <span className="block mt-4 relative">
               Event Organizer Madiun &
             </span>
