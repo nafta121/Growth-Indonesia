@@ -6,7 +6,8 @@ export async function GET(req: NextRequest) {
     req.headers.get('x-payment-token') ||
     req.headers.get('authorization')?.replace(/^x402\s+/i, '');
 
-  if (!paymentProof) {
+    // Security Check: Ensure paymentProof strictly matches a 32-byte EVM transaction hash format to prevent authorization bypass.
+  if (!paymentProof || !/^0x[a-fA-F0-9]{64}$/.test(paymentProof)) {
     const paymentRequirement = {
       error: 'Payment Required',
       message: 'Access to Growth Indonesia Premium Outbound Industry Intelligence requires x402 micropayment.',
