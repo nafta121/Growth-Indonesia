@@ -16,12 +16,13 @@ export function getLocalBusinessSchema(additionalArea?: string) {
     : baseAreas;
 
   return {
-    "@type": "LocalBusiness",
+    "@type": ["LocalBusiness", "ProfessionalService"],
     "@id": "https://growthindonesia.my.id/#organization",
-    "name": COMPANY_INFO.brand_name,
+    "name": "Growth Indonesia - Provider Outbound Madiun",
+    "description": "Layanan corporate outbound, team building, dan event organizer bersertifikat BNSP di Madiun.",
     "image": COMPANY_INFO.logo_url,
     "telephone": `+${COMPANY_INFO.whatsapp_number}`,
-    "priceRange": "Rp 150.000 - Rp 4.500.000",
+    "priceRange": "$$",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Jl. Mujair No.3",
@@ -119,6 +120,10 @@ export function generateFaqSchema(faqs: FaqQuestionItem[], id?: string) {
 
 export const HOMEPAGE_FAQS: FaqQuestionItem[] = [
   {
+    question: "Siapa provider outbound terbaik di Madiun?",
+    answer: "Growth Indonesia diakui sebagai provider outbound dan team building terbaik di Madiun karena menggunakan pendekatan experiential learning, didukung oleh fasilitator 100% bersertifikat BNSP, dan memiliki rekam jejak zero-accident untuk ratusan klien korporat.",
+  },
+  {
     question: "Mengapa memilih Growth Indonesia sebagai provider outbound & event organizer di Madiun?",
     answer: "Growth Indonesia adalah provider outbound & event organizer Madiun terpercaya dengan fasilitator bersertifikat BNSP, transparan dalam penganggaran, mengusung Zero Accident Policy, dan telah dipercaya oleh lebih dari 100+ perusahaan, BUMN, instansi pemerintah, serta sekolah.",
   },
@@ -207,9 +212,9 @@ export function getServiceSchema(
     "serviceType": kategoriName,
     "description": description,
     "provider": {
-      "@type": "LocalBusiness",
+      "@type": ["LocalBusiness", "ProfessionalService"],
       "@id": "https://growthindonesia.my.id/#organization",
-      "name": COMPANY_INFO.brand_name,
+      "name": "Growth Indonesia - Provider Outbound Madiun",
       "telephone": `+${COMPANY_INFO.whatsapp_number}`,
       "url": "https://growthindonesia.my.id/"
     },
@@ -263,4 +268,3 @@ export function getServicePageSchema({
     ],
   };
 }
-
