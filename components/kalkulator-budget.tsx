@@ -63,7 +63,7 @@ function PesertaSlider({ pax, setPax }: { pax: number, setPax: (pax: number) => 
         step="10"
         value={pax}
         onChange={(e) => setPax(Number(e.target.value))}
-        className="w-full h-3 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-[#EF4444] hover:accent-red-600 transition-all"
+        className="w-full h-3 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-[#EF4444] hover:accent-red-600 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF4444] focus-visible:ring-offset-2"
       />
       <div className="flex justify-between text-xs font-semibold text-slate-400 px-1">
         <span>20</span>
@@ -86,7 +86,7 @@ function ProgramSelection({ program, setProgram }: { program: Program, setProgra
               key={p.id}
               type="button"
               onClick={() => setProgram(p)}
-              className={`px-4 py-3 rounded-2xl text-sm md:text-base font-bold transition-all duration-300 border-2 active:scale-95 ${
+              className={`px-4 py-3 rounded-2xl text-sm md:text-base font-bold transition-all duration-300 border-2 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF4444] focus-visible:ring-offset-2 ${
                 program.id === p.id
                 ? 'border-[#0A1628] bg-[#0A1628] text-white shadow-md shadow-[#0A1628]/20'
                 : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:bg-slate-50'
@@ -113,7 +113,7 @@ function DurationSelection({ duration, setDuration }: { duration: Duration, setD
               key={d.id}
               type="button"
               onClick={() => setDuration(d)}
-              className={`px-4 py-3 rounded-2xl text-sm md:text-base font-bold transition-all duration-300 border-2 active:scale-95 ${
+              className={`px-4 py-3 rounded-2xl text-sm md:text-base font-bold transition-all duration-300 border-2 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF4444] focus-visible:ring-offset-2 ${
                 duration.id === d.id
                 ? 'border-[#0A1628] bg-[#0A1628] text-white shadow-md shadow-[#0A1628]/20'
                 : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:bg-slate-50'
@@ -168,7 +168,7 @@ Apakah ada jadwal kosong?`;
        <button
          type="button"
          onClick={handleWhatsAppClick}
-         className="w-full flex items-center justify-center gap-3 bg-[#EF4444] hover:bg-red-600 text-white font-bold text-xl py-4 px-6 rounded-2xl transition-all duration-300 active:scale-95 shadow-xl shadow-red-500/25"
+         className="w-full flex items-center justify-center gap-3 bg-[#EF4444] hover:bg-red-600 text-white font-bold text-xl py-4 px-6 rounded-2xl transition-all duration-300 active:scale-95 shadow-xl shadow-red-500/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF4444] focus-visible:ring-offset-2"
        >
          <MessageCircle className="w-6 h-6" />
          Kirim Estimasi ke WhatsApp

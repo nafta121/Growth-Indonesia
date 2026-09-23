@@ -1,6 +1,6 @@
 import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
-import { formatSlug } from './format.ts';
+import { formatSlug } from './format';
 
 describe('formatSlug', () => {
   it('returns empty string when slug is empty or empty-like', () => {
