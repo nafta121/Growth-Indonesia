@@ -263,6 +263,7 @@ export default async function ArtikelDetailPage({ params }: PageProps) {
                 alt={article.frontmatter.title}
                 fill
                 priority
+                sizes="(max-width: 896px) 100vw, 896px"
                 className="object-cover"
                 referrerPolicy="no-referrer"
               />
