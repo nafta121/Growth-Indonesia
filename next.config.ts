@@ -9,18 +9,6 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: false,
   },
-  serverExternalPackages: [
-    'remark',
-    'remark-parse',
-    'remark-html',
-    'rehype',
-    'rehype-recma',
-    'unified',
-    'micromark',
-    'next-mdx-remote',
-    'unist',
-    'mdast',
-  ],
   // Allow access to remote image placeholder.
   images: {
     dangerouslyAllowSVG: true,
@@ -69,7 +57,7 @@ const nextConfig: NextConfig = {
   },
   webpack: (config, {dev}) => {
     // HMR is disabled in AI Studio via DISABLE_HMR env var.
-    // Do not modifyâfile watching is disabled to prevent flickering during agent edits.
+    // Do not modify—file watching is disabled to prevent flickering during agent edits.
     if (dev && process.env.DISABLE_HMR === 'true') {
       config.watchOptions = {
         ignored: /.*/,
