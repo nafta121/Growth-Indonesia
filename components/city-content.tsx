@@ -23,11 +23,13 @@ export default function CityContent({ kategoriName, kotaName, cityKey, cityData 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           <ScrollReveal delay={0.2} xOffset={-30} className="relative">
             <div className="aspect-[4/3] rounded-3xl overflow-hidden relative">
+               {/* Optimization: Provide explicit sizes to optimize bandwidth for the 2-col layout */}
                <Image 
                   src={contentImage}
                   alt={`${kategoriName} di ${kotaName}`}
                   fill
                   className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                   referrerPolicy="no-referrer"
                 />
                 <div className="absolute inset-0 ring-1 ring-inset ring-gray-900/10 rounded-3xl" />
