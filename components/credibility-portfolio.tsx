@@ -297,7 +297,7 @@ export default function CredibilityPortfolio() {
               <span>4.9 / 5.0 (150+ Ulasan & Kepuasan Klien)</span>
             </div>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight font-display">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight font-display leading-tight">
             Profil Fasilitator, Studi Kasus & <span className="text-red-600">Portofolio Klien</span>
           </h2>
           <p className="mt-4 text-slate-600 text-base sm:text-lg leading-relaxed">
@@ -313,8 +313,8 @@ export default function CredibilityPortfolio() {
                 <ShieldCheck className="w-8 h-8" />
               </div>
               <div>
-                <h3 className="text-2xl font-bold text-slate-900 font-display">1. Profil & Sertifikasi Fasilitator</h3>
-                <p className="text-sm text-slate-500">Tim instruktur utama tersertifikasi kompetensi resmi negara (BNSP)</p>
+                <h3 className="text-2xl font-bold text-slate-900 font-display leading-tight">1. Profil & Sertifikasi Fasilitator</h3>
+                <p className="text-sm text-slate-500 leading-relaxed">Tim instruktur utama tersertifikasi kompetensi resmi negara (BNSP)</p>
               </div>
             </div>
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 text-slate-700 rounded-full text-xs font-bold uppercase tracking-wider">
@@ -328,8 +328,8 @@ export default function CredibilityPortfolio() {
               <div key={i} className="bg-slate-50 border border-slate-200/80 rounded-2xl p-6 space-y-4 hover:border-red-300 transition-colors">
                 <div className="flex items-start justify-between">
                   <div>
-                    <h4 className="text-xl font-bold text-slate-900 font-display">{f.name}</h4>
-                    <p className="text-sm font-semibold text-red-600">{f.role}</p>
+                    <h4 className="text-xl font-bold text-slate-900 font-display leading-tight">{f.name}</h4>
+                    <p className="text-sm font-semibold text-red-600 leading-relaxed">{f.role}</p>
                   </div>
                   <span className="text-xs font-extrabold bg-red-600 text-white px-2.5 py-1 rounded-md">BNSP</span>
                 </div>
@@ -378,8 +378,8 @@ export default function CredibilityPortfolio() {
               <Briefcase className="w-8 h-8" />
             </div>
             <div>
-              <h3 className="text-2xl font-bold text-slate-900 font-display">2. Portofolio & Studi Kasus Program</h3>
-              <p className="text-sm text-slate-500">Rekam jejak pelaksanaan kegiatan outbound training, gathering, dan LDK OSIS</p>
+              <h3 className="text-2xl font-bold text-slate-900 font-display leading-tight">2. Portofolio & Studi Kasus Program</h3>
+              <p className="text-sm text-slate-500 leading-relaxed">Rekam jejak pelaksanaan kegiatan outbound training, gathering, dan LDK OSIS</p>
             </div>
           </div>
 
@@ -388,8 +388,8 @@ export default function CredibilityPortfolio() {
               <div key={idx} className="border border-slate-200 rounded-2xl p-6 bg-slate-50/50 hover:bg-white hover:shadow-md transition-all">
                 <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-2 border-b border-slate-200/80 pb-4 mb-4">
                   <div>
-                    <h4 className="text-lg sm:text-xl font-bold text-slate-900 font-display">{cs.title}</h4>
-                    <p className="text-base font-bold text-red-600">{cs.client}</p>
+                    <h4 className="text-lg sm:text-xl font-bold text-slate-900 font-display leading-tight">{cs.title}</h4>
+                    <p className="text-base font-bold text-red-600 leading-relaxed">{cs.client}</p>
                   </div>
                   <div className="flex flex-wrap items-center gap-4 text-xs font-medium text-slate-600">
                     <span className="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-lg border border-slate-200">
@@ -435,8 +435,8 @@ export default function CredibilityPortfolio() {
               <Users className="w-8 h-8" />
             </div>
             <div>
-              <h3 className="text-2xl font-bold text-slate-900 font-display">3. Daftar Klien & Mitra Strategis</h3>
-              <p className="text-sm text-slate-500">Instansi BUMN, perusahaan multinasional, sekolah, dan pemerintah yang mempercayai Growth Indonesia</p>
+              <h3 className="text-2xl font-bold text-slate-900 font-display leading-tight">3. Daftar Klien & Mitra Strategis</h3>
+              <p className="text-sm text-slate-500 leading-relaxed">Instansi BUMN, perusahaan multinasional, sekolah, dan pemerintah yang mempercayai Growth Indonesia</p>
             </div>
           </div>
 
@@ -447,7 +447,7 @@ export default function CredibilityPortfolio() {
                   {cat.iconName === 'bumn' && <Building2 className="w-5 h-5 text-red-600" />}
                   {cat.iconName === 'education' && <GraduationCap className="w-5 h-5 text-blue-600" />}
                   {cat.iconName === 'government' && <Briefcase className="w-5 h-5 text-amber-600" />}
-                  <h4 className="font-bold text-slate-900 font-display text-base">{cat.category}</h4>
+                  <h4 className="font-bold text-slate-900 font-display text-base leading-tight">{cat.category}</h4>
                 </div>
 
                 <ul className="space-y-2 text-sm text-slate-700">

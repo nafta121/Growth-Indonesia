@@ -17,9 +17,9 @@ export default function AboutUs() {
           <ScrollReveal delay={0} duration={0.8} xOffset={-30} yOffset={0}>
             <Badge className="mb-4">Vision</Badge>
             <h2 id="tentang-title" className="font-display text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 leading-[1.1] mb-8">
-              Membangun Kualitas <span className="text-[#EF4444]">SDM Unggul</span> & Bermental Positif.
+              Membangun Kualitas <span className="text-red-500">SDM Unggul</span> & Bermental Positif.
             </h2>
-            <div className="relative p-8 rounded-3xl bg-gray-50 border-l-4 border-[#EF4444] mb-8 group overflow-hidden">
+            <div className="relative p-8 rounded-3xl bg-gray-50 border-l-4 border-red-500 mb-8 group overflow-hidden">
               <div className="absolute top-0 right-0 p-4 opacity-[0.03] group-hover:opacity-10 transition-opacity">
                 <span className="font-display text-8xl font-black italic">GROW</span>
               </div>
@@ -35,9 +35,9 @@ export default function AboutUs() {
             duration={0.8} 
             xOffset={30} 
             yOffset={0}
-            className="mt-12 lg:mt-0 bg-[#0A1628] p-8 md:p-12 lg:p-16 rounded-[2.5rem] md:rounded-[4rem] text-white shadow-2xl relative overflow-hidden group"
+            className="mt-12 lg:mt-0 bg-slate-900 p-8 md:p-12 lg:p-16 rounded-[2.5rem] md:rounded-[4rem] text-white shadow-2xl relative overflow-hidden group"
           >
-            <div className="absolute -top-10 -right-10 w-40 h-40 bg-[#EF4444]/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+            <div className="absolute -top-10 -right-10 w-40 h-40 bg-red-500/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
             
             <Badge variant="dark" className="mb-4">Mission</Badge>
             <ul className="space-y-6 md:space-y-8">

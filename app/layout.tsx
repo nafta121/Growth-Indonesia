@@ -144,7 +144,7 @@ export default function RootLayout({
           strategy="lazyOnload"
         />
       </head>
-      <body suppressHydrationWarning className="font-sans antialiased bg-[#0A1628] text-white">
+      <body suppressHydrationWarning className="font-sans antialiased bg-slate-900 text-white">
         <WebMCPProvider />
         {children}
         <GoogleTagManager gtmId="G-XXXXXXXXXX" />

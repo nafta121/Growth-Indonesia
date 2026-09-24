@@ -33,13 +33,13 @@ export function AiOverviewSection({ cityName, kategoriName, venues }: AiOverview
         <ScrollReveal delay={0.1} yOffset={20}>
           {/* Quick Summary Block */}
           <div className="bg-slate-50 border border-slate-100 rounded-[2.5rem] p-8 md:p-10 mb-16 relative overflow-hidden shadow-sm">
-            <div className="absolute top-0 left-0 w-2 h-full bg-[#EF4444]"></div>
+            <div className="absolute top-0 left-0 w-2 h-full bg-red-500"></div>
             <div className="flex flex-col md:flex-row items-start gap-6">
               <div className="bg-red-100 p-4 rounded-2xl shrink-0">
-                <Sparkles className="w-8 h-8 text-[#EF4444]" />
+                <Sparkles className="w-8 h-8 text-red-500" />
               </div>
               <div>
-                <h3 className="font-display font-extrabold text-2xl text-gray-900 mb-4 tracking-tight">Ringkasan Layanan</h3>
+                <h3 className="font-display font-extrabold text-2xl text-gray-900 mb-4 tracking-tight leading-tight">Ringkasan Layanan</h3>
                 <p className="text-slate-600 text-lg md:text-xl leading-relaxed font-medium">
                   Growth Indonesia menyediakan layanan <strong>{kategoriName}, Corporate Gathering, dan Team Building</strong> profesional di {cityName}. Kami merancang program berbasis <em>experiential learning</em> untuk meningkatkan kepemimpinan, kolaborasi, dan produktivitas tim Anda di lokasi-lokasi unggulan {cityName}.
                 </p>
@@ -49,7 +49,7 @@ export function AiOverviewSection({ cityName, kategoriName, venues }: AiOverview
           
           {/* Comparison Table */}
           <div className="mb-16">
-            <h3 className="font-display font-extrabold text-3xl text-gray-900 mb-8 tracking-tight">Pilihan Program di {cityName}</h3>
+            <h3 className="font-display font-extrabold text-3xl text-gray-900 mb-8 tracking-tight leading-tight">Pilihan Program di {cityName}</h3>
             <div className="overflow-x-auto rounded-3xl border border-gray-100 shadow-sm">
               <table className="w-full text-left border-collapse min-w-[600px]">
                 <thead>
@@ -87,11 +87,11 @@ export function AiOverviewSection({ cityName, kategoriName, venues }: AiOverview
 
           {/* Dynamic FAQ */}
           <div>
-            <h3 className="font-display font-extrabold text-3xl text-gray-900 mb-8 tracking-tight">FAQ Seputar {kategoriName} di {cityName}</h3>
+            <h3 className="font-display font-extrabold text-3xl text-gray-900 mb-8 tracking-tight leading-tight">FAQ Seputar {kategoriName} di {cityName}</h3>
             <div className="space-y-4">
               {faqData.map((faq, index) => (
                 <div key={index} className="bg-white border border-gray-100 p-6 md:p-8 rounded-[2rem] hover:border-red-100 hover:shadow-xl hover:shadow-red-500/5 transition-all duration-300">
-                  <h4 className="font-display font-bold text-xl text-gray-900 mb-3">{faq.question}</h4>
+                  <h4 className="font-display font-bold text-xl text-gray-900 mb-3 leading-tight">{faq.question}</h4>
                   <p className="text-slate-500 leading-relaxed font-medium">{faq.answer}</p>
                 </div>
               ))}

@@ -23,7 +23,7 @@ export default function CityHero({ kategoriName, kotaName, cityKey, cityDescript
   const heroImage = getCityImage(cityKey);
 
   return (
-    <section className="relative pt-20 pb-20 md:pt-32 md:pb-28 bg-[#0A1628] overflow-hidden">
+    <section className="relative pt-20 pb-20 md:pt-32 md:pb-28 bg-slate-900 overflow-hidden">
       <div className="absolute inset-0 z-0">
         <Image 
           src={heroImage}
@@ -35,7 +35,7 @@ export default function CityHero({ kategoriName, kotaName, cityKey, cityDescript
           className="object-cover opacity-20 pointer-events-none"
           referrerPolicy="no-referrer"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628] via-[#0A1628]/80 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/80 to-transparent" />
       </div>
       
       <div className="max-w-7xl mx-auto px-4 md:px-12 relative z-10">
@@ -71,7 +71,7 @@ export default function CityHero({ kategoriName, kotaName, cityKey, cityDescript
             Growth Indonesia merupakan {content.providerType} terpercaya di {kotaName}. Fasilitator kami tersertifikasi BNSP, memastikan kegiatan Anda berjalan aman, interaktif, dan berdampak tinggi.
           </p>
           <div className="flex flex-wrap items-center gap-4">
-            <Button size="lg" className="h-14 px-8 rounded-full bg-[#EF4444] text-white hover:bg-red-600 shadow-lg shadow-red-600/30 transition-all duration-300 active:scale-95 flex items-center justify-center gap-2" asChild>
+            <Button size="lg" className="h-14 px-8 rounded-full bg-red-500 text-white hover:bg-red-600 shadow-lg shadow-red-600/30 transition-all duration-300 active:scale-95 flex items-center justify-center gap-2" asChild>
               <Link href="/#kontak" className="text-xs sm:text-sm font-bold">
                 KONSULTASI {kategoriName.toUpperCase()} {kotaName.toUpperCase()} <ArrowRight className="w-5 h-5" />
               </Link>

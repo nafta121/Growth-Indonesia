@@ -14,7 +14,7 @@ export default function ServiceAreas() {
             <h2 className="font-display text-3xl md:text-5xl font-black tracking-tight text-gray-900 mb-6 leading-tight">
               Jangkauan <span className="text-brand">Layanan Utama</span>
             </h2>
-            <p className="text-lg md:text-xl text-slate-500 max-w-2xl mx-auto font-medium">
+            <p className="text-lg md:text-xl text-slate-500 max-w-2xl mx-auto font-medium leading-relaxed">
               Kami melayani pelaksanaan program di seluruh Indonesia dengan titik fokus 
               pengembangan di kota-kota strategis Jawa Timur.
             </p>

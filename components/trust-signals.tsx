@@ -133,9 +133,9 @@ export default function TrustSignals() {
         <div className="text-center">
           <Badge className="mb-4">Strategic Partners</Badge>
           <h2 id="trust-title" className="text-gray-900 font-display text-3xl md:text-5xl font-black tracking-tight leading-tight">
-            Dipercaya oleh <span className="text-[#EF4444]">100+ Perusahaan</span>
+            Dipercaya oleh <span className="text-red-500">100+ Perusahaan</span>
           </h2>
-          <p className="text-gray-600 mt-4 text-sm md:text-base max-w-xl mx-auto">Mitra strategis dalam pengembangan sumber daya manusia melalui metode yang kreatif dan berkelanjutan.</p>
+          <p className="text-gray-600 mt-4 text-sm md:text-base max-w-xl mx-auto leading-relaxed">Mitra strategis dalam pengembangan sumber daya manusia melalui metode yang kreatif dan berkelanjutan.</p>
         </div>
       </div>
 
@@ -148,7 +148,7 @@ export default function TrustSignals() {
           {scrollItems.map((client, i) => (
             <div
               key={`${client.name}-${i}`}
-              className="flex items-center gap-4 px-8 md:px-10 py-5 md:py-6 rounded-2xl md:rounded-3xl bg-white border border-gray-100 hover:border-[#EF4444]/30 hover:shadow-2xl hover:shadow-[#EF4444]/5 transition-all duration-500 group active:scale-95 grayscale hover:grayscale-0 hover:-translate-y-1"
+              className="flex items-center gap-4 px-8 md:px-10 py-5 md:py-6 rounded-2xl md:rounded-3xl bg-white border border-gray-100 hover:border-red-500/30 hover:shadow-2xl hover:shadow-red-500/5 transition-all duration-500 group active:scale-95 grayscale hover:grayscale-0 hover:-translate-y-1"
             >
               <div className={`${client.color} opacity-40 group-hover:opacity-100 transition-opacity duration-500`}>
                 {client.icon}
@@ -166,7 +166,7 @@ export default function TrustSignals() {
         <div className="text-center mb-12">
           <Badge className="mb-4">Testimoni Klien</Badge>
           <h2 className="text-gray-900 font-display text-2xl md:text-4xl font-extrabold tracking-tight leading-tight">
-            Kisah Sukses Transformasi <span className="text-[#EF4444]">SDM</span>
+            Kisah Sukses Transformasi <span className="text-red-500">SDM</span>
           </h2>
         </div>
         
@@ -190,7 +190,7 @@ export default function TrustSignals() {
                   </div>
                   <div>
                     <div className="font-bold text-gray-900 font-display text-sm md:text-base">{t.name}</div>
-                    <div className="text-xs md:text-sm font-semibold text-[#EF4444] uppercase tracking-wider">{t.company}</div>
+                    <div className="text-xs md:text-sm font-semibold text-red-500 uppercase tracking-wider">{t.company}</div>
                   </div>
                 </div>
               </div>
