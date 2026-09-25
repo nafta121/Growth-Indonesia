@@ -52,11 +52,13 @@ export function getArticleSlugs(): string[] {
 }
 
 export function getArticleBySlug(slug: string): Article | null {
-  const realSlug = slug.replace(/\.mdx$/, '');
+  const pathModule = getPath();
+  // Safely extract the filename, removing any path traversal attempts
+  const safeFilename = pathModule ? pathModule.basename(slug) : slug.replace(/^.*[\\/]/, '');
+  const realSlug = safeFilename.replace(/\.mdx$/, '');
   
   const fs = getFs();
   if (fs && ARTICLES_PATH) {
-    const pathModule = getPath();
     const filePath = pathModule ? pathModule.join(ARTICLES_PATH, `${realSlug}.mdx`) : '';
     if (filePath && fs.existsSync(filePath)) {
       try {
