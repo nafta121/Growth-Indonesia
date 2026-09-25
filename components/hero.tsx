@@ -40,7 +40,7 @@ export default function Hero() {
               Event Organizer Madiun &
             </span>
             <span className="text-brand block sm:inline-block relative font-bold mt-2 sm:mt-0">
-              Provider Outbound Team Building
+              Provider Outbound dan Team Building
             </span>
           </h1>
 
