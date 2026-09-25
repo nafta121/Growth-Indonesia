@@ -52,7 +52,7 @@ export default function Navbar() {
             </ul>
             <Link
               href="#kontak"
-              className="px-6 py-2.5 text-sm font-bold text-white bg-brand hover:brightness-110 rounded-xl transition-all active:scale-95 shadow-sm hover:shadow-md"
+              className="px-6 py-2.5 text-sm font-bold text-white bg-brand hover:brightness-110 rounded-xl transition-all active:scale-95 shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
             >
               Minta Proposal
             </Link>
