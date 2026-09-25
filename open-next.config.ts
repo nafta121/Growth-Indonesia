@@ -1,3 +1,8 @@
 import { defineCloudflareConfig } from "@opennextjs/cloudflare/config";
 
-export default defineCloudflareConfig();
+const config = defineCloudflareConfig();
+
+export default {
+  ...config,
+  edgeExternals: []
+};
