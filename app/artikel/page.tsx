@@ -81,11 +81,13 @@ export default function ArtikelHubPage() {
                   >
                     {/* Image */}
                     <div className="relative aspect-[16/10] overflow-hidden bg-slate-100">
+                      {/* Optimization: Added sizes attribute to prevent downloading 100vw full-res images for grid items */}
                       <Image
                         src={article.frontmatter.image}
                         alt={article.frontmatter.title}
                         fill
                         className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         referrerPolicy="no-referrer"
                       />
                       {article.frontmatter.tags && article.frontmatter.tags[0] && (

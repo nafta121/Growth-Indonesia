@@ -258,12 +258,14 @@ export default async function ArtikelDetailPage({ params }: PageProps) {
         <section className="bg-slate-50 relative pb-4">
           <div className="max-w-4xl mx-auto px-6 -mt-24 md:-mt-32 relative z-20">
             <div className="aspect-[21/10] w-full rounded-3xl overflow-hidden shadow-2xl relative bg-slate-100 border border-white/10">
+              {/* Optimization: Explicitly set sizes relative to the max-w-4xl container to improve LCP */}
               <Image
                 src={article.frontmatter.image}
                 alt={article.frontmatter.title}
                 fill
                 priority
                 className="object-cover"
+                sizes="(max-width: 1200px) 100vw, 896px"
                 referrerPolicy="no-referrer"
               />
             </div>

@@ -38,11 +38,13 @@ export default function LatestArticles() {
             >
               {/* Image Container */}
               <div className="relative aspect-[16/10] overflow-hidden bg-slate-100">
+                {/* Optimization: Ensure optimal image payload sizes by explicitly defining sizes for 3-col grid */}
                 <Image
                   src={article.frontmatter.image}
                   alt={article.frontmatter.title}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  sizes="(max-width: 768px) 100vw, 33vw"
                   referrerPolicy="no-referrer"
                 />
               </div>
