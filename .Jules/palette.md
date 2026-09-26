@@ -9,3 +9,7 @@
 ## 2024-05-26 - Accessible Floating Action Buttons (FABs)
 **Learning:** Floating action buttons, especially icon-only ones linking to external services like WhatsApp, often lack clear focus indicators for keyboard navigation and require localized `aria-label`s. Hardcoded English labels on Indonesian sites create a poor experience for screen reader users.
 **Action:** Always add localized `aria-label`s (e.g., "Hubungi Admin..."), and implement `focus-visible` ring styling that matches the brand color (or the service color, like WhatsApp green `#25D366`) and element shape (`rounded-2xl` or `rounded-full`) to ensure keyboard accessibility without affecting mouse users.
+
+## 2024-05-27 - WAI-ARIA Tab Pattern for Custom Tabs
+**Learning:** Custom tab components built with `<div>` and `<button>` elements lack native semantic meaning for screen readers. Without proper roles and ARIA attributes, visually impaired users cannot understand the relationship between the tabs and their content, nor can they determine which tab is currently active.
+**Action:** Always implement the standard WAI-ARIA tab pattern for custom tab components. This requires adding `role="tablist"` to the container, `role="tab"`, `aria-selected`, `aria-controls`, and an `id` to each tab button, and `role="tabpanel"`, `aria-labelledby`, and an `id` to each content panel to explicitly link them together.

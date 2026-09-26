@@ -1,0 +1,4 @@
+💡 What: Implemented the standard WAI-ARIA tab pattern in the `ServicesTabs` component. Added `role="tablist"` to the container, `role="tab"`, `aria-selected`, `aria-controls`, and `id` to the tab buttons, and `role="tabpanel"`, `aria-labelledby`, and `id` to the tab content panel.
+🎯 Why: Custom tab components built with standard HTML elements lack semantic meaning for assistive technologies. This change ensures screen reader users can understand the structure of the tabs, navigate them effectively, and know which tab is currently active.
+📸 Before/After: Visuals remain entirely unchanged; this is an invisible accessibility improvement at the DOM level.
+♿ Accessibility: Significantly improved screen reader compatibility by explicitly linking tab controls to their respective content panels using ARIA attributes.
