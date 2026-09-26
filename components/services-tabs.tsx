@@ -15,10 +15,18 @@ export default function ServicesTabs({ services }: { services: Record<string, { 
 
   return (
     <>
-      <div className="relative flex flex-nowrap overflow-x-auto p-1.5 bg-white/5 backdrop-blur-sm rounded-2xl md:rounded-3xl border border-white/10 w-full max-w-2xl mx-auto mb-12 md:mb-20 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory">
+      <div
+        role="tablist"
+        aria-label="Kategori Layanan"
+        className="relative flex flex-nowrap overflow-x-auto p-1.5 bg-white/5 backdrop-blur-sm rounded-2xl md:rounded-3xl border border-white/10 w-full max-w-2xl mx-auto mb-12 md:mb-20 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory"
+      >
         {CATEGORIES.map((cat) => (
           <button
             key={cat.id}
+            id={`tab-${cat.id}`}
+            role="tab"
+            aria-selected={activeTab === cat.id}
+            aria-controls={`tabpanel-${cat.id}`}
             onClick={() => setActiveTab(cat.id)}
             className={cn(
               "relative z-10 flex-1 min-w-fit shrink-0 snap-center py-4 md:py-5 px-6 text-xs md:text-sm font-bold tracking-[0.15em] transition-all duration-300 rounded-xl md:rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF4444] uppercase active:scale-95",
@@ -42,6 +50,9 @@ export default function ServicesTabs({ services }: { services: Record<string, { 
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}
+            id={`tabpanel-${activeTab}`}
+            role="tabpanel"
+            aria-labelledby={`tab-${activeTab}`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
