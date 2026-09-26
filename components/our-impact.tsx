@@ -95,6 +95,7 @@ export default function OurImpact() {
         alt="Background Our Impact Growth Indonesia"
         fill
         priority
+        fetchPriority="high"
         sizes="100vw"
         className="object-cover object-center opacity-5 mix-blend-overlay absolute inset-0 -z-10"
         referrerPolicy="no-referrer"
@@ -103,7 +104,7 @@ export default function OurImpact() {
         <ScrollReveal className="text-center mb-16">
           <Badge className="mb-4">Our Impact</Badge>
           <h2 id="impact-title" className="font-display text-4xl md:text-5xl font-black text-gray-900 leading-[1.1] mb-6">
-            Jejak Langkah <span className="text-[#EF4444]">Penuh Makna</span>
+            Jejak Langkah <span className="text-red-500">Penuh Makna</span>
           </h2>
           <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Sejak berdiri, Growth Indonesia telah menjadi katalis perubahan bagi ratusan perusahaan. Angka-angka ini adalah cerminan dari kepercayaan dan dedikasi kami.
@@ -120,14 +121,14 @@ export default function OurImpact() {
                 className="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-xl hover:border-red-100 hover:-translate-y-1 transition-all duration-300 relative group overflow-hidden"
               >
                 <div className="absolute -right-4 -top-4 w-24 h-24 bg-red-50 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-                <div className="w-14 h-14 bg-red-50 text-[#EF4444] rounded-2xl flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 group-hover:bg-[#EF4444] group-hover:text-white transition-all duration-300">
+                <div className="w-14 h-14 bg-red-50 text-red-500 rounded-2xl flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 group-hover:bg-red-500 group-hover:text-white transition-all duration-300">
                   <Icon className="w-7 h-7" />
                 </div>
                 <div className="font-display text-5xl font-black text-gray-900 mb-2">
                   <Counter end={stat.value} suffix={stat.suffix} />
                 </div>
                 <h3 className="text-xl font-bold text-gray-800 mb-2">{stat.label}</h3>
-                <p className="text-gray-500 font-medium">{stat.description}</p>
+                <p className="text-gray-500 font-medium leading-relaxed">{stat.description}</p>
               </ScrollReveal>
             );
           })}

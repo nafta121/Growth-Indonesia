@@ -171,7 +171,7 @@ export default async function ArtikelDetailPage({ params }: PageProps) {
   const articleSchema = isEventArticle ? [blogPostingSchema, eventSchema] : [blogPostingSchema];
 
   return (
-    <div className="relative min-h-screen flex flex-col bg-[#0A1628] text-white">
+    <div className="relative min-h-screen flex flex-col bg-slate-900 text-white">
       <Navbar />
 
       {/* Structured Schema */}
@@ -182,9 +182,9 @@ export default async function ArtikelDetailPage({ params }: PageProps) {
 
       <main className="flex-grow pt-[72px] md:pt-[88px]">
         {/* Editorial Top Section */}
-        <section className="relative pt-20 pb-36 md:pt-28 md:pb-48 bg-[#0A1628] overflow-hidden">
+        <section className="relative pt-20 pb-36 md:pt-28 md:pb-48 bg-slate-900 overflow-hidden">
           <div className="absolute inset-0 z-0 opacity-20">
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628] via-brand/10 to-[#0A1628]" />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-brand/10 to-slate-900" />
           </div>
 
           <div className="max-w-4xl mx-auto px-6 relative z-10">
@@ -262,7 +262,9 @@ export default async function ArtikelDetailPage({ params }: PageProps) {
                 src={article.frontmatter.image}
                 alt={article.frontmatter.title}
                 fill
+                sizes="(max-width: 768px) 100vw, 100vw"
                 priority
+        fetchPriority="high"
                 className="object-cover"
                 referrerPolicy="no-referrer"
               />
@@ -278,7 +280,7 @@ export default async function ArtikelDetailPage({ params }: PageProps) {
             </div>
 
             {/* Bottom In-Article CTA Banner */}
-            <div className="mt-16 p-8 md:p-12 bg-gradient-to-br from-[#0A1628] to-[#12243e] text-white rounded-3xl border border-white/5 relative overflow-hidden shadow-xl">
+            <div className="mt-16 p-8 md:p-12 bg-gradient-to-br from-slate-900 to-[#12243e] text-white rounded-3xl border border-white/5 relative overflow-hidden shadow-xl">
               <div className="absolute top-0 right-0 w-64 h-64 bg-brand/10 rounded-full blur-3xl" />
               <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-8">
                 <div>
