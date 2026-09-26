@@ -27,6 +27,7 @@ export default function CityContent({ kategoriName, kotaName, cityKey, cityData 
                   src={contentImage}
                   alt={`${kategoriName} di ${kotaName}`}
                   fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover"
                   referrerPolicy="no-referrer"
                 />
