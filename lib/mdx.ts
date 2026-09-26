@@ -57,7 +57,9 @@ export function getArticleBySlug(slug: string): Article | null {
   const fs = getFs();
   if (fs && ARTICLES_PATH) {
     const pathModule = getPath();
-    const filePath = pathModule ? pathModule.join(ARTICLES_PATH, `${realSlug}.mdx`) : '';
+    // Sanitize the slug using basename to prevent path traversal
+    const safeSlug = pathModule ? pathModule.basename(realSlug) : realSlug;
+    const filePath = pathModule ? pathModule.join(ARTICLES_PATH, `${safeSlug}.mdx`) : '';
     if (filePath && fs.existsSync(filePath)) {
       try {
         const fileContents = fs.readFileSync(filePath, 'utf8');
