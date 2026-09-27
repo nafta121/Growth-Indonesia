@@ -44,7 +44,7 @@ export default function CityContent({ kategoriName, kotaName, cityKey, cityData 
           <ScrollReveal delay={0.3} xOffset={30}>
             <Badge className="mb-4">Keunggulan Spesifik Kami</Badge>
             <h2 className="font-display text-3xl md:text-5xl font-black tracking-tight text-gray-900 leading-[1.1] mb-6">
-              Layanan, Jasa EO {kategoriName} Terbaik di <span className="text-[#EF4444]">{kotaName}</span>
+              Layanan, Jasa EO {kategoriName} Terbaik di <span className="text-red-500">{kotaName}</span>
             </h2>
             <p className="text-slate-500 text-lg leading-relaxed mb-8">
               Sebagai provider B2B pilihan untuk layanan {kategoriName.toLowerCase()} di {kotaName}, kami tidak sekadar menghadirkan &quot;fun games&quot;. Kami merancang program dengan pendekatan <em>experiential learning</em> yang 100% selaras dengan visi dan misi institusi serta budaya kerja Anda.

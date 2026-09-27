@@ -29,7 +29,7 @@ export default function NavbarMobile({ navLinks }: { navLinks: NavLink[] }) {
       {/* Mobile Toggle */}
       <button
         id="mobile-menu-toggle"
-        className="relative z-50 p-2.5 text-slate-900 md:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand bg-gray-50 rounded-xl transition-all active:scale-90"
+        className="relative z-50 p-2.5 min-h-[48px] min-w-[48px] inline-flex items-center justify-center text-slate-900 md:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand bg-gray-50 rounded-xl transition-all active:scale-90"
         onClick={() => setIsOpen(!isOpen)}
         aria-label={isOpen ? "Tutup menu" : "Buka menu"}
         aria-expanded={isOpen}
@@ -88,7 +88,7 @@ export default function NavbarMobile({ navLinks }: { navLinks: NavLink[] }) {
                 href={`https://wa.me/${COMPANY_INFO.whatsapp_number}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-4 p-4 rounded-2xl bg-slate-50 border border-gray-100 hover:bg-brand hover:border-brand transition-all active:scale-95"
+                className="group flex items-center gap-4 p-4 min-h-[48px] rounded-2xl bg-slate-50 border border-gray-100 hover:bg-brand hover:border-brand transition-all active:scale-95"
               >
                 <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-red-600 shadow-sm transition-colors group-hover:text-brand">
                   <Phone className="w-5 h-5" />
@@ -102,7 +102,7 @@ export default function NavbarMobile({ navLinks }: { navLinks: NavLink[] }) {
               <div className="grid grid-cols-2 gap-3">
                 <a 
                   href={`mailto:${COMPANY_INFO.email}`}
-                  className="flex flex-col items-center gap-2 p-4 rounded-2xl bg-slate-50 border border-gray-100 hover:bg-gray-100 transition-colors text-center"
+                  className="flex flex-col items-center gap-2 p-4 min-h-[48px] min-w-[48px] rounded-2xl bg-slate-50 border border-gray-100 hover:bg-gray-100 transition-colors text-center"
                 >
                   <Mail className="w-5 h-5 text-red-600" />
                   <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Email</span>
@@ -111,7 +111,7 @@ export default function NavbarMobile({ navLinks }: { navLinks: NavLink[] }) {
                   href={COMPANY_INFO.maps_url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex flex-col items-center gap-2 p-4 rounded-2xl bg-slate-50 border border-gray-100 hover:bg-gray-100 transition-colors text-center"
+                  className="flex flex-col items-center gap-2 p-4 min-h-[48px] min-w-[48px] rounded-2xl bg-slate-50 border border-gray-100 hover:bg-gray-100 transition-colors text-center"
                 >
                   <MapPin className="w-5 h-5 text-red-600" />
                   <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Location</span>
