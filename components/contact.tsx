@@ -75,7 +75,7 @@ Rencana Tanggal: ${data.date || 'TBC'}`;
                 href={COMPANY_INFO.maps_url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex gap-5 md:gap-7 group items-center p-4 -ml-4 rounded-3xl hover:bg-gray-50 transition-all duration-300"
+                className="flex gap-5 md:gap-7 group items-center p-4 -ml-4 rounded-3xl hover:bg-gray-50 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF4444]"
                 aria-label="Lihat lokasi Growth Indonesia di Google Maps"
               >
                 <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl md:rounded-[1.5rem] bg-gray-50 flex items-center justify-center text-[#EF4444] group-hover:bg-[#EF4444] group-hover:text-white transition-all duration-500 shadow-sm">
@@ -94,7 +94,7 @@ Rencana Tanggal: ${data.date || 'TBC'}`;
                 href={`https://wa.me/${COMPANY_INFO.whatsapp_number}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex gap-5 md:gap-7 group items-center p-4 -ml-4 rounded-3xl hover:bg-gray-50 transition-all duration-300"
+                className="flex gap-5 md:gap-7 group items-center p-4 -ml-4 rounded-3xl hover:bg-gray-50 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF4444]"
                 aria-label="Hubungi Growth Indonesia via WhatsApp"
               >
                 <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl md:rounded-[1.5rem] bg-gray-50 flex items-center justify-center text-[#EF4444] group-hover:bg-[#EF4444] group-hover:text-white transition-all duration-500 shadow-sm">
@@ -305,7 +305,7 @@ Rencana Tanggal: ${data.date || 'TBC'}`;
 
                     <button 
                       onClick={() => setIsSubmitted(false)}
-                      className="mt-12 text-gray-500 hover:text-[#EF4444] transition-colors text-[10px] font-bold uppercase tracking-[0.2em] underline underline-offset-8"
+                      className="mt-12 text-gray-500 hover:text-[#EF4444] transition-colors text-[10px] font-bold uppercase tracking-[0.2em] underline underline-offset-8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF4444] focus-visible:ring-offset-4 rounded-sm"
                     >
                       Kirim Pesan Lain
                     </button>

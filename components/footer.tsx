@@ -37,7 +37,7 @@ export default function Footer() {
                 <li key={link}>
                   <Link 
                     href={link === 'Layanan' ? '/layanan' : `#${link.toLowerCase().replace(' ', '-')}`} 
-                    className="text-gray-500 hover:text-red-500 transition-colors inline-flex min-h-[48px] min-w-[48px] items-center"
+                    className="text-gray-500 hover:text-red-500 transition-colors inline-flex min-h-[48px] min-w-[48px] items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF4444] rounded-sm"
                   >
                     {link}
                   </Link>
@@ -54,7 +54,7 @@ export default function Footer() {
                 <li key={city}>
                   <Link 
                     href={`/layanan/${city}`} 
-                    className="text-gray-500 hover:text-red-500 transition-colors capitalize inline-flex min-h-[48px] min-w-[48px] items-center"
+                    className="text-gray-500 hover:text-red-500 transition-colors capitalize inline-flex min-h-[48px] min-w-[48px] items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF4444] rounded-sm"
                   >
                     Layanan di {city}
                   </Link>
@@ -71,7 +71,7 @@ export default function Footer() {
                 href={COMPANY_INFO.maps_url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-500 hover:text-red-500 transition-colors duration-200 leading-relaxed block min-h-[48px] min-w-[48px]"
+                className="text-gray-500 hover:text-red-500 transition-colors duration-200 leading-relaxed block min-h-[48px] min-w-[48px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF4444] rounded-sm"
                 aria-label={`Lihat lokasi ${COMPANY_INFO.brand_name} di Google Maps`}
               >
                 {COMPANY_INFO.address}
@@ -89,7 +89,7 @@ export default function Footer() {
                   href={`https://wa.me/${COMPANY_INFO.whatsapp_number}`} 
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-red-500 font-black text-lg block hover:scale-105 transition-transform origin-left min-h-[48px] min-w-[48px]"
+                  className="text-red-500 font-black text-lg block hover:scale-105 transition-transform origin-left min-h-[48px] min-w-[48px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF4444] rounded-sm"
                 >
                   {COMPANY_INFO.whatsapp_display}
                 </a>
@@ -98,7 +98,7 @@ export default function Footer() {
                 <p className="text-gray-500 mb-1 text-xs uppercase tracking-wider">Email:</p>
                 <a 
                   href={`mailto:${COMPANY_INFO.email}`}
-                  className="text-gray-500 hover:text-red-500 transition-colors duration-200 block underline underline-offset-4 min-h-[48px] min-w-[48px]"
+                  className="text-gray-500 hover:text-red-500 transition-colors duration-200 block underline underline-offset-4 min-h-[48px] min-w-[48px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF4444] rounded-sm"
                   aria-label={`Kirim email ke ${COMPANY_INFO.brand_name}`}
                 >
                   {COMPANY_INFO.email}
@@ -113,8 +113,8 @@ export default function Footer() {
             &copy; {currentYear} {COMPANY_INFO.brand_name}. All rights reserved.
           </p>
           <div className="flex gap-6">
-            <Link href="#" className="text-gray-600 hover:text-white text-xs transition-colors inline-flex min-h-[48px] min-w-[48px] items-center">Privacy Policy</Link>
-            <Link href="#" className="text-gray-600 hover:text-white text-xs transition-colors inline-flex min-h-[48px] min-w-[48px] items-center">Terms of Service</Link>
+            <Link href="#" className="text-gray-600 hover:text-white text-xs transition-colors inline-flex min-h-[48px] min-w-[48px] items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-sm">Privacy Policy</Link>
+            <Link href="#" className="text-gray-600 hover:text-white text-xs transition-colors inline-flex min-h-[48px] min-w-[48px] items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-sm">Terms of Service</Link>
           </div>
         </div>
       </div>
