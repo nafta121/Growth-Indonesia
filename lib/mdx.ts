@@ -52,11 +52,14 @@ export function getArticleSlugs(): string[] {
 }
 
 export function getArticleBySlug(slug: string): Article | null {
-  const realSlug = slug.replace(/\.mdx$/, '');
+  const pathModule = getPath();
+  // Security Fix: Sanitize user input to strictly prevent path traversal vulnerabilities.
+  // Using path.basename ensures only the filename is extracted, mitigating directory escapes.
+  const sanitizedSlug = pathModule ? pathModule.basename(slug) : slug;
+  const realSlug = sanitizedSlug.replace(/\.mdx$/, '');
   
   const fs = getFs();
   if (fs && ARTICLES_PATH) {
-    const pathModule = getPath();
     const filePath = pathModule ? pathModule.join(ARTICLES_PATH, `${realSlug}.mdx`) : '';
     if (filePath && fs.existsSync(filePath)) {
       try {
