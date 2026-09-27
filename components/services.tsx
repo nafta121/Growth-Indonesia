@@ -23,15 +23,15 @@ const SERVICES = {
 
 export default function Services() {
   return (
-    <section id="layanan" className="py-20 md:py-32 bg-[#0A1628] relative overflow-hidden" aria-labelledby="layanan-title">
+    <section id="layanan" className="py-20 md:py-32 bg-slate-900 relative overflow-hidden" aria-labelledby="layanan-title">
       {/* Background elements */}
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-[#EF4444]/5 skew-x-12 translate-x-32 hidden md:block" />
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-red-500/5 skew-x-12 translate-x-32 hidden md:block" />
       
       <div className="max-w-7xl mx-auto px-4 md:px-12 relative z-10">
         <ScrollReveal delay={0} duration={0.8} yOffset={20} className="text-center max-w-3xl mx-auto mb-12 md:mb-20">
           <Badge variant="dark" className="mb-4">Program Unggulan Growth Indonesia</Badge>
           <h2 id="layanan-title" className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.1]">
-            Layanan <span className="text-[#EF4444]">Provider Outbound & Event Organizer</span> Madiun
+            Layanan <span className="text-red-500">Provider Outbound & Event Organizer</span> Madiun
           </h2>
         </ScrollReveal>
 

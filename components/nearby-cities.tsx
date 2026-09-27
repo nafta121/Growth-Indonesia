@@ -47,10 +47,10 @@ export function NearbyCities({ currentCityKey, currentKategori, allCities }: Nea
                     <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-red-50 to-transparent rounded-bl-full opacity-50 transition-transform duration-500 group-hover:scale-110"></div>
                     
                     <div className="flex items-center gap-3 mb-4 relative z-10">
-                      <div className="bg-red-100/80 p-2.5 rounded-xl text-[#EF4444] group-hover:bg-[#EF4444] group-hover:text-white transition-colors duration-300">
+                      <div className="bg-red-100/80 p-2.5 rounded-xl text-red-500 group-hover:bg-red-500 group-hover:text-white transition-colors duration-300">
                         <MapPin className="w-5 h-5" />
                       </div>
-                      <h3 className="font-display font-bold text-xl text-gray-900 group-hover:text-[#EF4444] transition-colors leading-tight">
+                      <h3 className="font-display font-bold text-xl text-gray-900 group-hover:text-red-500 transition-colors leading-tight">
                         {kategoriName} {city.name}
                       </h3>
                     </div>
@@ -59,7 +59,7 @@ export function NearbyCities({ currentCityKey, currentKategori, allCities }: Nea
                       {city.description}
                     </p>
                     
-                    <div className="flex items-center text-sm font-semibold text-[#EF4444] group-hover:text-red-700 transition-colors mt-auto relative z-10">
+                    <div className="flex items-center text-sm font-semibold text-red-500 group-hover:text-red-700 transition-colors mt-auto relative z-10">
                       Pelajari Selengkapnya
                       <ArrowRight className="w-4 h-4 ml-1.5 transition-transform duration-300 group-hover:translate-x-1" />
                     </div>
@@ -72,7 +72,7 @@ export function NearbyCities({ currentCityKey, currentKategori, allCities }: Nea
           <div className="mt-12 text-center">
             <Link 
               href="/layanan" 
-              className="inline-flex items-center justify-center h-14 px-8 rounded-full bg-slate-900 text-white font-bold text-lg hover:bg-[#EF4444] hover:shadow-lg hover:shadow-red-500/30 transition-all duration-300 active:scale-95 group"
+              className="inline-flex items-center justify-center h-14 px-8 rounded-full bg-slate-900 text-white font-bold text-lg hover:bg-red-500 hover:shadow-lg hover:shadow-red-500/30 transition-all duration-300 active:scale-95 group"
             >
               Lihat Semua Kota
               <ArrowRight className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" />

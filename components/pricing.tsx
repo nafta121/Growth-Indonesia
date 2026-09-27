@@ -13,7 +13,7 @@ export default function Pricing() {
         <ScrollReveal delay={0} duration={0.8} className="text-center max-w-3xl mx-auto mb-16 md:mb-24">
           <Badge className="mb-4 text-xs">Invest in Growth</Badge>
           <h2 id="paket-title" className="font-display text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-8 leading-[1.1]">
-            Program & <span className="text-[#EF4444]">Investasi</span>
+            Program & <span className="text-red-500">Investasi</span>
           </h2>
           <p className="text-gray-600 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
             Pilih paket pengembangan yang sesuai dengan kebutuhan dan target transformasi tim Anda. 
@@ -32,18 +32,18 @@ export default function Pricing() {
               className={cn(
                 "group relative flex flex-col p-8 md:p-10 rounded-[2.5rem] md:rounded-[3rem] transition-all duration-500 hover:-translate-y-2",
                 isAnchor
-                  ? "border-2 border-[#EF4444] bg-[#EF4444]/5 lg:scale-105 shadow-xl shadow-red-500/10 z-10"
-                  : "bg-white border border-gray-100 hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)] hover:border-[#EF4444]/20"
+                  ? "border-2 border-red-500 bg-red-500/5 lg:scale-105 shadow-xl shadow-red-500/10 z-10"
+                  : "bg-white border border-gray-100 hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)] hover:border-red-500/20"
               )}
             >
               {isAnchor && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#EF4444] text-white px-4 py-1 text-xs md:text-sm rounded-full font-bold shadow-md whitespace-nowrap z-20">
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-red-500 text-white px-4 py-1 text-xs md:text-sm rounded-full font-bold shadow-md whitespace-nowrap z-20">
                   Paling Diminati
                 </span>
               )}
               
               <div className="mb-8">
-                <h3 className="font-display text-xl font-extrabold text-gray-900 mb-3 leading-tight uppercase tracking-tight group-hover:text-[#EF4444] transition-colors">{pkg.title}</h3>
+                <h3 className="font-display text-xl font-extrabold text-gray-900 mb-3 leading-tight uppercase tracking-tight group-hover:text-red-500 transition-colors">{pkg.title}</h3>
                 <div className="flex items-baseline gap-1">
                   <span className="text-3xl md:text-4xl font-extrabold text-gray-900 whitespace-nowrap tracking-tighter">{pkg.price}</span>
                   <span className="text-gray-600 text-sm font-bold">/pax</span>

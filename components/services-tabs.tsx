@@ -21,7 +21,7 @@ export default function ServicesTabs({ services }: { services: Record<string, { 
             key={cat.id}
             onClick={() => setActiveTab(cat.id)}
             className={cn(
-              "relative z-10 flex-1 min-w-fit shrink-0 snap-center py-4 md:py-5 px-6 text-xs md:text-sm font-bold tracking-[0.15em] transition-all duration-300 rounded-xl md:rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF4444] uppercase active:scale-95",
+              "relative z-10 flex-1 min-w-fit shrink-0 snap-center py-4 md:py-5 px-6 text-xs md:text-sm font-bold tracking-[0.15em] transition-all duration-300 rounded-xl md:rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 uppercase active:scale-95",
               activeTab === cat.id ? "text-white" : "text-slate-300 hover:bg-slate-800 hover:text-white"
             )}
           >
@@ -30,7 +30,7 @@ export default function ServicesTabs({ services }: { services: Record<string, { 
             {activeTab === cat.id && (
               <motion.div
                 layoutId="activeTab"
-                className="absolute inset-0 bg-[#EF4444] rounded-xl md:rounded-2xl -z-10 shadow-[0_0_20px_rgba(239,68,68,0.3)]"
+                className="absolute inset-0 bg-red-500 rounded-xl md:rounded-2xl -z-10 shadow-[0_0_20px_rgba(239,68,68,0.3)]"
                 transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
               />
             )}
@@ -52,17 +52,17 @@ export default function ServicesTabs({ services }: { services: Record<string, { 
               <motion.div 
                 key={idx}
                 whileHover={{ y: -8 }}
-                className="group relative flex flex-col p-8 rounded-3xl bg-white/5 border border-white/5 hover:border-[#EF4444]/30 hover:bg-white/[0.08] transition-all duration-500 overflow-hidden active:scale-[0.98] cursor-default"
+                className="group relative flex flex-col p-8 rounded-3xl bg-white/5 border border-white/5 hover:border-red-500/30 hover:bg-white/[0.08] transition-all duration-500 overflow-hidden active:scale-[0.98] cursor-default"
               >
-                <div className="w-14 h-14 rounded-2xl bg-[#EF4444]/10 flex items-center justify-center text-[#EF4444] mb-6 group-hover:bg-[#EF4444] group-hover:text-white transition-all duration-500 shadow-lg shadow-black/20">
+                <div className="w-14 h-14 rounded-2xl bg-red-500/10 flex items-center justify-center text-red-500 mb-6 group-hover:bg-red-500 group-hover:text-white transition-all duration-500 shadow-lg shadow-black/20">
                   {activeTab === 'training' ? <Star className="w-7 h-7" /> : <Sparkles className="w-7 h-7" />}
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-white mb-3 tracking-tight group-hover:text-[#EF4444] transition-colors duration-300">{item.title}</h3>
+                  <h3 className="text-xl font-bold text-white mb-3 tracking-tight group-hover:text-red-500 transition-colors duration-300">{item.title}</h3>
                   <p className="text-slate-300 text-sm leading-relaxed mb-4">{item.desc}</p>
                 </div>
                 <div className="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="w-2 h-2 bg-[#EF4444] rounded-full animate-pulse" />
+                  <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse" />
                 </div>
               </motion.div>
             ))}
