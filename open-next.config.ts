@@ -1,3 +1,7 @@
 import { defineCloudflareConfig } from "@opennextjs/cloudflare/config";
 
-export default defineCloudflareConfig();
+const config = defineCloudflareConfig();
+// @ts-ignore
+config.cloudflare = { useWorkerdCondition: false, dangerousDisableConfigValidation: true };
+
+export default config;
