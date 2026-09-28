@@ -262,6 +262,7 @@ export default async function ArtikelDetailPage({ params }: PageProps) {
                 src={article.frontmatter.image}
                 alt={article.frontmatter.title}
                 fill
+                sizes="100vw"
                 priority
                 className="object-cover"
                 referrerPolicy="no-referrer"
