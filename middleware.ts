@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import { KATEGORI } from '@/lib/categories';
+import { CATEGORIES_SET } from '@/lib/categories';
 
 export function middleware(request: NextRequest) {
   const url = request.nextUrl.clone();
@@ -28,12 +28,25 @@ export function middleware(request: NextRequest) {
     if (segments.length === 2 && segments[0] === 'layanan') {
       const slug = segments[1];
       
-      for (const category of KATEGORI) {
-        if (slug.startsWith(`${category}-`)) {
-          const city = slug.replace(`${category}-`, '');
-          
+      const parts = slug.split('-');
+      if (parts.length >= 3) {
+        const cat2 = `${parts[0]}-${parts[1]}`;
+        if (CATEGORIES_SET.has(cat2)) {
+          const city = parts.slice(2).join('-');
           if (city) {
-            url.pathname = `/layanan/${city}/${category}`;
+            url.pathname = `/layanan/${city}/${cat2}`;
+            // Return 301 Permanent Redirect to consolidate Link Juice
+            return NextResponse.redirect(url, 301);
+          }
+        }
+      }
+
+      if (parts.length >= 2) {
+        const cat1 = parts[0];
+        if (CATEGORIES_SET.has(cat1)) {
+          const city = parts.slice(1).join('-');
+          if (city) {
+            url.pathname = `/layanan/${city}/${cat1}`;
             // Return 301 Permanent Redirect to consolidate Link Juice
             return NextResponse.redirect(url, 301);
           }

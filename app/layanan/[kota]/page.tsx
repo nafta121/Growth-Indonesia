@@ -14,15 +14,30 @@ type Props = {
   params: Promise<{ kota: string }>;
 };
 
-const CATEGORIES = ['outbound', 'training', 'fun-games', 'ldk-osis', 'gathering'];
+const CATEGORIES: Set<string> = new Set(['outbound', 'training', 'fun-games', 'ldk-osis', 'gathering']);
 
 function getRedirectDestination(slug: string): string | null {
-  for (const cat of CATEGORIES) {
-    if (slug.startsWith(`${cat}-`)) {
-      const detectedCity = slug.replace(`${cat}-`, '');
-      return `/layanan/${detectedCity}/${cat}`;
+  if (CATEGORIES.has(slug)) {
+    return `/layanan/${slug}`;
+  }
+
+  const parts = slug.split('-');
+  if (parts.length >= 3) {
+    const multiCat = `${parts[0]}-${parts[1]}`;
+    if (CATEGORIES.has(multiCat)) {
+      const detectedCity = parts.slice(2).join('-');
+      return `/layanan/${detectedCity}/${multiCat}`;
     }
   }
+
+  if (parts.length >= 2) {
+    const singleCat = parts[0];
+    if (CATEGORIES.has(singleCat)) {
+      const detectedCity = parts.slice(1).join('-');
+      return `/layanan/${detectedCity}/${singleCat}`;
+    }
+  }
+
   return null;
 }
 
