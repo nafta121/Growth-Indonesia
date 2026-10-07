@@ -4,7 +4,7 @@ import { KATEGORI } from '@/lib/categories';
 import { getArticleSlugs } from '@/lib/mdx';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://growthindonesia.my.id';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://growthindonesia.my.id';
   const currentDate = new Date();
   const allCities = Object.keys(CITIES);
 
@@ -14,6 +14,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: currentDate,
       changeFrequency: 'weekly',
       priority: 1.0,
+    },
+    {
+      url: `${baseUrl}/llms.txt`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
+      priority: 0.8,
     },
     {
       url: `${baseUrl}/layanan`,
