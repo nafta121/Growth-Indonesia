@@ -3,8 +3,9 @@ import Image from 'next/image';
 import { Calendar, Clock, ArrowRight, BookOpen } from 'lucide-react';
 import { getAllArticles } from '@/lib/mdx';
 
-export default function LatestArticles() {
-  const articles = getAllArticles().slice(0, 3);
+export default async function LatestArticles() {
+  const allArticles = await getAllArticles();
+  const articles = allArticles.slice(0, 3);
 
   if (articles.length === 0) {
     return null;

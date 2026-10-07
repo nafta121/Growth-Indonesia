@@ -1,3 +1,6 @@
+import fs from 'fs/promises';
+import { existsSync } from 'fs';
+import path from 'path';
 import matter from 'gray-matter';
 import articlesCache from './articles-cache.json';
 
@@ -17,73 +20,49 @@ export interface Article {
   content: string;
 }
 
-const isNode = typeof window === 'undefined' && typeof process !== 'undefined' && process.release?.name === 'node';
+const ARTICLES_PATH = path.join(process.cwd(), 'content/artikel');
 
-function getFs() {
-  if (isNode) {
-    try {
-      return require('fs');
-    } catch {
-      return null;
+export async function getArticleSlugs(): Promise<string[]> {
+  try {
+    if (existsSync(ARTICLES_PATH)) {
+      const files = await fs.readdir(ARTICLES_PATH);
+      return files.filter((file: string) => file.endsWith('.mdx'));
     }
-  }
-  return null;
-}
-
-function getPath() {
-  if (isNode) {
-    try {
-      return require('path');
-    } catch {
-      return null;
-    }
-  }
-  return null;
-}
-
-const ARTICLES_PATH = isNode ? getPath()?.join(process.cwd(), 'content/artikel') : '';
-
-export function getArticleSlugs(): string[] {
-  const fs = getFs();
-  if (fs && ARTICLES_PATH && fs.existsSync(ARTICLES_PATH)) {
-    return fs.readdirSync(ARTICLES_PATH).filter((file: string) => file.endsWith('.mdx'));
+  } catch (error) {
+    console.error('Error reading article slugs:', error);
   }
   return articlesCache.map((art) => `${art.slug}.mdx`);
 }
 
-export function getArticleBySlug(slug: string): Article | null {
-  const pathModule = getPath();
+export async function getArticleBySlug(slug: string): Promise<Article | null> {
   // Security Fix: Sanitize user input to strictly prevent path traversal vulnerabilities.
   // Using path.basename ensures only the filename is extracted, mitigating directory escapes.
-  const sanitizedSlug = pathModule ? pathModule.basename(slug) : slug;
+  const sanitizedSlug = path.basename(slug);
   const realSlug = sanitizedSlug.replace(/\.mdx$/, '');
   
-  const fs = getFs();
-  if (fs && ARTICLES_PATH) {
-    const filePath = pathModule ? pathModule.join(ARTICLES_PATH, `${realSlug}.mdx`) : '';
-    if (filePath && fs.existsSync(filePath)) {
-      try {
-        const fileContents = fs.readFileSync(filePath, 'utf8');
-        const { data, content } = matter(fileContents);
-        
-        const frontmatter: ArticleFrontmatter = {
-          title: data.title || 'Untitled',
-          date: data.date || '2026-06-24',
-          description: data.description || '',
-          image: data.image || 'https://nafta121.sirv.com/OUTBOUND/2022-10-22%2009-00-09.jpeg',
-          tags: Array.isArray(data.tags) ? data.tags : [],
-          author: data.author || 'Admin',
-          readTime: data.readTime || '5 min baca',
-        };
-        
-        return {
-          slug: realSlug,
-          frontmatter,
-          content,
-        };
-      } catch (error) {
-        console.error(`Error reading article dynamically ${slug}:`, error);
-      }
+  const filePath = path.join(ARTICLES_PATH, `${realSlug}.mdx`);
+  if (existsSync(filePath)) {
+    try {
+      const fileContents = await fs.readFile(filePath, 'utf8');
+      const { data, content } = matter(fileContents);
+      
+      const frontmatter: ArticleFrontmatter = {
+        title: data.title || 'Untitled',
+        date: data.date || '2026-06-24',
+        description: data.description || '',
+        image: data.image || 'https://nafta121.sirv.com/OUTBOUND/2022-10-22%2009-00-09.jpeg',
+        tags: Array.isArray(data.tags) ? data.tags : [],
+        author: data.author || 'Admin',
+        readTime: data.readTime || '5 min baca',
+      };
+      
+      return {
+        slug: realSlug,
+        frontmatter,
+        content,
+      };
+    } catch (error) {
+      console.error(`Error reading article dynamically ${slug}:`, error);
     }
   }
   
@@ -98,25 +77,33 @@ export function getArticleBySlug(slug: string): Article | null {
 
 let allArticlesCache: Omit<Article, 'content'>[] | null = null;
 
-export function getAllArticles(): Omit<Article, 'content'>[] {
+export async function getAllArticles(): Promise<Omit<Article, 'content'>[]> {
   if (allArticlesCache) {
     return allArticlesCache;
   }
 
-  const fs = getFs();
-  if (fs && ARTICLES_PATH && fs.existsSync(ARTICLES_PATH)) {
-    const slugs = getArticleSlugs();
-    const articles = slugs
-      .map((slug) => {
-        const article = getArticleBySlug(slug);
-        if (!article) return null;
-        const { content, ...rest } = article;
-        return rest;
-      })
-      .filter((article): article is Omit<Article, 'content'> => article !== null);
-      
-    allArticlesCache = articles.sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime());
-    return allArticlesCache;
+  try {
+    if (existsSync(ARTICLES_PATH)) {
+      const slugs = await getArticleSlugs();
+      const rawArticles = await Promise.all(slugs.map((slug) => getArticleBySlug(slug)));
+      const articles = rawArticles
+        .filter((article): article is Article => article !== null)
+        .map(({ content, ...rest }) => rest);
+        
+      // Performance Optimization: Schwartzian transform (decorate-sort-undecorate)
+      // Precomputes timestamps once per item (O(n)) to avoid redundant Date parsing inside the comparator (O(n log n)).
+      allArticlesCache = articles
+        .map((article) => ({
+          article,
+          timestamp: new Date(article.frontmatter.date).getTime(),
+        }))
+        .sort((a, b) => b.timestamp - a.timestamp)
+        .map(({ article }) => article);
+
+      return allArticlesCache;
+    }
+  } catch (error) {
+    console.error('Error fetching all articles:', error);
   }
 
   allArticlesCache = articlesCache.map(({ content, ...rest }) => rest);

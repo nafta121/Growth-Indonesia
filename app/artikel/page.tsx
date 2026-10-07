@@ -25,8 +25,8 @@ export const metadata: Metadata = {
   }
 };
 
-export default function ArtikelHubPage() {
-  const articles = getAllArticles();
+export default async function ArtikelHubPage() {
+  const articles = await getAllArticles();
 
   return (
     <div className="relative min-h-screen flex flex-col bg-[#0A1628] text-white">
