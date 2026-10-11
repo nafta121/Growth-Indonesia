@@ -25,7 +25,7 @@ export default function OutboundGallery() {
       <div className="max-w-7xl mx-auto px-4 md:px-12">
         <div className="text-center mb-16 md:mb-24">
           <Badge className="mb-4">Our Moments</Badge>
-          <h2 id="galeri-title" className="font-display text-4xl md:text-5xl lg:text-6xl font-black text-[#0A1628] leading-[1.1] mb-6">
+          <h2 id="galeri-title" className="font-display text-4xl md:text-5xl lg:text-6xl font-black text-[#0F172A] leading-[1.1] mb-6">
             Dokumentasi <span className="text-[#EF4444]">Kegiatan</span>
           </h2>
           <div className="w-16 h-2 bg-[#EF4444] mx-auto rounded-full" />

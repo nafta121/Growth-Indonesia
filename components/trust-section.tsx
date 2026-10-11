@@ -61,7 +61,7 @@ export default function TrustSection({
         {/* Header Section */}
         <ScrollReveal className="text-center max-w-4xl mx-auto mb-16 md:mb-24">
           <Badge className="mb-4">E-E-A-T & Proven Track Record</Badge>
-          <h2 className="font-display text-3xl md:text-5xl font-black tracking-tight text-[#0A1628] leading-[1.15]">
+          <h2 className="font-display text-3xl md:text-5xl font-black tracking-tight text-[#0F172A] leading-[1.15]">
             {headingText} <span className="text-[#EF4444]">Growth Indonesia?</span>
           </h2>
           <p className="mt-6 text-lg text-slate-600 font-medium">
@@ -80,7 +80,7 @@ export default function TrustSection({
               <div className="w-14 h-14 bg-red-50 text-[#EF4444] rounded-2xl flex items-center justify-center mb-6">
                 <tile.icon className="w-7 h-7" />
               </div>
-              <h3 className="text-xl md:text-2xl font-black font-display text-[#0A1628] mb-4">
+              <h3 className="text-xl md:text-2xl font-black font-display text-[#0F172A] mb-4">
                 {tile.title}
               </h3>
               <p className="text-slate-600 leading-relaxed font-medium">
@@ -93,7 +93,7 @@ export default function TrustSection({
         {/* Comparison Table */}
         <ScrollReveal delay={0.2} className="max-w-5xl mx-auto relative">
           <div className="text-center mb-10">
-            <h3 className="font-display text-2xl md:text-4xl font-black tracking-tight text-[#0A1628]">
+            <h3 className="font-display text-2xl md:text-4xl font-black tracking-tight text-[#0F172A]">
               Perbandingan Value & Kualitas
             </h3>
           </div>
@@ -103,7 +103,7 @@ export default function TrustSection({
             <div className="hidden md:block">
               <div className="grid grid-cols-12 bg-slate-50 border-b border-slate-200 p-6">
                 <div className="col-span-4 font-bold text-slate-500 uppercase tracking-wider text-sm">Aspek / Kriteria</div>
-                <div className="col-span-4 font-black text-[#0A1628] text-lg text-center flex items-center justify-center gap-2">
+                <div className="col-span-4 font-black text-[#0F172A] text-lg text-center flex items-center justify-center gap-2">
                   Growth Indonesia <CheckCircle2 className="w-5 h-5 text-[#EF4444]" />
                 </div>
                 <div className="col-span-4 font-bold text-slate-500 text-lg text-center flex items-center justify-center gap-2">
@@ -112,7 +112,7 @@ export default function TrustSection({
               </div>
               {comparisonData.map((row, idx) => (
                 <div key={idx} className={`grid grid-cols-12 p-6 items-center ${idx !== comparisonData.length - 1 ? 'border-b border-slate-100' : ''} hover:bg-slate-50/50 transition-colors`}>
-                  <div className="col-span-4 font-bold text-[#0A1628]">{row.feature}</div>
+                  <div className="col-span-4 font-bold text-[#0F172A]">{row.feature}</div>
                   <div className="col-span-4 text-center font-semibold text-[#EF4444] bg-red-50/50 py-3 rounded-xl">
                     {row.us}
                   </div>
@@ -127,12 +127,12 @@ export default function TrustSection({
             <div className="block md:hidden">
               {comparisonData.map((row, idx) => (
                 <div key={idx} className={`p-6 ${idx !== comparisonData.length - 1 ? 'border-b border-slate-200' : ''}`}>
-                  <div className="font-black text-[#0A1628] text-lg mb-4 text-center border-b border-slate-100 pb-2">
+                  <div className="font-black text-[#0F172A] text-lg mb-4 text-center border-b border-slate-100 pb-2">
                     {row.feature}
                   </div>
                   <div className="grid grid-cols-2 gap-4">
                     <div className="bg-red-50 rounded-2xl p-4 text-center border border-red-100 flex flex-col items-center justify-center">
-                      <div className="font-bold text-[#0A1628] text-xs mb-2 uppercase tracking-wide opacity-50">Growth ID</div>
+                      <div className="font-bold text-[#0F172A] text-xs mb-2 uppercase tracking-wide opacity-50">Growth ID</div>
                       <CheckCircle2 className="w-6 h-6 text-[#EF4444] mx-auto mb-2" />
                       <div className="font-bold text-[#EF4444] text-sm leading-snug">{row.us}</div>
                     </div>

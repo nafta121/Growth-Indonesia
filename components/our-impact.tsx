@@ -6,6 +6,7 @@ import { useInView } from 'motion/react';
 import ScrollReveal from '@/components/ui/scroll-reveal';
 import { Badge } from '@/components/ui/badge';
 import { Users, CalendarCheck, Briefcase, Target } from 'lucide-react';
+import { COMPANY_FACTS } from '@/lib/company-facts';
 
 interface CounterProps {
   end: number;
@@ -73,7 +74,7 @@ const IMPACT_STATS = [
   },
   {
     icon: Target,
-    value: 250,
+    value: COMPANY_FACTS.clientCount,
     suffix: '+',
     label: 'Clients Served',
     description: 'Perusahaan dan instansi yang puas.',

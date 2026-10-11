@@ -92,7 +92,7 @@ export default async function LatestArticles() {
         <div className="text-center">
           <Link
             href="/artikel"
-            className="inline-flex items-center justify-center bg-[#0A1628] hover:bg-slate-800 text-white font-extrabold px-8 py-4 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-red-500/5 text-sm md:text-base uppercase tracking-wider"
+            className="inline-flex items-center justify-center bg-[#0F172A] hover:bg-slate-800 text-white font-extrabold px-8 py-4 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-red-500/5 text-sm md:text-base uppercase tracking-wider"
           >
             Lihat Semua Artikel
             <ArrowRight className="w-4 h-4 ml-2" />

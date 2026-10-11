@@ -46,7 +46,6 @@ export default function Pricing() {
                 <h3 className="font-display text-xl font-extrabold text-gray-900 mb-3 leading-tight uppercase tracking-tight group-hover:text-[#EF4444] transition-colors">{pkg.title}</h3>
                 <div className="flex items-baseline gap-1">
                   <span className="text-3xl md:text-4xl font-extrabold text-gray-900 whitespace-nowrap tracking-tighter">{pkg.price}</span>
-                  <span className="text-gray-600 text-sm font-bold">/pax</span>
                 </div>
               </div>
 

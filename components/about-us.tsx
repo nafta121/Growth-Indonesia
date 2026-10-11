@@ -35,7 +35,7 @@ export default function AboutUs() {
             duration={0.8} 
             xOffset={30} 
             yOffset={0}
-            className="mt-12 lg:mt-0 bg-[#0A1628] p-8 md:p-12 lg:p-16 rounded-[2.5rem] md:rounded-[4rem] text-white shadow-2xl relative overflow-hidden group"
+            className="mt-12 lg:mt-0 bg-[#0F172A] p-8 md:p-12 lg:p-16 rounded-[2.5rem] md:rounded-[4rem] text-white shadow-2xl relative overflow-hidden group"
           >
             <div className="absolute -top-10 -right-10 w-40 h-40 bg-[#EF4444]/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
             

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { COMPANY_FACTS } from '@/lib/company-facts';
 
 export default function Hero() {
   return (
@@ -22,7 +23,7 @@ export default function Hero() {
           className="object-cover opacity-20 pointer-events-none"
           referrerPolicy="no-referrer"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628] via-[#0A1628]/80 to-[#0A1628]/60" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-[#0F172A]/80 to-[#0F172A]/60" />
       </div>
 
       {/* Background Decor */}
@@ -75,7 +76,7 @@ export default function Hero() {
               ))}
             </div>
             <span className="text-xs sm:text-sm md:text-base font-medium text-slate-300 text-center">
-              Dipercaya 250+ Perusahaan & Instansi Nasional
+              Dipercaya {COMPANY_FACTS.clientText} Perusahaan & Instansi Nasional
             </span>
           </div>
         </div>
