@@ -57,9 +57,9 @@ export default function LayananHubPage() {
       
       <main className="flex-1 w-full flex flex-col pt-[72px] md:pt-[88px]">
         {/* Hub Hero */}
-        <section className="relative pt-20 pb-20 md:pt-32 md:pb-28 bg-[#0A1628] overflow-hidden">
+        <section className="relative pt-20 pb-20 md:pt-32 md:pb-28 bg-[#0F172A] overflow-hidden">
           <div className="absolute inset-0 z-0">
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628] via-brand/10 to-[#0A1628]" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-brand/10 to-[#0F172A]" />
           </div>
           
           <div className="max-w-7xl mx-auto px-4 md:px-12 relative z-10 text-center flex flex-col items-center">

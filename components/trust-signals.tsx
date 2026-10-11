@@ -2,6 +2,7 @@ import { Building2, Globe, GraduationCap, HardHat, Landmark, Ship, TowerControl 
 import { Badge } from '@/components/ui/badge';
 import { getLocalBusinessSchema } from '@/lib/schema';
 import { COMPANY_INFO } from '@/lib/constants';
+import { COMPANY_FACTS } from '@/lib/company-facts';
 
 const CLIENTS = [
   { name: 'Petrokimia Gresik', icon: <HardHat className="w-5 h-5" />, color: 'text-green-600' },
@@ -133,7 +134,7 @@ export default function TrustSignals() {
         <div className="text-center">
           <Badge className="mb-4">Strategic Partners</Badge>
           <h2 id="trust-title" className="text-gray-900 font-display text-3xl md:text-5xl font-black tracking-tight leading-tight">
-            Dipercaya oleh <span className="text-[#EF4444]">100+ Perusahaan</span>
+            Dipercaya oleh <span className="text-[#EF4444]">{COMPANY_FACTS.clientText} Perusahaan</span>
           </h2>
           <p className="text-gray-600 mt-4 text-sm md:text-base max-w-xl mx-auto">Mitra strategis dalam pengembangan sumber daya manusia melalui metode yang kreatif dan berkelanjutan.</p>
         </div>

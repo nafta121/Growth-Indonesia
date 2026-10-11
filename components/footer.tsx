@@ -2,12 +2,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { COMPANY_INFO } from '@/lib/constants';
 import { PRIORITY_CITIES } from '@/components/service-areas';
+import { COMPANY_FACTS } from '@/lib/company-facts';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#0A1628] pt-20 pb-28 md:pb-12 border-t border-white/5">
+    <footer className="bg-[#0F172A] pt-20 pb-28 md:pb-12 border-t border-white/5">
       <div className="container mx-auto px-4 md:px-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
           {/* Brand Column */}
@@ -25,7 +26,7 @@ export default function Footer() {
             </Link>
             <p className="text-gray-400 leading-relaxed max-w-xs">
               Transforming organizations through human-centric development and 
-              experiential learning since 2018.
+              experiential learning since {COMPANY_FACTS.foundedYear}.
             </p>
           </div>
 

@@ -28,7 +28,7 @@ const formatRupiah = (amount: number) => {
 
 function KalkulatorHeader() {
   return (
-    <div className="bg-[#0A1628] p-6 sm:p-8 text-white relative overflow-hidden">
+    <div className="bg-[#0F172A] p-6 sm:p-8 text-white relative overflow-hidden">
       <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-bl-full opacity-50"></div>
       <div className="flex items-center gap-4 relative z-10">
         <div className="bg-[#EF4444] p-3 rounded-2xl shrink-0">
@@ -51,7 +51,7 @@ function PesertaSlider({ pax, setPax }: { pax: number, setPax: (pax: number) => 
            <Users className="w-5 h-5 text-[#EF4444]" />
            Jumlah Peserta
          </label>
-         <span className="font-display font-black text-2xl text-[#0A1628] bg-slate-100 px-4 py-1.5 rounded-full border border-slate-200">
+         <span className="font-display font-black text-2xl text-[#0F172A] bg-slate-100 px-4 py-1.5 rounded-full border border-slate-200">
            {pax} <span className="text-sm font-bold text-slate-500">Pax</span>
          </span>
       </div>
@@ -88,7 +88,7 @@ function ProgramSelection({ program, setProgram }: { program: Program, setProgra
               onClick={() => setProgram(p)}
               className={`px-4 py-3 rounded-2xl text-sm md:text-base font-bold transition-all duration-300 border-2 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF4444] focus-visible:ring-offset-2 ${
                 program.id === p.id
-                ? 'border-[#0A1628] bg-[#0A1628] text-white shadow-md shadow-[#0A1628]/20'
+                ? 'border-[#0F172A] bg-[#0F172A] text-white shadow-md shadow-[#0F172A]/20'
                 : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:bg-slate-50'
               }`}
             >
@@ -115,7 +115,7 @@ function DurationSelection({ duration, setDuration }: { duration: Duration, setD
               onClick={() => setDuration(d)}
               className={`px-4 py-3 rounded-2xl text-sm md:text-base font-bold transition-all duration-300 border-2 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF4444] focus-visible:ring-offset-2 ${
                 duration.id === d.id
-                ? 'border-[#0A1628] bg-[#0A1628] text-white shadow-md shadow-[#0A1628]/20'
+                ? 'border-[#0F172A] bg-[#0F172A] text-white shadow-md shadow-[#0F172A]/20'
                 : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:bg-slate-50'
               }`}
             >
@@ -156,7 +156,7 @@ Apakah ada jadwal kosong?`;
        <div className="absolute top-0 left-0 w-2 h-full bg-[#EF4444]"></div>
        <div>
          <p className="font-bold text-slate-500 uppercase tracking-wider text-sm mb-2">Estimasi Total Investasi</p>
-         <p className="font-display font-black text-4xl sm:text-5xl text-[#0A1628] tracking-tight">
+         <p className="font-display font-black text-4xl sm:text-5xl text-[#0F172A] tracking-tight">
            {formatRupiah(totalEstimate)}
          </p>
        </div>

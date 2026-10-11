@@ -23,7 +23,7 @@ const SERVICES = {
 
 export default function Services() {
   return (
-    <section id="layanan" className="py-20 md:py-32 bg-[#0A1628] relative overflow-hidden" aria-labelledby="layanan-title">
+    <section id="layanan" className="py-20 md:py-32 bg-[#0F172A] relative overflow-hidden" aria-labelledby="layanan-title">
       {/* Background elements */}
       <div className="absolute top-0 right-0 w-1/3 h-full bg-[#EF4444]/5 skew-x-12 translate-x-32 hidden md:block" />
       

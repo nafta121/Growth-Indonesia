@@ -23,7 +23,7 @@ export default function CityHero({ kategoriName, kotaName, cityKey, cityDescript
   const heroImage = getCityImage(cityKey);
 
   return (
-    <section className="relative pt-20 pb-20 md:pt-32 md:pb-28 bg-[#0A1628] overflow-hidden">
+    <section className="relative pt-20 pb-20 md:pt-32 md:pb-28 bg-[#0F172A] overflow-hidden">
       <div className="absolute inset-0 z-0">
         <Image 
           src={heroImage}
@@ -35,7 +35,7 @@ export default function CityHero({ kategoriName, kotaName, cityKey, cityDescript
           className="object-cover opacity-20 pointer-events-none"
           referrerPolicy="no-referrer"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628] via-[#0A1628]/80 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-[#0F172A]/80 to-transparent" />
       </div>
       
       <div className="max-w-7xl mx-auto px-4 md:px-12 relative z-10">

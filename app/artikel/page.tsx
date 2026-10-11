@@ -29,14 +29,14 @@ export default async function ArtikelHubPage() {
   const articles = await getAllArticles();
 
   return (
-    <div className="relative min-h-screen flex flex-col bg-[#0A1628] text-white">
+    <div className="relative min-h-screen flex flex-col bg-[#0F172A] text-white">
       <Navbar />
       
       <main className="flex-grow pt-[72px] md:pt-[88px]">
         {/* Hub Hero Header */}
-        <section className="relative py-20 md:py-28 bg-[#0A1628] overflow-hidden">
+        <section className="relative py-20 md:py-28 bg-[#0F172A] overflow-hidden">
           <div className="absolute inset-0 z-0">
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628] via-brand/10 to-[#0A1628]" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-brand/10 to-[#0F172A]" />
           </div>
           
           <div className="max-w-5xl mx-auto px-6 relative z-10 text-center flex flex-col items-center">
@@ -89,7 +89,7 @@ export default async function ArtikelHubPage() {
                         referrerPolicy="no-referrer"
                       />
                       {article.frontmatter.tags && article.frontmatter.tags[0] && (
-                        <span className="absolute top-4 left-4 bg-[#0A1628] text-white text-xs font-bold px-3.5 py-1.5 rounded-full shadow-sm">
+                        <span className="absolute top-4 left-4 bg-[#0F172A] text-white text-xs font-bold px-3.5 py-1.5 rounded-full shadow-sm">
                           {article.frontmatter.tags[0]}
                         </span>
                       )}

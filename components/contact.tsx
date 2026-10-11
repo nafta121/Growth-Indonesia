@@ -261,7 +261,7 @@ Rencana Tanggal: ${data.date || 'TBC'}`;
                   key="success"
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="bg-[#0A1628] p-10 md:p-14 lg:p-16 rounded-[3rem] md:rounded-[4rem] border border-white/10 text-center shadow-2xl relative overflow-hidden group"
+                  className="bg-[#0F172A] p-10 md:p-14 lg:p-16 rounded-[3rem] md:rounded-[4rem] border border-white/10 text-center shadow-2xl relative overflow-hidden group"
                 >
                   <div className="absolute top-0 right-0 w-64 h-64 bg-[#EF4444]/10 rounded-full blur-[100px] -z-10 group-hover:bg-[#EF4444]/20 transition-all duration-700" />
                   

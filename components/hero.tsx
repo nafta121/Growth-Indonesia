@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { COMPANY_FACTS } from '@/lib/company-facts';
 
 export default function Hero() {
   return (
@@ -22,7 +23,7 @@ export default function Hero() {
           className="object-cover opacity-20 pointer-events-none"
           referrerPolicy="no-referrer"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628] via-[#0A1628]/80 to-[#0A1628]/60" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-[#0F172A]/85 to-[#0F172A]/70" />
       </div>
 
       {/* Background Decor */}
@@ -33,10 +34,14 @@ export default function Hero() {
 
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-12 relative z-10 text-center">
         <div className="w-full max-w-5xl mx-auto flex flex-col items-center">
-          {/* Headline */}
-          <h1 className="w-full max-w-full font-display text-2xl sm:text-4xl md:text-5xl lg:text-7xl font-black text-white leading-[1.2] mb-6 md:mb-8 tracking-tight opacity-0 animate-fade-in break-words">
-            <Badge variant="dark" className="mb-4 md:mb-8 font-sans">Let&apos;s Grow Together!</Badge>
-            <span className="block mt-4 relative">
+          {/* Badge outside h1 for semantic correctness */}
+          <Badge variant="dark" className="mb-4 md:mb-8 font-sans">
+            Let&apos;s Grow Together!
+          </Badge>
+
+          {/* Headline without opacity-0 and animate-fade-in for instant LCP rendering */}
+          <h1 className="w-full max-w-full font-display text-2xl sm:text-4xl md:text-5xl lg:text-7xl font-black text-white leading-[1.2] mb-6 md:mb-8 tracking-tight break-words">
+            <span className="block relative">
               Event Organizer Madiun &
             </span>
             <span className="text-brand block sm:inline-block relative font-bold mt-2 sm:mt-0">
@@ -51,7 +56,7 @@ export default function Hero() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4 w-full sm:w-auto px-4 sm:px-0 opacity-0 animate-fade-in delay-[400ms] mb-12">
-            <Button asChild size="lg" className="w-full sm:w-auto min-w-[240px] sm:min-w-[260px] bg-[#25D366] hover:bg-[#128C7E] text-white border-0 shadow-lg hover:shadow-xl transition-all group text-sm md:text-base h-14 rounded-xl">
+            <Button asChild size="lg" className="w-full sm:w-auto min-w-[240px] sm:min-w-[260px] bg-[#075E54] hover:bg-[#054c44] text-white border-0 shadow-lg hover:shadow-xl transition-all group text-sm md:text-base h-14 rounded-xl">
               <Link href="https://wa.me/6285704748186" target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="w-5 h-5 mr-2" />
                 Chat via WhatsApp
@@ -75,7 +80,7 @@ export default function Hero() {
               ))}
             </div>
             <span className="text-xs sm:text-sm md:text-base font-medium text-slate-300 text-center">
-              Dipercaya 250+ Perusahaan & Instansi Nasional
+              Dipercaya {COMPANY_FACTS.clientText} Perusahaan & Instansi Nasional
             </span>
           </div>
         </div>

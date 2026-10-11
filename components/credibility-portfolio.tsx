@@ -158,13 +158,6 @@ export default function CredibilityPortfolio() {
     },
     telephone: '+6285704748186',
     priceRange: 'Rp (Rupiah)',
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      reviewCount: '150',
-      bestRating: '5',
-      worstRating: '1',
-    },
     review: [
       {
         '@type': 'Review',
