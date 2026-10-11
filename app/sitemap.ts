@@ -54,14 +54,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.8,
   }));
 
-  const programmaticPages: MetadataRoute.Sitemap = allCities.flatMap((city) => 
-    KATEGORI.map((kategori) => ({
-      url: `${baseUrl}/layanan/${city}/${kategori}`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    }))
-  );
+  const programmaticPages: MetadataRoute.Sitemap = new Array(allCities.length * KATEGORI.length);
+  let pageIndex = 0;
+  for (const city of allCities) {
+    for (const kategori of KATEGORI) {
+      programmaticPages[pageIndex++] = {
+        url: `${baseUrl}/layanan/${city}/${kategori}`,
+        lastModified: currentDate,
+        changeFrequency: 'monthly',
+        priority: 0.7,
+      };
+    }
+  }
 
   const articleSlugs = await getArticleSlugs();
   const articlePages: MetadataRoute.Sitemap = articleSlugs.map((slug) => {
