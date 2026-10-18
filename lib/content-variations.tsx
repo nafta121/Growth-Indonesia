@@ -70,7 +70,7 @@ export function getContentVariations(kategori: string, kotaName: string): Conten
       h1: <>Event Organizer Corporate & Family Gathering Terbaik di <span className="text-[#EF4444] font-bold">{kotaName}</span></>,
       subheadline: `Wujudkan acara Corporate Gathering, Employee Gathering, dan Family Gathering di ${kotaName} yang berkesan dan terorganisir secara profesional. ${COMPANY_INFO.brand_name} siap merancang konsep acara, manajemen venue, hingga aktivitas kebersamaan yang mempererat solidaritas tim Anda!`,
       providerType: 'event organizer gathering',
-      bodyIntro: `Sebagai Event Organizer (EO) Corporate & Family Gathering di ${kotaName}, kami menangani perencanaan acara dari hulu ke hilir—mulai dari kurasi venue dan akomodasi, rundowns acara malam keakraban (Gala Dinner), hingga aktivitas keluarga dan hiburan yang berkesan.`,
+      bodyIntro: `Sebagai Event Organizer (EO) Corporate & Family Gathering di ${kotaName}, kami menangani perencanaan acara dari hulu ke hilir, mulai dari kurasi venue dan akomodasi, rundown acara malam keakraban (Gala Dinner), hingga aktivitas keluarga dan hiburan yang berkesan.`,
       deliverables: [
         'Manajemen Rundown, Venue, Akomodasi & Konsumsi',
         'Konsep Gala Dinner, Awarding Night & Hiburan',

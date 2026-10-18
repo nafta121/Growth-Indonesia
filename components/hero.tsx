@@ -1,4 +1,4 @@
-import { ChevronDown, MessageCircle, Star } from 'lucide-react';
+import { MessageCircle, ShieldCheck, Award } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
@@ -6,11 +6,11 @@ import { Badge } from '@/components/ui/badge';
 
 export default function Hero() {
   return (
-    <section 
-      id="hero" 
-      className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-navy py-20 md:py-32"
+    <section
+      id="hero"
+      className="relative min-h-[100dvh] flex items-center overflow-hidden bg-navy pt-24 pb-16 md:pt-24 md:pb-20"
     >
-      {/* LCP Hero Background Image */}
+      {/* Subtle Ambient Backdrop */}
       <div className="absolute inset-0 z-0">
         <Image
           src="https://nafta121.sirv.com/OUTBOUND/2022-10-22%2009-00-09.jpeg"
@@ -19,77 +19,88 @@ export default function Hero() {
           priority={true}
           fetchPriority="high"
           sizes="100vw"
-          className="object-cover opacity-20 pointer-events-none"
+          className="object-cover opacity-15 pointer-events-none"
           referrerPolicy="no-referrer"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628] via-[#0A1628]/80 to-[#0A1628]/60" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0A1628] via-[#0A1628]/95 to-[#0A1628]/75" />
       </div>
 
-      {/* Background Decor */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-brand/5 rounded-full blur-[120px]" />
-        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-blue-600/5 rounded-full blur-[150px]" />
-      </div>
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-12 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          {/* Left Column: 4-Element Hero Stack (Eyebrow, Headline, Subtext <= 20 words, CTAs) */}
+          <div className="lg:col-span-7 flex flex-col items-start text-left">
+            <Badge variant="dark" className="mb-6 font-sans">
+              Provider Tersertifikasi BNSP
+            </Badge>
 
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-12 relative z-10 text-center">
-        <div className="w-full max-w-5xl mx-auto flex flex-col items-center">
-          {/* Headline */}
-          <h1 className="w-full max-w-full font-display text-2xl sm:text-4xl md:text-5xl lg:text-7xl font-black text-white leading-[1.2] mb-6 md:mb-8 tracking-tight opacity-0 animate-fade-in break-words text-balance">
-            <Badge variant="dark" className="mb-4 md:mb-8 font-sans">Let&apos;s Grow with us!</Badge>
-            <span className="block mt-4 relative">
-              Event Organizer Madiun &
-            </span>
-            <span className="text-brand block sm:inline-block relative font-bold mt-2 sm:mt-0">
-              Provider Outbound dan Team Building
-            </span>
-          </h1>
+            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-[1.08] tracking-tight mb-6 opacity-0 animate-fade-in text-balance">
+              Event Organizer Madiun &{' '}
+              <span className="text-brand block mt-1">
+                Provider Outbound Korporat
+              </span>
+            </h1>
 
-          {/* Subheadline */}
-          <p className="w-full text-slate-100 text-sm sm:text-base md:text-lg lg:text-xl font-medium max-w-3xl mx-auto leading-relaxed mb-10 md:mb-12 px-2 sm:px-4 opacity-0 animate-fade-in delay-200 break-words text-pretty">
-            Layanan profesional <strong>Event Organizer Madiun</strong>, <strong>Provider Outbound Training</strong>, dan <strong>Team Building</strong> bersertifikat BNSP dengan garansi program terukur serta Zero Accident Policy.
-          </p>
+            <p className="text-slate-200 text-base sm:text-lg md:text-xl font-medium max-w-[54ch] leading-relaxed mb-8 opacity-0 animate-fade-in delay-200 text-pretty">
+              Mitra strategis outbound training, team building, dan corporate gathering bersertifikat BNSP dengan metode experiential learning serta Zero Accident Policy.
+            </p>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 w-full sm:w-auto px-4 sm:px-0 opacity-0 animate-fade-in delay-[400ms] mb-12">
-            <Button asChild size="lg" className="w-full sm:w-auto min-w-[240px] sm:min-w-[260px] bg-[#25D366] hover:bg-[#128C7E] text-white border-0 shadow-lg hover:shadow-xl transition-all group text-sm md:text-base h-14 rounded-xl">
-              <Link href="https://wa.me/6285704748186" target="_blank" rel="noopener noreferrer">
-                <MessageCircle className="w-5 h-5 mr-2" />
-                Konsultasi Gratis via WhatsApp
-              </Link>
-            </Button>
-            <Button asChild variant="outline" size="lg" className="w-full sm:w-auto min-w-[240px] sm:min-w-[260px] bg-transparent border border-white/20 text-slate-300 hover:bg-white/10 hover:text-white transition-colors text-sm md:text-base h-14 rounded-xl group">
-              <Link href="#paket">
-                Lihat Paket & Program
-                <svg className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </Link>
-            </Button>
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto opacity-0 animate-fade-in delay-[400ms]">
+              <Button
+                asChild
+                size="lg"
+                className="bg-[#25D366] hover:bg-[#128C7E] text-white border-0 shadow-lg hover:shadow-xl transition-all group text-sm md:text-base h-14 px-8 rounded-xl whitespace-nowrap active:scale-[0.98]"
+              >
+                <Link href="https://wa.me/6285704748186" target="_blank" rel="noopener noreferrer">
+                  <MessageCircle className="w-5 h-5 mr-2 shrink-0" />
+                  Konsultasi via WhatsApp
+                </Link>
+              </Button>
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
+                className="bg-white/5 border border-white/25 text-white hover:bg-white/15 hover:text-white transition-colors text-sm md:text-base h-14 px-8 rounded-xl group whitespace-nowrap active:scale-[0.98]"
+              >
+                <Link href="#paket">
+                  Lihat Paket Program
+                </Link>
+              </Button>
+            </div>
           </div>
 
-          {/* Trust Signals */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 opacity-0 animate-fade-in delay-[600ms] px-4">
-            <div className="flex text-yellow-400 shrink-0" aria-hidden="true">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-4 h-4 md:w-5 md:h-5 fill-current" />
-              ))}
+          {/* Right Column: Framed Field Photography Asset */}
+          <div className="lg:col-span-5 w-full">
+            <div className="relative rounded-3xl overflow-hidden border border-white/15 bg-slate-900/60 shadow-2xl aspect-[4/3] sm:aspect-[16/10] lg:aspect-[4/5]">
+              <Image
+                src="https://nafta121.sirv.com/OUTBOUND/2022-11-05%2009-09-46.jpeg"
+                alt="Dokumentasi Sesi Team Building & Outbound Training Korporat bersama Fasilitator BNSP Growth Indonesia"
+                fill
+                priority={true}
+                sizes="(max-width: 1024px) 100vw, 42vw"
+                className="object-cover"
+                referrerPolicy="no-referrer"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628]/90 via-transparent to-transparent" />
+              <div className="absolute bottom-4 left-4 right-4 p-4 rounded-2xl bg-[#0A1628]/85 backdrop-blur-md border border-white/10 flex items-center justify-between gap-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-brand/20 border border-brand/30 flex items-center justify-center text-brand shrink-0">
+                    <ShieldCheck className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <p className="text-xs font-bold text-white leading-tight">Zero Accident Policy</p>
+                    <p className="text-[11px] text-slate-300">SOP Keamanan & Medis Lapangan</p>
+                  </div>
+                </div>
+                <div className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/10 text-xs font-bold text-white shrink-0">
+                  <Award className="w-4 h-4 text-brand" />
+                  <span>BNSP</span>
+                </div>
+              </div>
             </div>
-            <span className="text-xs sm:text-sm md:text-base font-medium text-slate-300 text-center tabular-nums">
-              Dipercaya 250+ Perusahaan & Instansi Nasional
-            </span>
           </div>
         </div>
-      </div>
-
-      {/* Grid Pattern Overlay */}
-      <div className="absolute inset-0 z-1 pointer-events-none opacity-[0.03]" 
-           style={{ backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '40px 40px' }} 
-      />
-
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 pointer-events-none opacity-0 animate-[fade-in_1s_ease-out_forwards] delay-[1s]" aria-hidden="true">
-        <ChevronDown className="w-6 h-6 text-gray-400 animate-bounce motion-reduce:animate-none" />
       </div>
     </section>
   );
 }
+

@@ -164,7 +164,7 @@ export function getCityServiceFaqs(
     },
     {
       question: `Berapa estimasi harga paket ${kategoriName} di ${kotaName}?`,
-      answer: `Estimasi harga paket ${kategoriName} di ${kotaName} sangat fleksibel mulai dari Rp 150.000/pax hingga paket korporat Rp 5.500.000 – Rp 9.500.000/paket, menyesuaikan durasi, jumlah peserta, lokasi (venue), dan fasilitas acara. Anda dapat mensimulasikannya melalui Kalkulator Budget ${COMPANY_INFO.brand_name}.`,
+      answer: `Estimasi harga paket ${kategoriName} di ${kotaName} sangat fleksibel mulai dari Rp 150.000/pax hingga paket korporat Rp 5.500.000 - Rp 9.500.000/paket, menyesuaikan durasi, jumlah peserta, lokasi (venue), dan fasilitas acara. Anda dapat mensimulasikannya melalui Kalkulator Budget ${COMPANY_INFO.brand_name}.`,
     },
     {
       question: `Di mana saja rekomendasi lokasi atau venue ${kategoriName} favorit di ${kotaName}?`,

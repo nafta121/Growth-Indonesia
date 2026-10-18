@@ -1,5 +1,4 @@
 import { Building2, Globe, GraduationCap, HardHat, Landmark, Ship, TowerControl as Tower, Truck, Quote } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
 import { getLocalBusinessSchema } from '@/lib/schema';
 import { COMPANY_INFO } from '@/lib/constants';
 
@@ -124,16 +123,15 @@ export default function TrustSignals() {
   };
 
   return (
-    <section className="py-20 md:py-32 bg-white border-b border-gray-100 overflow-hidden" aria-labelledby="trust-title">
+    <section className="py-20 md:py-28 bg-white border-b border-gray-100 overflow-hidden" aria-labelledby="trust-title">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <div className="max-w-7xl mx-auto px-4 md:px-12 mb-16 md:mb-24">
+      <div className="max-w-7xl mx-auto px-4 md:px-12 mb-12 md:mb-16">
         <div className="text-center">
-          <Badge className="mb-4">Strategic Partners</Badge>
           <h2 id="trust-title" className="text-gray-900 font-display text-3xl md:text-5xl font-black tracking-tight leading-tight">
-            Dipercaya oleh <span className="text-[#EF4444]">100+ Perusahaan</span>
+            Dipercaya oleh <span className="text-[#EF4444]">250+ Perusahaan</span> & Instansi
           </h2>
           <p className="text-gray-600 mt-4 text-sm md:text-base max-w-xl mx-auto">Mitra strategis dalam pengembangan sumber daya manusia melalui metode yang kreatif dan berkelanjutan.</p>
         </div>
@@ -162,9 +160,8 @@ export default function TrustSignals() {
       </div>
 
       {/* Testimonial Scroll / Carousel */}
-      <div className="max-w-7xl mx-auto px-4 md:px-12 mt-20 md:mt-32">
+      <div className="max-w-7xl mx-auto px-4 md:px-12 mt-20 md:mt-28">
         <div className="text-center mb-12">
-          <Badge className="mb-4">Testimoni Klien</Badge>
           <h2 className="text-gray-900 font-display text-2xl md:text-4xl font-extrabold tracking-tight leading-tight">
             Kisah Sukses Transformasi <span className="text-[#EF4444]">SDM</span>
           </h2>

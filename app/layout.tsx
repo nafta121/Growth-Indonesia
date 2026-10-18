@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
-import { Inter, Outfit } from 'next/font/google';
+import { Plus_Jakarta_Sans, Outfit } from 'next/font/google';
 import Script from 'next/script';
 import { GoogleTagManager } from '@next/third-parties/google';
 import { WebMCPProvider } from '@/components/webmcp-provider';
 import './globals.css';
 
-const inter = Inter({
+const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ['latin'],
   variable: '--font-sans',
   display: 'swap',
@@ -108,7 +108,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="id" className={`${inter.variable} ${outfit.variable}`}>
+    <html lang="id" className={`${plusJakartaSans.variable} ${outfit.variable}`}>
       <head>
         <link rel="preconnect" href="https://nafta121.sirv.com" />
         <link rel="dns-prefetch" href="https://nafta121.sirv.com" />

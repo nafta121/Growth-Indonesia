@@ -4,7 +4,6 @@ import { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { useInView } from 'motion/react';
 import ScrollReveal from '@/components/ui/scroll-reveal';
-import { Badge } from '@/components/ui/badge';
 import { Users, CalendarCheck, Briefcase, Target } from 'lucide-react';
 
 interface CounterProps {
@@ -107,7 +106,6 @@ export default function OurImpact() {
       />
       <div className="max-w-7xl mx-auto px-4 md:px-12 relative z-10">
         <ScrollReveal className="text-center mb-16">
-          <Badge className="mb-4">Dampak Kami</Badge>
           <h2 id="impact-title" className="font-display text-4xl md:text-5xl font-black text-gray-900 leading-[1.1] mb-6 text-balance">
             Jejak Langkah <span className="text-[#EF4444]">Penuh Makna</span>
           </h2>

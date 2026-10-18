@@ -1,5 +1,4 @@
 import ScrollReveal from '@/components/ui/scroll-reveal';
-import { Badge } from '@/components/ui/badge';
 
 const MISSIONS = [
   'Menyediakan layanan pengembangan SDM yang profesional dan kreatif.',
@@ -15,7 +14,6 @@ export default function AboutUs() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Vision Section */}
           <ScrollReveal delay={0} duration={0.8} xOffset={-30} yOffset={0}>
-            <Badge className="mb-4">Vision</Badge>
             <h2 id="tentang-title" className="font-display text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 leading-[1.1] mb-8">
               Membangun Kualitas <span className="text-[#EF4444]">SDM Unggul</span> & Bermental Positif.
             </h2>
@@ -39,7 +37,7 @@ export default function AboutUs() {
           >
             <div className="absolute -top-10 -right-10 w-40 h-40 bg-[#EF4444]/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
             
-            <Badge variant="dark" className="mb-4">Mission</Badge>
+            <h3 className="font-display text-2xl md:text-3xl font-black text-white mb-6">Misi Utama Kami</h3>
             <ul className="space-y-6 md:space-y-8">
               {MISSIONS.map((mission, idx) => (
                 <li key={idx}>

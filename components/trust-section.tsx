@@ -1,7 +1,6 @@
 import React from 'react';
 import { ShieldCheck, Video, Award, CheckCircle2, XCircle } from 'lucide-react';
 import ScrollReveal from '@/components/ui/scroll-reveal';
-import { Badge } from '@/components/ui/badge';
 
 export default function TrustSection({
   kategoriName,
@@ -60,7 +59,6 @@ export default function TrustSection({
       <div className="max-w-7xl mx-auto px-4 md:px-12">
         {/* Header Section */}
         <ScrollReveal className="text-center max-w-4xl mx-auto mb-16 md:mb-24">
-          <Badge className="mb-4">E-E-A-T & Proven Track Record</Badge>
           <h2 className="font-display text-3xl md:text-5xl font-black tracking-tight text-[#0A1628] leading-[1.15]">
             {headingText} <span className="text-[#EF4444]">Growth Indonesia?</span>
           </h2>

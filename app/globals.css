@@ -57,6 +57,22 @@
   .animate-glare {
     animation: glare 7s ease-in-out infinite;
   }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    .animate-marquee,
+    .animate-glare,
+    .animate-editorial-bounce {
+      animation: none !important;
+    }
+    .animate-fade-in,
+    .animate-fab-enter {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
   body {
     @apply selection:bg-brand selection:text-white;
   }

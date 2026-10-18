@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { Calendar, Clock, ArrowRight, BookOpen } from 'lucide-react';
+import { Calendar, Clock, ArrowRight } from 'lucide-react';
 import { getAllArticles } from '@/lib/mdx';
 
 export default async function LatestArticles() {
@@ -17,14 +17,10 @@ export default async function LatestArticles() {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-500/5 border border-red-500/10 mb-4">
-            <BookOpen className="w-4 h-4 text-[#EF4444]" />
-            <span className="text-xs font-bold text-slate-600 tracking-wider uppercase">Resource Center</span>
-          </div>
           <h2 className="font-display text-3xl md:text-5xl font-black tracking-tight text-gray-900 mb-4">
             Growth <span className="text-[#EF4444]">Insight</span>
           </h2>
-          <p className="text-base md:text-lg text-slate-500 font-medium">
+          <p className="text-base md:text-lg text-slate-600 font-medium">
             Temukan insight terbaru, strategi andal, dan tips praktis seputar pengembangan SDM dan program outbound terbaik dari kami.
           </p>
         </div>

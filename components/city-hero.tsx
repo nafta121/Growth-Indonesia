@@ -23,7 +23,7 @@ export default function CityHero({ kategoriName, kotaName, cityKey, cityDescript
   const heroImage = getCityImage(cityKey);
 
   return (
-    <section className="relative pt-20 pb-20 md:pt-32 md:pb-28 bg-[#0A1628] overflow-hidden">
+    <section className="relative pt-20 pb-16 md:pt-24 md:pb-24 bg-[#0A1628] overflow-hidden">
       <div className="absolute inset-0 z-0">
         <Image 
           src={heroImage}
@@ -53,31 +53,28 @@ export default function CityHero({ kategoriName, kotaName, cityKey, cityDescript
             />
           </div>
 
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/10 mb-8">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/10 mb-6">
             <div className="flex text-yellow-400" aria-hidden="true">
               {[...Array(5)].map((_, i) => (
                 <Star key={i} className="w-4 h-4 fill-current" />
               ))}
             </div>
-            <span className="text-sm font-medium text-white/90 tabular-nums">Dipercaya 250+ Perusahaan & Instansi Nasional</span>
+            <span className="text-sm font-medium text-white/90 tabular-nums">Fasilitator Bersertifikat BNSP</span>
           </div>
-          <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-white mb-8 leading-[1.1] text-balance">
+          <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-white mb-6 leading-[1.1] text-balance">
             {content.h1}
           </h1>
-          <p className="text-lg sm:text-xl md:text-2xl text-slate-100 leading-relaxed mb-6 text-pretty">
+          <p className="text-base sm:text-lg md:text-xl text-slate-200 leading-relaxed max-w-2xl mb-8 text-pretty">
             <strong className="font-semibold text-white">{content.subheadline}</strong> {cityDescription}
           </p>
-          <p className="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl mb-10 text-pretty">
-            Growth Indonesia merupakan {content.providerType} terpercaya di {kotaName}. Fasilitator kami tersertifikasi BNSP, memastikan kegiatan Anda berjalan aman, interaktif, dan berdampak tinggi.
-          </p>
           <div className="flex flex-wrap items-center gap-4">
-            <Button size="lg" className="h-14 px-8 rounded-full bg-[#EF4444] text-white hover:bg-red-600 shadow-lg shadow-red-600/30 transition-all duration-300 active:scale-95 flex items-center justify-center gap-2" asChild>
-              <Link href="/#kontak" className="text-xs sm:text-sm font-bold">
-                KONSULTASI {kategoriName.toUpperCase()} {kotaName.toUpperCase()} <ArrowRight className="w-5 h-5" />
+            <Button size="lg" className="h-14 px-8 rounded-full bg-[#EF4444] text-white hover:bg-red-600 shadow-lg shadow-red-600/30 transition-all duration-300 active:scale-[0.98] flex items-center justify-center gap-2 whitespace-nowrap" asChild>
+              <Link href="/#kontak" aria-label={`Konsultasi ${kategoriName} ${kotaName}`} className="text-sm font-bold">
+                Konsultasi Program <ArrowRight className="w-5 h-5" />
               </Link>
             </Button>
-            <Button size="lg" asChild className="h-14 px-8 rounded-full bg-transparent border border-white/30 text-white hover:bg-white/10 transition-all duration-300 active:scale-95 flex items-center justify-center">
-              <Link href="/#paket" className="text-xs sm:text-sm font-bold">
+            <Button size="lg" asChild className="h-14 px-8 rounded-full bg-transparent border border-white/30 text-white hover:bg-white/10 transition-all duration-300 active:scale-[0.98] flex items-center justify-center whitespace-nowrap">
+              <Link href="/#paket" className="text-sm font-bold">
                 Lihat Paket Harga
               </Link>
             </Button>

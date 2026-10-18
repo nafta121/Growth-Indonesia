@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import { Badge } from '@/components/ui/badge';
 import OutboundGalleryClient from './outbound-gallery-client';
 
 const outboundPhotos = [
@@ -24,7 +23,6 @@ export default function OutboundGallery() {
     <section id="galeri" className="py-20 md:py-32 bg-gray-50 overflow-hidden" aria-labelledby="galeri-title">
       <div className="max-w-7xl mx-auto px-4 md:px-12">
         <div className="text-center mb-16 md:mb-24">
-          <Badge className="mb-4">Our Moments</Badge>
           <h2 id="galeri-title" className="font-display text-4xl md:text-5xl lg:text-6xl font-black text-[#0A1628] leading-[1.1] mb-6">
             Dokumentasi <span className="text-[#EF4444]">Kegiatan</span>
           </h2>

@@ -39,7 +39,7 @@ function PackageParamSync({ onSelect }: { onSelect: (pkg: string) => void }) {
 export default function Contact({ initialPackage }: ContactProps) {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const { register, handleSubmit, setValue, formState: { errors, isValid, isSubmitting } } = useForm<FormData>({
+  const { register, handleSubmit, setValue, formState: { errors, isSubmitting } } = useForm<FormData>({
     defaultValues: { package: initialPackage || '' },
     mode: "onChange"
   });
@@ -161,19 +161,13 @@ Rencana Tanggal: ${data.date || 'Menyesuaikan'}`;
                   exit={{ opacity: 0, y: -20 }}
                   className="bg-gray-50 p-6 md:p-10 lg:p-12 rounded-[2.5rem] md:rounded-[3.5rem] border border-gray-100 shadow-sm active:shadow-md transition-shadow duration-500"
                 >
-                  <div className="mb-10">
-                    <div className="flex justify-between items-end mb-3">
-                       <h3 id="kontak-form-title" className="text-[10px] font-extrabold text-[#EF4444] uppercase tracking-[0.3em]">Formulir Reservasi</h3>
-                      <span className="text-[10px] text-gray-600 font-extrabold uppercase tracking-widest">Konsultasi Gratis</span>
-                    </div>
-                    <div className="h-1.5 w-full bg-gray-200 rounded-full overflow-hidden p-[2px]">
-                      <motion.div 
-                        initial={{ scaleX: 0 }}
-                        animate={{ scaleX: isValid ? 1 : 0.5 }}
-                        transition={{ type: "spring", stiffness: 100 }}
-                        className="h-full w-full bg-[#EF4444] rounded-full origin-left" 
-                      />
-                    </div>
+                  <div className="mb-8 pb-6 border-b border-gray-200 flex justify-between items-center">
+                    <h3 id="kontak-form-title" className="font-display text-xl font-black text-gray-900 tracking-tight">
+                      Formulir Reservasi Program
+                    </h3>
+                    <span className="text-xs text-[#EF4444] font-bold bg-red-50 px-3 py-1 rounded-full">
+                      Respon Cepat
+                    </span>
                   </div>
 
                   <form onSubmit={handleSubmit(onSubmit)} className="space-y-5 md:space-y-6" aria-labelledby="kontak-form-title">
