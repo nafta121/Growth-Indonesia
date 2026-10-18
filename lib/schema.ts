@@ -21,7 +21,7 @@ export function getLocalBusinessSchema(additionalArea?: string) {
     "name": COMPANY_INFO.brand_name,
     "image": COMPANY_INFO.logo_url,
     "telephone": `+${COMPANY_INFO.whatsapp_number}`,
-    "priceRange": "Rp 150.000 - Rp 4.500.000",
+    "priceRange": "Rp 150.000 - Rp 9.500.000",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Jl. Mujair No.3",
@@ -120,7 +120,7 @@ export function generateFaqSchema(faqs: FaqQuestionItem[], id?: string) {
 export const HOMEPAGE_FAQS: FaqQuestionItem[] = [
   {
     question: "Mengapa memilih Growth Indonesia sebagai provider outbound & event organizer di Madiun?",
-    answer: "Growth Indonesia adalah provider outbound & event organizer Madiun terpercaya dengan fasilitator bersertifikat BNSP, transparan dalam penganggaran, mengusung Zero Accident Policy, dan telah dipercaya oleh lebih dari 100+ perusahaan, BUMN, instansi pemerintah, serta sekolah.",
+    answer: "Growth Indonesia adalah provider outbound & event organizer Madiun terpercaya dengan fasilitator bersertifikat BNSP, transparan dalam penganggaran, mengusung Zero Accident Policy, dan telah dipercaya oleh lebih dari 250+ perusahaan, BUMN, instansi pemerintah, serta sekolah.",
   },
   {
     question: "Layanan apa saja yang disediakan oleh Growth Indonesia?",

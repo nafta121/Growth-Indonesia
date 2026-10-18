@@ -37,8 +37,9 @@ export default function Contact({ initialPackage }: ContactProps) {
 
 Nama: ${data.name}
 Instansi/Perusahaan: ${data.company}
+WhatsApp: ${data.whatsapp}
 Paket Pilihan: ${selectedPkg}
-Rencana Tanggal: ${data.date || 'TBC'}`;
+Rencana Tanggal: ${data.date || 'Menyesuaikan'}`;
 
     const encodedMessage = encodeURIComponent(message);
     
@@ -62,12 +63,12 @@ Rencana Tanggal: ${data.date || 'TBC'}`;
             transition={{ duration: 0.8 }}
             className="lg:sticky lg:top-32"
           >
-            <Badge className="mb-4">Get In Touch</Badge>
+            <Badge className="mb-4">Konsultasi & Reservasi</Badge>
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 leading-[1.1] mb-8">
               Siap untuk <span className="text-[#EF4444]">Bertransformasi?</span>
             </h2>
             <p className="text-gray-500 text-base md:text-lg leading-relaxed mb-12 max-w-xl">
-              Hubungi kami hari ini untuk konsultasi gratis dan temukan bagaimana kami dapat membantu tim Anda mencapai potensi maksimalnya melalui pengalaman outbound yang transformatif.
+              Hubungi kami hari ini untuk konsultasi gratis dan dapatkan proposal resmi program outbound, team building, atau gathering yang dirancang khusus sesuai kebutuhan tim Anda.
             </p>
 
             <div className="space-y-6 md:space-y-8">
@@ -102,7 +103,7 @@ Rencana Tanggal: ${data.date || 'TBC'}`;
                 </div>
                 <div>
                   <h3 className="font-extrabold text-gray-900 mb-1 uppercase tracking-tight text-sm md:text-base">WhatsApp & Telepon</h3>
-                  <p className="text-gray-500 group-hover:text-gray-900 transition-colors duration-300 text-sm md:text-base font-bold">{COMPANY_INFO.whatsapp_display}</p>
+                  <p className="text-gray-500 group-hover:text-gray-900 transition-colors duration-300 text-sm md:text-base font-bold tabular-nums">{COMPANY_INFO.whatsapp_display}</p>
                 </div>
               </a>
 
@@ -141,8 +142,8 @@ Rencana Tanggal: ${data.date || 'TBC'}`;
                 >
                   <div className="mb-10">
                     <div className="flex justify-between items-end mb-3">
-                       <h3 id="kontak-form-title" className="text-[10px] font-extrabold text-[#EF4444] uppercase tracking-[0.3em]">Booking Form</h3>
-                      <span className="text-[10px] text-gray-600 font-extrabold uppercase tracking-widest">Growth Intake</span>
+                       <h3 id="kontak-form-title" className="text-[10px] font-extrabold text-[#EF4444] uppercase tracking-[0.3em]">Formulir Reservasi</h3>
+                      <span className="text-[10px] text-gray-600 font-extrabold uppercase tracking-widest">Konsultasi Gratis</span>
                     </div>
                     <div className="h-1.5 w-full bg-gray-200 rounded-full overflow-hidden p-[2px]">
                       <motion.div 
@@ -164,20 +165,20 @@ Rencana Tanggal: ${data.date || 'TBC'}`;
                           id="name"
                           type="text"
                           {...register("name", { required: "Nama lengkap wajib diisi" })}
-                          placeholder="John Doe"
+                          placeholder="Budi Santoso"
                           error={!!errors.name}
                         />
                         {errors.name && <span className="text-xs text-red-500 mt-1 block px-1">{errors.name.message}</span>}
                       </div>
                       <div className="space-y-2">
                         <label htmlFor="company" className="text-xs font-bold text-gray-900 uppercase tracking-widest flex items-center gap-2 px-1">
-                          <Building2 className="w-3.5 h-3.5 text-[#EF4444]" /> Instansi
+                          <Building2 className="w-3.5 h-3.5 text-[#EF4444]" /> Instansi / Perusahaan
                         </label>
                         <Input
                           id="company"
                           type="text"
                           {...register("company", { required: "Instansi wajib diisi" })}
-                          placeholder="PT Growth Indonesia"
+                          placeholder="PT Nusantara Jaya"
                           error={!!errors.company}
                         />
                         {errors.company && <span className="text-xs text-red-500 mt-1 block px-1">{errors.company.message}</span>}
@@ -186,7 +187,7 @@ Rencana Tanggal: ${data.date || 'TBC'}`;
 
                     <div className="space-y-2">
                       <label htmlFor="whatsapp" className="text-xs font-bold text-gray-900 uppercase tracking-widest flex items-center gap-2 px-1">
-                        <Phone className="w-3.5 h-3.5 text-[#EF4444]" /> WhatsApp
+                        <Phone className="w-3.5 h-3.5 text-[#EF4444]" /> Nomor WhatsApp
                       </label>
                       <Input
                         id="whatsapp"
@@ -195,7 +196,7 @@ Rencana Tanggal: ${data.date || 'TBC'}`;
                           required: "Nomor WhatsApp wajib diisi",
                           minLength: { value: 10, message: "Minimal 10 angka" }
                         })}
-                        placeholder="+62 8xx-xxxx-xxxx"
+                        placeholder="0812-3456-7890"
                         error={!!errors.whatsapp}
                       />
                       {errors.whatsapp && <span className="text-xs text-red-500 mt-1 block px-1">{errors.whatsapp.message}</span>}
@@ -203,7 +204,7 @@ Rencana Tanggal: ${data.date || 'TBC'}`;
 
                     <div className="space-y-2 relative">
                       <label htmlFor="package" className="text-xs font-bold text-gray-900 uppercase tracking-widest flex items-center gap-2 px-1">
-                        Program
+                        Pilihan Program
                       </label>
                       <select
                         id="package"
@@ -223,7 +224,7 @@ Rencana Tanggal: ${data.date || 'TBC'}`;
 
                     <div className="space-y-2">
                       <label htmlFor="date" className="text-xs font-bold text-gray-900 uppercase tracking-widest flex items-center gap-2 px-1">
-                        <Calendar className="w-3.5 h-3.5 text-[#EF4444]" /> Rencana Tanggal
+                        <Calendar className="w-3.5 h-3.5 text-[#EF4444]" /> Rencana Tanggal (Opsional)
                       </label>
                       <Input
                         id="date"
@@ -249,7 +250,7 @@ Rencana Tanggal: ${data.date || 'TBC'}`;
                         </>
                       ) : (
                         <>
-                          Kirim Reservasi
+                          Kirim & Konsultasi via WhatsApp
                           <Send className="w-5 h-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
                         </>
                       )}
@@ -275,15 +276,15 @@ Rencana Tanggal: ${data.date || 'TBC'}`;
                       <CheckCircle2 className="w-10 h-10 md:w-12 md:h-12 text-white" />
                     </motion.div>
                     
-                    <h3 className="font-display text-4xl md:text-5xl font-extrabold text-white mb-6 leading-tight">Terima Kasih!</h3>
-                    <p className="text-gray-400 mb-12 text-base md:text-lg leading-relaxed max-w-sm mx-auto">Pesanan Anda telah kami terima. Tim Growth akan menghubungi Anda segera melalui WhatsApp.</p>
+                    <h3 className="font-display text-4xl md:text-5xl font-extrabold text-white mb-6 leading-tight">Terima Kasih</h3>
+                    <p className="text-gray-400 mb-12 text-base md:text-lg leading-relaxed max-w-sm mx-auto">Permintaan konsultasi Anda telah kami terima. Tim Growth Indonesia siap menindaklanjuti melalui WhatsApp.</p>
                     
                     <div className="space-y-6 text-left max-w-sm mx-auto bg-white/5 p-8 rounded-3xl border border-white/10">
-                      <h4 className="text-[10px] font-extrabold text-[#EF4444] uppercase tracking-[0.3em] text-center mb-6">What Happens Next</h4>
+                      <h4 className="text-[10px] font-extrabold text-[#EF4444] uppercase tracking-[0.3em] text-center mb-6">Tahap Selanjutnya</h4>
                       {[
-                        { step: 1, title: 'Check Availability', desc: 'Kami memverifikasi jadwal pilihan Anda.' },
-                        { step: 2, title: 'Growth Call', desc: 'Diskusi strategi program via WhatsApp.' },
-                        { step: 3, title: 'Final Proposal', desc: 'Penawaran resmi dengan rincian biaya.' }
+                        { step: 1, title: 'Verifikasi Jadwal', desc: 'Kami memeriksa ketersediaan tanggal dan lokasi pilihan Anda.' },
+                        { step: 2, title: 'Konsultasi Program', desc: 'Diskusi kebutuhan dan target tim melalui WhatsApp.' },
+                        { step: 3, title: 'Proposal Resmi', desc: 'Pengiriman penawaran lengkap beserta rincian anggaran.' }
                       ].map((s, i) => (
                         <motion.div 
                           key={s.step} 
@@ -292,7 +293,7 @@ Rencana Tanggal: ${data.date || 'TBC'}`;
                           transition={{ delay: 0.5 + i * 0.1 }}
                           className="flex gap-5"
                         >
-                          <div className="w-6 h-6 rounded-full bg-[#EF4444]/20 flex items-center justify-center text-[10px] font-bold text-[#EF4444] shrink-0 mt-1 border border-[#EF4444]/20">
+                          <div className="w-6 h-6 rounded-full bg-[#EF4444]/20 flex items-center justify-center text-[10px] font-bold text-[#EF4444] shrink-0 mt-1 border border-[#EF4444]/20 tabular-nums">
                             {s.step}
                           </div>
                           <div>

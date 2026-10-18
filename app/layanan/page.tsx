@@ -5,6 +5,7 @@ import { CITIES } from '@/lib/cities';
 import { COMPANY_INFO } from '@/lib/constants';
 import { formatSlug } from '@/lib/format';
 import TrustSection from '@/components/trust-section';
+import CityCta from '@/components/city-cta';
 import { Breadcrumb } from '@/components/breadcrumb';
 
 export const metadata: Metadata = {
@@ -118,6 +119,7 @@ export default function LayananHubPage() {
         </section>
 
         <TrustSection kategoriName="Outbound" kotaName="Indonesia" />
+        <CityCta kategoriName="Outbound & Training" kotaName="Jawa Timur" />
       </main>
     </>
   );

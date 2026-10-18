@@ -15,7 +15,7 @@ export default function CityCta({ kategoriName, kotaName }: CityCtaProps) {
         src="https://nafta121.sirv.com/OUTBOUND/2022-10-22%2009-00-09.jpeg"
         alt={`Background ${kategoriName} ${kotaName}`}
         fill
-        priority
+        loading="lazy"
         sizes="100vw"
         className="object-cover object-center opacity-20 mix-blend-overlay absolute inset-0 -z-10"
         referrerPolicy="no-referrer"
@@ -25,7 +25,7 @@ export default function CityCta({ kategoriName, kotaName }: CityCtaProps) {
           Wujudkan Agenda {kategoriName} Impian di {kotaName}
         </h2>
         <p className="text-xl text-slate-300 mb-12 font-medium max-w-2xl mx-auto leading-relaxed">
-          Konsultasikan kebutuhan spesifik tim Anda bersama tenaga ahli kami. Kami akan siapkan proposal komprehensif tanpa biaya!
+          Konsultasikan kebutuhan spesifik tim Anda bersama tenaga ahli kami. Kami akan menyiapkan proposal komprehensif tanpa biaya.
         </p>
         <div className="flex flex-wrap justify-center gap-4">
           <Button size="lg" className="h-16 px-8 rounded-full bg-[#EF4444] text-white hover:bg-red-600 shadow-lg shadow-red-600/30 transition-all duration-300 active:scale-95 flex items-center justify-center gap-2" asChild>

@@ -1,6 +1,7 @@
 import { Metadata, Viewport } from 'next';
 import { notFound } from 'next/navigation';
 import { CITIES } from '@/lib/cities';
+import { KATEGORI, CATEGORIES_SET } from '@/lib/categories';
 import { COMPANY_INFO } from '@/lib/constants';
 import { getServicePageSchema, getCategoryOgImage } from '@/lib/seo';
 import { formatSlug } from '@/lib/format';
@@ -24,7 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   
   const cityData = CITIES[decodedKota];
   
-  if (!cityData) {
+  if (!cityData || !CATEGORIES_SET.has(decodedKategori)) {
     notFound();
   }
 
@@ -91,7 +92,6 @@ export async function generateViewport({ params }: Props): Promise<Viewport> {
 }
 
 export async function generateStaticParams() {
-  const KATEGORI = ['outbound', 'training', 'fun-games', 'ldk-osis', 'gathering'];
   return Object.keys(CITIES).flatMap((kota) => 
     KATEGORI.map((kategori) => ({ kota, kategori }))
   );
@@ -106,7 +106,7 @@ export default async function ProgrammaticSiloPage({ params }: Props) {
 
   const cityData = CITIES[decodedKota];
 
-  if (!cityData) {
+  if (!cityData || !CATEGORIES_SET.has(decodedKategori)) {
     notFound();
   }
 

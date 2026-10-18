@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "node scripts/prebuild.js && next build",
+    "build:next": "node scripts/prebuild.js && next build",
+    "build": "node scripts/prebuild.js && next build && (test -n \"$VERCEL\" || opennextjs-cloudflare build --skipNextBuild)",
     "build:cf": "opennextjs-cloudflare build",
     "start": "next start",
     "lint": "eslint .",

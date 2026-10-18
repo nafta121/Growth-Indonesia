@@ -31,12 +31,12 @@ export default function Approach() {
       <div className="max-w-7xl mx-auto px-4 md:px-12">
         <ScrollReveal delay={0} duration={0.8} yOffset={20} className="text-center max-w-3xl mx-auto mb-16 md:mb-24">
           <Badge className="mb-4 md:mb-6">
-            How We Work
+            Pendekatan Kami
           </Badge>
           <h2
             className="font-display text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-8 tracking-tight"
           >
-            Our <span className="text-gray-400">Approach</span>
+            4 Pilar <span className="text-gray-400">Keunggulan</span>
           </h2>
           <div
             className="h-2 w-16 bg-[#EF4444] mx-auto rounded-full"
@@ -61,7 +61,7 @@ export default function Approach() {
               <p className="text-gray-500 leading-relaxed font-medium text-sm md:text-base">
                 {pillar.description}
               </p>
-              <div className="absolute bottom-4 right-4 text-[40px] font-extrabold text-gray-50 opacity-[0.05] group-hover:opacity-10 transition-opacity">
+              <div className="absolute bottom-4 right-4 text-[40px] font-extrabold text-gray-50 opacity-[0.05] group-hover:opacity-10 transition-opacity tabular-nums">
                 0{idx + 1}
               </div>
             </ScrollReveal>

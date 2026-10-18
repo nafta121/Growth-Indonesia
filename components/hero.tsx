@@ -35,7 +35,7 @@ export default function Hero() {
         <div className="w-full max-w-5xl mx-auto flex flex-col items-center">
           {/* Headline */}
           <h1 className="w-full max-w-full font-display text-2xl sm:text-4xl md:text-5xl lg:text-7xl font-black text-white leading-[1.2] mb-6 md:mb-8 tracking-tight opacity-0 animate-fade-in break-words">
-            <Badge variant="dark" className="mb-4 md:mb-8 font-sans">Let&apos;s Grow Together!</Badge>
+            <Badge variant="dark" className="mb-4 md:mb-8 font-sans">Let&apos;s Grow with us!</Badge>
             <span className="block mt-4 relative">
               Event Organizer Madiun &
             </span>
@@ -46,7 +46,7 @@ export default function Hero() {
 
           {/* Subheadline */}
           <p className="w-full text-slate-100 text-sm sm:text-base md:text-lg lg:text-xl font-medium max-w-3xl mx-auto leading-relaxed mb-10 md:mb-12 px-2 sm:px-4 opacity-0 animate-fade-in delay-200 break-words">
-            Layanan profesional <strong>Event Organizer Madiun</strong>, <strong>Provider Outbound Training</strong>, dan <strong>Team Building</strong> Garansi program terukur & Zero Accident Policy.
+            Layanan profesional <strong>Event Organizer Madiun</strong>, <strong>Provider Outbound Training</strong>, dan <strong>Team Building</strong> bersertifikat BNSP dengan garansi program terukur serta Zero Accident Policy.
           </p>
 
           {/* CTA Buttons */}
@@ -54,12 +54,12 @@ export default function Hero() {
             <Button asChild size="lg" className="w-full sm:w-auto min-w-[240px] sm:min-w-[260px] bg-[#25D366] hover:bg-[#128C7E] text-white border-0 shadow-lg hover:shadow-xl transition-all group text-sm md:text-base h-14 rounded-xl">
               <Link href="https://wa.me/6285704748186" target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="w-5 h-5 mr-2" />
-                Chat via WhatsApp
+                Konsultasi Gratis via WhatsApp
               </Link>
             </Button>
             <Button asChild variant="outline" size="lg" className="w-full sm:w-auto min-w-[240px] sm:min-w-[260px] bg-transparent border border-white/20 text-slate-300 hover:bg-white/10 hover:text-white transition-colors text-sm md:text-base h-14 rounded-xl group">
-              <Link href="#layanan">
-                Jelajahi Program
+              <Link href="#paket">
+                Lihat Paket & Program
                 <svg className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
