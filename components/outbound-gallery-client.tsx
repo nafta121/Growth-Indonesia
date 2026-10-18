@@ -55,31 +55,24 @@ export default function OutboundGalleryClient({ photos, children }: OutboundGall
     <>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
         {React.Children.map(children, (child, index) => (
-          <motion.div
+          <motion.button
             key={index}
+            type="button"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ delay: index * 0.03 }}
             viewport={{ once: true }}
             onClick={() => setCurrentIndex(index)}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                setCurrentIndex(index);
-              }
-            }}
-            role="button"
-            tabIndex={0}
             aria-label={`Lihat gambar ${index + 1}`}
-            className="group relative aspect-square overflow-hidden rounded-xl md:rounded-[2rem] cursor-pointer bg-white shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 active:scale-95 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-red-500"
+            className="group relative aspect-square overflow-hidden rounded-xl md:rounded-[2rem] cursor-pointer bg-white shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 active:scale-95 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-red-500 text-left"
           >
             {child}
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
               <div className="bg-white/20 backdrop-blur-md p-3 md:p-4 rounded-xl border border-white/30 scale-50 group-hover:scale-100 transition-all duration-500">
-                <Maximize2 className="text-white w-6 h-6 md:w-8 md:h-8" />
+                <Maximize2 className="text-white w-6 h-6 md:w-8 md:h-8" aria-hidden="true" />
               </div>
             </div>
-          </motion.div>
+          </motion.button>
         ))}
       </div>
 
@@ -87,27 +80,32 @@ export default function OutboundGalleryClient({ photos, children }: OutboundGall
       <AnimatePresence>
         {currentIndex !== null && (
           <motion.div
+            role="dialog"
+            aria-modal="true"
+            aria-label="Galeri Foto Outbound"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={handleClose}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-md p-4 md:p-12"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-md p-4 md:p-12"
           >
             <button
+              type="button"
               onClick={handleClose}
               aria-label="Tutup galeri"
-              className="absolute top-6 right-6 text-white/70 hover:text-white transition-colors z-[110] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-lg"
+              className="absolute top-6 right-6 text-white/70 hover:text-white transition-colors z-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-lg"
             >
-              <X className="w-10 h-10" />
+              <X className="w-10 h-10" aria-hidden="true" />
             </button>
 
             <div className="relative w-full h-full flex items-center justify-center">
               <button
+                type="button"
                 onClick={handlePrev}
                 aria-label="Gambar sebelumnya"
-                className="absolute left-0 md:-left-12 text-white/50 hover:text-white transition-colors p-2 z-[110] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-lg"
+                className="absolute left-0 md:-left-12 text-white/50 hover:text-white transition-colors p-2 z-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-lg"
               >
-                <ChevronLeft className="w-12 h-12" />
+                <ChevronLeft className="w-12 h-12" aria-hidden="true" />
               </button>
 
               <motion.div
@@ -129,16 +127,17 @@ export default function OutboundGalleryClient({ photos, children }: OutboundGall
               </motion.div>
 
               <button
+                type="button"
                 onClick={handleNext}
                 aria-label="Gambar selanjutnya"
-                className="absolute right-0 md:-right-12 text-white/50 hover:text-white transition-colors p-2 z-[110] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-lg"
+                className="absolute right-0 md:-right-12 text-white/50 hover:text-white transition-colors p-2 z-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-lg"
               >
-                <ChevronRight className="w-12 h-12" />
+                <ChevronRight className="w-12 h-12" aria-hidden="true" />
               </button>
             </div>
 
             {/* Counter */}
-            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/70 font-mono text-sm">
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/70 font-mono text-sm tabular-nums">
               {currentIndex + 1} / {photos.length}
             </div>
           </motion.div>

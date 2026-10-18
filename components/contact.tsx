@@ -147,10 +147,10 @@ Rencana Tanggal: ${data.date || 'Menyesuaikan'}`;
                     </div>
                     <div className="h-1.5 w-full bg-gray-200 rounded-full overflow-hidden p-[2px]">
                       <motion.div 
-                        initial={{ width: 0 }}
-                        animate={{ width: isValid ? '100%' : '50%' }}
+                        initial={{ scaleX: 0 }}
+                        animate={{ scaleX: isValid ? 1 : 0.5 }}
                         transition={{ type: "spring", stiffness: 100 }}
-                        className="h-full bg-[#EF4444] rounded-full" 
+                        className="h-full w-full bg-[#EF4444] rounded-full origin-left" 
                       />
                     </div>
                   </div>
@@ -159,7 +159,7 @@ Rencana Tanggal: ${data.date || 'Menyesuaikan'}`;
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-6">
                       <div className="space-y-2">
                         <label htmlFor="name" className="text-xs font-bold text-gray-900 uppercase tracking-widest flex items-center gap-2 px-1">
-                          <User className="w-3.5 h-3.5 text-[#EF4444]" /> Nama Lengkap
+                          <User className="w-3.5 h-3.5 text-[#EF4444]" aria-hidden="true" /> Nama Lengkap
                         </label>
                         <Input
                           id="name"
@@ -167,12 +167,13 @@ Rencana Tanggal: ${data.date || 'Menyesuaikan'}`;
                           {...register("name", { required: "Nama lengkap wajib diisi" })}
                           placeholder="Budi Santoso"
                           error={!!errors.name}
+                          aria-describedby={errors.name ? "name-error" : undefined}
                         />
-                        {errors.name && <span className="text-xs text-red-500 mt-1 block px-1">{errors.name.message}</span>}
+                        {errors.name && <span id="name-error" role="alert" className="text-xs text-red-500 mt-1 block px-1">{errors.name.message}</span>}
                       </div>
                       <div className="space-y-2">
                         <label htmlFor="company" className="text-xs font-bold text-gray-900 uppercase tracking-widest flex items-center gap-2 px-1">
-                          <Building2 className="w-3.5 h-3.5 text-[#EF4444]" /> Instansi / Perusahaan
+                          <Building2 className="w-3.5 h-3.5 text-[#EF4444]" aria-hidden="true" /> Instansi / Perusahaan
                         </label>
                         <Input
                           id="company"
@@ -180,14 +181,15 @@ Rencana Tanggal: ${data.date || 'Menyesuaikan'}`;
                           {...register("company", { required: "Instansi wajib diisi" })}
                           placeholder="PT Nusantara Jaya"
                           error={!!errors.company}
+                          aria-describedby={errors.company ? "company-error" : undefined}
                         />
-                        {errors.company && <span className="text-xs text-red-500 mt-1 block px-1">{errors.company.message}</span>}
+                        {errors.company && <span id="company-error" role="alert" className="text-xs text-red-500 mt-1 block px-1">{errors.company.message}</span>}
                       </div>
                     </div>
 
                     <div className="space-y-2">
                       <label htmlFor="whatsapp" className="text-xs font-bold text-gray-900 uppercase tracking-widest flex items-center gap-2 px-1">
-                        <Phone className="w-3.5 h-3.5 text-[#EF4444]" /> Nomor WhatsApp
+                        <Phone className="w-3.5 h-3.5 text-[#EF4444]" aria-hidden="true" /> Nomor WhatsApp
                       </label>
                       <Input
                         id="whatsapp"
@@ -198,8 +200,9 @@ Rencana Tanggal: ${data.date || 'Menyesuaikan'}`;
                         })}
                         placeholder="0812-3456-7890"
                         error={!!errors.whatsapp}
+                        aria-describedby={errors.whatsapp ? "whatsapp-error" : undefined}
                       />
-                      {errors.whatsapp && <span className="text-xs text-red-500 mt-1 block px-1">{errors.whatsapp.message}</span>}
+                      {errors.whatsapp && <span id="whatsapp-error" role="alert" className="text-xs text-red-500 mt-1 block px-1">{errors.whatsapp.message}</span>}
                     </div>
 
                     <div className="space-y-2 relative">
@@ -208,6 +211,8 @@ Rencana Tanggal: ${data.date || 'Menyesuaikan'}`;
                       </label>
                       <select
                         id="package"
+                        aria-invalid={!!errors.package || undefined}
+                        aria-describedby={errors.package ? "package-error" : undefined}
                         {...register("package", { required: "Program wajib dipilih" })}
                         className="w-full h-14 md:h-16 px-6 bg-white border border-gray-200 rounded-2xl focus-visible:ring-2 focus-visible:ring-[#EF4444]/10 focus-visible:border-[#EF4444] outline-none transition-all duration-300 text-sm md:text-base font-medium appearance-none cursor-pointer"
                       >
@@ -216,10 +221,10 @@ Rencana Tanggal: ${data.date || 'Menyesuaikan'}`;
                           <option key={pkg.id} value={pkg.id}>{pkg.label}</option>
                         ))}
                       </select>
-                      <div className="absolute right-6 bottom-[19px] pointer-events-none md:bottom-[23px] text-gray-600">
+                      <div className="absolute right-6 bottom-[19px] pointer-events-none md:bottom-[23px] text-gray-600" aria-hidden="true">
                         <CheckCircle2 className="w-4 h-4" />
                       </div>
-                      {errors.package && <span className="text-xs text-red-500 mt-1 block px-1">{errors.package.message}</span>}
+                      {errors.package && <span id="package-error" role="alert" className="text-xs text-red-500 mt-1 block px-1">{errors.package.message}</span>}
                     </div>
 
                     <div className="space-y-2">

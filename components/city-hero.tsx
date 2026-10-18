@@ -54,20 +54,20 @@ export default function CityHero({ kategoriName, kotaName, cityKey, cityDescript
           </div>
 
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/10 mb-8">
-            <div className="flex text-yellow-400">
+            <div className="flex text-yellow-400" aria-hidden="true">
               {[...Array(5)].map((_, i) => (
                 <Star key={i} className="w-4 h-4 fill-current" />
               ))}
             </div>
-            <span className="text-sm font-medium text-white/90">Dipercaya 250+ Perusahaan & Instansi Nasional</span>
+            <span className="text-sm font-medium text-white/90 tabular-nums">Dipercaya 250+ Perusahaan & Instansi Nasional</span>
           </div>
-          <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-white mb-8 leading-[1.1]">
+          <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-white mb-8 leading-[1.1] text-balance">
             {content.h1}
           </h1>
-          <p className="text-lg sm:text-xl md:text-2xl text-slate-100 leading-relaxed mb-6">
+          <p className="text-lg sm:text-xl md:text-2xl text-slate-100 leading-relaxed mb-6 text-pretty">
             <strong className="font-semibold text-white">{content.subheadline}</strong> {cityDescription}
           </p>
-          <p className="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl mb-10">
+          <p className="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl mb-10 text-pretty">
             Growth Indonesia merupakan {content.providerType} terpercaya di {kotaName}. Fasilitator kami tersertifikasi BNSP, memastikan kegiatan Anda berjalan aman, interaktif, dan berdampak tinggi.
           </p>
           <div className="flex flex-wrap items-center gap-4">
