@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Mail, MapPin, Phone } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
 import { COMPANY_INFO } from '@/lib/constants';
 
 interface NavLink {
@@ -13,6 +13,7 @@ interface NavLink {
 
 export default function NavbarMobile({ navLinks }: { navLinks: NavLink[] }) {
   const [isOpen, setIsOpen] = useState(false);
+  const shouldReduceMotion = useReducedMotion();
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -30,7 +31,7 @@ export default function NavbarMobile({ navLinks }: { navLinks: NavLink[] }) {
       <button
         id="mobile-menu-toggle"
         type="button"
-        className="relative z-50 min-h-12 min-w-12 p-3 text-slate-900 md:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-dark focus-visible:ring-offset-2 bg-gray-50 rounded-xl transition-all active:scale-90 flex items-center justify-center"
+        className="relative z-50 min-h-12 min-w-12 p-3 text-slate-900 md:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-dark focus-visible:ring-offset-2 bg-gray-50 rounded-xl transition-transform duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-95 flex items-center justify-center"
         onClick={() => setIsOpen(!isOpen)}
         aria-label={isOpen ? "Tutup menu" : "Buka menu"}
         aria-expanded={isOpen}
@@ -38,15 +39,18 @@ export default function NavbarMobile({ navLinks }: { navLinks: NavLink[] }) {
       >
         <div className="relative w-6 h-6 flex items-center justify-center">
           <motion.div
-            animate={isOpen ? { rotate: 45, y: 0 } : { rotate: 0, y: -6 }}
+            animate={isOpen ? { transform: 'translateY(0px) rotate(45deg)' } : { transform: 'translateY(-6px) rotate(0deg)' }}
+            transition={{ duration: 0.18, ease: [0.23, 1, 0.32, 1] }}
             className="absolute w-6 h-0.5 bg-gray-900 rounded-full"
           />
           <motion.div
-            animate={isOpen ? { opacity: 0, x: -20 } : { opacity: 1, x: 0 }}
+            animate={isOpen ? { opacity: 0, transform: 'translateX(-12px)' } : { opacity: 1, transform: 'translateX(0px)' }}
+            transition={{ duration: 0.15, ease: [0.23, 1, 0.32, 1] }}
             className="absolute w-6 h-0.5 bg-gray-900 rounded-full"
           />
           <motion.div
-            animate={isOpen ? { rotate: -45, y: 0 } : { rotate: 0, y: 6 }}
+            animate={isOpen ? { transform: 'translateY(0px) rotate(-45deg)' } : { transform: 'translateY(6px) rotate(0deg)' }}
+            transition={{ duration: 0.18, ease: [0.23, 1, 0.32, 1] }}
             className="absolute w-6 h-0.5 bg-gray-900 rounded-full"
           />
         </div>
@@ -60,25 +64,25 @@ export default function NavbarMobile({ navLinks }: { navLinks: NavLink[] }) {
             role="dialog"
             aria-modal="true"
             aria-label="Menu Navigasi Mobile"
-            initial={{ opacity: 0, x: '100%' }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: '100%' }}
-            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+            initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, transform: 'translateX(100%)' }}
+            animate={shouldReduceMotion ? { opacity: 1 } : { opacity: 1, transform: 'translateX(0%)' }}
+            exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, transform: 'translateX(100%)' }}
+            transition={{ duration: 0.25, ease: [0.32, 0.72, 0, 1] }}
             className="fixed inset-0 z-40 flex flex-col bg-white md:hidden overflow-y-auto"
           >
             <ul className="flex flex-col items-center gap-4 w-full px-8 pt-24">
               {navLinks.map((link, i) => (
                 <motion.li
                   key={link.name}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.1 + i * 0.1 }}
+                  initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, transform: 'translateY(8px)' }}
+                  animate={shouldReduceMotion ? { opacity: 1 } : { opacity: 1, transform: 'translateY(0px)' }}
+                  transition={{ duration: 0.2, delay: shouldReduceMotion ? 0 : 0.04 + i * 0.04, ease: [0.23, 1, 0.32, 1] }}
                   className="w-full text-center"
                 >
                   <Link
                     href={link.href}
                     onClick={() => setIsOpen(false)}
-                    className="block py-3 min-h-12 text-2xl sm:text-3xl font-display font-bold text-gray-800 hover:text-brand-dark active:scale-95 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-dark rounded-xl"
+                    className="block py-3 min-h-12 text-2xl sm:text-3xl font-display font-bold text-gray-800 hover:text-brand-dark active:scale-95 transition-[transform,color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-dark rounded-xl"
                   >
                     {link.name}
                   </Link>
@@ -94,7 +98,7 @@ export default function NavbarMobile({ navLinks }: { navLinks: NavLink[] }) {
                 href={`https://wa.me/${COMPANY_INFO.whatsapp_number}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-4 p-4 rounded-2xl bg-slate-50 border border-gray-100 hover:bg-brand hover:border-brand transition-all active:scale-95"
+                className="group flex items-center gap-4 p-4 rounded-2xl bg-slate-50 border border-gray-100 hover:bg-brand hover:border-brand transition-[transform,background-color,border-color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-95"
               >
                 <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-red-600 shadow-sm transition-colors group-hover:text-brand">
                   <Phone className="w-5 h-5" />

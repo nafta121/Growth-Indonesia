@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
 import { X, ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
 
 interface OutboundGalleryClientProps {
@@ -12,6 +12,7 @@ interface OutboundGalleryClientProps {
 
 export default function OutboundGalleryClient({ photos, children }: OutboundGalleryClientProps) {
   const [currentIndex, setCurrentIndex] = useState<number | null>(null);
+  const shouldReduceMotion = useReducedMotion();
 
   // Disable body scroll when lightbox is open
   useEffect(() => {
@@ -55,24 +56,20 @@ export default function OutboundGalleryClient({ photos, children }: OutboundGall
     <>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
         {React.Children.map(children, (child, index) => (
-          <motion.button
+          <button
             key={index}
             type="button"
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ delay: index * 0.03 }}
-            viewport={{ once: true }}
             onClick={() => setCurrentIndex(index)}
             aria-label={`Lihat gambar ${index + 1}`}
-            className="group relative aspect-square overflow-hidden rounded-xl md:rounded-[2rem] cursor-pointer bg-white shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 active:scale-95 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-red-500 text-left"
+            className="group relative aspect-square overflow-hidden rounded-xl md:rounded-[2rem] cursor-pointer bg-white shadow-sm hover:shadow-2xl [@media(hover:hover)_and_(pointer:fine)]:hover:-translate-y-1 transition-[transform,box-shadow] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-red-500 text-left"
           >
             {child}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-              <div className="bg-white/20 backdrop-blur-md p-3 md:p-4 rounded-xl border border-white/30 scale-50 group-hover:scale-100 transition-all duration-500">
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200 ease-out flex items-center justify-center">
+              <div className="bg-white/20 backdrop-blur-md p-3 md:p-4 rounded-xl border border-white/30 scale-95 group-hover:scale-100 transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)]">
                 <Maximize2 className="text-white w-6 h-6 md:w-8 md:h-8" aria-hidden="true" />
               </div>
             </div>
-          </motion.button>
+          </button>
         ))}
       </div>
 
@@ -86,6 +83,7 @@ export default function OutboundGalleryClient({ photos, children }: OutboundGall
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: 0.18, ease: [0.23, 1, 0.32, 1] }}
             onClick={handleClose}
             className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-md p-4 md:p-12"
           >
@@ -93,7 +91,7 @@ export default function OutboundGalleryClient({ photos, children }: OutboundGall
               type="button"
               onClick={handleClose}
               aria-label="Tutup galeri"
-              className="absolute top-[max(1.5rem,env(safe-area-inset-top))] right-[max(1.5rem,env(safe-area-inset-right))] min-h-12 min-w-12 p-2.5 flex items-center justify-center bg-black/60 hover:bg-black/80 border border-white/20 text-white transition-colors z-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-full"
+              className="absolute top-[max(1.5rem,env(safe-area-inset-top))] right-[max(1.5rem,env(safe-area-inset-right))] min-h-12 min-w-12 p-2.5 flex items-center justify-center bg-black/60 hover:bg-black/80 border border-white/20 text-white transition-colors duration-150 z-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-full"
             >
               <X className="w-7 h-7" aria-hidden="true" />
             </button>
@@ -103,17 +101,16 @@ export default function OutboundGalleryClient({ photos, children }: OutboundGall
                 type="button"
                 onClick={handlePrev}
                 aria-label="Gambar sebelumnya"
-                className="absolute left-2 md:-left-12 min-h-12 min-w-12 p-2.5 flex items-center justify-center bg-black/60 hover:bg-black/80 border border-white/20 text-white transition-colors z-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-full"
+                className="absolute left-2 md:-left-12 min-h-12 min-w-12 p-2.5 flex items-center justify-center bg-black/60 hover:bg-black/80 border border-white/20 text-white transition-colors duration-150 z-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-full"
               >
                 <ChevronLeft className="w-8 h-8" aria-hidden="true" />
               </button>
 
               <motion.div
-                key={currentIndex}
-                initial={{ scale: 0.9, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.9, opacity: 0 }}
-                transition={{ type: "spring", damping: 25, stiffness: 200 }}
+                initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, transform: 'scale(0.96)' }}
+                animate={{ opacity: 1, transform: 'scale(1)' }}
+                exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, transform: 'scale(0.96)' }}
+                transition={{ duration: 0.2, ease: [0.23, 1, 0.32, 1] }}
                 className="relative w-full h-full flex items-center justify-center"
                 onClick={(e) => e.stopPropagation()}
               >

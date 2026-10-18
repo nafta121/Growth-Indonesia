@@ -66,7 +66,7 @@ function PesertaSlider({ pax, setPax }: { pax: number, setPax: (pax: number) => 
         step="10"
         value={pax}
         onChange={(e) => setPax(Number(e.target.value))}
-        className="w-full h-3 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-[#EF4444] hover:accent-red-600 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF4444] focus-visible:ring-offset-2"
+        className="w-full h-3 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-[#EF4444] hover:accent-red-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF4444] focus-visible:ring-offset-2"
       />
       <div className="flex justify-between text-xs font-semibold text-slate-600 px-1 tabular-nums">
         <span>20 Pax</span>
@@ -90,7 +90,7 @@ function ProgramSelection({ program, setProgram }: { program: Activity, setProgr
               type="button"
               aria-pressed={program.id === p.id}
               onClick={() => setProgram(p)}
-              className={`min-h-12 px-4 py-3.5 rounded-2xl text-sm font-bold transition-all duration-300 border-2 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#DC2626] focus-visible:ring-offset-2 ${
+              className={`min-h-12 px-4 py-3.5 rounded-2xl text-sm font-bold transition-[transform,background-color,border-color,color,box-shadow] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] border-2 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#DC2626] focus-visible:ring-offset-2 ${
                 index === ACTIVITIES.length - 1 ? 'sm:col-span-2' : ''
               } ${
                 program.id === p.id
@@ -120,7 +120,7 @@ function DurationSelection({ duration, setDuration }: { duration: Duration, setD
               type="button"
               aria-pressed={duration.id === d.id}
               onClick={() => setDuration(d)}
-              className={`min-h-12 px-4 py-3.5 rounded-2xl text-sm font-bold transition-all duration-300 border-2 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#DC2626] focus-visible:ring-offset-2 ${
+              className={`min-h-12 px-4 py-3.5 rounded-2xl text-sm font-bold transition-[transform,background-color,border-color,color,box-shadow] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] border-2 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#DC2626] focus-visible:ring-offset-2 ${
                 index === DURATIONS.length - 1 ? 'sm:col-span-2' : ''
               } ${
                 duration.id === d.id
@@ -184,7 +184,7 @@ Mohon informasi opsi venue dan ketersediaan jadwal.`;
        <button
          type="button"
          onClick={handleWhatsAppClick}
-         className="w-full min-h-14 flex items-center justify-center gap-3 bg-[#DC2626] hover:bg-red-700 text-white font-bold text-base sm:text-lg py-4 px-6 rounded-2xl transition-all duration-300 active:scale-95 shadow-xl shadow-red-600/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#DC2626] focus-visible:ring-offset-2"
+         className="w-full min-h-14 flex items-center justify-center gap-3 bg-[#DC2626] hover:bg-red-700 text-white font-bold text-base sm:text-lg py-4 px-6 rounded-2xl transition-[transform,background-color,box-shadow] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.98] shadow-xl shadow-red-600/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#DC2626] focus-visible:ring-offset-2"
        >
          <MessageCircle className="w-5 h-5 shrink-0" />
          <span>Minta Rincian RAB via WhatsApp</span>

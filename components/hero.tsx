@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { COMPANY_INFO } from '@/lib/constants';
 
 export default function Hero() {
   return (
@@ -33,24 +34,24 @@ export default function Hero() {
               Provider Outbound & EO Korporat
             </Badge>
 
-            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-[1.08] tracking-tight mb-6 opacity-0 animate-fade-in text-balance">
+            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-[1.08] tracking-tight mb-6 animate-fade-in text-balance">
               Event Organizer Madiun &{' '}
               <span className="text-brand block mt-1">
                 Provider Outbound Korporat
               </span>
             </h1>
 
-            <p className="text-slate-200 text-base sm:text-lg md:text-xl font-medium max-w-[54ch] leading-relaxed mb-8 opacity-0 animate-fade-in delay-200 text-pretty">
+            <p className="text-slate-200 text-base sm:text-lg md:text-xl font-medium max-w-[54ch] leading-relaxed mb-8 animate-fade-in [animation-delay:60ms] text-pretty">
               Mitra strategis outbound training, team building, dan corporate gathering berpengalaman dengan metode experiential learning serta Zero Accident Policy.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto opacity-0 animate-fade-in delay-[400ms]">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto animate-fade-in [animation-delay:120ms]">
               <Button
                 asChild
                 size="lg"
-                className="bg-[#15803D] hover:bg-[#166534] text-white border-0 shadow-lg hover:shadow-xl transition-all group text-sm md:text-base h-14 px-8 rounded-xl whitespace-nowrap active:scale-[0.98] focus-visible:ring-[#25D366]"
+                className="bg-[#15803D] hover:bg-[#166534] text-white border-0 shadow-lg hover:shadow-xl transition-[transform,background-color,box-shadow] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] group text-sm md:text-base h-14 px-8 rounded-xl whitespace-nowrap active:scale-[0.98] focus-visible:ring-[#25D366]"
               >
-                <Link href="https://wa.me/6285704748186" target="_blank" rel="noopener noreferrer">
+                <Link href={`https://wa.me/${COMPANY_INFO.whatsapp_number}`} target="_blank" rel="noopener noreferrer">
                   <MessageCircle className="w-5 h-5 mr-2 shrink-0" />
                   Konsultasi via WhatsApp
                 </Link>
@@ -59,7 +60,7 @@ export default function Hero() {
                 asChild
                 variant="outline"
                 size="lg"
-                className="bg-white/5 border border-white/25 text-white hover:bg-white/15 hover:text-white transition-colors text-sm md:text-base h-14 px-8 rounded-xl group whitespace-nowrap active:scale-[0.98]"
+                className="bg-white/5 border border-white/25 text-white hover:bg-white/15 hover:text-white transition-[transform,background-color,border-color,color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] text-sm md:text-base h-14 px-8 rounded-xl group whitespace-nowrap active:scale-[0.98]"
               >
                 <Link href="#paket">
                   Lihat Paket Program

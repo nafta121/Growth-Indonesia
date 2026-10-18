@@ -59,10 +59,10 @@ export default function Pricing() {
             return (
             <ScrollReveal
               key={pkg.id}
-              delay={idx * 0.1}
-              duration={0.6}
+              delay={idx * 0.06}
+              duration={0.28}
               className={cn(
-                "group relative flex flex-col p-8 md:p-10 rounded-[2.5rem] md:rounded-[3rem] transition-all duration-500 hover:-translate-y-2",
+                "group relative flex flex-col p-8 md:p-10 rounded-[2.5rem] md:rounded-[3rem] transition-[transform,box-shadow,border-color] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] [@media(hover:hover)_and_(pointer:fine)]:hover:-translate-y-1.5",
                 isAnchor
                   ? "border-2 border-[#EF4444] bg-[#EF4444]/5 lg:scale-105 shadow-xl shadow-red-500/10 z-10"
                   : "bg-white border border-gray-100 hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)] hover:border-[#EF4444]/20"
@@ -75,7 +75,7 @@ export default function Pricing() {
               )}
               
               <div className="mb-8">
-                <h3 className="font-display text-xl font-extrabold text-gray-900 mb-3 leading-tight uppercase tracking-tight group-hover:text-[#EF4444] transition-colors">{pkg.title}</h3>
+                <h3 className="font-display text-xl font-extrabold text-gray-900 mb-3 leading-tight uppercase tracking-tight group-hover:text-[#EF4444] transition-colors duration-150">{pkg.title}</h3>
                 <div className="flex items-baseline gap-1.5">
                   <span className="text-3xl md:text-4xl font-extrabold text-gray-900 whitespace-nowrap tracking-tighter tabular-nums">{pkg.price}</span>
                   <span className="text-gray-600 text-sm font-bold">/paket</span>
@@ -89,8 +89,8 @@ export default function Pricing() {
               <div className="space-y-5 mb-auto">
                 {pkg.features.map((feat) => (
                   <div key={feat} className="flex items-start gap-4 text-sm text-gray-700 group/item">
-                    <div className="w-5 h-5 rounded-full bg-green-50 flex items-center justify-center shrink-0 group-hover/item:bg-green-500 group-hover/item:text-white transition-colors">
-                      <Check className="w-3 h-3 text-green-500 group-hover/item:text-white transition-colors" />
+                    <div className="w-5 h-5 rounded-full bg-green-50 flex items-center justify-center shrink-0 group-hover/item:bg-green-500 group-hover/item:text-white transition-colors duration-150">
+                      <Check className="w-3 h-3 text-green-500 group-hover/item:text-white transition-colors duration-150" />
                     </div>
                     <span className="font-medium">{feat}</span>
                   </div>
@@ -104,7 +104,7 @@ export default function Pricing() {
               >
                 <Link href={`/?package=${pkg.id}#kontak`} scroll={false} aria-label={`Pilih Paket ${pkg.title}`}>
                   <span className="relative z-10">Pilih Paket</span>
-                  <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+                  <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-1" />
                 </Link>
               </Button>
             </ScrollReveal>

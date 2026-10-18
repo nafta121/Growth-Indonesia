@@ -146,12 +146,12 @@ export default function TrustSignals() {
           {scrollItems.map((client, i) => (
             <div
               key={`${client.name}-${i}`}
-              className="flex items-center gap-4 px-8 md:px-10 py-5 md:py-6 rounded-2xl md:rounded-3xl bg-white border border-gray-100 hover:border-[#EF4444]/30 hover:shadow-2xl hover:shadow-[#EF4444]/5 transition-all duration-500 group active:scale-95 grayscale hover:grayscale-0 hover:-translate-y-1"
+              className="flex items-center gap-4 px-8 md:px-10 py-5 md:py-6 rounded-2xl md:rounded-3xl bg-white border border-gray-100 hover:border-[#EF4444]/30 hover:shadow-2xl hover:shadow-[#EF4444]/5 transition-[transform,border-color,box-shadow,filter] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] group grayscale hover:grayscale-0 [@media(hover:hover)_and_(pointer:fine)]:hover:-translate-y-1"
             >
-              <div className={`${client.color} opacity-40 group-hover:opacity-100 transition-opacity duration-500`}>
+              <div className={`${client.color} opacity-40 group-hover:opacity-100 transition-opacity duration-200`}>
                 {client.icon}
               </div>
-              <span className="font-display font-extrabold text-gray-600 group-hover:text-gray-900 transition-colors duration-500 uppercase tracking-tight text-xs md:text-sm">
+              <span className="font-display font-extrabold text-gray-600 group-hover:text-gray-900 transition-colors duration-200 uppercase tracking-tight text-xs md:text-sm">
                 {client.name}
               </span>
             </div>
@@ -172,9 +172,9 @@ export default function TrustSignals() {
           {TESTIMONIALS.map((t, idx) => (
             <div 
               key={idx}
-              className="flex-none w-[85vw] sm:w-[350px] md:w-[400px] snap-center shrink-0 bg-white border border-gray-100 rounded-3xl p-6 sm:p-8 shadow-sm hover:shadow-xl hover:shadow-red-500/5 hover:-translate-y-1 hover:border-red-100 transition-all duration-300 relative group"
+              className="flex-none w-[85vw] sm:w-[350px] md:w-[400px] snap-center shrink-0 bg-white border border-gray-100 rounded-3xl p-6 sm:p-8 shadow-sm hover:shadow-xl hover:shadow-red-500/5 [@media(hover:hover)_and_(pointer:fine)]:hover:-translate-y-1 hover:border-red-100 transition-[transform,box-shadow,border-color] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] relative group"
             >
-              <div className="absolute top-6 right-6 text-gray-100 group-hover:text-red-50 transition-colors duration-300">
+              <div className="absolute top-6 right-6 text-gray-100 group-hover:text-red-50 transition-colors duration-200">
                 <Quote className="w-12 h-12 fill-current" />
               </div>
               <div className="relative z-10 flex flex-col h-full">
