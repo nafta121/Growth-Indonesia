@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
 import { X, ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
@@ -13,13 +13,30 @@ interface OutboundGalleryClientProps {
 export default function OutboundGalleryClient({ photos, children }: OutboundGalleryClientProps) {
   const [currentIndex, setCurrentIndex] = useState<number | null>(null);
   const shouldReduceMotion = useReducedMotion();
+  const triggerRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const lastTriggerIndexRef = useRef<number | null>(null);
+  const wasOpenRef = useRef(false);
 
-  // Disable body scroll when lightbox is open
+  // Disable body scroll and manage focus when lightbox opens/closes
   useEffect(() => {
     if (currentIndex !== null) {
       document.body.style.overflow = 'hidden';
+      if (!wasOpenRef.current) {
+        wasOpenRef.current = true;
+        lastTriggerIndexRef.current = currentIndex;
+        closeButtonRef.current?.focus();
+      }
     } else {
       document.body.style.overflow = 'unset';
+      if (wasOpenRef.current) {
+        wasOpenRef.current = false;
+        const returnIndex = lastTriggerIndexRef.current;
+        if (returnIndex !== null) {
+          triggerRefs.current[returnIndex]?.focus();
+        }
+      }
     }
     return () => {
       document.body.style.overflow = 'unset';
@@ -40,13 +57,46 @@ export default function OutboundGalleryClient({ photos, children }: OutboundGall
     setCurrentIndex(null);
   }, []);
 
-  // Keyboard navigation
+  // Keyboard navigation & Focus Trap
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (currentIndex === null) return;
-      if (e.key === 'Escape') handleClose();
-      if (e.key === 'ArrowLeft') handlePrev();
-      if (e.key === 'ArrowRight') handleNext();
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        handleClose();
+        return;
+      }
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        handlePrev();
+        return;
+      }
+      if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        handleNext();
+        return;
+      }
+      if (e.key === 'Tab' && dialogRef.current) {
+        const focusableButtons = Array.from(
+          dialogRef.current.querySelectorAll<HTMLElement>('button:not([disabled])')
+        );
+        if (focusableButtons.length === 0) return;
+
+        const firstElement = focusableButtons[0];
+        const lastElement = focusableButtons[focusableButtons.length - 1];
+
+        if (e.shiftKey) {
+          if (document.activeElement === firstElement) {
+            e.preventDefault();
+            lastElement.focus();
+          }
+        } else {
+          if (document.activeElement === lastElement) {
+            e.preventDefault();
+            firstElement.focus();
+          }
+        }
+      }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
@@ -58,8 +108,14 @@ export default function OutboundGalleryClient({ photos, children }: OutboundGall
         {React.Children.map(children, (child, index) => (
           <button
             key={index}
+            ref={(el) => {
+              triggerRefs.current[index] = el;
+            }}
             type="button"
-            onClick={() => setCurrentIndex(index)}
+            onClick={() => {
+              lastTriggerIndexRef.current = index;
+              setCurrentIndex(index);
+            }}
             aria-label={`Lihat gambar ${index + 1}`}
             className="group relative aspect-square overflow-hidden rounded-xl md:rounded-[2rem] cursor-pointer bg-white shadow-sm hover:shadow-2xl [@media(hover:hover)_and_(pointer:fine)]:hover:-translate-y-1 transition-[transform,box-shadow] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-red-500 text-left"
           >
@@ -77,6 +133,7 @@ export default function OutboundGalleryClient({ photos, children }: OutboundGall
       <AnimatePresence>
         {currentIndex !== null && (
           <motion.div
+            ref={dialogRef}
             role="dialog"
             aria-modal="true"
             aria-label="Galeri Foto Outbound"
@@ -88,6 +145,7 @@ export default function OutboundGalleryClient({ photos, children }: OutboundGall
             className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-md p-4 md:p-12"
           >
             <button
+              ref={closeButtonRef}
               type="button"
               onClick={handleClose}
               aria-label="Tutup galeri"

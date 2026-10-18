@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
 import { Star, Sparkles } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -13,6 +13,27 @@ const CATEGORIES = [
 export default function ServicesTabs({ services }: { services: Record<string, { title: string, desc: string }[]> }) {
   const [activeTab, setActiveTab] = useState<typeof CATEGORIES[number]['id']>('training');
   const shouldReduceMotion = useReducedMotion();
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
+
+  const handleTabKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>, index: number) => {
+    let nextIndex: number | null = null;
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+      nextIndex = (index + 1) % CATEGORIES.length;
+    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+      nextIndex = (index - 1 + CATEGORIES.length) % CATEGORIES.length;
+    } else if (e.key === 'Home') {
+      nextIndex = 0;
+    } else if (e.key === 'End') {
+      nextIndex = CATEGORIES.length - 1;
+    }
+
+    if (nextIndex !== null) {
+      e.preventDefault();
+      const nextCategory = CATEGORIES[nextIndex];
+      setActiveTab(nextCategory.id);
+      tabRefs.current[nextIndex]?.focus();
+    }
+  };
 
   return (
     <>
@@ -21,15 +42,20 @@ export default function ServicesTabs({ services }: { services: Record<string, { 
         aria-label="Kategori Layanan Growth Indonesia"
         className="relative flex flex-nowrap overflow-x-auto p-1.5 bg-white/5 backdrop-blur-sm rounded-2xl md:rounded-3xl border border-white/10 w-full max-w-2xl mx-auto mb-12 md:mb-20 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory"
       >
-        {CATEGORIES.map((cat) => (
+        {CATEGORIES.map((cat, index) => (
           <button
             key={cat.id}
+            ref={(el) => {
+              tabRefs.current[index] = el;
+            }}
             id={`tab-${cat.id}`}
             role="tab"
             type="button"
+            tabIndex={activeTab === cat.id ? 0 : -1}
             aria-selected={activeTab === cat.id}
             aria-controls={`tabpanel-${cat.id}`}
             onClick={() => setActiveTab(cat.id)}
+            onKeyDown={(e) => handleTabKeyDown(e, index)}
             className={cn(
               "relative z-10 flex-1 min-w-fit min-h-12 shrink-0 snap-center py-4 md:py-5 px-6 text-xs md:text-sm font-bold tracking-[0.15em] transition-[color,background-color,transform] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] rounded-xl md:rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF4444] uppercase active:scale-[0.98]",
               activeTab === cat.id ? "text-white" : "text-slate-300 hover:bg-slate-800 hover:text-white"
@@ -67,7 +93,7 @@ export default function ServicesTabs({ services }: { services: Record<string, { 
                 className="group relative flex flex-col p-8 rounded-3xl bg-white/5 border border-white/5 hover:border-[#EF4444]/30 hover:bg-white/[0.08] [@media(hover:hover)_and_(pointer:fine)]:hover:-translate-y-1 transition-[transform,background-color,border-color] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] overflow-hidden cursor-default"
               >
                 <div className="w-14 h-14 rounded-2xl bg-[#EF4444]/10 flex items-center justify-center text-[#EF4444] mb-6 group-hover:bg-[#EF4444] group-hover:text-white transition-colors duration-200 ease-out shadow-lg shadow-black/20">
-                  {activeTab === 'training' ? <Star className="w-7 h-7" /> : <Sparkles className="w-7 h-7" />}
+                  {activeTab === 'training' ? <Star className="w-7 h-7" aria-hidden="true" /> : <Sparkles className="w-7 h-7" aria-hidden="true" />}
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-white mb-3 tracking-tight group-hover:text-[#EF4444] transition-colors duration-200">{item.title}</h3>

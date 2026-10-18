@@ -19,10 +19,10 @@ export default function Navbar() {
     <header
       id="navbar"
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 border-b bg-white shadow-md border-gray-100 h-20'
+        'fixed top-0 left-0 right-0 z-50 border-b bg-white shadow-md border-gray-100 min-h-20 pt-[env(safe-area-inset-top)]'
       )}
     >
-      <div className="max-w-7xl mx-auto h-full px-6 md:px-12">
+      <div className="max-w-7xl mx-auto h-20 px-6 md:px-12">
         <nav className="flex items-center justify-between h-full">
           {/* Logo */}
           <Link href="/" className="relative z-50 flex items-center group active:scale-95 transition-transform duration-150 ease-[cubic-bezier(0.23,1,0.32,1)]" aria-label="Growth Indonesia Home">

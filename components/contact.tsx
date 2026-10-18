@@ -3,7 +3,7 @@
 import { Suspense, useCallback, useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { motion, AnimatePresence } from 'motion/react';
-import { MapPin, Phone, MessageCircle, Send, CheckCircle2, Calendar, Building2, User } from 'lucide-react';
+import { MapPin, Phone, MessageCircle, Send, CheckCircle2, ChevronDown, Calendar, Building2, User } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -181,6 +181,7 @@ Mohon informasi rekomendasi venue dan estimasi anggaran sesuai kebutuhan tim kam
                         <Input
                           id="name"
                           type="text"
+                          autoComplete="name"
                           {...register("name", { required: "Nama lengkap wajib diisi" })}
                           placeholder="Budi Santoso"
                           error={!!errors.name}
@@ -195,6 +196,7 @@ Mohon informasi rekomendasi venue dan estimasi anggaran sesuai kebutuhan tim kam
                         <Input
                           id="company"
                           type="text"
+                          autoComplete="organization"
                           {...register("company", { required: "Instansi wajib diisi" })}
                           placeholder="PT Nusantara Jaya"
                           error={!!errors.company}
@@ -211,6 +213,8 @@ Mohon informasi rekomendasi venue dan estimasi anggaran sesuai kebutuhan tim kam
                       <Input
                         id="whatsapp"
                         type="tel"
+                        inputMode="tel"
+                        autoComplete="tel"
                         {...register("whatsapp", { 
                           required: "Nomor WhatsApp wajib diisi",
                           minLength: { value: 10, message: "Minimal 10 angka" }
@@ -239,14 +243,14 @@ Mohon informasi rekomendasi venue dan estimasi anggaran sesuai kebutuhan tim kam
                         ))}
                       </select>
                       <div className="absolute right-6 bottom-[19px] pointer-events-none md:bottom-[23px] text-gray-600" aria-hidden="true">
-                        <CheckCircle2 className="w-4 h-4" />
+                        <ChevronDown className="w-4 h-4" />
                       </div>
                       {errors.package && <span id="package-error" role="alert" className="text-xs text-red-600 font-semibold mt-1 block px-1">{errors.package.message}</span>}
                     </div>
 
                     <div className="space-y-2">
                       <label htmlFor="date" className="text-xs font-bold text-gray-900 uppercase tracking-widest flex items-center gap-2 px-1">
-                        <Calendar className="w-3.5 h-3.5 text-[#EF4444]" /> Rencana Tanggal (Opsional)
+                        <Calendar className="w-3.5 h-3.5 text-[#EF4444]" aria-hidden="true" /> Rencana Tanggal (Opsional)
                       </label>
                       <Input
                         id="date"

@@ -51,7 +51,7 @@ function PesertaSlider({ pax, setPax }: { pax: number, setPax: (pax: number) => 
     <div className="space-y-4">
       <div className="flex items-center justify-between">
          <label htmlFor="pax-slider" className="flex items-center gap-2 font-bold text-gray-900 border-b-2 border-transparent">
-           <Users className="w-5 h-5 text-[#EF4444]" />
+           <Users className="w-5 h-5 text-[#EF4444]" aria-hidden="true" />
            Jumlah Peserta
          </label>
          <span className="font-display font-black text-2xl text-[#0A1628] bg-slate-100 px-4 py-1.5 rounded-full border border-slate-200 tabular-nums">
@@ -66,7 +66,7 @@ function PesertaSlider({ pax, setPax }: { pax: number, setPax: (pax: number) => 
         step="10"
         value={pax}
         onChange={(e) => setPax(Number(e.target.value))}
-        className="w-full h-3 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-[#EF4444] hover:accent-red-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF4444] focus-visible:ring-offset-2"
+        className="w-full h-3 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-[#EF4444] hover:accent-red-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF4444] focus-visible:ring-offset-2 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-7 [&::-webkit-slider-thumb]:h-7 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#EF4444] [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-white [&::-webkit-slider-thumb]:shadow-md [&::-moz-range-thumb]:w-7 [&::-moz-range-thumb]:h-7 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-[#EF4444] [&::-moz-range-thumb]:border-2 [&::-moz-range-thumb]:border-white [&::-moz-range-thumb]:shadow-md"
       />
       <div className="flex justify-between text-xs font-semibold text-slate-600 px-1 tabular-nums">
         <span>20 Pax</span>
@@ -80,7 +80,7 @@ function ProgramSelection({ program, setProgram }: { program: Activity, setProgr
   return (
     <div className="space-y-4" role="group" aria-labelledby="program-selection-label">
       <label id="program-selection-label" className="flex items-center gap-2 font-bold text-gray-900">
-        <Compass className="w-5 h-5 text-[#DC2626]" />
+        <Compass className="w-5 h-5 text-[#DC2626]" aria-hidden="true" />
         Kategori Layanan
       </label>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">

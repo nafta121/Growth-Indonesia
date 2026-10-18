@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { Mail, MapPin, Phone } from 'lucide-react';
 import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
@@ -14,11 +14,63 @@ interface NavLink {
 export default function NavbarMobile({ navLinks }: { navLinks: NavLink[] }) {
   const [isOpen, setIsOpen] = useState(false);
   const shouldReduceMotion = useReducedMotion();
+  const toggleButtonRef = useRef<HTMLButtonElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+  const wasOpenRef = useRef(false);
+
+  // Lock background body scroll and manage focus when mobile menu opens/closes
+  useEffect(() => {
+    if (isOpen) {
+      wasOpenRef.current = true;
+      document.body.style.overflow = 'hidden';
+      const firstLink = panelRef.current?.querySelector<HTMLElement>('a[href]');
+      firstLink?.focus();
+    } else {
+      document.body.style.overflow = 'unset';
+      if (wasOpenRef.current) {
+        wasOpenRef.current = false;
+        toggleButtonRef.current?.focus();
+      }
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && isOpen) {
+      if (!isOpen) return;
+
+      if (e.key === 'Escape') {
+        e.preventDefault();
         setIsOpen(false);
+        return;
+      }
+
+      if (e.key === 'Tab' && panelRef.current) {
+        const panelFocusable = Array.from(
+          panelRef.current.querySelectorAll<HTMLElement>('a[href], button:not([disabled])')
+        );
+        const focusableElements = toggleButtonRef.current
+          ? [toggleButtonRef.current, ...panelFocusable]
+          : panelFocusable;
+
+        if (focusableElements.length === 0) return;
+
+        const firstElement = focusableElements[0];
+        const lastElement = focusableElements[focusableElements.length - 1];
+
+        if (e.shiftKey) {
+          if (document.activeElement === firstElement) {
+            e.preventDefault();
+            lastElement.focus();
+          }
+        } else {
+          if (document.activeElement === lastElement) {
+            e.preventDefault();
+            firstElement.focus();
+          }
+        }
       }
     };
     document.addEventListener('keydown', handleKeyDown);
@@ -29,6 +81,7 @@ export default function NavbarMobile({ navLinks }: { navLinks: NavLink[] }) {
     <>
       {/* Mobile Toggle */}
       <button
+        ref={toggleButtonRef}
         id="mobile-menu-toggle"
         type="button"
         className="relative z-50 min-h-12 min-w-12 p-3 text-slate-900 md:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-dark focus-visible:ring-offset-2 bg-gray-50 rounded-xl transition-transform duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-95 flex items-center justify-center"
@@ -60,6 +113,7 @@ export default function NavbarMobile({ navLinks }: { navLinks: NavLink[] }) {
       <AnimatePresence>
         {isOpen && (
           <motion.div
+            ref={panelRef}
             id="mobile-menu-panel"
             role="dialog"
             aria-modal="true"
