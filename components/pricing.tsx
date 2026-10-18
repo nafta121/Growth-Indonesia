@@ -11,7 +11,7 @@ export default function Pricing() {
     <section id="paket" className="py-20 md:py-32 bg-gray-50 overflow-hidden" aria-labelledby="paket-title">
       <div className="max-w-7xl mx-auto px-4 md:px-12">
         <ScrollReveal delay={0} duration={0.8} className="text-center max-w-3xl mx-auto mb-16 md:mb-24">
-          <Badge className="mb-4 text-xs">Invest in Growth</Badge>
+          <Badge className="mb-4 text-xs">Paket & Investasi SDM</Badge>
           <h2 id="paket-title" className="font-display text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-8 leading-[1.1]">
             Program & <span className="text-[#EF4444]">Investasi</span>
           </h2>
@@ -44,9 +44,9 @@ export default function Pricing() {
               
               <div className="mb-8">
                 <h3 className="font-display text-xl font-extrabold text-gray-900 mb-3 leading-tight uppercase tracking-tight group-hover:text-[#EF4444] transition-colors">{pkg.title}</h3>
-                <div className="flex items-baseline gap-1">
-                  <span className="text-3xl md:text-4xl font-extrabold text-gray-900 whitespace-nowrap tracking-tighter">{pkg.price}</span>
-                  <span className="text-gray-600 text-sm font-bold">/pax</span>
+                <div className="flex items-baseline gap-1.5">
+                  <span className="text-3xl md:text-4xl font-extrabold text-gray-900 whitespace-nowrap tracking-tighter tabular-nums">{pkg.price}</span>
+                  <span className="text-gray-600 text-sm font-bold">/paket</span>
                 </div>
               </div>
 

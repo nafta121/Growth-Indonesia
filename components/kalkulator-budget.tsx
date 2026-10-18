@@ -51,7 +51,7 @@ function PesertaSlider({ pax, setPax }: { pax: number, setPax: (pax: number) => 
            <Users className="w-5 h-5 text-[#EF4444]" />
            Jumlah Peserta
          </label>
-         <span className="font-display font-black text-2xl text-[#0A1628] bg-slate-100 px-4 py-1.5 rounded-full border border-slate-200">
+         <span className="font-display font-black text-2xl text-[#0A1628] bg-slate-100 px-4 py-1.5 rounded-full border border-slate-200 tabular-nums">
            {pax} <span className="text-sm font-bold text-slate-500">Pax</span>
          </span>
       </div>
@@ -65,7 +65,7 @@ function PesertaSlider({ pax, setPax }: { pax: number, setPax: (pax: number) => 
         onChange={(e) => setPax(Number(e.target.value))}
         className="w-full h-3 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-[#EF4444] hover:accent-red-600 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF4444] focus-visible:ring-offset-2"
       />
-      <div className="flex justify-between text-xs font-semibold text-slate-400 px-1">
+      <div className="flex justify-between text-xs font-semibold text-slate-400 px-1 tabular-nums">
         <span>20</span>
         <span>200+</span>
       </div>
@@ -156,7 +156,7 @@ Apakah ada jadwal kosong?`;
        <div className="absolute top-0 left-0 w-2 h-full bg-[#EF4444]"></div>
        <div>
          <p className="font-bold text-slate-500 uppercase tracking-wider text-sm mb-2">Estimasi Total Investasi</p>
-         <p className="font-display font-black text-4xl sm:text-5xl text-[#0A1628] tracking-tight">
+         <p className="font-display font-black text-4xl sm:text-5xl text-[#0A1628] tracking-tight tabular-nums">
            {formatRupiah(totalEstimate)}
          </p>
        </div>

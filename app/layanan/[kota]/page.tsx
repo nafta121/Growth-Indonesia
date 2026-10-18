@@ -8,6 +8,7 @@ import { KATEGORI } from '@/lib/categories';
 import { COMPANY_INFO } from '@/lib/constants';
 import { formatSlug } from '@/lib/format';
 import TrustSection from '@/components/trust-section';
+import CityCta from '@/components/city-cta';
 import { Breadcrumb } from '@/components/breadcrumb';
 
 type Props = {
@@ -264,6 +265,7 @@ export default async function CityHubPage({ params }: Props) {
         </article>
 
         <TrustSection kategoriName="Program" kotaName={kotaName} />
+        <CityCta kategoriName="Outbound & Training" kotaName={kotaName} />
       </main>
     </>
   );

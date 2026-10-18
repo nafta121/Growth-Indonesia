@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { CITIES } from '@/lib/cities';
 import { PACKAGES } from '@/lib/packages';
+import { COMPANY_INFO } from '@/lib/constants';
 import { getAllArticles, getArticleBySlug } from '@/lib/mdx';
 
 function estimateTokens(text: string): number {
@@ -37,7 +38,7 @@ ${Object.entries(CITIES)
 
 ## Kontak & Pemesanan
 - **Website**: https://growthindonesia.my.id
-- **WhatsApp Direct**: https://wa.me/628123456789
+- **WhatsApp Direct**: https://wa.me/${COMPANY_INFO.whatsapp_number}
 - **Dokumentasi API & Agent Discovery**: [/docs/api](/docs/api)
 - **Katalog API**: [/.well-known/api-catalog](/.well-known/api-catalog)
 `;

@@ -22,19 +22,20 @@ export async function GET() {
 
 ### 1. Corporate Outbound & Team Building
 Program pelatihan luar ruangan berbasis *Experiential Learning* untuk meningkatkan produktivitas, kepemimpinan, komunikasi, dan sinergi tim perusahaan atau instansi pemerintah.
-- URL Layanan: https://growthindonesia.my.id/layanan/madiun/outbound-team-building
+- URL Outbound: https://growthindonesia.my.id/layanan/madiun/outbound
+- URL Training: https://growthindonesia.my.id/layanan/madiun/training
 
 ### 2. Family & Corporate Gathering
 Konsep acara kebersamaan interaktif yang dirancang khusus untuk mempererat tali silaturahmi karyawan, keluarga besar, atau komunitas instansi.
-- URL Layanan: https://growthindonesia.my.id/layanan/madiun/gathering-corporate
+- URL Layanan: https://growthindonesia.my.id/layanan/madiun/gathering
 
 ### 3. LDK OSIS & Character Building
 Program edukasi karakter, kedisiplinan, kepemimpinan siswa, dan LDK OSIS untuk sekolah (SMP, SMA/SMK, Perguruan Tinggi).
-- URL Layanan: https://growthindonesia.my.id/layanan/madiun/ldk-osis-sekolah
+- URL Layanan: https://growthindonesia.my.id/layanan/madiun/ldk-osis
 
-### 4. Event Organizer (EO) & MICE
-Pengelolaan event secara end-to-end, mencakup sound system, panggung, lighting, hiburan, hingga penyediaan venue eksklusif di Telaga Sarangan & Madiun.
-- URL Layanan: https://growthindonesia.my.id/layanan/madiun/event-organizer-eo
+### 4. Fun Games & Event Organizer (EO)
+Pengelolaan aktivitas fun games, outbound rekreatif, dan event secara end-to-end mencakup sound system, panggung, lighting, hiburan, hingga penyediaan venue eksklusif di Telaga Sarangan & Madiun.
+- URL Layanan: https://growthindonesia.my.id/layanan/madiun/fun-games
 
 ---
 

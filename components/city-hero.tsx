@@ -59,7 +59,7 @@ export default function CityHero({ kategoriName, kotaName, cityKey, cityDescript
                 <Star key={i} className="w-4 h-4 fill-current" />
               ))}
             </div>
-            <span className="text-sm font-medium text-white/90">Dipercaya 100+ Perusahaan dan Instansi</span>
+            <span className="text-sm font-medium text-white/90">Dipercaya 250+ Perusahaan & Instansi Nasional</span>
           </div>
           <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-white mb-8 leading-[1.1]">
             {content.h1}
