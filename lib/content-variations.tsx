@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import { COMPANY_INFO } from '@/lib/constants';
 import { formatSlug } from './format';
 
@@ -27,11 +27,17 @@ export function getContentVariations(kategori: string, kotaName: string) {
       h1: <>Lembaga LDK OSIS & Character Building Tangguh di <span className="text-[#EF4444] font-bold">{kotaName}</span></>,
       subheadline: `Bentuk mental generasi muda yang tangguh dengan program LDK OSIS ${kotaName} yang intensif. Jadikan kami mitra Pelatihan Siswa melalui Character Building ${kotaName} untuk membina kedisiplinan, kemandirian, dan problem solving peserta didik. Percayakan siswa Anda kepada ahlinya!`,
       providerType: 'fasilitator LDK OSIS'
+    },
+    'gathering': {
+      title: `EO Corporate Gathering & Family Gathering ${kotaName}`,
+      h1: <>Event Organizer Corporate & Family Gathering Terbaik di <span className="text-[#EF4444] font-bold">{kotaName}</span></>,
+      subheadline: `Wujudkan acara Corporate Gathering, Employee Gathering, dan Family Gathering di ${kotaName} yang berkesan dan terorganisir secara profesional. ${COMPANY_INFO.brand_name} siap merancang konsep acara, manajemen venue, hingga aktivitas kebersamaan yang mempererat solidaritas tim Anda!`,
+      providerType: 'event organizer gathering'
     }
   };
 
   return contentMap[kategori.toLowerCase()] || {
-    title: `Provider & Jasa ${formatSlug(kategori)} ${kotaName} | EO - ${COMPANY_INFO.brand_name}`,
+    title: `Provider & Jasa ${formatSlug(kategori)} ${kotaName} - Event Organizer`,
     h1: <>Provider {formatSlug(kategori)} Premium di <span className="text-[#EF4444] font-bold">{kotaName}</span></>,
     subheadline: `${COMPANY_INFO.brand_name} adalah Event Organizer (EO) yang menghadirkan layanan profesional ${formatSlug(kategori).toLowerCase()} di ${kotaName}. Transformasi budaya perusahaan dan semangat kolaborasi tim Anda bersama instruktur profesional ${COMPANY_INFO.brand_name} untuk hasil yang terukur dan berkesinambungan.`,
     providerType: `penyedia layanan ${formatSlug(kategori).toLowerCase()}`

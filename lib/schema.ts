@@ -84,7 +84,14 @@ export function getLocalBusinessSchema(additionalArea?: string) {
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
-            "name": "LDK"
+            "name": "LDK OSIS"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Fun Games"
           }
         }
       ]

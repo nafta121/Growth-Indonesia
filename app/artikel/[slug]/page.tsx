@@ -32,7 +32,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     };
   }
 
-  const title = `${article.frontmatter.title} | ${COMPANY_INFO.brand_name}`;
+  const title = article.frontmatter.title;
+  const fullTitle = `${title} | ${COMPANY_INFO.brand_name}`;
   const description = article.frontmatter.description;
 
   return {
@@ -47,7 +48,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       'max-image-preview': 'large',
     },
     openGraph: {
-      title,
+      title: fullTitle,
       description,
       url: `https://growthindonesia.my.id/artikel/${slug}`,
       type: 'article',
@@ -65,7 +66,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     },
     twitter: {
       card: 'summary_large_image',
-      title,
+      title: fullTitle,
       description,
       images: [article.frontmatter.image],
     },

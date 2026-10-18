@@ -1,7 +1,12 @@
 import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
 import { KATEGORI, CATEGORIES_SET } from './categories';
 import { PACKAGES } from './packages';
+import { getContentVariations } from './content-variations';
+import { getLocalBusinessSchema } from './schema';
+import { INDEXNOW_KEY } from './indexnow';
 import { GET as getLlmsTxt } from '../app/llms.txt/route';
 
 describe('KATEGORI & CATEGORIES_SET', () => {
@@ -51,3 +56,27 @@ describe('/llms.txt AI grounding route', () => {
     assert.match(body, /https:\/\/growthindonesia\.my\.id\/layanan\/madiun\/fun-games/);
   });
 });
+
+describe('SEO Audit regression checks', () => {
+  it('provides bespoke content variations without duplicate brand suffix for all 5 categories', () => {
+    for (const slug of KATEGORI) {
+      const variation = getContentVariations(slug, 'Madiun');
+      assert.ok(variation.title.includes('Madiun'));
+      assert.equal(variation.title.includes('| Growth Indonesia'), false);
+    }
+  });
+
+  it('includes address, E.164 telephone, and all 5 categories in LocalBusiness schema', () => {
+    const schema = getLocalBusinessSchema('Madiun');
+    assert.equal(schema.telephone, '+6285704748186');
+    assert.equal(schema.address.addressLocality, 'Madiun');
+    assert.equal(schema.hasOfferCatalog.itemListElement.length, 5);
+  });
+
+  it('has matching IndexNow verification file in public/', () => {
+    const keyFile = path.join(process.cwd(), 'public', `${INDEXNOW_KEY}.txt`);
+    assert.equal(fs.existsSync(keyFile), true);
+    assert.equal(fs.readFileSync(keyFile, 'utf8').trim(), INDEXNOW_KEY);
+  });
+});
+

@@ -18,9 +18,7 @@ import { getHomepageFaqSchema, getLocalBusinessSchema } from '@/lib/schema';
 
 export const revalidate = 3600;
 
-export default async function Home({ searchParams }: { searchParams: Promise<{ package?: string }> }) {
-  const params = await searchParams;
-  const selectedPackage = params.package || '';
+export default function Home() {
   const faqSchema = getHomepageFaqSchema();
   const localBusinessSchema = {
     "@context": "https://schema.org",
@@ -53,7 +51,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ p
         <ServiceAreas />
         <Pricing />
         <LatestArticles />
-        <Contact initialPackage={selectedPackage} />
+        <Contact />
       </main>
       <Footer />
       

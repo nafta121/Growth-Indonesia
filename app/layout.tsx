@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: 'https://pub-50a5fd46ec724773a854a130ecf7860c.r2.dev/LOGO/SVG%20LOGO%20GROWTH.svg',
+        url: 'https://nafta121.sirv.com/OUTBOUND/2022-10-22%2009-00-09.jpeg',
         width: 1200,
         height: 630,
         alt: 'Corporate Outbound & Event Organizer Madiun - Growth Indonesia',
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Corporate Outbound, Team Building & Event Organizer Madiun | Growth Indonesia',
     description: 'Provider Corporate Outbound, Team Building, dan Event Organizer (EO) profesional di Madiun & Jawa Timur bersertifikat BNSP. Melayani corporate gathering, LDK OSIS & outdoor learning.',
-    images: ['https://pub-50a5fd46ec724773a854a130ecf7860c.r2.dev/LOGO/SVG%20LOGO%20GROWTH.svg'],
+    images: ['https://nafta121.sirv.com/OUTBOUND/2022-10-22%2009-00-09.jpeg'],
   },
   // GEO & Bing Copilot Optimization:
   // Explicitly allow indexing, following, snippet generation, and caching for full AI grounding depth.
@@ -105,14 +105,6 @@ export default function RootLayout({
       'Event Organizer Madiun'
     ],
     'url': 'https://growthindonesia.my.id/',
-    'potentialAction': {
-      '@type': 'SearchAction',
-      'target': {
-        '@type': 'EntryPoint',
-        'urlTemplate': 'https://growthindonesia.my.id/artikel?q={search_term_string}',
-      },
-      'query-input': 'required name=search_term_string',
-    },
   };
 
   return (

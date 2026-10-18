@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { Suspense, useCallback, useEffect, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { motion, AnimatePresence } from 'motion/react';
 import { MapPin, Phone, MessageCircle, Send, CheckCircle2, Calendar, Building2, User } from 'lucide-react';
 import { useForm } from 'react-hook-form';
@@ -22,13 +23,30 @@ type FormData = {
   date: string;
 };
 
+function PackageParamSync({ onSelect }: { onSelect: (pkg: string) => void }) {
+  const searchParams = useSearchParams();
+  const pkg = searchParams.get('package');
+
+  useEffect(() => {
+    if (pkg) {
+      onSelect(pkg);
+    }
+  }, [pkg, onSelect]);
+
+  return null;
+}
+
 export default function Contact({ initialPackage }: ContactProps) {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const { register, handleSubmit, formState: { errors, isValid, isSubmitting } } = useForm<FormData>({
+  const { register, handleSubmit, setValue, formState: { errors, isValid, isSubmitting } } = useForm<FormData>({
     defaultValues: { package: initialPackage || '' },
     mode: "onChange"
   });
+
+  const handleSelectPackage = useCallback((pkg: string) => {
+    setValue('package', pkg, { shouldValidate: true });
+  }, [setValue]);
 
   const onSubmit = async (data: FormData) => {
     // Construction of WhatsApp message
@@ -52,6 +70,9 @@ Rencana Tanggal: ${data.date || 'Menyesuaikan'}`;
 
   return (
     <section id="kontak" className="py-20 md:py-32 bg-white relative overflow-hidden">
+      <Suspense fallback={null}>
+        <PackageParamSync onSelect={handleSelectPackage} />
+      </Suspense>
       <div className="max-w-7xl mx-auto px-4 md:px-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
           

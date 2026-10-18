@@ -12,7 +12,7 @@ import { COMPANY_INFO } from '@/lib/constants';
 export const dynamic = 'force-static';
 
 export const metadata: Metadata = {
-  title: `Artikel & Edukasi Outbound Terbaik | ${COMPANY_INFO.brand_name}`,
+  title: 'Artikel & Edukasi Outbound Terbaik',
   description: `Kumpulan artikel, tips, panduan, dan edukasi seputar program outbound, training, team building, dan pengembangan SDM perusahaan dari ${COMPANY_INFO.brand_name}.`,
   alternates: {
     canonical: 'https://growthindonesia.my.id/artikel',
@@ -21,8 +21,24 @@ export const metadata: Metadata = {
     title: `Artikel & Edukasi Outbound Terbaik | ${COMPANY_INFO.brand_name}`,
     description: `Kumpulan artikel, tips, panduan, dan edukasi seputar program outbound, training, team building, dan pengembangan SDM perusahaan dari ${COMPANY_INFO.brand_name}.`,
     url: 'https://growthindonesia.my.id/artikel',
+    siteName: COMPANY_INFO.brand_name,
+    locale: 'id_ID',
     type: 'website',
-  }
+    images: [
+      {
+        url: 'https://nafta121.sirv.com/OUTBOUND/2022-10-22%2009-00-09.jpeg',
+        width: 1200,
+        height: 630,
+        alt: `Artikel & Edukasi Outbound - ${COMPANY_INFO.brand_name}`,
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: `Artikel & Edukasi Outbound Terbaik | ${COMPANY_INFO.brand_name}`,
+    description: `Kumpulan artikel, tips, panduan, dan edukasi seputar program outbound, training, team building, dan pengembangan SDM perusahaan dari ${COMPANY_INFO.brand_name}.`,
+    images: ['https://nafta121.sirv.com/OUTBOUND/2022-10-22%2009-00-09.jpeg'],
+  },
 };
 
 export default async function ArtikelHubPage() {

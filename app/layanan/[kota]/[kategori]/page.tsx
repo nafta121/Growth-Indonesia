@@ -33,7 +33,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const kategoriName = formatSlug(decodedKategori);
   const content = getContentVariations(decodedKategori, kotaName);
 
-  const title = content.title.includes('Growth Indonesia') ? content.title : `${content.title} | ${COMPANY_INFO.brand_name}`;
+  const title = content.title.replace(/\s*\|\s*Growth Indonesia$/i, '');
+  const fullTitle = `${title} | ${COMPANY_INFO.brand_name}`;
   const description = `Jasa ${kategoriName.toLowerCase()} & event organizer profesional di ${kotaName} bersertifikat BNSP. ${cityData.description} Hubungi ${COMPANY_INFO.brand_name} untuk penawaran harga terbaik!`;
   const ogImages = getCategoryOgImage(decodedKategori, kotaName);
   const canonicalUrl = `https://growthindonesia.my.id/layanan/${decodedKota}/${decodedKategori}`;
@@ -53,7 +54,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       'max-image-preview': 'large',
     },
     openGraph: {
-      title,
+      title: fullTitle,
       description,
       url: canonicalUrl,
       siteName: COMPANY_INFO.brand_name,
@@ -63,7 +64,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     twitter: {
       card: 'summary_large_image',
-      title,
+      title: fullTitle,
       description,
       images: [ogImages[0].url],
     },

@@ -4,8 +4,9 @@ import Link from 'next/link';
 import { MapPin, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { CITIES } from '@/lib/cities';
 import { getCityImage } from '@/lib/city-images';
-import { KATEGORI } from '@/lib/categories';
+import { KATEGORI, CATEGORIES_SET } from '@/lib/categories';
 import { COMPANY_INFO } from '@/lib/constants';
+import { getLocalBusinessSchema } from '@/lib/schema';
 import { formatSlug } from '@/lib/format';
 import TrustSection from '@/components/trust-section';
 import CityCta from '@/components/city-cta';
@@ -15,17 +16,15 @@ type Props = {
   params: Promise<{ kota: string }>;
 };
 
-const CATEGORIES: Set<string> = new Set(['outbound', 'training', 'fun-games', 'ldk-osis', 'gathering']);
-
 function getRedirectDestination(slug: string): string | null {
-  if (CATEGORIES.has(slug)) {
-    return `/layanan/${slug}`;
+  if (CATEGORIES_SET.has(slug)) {
+    return `/layanan/madiun/${slug}`;
   }
 
   const parts = slug.split('-');
   if (parts.length >= 3) {
     const multiCat = `${parts[0]}-${parts[1]}`;
-    if (CATEGORIES.has(multiCat)) {
+    if (CATEGORIES_SET.has(multiCat)) {
       const detectedCity = parts.slice(2).join('-');
       return `/layanan/${detectedCity}/${multiCat}`;
     }
@@ -33,7 +32,7 @@ function getRedirectDestination(slug: string): string | null {
 
   if (parts.length >= 2) {
     const singleCat = parts[0];
-    if (CATEGORIES.has(singleCat)) {
+    if (CATEGORIES_SET.has(singleCat)) {
       const detectedCity = parts.slice(1).join('-');
       return `/layanan/${detectedCity}/${singleCat}`;
     }
@@ -56,7 +55,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   const kotaName = formatSlug(decodedKota);
-  const title = `Layanan Outbound & Event Organizer di ${kotaName} | Growth Indonesia`;
+  const title = `Layanan Outbound & Event Organizer di ${kotaName}`;
+  const fullTitle = `${title} | ${COMPANY_INFO.brand_name}`;
   const description = `Provider outbound & event organizer (EO) profesional di ${kotaName} bersertifikat BNSP. Melayani corporate gathering, team building, LDK OSIS & fun games di ${kotaName}. Konsultasi gratis!`;
   const cityImage = getCityImage(decodedKota);
   const canonicalUrl = `https://growthindonesia.my.id/layanan/${decodedKota}`;
@@ -76,7 +76,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       'max-image-preview': 'large',
     },
     openGraph: {
-      title,
+      title: fullTitle,
       description,
       url: canonicalUrl,
       siteName: COMPANY_INFO.brand_name,
@@ -93,7 +93,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     twitter: {
       card: 'summary_large_image',
-      title,
+      title: fullTitle,
       description,
       images: [cityImage],
     },
@@ -136,19 +136,9 @@ export default async function CityHubPage({ params }: Props) {
     },
     {
       "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      "@id": "https://growthindonesia.my.id/#organization",
-      "name": COMPANY_INFO.brand_name,
-      "url": "https://growthindonesia.my.id",
-      "logo": "https://pub-50a5fd46ec724773a854a130ecf7860c.r2.dev/LOGO/SVG%20LOGO%20GROWTH.svg",
+      ...getLocalBusinessSchema(kotaName),
       "image": getCityImage(decodedKota),
       "description": `Provider Outbound Training, Team Building, dan Event Organizer (EO) profesional di ${kotaName}. ${cityData.uniqueSellingPoint}`,
-      "telephone": COMPANY_INFO.whatsapp_display,
-      "priceRange": "$$",
-      "areaServed": {
-        "@type": "City",
-        "name": kotaName
-      },
       "knowsAbout": cityData.popularVenues,
       "hasOfferCatalog": {
         "@type": "OfferCatalog",

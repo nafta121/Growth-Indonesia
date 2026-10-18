@@ -9,13 +9,13 @@ import CityCta from '@/components/city-cta';
 import { Breadcrumb } from '@/components/breadcrumb';
 
 export const metadata: Metadata = {
-  title: `Area Layanan ${COMPANY_INFO.brand_name} - Provider Outbound & Pelatihan`,
+  title: 'Area Layanan Outbound, Team Building & Event Organizer',
   description: `Temukan area layanan ${COMPANY_INFO.brand_name} di berbagai kota di Indonesia. Kami menyediakan program Outbound, Training, Fun Games & Team Building di lokasi terbaik.`,
   alternates: {
     canonical: 'https://growthindonesia.my.id/layanan',
   },
   openGraph: {
-    title: `Area Layanan ${COMPANY_INFO.brand_name} - Provider Outbound & Pelatihan`,
+    title: `Area Layanan Outbound, Team Building & Event Organizer | ${COMPANY_INFO.brand_name}`,
     description: `Temukan area layanan ${COMPANY_INFO.brand_name} di berbagai kota di Indonesia. Kami menyediakan program Outbound, Training, Fun Games & Team Building di lokasi terbaik.`,
     url: 'https://growthindonesia.my.id/layanan',
     siteName: COMPANY_INFO.brand_name,

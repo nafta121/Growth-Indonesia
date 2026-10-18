@@ -2,8 +2,11 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'API & Service Documentation | Growth Indonesia',
+  title: 'API & Service Documentation',
   description: 'API catalog, sitemap endpoints, and agent discovery documentation for Growth Indonesia Corporate Outbound & Event Management.',
+  alternates: {
+    canonical: 'https://growthindonesia.my.id/docs/api',
+  },
 };
 
 export default function ApiDocsPage() {
