@@ -121,6 +121,7 @@ export default async function ProgrammaticSiloPage({ params }: Props) {
     kategoriName,
     kategoriKey: decodedKategori,
     cityDescription: cityData.description,
+    venues: cityData.popularVenues,
   });
 
   const content = getContentVariations(decodedKategori, kotaName);
@@ -155,10 +156,17 @@ export default async function ProgrammaticSiloPage({ params }: Props) {
             kotaName={kotaName} 
             cityKey={decodedKota}
             cityData={cityData} 
+            content={content}
           />
           
           {/* AI Overview & FAQ Section */}
-          <AiOverviewSection cityName={kotaName} kategoriName={kategoriName} venues={cityData.popularVenues} />
+          <AiOverviewSection
+            cityName={kotaName}
+            cityKey={decodedKota}
+            kategoriName={kategoriName}
+            currentKategori={decodedKategori}
+            venues={cityData.popularVenues}
+          />
 
           {/* Trust Section */}
           <TrustSection kategoriName={kategoriName} kotaName={kotaName} />

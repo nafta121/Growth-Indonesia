@@ -1,31 +1,64 @@
-import { Sparkles } from 'lucide-react';
+import Link from 'next/link';
+import { Sparkles, ArrowUpRight } from 'lucide-react';
 import ScrollReveal from '@/components/ui/scroll-reveal';
+import { getCityServiceFaqs } from '@/lib/schema';
 
 interface AiOverviewProps {
   cityName: string;
+  cityKey?: string;
   kategoriName: string;
+  currentKategori?: string;
   venues: string[];
 }
 
-export function AiOverviewSection({ cityName, kategoriName, venues }: AiOverviewProps) {
-  const faqData = [
-    {
-      question: `Mengapa Growth Indonesia menjadi EO ${kategoriName} pilihan di ${cityName}?`,
-      answer: `Growth Indonesia adalah provider dan penyedia jasa ${kategoriName.toLowerCase()} berlisensi yang berfokus pada experiential learning. Kami hadir sebagai EO ${kategoriName} pilihan di ${cityName} untuk merancang paket team building yang diselaraskan secara spesifik dengan Core Values dan objektif instansi maupun perusahaan Anda.`
-    },
-    {
-      question: `Berapa harga paket jasa ${kategoriName.toLowerCase()} di ${cityName}?`,
-      answer: `Harga paket jasa ${kategoriName.toLowerCase()} di ${cityName} sangat bervariasi bergantung pada durasi, jumlah peserta, lokasi (venue), kapasitas, dan tingkat kustomisasi program. Kami menyediakan penawaran harga paket ${kategoriName.toLowerCase()} yang sangat terjangkau dengan jaminan kualitas program dan impact bisnis yang nyata.`
-    },
-    {
-      question: `Berapa kisaran harga ${kategoriName.toLowerCase()} di ${cityName} dan LDK OSIS terbaru saat ini?`,
-      answer: `Untuk mendapatkan update harga ${kategoriName.toLowerCase()} di ${cityName} dan penawaran harga paket secara detail, silakan hubungi admin kami. Kami siap memberikan penawaran khusus dan RAB rinci, diampu langsung oleh fasilitator & instruktur bersertifikat BNSP.`
-    },
-    {
-      question: `Selain pelatihan SDM, apakah tersedia layanan jasa ${kategoriName.toLowerCase()} di ${cityName} untuk program fun games atau gathering?`,
-      answer: `Tentu saja. Sebagai penyedia layanan jasa profesional di ${cityName}, kami juga ahli merancang acara company outing, capacity building, fun games seru, dan family gathering di berbagai destinasi favorit seperti ${venues.join(', ')} hingga area bebas pilihan Anda.`
-    }
-  ];
+const PROGRAM_MATRIX = [
+  {
+    slug: 'outbound',
+    label: 'Outbound & Team Building',
+    focus: 'Sinergi, Komunikasi & Problem Solving',
+    audience: 'Karyawan Korporat, BUMN & Tim Lintas Divisi',
+    price: 'Mulai Rp 150.000/pax',
+  },
+  {
+    slug: 'training',
+    label: 'Indoor Training & Capacity Building',
+    focus: 'Kepemimpinan, Soft Skill & Motivasi Kerja',
+    audience: 'Manajerial, Supervisor & Staf Profesional',
+    price: 'Mulai Rp 7.000.000/paket',
+  },
+  {
+    slug: 'gathering',
+    label: 'EO Corporate & Family Gathering',
+    focus: 'Apresiasi, Kebersamaan & Gala Dinner',
+    audience: 'Seluruh Karyawan & Keluarga Besar Perusahaan',
+    price: 'Mulai Rp 9.500.000/paket',
+  },
+  {
+    slug: 'ldk-osis',
+    label: 'LDK OSIS & Character Building',
+    focus: 'Karakter, Kedisiplinan & Kepemimpinan Siswa',
+    audience: 'Pengurus OSIS, Pelajar SMP/SMA & Mahasiswa',
+    price: 'Mulai Rp 150.000/pax',
+  },
+  {
+    slug: 'fun-games',
+    label: 'Fun Games & Ice Breaking',
+    focus: 'Refreshment, Energizer & Keakraban Tim',
+    audience: 'Company Outing, Komunitas & Instansi',
+    price: 'Mulai Rp 5.500.000/paket',
+  },
+];
+
+export function AiOverviewSection({
+  cityName,
+  cityKey,
+  kategoriName,
+  currentKategori,
+  venues,
+}: AiOverviewProps) {
+  const resolvedCityKey = cityKey || cityName.toLowerCase().replace(/\s+/g, '-');
+  const faqData = getCityServiceFaqs(kategoriName, cityName, venues);
+  const venueSummary = venues.length > 0 ? venues.slice(0, 3).join(', ') : cityName;
 
   return (
     <section className="py-20 bg-white border-t border-gray-100">
@@ -36,50 +69,56 @@ export function AiOverviewSection({ cityName, kategoriName, venues }: AiOverview
             <div className="absolute top-0 left-0 w-2 h-full bg-[#EF4444]"></div>
             <div className="flex flex-col md:flex-row items-start gap-6">
               <div className="bg-red-100 p-4 rounded-2xl shrink-0">
-                <Sparkles className="w-8 h-8 text-[#EF4444]" />
+                <Sparkles className="w-8 h-8 text-[#EF4444]" aria-hidden="true" />
               </div>
               <div>
-                <h3 className="font-display font-extrabold text-2xl text-gray-900 mb-4 tracking-tight">Ringkasan Layanan</h3>
-                <p className="text-slate-600 text-lg md:text-xl leading-relaxed font-medium">
-                  Growth Indonesia menyediakan layanan <strong>{kategoriName}, Corporate Gathering, dan Team Building</strong> profesional di {cityName}. Kami merancang program berbasis <em>experiential learning</em> untuk meningkatkan kepemimpinan, kolaborasi, dan produktivitas tim Anda di lokasi-lokasi unggulan {cityName}.
+                <h3 className="font-display font-extrabold text-2xl text-gray-900 mb-4 tracking-tight">Ringkasan Layanan {kategoriName} di {cityName}</h3>
+                <p className="text-slate-600 text-lg md:text-xl leading-relaxed font-medium text-pretty">
+                  Growth Indonesia menyediakan layanan <strong>{kategoriName}, Corporate Gathering, dan Team Building</strong> profesional di {cityName} (termasuk area {venueSummary}). Kami merancang program berbasis <em>experiential learning</em> berstandar BNSP dengan <em>Zero Accident Policy</em> untuk meningkatkan kepemimpinan, kolaborasi, dan produktivitas tim Anda.
                 </p>
               </div>
             </div>
           </div>
           
-          {/* Comparison Table */}
+          {/* Comparison & Sibling Spoke Internal Linking Table */}
           <div className="mb-16">
-            <h3 className="font-display font-extrabold text-3xl text-gray-900 mb-8 tracking-tight">Pilihan Program di {cityName}</h3>
+            <h3 className="font-display font-extrabold text-3xl text-gray-900 mb-3 tracking-tight">Pilihan Program & Layanan di {cityName}</h3>
+            <p className="text-slate-500 text-base mb-8 font-medium">
+              Bandingkan kategori program pengembangan SDM dan Event Organizer yang tersedia untuk wilayah {cityName}:
+            </p>
             <div className="overflow-x-auto rounded-3xl border border-gray-100 shadow-sm">
-              <table className="w-full text-left border-collapse min-w-[600px]">
+              <table className="w-full text-left border-collapse min-w-[680px]">
                 <thead>
                   <tr className="bg-slate-50">
-                    <th className="py-5 px-6 font-bold text-gray-900 border-b border-gray-100">Kategori Program</th>
+                    <th className="py-5 px-6 font-bold text-gray-900 border-b border-gray-100">Kategori Program di {cityName}</th>
                     <th className="py-5 px-6 font-bold text-gray-900 border-b border-gray-100">Fokus Utama</th>
                     <th className="py-5 px-6 font-bold text-gray-900 border-b border-gray-100">Ideal Untuk</th>
+                    <th className="py-5 px-6 font-bold text-gray-900 border-b border-gray-100">Estimasi Investasi</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-100">
-                  <tr className="hover:bg-slate-50/50 transition-colors">
-                    <td className="py-5 px-6 font-semibold text-gray-800">Team Building</td>
-                    <td className="py-5 px-6 text-slate-600">Sinergi, Komunikasi & Kepercayaan</td>
-                    <td className="py-5 px-6 text-slate-600">Karyawan Baru & Tim Lintas Divisi</td>
-                  </tr>
-                  <tr className="hover:bg-slate-50/50 transition-colors">
-                    <td className="py-5 px-6 font-semibold text-gray-800">Capacity Building</td>
-                    <td className="py-5 px-6 text-slate-600">Kepemimpinan & Problem Solving</td>
-                    <td className="py-5 px-6 text-slate-600">Level Manajerial, Supervisor & Eksekutif</td>
-                  </tr>
-                  <tr className="hover:bg-slate-50/50 transition-colors">
-                    <td className="py-5 px-6 font-semibold text-gray-800">Fun Gathering</td>
-                    <td className="py-5 px-6 text-slate-600">Refreshment, Apresiasi & Kebersamaan</td>
-                    <td className="py-5 px-6 text-slate-600">Seluruh Karyawan (Company Outing)</td>
-                  </tr>
-                  <tr className="hover:bg-slate-50/50 transition-colors">
-                    <td className="py-5 px-6 font-semibold text-gray-800">LDK OSIS & Mahasiswa</td>
-                    <td className="py-5 px-6 text-slate-600">Karakter, Kedisiplinan & Mentalitas</td>
-                    <td className="py-5 px-6 text-slate-600">Pelajar, Pengurus OSIS & Organisasi Kampus</td>
-                  </tr>
+                  {PROGRAM_MATRIX.map((row) => {
+                    const isCurrent = currentKategori === row.slug;
+                    return (
+                      <tr
+                        key={row.slug}
+                        className={isCurrent ? 'bg-red-50/40' : 'hover:bg-slate-50/50 transition-colors'}
+                      >
+                        <td className="py-5 px-6 font-semibold text-gray-900">
+                          <Link
+                            href={`/layanan/${resolvedCityKey}/${row.slug}`}
+                            className="inline-flex items-center gap-1.5 text-gray-900 hover:text-[#EF4444] transition-colors font-bold"
+                          >
+                            <span>{row.label} {cityName}</span>
+                            <ArrowUpRight className="w-4 h-4 text-[#EF4444] shrink-0" aria-hidden="true" />
+                          </Link>
+                        </td>
+                        <td className="py-5 px-6 text-slate-600">{row.focus}</td>
+                        <td className="py-5 px-6 text-slate-600">{row.audience}</td>
+                        <td className="py-5 px-6 font-semibold text-gray-900 tabular-nums whitespace-nowrap">{row.price}</td>
+                      </tr>
+                    );
+                  })}
                 </tbody>
               </table>
             </div>
@@ -92,7 +131,7 @@ export function AiOverviewSection({ cityName, kategoriName, venues }: AiOverview
               {faqData.map((faq, index) => (
                 <div key={index} className="bg-white border border-gray-100 p-6 md:p-8 rounded-[2rem] hover:border-red-100 hover:shadow-xl hover:shadow-red-500/5 transition-all duration-300">
                   <h4 className="font-display font-bold text-xl text-gray-900 mb-3">{faq.question}</h4>
-                  <p className="text-slate-500 leading-relaxed font-medium">{faq.answer}</p>
+                  <p className="text-slate-500 leading-relaxed font-medium text-pretty">{faq.answer}</p>
                 </div>
               ))}
             </div>
@@ -102,3 +141,4 @@ export function AiOverviewSection({ cityName, kategoriName, venues }: AiOverview
     </section>
   );
 }
+

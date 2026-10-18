@@ -1,7 +1,7 @@
 import { COMPANY_INFO } from './constants';
-import { getLocalBusinessSchema, getFaqSchema, generateFaqSchema, HOMEPAGE_FAQS, getHomepageFaqSchema } from './schema';
+import { getLocalBusinessSchema, getFaqSchema, getCityServiceFaqs, generateFaqSchema, HOMEPAGE_FAQS, getHomepageFaqSchema } from './schema';
 
-export { COMPANY_INFO, generateFaqSchema, HOMEPAGE_FAQS, getHomepageFaqSchema };
+export { COMPANY_INFO, getCityServiceFaqs, generateFaqSchema, HOMEPAGE_FAQS, getHomepageFaqSchema };
 
 export interface BreadcrumbItemSchema {
   name: string;
@@ -69,6 +69,7 @@ export interface ServicePageSchemaParams {
   kategoriName: string;
   kategoriKey: string;
   cityDescription: string;
+  venues?: string[];
 }
 
 export function getServicePageSchema({
@@ -77,6 +78,7 @@ export function getServicePageSchema({
   kategoriName,
   kategoriKey,
   cityDescription,
+  venues = [],
 }: ServicePageSchemaParams) {
   const serviceUrl = `https://growthindonesia.my.id/layanan/${cityKey}/${kategoriKey}`;
   const cityUrl = `https://growthindonesia.my.id/layanan/${cityKey}`;
@@ -91,7 +93,7 @@ export function getServicePageSchema({
 
   const service = getServiceSchema(kategoriName, kotaName, description, serviceUrl);
   const localBusiness = getLocalBusinessSchema(kotaName);
-  const rawFaq = getFaqSchema(kategoriName, kotaName);
+  const rawFaq = getFaqSchema(kategoriName, kotaName, venues);
 
   return {
     "@context": "https://schema.org",

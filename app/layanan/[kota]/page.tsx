@@ -6,6 +6,7 @@ import { CITIES } from '@/lib/cities';
 import { getCityImage } from '@/lib/city-images';
 import { KATEGORI, CATEGORIES_SET } from '@/lib/categories';
 import { COMPANY_INFO } from '@/lib/constants';
+import { getContentVariations } from '@/lib/content-variations';
 import { getLocalBusinessSchema } from '@/lib/schema';
 import { formatSlug } from '@/lib/format';
 import TrustSection from '@/components/trust-section';
@@ -195,7 +196,7 @@ export default async function CityHubPage({ params }: Props) {
               Layanan Outbound & Training di <span className="text-[#EF4444] break-words">{kotaName}</span>
             </h1>
             <p className="text-lg md:text-2xl text-slate-300 font-medium leading-relaxed max-w-3xl mx-auto">
-              Berbagai pilihan program pengembangan SDM profesional dari {COMPANY_INFO.brand_name} yang dirancang khusus untuk memenuhi kebutuhan organisasi Anda di wilayah {kotaName}.
+              {cityData.description} Berbagai pilihan program pengembangan SDM profesional dari {COMPANY_INFO.brand_name} yang dirancang khusus untuk kebutuhan organisasi Anda di wilayah {kotaName}.
             </p>
           </div>
         </section>
@@ -208,13 +209,14 @@ export default async function CityHubPage({ params }: Props) {
                  Pilih Kategori <span className="text-brand">Program</span>
                </h2>
                <p className="text-lg text-slate-500 max-w-2xl mx-auto font-medium">
-                 Jelajahi berbagai solusi pelatihan yang tersedia di lokasi terpilih area {kotaName}.
+                 Jelajahi 5 solusi pelatihan dan event organizer tersertifikasi BNSP yang tersedia di area {kotaName}.
                </p>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {KATEGORI.map((kategori) => {
                 const kategoriName = formatSlug(kategori);
+                const variation = getContentVariations(kategori, kotaName);
                 return (
                   <Link
                     key={kategori}
@@ -228,12 +230,20 @@ export default async function CityHubPage({ params }: Props) {
                       <h3 className="font-display font-bold text-2xl text-gray-900 mb-3 group-hover:text-brand transition-colors">
                         {kategoriName} {kotaName}
                       </h3>
-                      <p className="text-slate-500 font-medium leading-relaxed">
-                        Solusi terbaik untuk {kategoriName.toLowerCase()} di area {kotaName} dengan pendekatan profesional.
+                      <p className="text-slate-600 font-medium leading-relaxed mb-4">
+                        {variation.bodyIntro}
                       </p>
+                      <ul className="space-y-1.5 text-sm text-slate-600 font-medium">
+                        {variation.deliverables.slice(0, 2).map((item, idx) => (
+                          <li key={idx} className="flex items-start gap-2">
+                            <span className="w-1.5 h-1.5 rounded-full bg-brand mt-2 shrink-0" />
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                     <div className="px-8 py-5 border-t border-gray-100 bg-white group-hover:bg-red-50/50 transition-colors flex items-center justify-between">
-                       <span className="font-bold text-gray-900 group-hover:text-brand text-sm">Lihat Detail Program</span>
+                       <span className="font-bold text-gray-900 group-hover:text-brand text-sm">Lihat Detail Program {kategoriName}</span>
                        <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-brand group-hover:translate-x-1 transition-transform" />
                     </div>
                   </Link>
@@ -243,13 +253,35 @@ export default async function CityHubPage({ params }: Props) {
           </div>
         </section>
 
-        {/* Local Information Context */}
+        {/* Local Information Context & Popular Venues */}
         <section className="py-20 bg-slate-50 border-t border-gray-100">
-          <div className="max-w-4xl mx-auto px-4 md:px-12 text-center">
-            <h2 className="font-display text-3xl font-black text-gray-900 mb-6">Mengapa Memilih Layanan Kami di {kotaName}?</h2>
-            <p className="text-lg text-slate-600 leading-relaxed font-medium">
-               {cityData.uniqueSellingPoint} Kami mengombinasikan akses ke <span className="font-bold text-gray-900">{cityData.popularVenues.join(', ')}</span> dengan metode experiential learning yang teruji.
-            </p>
+          <div className="max-w-5xl mx-auto px-4 md:px-12">
+            <div className="text-center mb-12">
+              <h2 className="font-display text-3xl md:text-4xl font-black text-gray-900 mb-6">
+                Keunggulan Lokasi & Rekomendasi Venue di <span className="text-brand">{kotaName}</span>
+              </h2>
+              <p className="text-lg text-slate-600 leading-relaxed font-medium max-w-3xl mx-auto">
+                {cityData.uniqueSellingPoint} Kami mengombinasikan akses ke berbagai lokasi strategis di {kotaName} dengan metode experiential learning yang teruji.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              {cityData.popularVenues.map((venue, idx) => (
+                <div
+                  key={idx}
+                  className="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm flex items-start gap-3"
+                >
+                  <MapPin className="w-5 h-5 text-brand shrink-0 mt-0.5" />
+                  <div>
+                    <p className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">
+                      Rekomendasi Venue #{idx + 1}
+                    </p>
+                    <h3 className="font-bold text-gray-900 text-base leading-snug">
+                      {venue}
+                    </h3>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
         </article>

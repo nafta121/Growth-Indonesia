@@ -5,7 +5,7 @@ import path from 'node:path';
 import { KATEGORI, CATEGORIES_SET } from './categories';
 import { PACKAGES } from './packages';
 import { getContentVariations } from './content-variations';
-import { getLocalBusinessSchema } from './schema';
+import { getLocalBusinessSchema, getCityServiceFaqs, getFaqSchema } from './schema';
 import { INDEXNOW_KEY } from './indexnow';
 import { GET as getLlmsTxt } from '../app/llms.txt/route';
 
@@ -57,13 +57,29 @@ describe('/llms.txt AI grounding route', () => {
   });
 });
 
-describe('SEO Audit regression checks', () => {
-  it('provides bespoke content variations without duplicate brand suffix for all 5 categories', () => {
+describe('SEO Audit & Programmatic SEO regression checks', () => {
+  it('provides bespoke content variations with unique bodyIntro and 4 deliverables per category', () => {
+    const seenIntros = new Set<string>();
     for (const slug of KATEGORI) {
       const variation = getContentVariations(slug, 'Madiun');
       assert.ok(variation.title.includes('Madiun'));
       assert.equal(variation.title.includes('| Growth Indonesia'), false);
+      assert.ok(variation.bodyIntro.length > 40);
+      assert.equal(variation.deliverables.length, 4);
+      seenIntros.add(variation.bodyIntro);
     }
+    assert.equal(seenIntros.size, KATEGORI.length);
+  });
+
+  it('synchronizes getCityServiceFaqs and getFaqSchema 1:1 with local venues', () => {
+    const venues = ['Taman Wisata Umbul', 'Waduk Bening Widas', 'Hutan Pinus Nongko Ijo'];
+    const faqs = getCityServiceFaqs('Fun Games', 'Madiun', venues);
+    const schema = getFaqSchema('Fun Games', 'Madiun', venues);
+
+    assert.equal(faqs.length, 4);
+    assert.equal(schema.mainEntity.length, 4);
+    assert.ok(faqs[2].answer.includes('Taman Wisata Umbul'));
+    assert.equal(schema.mainEntity[2].acceptedAnswer.text, faqs[2].answer);
   });
 
   it('includes address, E.164 telephone, and all 5 categories in LocalBusiness schema', () => {
@@ -79,4 +95,5 @@ describe('SEO Audit regression checks', () => {
     assert.equal(fs.readFileSync(keyFile, 'utf8').trim(), INDEXNOW_KEY);
   });
 });
+
 

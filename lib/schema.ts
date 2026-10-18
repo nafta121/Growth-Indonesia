@@ -151,21 +151,34 @@ export function getHomepageFaqSchema() {
   return generateFaqSchema(HOMEPAGE_FAQS, "https://growthindonesia.my.id/#faq");
 }
 
-export function getFaqSchema(kategoriName: string, kotaName: string) {
-  return generateFaqSchema([
+export function getCityServiceFaqs(
+  kategoriName: string,
+  kotaName: string,
+  venues: string[] = []
+): FaqQuestionItem[] {
+  const venueList = venues.length > 0 ? venues.join(', ') : `lokasi unggulan di ${kotaName}`;
+  return [
     {
-      question: `Siapa provider ${kategoriName} terbaik dan tersertifikasi di ${kotaName}?`,
-      answer: `${COMPANY_INFO.brand_name} adalah provider ${kategoriName} di ${kotaName} dengan fasilitator tersertifikasi BNSP yang profesional dan sarat pengalaman meng-handle berbagai jenis project instansi maupun korporasi berskala regional hingga nasional.`,
+      question: `Mengapa ${COMPANY_INFO.brand_name} menjadi provider & EO ${kategoriName} pilihan di ${kotaName}?`,
+      answer: `${COMPANY_INFO.brand_name} adalah provider ${kategoriName} di ${kotaName} dengan fasilitator tersertifikasi BNSP yang menerapkan metode experiential learning dan Zero Accident Policy untuk merancang program pengembangan SDM yang selaras dengan Core Values serta objektif perusahaan atau instansi Anda.`,
     },
     {
       question: `Berapa estimasi harga paket ${kategoriName} di ${kotaName}?`,
-      answer: `Harga paket ${kategoriName} di ${kotaName} sangat fleksibel menyesuaikan dengan kebutuhan tim, durasi kegiatan, dan kompleksitas acara Anda. Anda bisa mensimulasikannya via Kalkulator Budget ${COMPANY_INFO.brand_name}.`,
+      answer: `Estimasi harga paket ${kategoriName} di ${kotaName} sangat fleksibel mulai dari Rp 150.000/pax hingga paket korporat Rp 5.500.000 – Rp 9.500.000/paket, menyesuaikan durasi, jumlah peserta, lokasi (venue), dan fasilitas acara. Anda dapat mensimulasikannya melalui Kalkulator Budget ${COMPANY_INFO.brand_name}.`,
     },
     {
-      question: `Apakah kegiatan ${kategoriName} di ${kotaName} aman?`,
-      answer: `Ya, ${COMPANY_INFO.brand_name} menerapkan 'Zero Accident Policy' untuk seluruh aktivitas outdoor learning maupun in-class. Area observasi yang berada di wilayah ${kotaName} selalu dipastikan kelayakannya secara periodik.`,
+      question: `Di mana saja rekomendasi lokasi atau venue ${kategoriName} favorit di ${kotaName}?`,
+      answer: `Kami melayani kegiatan ${kategoriName.toLowerCase()}, corporate gathering, dan team building di berbagai venue populer wilayah ${kotaName} seperti ${venueList}, maupun di hotel, resort, atau area kustom pilihan instansi Anda.`,
     },
-  ]);
+    {
+      question: `Apakah kegiatan ${kategoriName} di ${kotaName} aman dan bergaransi?`,
+      answer: `Ya, ${COMPANY_INFO.brand_name} menerapkan standar keselamatan 'Zero Accident Policy' untuk seluruh aktivitas outdoor maupun indoor di ${kotaName}, didukung peralatan berstandar keamanan tinggi, tim medis siaga, serta fasilitator berlisensi BNSP.`,
+    },
+  ];
+}
+
+export function getFaqSchema(kategoriName: string, kotaName: string, venues: string[] = []) {
+  return generateFaqSchema(getCityServiceFaqs(kategoriName, kotaName, venues));
 }
 
 export interface BreadcrumbItemSchema {
@@ -234,12 +247,14 @@ export function getServicePageSchema({
   kategoriName,
   kategoriKey,
   cityDescription,
+  venues = [],
 }: {
   kotaName: string;
   cityKey: string;
   kategoriName: string;
   kategoriKey: string;
   cityDescription: string;
+  venues?: string[];
 }) {
   const serviceUrl = `https://growthindonesia.my.id/layanan/${cityKey}/${kategoriKey}`;
   const cityUrl = `https://growthindonesia.my.id/layanan/${cityKey}`;
@@ -254,7 +269,7 @@ export function getServicePageSchema({
 
   const service = getServiceSchema(kategoriName, kotaName, description, serviceUrl);
   const localBusiness = getLocalBusinessSchema(kotaName);
-  const rawFaq = getFaqSchema(kategoriName, kotaName);
+  const rawFaq = getFaqSchema(kategoriName, kotaName, venues);
 
   return {
     "@context": "https://schema.org",
