@@ -20,70 +20,77 @@ const CLIENTS = [
 const TESTIMONIALS = [
   {
     name: 'Budi Santoso',
+    role: 'Manajer SDM & Umum',
     company: 'PT INKA (Persero) Madiun',
     quote: (
       <>
-        &quot;Growth Indonesia adalah <strong className="text-gray-900 font-bold">jasa outbound madiun</strong> terbaik yang pernah kami gunakan. Kegiatan team building mereka sangat efektif meningkatkan produktivitas tim.&quot;
+        &ldquo;Growth Indonesia adalah <strong className="text-gray-900 font-bold">jasa outbound madiun</strong> terbaik yang pernah kami gunakan. Kegiatan team building mereka sangat efektif meningkatkan produktivitas tim.&rdquo;
       </>
     ),
     plainTextQuote: "Growth Indonesia adalah jasa outbound madiun terbaik yang pernah kami gunakan. Kegiatan team building mereka sangat efektif meningkatkan produktivitas tim."
   },
   {
     name: 'Siti Rahma',
+    role: 'Wakasek Kesiswaan',
     company: 'SMA Negeri 1 Madiun',
     quote: (
       <>
-        &quot;Sebagai panitia, saya sangat terbantu dengan paket <strong className="text-gray-900 font-bold">LDK OSIS</strong> ini. Pengalaman <strong className="text-gray-900 font-bold">outbound madiun</strong> yang hebat untuk melatih kepemimpinan.&quot;
+        &ldquo;Sebagai panitia, saya sangat terbantu dengan paket <strong className="text-gray-900 font-bold">LDK OSIS</strong> ini. Pengalaman <strong className="text-gray-900 font-bold">outbound madiun</strong> yang hebat untuk melatih kepemimpinan.&rdquo;
       </>
     ),
     plainTextQuote: "Sebagai panitia, saya sangat terbantu dengan paket LDK OSIS ini. Pengalaman outbound madiun yang hebat untuk melatih kepemimpinan."
   },
   {
     name: 'Andi Kusuma',
+    role: 'Pimpinan Cabang',
     company: 'Bank Jatim Ponorogo',
     quote: (
       <>
-        &quot;Mencari provider <strong className="text-gray-900 font-bold">outbound ponorogo</strong> profesional ternyata mudah. Program corporate gathering dan team building berjalan luar biasa lancar.&quot;
+        &ldquo;Mencari provider <strong className="text-gray-900 font-bold">outbound ponorogo</strong> profesional ternyata mudah. Program corporate gathering dan team building berjalan luar biasa lancar.&rdquo;
       </>
     ),
     plainTextQuote: "Mencari provider outbound ponorogo profesional ternyata mudah. Program corporate gathering dan team building berjalan luar biasa lancar."
   },
   {
     name: 'Diana Wijaya',
+    role: 'Ketua Komite Diklat',
     company: 'RS Karya Husada',
     quote: (
       <>
-        &quot;Acara tahunan kami penuh semangat karena layanan <strong className="text-gray-900 font-bold">outbound magetan</strong> yang seru dan penuh insight. Tim instruktur berpengalaman.&quot;
+        &ldquo;Acara tahunan kami penuh semangat karena layanan <strong className="text-gray-900 font-bold">outbound magetan</strong> yang seru dan penuh insight. Tim instruktur berpengalaman.&rdquo;
       </>
     ),
     plainTextQuote: "Acara tahunan kami penuh semangat karena layanan outbound magetan yang seru dan penuh insight. Tim instruktur berpengalaman."
   },
   {
     name: 'Wahyu Hidayat',
+    role: 'Kasubag Kepegawaian',
     company: 'Dinas Kehutanan Ngawi',
     quote: (
       <>
-        &quot;Sangat merekomendasikan mereka untuk momen <strong className="text-gray-900 font-bold">outbound ngawi</strong>. Sinergi antar pegawai kuat setelah sesi capacity building dari mereka.&quot;
+        &ldquo;Sangat merekomendasikan mereka untuk momen <strong className="text-gray-900 font-bold">outbound ngawi</strong>. Sinergi antar pegawai kuat setelah sesi capacity building dari mereka.&rdquo;
       </>
     ),
     plainTextQuote: "Sangat merekomendasikan mereka untuk momen outbound ngawi. Sinergi antar pegawai kuat setelah sesi capacity building dari mereka."
   },
   {
     name: 'Rina Marlina',
+    role: 'HR Development',
     company: 'Gudang Garam',
     quote: (
       <>
-        &quot;Pengalaman <strong className="text-gray-900 font-bold">outbound kediri</strong> yang paling berkesan. Pendekatan experiential learning sangat aplikatif untuk memecahkan kebekuan antar divisi.&quot;
+        &ldquo;Pengalaman <strong className="text-gray-900 font-bold">outbound kediri</strong> yang paling berkesan. Pendekatan experiential learning sangat aplikatif untuk memecahkan kebekuan antar divisi.&rdquo;
       </>
     ),
     plainTextQuote: "Pengalaman outbound kediri yang paling berkesan. Pendekatan experiential learning sangat aplikatif untuk memecahkan kebekuan antar divisi."
   },
   {
     name: 'Joko Prabowo',
+    role: 'Direktur Operasional',
     company: 'BPR Pacitan',
     quote: (
       <>
-        &quot;Aktivitas <strong className="text-gray-900 font-bold">outbound pacitan</strong> dari fasilitator ahli ini membuat outing kami tak terlupakan, aman, dan memupuk semangat kebersamaan.&quot;
+        &ldquo;Aktivitas <strong className="text-gray-900 font-bold">outbound pacitan</strong> dari fasilitator ahli ini membuat outing kami tak terlupakan, aman, dan memupuk semangat kebersamaan.&rdquo;
       </>
     ),
     plainTextQuote: "Aktivitas outbound pacitan dari fasilitator ahli ini membuat outing kami tak terlupakan, aman, dan memupuk semangat kebersamaan."
@@ -101,7 +108,8 @@ export default function TrustSignals() {
         "@type": "Review",
         "author": {
           "@type": "Person",
-          "name": t.name
+          "name": t.name,
+          "jobTitle": t.role
         },
         "reviewBody": t.plainTextQuote,
         "reviewRating": {
@@ -178,7 +186,7 @@ export default function TrustSignals() {
                 <Quote className="w-12 h-12 fill-current" />
               </div>
               <div className="relative z-10 flex flex-col h-full">
-                <p className="text-slate-600 text-sm md:text-base leading-relaxed mb-8 flex-grow">
+                <p className="text-slate-600 text-sm md:text-base leading-relaxed mb-8 flex-grow line-clamp-3">
                   {t.quote}
                 </p>
                 <div className="flex items-center gap-4 border-t border-gray-50 pt-6 mt-auto">
@@ -187,17 +195,14 @@ export default function TrustSignals() {
                   </div>
                   <div>
                     <div className="font-bold text-gray-900 font-display text-sm md:text-base">{t.name}</div>
-                    <div className="text-xs md:text-sm font-semibold text-[#EF4444] uppercase tracking-wider">{t.company}</div>
+                    <div className="text-xs font-medium text-slate-500">{t.role}</div>
+                    <div className="text-xs font-semibold text-[#EF4444] uppercase tracking-wider mt-0.5">{t.company}</div>
                   </div>
                 </div>
               </div>
             </div>
           ))}
         </div>
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4 text-center mt-12 md:mt-16">
-        <p className="text-[10px] font-black uppercase tracking-[0.5em] text-gray-300">Sustainable Growth Partnerships &copy; 2026</p>
       </div>
     </section>
   );

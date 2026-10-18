@@ -23,15 +23,15 @@ export default function ServiceAreas() {
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-12">
           {PRIORITY_CITIES.map((city, i) => (
-            <ScrollReveal key={city} delay={0.1 * i} yOffset={20}>
+            <ScrollReveal key={city} delay={0.05 * i} yOffset={12}>
               <Link
                 href={`/layanan/${city}`}
-                className="group flex flex-col items-center p-6 bg-white rounded-3xl border border-gray-100 hover:border-brand/30 hover:shadow-xl hover:shadow-brand/5 hover:-translate-y-1 transition-all duration-300 h-full"
+                className="group flex flex-col items-center p-6 bg-white rounded-3xl border border-gray-100 hover:border-brand/30 hover:shadow-xl hover:shadow-brand/5 [@media(hover:hover)_and_(pointer:fine)]:hover:-translate-y-1 transition-[transform,box-shadow,border-color] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] h-full"
               >
-                <div className="w-12 h-12 rounded-full bg-red-50 flex items-center justify-center text-brand mb-4 group-hover:bg-brand group-hover:text-white transition-colors">
+                <div className="w-12 h-12 rounded-full bg-red-50 flex items-center justify-center text-brand mb-4 group-hover:bg-brand group-hover:text-white transition-colors duration-150">
                   <MapPin className="w-5 h-5" />
                 </div>
-                <h3 className="font-bold text-gray-900 text-center capitalize group-hover:text-brand transition-colors text-sm md:text-base">
+                <h3 className="font-bold text-gray-900 text-center capitalize group-hover:text-brand transition-colors duration-150 text-sm md:text-base">
                   {city}
                 </h3>
               </Link>
@@ -39,9 +39,9 @@ export default function ServiceAreas() {
           ))}
         </div>
 
-        <ScrollReveal delay={0.6} yOffset={20}>
+        <ScrollReveal delay={0.15} yOffset={12}>
           <div className="flex justify-center">
-            <Button asChild size="lg" className="rounded-full bg-white border border-gray-200 text-gray-900 hover:bg-gray-50 flex items-center gap-2">
+            <Button asChild size="lg" className="rounded-2xl bg-white border border-gray-200 text-gray-900 hover:bg-gray-50 flex items-center gap-2">
               <Link href="/layanan">
                 Lihat Seluruh Area Layanan <ArrowRight className="w-4 h-4 ml-1" />
               </Link>

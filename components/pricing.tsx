@@ -42,8 +42,7 @@ export default function Pricing() {
   return (
     <section id="paket" className="py-20 md:py-32 bg-gray-50 overflow-hidden" aria-labelledby="paket-title">
       <div className="max-w-7xl mx-auto px-4 md:px-12">
-        <ScrollReveal delay={0} duration={0.8} className="text-center max-w-3xl mx-auto mb-16 md:mb-24">
-          <Badge className="mb-4 text-xs">Paket & Investasi SDM</Badge>
+        <ScrollReveal delay={0} duration={0.28} className="text-center max-w-3xl mx-auto mb-16 md:mb-24">
           <h2 id="paket-title" className="font-display text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-8 leading-[1.1]">
             Program & <span className="text-[#EF4444]">Investasi</span>
           </h2>

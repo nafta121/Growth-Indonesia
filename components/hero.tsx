@@ -69,20 +69,21 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Right Column: Framed Field Photography Asset */}
+          {/* Right Column: Framed Field Photography Asset + External Caption Bar */}
           <div className="lg:col-span-5 w-full">
-            <div className="relative rounded-3xl overflow-hidden border border-white/15 bg-slate-900/60 shadow-2xl aspect-[4/3] sm:aspect-[16/10] lg:aspect-[4/5]">
-              <Image
-                src="https://nafta121.sirv.com/OUTBOUND/2022-11-05%2009-09-46.jpeg"
-                alt="Dokumentasi Sesi Team Building & Outbound Training Korporat bersama Fasilitator Growth Indonesia"
-                fill
-                priority={true}
-                sizes="(max-width: 1024px) 100vw, 42vw"
-                className="object-cover"
-                referrerPolicy="no-referrer"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628]/90 via-transparent to-transparent" />
-              <div className="absolute bottom-4 left-4 right-4 p-4 rounded-2xl bg-[#0A1628]/85 backdrop-blur-md border border-white/10 flex items-center justify-between gap-4">
+            <figure className="rounded-3xl overflow-hidden border border-white/15 bg-slate-900/80 shadow-2xl">
+              <div className="relative aspect-[4/3] sm:aspect-[16/10] lg:aspect-[4/4]">
+                <Image
+                  src="https://nafta121.sirv.com/OUTBOUND/2022-11-05%2009-09-46.jpeg"
+                  alt="Dokumentasi Sesi Team Building & Outbound Training Korporat bersama Fasilitator Growth Indonesia"
+                  fill
+                  priority={true}
+                  sizes="(max-width: 1024px) 100vw, 42vw"
+                  className="object-cover"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+              <figcaption className="p-4 bg-[#0A1628] border-t border-white/10 flex items-center justify-between gap-4">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl bg-brand/20 border border-brand/30 flex items-center justify-center text-brand shrink-0">
                     <ShieldCheck className="w-5 h-5" />
@@ -96,8 +97,8 @@ export default function Hero() {
                   <Award className="w-4 h-4 text-brand" />
                   <span>250+ Klien</span>
                 </div>
-              </div>
-            </div>
+              </figcaption>
+            </figure>
           </div>
         </div>
       </div>

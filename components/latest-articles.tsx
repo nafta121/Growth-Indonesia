@@ -31,7 +31,7 @@ export default async function LatestArticles() {
             <Link
               key={article.slug}
               href={`/artikel/${article.slug}`}
-              className="group flex flex-col bg-white rounded-3xl overflow-hidden border border-gray-100 hover:border-red-500/20 hover:shadow-2xl hover:shadow-red-500/5 hover:-translate-y-1.5 transition-all duration-300"
+              className="group flex flex-col bg-white rounded-3xl overflow-hidden border border-gray-100 hover:border-red-500/20 hover:shadow-2xl hover:shadow-red-500/5 [@media(hover:hover)_and_(pointer:fine)]:hover:-translate-y-1 transition-[transform,box-shadow,border-color] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)]"
             >
               {/* Image Container */}
               <div className="relative aspect-[16/10] overflow-hidden bg-slate-100">
@@ -41,7 +41,7 @@ export default async function LatestArticles() {
                   fill
                   loading="lazy"
                   sizes="(max-width: 768px) 100vw, 33vw"
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="object-cover [@media(hover:hover)_and_(pointer:fine)]:group-hover:scale-[1.03] transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)]"
                   referrerPolicy="no-referrer"
                 />
               </div>
@@ -67,7 +67,7 @@ export default async function LatestArticles() {
                 </div>
 
                 {/* Title */}
-                <h3 className="font-display font-bold text-xl text-gray-900 mb-2 group-hover:text-[#EF4444] transition-colors line-clamp-2 leading-tight">
+                <h3 className="font-display font-bold text-xl text-gray-900 mb-2 group-hover:text-[#EF4444] transition-colors duration-150 line-clamp-2 leading-tight">
                   {article.frontmatter.title}
                 </h3>
 
@@ -79,7 +79,7 @@ export default async function LatestArticles() {
                 {/* Baca Selengkapnya Link */}
                 <span className="mt-auto inline-flex items-center text-xs font-extrabold text-[#EF4444] group-hover:text-red-700 uppercase tracking-wider">
                   Baca Selengkapnya
-                  <ArrowRight className="w-3.5 h-3.5 ml-1 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-3.5 h-3.5 ml-1 group-hover:translate-x-1 transition-transform duration-150 ease-[cubic-bezier(0.23,1,0.32,1)]" />
                 </span>
               </div>
             </Link>
@@ -90,7 +90,7 @@ export default async function LatestArticles() {
         <div className="text-center">
           <Link
             href="/artikel"
-            className="inline-flex items-center justify-center bg-[#0A1628] hover:bg-slate-800 text-white font-extrabold px-8 py-4 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-red-500/5 text-sm md:text-base uppercase tracking-wider"
+            className="inline-flex items-center justify-center bg-[#0A1628] hover:bg-slate-800 text-white font-extrabold px-8 py-4 rounded-2xl transition-[transform,background-color,box-shadow] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.98] hover:shadow-lg hover:shadow-red-500/5 text-sm md:text-base uppercase tracking-wider"
           >
             Lihat Semua Artikel
             <ArrowRight className="w-4 h-4 ml-2" />
