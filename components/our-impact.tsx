@@ -21,9 +21,14 @@ function Counter({ end, duration = 2500, suffix = '', prefix = '' }: CounterProp
   useEffect(() => {
     if (!isInView || !ref.current) return;
 
+    const node = ref.current;
+    if (typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      node.textContent = `${prefix}${end.toLocaleString()}${suffix}`;
+      return;
+    }
+
     let startTime: number | null = null;
     let animationFrame: number;
-    const node = ref.current;
 
     const animate = (currentTime: number) => {
       if (!startTime) startTime = currentTime;
@@ -61,28 +66,28 @@ const IMPACT_STATS = [
     icon: Briefcase,
     value: 10,
     suffix: '+',
-    label: 'Years of Experience',
+    label: 'Tahun Pengalaman',
     description: 'Dedikasi melayani berbagai klien.',
   },
   {
     icon: CalendarCheck,
     value: 500,
     suffix: '+',
-    label: 'Successful Events',
-    description: 'Terelenggara dengan aman dan sukses.',
+    label: 'Event Terselenggara',
+    description: 'Terselenggara dengan aman dan sukses.',
   },
   {
     icon: Target,
     value: 250,
     suffix: '+',
-    label: 'Clients Served',
+    label: 'Klien Terlayani',
     description: 'Perusahaan dan instansi yang puas.',
   },
   {
     icon: Users,
     value: 15000,
     suffix: '+',
-    label: 'Participants Trained',
+    label: 'Peserta Terlatih',
     description: 'Alumni pelatihan yang lebih tangguh.',
   },
 ];
@@ -92,20 +97,21 @@ export default function OurImpact() {
     <section className="py-20 md:py-24 bg-gray-50 border-y border-gray-100 relative overflow-hidden" aria-labelledby="impact-title">
       <Image
         src="https://nafta121.sirv.com/OUTBOUND/2022-10-22%2009-00-09.jpeg"
-        alt="Background Our Impact Growth Indonesia"
+        alt=""
+        aria-hidden="true"
         fill
-        priority
+        loading="lazy"
         sizes="100vw"
         className="object-cover object-center opacity-5 mix-blend-overlay absolute inset-0 -z-10"
         referrerPolicy="no-referrer"
       />
       <div className="max-w-7xl mx-auto px-4 md:px-12 relative z-10">
         <ScrollReveal className="text-center mb-16">
-          <Badge className="mb-4">Our Impact</Badge>
-          <h2 id="impact-title" className="font-display text-4xl md:text-5xl font-black text-gray-900 leading-[1.1] mb-6">
+          <Badge className="mb-4">Dampak Kami</Badge>
+          <h2 id="impact-title" className="font-display text-4xl md:text-5xl font-black text-gray-900 leading-[1.1] mb-6 text-balance">
             Jejak Langkah <span className="text-[#EF4444]">Penuh Makna</span>
           </h2>
-          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed text-pretty">
             Sejak berdiri, Growth Indonesia telah menjadi katalis perubahan bagi ratusan perusahaan. Angka-angka ini adalah cerminan dari kepercayaan dan dedikasi kami.
           </p>
         </ScrollReveal>
@@ -123,11 +129,11 @@ export default function OurImpact() {
                 <div className="w-14 h-14 bg-red-50 text-[#EF4444] rounded-2xl flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 group-hover:bg-[#EF4444] group-hover:text-white transition-all duration-300">
                   <Icon className="w-7 h-7" />
                 </div>
-                <div className="font-display text-5xl font-black text-gray-900 mb-2">
+                <div className="font-display text-5xl font-black text-gray-900 mb-2 tabular-nums">
                   <Counter end={stat.value} suffix={stat.suffix} />
                 </div>
                 <h3 className="text-xl font-bold text-gray-800 mb-2">{stat.label}</h3>
-                <p className="text-gray-500 font-medium">{stat.description}</p>
+                <p className="text-gray-500 font-medium text-pretty">{stat.description}</p>
               </ScrollReveal>
             );
           })}

@@ -27,14 +27,14 @@ export default function Hero() {
 
       {/* Background Decor */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-brand/5 rounded-full blur-[120px] animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-blue-600/5 rounded-full blur-[150px] animate-pulse delay-700" />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-brand/5 rounded-full blur-[120px]" />
+        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-blue-600/5 rounded-full blur-[150px]" />
       </div>
 
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-12 relative z-10 text-center">
         <div className="w-full max-w-5xl mx-auto flex flex-col items-center">
           {/* Headline */}
-          <h1 className="w-full max-w-full font-display text-2xl sm:text-4xl md:text-5xl lg:text-7xl font-black text-white leading-[1.2] mb-6 md:mb-8 tracking-tight opacity-0 animate-fade-in break-words">
+          <h1 className="w-full max-w-full font-display text-2xl sm:text-4xl md:text-5xl lg:text-7xl font-black text-white leading-[1.2] mb-6 md:mb-8 tracking-tight opacity-0 animate-fade-in break-words text-balance">
             <Badge variant="dark" className="mb-4 md:mb-8 font-sans">Let&apos;s Grow with us!</Badge>
             <span className="block mt-4 relative">
               Event Organizer Madiun &
@@ -45,7 +45,7 @@ export default function Hero() {
           </h1>
 
           {/* Subheadline */}
-          <p className="w-full text-slate-100 text-sm sm:text-base md:text-lg lg:text-xl font-medium max-w-3xl mx-auto leading-relaxed mb-10 md:mb-12 px-2 sm:px-4 opacity-0 animate-fade-in delay-200 break-words">
+          <p className="w-full text-slate-100 text-sm sm:text-base md:text-lg lg:text-xl font-medium max-w-3xl mx-auto leading-relaxed mb-10 md:mb-12 px-2 sm:px-4 opacity-0 animate-fade-in delay-200 break-words text-pretty">
             Layanan profesional <strong>Event Organizer Madiun</strong>, <strong>Provider Outbound Training</strong>, dan <strong>Team Building</strong> bersertifikat BNSP dengan garansi program terukur serta Zero Accident Policy.
           </p>
 
@@ -60,7 +60,7 @@ export default function Hero() {
             <Button asChild variant="outline" size="lg" className="w-full sm:w-auto min-w-[240px] sm:min-w-[260px] bg-transparent border border-white/20 text-slate-300 hover:bg-white/10 hover:text-white transition-colors text-sm md:text-base h-14 rounded-xl group">
               <Link href="#paket">
                 Lihat Paket & Program
-                <svg className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </Link>
@@ -69,12 +69,12 @@ export default function Hero() {
 
           {/* Trust Signals */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 opacity-0 animate-fade-in delay-[600ms] px-4">
-            <div className="flex text-yellow-400 shrink-0">
+            <div className="flex text-yellow-400 shrink-0" aria-hidden="true">
               {[...Array(5)].map((_, i) => (
                 <Star key={i} className="w-4 h-4 md:w-5 md:h-5 fill-current" />
               ))}
             </div>
-            <span className="text-xs sm:text-sm md:text-base font-medium text-slate-300 text-center">
+            <span className="text-xs sm:text-sm md:text-base font-medium text-slate-300 text-center tabular-nums">
               Dipercaya 250+ Perusahaan & Instansi Nasional
             </span>
           </div>
@@ -87,8 +87,8 @@ export default function Hero() {
       />
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 pointer-events-none opacity-0 animate-[fade-in_1s_ease-out_forwards] delay-[1s]">
-        <ChevronDown className="w-6 h-6 text-gray-400 animate-bounce" />
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 pointer-events-none opacity-0 animate-[fade-in_1s_ease-out_forwards] delay-[1s]" aria-hidden="true">
+        <ChevronDown className="w-6 h-6 text-gray-400 animate-bounce motion-reduce:animate-none" />
       </div>
     </section>
   );
