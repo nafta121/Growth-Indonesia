@@ -8,6 +8,7 @@ import { getContentVariations } from './content-variations';
 import { getLocalBusinessSchema, getCityServiceFaqs, getFaqSchema } from './schema';
 import { INDEXNOW_KEY } from './indexnow';
 import { GET as getLlmsTxt } from '../app/llms.txt/route';
+import { GET as getPricingMd } from '../app/pricing.md/route';
 
 describe('KATEGORI & CATEGORIES_SET', () => {
   it('contains all 5 canonical category slugs', () => {
@@ -93,6 +94,30 @@ describe('SEO Audit & Programmatic SEO regression checks', () => {
     const keyFile = path.join(process.cwd(), 'public', `${INDEXNOW_KEY}.txt`);
     assert.equal(fs.existsSync(keyFile), true);
     assert.equal(fs.readFileSync(keyFile, 'utf8').trim(), INDEXNOW_KEY);
+  });
+
+  it('serves /pricing.md with status 200, official package prices, and no direct BNSP mention', async () => {
+    const response = await getPricingMd();
+    assert.equal(response.status, 200);
+    const body = await response.text();
+    assert.match(body, /Rp\. 9\.500\.000/);
+    assert.match(body, /Rp\. 7\.000\.000/);
+    assert.match(body, /Rp\. 5\.500\.000/);
+    assert.doesNotMatch(body, /BNSP/i);
+  });
+
+  it('maintains valid content/marketing-loop-state.json with 0 em-dash/en-dash and accurate brand name', () => {
+    const statePath = path.join(process.cwd(), 'content', 'marketing-loop-state.json');
+    assert.equal(fs.existsSync(statePath), true);
+    const raw = fs.readFileSync(statePath, 'utf8');
+    assert.equal(/[\u2013\u2014]/.test(raw), false);
+    assert.match(raw, /Growth Indonesia/);
+    assert.doesNotMatch(raw, /Gemilang/i);
+    const parsed = JSON.parse(raw);
+    assert.equal(parsed.loopName, 'Weekly East Java pSEO & AI-Visibility Loop');
+    assert.equal(parsed.indexNowKeyFile, '/e368c11258e94b86a9bc1a862c3042da.txt');
+    assert.equal(Array.isArray(parsed.aiGroundingEndpoints), true);
+    assert.equal(Array.isArray(parsed.recentlyOptimizedRoutes), true);
   });
 });
 

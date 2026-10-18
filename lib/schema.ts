@@ -127,7 +127,7 @@ export function generateFaqSchema(faqs: FaqQuestionItem[], id?: string) {
 export const HOMEPAGE_FAQS: FaqQuestionItem[] = [
   {
     question: "Mengapa memilih Growth Indonesia sebagai provider outbound & event organizer di Madiun?",
-    answer: "Growth Indonesia adalah provider outbound & event organizer Madiun terpercaya dengan fasilitator bersertifikat BNSP, transparan dalam penganggaran, mengusung Zero Accident Policy, dan telah dipercaya oleh lebih dari 250+ perusahaan, BUMN, instansi pemerintah, serta sekolah.",
+    answer: "Growth Indonesia adalah provider outbound & event organizer Madiun terpercaya dengan fasilitator berpengalaman, transparan dalam penganggaran, mengusung Zero Accident Policy, dan telah dipercaya oleh lebih dari 250+ perusahaan, BUMN, instansi pemerintah, serta sekolah.",
   },
   {
     question: "Layanan apa saja yang disediakan oleh Growth Indonesia?",
@@ -143,7 +143,7 @@ export const HOMEPAGE_FAQS: FaqQuestionItem[] = [
   },
   {
     question: "Apakah kegiatan outbound dari Growth Indonesia aman?",
-    answer: "Ya, kami berkomitmen pada Zero Accident Policy dengan standar keselamatan ketat, peralatan teruji, instruktur/fasilitator bersertifikat BNSP, serta tim medis siaga di setiap lokasi acara.",
+    answer: "Ya, kami berkomitmen pada Zero Accident Policy dengan standar keselamatan ketat, peralatan teruji, instruktur dan fasilitator berpengalaman, serta tim medis siaga di setiap lokasi acara.",
   },
 ];
 
@@ -160,7 +160,7 @@ export function getCityServiceFaqs(
   return [
     {
       question: `Mengapa ${COMPANY_INFO.brand_name} menjadi provider & EO ${kategoriName} pilihan di ${kotaName}?`,
-      answer: `${COMPANY_INFO.brand_name} adalah provider ${kategoriName} di ${kotaName} dengan fasilitator tersertifikasi BNSP yang menerapkan metode experiential learning dan Zero Accident Policy untuk merancang program pengembangan SDM yang selaras dengan Core Values serta objektif perusahaan atau instansi Anda.`,
+      answer: `${COMPANY_INFO.brand_name} adalah provider ${kategoriName} di ${kotaName} dengan fasilitator berpengalaman yang menerapkan metode experiential learning dan Zero Accident Policy untuk merancang program pengembangan SDM yang selaras dengan Core Values serta objektif perusahaan atau instansi Anda.`,
     },
     {
       question: `Berapa estimasi harga paket ${kategoriName} di ${kotaName}?`,
@@ -172,7 +172,7 @@ export function getCityServiceFaqs(
     },
     {
       question: `Apakah kegiatan ${kategoriName} di ${kotaName} aman dan bergaransi?`,
-      answer: `Ya, ${COMPANY_INFO.brand_name} menerapkan standar keselamatan 'Zero Accident Policy' untuk seluruh aktivitas outdoor maupun indoor di ${kotaName}, didukung peralatan berstandar keamanan tinggi, tim medis siaga, serta fasilitator berlisensi BNSP.`,
+      answer: `Ya, ${COMPANY_INFO.brand_name} menerapkan standar keselamatan 'Zero Accident Policy' untuk seluruh aktivitas outdoor maupun indoor di ${kotaName}, didukung peralatan berstandar keamanan tinggi, tim medis siaga, serta fasilitator berpengalaman.`,
     },
   ];
 }

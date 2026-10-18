@@ -72,9 +72,12 @@ export function AiOverviewSection({
                 <Sparkles className="w-8 h-8 text-[#EF4444]" aria-hidden="true" />
               </div>
               <div>
+                <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#EF4444] bg-red-50 border border-red-100 px-3 py-1 rounded-full mb-3">
+                  <span>Terverifikasi Tim Praktisi Ahli • Diperbarui Oktober 2026</span>
+                </div>
                 <h3 className="font-display font-extrabold text-2xl text-gray-900 mb-4 tracking-tight">Ringkasan Layanan {kategoriName} di {cityName}</h3>
                 <p className="text-slate-600 text-lg md:text-xl leading-relaxed font-medium text-pretty">
-                  Growth Indonesia menyediakan layanan <strong>{kategoriName}, Corporate Gathering, dan Team Building</strong> profesional di {cityName} (termasuk area {venueSummary}). Kami merancang program berbasis <em>experiential learning</em> berstandar BNSP dengan <em>Zero Accident Policy</em> untuk meningkatkan kepemimpinan, kolaborasi, dan produktivitas tim Anda.
+                  Growth Indonesia menyediakan layanan <strong>{kategoriName}, Corporate Gathering, dan Team Building</strong> profesional di {cityName} (termasuk area {venueSummary}). Dengan rekam jejak menangani <strong>250+ perusahaan, BUMN, dan instansi (15.000+ peserta)</strong> serta catatan <strong>0 insiden keselamatan (Zero Accident Policy)</strong>, setiap program dirancang berbasis <em>experiential learning</em> di bawah supervisi langsung Master Trainer berpengalaman (<strong>Naftalyndho</strong> dan <strong>Juprianto</strong>) untuk meningkatkan kepemimpinan, kolaborasi, dan produktivitas tim Anda.
                 </p>
               </div>
             </div>
@@ -121,6 +124,25 @@ export function AiOverviewSection({
                   })}
                 </tbody>
               </table>
+            </div>
+            <div className="mt-4 flex flex-wrap items-center justify-between gap-3 text-sm text-slate-500 px-2">
+              <span>*Investasi dapat disesuaikan dengan kuota peserta, durasi, dan pilihan venue di {cityName}.</span>
+              <div className="flex flex-wrap items-center gap-4">
+                <Link
+                  href="/pricing.md"
+                  className="inline-flex items-center gap-1 font-semibold text-gray-700 hover:text-[#EF4444] transition-colors"
+                >
+                  <span>Rincian Harga Lengkap (pricing.md)</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 text-[#EF4444]" aria-hidden="true" />
+                </Link>
+                <Link
+                  href="/portofolio-dan-sertifikasi"
+                  className="inline-flex items-center gap-1 font-semibold text-gray-700 hover:text-[#EF4444] transition-colors"
+                >
+                  <span>Portofolio & Rekam Jejak</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 text-[#EF4444]" aria-hidden="true" />
+                </Link>
+              </div>
             </div>
           </div>
 

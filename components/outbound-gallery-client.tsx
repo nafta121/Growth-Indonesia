@@ -93,9 +93,9 @@ export default function OutboundGalleryClient({ photos, children }: OutboundGall
               type="button"
               onClick={handleClose}
               aria-label="Tutup galeri"
-              className="absolute top-6 right-6 text-white/70 hover:text-white transition-colors z-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-lg"
+              className="absolute top-[max(1.5rem,env(safe-area-inset-top))] right-[max(1.5rem,env(safe-area-inset-right))] min-h-12 min-w-12 p-2.5 flex items-center justify-center bg-black/60 hover:bg-black/80 border border-white/20 text-white transition-colors z-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-full"
             >
-              <X className="w-10 h-10" aria-hidden="true" />
+              <X className="w-7 h-7" aria-hidden="true" />
             </button>
 
             <div className="relative w-full h-full flex items-center justify-center">
@@ -103,9 +103,9 @@ export default function OutboundGalleryClient({ photos, children }: OutboundGall
                 type="button"
                 onClick={handlePrev}
                 aria-label="Gambar sebelumnya"
-                className="absolute left-0 md:-left-12 text-white/50 hover:text-white transition-colors p-2 z-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-lg"
+                className="absolute left-2 md:-left-12 min-h-12 min-w-12 p-2.5 flex items-center justify-center bg-black/60 hover:bg-black/80 border border-white/20 text-white transition-colors z-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-full"
               >
-                <ChevronLeft className="w-12 h-12" aria-hidden="true" />
+                <ChevronLeft className="w-8 h-8" aria-hidden="true" />
               </button>
 
               <motion.div
@@ -130,14 +130,14 @@ export default function OutboundGalleryClient({ photos, children }: OutboundGall
                 type="button"
                 onClick={handleNext}
                 aria-label="Gambar selanjutnya"
-                className="absolute right-0 md:-right-12 text-white/50 hover:text-white transition-colors p-2 z-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-lg"
+                className="absolute right-2 md:-right-12 min-h-12 min-w-12 p-2.5 flex items-center justify-center bg-black/60 hover:bg-black/80 border border-white/20 text-white transition-colors z-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-full"
               >
-                <ChevronRight className="w-12 h-12" aria-hidden="true" />
+                <ChevronRight className="w-8 h-8" aria-hidden="true" />
               </button>
             </div>
 
             {/* Counter */}
-            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/70 font-mono text-sm tabular-nums">
+            <div className="absolute bottom-[max(1.5rem,env(safe-area-inset-bottom))] left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-black/60 border border-white/15 text-white font-mono text-sm tabular-nums">
               {currentIndex + 1} / {photos.length}
             </div>
           </motion.div>

@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const title = content.title.replace(/\s*\|\s*Growth Indonesia$/i, '');
   const fullTitle = `${title} | ${COMPANY_INFO.brand_name}`;
-  const description = `Jasa ${kategoriName.toLowerCase()} & event organizer profesional di ${kotaName} bersertifikat BNSP. ${cityData.description} Hubungi ${COMPANY_INFO.brand_name} untuk penawaran harga terbaik!`;
+  const description = `Jasa ${kategoriName.toLowerCase()} & event organizer profesional di ${kotaName}. ${cityData.description} Hubungi ${COMPANY_INFO.brand_name} untuk penawaran harga terbaik!`;
   const ogImages = getCategoryOgImage(decodedKategori, kotaName);
   const canonicalUrl = `https://growthindonesia.my.id/layanan/${decodedKota}/${decodedKategori}`;
 
@@ -113,7 +113,7 @@ export default async function ProgrammaticSiloPage({ params }: Props) {
 
   const kotaName = formatSlug(decodedKota);
   const kategoriName = formatSlug(decodedKategori);
-  const description = `Jasa ${kategoriName.toLowerCase()} & event organizer profesional di ${kotaName} bersertifikat BNSP. ${cityData.description} Hubungi ${COMPANY_INFO.brand_name} untuk penawaran harga terbaik!`;
+  const description = `Jasa ${kategoriName.toLowerCase()} & event organizer profesional di ${kotaName}. ${cityData.description} Hubungi ${COMPANY_INFO.brand_name} untuk penawaran harga terbaik!`;
 
   const schemaLd = getServicePageSchema({
     kotaName,
@@ -140,7 +140,7 @@ export default async function ProgrammaticSiloPage({ params }: Props) {
           <meta itemProp="category" content={kategoriName} />
           <meta itemProp="provider" content={COMPANY_INFO.brand_name} />
           <meta itemProp="areaServed" content={kotaName} />
-          <meta itemProp="award" content="Fasilitator & Instructor Tersertifikasi BNSP" />
+          <meta itemProp="award" content="Fasilitator & Praktisi Experiential Learning Berpengalaman" />
           <meta itemProp="serviceType" content={`${kategoriName} Outbound & Event Organizer`} />
           
           <CityHero 

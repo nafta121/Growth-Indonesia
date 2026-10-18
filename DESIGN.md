@@ -30,20 +30,21 @@
 ## 3. DESIGN SYSTEM & VISUAL TOKENS (For Stitch)
 
 ### Color Palette
-- **Primary Base (Trust & Corporate):** Deep Navy `#0F172A` (Slate 900) & Midnight Blue `#1E293B`[span_13](start_span)[span_13](end_span).
-- **Accent/CTA (Action & Energy):** Corporate Red `#DC2626` (Red 600) or `#EF4444` (Red 500) derived directly from the official logo. Use for main buttons and interactive highlights.
+- **Primary Base (Trust & Corporate):** Deep Navy `#0A1628` (`--color-navy`), Slate 900 `#0F172A`, & Midnight Blue `#1E293B`.
+- **Accent/CTA (Action & Energy):** Corporate Red `#EF4444` (`--color-brand` / Red 500) & `#DC2626` (`--color-brand-dark` / Red 600) derived directly from the official logo. Use for main buttons and interactive highlights.
+- **Secondary Action (WhatsApp Conversion):** `#25D366` (`--color-whatsapp`). Note: Pair with dark text (`#0A1628`) or darkened emerald surface (`#128C7E` / `#15803D`) when displaying white text to satisfy WCAG 2.2 AA contrast.
 - **Neutrals/Backgrounds:** 
-  - Main Background: `#FFFFFF`
-  - Subtle Sections: `#F8FAFC` (Slate 50)
-  - Borders/Dividers: `#E2E8F0` (Slate 200)
+  - Dark Canvas Default: `#0A1628` (`bg-navy`)
+  - Light Surface / Cards: `#FFFFFF` & `#F8FAFC` (Slate 50)
+  - Borders/Dividers: `#E2E8F0` (Slate 200 on light) / `rgba(255, 255, 255, 0.1)` (`border-white/10` on dark)
 
 ### Typography
-- **Headings (H1-H6):** `font-sans` (Plus Jakarta Sans, Montserrat, or Inter). Font-weight: Bold/ExtraBold. Tight letter spacing (`tracking-tight`).
-- **Body:** `font-sans` (Inter). Base size 16px (`text-base`). Relaxed line-height (`leading-relaxed`) for readability.
+- **Display / Headings (H1-H6):** `--font-display` (`Outfit`) & `--font-sans` (`Plus Jakarta Sans`). Font-weight: Bold/ExtraBold (`700`-`800`). Tight letter spacing (`tracking-tight`).
+- **Body:** `--font-sans` (`Plus Jakarta Sans`). Base size 16px (`text-base`, `1rem`). Relaxed line-height (`leading-relaxed`, `1.625`) for readability.
 
 ### Component Styling
 - **Border Radius:** `rounded-xl` (12px) for buttons, `rounded-2xl` (16px) for large cards/containers.
-- **Shadows:** Soft, modern shadows (`shadow-sm`, `shadow-md`, `shadow-lg`) with subtle borders (`border border-slate-200`).
+- **Shadows:** Soft, modern shadows (`shadow-sm`, `shadow-md`, `shadow-lg`) with subtle borders (`border border-slate-200` on light surfaces, `border border-white/10` on dark surfaces).
 
 ---
 
@@ -74,3 +75,48 @@
 - **Component Pattern:** Use React Server Components (RSC) by default. Add `"use client"` only for interactivity.
 - **Tailwind:** Use pure Tailwind utility classes. Merge classes safely using `tailwind-merge` and `clsx`.
 - **Icons:** Use `lucide-react`.
+
+---
+
+## 7. CROSS-PLATFORM & ACCESSIBILITY RULES (`platform-design`: Apple HIG, Material Design 3, WCAG 2.2)
+
+### 7.1 Target Sizes & Touch Ergonomics
+- **Minimum Touch Targets:**
+  - **iOS / Apple HIG:** `44 × 44 pt` minimum hit target (`min-h-11 min-w-11` in Tailwind).
+  - **Android / Material Design 3:** `48 × 48 dp` minimum touch target (`min-h-12 min-w-12` recommended for primary mobile CTAs, nav toggles, and floating action buttons).
+  - **WCAG 2.2 SC 2.5.8 (Target Size Minimum - AA):** All pointer inputs must be at least `24 × 24 CSS px` or have at least `24 px` spacing offset from adjacent targets.
+- **Target Spacing:** Maintain a minimum `8px` (`gap-2`) clearance between interactive buttons, chips, and links to prevent accidental taps on mobile viewports.
+
+### 7.2 Color Contrast & Visual Accessibility (WCAG 2.2 AA/AAA)
+- **Text Contrast (SC 1.4.3):**
+  - Normal text (`< 18pt` or `< 14pt bold`): Minimum **4.5:1** contrast ratio against its background.
+  - Large text (`>= 18pt` / `24px` or `>= 14pt bold` / `18.66px bold`): Minimum **3.0:1** contrast ratio.
+  - **Brand Red Guardrail:** `#DC2626` (`bg-brand-dark`) on `#FFFFFF` yields **4.83:1** (passes AA normal text). `#EF4444` (`bg-brand`) on `#FFFFFF` yields **3.76:1** (use only for large bold text `>= 18.66px`, icons, or pair with `#DC2626` for standard button text).
+  - **Muted Text on Dark (`#0A1628`):** Use `text-slate-300` (`#CBD5E1`, contrast **12.5:1**) or `text-slate-400` (`#94A3B8`, contrast **6.8:1**). Avoid `text-slate-500` or lower for body copy on dark backgrounds.
+- **Non-Text Contrast (SC 1.4.11):** Interactive component boundaries (inputs, cards, buttons, focus rings) and meaningful icons must maintain at least **3.0:1** contrast against adjacent surfaces.
+
+### 7.3 Keyboard Focus & Navigation (WCAG 2.2)
+- **Focus Appearance (SC 2.4.7 & 2.4.13):** Never use `outline-none` without a high-contrast `focus-visible:` replacement. Standard focus token: `focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A1628]` (or `ring-offset-white` on light cards).
+- **Focus Not Obscured (SC 2.4.11):** Fixed headers (`scroll-padding-top: 100px` in `globals.css`) and floating widgets (WhatsApp FAB) must never completely obscure the focused element when tabbing through the page.
+- **Consistent Help (SC 3.2.6):** The WhatsApp B2B consultation entry point (`+62 857-0474-8186`) must remain in a consistent relative order across all pages.
+
+### 7.4 Typography, Dynamic Type & Reflow (HIG + M3 + WCAG 2.2)
+- **Relative Units:** Define font sizes, line heights, and spacing in `rem`/`em` rather than raw `px` so iOS Dynamic Type, Android font scaling, and browser zoom up to `200%` (SC 1.4.4) scale proportionally without clipping text.
+- **Mobile Input Zoom Prevention (iOS Safari):** Form inputs (`<input>`, `<select>`, `<textarea>`) must use a minimum font size of `16px` (`text-base`) on mobile viewports to prevent iOS Safari from auto-zooming on focus.
+- **Reflow (SC 1.4.10):** Layouts must reflow cleanly down to `320 CSS px` width without horizontal scrolling (except intentional data tables or carousels with accessible controls).
+- **Line Length:** Constrain long-form reading columns (e.g., `/blog/[slug]` and service descriptions) to `60ch-75ch` (`max-w-prose`) for optimal eye tracking.
+
+### 7.5 Safe Areas, Adaptive Layout & Viewport Units
+- **Safe Area Insets (iOS Notch / Dynamic Island / Home Indicator & Android Gesture Bar):**
+  - Sticky bottom bars and floating buttons (e.g., Floating WhatsApp CTA) must respect `env(safe-area-inset-bottom)` and `env(safe-area-inset-right)` so controls never collide with OS gesture bars.
+- **Dynamic Viewport Height:** Prefer `min-h-dvh` over `min-h-screen` (`100vh`) for full-height hero sections and mobile drawers to prevent layout jumps when mobile browser address bars expand or collapse.
+- **Material 3 Window Size Classes:**
+  - **Compact (`< 600px`):** Single-column stack, collapsible drawer navigation, full-width primary CTAs (`w-full sm:w-auto`).
+  - **Medium (`600px-839px`):** 2-column Bento/service grids, tablet-optimized spacing.
+  - **Expanded (`>= 840px` / Desktop `>= 1024px`):** Multi-column Bento layouts, inline top navigation bar, generous horizontal padding.
+
+### 7.6 Motion, Gestures & Input Modality
+- **Reduced Motion (HIG / M3 / WCAG SC 2.3.3):** All continuous or entrance animations (`animate-marquee`, `animate-glare`, `animate-editorial-bounce`, `animate-fade-in`, `animate-fab-enter`) must be disabled or simplified under `@media (prefers-reduced-motion: reduce)` (enforced in `app/globals.css`).
+- **Compositor-Only Animations:** Animate only `transform` and `opacity` to maintain 60/120fps across mobile WebViews and low-power Android devices.
+- **Pointer Cancellation & Dragging Alternatives (SC 2.5.1, 2.5.2, 2.5.7):** Any swipeable carousel or gallery must also be operable via single-tap buttons or keyboard arrow keys without requiring multipoint or path-based drag gestures.
+

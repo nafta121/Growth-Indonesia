@@ -15,13 +15,22 @@ export default function ServicesTabs({ services }: { services: Record<string, { 
 
   return (
     <>
-      <div className="relative flex flex-nowrap overflow-x-auto p-1.5 bg-white/5 backdrop-blur-sm rounded-2xl md:rounded-3xl border border-white/10 w-full max-w-2xl mx-auto mb-12 md:mb-20 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory">
+      <div
+        role="tablist"
+        aria-label="Kategori Layanan Growth Indonesia"
+        className="relative flex flex-nowrap overflow-x-auto p-1.5 bg-white/5 backdrop-blur-sm rounded-2xl md:rounded-3xl border border-white/10 w-full max-w-2xl mx-auto mb-12 md:mb-20 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory"
+      >
         {CATEGORIES.map((cat) => (
           <button
             key={cat.id}
+            id={`tab-${cat.id}`}
+            role="tab"
+            type="button"
+            aria-selected={activeTab === cat.id}
+            aria-controls={`tabpanel-${cat.id}`}
             onClick={() => setActiveTab(cat.id)}
             className={cn(
-              "relative z-10 flex-1 min-w-fit shrink-0 snap-center py-4 md:py-5 px-6 text-xs md:text-sm font-bold tracking-[0.15em] transition-all duration-300 rounded-xl md:rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF4444] uppercase active:scale-95",
+              "relative z-10 flex-1 min-w-fit min-h-12 shrink-0 snap-center py-4 md:py-5 px-6 text-xs md:text-sm font-bold tracking-[0.15em] transition-all duration-300 rounded-xl md:rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF4444] uppercase active:scale-95",
               activeTab === cat.id ? "text-white" : "text-slate-300 hover:bg-slate-800 hover:text-white"
             )}
           >
@@ -30,7 +39,7 @@ export default function ServicesTabs({ services }: { services: Record<string, { 
             {activeTab === cat.id && (
               <motion.div
                 layoutId="activeTab"
-                className="absolute inset-0 bg-[#EF4444] rounded-xl md:rounded-2xl -z-10 shadow-[0_0_20px_rgba(239,68,68,0.3)]"
+                className="absolute inset-0 bg-[#DC2626] rounded-xl md:rounded-2xl -z-10 shadow-[0_0_20px_rgba(220,38,38,0.35)]"
                 transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
               />
             )}
@@ -42,6 +51,9 @@ export default function ServicesTabs({ services }: { services: Record<string, { 
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}
+            id={`tabpanel-${activeTab}`}
+            role="tabpanel"
+            aria-labelledby={`tab-${activeTab}`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}

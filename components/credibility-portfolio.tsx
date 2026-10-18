@@ -32,15 +32,15 @@ const FACILITATORS: Facilitator[] = [
   {
     name: 'Naftalyndho',
     role: 'Lead Facilitator & Master Trainer',
-    certification: 'Sertifikat Kompetensi Fasilitator Outbound',
-    certificationBody: 'BNSP (Badan Nasional Sertifikasi Profesi)',
+    certification: 'Kompetensi Fasilitator Experiential Learning & Outbound',
+    certificationBody: 'Standar Kompetensi Fasilitasi Nasional',
     specialization: ['Experiential Learning', 'Corporate Capacity Building', 'Executive Leadership Development'],
   },
   {
     name: 'Juprianto',
     role: 'Senior Trainer & Safety Specialist',
-    certification: 'Sertifikat Kompetensi Instruktur Outbound',
-    certificationBody: 'BNSP (Badan Nasional Sertifikasi Profesi)',
+    certification: 'Kompetensi Instruktur Outbound & Manajemen Risiko Lapangan',
+    certificationBody: 'Standar Kompetensi Keselamatan & Kepelatihan',
     specialization: ['Zero Accident Safety Protocol', 'Outdoor Risk Management', 'Team Synergy & Debriefing'],
   },
 ];
@@ -88,7 +88,7 @@ const CASE_STUDIES: CaseStudy[] = [
     outcomes: [
       'Evaluasi kompetensi kepemimpinan melalui simulasi dinamika kelompok berbasis tantangan nyata.',
       'Sinergi lintas departemen yang lebih solid melalui metode evaluasi reflektif (Reflect & Conceptualize).',
-      'Rekomendasi pengembangan SDM berbasis laporan kualitatif fasilitator bersertifikat BNSP.',
+      'Rekomendasi pengembangan SDM berbasis laporan kualitatif fasilitator berpengalaman.',
     ],
   },
 ];
@@ -147,7 +147,7 @@ export default function CredibilityPortfolio() {
     url: 'https://growthindonesia.my.id',
     logo: COMPANY_INFO.logo_url,
     image: COMPANY_INFO.logo_url,
-    description: 'Provider outbound, team building, dan event management bersertifikat BNSP di Madiun & Jawa Timur. Berpengalaman menangani corporate gathering, capacity building, dan LDK OSIS.',
+    description: 'Provider outbound, team building, dan event management profesional di Madiun & Jawa Timur. Berpengalaman menangani corporate gathering, capacity building, dan LDK OSIS.',
     address: {
       '@type': 'PostalAddress',
       streetAddress: COMPANY_INFO.address_short,
@@ -215,7 +215,7 @@ export default function CredibilityPortfolio() {
       jobTitle: f.role,
       hasCredential: {
         '@type': 'EducationalOccupationalCredential',
-        credentialCategory: 'Professional Certification',
+        credentialCategory: 'Professional Competency',
         name: f.certification,
         recognizedBy: {
           '@type': 'Organization',
@@ -225,7 +225,7 @@ export default function CredibilityPortfolio() {
     })),
     knowsAbout: [
       'Experiential Learning',
-      'BNSP Certified Outbound Facilitation',
+      'Professional Outbound Facilitation',
       'Corporate Team Building',
       'Outdoor Safety & Zero Accident Policy',
       'LDK OSIS & Youth Leadership Training',
@@ -290,7 +290,7 @@ export default function CredibilityPortfolio() {
         <div className="text-center max-w-3xl mx-auto">
           <div className="flex flex-wrap items-center justify-center gap-2 mb-3">
             <Badge variant="default" className="px-3 py-1 border border-red-500/30 text-red-600 bg-red-50 font-semibold">
-              Kredibilitas & Legalitas Resmi
+              Kredibilitas & Rekam Jejak Resmi
             </Badge>
             <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-amber-50 border border-amber-200 text-amber-800 rounded-full text-xs font-bold">
               <Star className="w-3.5 h-3.5 fill-amber-500 text-amber-500" />
@@ -301,11 +301,11 @@ export default function CredibilityPortfolio() {
             Profil Fasilitator, Studi Kasus & <span className="text-red-600">Portofolio Klien</span>
           </h2>
           <p className="mt-4 text-slate-600 text-base sm:text-lg leading-relaxed">
-            Bukti nyata komitmen <strong>Growth Indonesia</strong> dalam menghadirkan program pengembangan SDM, outbound training, dan event management berstandar resmi <strong>BNSP</strong> dan bersertifikat keamanan tinggi.
+            Bukti nyata komitmen <strong>Growth Indonesia</strong> dalam menghadirkan program pengembangan SDM, outbound training, dan event management berstandar kompetensi profesional serta keamanan tinggi.
           </p>
         </div>
 
-        {/* SECTION 1: Profil & Sertifikasi Fasilitator */}
+        {/* SECTION 1: Profil & Kualifikasi Fasilitator */}
         <div className="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-sm space-y-8">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-6">
             <div className="flex items-center gap-3">
@@ -313,13 +313,13 @@ export default function CredibilityPortfolio() {
                 <ShieldCheck className="w-8 h-8" />
               </div>
               <div>
-                <h3 className="text-2xl font-bold text-slate-900 font-display">1. Profil & Sertifikasi Fasilitator</h3>
-                <p className="text-sm text-slate-500">Tim instruktur utama tersertifikasi kompetensi resmi negara (BNSP)</p>
+                <h3 className="text-2xl font-bold text-slate-900 font-display">1. Profil & Kualifikasi Fasilitator</h3>
+                <p className="text-sm text-slate-500">Tim instruktur utama berpengalaman dengan standar kompetensi profesional</p>
               </div>
             </div>
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 text-slate-700 rounded-full text-xs font-bold uppercase tracking-wider">
               <Award className="w-4 h-4 text-red-600" />
-              Sertifikasi BNSP Resmi
+              Master Trainer & Praktisi Ahli
             </div>
           </div>
 
@@ -331,7 +331,7 @@ export default function CredibilityPortfolio() {
                     <h4 className="text-xl font-bold text-slate-900 font-display">{f.name}</h4>
                     <p className="text-sm font-semibold text-red-600">{f.role}</p>
                   </div>
-                  <span className="text-xs font-extrabold bg-red-600 text-white px-2.5 py-1 rounded-md">BNSP</span>
+                  <span className="text-xs font-extrabold bg-red-600 text-white px-2.5 py-1 rounded-md">PRO</span>
                 </div>
 
                 <div className="space-y-2 pt-2 border-t border-slate-200/60 text-sm">

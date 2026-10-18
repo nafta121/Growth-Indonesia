@@ -16,13 +16,13 @@ export default function TrustSection({
   const trustTiles = [
     {
       icon: Award,
-      title: 'Standardisasi BNSP',
-      description: 'Seluruh fasilitator dan instruktur lapangan kami tersertifikasi resmi secara nasional oleh Badan Nasional Sertifikasi Profesi.',
+      title: 'Fasilitator Kompeten',
+      description: 'Seluruh fasilitator dan instruktur lapangan kami merupakan praktisi berpengalaman dengan standar kompetensi fasilitasi profesional.',
     },
     {
       icon: ShieldCheck,
       title: 'Zero Accident Policy',
-      description: 'Prioritas tertinggi kami adalah keselamatan. Setiap kegiatan dilengkapi Risk Management Plan dan Standard Operating Procedure (SOP) keamanan sekala industri.',
+      description: 'Prioritas tertinggi kami adalah keselamatan. Setiap kegiatan dilengkapi Risk Management Plan dan Standard Operating Procedure (SOP) keamanan skala industri.',
     },
     {
       icon: Video,
@@ -39,8 +39,8 @@ export default function TrustSection({
     },
     {
       feature: 'Fasilitator & Instruktur',
-      us: 'Tersertifikasi BNSP',
-      them: 'Seringkali Freelance / Belum Tersertifikasi',
+      us: 'Master Trainer & Praktisi Berpengalaman',
+      them: 'Seringkali Freelance / Tanpa Kurikulum Terukur',
     },
     {
       feature: 'Transparansi Harga',
@@ -63,7 +63,7 @@ export default function TrustSection({
             {headingText} <span className="text-[#EF4444]">Growth Indonesia?</span>
           </h2>
           <p className="mt-6 text-lg text-slate-600 font-medium">
-            Kami bukan sekadar Event Organizer. Kami adalah mitra strategis untuk akselerasi budaya kerja, peningkatan kapasitas kolaborasi, dan regenerasi kepemimpinan.
+            Setiap program dirancang berdasarkan asesmen kebutuhan tim (Training Need Analysis), dipandu langsung oleh Master Trainer dan fasilitator berpengalaman, serta dievaluasi secara terukur melalui laporan pasca-kegiatan.
           </p>
         </ScrollReveal>
 

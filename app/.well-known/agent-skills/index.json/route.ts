@@ -26,7 +26,7 @@ export async function GET() {
       {
         name: 'leadership-ldk-capacity-building',
         type: 'api',
-        description: 'Design experiential leadership programs, LDK OSIS training for schools, and employee capacity building workshops guided by certified BNSP trainers.',
+        description: 'Design experiential leadership programs, LDK OSIS training for schools, and employee capacity building workshops guided by experienced master trainers.',
         url: 'https://growthindonesia.my.id/.well-known/agent-skills/leadership-ldk-capacity-building/SKILL.md',
         sha256: 'a591a6d40bf420404a011733cfb7b190d62c65bf0bcda32b57b277d9ad9f146e',
       },

@@ -32,14 +32,20 @@ export default function Footer() {
           {/* Quick Links */}
           <div>
             <h3 className="text-white font-bold mb-6 tracking-wide uppercase text-sm">Navigasi Cepat</h3>
-            <ul className="space-y-4">
-              {['Beranda', 'Tentang Kami', 'Layanan', 'Paket Program', 'Kontak'].map((link) => (
-                <li key={link}>
+            <ul className="space-y-3">
+              {[
+                { label: 'Beranda', href: '/' },
+                { label: 'Tentang Kami', href: '/#tentang' },
+                { label: 'Layanan', href: '/layanan' },
+                { label: 'Paket Program', href: '/#paket' },
+                { label: 'Kontak', href: '/#kontak' },
+              ].map((link) => (
+                <li key={link.label}>
                   <Link 
-                    href={link === 'Layanan' ? '/layanan' : `#${link.toLowerCase().replace(' ', '-')}`} 
-                    className="text-gray-500 hover:text-red-500 transition-colors inline-flex min-h-[48px] min-w-[48px] items-center"
+                    href={link.href} 
+                    className="text-slate-300 hover:text-white transition-colors inline-flex min-h-12 min-w-12 items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF4444] rounded-lg px-1"
                   >
-                    {link}
+                    {link.label}
                   </Link>
                 </li>
               ))}
@@ -49,12 +55,12 @@ export default function Footer() {
           {/* Area Layanan */}
           <div>
             <h3 className="text-white font-bold mb-6 tracking-wide uppercase text-sm">Area Utama</h3>
-            <ul className="space-y-4">
+            <ul className="space-y-3">
               {PRIORITY_CITIES.map((city) => (
                 <li key={city}>
                   <Link 
                     href={`/layanan/${city}`} 
-                    className="text-gray-500 hover:text-red-500 transition-colors capitalize inline-flex min-h-[48px] min-w-[48px] items-center"
+                    className="text-slate-300 hover:text-white transition-colors capitalize inline-flex min-h-12 min-w-12 items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF4444] rounded-lg px-1"
                   >
                     Layanan di {city}
                   </Link>
@@ -71,7 +77,7 @@ export default function Footer() {
                 href={COMPANY_INFO.maps_url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-500 hover:text-red-500 transition-colors duration-200 leading-relaxed block min-h-[48px] min-w-[48px]"
+                className="text-slate-300 hover:text-white transition-colors duration-200 leading-relaxed block min-h-12 min-w-12 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF4444] rounded-lg p-1 -ml-1"
                 aria-label={`Lihat lokasi ${COMPANY_INFO.brand_name} di Google Maps`}
               >
                 {COMPANY_INFO.address}
@@ -84,21 +90,21 @@ export default function Footer() {
             <h3 className="text-white font-bold mb-6 tracking-wide uppercase text-sm">Hubungi Kami</h3>
             <div className="space-y-4">
               <div>
-                <p className="text-gray-500 mb-1 text-xs uppercase tracking-wider">WhatsApp:</p>
+                <p className="text-slate-400 mb-1 text-xs uppercase tracking-wider">WhatsApp:</p>
                 <a 
                   href={`https://wa.me/${COMPANY_INFO.whatsapp_number}`} 
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-red-500 font-black text-lg block hover:scale-105 transition-transform origin-left min-h-[48px] min-w-[48px]"
+                  className="text-red-400 hover:text-red-300 font-black text-lg inline-flex items-center hover:scale-105 transition-transform origin-left min-h-12 min-w-12 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF4444] rounded-lg px-1 -ml-1 tabular-nums"
                 >
                   {COMPANY_INFO.whatsapp_display}
                 </a>
               </div>
               <div>
-                <p className="text-gray-500 mb-1 text-xs uppercase tracking-wider">Email:</p>
+                <p className="text-slate-400 mb-1 text-xs uppercase tracking-wider">Email:</p>
                 <a 
                   href={`mailto:${COMPANY_INFO.email}`}
-                  className="text-gray-500 hover:text-red-500 transition-colors duration-200 block underline underline-offset-4 min-h-[48px] min-w-[48px]"
+                  className="text-slate-300 hover:text-white transition-colors duration-200 inline-flex items-center underline underline-offset-4 min-h-12 min-w-12 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF4444] rounded-lg px-1 -ml-1"
                   aria-label={`Kirim email ke ${COMPANY_INFO.brand_name}`}
                 >
                   {COMPANY_INFO.email}
@@ -108,13 +114,13 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-gray-600 text-xs text-center md:text-left">
+        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-slate-400 text-xs text-center md:text-left">
             &copy; {currentYear} {COMPANY_INFO.brand_name}. All rights reserved.
           </p>
           <div className="flex gap-6">
-            <Link href="#" className="text-gray-600 hover:text-white text-xs transition-colors inline-flex min-h-[48px] min-w-[48px] items-center">Privacy Policy</Link>
-            <Link href="#" className="text-gray-600 hover:text-white text-xs transition-colors inline-flex min-h-[48px] min-w-[48px] items-center">Terms of Service</Link>
+            <Link href="/#kontak" className="text-slate-400 hover:text-white text-xs transition-colors inline-flex min-h-11 min-w-11 items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF4444] rounded-lg px-2">Privacy Policy</Link>
+            <Link href="/#kontak" className="text-slate-400 hover:text-white text-xs transition-colors inline-flex min-h-11 min-w-11 items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF4444] rounded-lg px-2">Terms of Service</Link>
           </div>
         </div>
       </div>

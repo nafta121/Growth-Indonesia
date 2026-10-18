@@ -4,10 +4,10 @@ import ScrollReveal from '@/components/ui/scroll-reveal';
 
 const SERVICES = {
   training: [
-    { title: 'Outbound Training & Team Building Corporate', desc: 'Membangun kekompakan dan kepemimpinan melalui simulasi alam yang menantang & berstandar BNSP.' },
+    { title: 'Outbound Training & Team Building Corporate', desc: 'Membangun kekompakan dan kepemimpinan melalui simulasi alam yang menantang & terukur.' },
     { title: 'Indoor Corporate Training & Capacity Building', desc: 'Peningkatan kompetensi manajerial dalam lingkungan belajar yang intensif dan aplikatif.' },
     { title: 'Motivational & Soft Skill Classes', desc: 'Menanamkan mindset positif dan semangat juang tinggi bagi tim Anda.' },
-    { title: 'Training of Trainer (ToT) Sertifikasi', desc: 'Mempersiapkan internal trainer perusahaan dengan standar profesional BNSP.' },
+    { title: 'Training of Trainer (ToT) Internal', desc: 'Mempersiapkan internal trainer perusahaan dengan standar fasilitasi profesional.' },
     { title: 'Kemah Besar & LDK OSIS Leadership', desc: 'Program khusus pembentukan karakter, kedisiplinan, dan jiwa kepemimpinan siswa.' },
     { title: 'Character Building & High Performance Team', desc: 'Membentuk integritas, adaptabilitas, dan etos kerja selaras dengan target perusahaan.' },
   ],

@@ -59,7 +59,7 @@ export default function CityHero({ kategoriName, kotaName, cityKey, cityDescript
                 <Star key={i} className="w-4 h-4 fill-current" />
               ))}
             </div>
-            <span className="text-sm font-medium text-white/90 tabular-nums">Fasilitator Bersertifikat BNSP</span>
+            <span className="text-sm font-medium text-white/90 tabular-nums">Fasilitator & Praktisi Berpengalaman</span>
           </div>
           <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-white mb-6 leading-[1.1] text-balance">
             {content.h1}
@@ -68,7 +68,7 @@ export default function CityHero({ kategoriName, kotaName, cityKey, cityDescript
             <strong className="font-semibold text-white">{content.subheadline}</strong> {cityDescription}
           </p>
           <div className="flex flex-wrap items-center gap-4">
-            <Button size="lg" className="h-14 px-8 rounded-full bg-[#EF4444] text-white hover:bg-red-600 shadow-lg shadow-red-600/30 transition-all duration-300 active:scale-[0.98] flex items-center justify-center gap-2 whitespace-nowrap" asChild>
+            <Button size="lg" className="h-14 px-8 rounded-full bg-[#DC2626] text-white hover:bg-red-700 shadow-lg shadow-red-600/30 transition-all duration-300 active:scale-[0.98] flex items-center justify-center gap-2 whitespace-nowrap" asChild>
               <Link href="/#kontak" aria-label={`Konsultasi ${kategoriName} ${kotaName}`} className="text-sm font-bold">
                 Konsultasi Program <ArrowRight className="w-5 h-5" />
               </Link>

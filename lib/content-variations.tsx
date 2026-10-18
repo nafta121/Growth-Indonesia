@@ -23,7 +23,7 @@ export function getContentVariations(kategori: string, kotaName: string): Conten
         'Low & High Impact Team Challenge',
         'Simulasi Leadership & Problem Solving',
         'Debriefing Reflektif Berbasis KPI Tim',
-        'Fasilitator Bersertifikat BNSP & Tim Medis',
+        'Fasilitator Berpengalaman & Tim Medis Siaga',
       ],
     },
     'training': {
@@ -62,7 +62,7 @@ export function getContentVariations(kategori: string, kotaName: string): Conten
         'Kurikulum Kepemimpinan Siswa & Manajemen Organisasi',
         'Public Speaking, Sidang & Dinamika Kelompok',
         'Outbond Karakter, Bela Negara & Kemandirian',
-        'Pendampingan Instruktur Bersertifikat & Ramah Anak',
+        'Pendampingan Instruktur Berpengalaman & Ramah Anak',
       ],
     },
     'gathering': {
@@ -88,7 +88,7 @@ export function getContentVariations(kategori: string, kotaName: string): Conten
     bodyIntro: `Sebagai mitra pengembangan SDM dan Event Organizer di ${kotaName}, ${COMPANY_INFO.brand_name} merancang program ${formatSlug(kategori).toLowerCase()} dengan pendekatan experiential learning yang selaras dengan visi dan budaya kerja institusi Anda.`,
     deliverables: [
       'Perancangan Program Kustom Sesuai Objektif',
-      'Fasilitator & Instruktur Bersertifikat BNSP',
+      'Fasilitator & Instruktur Berpengalaman',
       'Standar Keselamatan Zero Accident Policy',
       'Dokumentasi & Evaluasi Kegiatan Lengkap',
     ],

@@ -20,7 +20,7 @@ const CLIENTS = [
 const TESTIMONIALS = [
   {
     name: 'Budi Santoso',
-    company: 'PT Maju Bersama',
+    company: 'PT INKA (Persero) Madiun',
     quote: (
       <>
         &quot;Growth Indonesia adalah <strong className="text-gray-900 font-bold">jasa outbound madiun</strong> terbaik yang pernah kami gunakan. Kegiatan team building mereka sangat efektif meningkatkan produktivitas tim.&quot;
@@ -53,10 +53,10 @@ const TESTIMONIALS = [
     company: 'RS Karya Husada',
     quote: (
       <>
-        &quot;Acara tahunan kami penuh semangat karena layanan <strong className="text-gray-900 font-bold">outbound magetan</strong> yang seru dan penuh insight. Tim instruktur berpengalaman!&quot;
+        &quot;Acara tahunan kami penuh semangat karena layanan <strong className="text-gray-900 font-bold">outbound magetan</strong> yang seru dan penuh insight. Tim instruktur berpengalaman.&quot;
       </>
     ),
-    plainTextQuote: "Acara tahunan kami penuh semangat karena layanan outbound magetan yang seru dan penuh insight. Tim instruktur berpengalaman!"
+    plainTextQuote: "Acara tahunan kami penuh semangat karena layanan outbound magetan yang seru dan penuh insight. Tim instruktur berpengalaman."
   },
   {
     name: 'Wahyu Hidayat',
@@ -83,10 +83,10 @@ const TESTIMONIALS = [
     company: 'BPR Pacitan',
     quote: (
       <>
-        &quot;Aktivitas <strong className="text-gray-900 font-bold">outbound pacitan</strong> dari fasilitator ahli ini membuat outing kami tak terlupakan, aman, dan memupuk semangat kebersamaan!&quot;
+        &quot;Aktivitas <strong className="text-gray-900 font-bold">outbound pacitan</strong> dari fasilitator ahli ini membuat outing kami tak terlupakan, aman, dan memupuk semangat kebersamaan.&quot;
       </>
     ),
-    plainTextQuote: "Aktivitas outbound pacitan dari fasilitator ahli ini membuat outing kami tak terlupakan, aman, dan memupuk semangat kebersamaan!"
+    plainTextQuote: "Aktivitas outbound pacitan dari fasilitator ahli ini membuat outing kami tak terlupakan, aman, dan memupuk semangat kebersamaan."
   }
 ];
 
@@ -133,7 +133,7 @@ export default function TrustSignals() {
           <h2 id="trust-title" className="text-gray-900 font-display text-3xl md:text-5xl font-black tracking-tight leading-tight">
             Dipercaya oleh <span className="text-[#EF4444]">250+ Perusahaan</span> & Instansi
           </h2>
-          <p className="text-gray-600 mt-4 text-sm md:text-base max-w-xl mx-auto">Mitra strategis dalam pengembangan sumber daya manusia melalui metode yang kreatif dan berkelanjutan.</p>
+          <p className="text-gray-600 mt-4 text-sm md:text-base max-w-xl mx-auto">Dipercaya oleh BUMN, korporasi swasta, instansi pemerintah, dan institusi pendidikan di 31 kota/kabupaten Jawa Timur.</p>
         </div>
       </div>
 

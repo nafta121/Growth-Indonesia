@@ -58,7 +58,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const kotaName = formatSlug(decodedKota);
   const title = `Layanan Outbound & Event Organizer di ${kotaName}`;
   const fullTitle = `${title} | ${COMPANY_INFO.brand_name}`;
-  const description = `Provider outbound & event organizer (EO) profesional di ${kotaName} bersertifikat BNSP. Melayani corporate gathering, team building, LDK OSIS & fun games di ${kotaName}. Konsultasi gratis!`;
+  const description = `Provider outbound & event organizer (EO) profesional di ${kotaName}. Melayani corporate gathering, team building, LDK OSIS & fun games di ${kotaName}. Konsultasi gratis!`;
   const cityImage = getCityImage(decodedKota);
   const canonicalUrl = `https://growthindonesia.my.id/layanan/${decodedKota}`;
 
@@ -163,10 +163,10 @@ export default async function CityHubPage({ params }: Props) {
       <main className="flex-1 w-full flex flex-col pt-[72px] md:pt-[88px]">
         <article itemScope itemType="https://schema.org/ProfessionalService">
           <meta itemProp="name" content={`Layanan Outbound & Event Organizer di ${kotaName}`} />
-          <meta itemProp="description" content={`Provider outbound & event organizer (EO) profesional di ${kotaName} bersertifikat BNSP. ${cityData.description}`} />
+          <meta itemProp="description" content={`Provider outbound & event organizer (EO) profesional di ${kotaName}. ${cityData.description}`} />
           <meta itemProp="provider" content={COMPANY_INFO.brand_name} />
           <meta itemProp="areaServed" content={kotaName} />
-          <meta itemProp="award" content="Fasilitator & Instructor Tersertifikasi BNSP" />
+          <meta itemProp="award" content="Fasilitator & Praktisi Experiential Learning Berpengalaman" />
           <meta itemProp="serviceType" content="Corporate Outbound, Team Building & Event Organizer" />
 
           {/* City Hub Hero */}
@@ -209,7 +209,7 @@ export default async function CityHubPage({ params }: Props) {
                  Pilih Kategori <span className="text-brand">Program</span>
                </h2>
                <p className="text-lg text-slate-500 max-w-2xl mx-auto font-medium">
-                 Jelajahi 5 solusi pelatihan dan event organizer tersertifikasi BNSP yang tersedia di area {kotaName}.
+                 Jelajahi 5 solusi pelatihan dan event organizer profesional yang tersedia di area {kotaName}.
                </p>
             </div>
             

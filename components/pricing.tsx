@@ -37,7 +37,7 @@ export default function Pricing() {
               )}
             >
               {isAnchor && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#EF4444] text-white px-4 py-1 text-xs md:text-sm rounded-full font-bold shadow-md whitespace-nowrap z-20">
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#DC2626] text-white px-4 py-1 text-xs md:text-sm rounded-full font-bold shadow-md whitespace-nowrap z-20">
                   Paling Diminati
                 </span>
               )}

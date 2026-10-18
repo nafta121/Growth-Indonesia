@@ -29,10 +29,12 @@ export default function NavbarMobile({ navLinks }: { navLinks: NavLink[] }) {
       {/* Mobile Toggle */}
       <button
         id="mobile-menu-toggle"
-        className="relative z-50 p-2.5 text-slate-900 md:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand bg-gray-50 rounded-xl transition-all active:scale-90"
+        type="button"
+        className="relative z-50 min-h-12 min-w-12 p-3 text-slate-900 md:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-dark focus-visible:ring-offset-2 bg-gray-50 rounded-xl transition-all active:scale-90 flex items-center justify-center"
         onClick={() => setIsOpen(!isOpen)}
         aria-label={isOpen ? "Tutup menu" : "Buka menu"}
         aria-expanded={isOpen}
+        aria-controls="mobile-menu-panel"
       >
         <div className="relative w-6 h-6 flex items-center justify-center">
           <motion.div
@@ -54,13 +56,17 @@ export default function NavbarMobile({ navLinks }: { navLinks: NavLink[] }) {
       <AnimatePresence>
         {isOpen && (
           <motion.div
+            id="mobile-menu-panel"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Menu Navigasi Mobile"
             initial={{ opacity: 0, x: '100%' }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="fixed inset-0 z-40 flex flex-col bg-white md:hidden"
+            className="fixed inset-0 z-40 flex flex-col bg-white md:hidden overflow-y-auto"
           >
-            <ul className="flex flex-col items-center gap-6 w-full px-8 pt-24">
+            <ul className="flex flex-col items-center gap-4 w-full px-8 pt-24">
               {navLinks.map((link, i) => (
                 <motion.li
                   key={link.name}
@@ -72,7 +78,7 @@ export default function NavbarMobile({ navLinks }: { navLinks: NavLink[] }) {
                   <Link
                     href={link.href}
                     onClick={() => setIsOpen(false)}
-                    className="block py-4 text-3xl font-display font-bold text-gray-800 hover:text-brand active:scale-95 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand rounded-xl"
+                    className="block py-3 min-h-12 text-2xl sm:text-3xl font-display font-bold text-gray-800 hover:text-brand-dark active:scale-95 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-dark rounded-xl"
                   >
                     {link.name}
                   </Link>
@@ -81,7 +87,7 @@ export default function NavbarMobile({ navLinks }: { navLinks: NavLink[] }) {
             </ul>
 
             {/* Contact Info for Mobile Menu */}
-            <div className="mt-auto w-full px-8 pb-12 flex flex-col gap-6">
+            <div className="mt-auto w-full px-8 pt-6 pb-[max(3rem,env(safe-area-inset-bottom))] flex flex-col gap-6">
               <div className="h-px w-full bg-gray-100 mb-4" />
               
               <a 

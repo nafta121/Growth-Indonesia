@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     default: 'Corporate Outbound, Team Building & Event Organizer Madiun | Growth Indonesia',
     template: '%s | Growth Indonesia',
   },
-  description: 'Provider Corporate Outbound, Team Building, dan Event Organizer (EO) profesional di Madiun & Jawa Timur bersertifikat BNSP. Melayani corporate gathering, LDK OSIS & outdoor learning.',
+  description: 'Provider Corporate Outbound, Team Building, dan Event Organizer (EO) profesional di Madiun & Jawa Timur. Melayani corporate gathering, LDK OSIS & experiential learning.',
   keywords: [
     'Event Organizer Madiun',
     'Corporate Outbound Madiun',
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'Corporate Outbound, Team Building & Event Organizer Madiun | Growth Indonesia',
-    description: 'Provider Corporate Outbound, Team Building, dan Event Organizer (EO) profesional di Madiun & Jawa Timur bersertifikat BNSP. Melayani corporate gathering, LDK OSIS & outdoor learning.',
+    description: 'Provider Corporate Outbound, Team Building, dan Event Organizer (EO) profesional di Madiun & Jawa Timur. Melayani corporate gathering, LDK OSIS & experiential learning.',
     url: 'https://growthindonesia.my.id',
     siteName: 'Growth Indonesia',
     locale: 'id_ID',
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Corporate Outbound, Team Building & Event Organizer Madiun | Growth Indonesia',
-    description: 'Provider Corporate Outbound, Team Building, dan Event Organizer (EO) profesional di Madiun & Jawa Timur bersertifikat BNSP. Melayani corporate gathering, LDK OSIS & outdoor learning.',
+    description: 'Provider Corporate Outbound, Team Building, dan Event Organizer (EO) profesional di Madiun & Jawa Timur. Melayani corporate gathering, LDK OSIS & experiential learning.',
     images: ['https://nafta121.sirv.com/OUTBOUND/2022-10-22%2009-00-09.jpeg'],
   },
   // GEO & Bing Copilot Optimization:

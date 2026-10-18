@@ -22,16 +22,16 @@ export default function CityCta({ kategoriName, kotaName }: CityCtaProps) {
       />
       <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
         <h2 className="font-display text-4xl md:text-6xl font-black tracking-tight text-white mb-6 leading-tight">
-          Wujudkan Agenda {kategoriName} Impian di {kotaName}
+          Siap Menyusun Proposal & RAB {kategoriName} di {kotaName}?
         </h2>
         <p className="text-xl text-slate-300 mb-12 font-medium max-w-2xl mx-auto leading-relaxed">
-          Konsultasikan kebutuhan spesifik tim Anda bersama tenaga ahli kami. Kami akan menyiapkan proposal komprehensif tanpa biaya.
+          Diskusikan jumlah peserta, target capaian SDM, dan preferensi venue Anda bersama Master Trainer berpengalaman kami. Dapatkan draf proposal, opsi rundown, dan estimasi anggaran resmi tanpa biaya komitmen.
         </p>
         <div className="flex flex-wrap justify-center gap-4">
-          <Button size="lg" className="h-16 px-8 rounded-full bg-[#EF4444] text-white hover:bg-red-600 shadow-lg shadow-red-600/30 transition-all duration-300 active:scale-95 flex items-center justify-center gap-2" asChild>
-            <Link href={`https://wa.me/6285704748186?text=Halo tim Growth Indonesia, saya ingin berdiskusi mengenai program ${kategoriName.toLowerCase()} untuk wilayah ${kotaName}.`} target="_blank" className="font-bold text-xs sm:text-sm">
+          <Button size="lg" className="h-16 px-8 rounded-full bg-[#DC2626] text-white hover:bg-red-700 shadow-lg shadow-red-600/30 transition-all duration-300 active:scale-95 flex items-center justify-center gap-2" asChild>
+            <Link href={`https://wa.me/6285704748186?text=Halo tim Growth Indonesia, saya ingin meminta draf proposal dan rincian RAB program ${kategoriName} untuk wilayah ${kotaName}.`} target="_blank" rel="noopener noreferrer" className="font-bold text-sm sm:text-base">
               <MessageCircle className="w-5 h-5" />
-              KONSULTASI PROGRAM {kotaName.toUpperCase()}
+              Minta Proposal & RAB {kotaName}
             </Link>
           </Button>
         </div>

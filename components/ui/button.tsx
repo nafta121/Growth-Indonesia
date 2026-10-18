@@ -15,9 +15,9 @@ const buttonVariants = cva(
         ghost: "bg-transparent text-gray-700 hover:bg-gray-100 hover:text-gray-900 shadow-none",
       },
       size: {
-        default: "px-12 py-5 lg:py-6",
-        sm: "px-6 py-3 rounded-xl md:rounded-2xl text-xs",
-        lg: "px-14 py-6 md:py-8 lg:py-10 text-base md:text-lg",
+        default: "min-h-12 px-10 py-4 lg:py-5",
+        sm: "min-h-11 px-6 py-2.5 rounded-xl md:rounded-2xl text-xs",
+        lg: "min-h-14 px-12 py-5 md:py-6 lg:py-7 text-base md:text-lg",
       },
     },
     defaultVariants: {

@@ -1,0 +1,56 @@
+{
+  "loopName": "Weekly East Java pSEO & AI-Visibility Loop",
+  "checkCadence": "0 8 * * 1 (Setiap Senin pukul 08:00 WIB)",
+  "actsWhen": [
+    "Halaman pSEO berada pada striking distance Google Search Console (posisi rata-rata 8-20 dengan impressions >= 30 dalam 28 hari terakhir)",
+    "Terjadi perubahan akurasi sitasi atau penurunan visibilitas merek Growth Indonesia di ChatGPT, Perplexity, atau Google AI Overviews untuk kueri outbound Jawa Timur (Madiun, Sarangan, Magetan, Ponorogo, Ngawi, Pacitan, Kediri, Surabaya, Malang, Batu)",
+    "Terdapat penambahan venue mitra baru, pembaruan paket harga investasi, atau tambahan dokumentasi portofolio klien B2B"
+  ],
+  "purpose": "Meningkatkan CTR dan posisi halaman pSEO /layanan/[kota]/[kategori] ke Top 3 Google sekaligus menjaga tingkat sitasi AI (GEO) Growth Indonesia di atas kompetitor lokal.",
+  "skillsUsed": [
+    "seo-audit",
+    "programmatic-seo",
+    "ai-seo",
+    "copywriting",
+    "copy-editing",
+    "design-taste-frontend"
+  ],
+  "loopBody": [
+    "1. Audit sinyal mingguan dari Google Search Console untuk seluruh rute /layanan/[kota]/[kategori] dan identifikasi halaman pada posisi 8-20 dengan impressions >= 30.",
+    "2. Uji kueri kunci outbound Jawa Timur pada mesin penjawab AI untuk memeriksa kelengkapan sitasi entitas Growth Indonesia, keakuratan kisaran harga, dan konsistensi fakta.",
+    "3. Segarkan blok answer-first, tabel perbandingan paket, studi kasus terverifikasi, serta entitas venue lokal menggunakan kerangka copywriting dan programmatic-seo.",
+    "4. Sinkronkan pembaruan fakta dan struktur harga ke endpoint grounding AI (/llms.txt, /pricing.md, /.well-known/agent-card.json, /.well-known/mcp/server-card.json).",
+    "5. Jalankan verifikasi mandiri (Zero em-dash/en-dash, unit test, lint, dan build produksi) sebelum memperbarui state siklus dan mengirim ping IndexNow."
+  ],
+  "selfCheckRules": [
+    "Zero em-dash dan en-dash di seluruh file kode sumber serta konten markdown/JSON",
+    "Sinkronisasi 1:1 antara skema FAQPage JSON-LD dengan daftar pertanyaan dan jawaban yang tampil pada antarmuka pengguna (UI)",
+    "Validasi penuh seluruh unit test pada lib/categories.test.ts serta pemeriksaan linter tanpa error atau warning",
+    "Keunikan konten lokal antar kombinasi kota dan kategori dengan penyebutan spesifik venue, ketinggian mdpl, akses tol, dan studi kasus nyata"
+  ],
+  "stateAndIdempotency": {
+    "stateFile": "/content/marketing-loop-state.json",
+    "cooldownDaysPerRoute": 14,
+    "dedupeRule": "Jangan mengoptimasi ulang rute spesifik dalam jendela cooldown 14 hari kecuali terdapat perubahan harga resmi atau koreksi fakta entitas."
+  },
+  "bailOutCondition": "Lewati siklus apabila tidak ada halaman di posisi 8-20 dengan impressions >= 30 dan tidak ada pembaruan harga/portofolio baru.",
+  "output": {
+    "stateRecord": "/content/marketing-loop-state.json",
+    "indexNowPing": "Submit daftar URL yang diperbarui menggunakan kunci verifikasi IndexNow setelah build produksi lulus",
+    "humanCheckpoint": "Perubahan klaim harga dasar atau penambahan kemitraan venue baru memerlukan tinjauan persetujuan sebelum dipublikasikan ke produksi"
+  },
+  "indexNowKeyFile": "/e368c11258e94b86a9bc1a862c3042da.txt",
+  "aiGroundingEndpoints": [
+    "/llms.txt",
+    "/pricing.md",
+    "/.well-known/agent-card.json",
+    "/.well-known/mcp/server-card.json"
+  ],
+  "lastExecutedAt": "2026-10-18T21:00:00Z",
+  "recentlyOptimizedRoutes": [
+    "/pricing.md",
+    "/llms.txt",
+    "/layanan/[kota]/[kategori]",
+    "/"
+  ]
+}

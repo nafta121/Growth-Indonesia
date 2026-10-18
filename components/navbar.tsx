@@ -45,17 +45,17 @@ export default function Navbar() {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="group relative inline-flex min-h-[48px] items-center py-1 text-sm font-bold tracking-tight text-gray-800 transition-all duration-300 hover:text-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/20 rounded-sm px-2"
+                    className="group relative inline-flex min-h-12 items-center py-1 text-sm font-bold tracking-tight text-gray-800 transition-all duration-300 hover:text-brand-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-dark focus-visible:ring-offset-2 rounded-lg px-2"
                   >
                     {link.name}
-                    <span className="absolute -bottom-1 left-2 h-0.5 w-0 bg-brand transition-all duration-300 ease-out group-hover:w-[calc(100%-1rem)]" />
+                    <span className="absolute -bottom-1 left-2 h-0.5 w-0 bg-brand-dark transition-all duration-300 ease-out group-hover:w-[calc(100%-1rem)]" />
                   </Link>
                 </li>
               ))}
             </ul>
             <Link
               href="/#kontak"
-              className="px-6 py-2.5 text-sm font-bold text-white bg-brand hover:brightness-110 rounded-xl transition-all active:scale-95 shadow-sm hover:shadow-md shrink-0"
+              className="inline-flex min-h-11 items-center justify-center px-6 py-2.5 text-sm font-bold text-white bg-brand-dark hover:bg-red-700 rounded-xl transition-all active:scale-95 shadow-sm hover:shadow-md shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-dark focus-visible:ring-offset-2"
             >
               Minta Proposal
             </Link>

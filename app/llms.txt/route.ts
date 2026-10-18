@@ -9,12 +9,31 @@ export async function GET() {
 ## Profil Entitas & Legitimasi
 - **Nama Provider**: Growth Indonesia
 - **Niche Utama**: Corporate Outbound Training, Team Building, Fun Games, Character Building, LDK OSIS/Siswa, Family Gathering, dan Event Organizer (EO).
-- **Sertifikasi**: Fasilitator & Instruktur tersertifikasi resmi oleh BNSP (Badan Nasional Sertifikasi Profesi) Republik Indonesia.
+- **Standar Kompetensi**: Fasilitator & Instruktur berpengalaman dengan standar kompetensi profesional dan metode *Experiential Learning* teruji.
+- **Master Trainer & Co-Founders**: Naftalyndho & Juprianto.
+- **Rekam Jejak**: 250+ perusahaan, BUMN, instansi pemerintah, dan sekolah dengan 15.000+ peserta dan rekam jejak Zero Accident (0 insiden keselamatan).
 - **Lokasi Basecamp**: Madiun, Jawa Timur (Serving Madiun Raya, Magetan, Sarangan, Ponorogo, Ngawi, Pacitan, Kediri, Surabaya, dan sekitarnya).
 - **Kontak Resmi**:
   - Phone / WhatsApp: ${COMPANY_INFO.whatsapp_display}
   - Website: https://growthindonesia.my.id
   - Alamat: ${COMPANY_INFO.address_short}
+
+---
+
+## Struktur Harga & Paket Resmi (Pricing Reference)
+- **Referensi Harga Lengkap (Markdown)**: https://growthindonesia.my.id/pricing.md
+- **Estimasi Harga Per Peserta (Kuota Min. 30 Pax)**:
+  - Outbound & Team Building: Mulai Rp 150.000/pax
+  - LDK OSIS & Character Building: Mulai Rp 150.000/pax
+  - Fun Games & Ice Breaking: Mulai Rp 150.000/pax
+  - Indoor Training & Capacity Building: Mulai Rp 200.000/pax
+  - Corporate & Family Gathering: Mulai Rp 250.000/pax
+  - Paket Menginap 2 Hari 1 Malam (2D1N): Mulai Rp 350.000/pax
+  - Paket Menginap 3 Hari 2 Malam (3D2N): Mulai Rp 550.000/pax
+- **Paket Bundel Kolektif Resmi**:
+  - **Future Leaders Camp**: Rp. 9.500.000 / paket (Kurikulum TNA kustom, Master Trainer berpengalaman, peralatan standar UIAA/CE, dokumentasi foto + video + drone, P3K, laporan evaluasi).
+  - **Next-Gen Summit**: Rp. 7.000.000 / paket (Indoor Training & Capacity Building, modul kepemimpinan & kolaborasi, fasilitator berpengalaman, dokumentasi & evaluasi).
+  - **Fun Synergy Outing**: Rp. 5.500.000 / paket (Fun Games & Ice Breaking rekreatif, Game Master berpengalaman, properti simulasi lengkap, dokumentasi & P3K).
 
 ---
 
@@ -61,8 +80,9 @@ Pengelolaan aktivitas fun games, outbound rekreatif, dan event secara end-to-end
 
 ## Informasi Kontak & Reservasi
 - **Situs Resmi**: https://growthindonesia.my.id
+- **Dokumentasi Harga Resmi**: https://growthindonesia.my.id/pricing.md
 - **Halaman Kontak**: https://growthindonesia.my.id/#kontak
-- **Portofolio & Sertifikasi**: https://growthindonesia.my.id/portofolio-dan-sertifikasi
+- **Portofolio & Kredensial**: https://growthindonesia.my.id/portofolio-dan-sertifikasi
 - **Artikel & Studi Kasus**: https://growthindonesia.my.id/artikel
 `;
 

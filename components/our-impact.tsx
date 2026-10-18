@@ -66,28 +66,28 @@ const IMPACT_STATS = [
     value: 10,
     suffix: '+',
     label: 'Tahun Pengalaman',
-    description: 'Dedikasi melayani berbagai klien.',
+    description: 'Rekam jejak merancang pelatihan experiential learning & gathering korporat di Jawa Timur.',
   },
   {
     icon: CalendarCheck,
     value: 500,
     suffix: '+',
     label: 'Event Terselenggara',
-    description: 'Terselenggara dengan aman dan sukses.',
+    description: 'Skala penanganan mulai dari 30 hingga 500+ peserta per gelombang dengan rekam jejak Zero Accident.',
   },
   {
     icon: Target,
     value: 250,
     suffix: '+',
     label: 'Klien Terlayani',
-    description: 'Perusahaan dan instansi yang puas.',
+    description: 'Tingkat kepuasan tinggi berdasarkan evaluasi pasca-kegiatan dan pemesanan berulang (repeat order) tahunan.',
   },
   {
     icon: Users,
     value: 15000,
     suffix: '+',
     label: 'Peserta Terlatih',
-    description: 'Alumni pelatihan yang lebih tangguh.',
+    description: 'Cakupan peserta lintas BUMN, instansi pemerintah, perusahaan swasta, dan pengurus OSIS/mahasiswa.',
   },
 ];
 

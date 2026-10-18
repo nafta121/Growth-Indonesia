@@ -49,7 +49,7 @@ export async function GET() {
       {
         id: 'leadership-ldk-capacity-building',
         name: 'Leadership & Character Building Training',
-        description: 'Design experiential leadership programs, LDK OSIS training for schools, and employee capacity building workshops guided by certified BNSP trainers.',
+        description: 'Design experiential leadership programs, LDK OSIS training for schools, and employee capacity building workshops guided by experienced master trainers.',
       },
       {
         id: 'event-venue-coordination-east-java',

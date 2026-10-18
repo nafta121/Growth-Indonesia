@@ -97,16 +97,16 @@ Rencana Tanggal: ${data.date || 'Menyesuaikan'}`;
                 href={COMPANY_INFO.maps_url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex gap-5 md:gap-7 group items-center p-4 -ml-4 rounded-3xl hover:bg-gray-50 transition-all duration-300"
+                className="flex gap-5 md:gap-7 group items-center p-4 -ml-4 rounded-3xl hover:bg-gray-50 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#DC2626]"
                 aria-label="Lihat lokasi Growth Indonesia di Google Maps"
               >
-                <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl md:rounded-[1.5rem] bg-gray-50 flex items-center justify-center text-[#EF4444] group-hover:bg-[#EF4444] group-hover:text-white transition-all duration-500 shadow-sm">
+                <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl md:rounded-[1.5rem] bg-gray-50 flex items-center justify-center text-[#DC2626] group-hover:bg-[#DC2626] group-hover:text-white transition-all duration-500 shadow-sm">
                   <MapPin className="w-6 h-6 md:w-7 md:h-7" />
                 </div>
                 <div>
                   <h3 className="font-extrabold text-gray-900 mb-1 uppercase tracking-tight text-sm md:text-base">Kantor Pusat</h3>
                   <address 
-                    className="not-italic text-gray-500 group-hover:text-gray-900 transition-colors duration-300 text-sm md:text-base leading-snug"
+                    className="not-italic text-gray-600 group-hover:text-gray-900 transition-colors duration-300 text-sm md:text-base leading-snug"
                     dangerouslySetInnerHTML={{ __html: COMPANY_INFO.address_html }}
                   />
                 </div>
@@ -116,29 +116,29 @@ Rencana Tanggal: ${data.date || 'Menyesuaikan'}`;
                 href={`https://wa.me/${COMPANY_INFO.whatsapp_number}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex gap-5 md:gap-7 group items-center p-4 -ml-4 rounded-3xl hover:bg-gray-50 transition-all duration-300"
+                className="flex gap-5 md:gap-7 group items-center p-4 -ml-4 rounded-3xl hover:bg-gray-50 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#DC2626]"
                 aria-label="Hubungi Growth Indonesia via WhatsApp"
               >
-                <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl md:rounded-[1.5rem] bg-gray-50 flex items-center justify-center text-[#EF4444] group-hover:bg-[#EF4444] group-hover:text-white transition-all duration-500 shadow-sm">
+                <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl md:rounded-[1.5rem] bg-gray-50 flex items-center justify-center text-[#DC2626] group-hover:bg-[#DC2626] group-hover:text-white transition-all duration-500 shadow-sm">
                   <Phone className="w-6 h-6 md:w-7 md:h-7" />
                 </div>
                 <div>
                   <h3 className="font-extrabold text-gray-900 mb-1 uppercase tracking-tight text-sm md:text-base">WhatsApp & Telepon</h3>
-                  <p className="text-gray-500 group-hover:text-gray-900 transition-colors duration-300 text-sm md:text-base font-bold tabular-nums">{COMPANY_INFO.whatsapp_display}</p>
+                  <p className="text-gray-600 group-hover:text-gray-900 transition-colors duration-300 text-sm md:text-base font-bold tabular-nums">{COMPANY_INFO.whatsapp_display}</p>
                 </div>
               </a>
 
               <a 
                 href={`mailto:${COMPANY_INFO.email}`}
-                className="flex gap-5 md:gap-7 group items-center p-4 -ml-4 rounded-3xl hover:bg-gray-50 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF4444]"
+                className="flex gap-5 md:gap-7 group items-center p-4 -ml-4 rounded-3xl hover:bg-gray-50 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#DC2626]"
                 aria-label="Kirim email ke Growth Indonesia"
               >
-                <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl md:rounded-[1.5rem] bg-gray-50 flex items-center justify-center text-[#EF4444] group-hover:bg-[#EF4444] group-hover:text-white transition-all duration-500 shadow-sm">
+                <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl md:rounded-[1.5rem] bg-gray-50 flex items-center justify-center text-[#DC2626] group-hover:bg-[#DC2626] group-hover:text-white transition-all duration-500 shadow-sm">
                   <MessageCircle className="w-6 h-6 md:w-7 md:h-7" />
                 </div>
                 <div>
                   <h3 className="font-extrabold text-gray-900 mb-1 uppercase tracking-tight text-sm md:text-base">Email Resmi</h3>
-                  <p className="text-gray-500 group-hover:text-gray-900 transition-colors duration-300 text-sm md:text-base border-b border-transparent group-hover:border-gray-200">{COMPANY_INFO.email}</p>
+                  <p className="text-gray-600 group-hover:text-gray-900 transition-colors duration-300 text-sm md:text-base border-b border-transparent group-hover:border-gray-200">{COMPANY_INFO.email}</p>
                 </div>
               </a>
             </div>
@@ -165,7 +165,7 @@ Rencana Tanggal: ${data.date || 'Menyesuaikan'}`;
                     <h3 id="kontak-form-title" className="font-display text-xl font-black text-gray-900 tracking-tight">
                       Formulir Reservasi Program
                     </h3>
-                    <span className="text-xs text-[#EF4444] font-bold bg-red-50 px-3 py-1 rounded-full">
+                    <span className="text-xs text-red-700 font-bold bg-red-50 px-3 py-1 rounded-full">
                       Respon Cepat
                     </span>
                   </div>
@@ -174,7 +174,7 @@ Rencana Tanggal: ${data.date || 'Menyesuaikan'}`;
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-6">
                       <div className="space-y-2">
                         <label htmlFor="name" className="text-xs font-bold text-gray-900 uppercase tracking-widest flex items-center gap-2 px-1">
-                          <User className="w-3.5 h-3.5 text-[#EF4444]" aria-hidden="true" /> Nama Lengkap
+                          <User className="w-3.5 h-3.5 text-[#DC2626]" aria-hidden="true" /> Nama Lengkap
                         </label>
                         <Input
                           id="name"
@@ -184,11 +184,11 @@ Rencana Tanggal: ${data.date || 'Menyesuaikan'}`;
                           error={!!errors.name}
                           aria-describedby={errors.name ? "name-error" : undefined}
                         />
-                        {errors.name && <span id="name-error" role="alert" className="text-xs text-red-500 mt-1 block px-1">{errors.name.message}</span>}
+                        {errors.name && <span id="name-error" role="alert" className="text-xs text-red-600 font-semibold mt-1 block px-1">{errors.name.message}</span>}
                       </div>
                       <div className="space-y-2">
                         <label htmlFor="company" className="text-xs font-bold text-gray-900 uppercase tracking-widest flex items-center gap-2 px-1">
-                          <Building2 className="w-3.5 h-3.5 text-[#EF4444]" aria-hidden="true" /> Instansi / Perusahaan
+                          <Building2 className="w-3.5 h-3.5 text-[#DC2626]" aria-hidden="true" /> Instansi / Perusahaan
                         </label>
                         <Input
                           id="company"
@@ -198,13 +198,13 @@ Rencana Tanggal: ${data.date || 'Menyesuaikan'}`;
                           error={!!errors.company}
                           aria-describedby={errors.company ? "company-error" : undefined}
                         />
-                        {errors.company && <span id="company-error" role="alert" className="text-xs text-red-500 mt-1 block px-1">{errors.company.message}</span>}
+                        {errors.company && <span id="company-error" role="alert" className="text-xs text-red-600 font-semibold mt-1 block px-1">{errors.company.message}</span>}
                       </div>
                     </div>
 
                     <div className="space-y-2">
                       <label htmlFor="whatsapp" className="text-xs font-bold text-gray-900 uppercase tracking-widest flex items-center gap-2 px-1">
-                        <Phone className="w-3.5 h-3.5 text-[#EF4444]" aria-hidden="true" /> Nomor WhatsApp
+                        <Phone className="w-3.5 h-3.5 text-[#DC2626]" aria-hidden="true" /> Nomor WhatsApp
                       </label>
                       <Input
                         id="whatsapp"
@@ -217,7 +217,7 @@ Rencana Tanggal: ${data.date || 'Menyesuaikan'}`;
                         error={!!errors.whatsapp}
                         aria-describedby={errors.whatsapp ? "whatsapp-error" : undefined}
                       />
-                      {errors.whatsapp && <span id="whatsapp-error" role="alert" className="text-xs text-red-500 mt-1 block px-1">{errors.whatsapp.message}</span>}
+                      {errors.whatsapp && <span id="whatsapp-error" role="alert" className="text-xs text-red-600 font-semibold mt-1 block px-1">{errors.whatsapp.message}</span>}
                     </div>
 
                     <div className="space-y-2 relative">
@@ -229,7 +229,7 @@ Rencana Tanggal: ${data.date || 'Menyesuaikan'}`;
                         aria-invalid={!!errors.package || undefined}
                         aria-describedby={errors.package ? "package-error" : undefined}
                         {...register("package", { required: "Program wajib dipilih" })}
-                        className="w-full h-14 md:h-16 px-6 bg-white border border-gray-200 rounded-2xl focus-visible:ring-2 focus-visible:ring-[#EF4444]/10 focus-visible:border-[#EF4444] outline-none transition-all duration-300 text-sm md:text-base font-medium appearance-none cursor-pointer"
+                        className="w-full h-14 md:h-16 px-6 bg-white border border-slate-300 rounded-2xl focus-visible:ring-2 focus-visible:ring-[#DC2626] focus-visible:ring-offset-2 focus-visible:border-[#DC2626] outline-none transition-all duration-300 text-base font-medium text-gray-900 appearance-none cursor-pointer"
                       >
                         <option value="" disabled>Pilih Program...</option>
                         {PACKAGES.map((pkg) => (
@@ -239,7 +239,7 @@ Rencana Tanggal: ${data.date || 'Menyesuaikan'}`;
                       <div className="absolute right-6 bottom-[19px] pointer-events-none md:bottom-[23px] text-gray-600" aria-hidden="true">
                         <CheckCircle2 className="w-4 h-4" />
                       </div>
-                      {errors.package && <span id="package-error" role="alert" className="text-xs text-red-500 mt-1 block px-1">{errors.package.message}</span>}
+                      {errors.package && <span id="package-error" role="alert" className="text-xs text-red-600 font-semibold mt-1 block px-1">{errors.package.message}</span>}
                     </div>
 
                     <div className="space-y-2">
@@ -318,15 +318,16 @@ Rencana Tanggal: ${data.date || 'Menyesuaikan'}`;
                           </div>
                           <div>
                             <h5 className="text-white font-bold text-sm tracking-tight">{s.title}</h5>
-                            <p className="text-gray-500 text-xs leading-relaxed">{s.desc}</p>
+                            <p className="text-slate-300 text-xs leading-relaxed">{s.desc}</p>
                           </div>
                         </motion.div>
                       ))}
                     </div>
 
                     <button 
+                      type="button"
                       onClick={() => setIsSubmitted(false)}
-                      className="mt-12 text-gray-500 hover:text-[#EF4444] transition-colors text-[10px] font-bold uppercase tracking-[0.2em] underline underline-offset-8"
+                      className="mt-10 min-h-11 px-4 inline-flex items-center justify-center text-slate-300 hover:text-white transition-colors text-xs font-bold uppercase tracking-[0.2em] underline underline-offset-8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF4444] rounded-lg"
                     >
                       Kirim Pesan Lain
                     </button>

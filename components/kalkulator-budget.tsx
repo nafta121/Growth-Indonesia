@@ -3,18 +3,20 @@
 import React, { useState } from 'react';
 import { Calculator, Users, Compass, Clock, MessageCircle } from 'lucide-react';
 
-const PROGRAMS = [
-  { id: 'fun-game', name: 'Fun Game', basePrice: 100000 },
-  { id: 'team-building', name: 'Team Building', basePrice: 250000 },
-  { id: 'ldk-osis', name: 'LDK OSIS', basePrice: 250000 },
+const ACTIVITIES = [
+  { id: 'outbound', label: 'Outbound & Team Building', pricePerPax: 150000 },
+  { id: 'fun-game', label: 'Fun Games & Ice Breaking', pricePerPax: 150000 },
+  { id: 'ldk-osis', label: 'LDK OSIS & Character Building', pricePerPax: 150000 },
+  { id: 'training', label: 'Indoor Training & Capacity Building', pricePerPax: 200000 },
+  { id: 'gathering', label: 'Corporate & Family Gathering', pricePerPax: 250000 },
 ];
 
 const DURATIONS = [
-  { id: '1-day', name: 'One Day Activity', multiplier: 1 },
-  { id: '2-days', name: '2 Hari 1 Malam', multiplier: 1.8 },
+  { id: '1-day', name: 'One Day Activity (1 Hari)', multiplier: 1 },
+  { id: '2-days', name: 'Menginap (2 Hari 1 Malam)', multiplier: 1.8 },
 ];
 
-type Program = typeof PROGRAMS[0];
+type Activity = typeof ACTIVITIES[0];
 type Duration = typeof DURATIONS[0];
 
 const formatRupiah = (amount: number) => {
@@ -35,8 +37,8 @@ function KalkulatorHeader() {
           <Calculator className="w-6 h-6 text-white" />
         </div>
         <div>
-          <h3 className="font-display font-extrabold text-2xl tracking-tight mb-1">Kalkulator Estimasi</h3>
-          <p className="text-slate-300 text-sm md:text-base font-medium">Hitung estimasi investasi program Anda dengan cepat</p>
+          <h3 className="font-display font-extrabold text-2xl tracking-tight mb-1">Kalkulator Estimasi RAB</h3>
+          <p className="text-slate-300 text-sm md:text-base font-medium">Simulasikan estimasi anggaran awal kegiatan instansi Anda</p>
         </div>
       </div>
     </div>
@@ -65,34 +67,37 @@ function PesertaSlider({ pax, setPax }: { pax: number, setPax: (pax: number) => 
         onChange={(e) => setPax(Number(e.target.value))}
         className="w-full h-3 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-[#EF4444] hover:accent-red-600 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF4444] focus-visible:ring-offset-2"
       />
-      <div className="flex justify-between text-xs font-semibold text-slate-400 px-1 tabular-nums">
-        <span>20</span>
-        <span>200+</span>
+      <div className="flex justify-between text-xs font-semibold text-slate-600 px-1 tabular-nums">
+        <span>20 Pax</span>
+        <span>200+ Pax</span>
       </div>
     </div>
   );
 }
 
-function ProgramSelection({ program, setProgram }: { program: Program, setProgram: (program: Program) => void }) {
+function ProgramSelection({ program, setProgram }: { program: Activity, setProgram: (program: Activity) => void }) {
   return (
-    <div className="space-y-4">
-      <label className="flex items-center gap-2 font-bold text-gray-900">
-        <Compass className="w-5 h-5 text-[#EF4444]" />
-        Tipe Program
+    <div className="space-y-4" role="group" aria-labelledby="program-selection-label">
+      <label id="program-selection-label" className="flex items-center gap-2 font-bold text-gray-900">
+        <Compass className="w-5 h-5 text-[#DC2626]" />
+        Kategori Layanan
       </label>
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-         {PROGRAMS.map((p) => (
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+         {ACTIVITIES.map((p, index) => (
             <button
               key={p.id}
               type="button"
+              aria-pressed={program.id === p.id}
               onClick={() => setProgram(p)}
-              className={`px-4 py-3 rounded-2xl text-sm md:text-base font-bold transition-all duration-300 border-2 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF4444] focus-visible:ring-offset-2 ${
+              className={`min-h-12 px-4 py-3.5 rounded-2xl text-sm font-bold transition-all duration-300 border-2 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#DC2626] focus-visible:ring-offset-2 ${
+                index === ACTIVITIES.length - 1 ? 'sm:col-span-2' : ''
+              } ${
                 program.id === p.id
                 ? 'border-[#0A1628] bg-[#0A1628] text-white shadow-md shadow-[#0A1628]/20'
-                : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:bg-slate-50'
+                : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:bg-slate-50'
               }`}
             >
-              {p.name}
+              {p.label}
             </button>
          ))}
       </div>
@@ -102,9 +107,9 @@ function ProgramSelection({ program, setProgram }: { program: Program, setProgra
 
 function DurationSelection({ duration, setDuration }: { duration: Duration, setDuration: (duration: Duration) => void }) {
   return (
-    <div className="space-y-4">
-      <label className="flex items-center gap-2 font-bold text-gray-900">
-        <Clock className="w-5 h-5 text-[#EF4444]" />
+    <div className="space-y-4" role="group" aria-labelledby="duration-selection-label">
+      <label id="duration-selection-label" className="flex items-center gap-2 font-bold text-gray-900">
+        <Clock className="w-5 h-5 text-[#DC2626]" />
         Durasi Program
       </label>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -112,11 +117,12 @@ function DurationSelection({ duration, setDuration }: { duration: Duration, setD
             <button
               key={d.id}
               type="button"
+              aria-pressed={duration.id === d.id}
               onClick={() => setDuration(d)}
-              className={`px-4 py-3 rounded-2xl text-sm md:text-base font-bold transition-all duration-300 border-2 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF4444] focus-visible:ring-offset-2 ${
+              className={`min-h-12 px-4 py-3.5 rounded-2xl text-sm font-bold transition-all duration-300 border-2 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#DC2626] focus-visible:ring-offset-2 ${
                 duration.id === d.id
                 ? 'border-[#0A1628] bg-[#0A1628] text-white shadow-md shadow-[#0A1628]/20'
-                : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:bg-slate-50'
+                : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:bg-slate-50'
               }`}
             >
               {d.name}
@@ -135,17 +141,17 @@ function KalkulatorResult({
 }: {
   totalEstimate: number;
   pax: number;
-  program: Program;
+  program: Activity;
   duration: Duration;
 }) {
   const handleWhatsAppClick = () => {
-    const text = `Halo tim Growth Indonesia, saya ingin konsultasi program outbound dengan detail estimasi berikut:
+    const text = `Halo tim Growth Indonesia, saya ingin meminta rincian RAB dan draf proposal kegiatan dengan estimasi berikut:
+- Kategori Layanan: ${program.label}
+- Durasi Program: ${duration.name}
 - Jumlah Peserta: ${pax} Pax
-- Tipe Program: ${program.name}
-- Durasi: ${duration.name}
-- Estimasi Total: ${formatRupiah(totalEstimate)}
+- Estimasi Awal: ${formatRupiah(totalEstimate)}
 
-Apakah ada jadwal kosong?`;
+Mohon informasi opsi venue dan ketersediaan jadwal.`;
     
     const url = `https://wa.me/6285704748186?text=${encodeURIComponent(text)}`;
     window.open(url, '_blank', 'noopener,noreferrer');
@@ -153,25 +159,25 @@ Apakah ada jadwal kosong?`;
 
   return (
     <div className="bg-slate-50 border border-slate-200 rounded-[2rem] p-6 sm:p-8 text-center space-y-6 relative overflow-hidden">
-       <div className="absolute top-0 left-0 w-2 h-full bg-[#EF4444]"></div>
+       <div className="absolute top-0 left-0 w-2 h-full bg-[#DC2626]"></div>
        <div>
-         <p className="font-bold text-slate-500 uppercase tracking-wider text-sm mb-2">Estimasi Total Investasi</p>
-         <p className="font-display font-black text-4xl sm:text-5xl text-[#0A1628] tracking-tight tabular-nums">
+         <p className="font-bold text-slate-600 uppercase tracking-wider text-sm mb-2">Estimasi Total Investasi</p>
+         <p className="font-display font-black text-4xl sm:text-5xl text-[#0A1628] tracking-tight tabular-nums" aria-live="polite">
            {formatRupiah(totalEstimate)}
          </p>
        </div>
 
-       <p className="text-xs sm:text-sm text-slate-500 font-medium leading-relaxed max-w-sm mx-auto">
-         *Harga tersebut hanya estimasi bukan harga real. Untuk mendapatkan paket atau harga yang lebih menarik, silahkan hubungi kontak Admin kami.
+       <p className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed max-w-md mx-auto">
+         *Estimasi mencakup fasilitator berpengalaman, properti program, dan standar keselamatan. Rincian final disesuaikan dengan pilihan venue, katering, serta akomodasi.
        </p>
 
        <button
          type="button"
          onClick={handleWhatsAppClick}
-         className="w-full flex items-center justify-center gap-3 bg-[#EF4444] hover:bg-red-600 text-white font-bold text-xl py-4 px-6 rounded-2xl transition-all duration-300 active:scale-95 shadow-xl shadow-red-500/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF4444] focus-visible:ring-offset-2"
+         className="w-full min-h-14 flex items-center justify-center gap-3 bg-[#DC2626] hover:bg-red-700 text-white font-bold text-base sm:text-lg py-4 px-6 rounded-2xl transition-all duration-300 active:scale-95 shadow-xl shadow-red-600/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#DC2626] focus-visible:ring-offset-2"
        >
-         <MessageCircle className="w-6 h-6" />
-         Kirim Estimasi ke WhatsApp
+         <MessageCircle className="w-5 h-5 shrink-0" />
+         <span>Minta Rincian RAB via WhatsApp</span>
        </button>
     </div>
   );
@@ -179,10 +185,10 @@ Apakah ada jadwal kosong?`;
 
 export default function KalkulatorBudget() {
   const [pax, setPax] = useState<number>(50);
-  const [program, setProgram] = useState<Program>(PROGRAMS[0]);
+  const [program, setProgram] = useState<Activity>(ACTIVITIES[0]);
   const [duration, setDuration] = useState<Duration>(DURATIONS[0]);
 
-  const totalEstimate = pax * program.basePrice * duration.multiplier;
+  const totalEstimate = pax * program.pricePerPax * duration.multiplier;
 
   return (
     <div className="bg-white rounded-[2rem] border border-slate-100 shadow-xl overflow-hidden max-w-2xl mx-auto">

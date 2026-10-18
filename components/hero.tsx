@@ -30,7 +30,7 @@ export default function Hero() {
           {/* Left Column: 4-Element Hero Stack (Eyebrow, Headline, Subtext <= 20 words, CTAs) */}
           <div className="lg:col-span-7 flex flex-col items-start text-left">
             <Badge variant="dark" className="mb-6 font-sans">
-              Provider Tersertifikasi BNSP
+              Provider Outbound & EO Korporat
             </Badge>
 
             <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-[1.08] tracking-tight mb-6 opacity-0 animate-fade-in text-balance">
@@ -41,14 +41,14 @@ export default function Hero() {
             </h1>
 
             <p className="text-slate-200 text-base sm:text-lg md:text-xl font-medium max-w-[54ch] leading-relaxed mb-8 opacity-0 animate-fade-in delay-200 text-pretty">
-              Mitra strategis outbound training, team building, dan corporate gathering bersertifikat BNSP dengan metode experiential learning serta Zero Accident Policy.
+              Mitra strategis outbound training, team building, dan corporate gathering berpengalaman dengan metode experiential learning serta Zero Accident Policy.
             </p>
 
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto opacity-0 animate-fade-in delay-[400ms]">
               <Button
                 asChild
                 size="lg"
-                className="bg-[#25D366] hover:bg-[#128C7E] text-white border-0 shadow-lg hover:shadow-xl transition-all group text-sm md:text-base h-14 px-8 rounded-xl whitespace-nowrap active:scale-[0.98]"
+                className="bg-[#15803D] hover:bg-[#166534] text-white border-0 shadow-lg hover:shadow-xl transition-all group text-sm md:text-base h-14 px-8 rounded-xl whitespace-nowrap active:scale-[0.98] focus-visible:ring-[#25D366]"
               >
                 <Link href="https://wa.me/6285704748186" target="_blank" rel="noopener noreferrer">
                   <MessageCircle className="w-5 h-5 mr-2 shrink-0" />
@@ -73,7 +73,7 @@ export default function Hero() {
             <div className="relative rounded-3xl overflow-hidden border border-white/15 bg-slate-900/60 shadow-2xl aspect-[4/3] sm:aspect-[16/10] lg:aspect-[4/5]">
               <Image
                 src="https://nafta121.sirv.com/OUTBOUND/2022-11-05%2009-09-46.jpeg"
-                alt="Dokumentasi Sesi Team Building & Outbound Training Korporat bersama Fasilitator BNSP Growth Indonesia"
+                alt="Dokumentasi Sesi Team Building & Outbound Training Korporat bersama Fasilitator Growth Indonesia"
                 fill
                 priority={true}
                 sizes="(max-width: 1024px) 100vw, 42vw"
@@ -93,7 +93,7 @@ export default function Hero() {
                 </div>
                 <div className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/10 text-xs font-bold text-white shrink-0">
                   <Award className="w-4 h-4 text-brand" />
-                  <span>BNSP</span>
+                  <span>250+ Klien</span>
                 </div>
               </div>
             </div>
