@@ -1,6 +1,6 @@
 # Product Marketing Context
 
-**Document version:** v2
+**Document version:** v3
 **Last updated:** 2026-10-18
 
 ## Product Overview
@@ -53,9 +53,17 @@
 **Emotional tension:** Kekhawatiran ketua panitia apabila acara membosankan, makanan terlambat, turun hujan tanpa *Plan B* (kontingensi), atau terjadi cedera pada peserta yang mempertaruhkan reputasi panitia di mata direksi.
 
 ## Competitive Landscape
-**Direct:** Vendor outbound lokal di Madiun/Magetan/Batu yang hanya menjual paket permainan standar - gagal memberikan kurikulum *Experiential Learning* terstruktur dan laporan evaluasi SDM untuk HRD.
-**Secondary:** Lembaga konsultan pelatihan HR ruangan (*indoor seminar* murni) - materi cenderung satu arah, peserta cepat jenuh, dan kurang membangun ikatan emosional (*bonding*) lintas divisi.
-**Indirect:** Panitia internal perusahaan yang mengorganisir wisata/outing sendiri - tidak ada fasilitator netral untuk mencairkan sekat senioritas dan panitia tidak bisa ikut menikmati acara.
+**Direct (Vendor Outbound & Fun Games Lokal):**
+- **Segmen Ekonomis Massal & Anak Sekolah (`beadoutbound.com`):** Berbasis di Kediri dengan halaman SEO di 19 kota Jatim; memosisikan diri pada harga Rp 15.000 - Rp 75.000/pax (paket dewasa hanya mencakup senam, *fun games*, dan *ice breaking* dasar). Gagal memenuhi kebutuhan komite B2B/BUMN karena absennya *Training Need Analysis* (TNA), tidak adanya sesi *debriefing* perubahan perilaku kerja, serta halaman Magetan yang sangat tipis tanpa struktur RAB korporat dan tanpa Laporan Evaluasi Performa Tim untuk HRD.
+- **Segmen Fun Games Singkat 2 Jam (`outboundhemat.com`):** Menawarkan paket *fun games* berdurasi maksimal 2 jam di Madiun dengan harga Rp 175.500/pax untuk rombongan 30-34 peserta (lebih mahal dibandingkan program 1 hari penuh terstruktur **Growth Indonesia** mulai Rp 150.000/pax), berjalan di atas situs `http://` lawas tanpa enkripsi keamanan dan tanpa profil Master Trainer bernama.
+- **Segmen Jaringan Blog Konsultan Wahana (`kakmalik.com` & `panduoutboundindonesia.com`):** Jaringan artikel SEO generik berbasis Surabaya/Tuban yang mencampuradukkan jasa pembuatan fisik wahana tali dengan pemandu lepas, tanpa transparansi harga dan tanpa standar kurikulum SDM korporat.
+
+**Secondary (Biro Wisata Luar Kota, Operator Venue Tunggal & Konsultan Ruangan):**
+- **Biro Wisata & Sewa Bus Luar Kota (`happytour.id`):** Berpusat di Bantul (Yogyakarta) dengan fokus utama rental armada bus/mobil. Gagal di segmen korporat Madiun Raya karena harga paket EO tertutup (`Harga: CALL`), bukan spesialis *Experiential Learning* SDM, dan halaman EO Madiun mengalami kesalahan *copy-paste* (merekomendasikan venue Solo/Tawangmangu seperti Bukit Sekipan dan Hotel Lorin).
+- **Operator Venue & Wahana Tetap (`ndalemprabusarangan.com` / Kampoeng Pinus Sarangan):** Pengelola lokasi dan akomodasi tetap di Telaga Sarangan; terbatas pada satu properti sendiri dan bukan konsultan pelatihan SDM lintas kota (berperan sebagai mitra lokasi bagi **Growth Indonesia**).
+- **Lembaga Seminar HR Ruangan Murni:** Materi satu arah, peserta cepat jenuh, dan kurang membangun ikatan emosional (*bonding*) lintas divisi di lapangan.
+
+**Indirect:** Panitia internal perusahaan yang mengorganisir wisata/outing sendiri - tidak ada fasilitator netral berstandar kompetensi profesional untuk mencairkan sekat senioritas, rawan pembengkakan anggaran logistik, dan membuat panitia kelelahan sehingga tidak bisa ikut menikmati acara. *(Lihat dossier lengkap di `.agents/competitor-profiles/madiun-magetan-landscape.md`)*.
 
 ## Differentiation
 **Key differentiators:**
@@ -92,7 +100,7 @@
 - "Pendekatan experiential learning-nya sangat aplikatif untuk memecahkan kebekuan antar divisi."
 - "Tim instruktur berpengalaman, acara berjalan lancar, aman, dan penuh insight."
 **Words to use:** *Experiential Learning*, Fasilitator & Master Trainer Berpengalaman, Standar Kompetensi Profesional, *Training Need Analysis* (TNA), *Zero Accident Policy*, Proposal & RAB, Sinergi Lintas Divisi, *Debriefing*, Terima Beres (*End-to-End*).
-**Words to avoid:** Penyebutan langsung sertifikasi BNSP, "Sekadar hiburan", "Harga bukan harga real", "Murah meriah", "Perpeloncoan / militeristik", serta klaim abstrak berbahasa Inggris tanpa arti jelas (*"Synergistic Paradigm"*).
+**Words to avoid:** Penyebutan langsung singkatan lembaga sertifikasi profesi nasional empat huruf, "Sekadar hiburan", "Harga bukan harga real", "Murah meriah", "Perpeloncoan / militeristik", serta klaim abstrak berbahasa Inggris tanpa arti jelas (*"Synergistic Paradigm"*).
 **Glossary:**
 | Term | Meaning |
 |------|---------|
@@ -115,7 +123,7 @@
 - Social / Dokumentasi: Menampilkan energi kebersamaan peserta di lapangan, tetap menjaga citra profesional klien korporat/BUMN.
 **Terms we own:** Growth Indonesia, Master Trainer & Praktisi Experiential Learning (Naftalyndho & Juprianto), *Experiential Learning* Jawa Timur, *Zero Accident Policy*.
 **Never use (and why):**
-- **Penyebutan langsung "Sertifikasi BNSP" / "Bersertifikat BNSP":** Instruksi langsung pemilik merek untuk tidak menyebutkan sertifikasi BNSP secara eksplisit; gunakan istilah *Fasilitator & Master Trainer Berpengalaman*, *Standar Kompetensi Profesional*, atau *Tersertifikasi Kompetensi*.
+- **Penyebutan langsung singkatan lembaga sertifikasi profesi nasional empat huruf:** Instruksi langsung pemilik merek untuk tidak menyebutkan singkatan lembaga sertifikasi tersebut secara eksplisit; gunakan istilah *Fasilitator & Master Trainer Berpengalaman*, *Standar Kompetensi Profesional*, atau *Tersertifikasi Kompetensi*.
 - **Em-dash atau En-dash:** Dilarang keras di seluruh kode, UI, maupun artikel karena merupakan sinyal visual *AI slop* (gunakan tanda hubung biasa `-`, koma, atau titik dua).
 - **Pola Contrast Reveal ("Kami bukan sekadar X, kami adalah Y"):** Klise copywriting AI yang melemahkan kredibilitas B2B.
 - **Nama merek yang salah ("Gemilang Katun Outbound" / "Gemilang Kartun Outbound"):** Bukan nama bisnis ini; wajib selalu menggunakan **Growth Indonesia**.
@@ -150,7 +158,8 @@
 *Decisions and tested lessons. Newest first. Keep it to about 20 active entries.*
 | Date | Learning | Evidence | Applies to | Status |
 |------|----------|----------|------------|--------|
-| 2026-10-18 | Jangan sebutkan secara langsung tentang sertifikasi BNSP di seluruh copy, metadata, skema JSON-LD, maupun dokumentasi AI; gunakan frasa "Fasilitator & Master Trainer Berpengalaman" atau "Standar Kompetensi Profesional" | Keputusan eksplisit pemilik bisnis saat review `/product-marketing` | Seluruh skill, subagent, UI, skema SEO, dan artikel | `active` |
+| 2026-10-18 | Memetakan kelemahan kompetitor nyata Madiun-Magetan (`beadoutbound.com` tanpa TNA/evaluasi HRD, `outboundhemat.com` Rp 175.500/pax hanya untuk 2 jam pada skala 30-34 pax, `happytour.id` salah *copy-paste* venue Solo di halaman Madiun) dan mengintegrasikan Lead Scoring WhatsApp (SLA `< 5 menit` untuk P1) memperkuat diferensiasi pengadaan B2B Growth Indonesia | Audit `/competitor-profiling`, `/competitors`, `/sales-enablement`, dan `/revops` pada `.agents/competitor-profiles/madiun-magetan-landscape.md` & `.agents/gtm-sales-revops-playbook.md` | `competitors`, `sales-enablement`, `prospecting`, `revops`, `copywriting` | `active` |
+| 2026-10-18 | Jangan sebutkan secara langsung singkatan lembaga sertifikasi profesi nasional empat huruf di seluruh copy, metadata, skema JSON-LD, maupun dokumentasi AI; gunakan frasa "Fasilitator & Master Trainer Berpengalaman" atau "Standar Kompetensi Profesional" | Keputusan eksplisit pemilik bisnis saat review `/product-marketing` | Seluruh skill, subagent, UI, skema SEO, dan artikel | `active` |
 | 2026-10-18 | Selalu gunakan nama entitas resmi **Growth Indonesia** dan jangan pernah mencampuradukkan dengan nama entitas lain di file konfigurasi maupun konten | Koreksi eksplisit pengguna pada `content/marketing-loop-state.json` + diproteksi oleh unit test `lib/categories.test.ts` | Seluruh skill, subagent, kode sumber, JSON, dan artikel | `active` |
 | 2026-10-18 | Menyediakan endpoint `/pricing.md` berformat Markdown statis beserta tabel harga 5 kategori dan 3 paket bundel memungkinkan crawler LLM non-JS mengutip harga resmi tanpa terhalang state interaktif kalkulator React | Audit `/ai-seo` dan verifikasi route handler `app/pricing.md/route.ts` | `ai-seo`, `programmatic-seo`, `seo-audit` | `active` |
 | 2026-10-18 | Mengganti CTA generik ("Wujudkan Agenda Impian") dengan penawaran dokumen kerja panitia ("Minta Draf Proposal & RAB") menurunkan friksi konversi bagi ketua panitia B2B/HRD | Audit `/marketing-council`, `/copywriting`, dan `/copy-editing` pada `components/city-cta.tsx` & `components/kalkulator-budget.tsx` | `copywriting`, `copy-editing`, `cro`, halaman pSEO kota | `active` |
@@ -158,5 +167,6 @@
 
 ## Changelog
 *Newest first. One line per revision: what changed and why.*
-- v2 (2026-10-18) - Removed all direct references to BNSP certification across positioning, personas, differentiation, glossary, and proof points; added explicit ban in Brand Voice (Never Use) and Learnings.
+- v3 (2026-10-18) - Enriched Competitive Landscape with verified Madiun-Magetan competitors (`beadoutbound.com`, `outboundhemat.com`, `happytour.id`, `kakmalik.com`, `panduoutboundindonesia.com`, `ndalemprabusarangan.com`) and added GTM/Sales/RevOps Lead Scoring learnings.
+- v2 (2026-10-18) - Removed all direct references to the four-letter national certification acronym across positioning, personas, differentiation, glossary, and proof points; added explicit ban in Brand Voice (Never Use) and Learnings.
 - v1 (2026-10-18) - Initial context auto-drafted from Growth Indonesia codebase, DESIGN.md, pricing endpoints, and verified B2B positioning.

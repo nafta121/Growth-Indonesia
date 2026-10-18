@@ -1,67 +1,33 @@
 import { COMPANY_INFO } from './constants';
-import { getLocalBusinessSchema, getFaqSchema, getCityServiceFaqs, generateFaqSchema, HOMEPAGE_FAQS, getHomepageFaqSchema } from './schema';
+import {
+  getLocalBusinessSchema,
+  getFaqSchema,
+  getCityServiceFaqs,
+  generateFaqSchema,
+  HOMEPAGE_FAQS,
+  getHomepageFaqSchema,
+  BreadcrumbItemSchema,
+  BreadcrumbItem,
+  generateBreadcrumbSchema,
+  getBreadcrumbListSchema,
+  getServiceSchema,
+  getServicePageSchema,
+} from './schema';
 
-export { COMPANY_INFO, getCityServiceFaqs, generateFaqSchema, HOMEPAGE_FAQS, getHomepageFaqSchema };
-
-export interface BreadcrumbItemSchema {
-  name: string;
-  item: string;
-}
-
-export interface BreadcrumbItem {
-  name: string;
-  url: string;
-}
-
-export function generateBreadcrumbSchema(items: BreadcrumbItem[]) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "@id": "https://growthindonesia.my.id/#breadcrumb",
-    "name": "Navigasi Layanan Growth Indonesia",
-    "itemListElement": items.map((crumb, idx) => ({
-      "@type": "ListItem",
-      "position": idx + 1,
-      "name": crumb.name,
-      "item": crumb.url.startsWith('http')
-        ? crumb.url
-        : `https://growthindonesia.my.id${crumb.url.startsWith('/') ? '' : '/'}${crumb.url}`,
-    })),
-  };
-}
-
-export function getBreadcrumbListSchema(items: BreadcrumbItemSchema[]) {
-  return generateBreadcrumbSchema(
-    items.map((crumb) => ({ name: crumb.name, url: crumb.item }))
-  );
-}
-
-export function getServiceSchema(
-  kategoriName: string,
-  kotaName: string,
-  description: string,
-  serviceUrl?: string
-) {
-  return {
-    "@type": "Service",
-    "@id": serviceUrl ? `${serviceUrl}#service` : undefined,
-    "name": `${kategoriName} di ${kotaName}`,
-    "serviceType": kategoriName,
-    "description": description,
-    "provider": {
-      "@type": "LocalBusiness",
-      "@id": "https://growthindonesia.my.id/#organization",
-      "name": COMPANY_INFO.brand_name,
-      "telephone": `+${COMPANY_INFO.whatsapp_number}`,
-      "url": "https://growthindonesia.my.id/"
-    },
-    "areaServed": {
-      "@type": "City",
-      "name": kotaName
-    },
-    "url": serviceUrl
-  };
-}
+export {
+  COMPANY_INFO,
+  getLocalBusinessSchema,
+  getFaqSchema,
+  getCityServiceFaqs,
+  generateFaqSchema,
+  HOMEPAGE_FAQS,
+  getHomepageFaqSchema,
+  generateBreadcrumbSchema,
+  getBreadcrumbListSchema,
+  getServiceSchema,
+  getServicePageSchema,
+};
+export type { BreadcrumbItemSchema, BreadcrumbItem };
 
 export interface ServicePageSchemaParams {
   kotaName: string;
@@ -70,44 +36,6 @@ export interface ServicePageSchemaParams {
   kategoriKey: string;
   cityDescription: string;
   venues?: string[];
-}
-
-export function getServicePageSchema({
-  kotaName,
-  cityKey,
-  kategoriName,
-  kategoriKey,
-  cityDescription,
-  venues = [],
-}: ServicePageSchemaParams) {
-  const serviceUrl = `https://growthindonesia.my.id/layanan/${cityKey}/${kategoriKey}`;
-  const cityUrl = `https://growthindonesia.my.id/layanan/${cityKey}`;
-  const description = `Layanan profesional provider ${kategoriName.toLowerCase()} dan EO terbaik di ${kotaName} bersama ${COMPANY_INFO.brand_name}. ${cityDescription}`;
-
-  const breadcrumb = getBreadcrumbListSchema([
-    { name: "Home", item: "https://growthindonesia.my.id/" },
-    { name: "Layanan", item: "https://growthindonesia.my.id/layanan" },
-    { name: `Layanan ${kotaName}`, item: cityUrl },
-    { name: `${kategoriName} ${kotaName}`, item: serviceUrl },
-  ]);
-
-  const service = getServiceSchema(kategoriName, kotaName, description, serviceUrl);
-  const localBusiness = getLocalBusinessSchema(kotaName);
-  const rawFaq = getFaqSchema(kategoriName, kotaName, venues);
-
-  return {
-    "@context": "https://schema.org",
-    "@graph": [
-      breadcrumb,
-      service,
-      localBusiness,
-      {
-        ...rawFaq,
-        "@id": "https://growthindonesia.my.id/#faq",
-        "name": "FAQ Seputar Layanan Growth Indonesia",
-      },
-    ],
-  };
 }
 
 export const CATEGORY_IMAGES: Record<string, { url: string; alt: string }> = {

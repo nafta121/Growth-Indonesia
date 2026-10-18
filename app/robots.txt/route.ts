@@ -4,6 +4,9 @@ export async function GET() {
   const robotsTxt = `User-agent: *
 Allow: /
 Allow: /_next/static/
+Allow: /llms.txt
+Allow: /pricing.md
+Allow: /e368c11258e94b86a9bc1a862c3042da.txt
 Allow: /2c11486128914291876d43ecd6d55580.txt
 Allow: /api/indexnow
 Disallow: /api/
@@ -15,6 +18,9 @@ Allow: /
 User-agent: OAI-SearchBot
 Allow: /
 
+User-agent: ChatGPT-User
+Allow: /
+
 User-agent: PerplexityBot
 Allow: /
 
@@ -22,6 +28,9 @@ User-agent: ClaudeBot
 Allow: /
 
 User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
 Allow: /
 
 User-agent: Bingbot

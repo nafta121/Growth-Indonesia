@@ -286,9 +286,26 @@ export default async function ArtikelDetailPage({ params }: PageProps) {
                   <h3 className="font-display font-black text-2xl md:text-3xl tracking-tight mb-3">
                     Konsultasikan Kebutuhan Tim Anda!
                   </h3>
-                  <p className="text-slate-300 max-w-lg font-medium text-sm md:text-base">
-                    Dapatkan rancangan proposal kustom dan penawaran draf RAB gratis dari fasilitator bersertifikat kami sekarang juga.
+                  <p className="text-slate-300 max-w-lg font-medium text-sm md:text-base mb-5">
+                    Dapatkan rancangan proposal kustom dan penawaran draf RAB gratis dari Master Trainer & fasilitator berpengalaman kami sekarang juga.
                   </p>
+                  <div className="flex flex-wrap gap-2 text-xs font-bold">
+                    <Link href="/layanan/madiun/outbound" className="px-3 py-1.5 rounded-full bg-white/10 hover:bg-brand text-white transition-colors">
+                      Outbound Madiun
+                    </Link>
+                    <Link href="/layanan/magetan/outbound" className="px-3 py-1.5 rounded-full bg-white/10 hover:bg-brand text-white transition-colors">
+                      Outbound Sarangan Magetan
+                    </Link>
+                    <Link href="/layanan/madiun/ldk-osis" className="px-3 py-1.5 rounded-full bg-white/10 hover:bg-brand text-white transition-colors">
+                      LDK OSIS & Sekolah
+                    </Link>
+                    <Link href="/layanan/madiun/gathering" className="px-3 py-1.5 rounded-full bg-white/10 hover:bg-brand text-white transition-colors">
+                      Corporate Gathering
+                    </Link>
+                    <Link href="/pricing.md" className="px-3 py-1.5 rounded-full bg-white/10 hover:bg-brand text-white transition-colors">
+                      Referensi Harga (pricing.md)
+                    </Link>
+                  </div>
                 </div>
                 <div className="shrink-0">
                   <a

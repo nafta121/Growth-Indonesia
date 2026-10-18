@@ -15,7 +15,7 @@ export default function Footer() {
             <Link href="/" className="inline-flex items-center mb-6">
               <Image 
                 src={COMPANY_INFO.logo_url} 
-                alt={`${COMPANY_INFO.brand_name} Logo`} 
+                alt={`${COMPANY_INFO.brand_name} - Provider Outbound & Event Organizer Madiun Jawa Timur`} 
                 width={200} 
                 height={56} 
                 className="h-14 w-auto object-contain"
@@ -23,9 +23,8 @@ export default function Footer() {
                 referrerPolicy="no-referrer"
               />
             </Link>
-            <p className="text-gray-400 leading-relaxed max-w-xs">
-              Transforming organizations through human-centric development and 
-              experiential learning since 2018.
+            <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
+              Mitra strategis pengembangan SDM, Outbound Training, Team Building, LDK Kepemimpinan, dan Event Organizer Korporat di Madiun serta Jawa Timur dengan metode Experiential Learning.
             </p>
           </div>
 

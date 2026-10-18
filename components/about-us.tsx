@@ -1,10 +1,10 @@
 import ScrollReveal from '@/components/ui/scroll-reveal';
 
 const MISSIONS = [
-  'Menyediakan layanan pengembangan SDM yang profesional dan kreatif.',
-  'Membangun budaya berkelanjutan dengan sikap positif.',
-  'Menciptakan layanan yang saling mendukung untuk pengalaman terbaik bagi pelanggan.',
-  'Membangun relasi positif untuk sinergi dan kolaborasi, mengutamakan pelayanan yang melebihi harapan pelanggan.',
+  'Menyusun kurikulum pelatihan SDM berbasis Training Need Analysis (TNA) dan metode Experiential Learning yang berdampak nyata pada kinerja tim.',
+  'Membangun sinergi lintas divisi, kepemimpinan manajerial, dan karakter disiplin bagi BUMN, instansi pemerintah, korporasi swasta, serta institusi pendidikan.',
+  'Menjamin standar keselamatan lapangan (Zero Accident Policy) dan kesiapan skenario cadangan (Plan B) di setiap lokasi kegiatan Jawa Timur.',
+  'Memberikan ketenangan bagi panitia dan HRD melalui transparansi anggaran, kelengkapan dokumen SPJ, serta laporan evaluasi performa tim pasca-acara.',
 ];
 
 export default function AboutUs() {

@@ -14,9 +14,10 @@ export async function GET() {
 - **Rekam Jejak**: 250+ perusahaan, BUMN, instansi pemerintah, dan sekolah dengan 15.000+ peserta dan rekam jejak Zero Accident (0 insiden keselamatan).
 - **Lokasi Basecamp**: Madiun, Jawa Timur (Serving Madiun Raya, Magetan, Sarangan, Ponorogo, Ngawi, Pacitan, Kediri, Surabaya, dan sekitarnya).
 - **Kontak Resmi**:
-  - Phone / WhatsApp: ${COMPANY_INFO.whatsapp_display}
+  - Phone / WhatsApp: ${COMPANY_INFO.whatsapp_display} (+${COMPANY_INFO.whatsapp_number})
+  - Email: ${COMPANY_INFO.email}
   - Website: https://growthindonesia.my.id
-  - Alamat: ${COMPANY_INFO.address_short}
+  - Alamat: ${COMPANY_INFO.address}
 
 ---
 
@@ -58,15 +59,17 @@ Pengelolaan aktivitas fun games, outbound rekreatif, dan event secara end-to-end
 
 ---
 
-## Area Jangkauan Layanan (Regional Hubs)
+## Area Jangkauan Layanan (31 Regional Hubs Jawa Timur)
+- **Direktori Lengkap 31 Kota**: https://growthindonesia.my.id/layanan
 - **Madiun**: https://growthindonesia.my.id/layanan/madiun
-- **Magetan**: https://growthindonesia.my.id/layanan/magetan
-- **Sarangan**: https://growthindonesia.my.id/layanan/sarangan
+- **Magetan (Kawasan Telaga Sarangan)**: https://growthindonesia.my.id/layanan/magetan
 - **Ponorogo**: https://growthindonesia.my.id/layanan/ponorogo
 - **Ngawi**: https://growthindonesia.my.id/layanan/ngawi
 - **Pacitan**: https://growthindonesia.my.id/layanan/pacitan
 - **Kediri**: https://growthindonesia.my.id/layanan/kediri
 - **Surabaya**: https://growthindonesia.my.id/layanan/surabaya
+- **Malang**: https://growthindonesia.my.id/layanan/malang
+- **Batu**: https://growthindonesia.my.id/layanan/batu
 
 ---
 

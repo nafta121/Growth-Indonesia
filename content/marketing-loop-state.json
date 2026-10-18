@@ -11,8 +11,23 @@
     "seo-audit",
     "programmatic-seo",
     "ai-seo",
+    "schema",
+    "site-architecture",
+    "content-strategy",
+    "directory-submissions",
     "copywriting",
     "copy-editing",
+    "marketing-psychology",
+    "offers",
+    "lead-magnets",
+    "image",
+    "video",
+    "customer-research",
+    "competitor-profiling",
+    "competitors",
+    "sales-enablement",
+    "prospecting",
+    "revops",
     "design-taste-frontend"
   ],
   "loopBody": [
@@ -23,7 +38,7 @@
     "5. Jalankan verifikasi mandiri (Zero em-dash/en-dash, unit test, lint, dan build produksi) sebelum memperbarui state siklus dan mengirim ping IndexNow."
   ],
   "selfCheckRules": [
-    "Zero em-dash dan en-dash di seluruh file kode sumber serta konten markdown/JSON",
+    "Seluruh file di app/, components/, lib/, content/, dan .agents/ wajib mematuhi 0 kemunculan singkatan empat huruf terlarang dan 0 karakter em-dash/en-dash",
     "Sinkronisasi 1:1 antara skema FAQPage JSON-LD dengan daftar pertanyaan dan jawaban yang tampil pada antarmuka pengguna (UI)",
     "Validasi penuh seluruh unit test pada lib/categories.test.ts serta pemeriksaan linter tanpa error atau warning",
     "Keunikan konten lokal antar kombinasi kota dan kategori dengan penyebutan spesifik venue, ketinggian mdpl, akses tol, dan studi kasus nyata"
@@ -46,7 +61,7 @@
     "/.well-known/agent-card.json",
     "/.well-known/mcp/server-card.json"
   ],
-  "lastExecutedAt": "2026-10-18T21:00:00Z",
+  "lastExecutedAt": "2026-10-18T22:17:00Z",
   "recentlyOptimizedRoutes": [
     "/pricing.md",
     "/llms.txt",

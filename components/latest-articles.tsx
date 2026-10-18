@@ -39,6 +39,8 @@ export default async function LatestArticles() {
                   src={article.frontmatter.image}
                   alt={article.frontmatter.title}
                   fill
+                  loading="lazy"
+                  sizes="(max-width: 768px) 100vw, 33vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                   referrerPolicy="no-referrer"
                 />

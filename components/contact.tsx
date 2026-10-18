@@ -51,13 +51,15 @@ export default function Contact({ initialPackage }: ContactProps) {
   const onSubmit = async (data: FormData) => {
     // Construction of WhatsApp message
     const selectedPkg = PACKAGES.find(p => p.id === data.package)?.label || data.package;
-    const message = `Halo tim GROWTH INDONESIA, saya berminat untuk reservasi program:
+    const message = `Halo tim Growth Indonesia, saya ingin meminta draf Proposal & RAB resmi untuk rencana kegiatan berikut:
 
-Nama: ${data.name}
+Nama PIC: ${data.name}
 Instansi/Perusahaan: ${data.company}
-WhatsApp: ${data.whatsapp}
-Paket Pilihan: ${selectedPkg}
-Rencana Tanggal: ${data.date || 'Menyesuaikan'}`;
+Nomor WhatsApp: ${data.whatsapp}
+Program Pilihan: ${selectedPkg}
+Rencana Tanggal: ${data.date || 'Menyesuaikan jadwal'}
+
+Mohon informasi rekomendasi venue dan estimasi anggaran sesuai kebutuhan tim kami.`;
 
     const encodedMessage = encodeURIComponent(message);
     
@@ -89,7 +91,7 @@ Rencana Tanggal: ${data.date || 'Menyesuaikan'}`;
               Siap untuk <span className="text-[#EF4444]">Bertransformasi?</span>
             </h2>
             <p className="text-gray-500 text-base md:text-lg leading-relaxed mb-12 max-w-xl">
-              Hubungi kami hari ini untuk konsultasi gratis dan dapatkan proposal resmi program outbound, team building, atau gathering yang dirancang khusus sesuai kebutuhan tim Anda.
+              Hubungi kami hari ini untuk konsultasi kebutuhan tim Anda dan dapatkan draf proposal, opsi rundown, serta estimasi RAB resmi dalam 1x24 jam tanpa biaya komitmen.
             </p>
 
             <div className="space-y-6 md:space-y-8">

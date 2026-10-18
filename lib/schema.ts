@@ -19,12 +19,14 @@ export function getLocalBusinessSchema(additionalArea?: string) {
     "@type": "LocalBusiness",
     "@id": "https://growthindonesia.my.id/#organization",
     "name": COMPANY_INFO.brand_name,
+    "url": "https://growthindonesia.my.id/",
     "image": COMPANY_INFO.logo_url,
     "telephone": `+${COMPANY_INFO.whatsapp_number}`,
+    "email": COMPANY_INFO.email,
     "priceRange": "Rp 150.000 - Rp 9.500.000",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Jl. Mujair No.3",
+      "streetAddress": "Jl. Mujair No.3, Nambangan Kidul",
       "addressLocality": "Madiun",
       "addressRegion": "Jawa Timur",
       "postalCode": "63128",
@@ -35,6 +37,25 @@ export function getLocalBusinessSchema(additionalArea?: string) {
       "latitude": -7.6298,
       "longitude": 111.5239
     },
+    "founder": [
+      {
+        "@type": "Person",
+        "name": "Naftalyndho",
+        "jobTitle": "Co-Founder & Master Trainer Experiential Learning"
+      },
+      {
+        "@type": "Person",
+        "name": "Juprianto",
+        "jobTitle": "Co-Founder & Master Trainer Experiential Learning"
+      }
+    ],
+    "knowsAbout": [
+      "Corporate Outbound Training",
+      "Team Building & Experiential Learning",
+      "Indoor Training & Capacity Building",
+      "LDK OSIS & Character Building",
+      "Event Organizer Corporate & Family Gathering"
+    ],
     "openingHoursSpecification": [
       {
         "@type": "OpeningHoursSpecification",
@@ -134,8 +155,8 @@ export const HOMEPAGE_FAQS: FaqQuestionItem[] = [
     answer: "Kami menyediakan layanan Outbound Training & Team Building Corporate, Event Organizer (EO) Corporate & Employee Gathering, Family Gathering, LDK OSIS & Kemah Besar, Capacity Building, serta Fun Adventure & Outing.",
   },
   {
-    question: "Berapa estimasi biaya paket outbound dan event organizer di Madiun?",
-    answer: "Biaya paket sangat fleksibel mulai dari paket hemat hingga custom premium, disesuaikan dengan jumlah peserta, lokasi, dan kebutuhan fasilitas acara Anda. Anda juga dapat mensimulasikan anggaran dengan Kalkulator Budget di website kami.",
+    question: "Berapa kisaran biaya paket outbound dan gathering di Growth Indonesia?",
+    answer: "Biaya layanan disesuaikan dengan kategori kegiatan, durasi, dan fasilitas: tarif dasar mulai dari Rp 150.000/pax untuk Outbound, Fun Games, dan LDK OSIS (1 Hari), Rp 200.000/pax untuk Indoor Training, serta Rp 250.000/pax untuk Corporate Gathering. Tersedia pula paket bundel institusi mulai dari Rp 5.500.000 hingga Rp 9.500.000. Anda dapat menghitung estimasi instan melalui Kalkulator Budget di halaman utama atau melihat rincian lengkap di halaman referensi /pricing.md.",
   },
   {
     question: "Di wilayah mana saja Growth Indonesia melayani kegiatan outbound & event organizer?",
@@ -236,6 +257,14 @@ export function getServiceSchema(
     "areaServed": {
       "@type": "City",
       "name": kotaName
+    },
+    "offers": {
+      "@type": "AggregateOffer",
+      "priceCurrency": "IDR",
+      "lowPrice": "150000",
+      "highPrice": "9500000",
+      "offerCount": "5",
+      "availability": "https://schema.org/InStock"
     },
     "url": serviceUrl
   };

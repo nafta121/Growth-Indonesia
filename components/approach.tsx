@@ -3,23 +3,23 @@ import ScrollReveal from '@/components/ui/scroll-reveal';
 
 const PILLARS = [
   {
-    title: 'Client-Centric Focus',
-    description: 'Pendekatan strategi dan modul pelatihan yang dirancang khusus menyesuaikan dengan budaya dan target unik organisasi Anda.',
+    title: 'Kurikulum Berbasis TNA',
+    description: 'Setiap program diawali asesmen Training Need Analysis (TNA) agar simulasi selaras dengan target budaya kerja dan indikator kinerja organisasi Anda.',
     icon: Users,
   },
   {
-    title: 'Professional Team',
-    description: 'Didampingi oleh konsultan dan trainer ahli dengan rekam jejak yang solid dalam pengembangan kapasitas SDM.',
+    title: 'Master Trainer Berpengalaman',
+    description: 'Dipandu langsung oleh praktisi Experiential Learning berpengalaman (Naftalyndho & Juprianto) dengan standar kompetensi kepelatihan profesional.',
     icon: UserCheck,
   },
   {
-    title: 'Quality',
-    description: 'Standar keunggulan tanpa kompromi dalam setiap sesi indoor, kelas motivasi, maupun pengalaman outbound.',
+    title: 'Evaluasi & Laporan Terukur',
+    description: 'Bukan sekadar rekreasi singkat. Setiap kegiatan dilengkapi sesi debriefing reflektif, laporan evaluasi performa tim, dan dokumen SPJ resmi.',
     icon: Award,
   },
   {
-    title: 'Safety First',
-    description: 'Penerapan standar keselamatan mutlak dan protokol keamanan ketat untuk seluruh aktivitas outdoor.',
+    title: 'Zero Accident & Plan B Cuaca',
+    description: 'Penerapan protokol keselamatan ketat, kesiapan medis lapangan, serta jaminan skenario cadangan indoor/pendopo tanpa biaya tambahan jika turun hujan.',
     icon: ShieldCheck,
   },
 ];

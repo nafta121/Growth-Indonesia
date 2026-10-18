@@ -16,41 +16,46 @@ export default function TrustSection({
   const trustTiles = [
     {
       icon: Award,
-      title: 'Fasilitator Kompeten',
-      description: 'Seluruh fasilitator dan instruktur lapangan kami merupakan praktisi berpengalaman dengan standar kompetensi fasilitasi profesional.',
+      title: 'Master Trainer Berpengalaman',
+      description: 'Dipimpin langsung oleh praktisi Experiential Learning berpengalaman lebih dari 10 tahun dengan kurikulum berbasis asesmen kebutuhan tim (TNA).',
     },
     {
       icon: ShieldCheck,
-      title: 'Zero Accident Policy',
-      description: 'Prioritas tertinggi kami adalah keselamatan. Setiap kegiatan dilengkapi Risk Management Plan dan Standard Operating Procedure (SOP) keamanan skala industri.',
+      title: 'Zero Accident & Plan B Cuaca',
+      description: 'Dilengkapi peralatan berstandar keselamatan UIAA/CE, tim medis P3K lapangan, serta jaminan skenario Plan B (indoor/pendopo) jika turun hujan.',
     },
     {
       icon: Video,
-      title: 'Modern Documentation',
-      description: 'Paket yang ditawarkan mencakup tim media profesional dengan peralatan lengkap mulai dari Drone, Mirrorless, hingga produksi video cinematic.',
+      title: 'Dokumentasi & Laporan Evaluasi',
+      description: 'Mencakup produksi foto, video sinematik, dan drone, ditambah Laporan Evaluasi Performa Tim tertulis sebagai bukti pertanggungjawaban HRD.',
     },
   ];
 
   const comparisonData = [
     {
-      feature: 'Metode Pembelajaran',
-      us: 'Experiential Learning Berbasis Objektif',
-      them: 'Sekadar Fun Games Konvensional',
+      feature: 'Metodologi & Kurikulum',
+      us: 'Experiential Learning Berbasis TNA & Debriefing',
+      them: 'Permainan Massal Tanpa Asesmen Kebutuhan Tim',
     },
     {
-      feature: 'Fasilitator & Instruktur',
-      us: 'Master Trainer & Praktisi Berpengalaman',
-      them: 'Seringkali Freelance / Tanpa Kurikulum Terukur',
+      feature: 'Durasi & Output Program',
+      us: 'Program Harian Terstruktur + Laporan Evaluasi SDM',
+      them: 'Fun Games Singkat (Maks 2 Jam) Tanpa Laporan',
     },
     {
-      feature: 'Transparansi Harga',
-      us: 'Terdapat Kalkulator Budget & RAB Detil',
-      them: 'Harga Sering Tertutup / Banyak Hidden Fee',
+      feature: 'Kualifikasi Pemandu',
+      us: 'Dipimpin Langsung Master Trainer Berpengalaman',
+      them: 'Pemandu Lepas / Fokus Sewa Transportasi Wisata',
     },
     {
-      feature: 'Kualitas Dokumentasi',
-      us: 'Premium (Drone, DSLR, Video Editing Cinematic)',
-      them: 'Standar HP / Dokumentasi Seadanya',
+      feature: 'Penguasaan Venue & Mitigasi Cuaca',
+      us: 'Spesialis Lokal Jatim + Siaga Plan B Indoor/Pendopo',
+      them: 'Vendor Luar Kota / Tanpa Skenario Kontingensi Hujan',
+    },
+    {
+      feature: 'Transparansi RAB & Pengadaan',
+      us: 'Kalkulator RAB Instan & Dokumen SPJ Lengkap',
+      them: 'Harga Tertutup (Wajib Telepon) / Rawan Biaya Tambahan',
     },
   ];
 

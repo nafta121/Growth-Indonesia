@@ -5,6 +5,7 @@ import Footer from '@/components/footer';
 import WhatsAppFAB from '@/components/whatsapp-fab';
 import CredibilityPortfolio from '@/components/credibility-portfolio';
 import Breadcrumb from '@/components/breadcrumb';
+import { getLocalBusinessSchema } from '@/lib/schema';
 
 export const metadata: Metadata = {
   title: 'Portofolio Klien & Profil Fasilitator Profesional',
@@ -37,16 +38,37 @@ export const metadata: Metadata = {
 };
 
 export default function PortofolioPage() {
+  const schemaLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'ProfilePage',
+        '@id': 'https://growthindonesia.my.id/portofolio-dan-sertifikasi#webpage',
+        'name': 'Portofolio Klien & Profil Fasilitator Profesional | Growth Indonesia',
+        'url': 'https://growthindonesia.my.id/portofolio-dan-sertifikasi',
+        'mainEntity': {
+          '@id': 'https://growthindonesia.my.id/#organization',
+        },
+      },
+      getLocalBusinessSchema(),
+    ],
+  };
+
   return (
     <div className="relative min-h-screen bg-slate-50 selection:bg-[#EF4444] selection:text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaLd) }}
+      />
       <Navbar />
       <main className="pt-24 pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
           <Breadcrumb
             items={[
               { label: 'Beranda', href: '/' },
-              { label: 'Portofolio & Sertifikasi', href: '/portofolio-dan-sertifikasi' },
+              { label: 'Portofolio & Profil Praktisi' },
             ]}
+            variant="light"
           />
         </div>
         <CredibilityPortfolio />
@@ -56,3 +78,4 @@ export default function PortofolioPage() {
     </div>
   );
 }
+

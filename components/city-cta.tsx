@@ -13,7 +13,7 @@ export default function CityCta({ kategoriName, kotaName }: CityCtaProps) {
     <section className="py-24 md:py-32 bg-[#0A1628] relative overflow-hidden">
       <Image
         src="https://nafta121.sirv.com/OUTBOUND/2022-10-22%2009-00-09.jpeg"
-        alt={`Background ${kategoriName} ${kotaName}`}
+        alt={`Dokumentasi Kegiatan ${kategoriName} bersama Fasilitator Growth Indonesia di ${kotaName}`}
         fill
         loading="lazy"
         sizes="100vw"

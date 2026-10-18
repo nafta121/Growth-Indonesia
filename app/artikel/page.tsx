@@ -44,8 +44,21 @@ export const metadata: Metadata = {
 export default async function ArtikelHubPage() {
   const articles = await getAllArticles();
 
+  const schemaLd = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    '@id': 'https://growthindonesia.my.id/artikel#webpage',
+    'name': `Artikel & Edukasi Outbound Terbaik | ${COMPANY_INFO.brand_name}`,
+    'description': `Kumpulan artikel, tips, panduan, dan edukasi seputar program outbound, training, team building, dan pengembangan SDM perusahaan dari ${COMPANY_INFO.brand_name}.`,
+    'url': 'https://growthindonesia.my.id/artikel',
+  };
+
   return (
     <div className="relative min-h-screen flex flex-col bg-[#0A1628] text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaLd) }}
+      />
       <Navbar />
       
       <main className="flex-grow pt-[72px] md:pt-[88px]">
@@ -75,7 +88,7 @@ export default async function ArtikelHubPage() {
               Edukasi & <span className="text-brand">Artikel Outbound</span>
             </h1>
             <p className="text-base md:text-xl text-slate-300 max-w-2xl mx-auto font-medium">
-              Temukan insight strategis, panduan praktis, dan tips pengembangan SDM terpercaya dari fasilitator bersertifikat kami.
+              Temukan insight strategis, panduan praktis, dan tips pengembangan SDM terpercaya dari Master Trainer dan fasilitator berpengalaman kami.
             </p>
           </div>
         </section>

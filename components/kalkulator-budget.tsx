@@ -14,6 +14,7 @@ const ACTIVITIES = [
 const DURATIONS = [
   { id: '1-day', name: 'One Day Activity (1 Hari)', multiplier: 1 },
   { id: '2-days', name: 'Menginap (2 Hari 1 Malam)', multiplier: 1.8 },
+  { id: '3-days', name: 'Menginap (3 Hari 2 Malam)', multiplier: 2.8 },
 ];
 
 type Activity = typeof ACTIVITIES[0];
@@ -113,13 +114,15 @@ function DurationSelection({ duration, setDuration }: { duration: Duration, setD
         Durasi Program
       </label>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-         {DURATIONS.map((d) => (
+         {DURATIONS.map((d, index) => (
             <button
               key={d.id}
               type="button"
               aria-pressed={duration.id === d.id}
               onClick={() => setDuration(d)}
               className={`min-h-12 px-4 py-3.5 rounded-2xl text-sm font-bold transition-all duration-300 border-2 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#DC2626] focus-visible:ring-offset-2 ${
+                index === DURATIONS.length - 1 ? 'sm:col-span-2' : ''
+              } ${
                 duration.id === d.id
                 ? 'border-[#0A1628] bg-[#0A1628] text-white shadow-md shadow-[#0A1628]/20'
                 : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:bg-slate-50'
@@ -145,11 +148,18 @@ function KalkulatorResult({
   duration: Duration;
 }) {
   const handleWhatsAppClick = () => {
+    const priorityScale =
+      pax >= 100 || duration.id !== '1-day'
+        ? 'Korporat / Instansi Skala Besar (Fast-Track RAB)'
+        : 'Reguler B2B / Institusi';
+
     const text = `Halo tim Growth Indonesia, saya ingin meminta rincian RAB dan draf proposal kegiatan dengan estimasi berikut:
 - Kategori Layanan: ${program.label}
 - Durasi Program: ${duration.name}
 - Jumlah Peserta: ${pax} Pax
 - Estimasi Awal: ${formatRupiah(totalEstimate)}
+- Skala Prioritas: ${priorityScale}
+- Dokumen yang Diminta: Draf Proposal, Opsi Rundown & Estimasi RAB Resmi
 
 Mohon informasi opsi venue dan ketersediaan jadwal.`;
     

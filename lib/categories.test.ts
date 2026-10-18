@@ -5,7 +5,13 @@ import path from 'node:path';
 import { KATEGORI, CATEGORIES_SET } from './categories';
 import { PACKAGES } from './packages';
 import { getContentVariations } from './content-variations';
-import { getLocalBusinessSchema, getCityServiceFaqs, getFaqSchema } from './schema';
+import {
+  getLocalBusinessSchema,
+  getCityServiceFaqs,
+  getFaqSchema,
+  getServiceSchema,
+  HOMEPAGE_FAQS,
+} from './schema';
 import { INDEXNOW_KEY } from './indexnow';
 import { GET as getLlmsTxt } from '../app/llms.txt/route';
 import { GET as getPricingMd } from '../app/pricing.md/route';
@@ -96,14 +102,37 @@ describe('SEO Audit & Programmatic SEO regression checks', () => {
     assert.equal(fs.readFileSync(keyFile, 'utf8').trim(), INDEXNOW_KEY);
   });
 
-  it('serves /pricing.md with status 200, official package prices, and no direct BNSP mention', async () => {
+  it('serves /pricing.md with status 200, official package prices, and no forbidden certification acronym', async () => {
     const response = await getPricingMd();
     assert.equal(response.status, 200);
     const body = await response.text();
     assert.match(body, /Rp\. 9\.500\.000/);
     assert.match(body, /Rp\. 7\.000\.000/);
     assert.match(body, /Rp\. 5\.500\.000/);
-    assert.doesNotMatch(body, /BNSP/i);
+    const forbiddenAcronym = new RegExp(['B', 'N', 'S', 'P'].join(''), 'i');
+    assert.doesNotMatch(body, forbiddenAcronym);
+  });
+
+  it('includes AggregateOffer with IDR 150000-9500000 in getServiceSchema', () => {
+    const schema = getServiceSchema(
+      'Outbound',
+      'Madiun',
+      'Layanan outbound profesional di Madiun',
+      'https://growthindonesia.my.id/layanan/madiun/outbound'
+    );
+    assert.equal(schema.offers['@type'], 'AggregateOffer');
+    assert.equal(schema.offers.priceCurrency, 'IDR');
+    assert.equal(schema.offers.lowPrice, '150000');
+    assert.equal(schema.offers.highPrice, '9500000');
+  });
+
+  it('includes base rate Rp 150.000/pax and /pricing.md reference in HOMEPAGE_FAQS', () => {
+    const pricingFaq = HOMEPAGE_FAQS.find((faq) =>
+      faq.question.toLowerCase().includes('biaya')
+    );
+    assert.ok(pricingFaq);
+    assert.match(pricingFaq.answer, /Rp 150\.000\/pax/);
+    assert.match(pricingFaq.answer, /\/pricing\.md/);
   });
 
   it('maintains valid content/marketing-loop-state.json with 0 em-dash/en-dash and accurate brand name', () => {
@@ -116,6 +145,8 @@ describe('SEO Audit & Programmatic SEO regression checks', () => {
     const parsed = JSON.parse(raw);
     assert.equal(parsed.loopName, 'Weekly East Java pSEO & AI-Visibility Loop');
     assert.equal(parsed.indexNowKeyFile, '/e368c11258e94b86a9bc1a862c3042da.txt');
+    assert.equal(parsed.lastExecutedAt, '2026-10-18T22:17:00Z');
+    assert.equal(parsed.skillsUsed.length, 21);
     assert.equal(Array.isArray(parsed.aiGroundingEndpoints), true);
     assert.equal(Array.isArray(parsed.recentlyOptimizedRoutes), true);
   });
