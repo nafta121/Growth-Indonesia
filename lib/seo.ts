@@ -1,42 +1,4 @@
 import { COMPANY_INFO } from './constants';
-import {
-  getLocalBusinessSchema,
-  getFaqSchema,
-  getCityServiceFaqs,
-  generateFaqSchema,
-  HOMEPAGE_FAQS,
-  getHomepageFaqSchema,
-  BreadcrumbItemSchema,
-  BreadcrumbItem,
-  generateBreadcrumbSchema,
-  getBreadcrumbListSchema,
-  getServiceSchema,
-  getServicePageSchema,
-} from './schema';
-
-export {
-  COMPANY_INFO,
-  getLocalBusinessSchema,
-  getFaqSchema,
-  getCityServiceFaqs,
-  generateFaqSchema,
-  HOMEPAGE_FAQS,
-  getHomepageFaqSchema,
-  generateBreadcrumbSchema,
-  getBreadcrumbListSchema,
-  getServiceSchema,
-  getServicePageSchema,
-};
-export type { BreadcrumbItemSchema, BreadcrumbItem };
-
-export interface ServicePageSchemaParams {
-  kotaName: string;
-  cityKey: string;
-  kategoriName: string;
-  kategoriKey: string;
-  cityDescription: string;
-  venues?: string[];
-}
 
 export const CATEGORY_IMAGES: Record<string, { url: string; alt: string }> = {
   'outbound': {
@@ -81,4 +43,3 @@ export function getCategoryOgImage(kategoriKey: string, kotaName?: string) {
     }
   ];
 }
-

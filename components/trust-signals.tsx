@@ -1,5 +1,4 @@
 import { Building2, Globe, GraduationCap, HardHat, Landmark, Ship, TowerControl as Tower, Truck, Quote } from 'lucide-react';
-import { getLocalBusinessSchema } from '@/lib/schema';
 import { COMPANY_INFO } from '@/lib/constants';
 
 const CLIENTS = [
@@ -123,10 +122,10 @@ export default function TrustSignals() {
         },
         "itemReviewed": {
           "@type": "Organization",
+          "@id": "https://growthindonesia.my.id/#organization",
           "name": COMPANY_INFO.brand_name
         }
-      })),
-      getLocalBusinessSchema()
+      }))
     ]
   };
 

@@ -20,13 +20,25 @@ export async function submitToIndexNow(urls: string[]) {
     return { success: false, message: 'No URLs provided' };
   }
 
-  // Normalize URLs to ensure they match host
-  const formattedUrls = urls.map((u) => {
-    if (u.startsWith('http://') || u.startsWith('https://')) {
-      return u;
-    }
-    return `https://${INDEXNOW_HOST}${u.startsWith('/') ? '' : '/'}${u}`;
-  });
+  // Normalize URLs and restrict to INDEXNOW_HOST
+  const formattedUrls = urls
+    .map((u) => {
+      if (u.startsWith('http://') || u.startsWith('https://')) {
+        return u;
+      }
+      return `https://${INDEXNOW_HOST}${u.startsWith('/') ? '' : '/'}${u}`;
+    })
+    .filter((u) => {
+      try {
+        return new URL(u).hostname === INDEXNOW_HOST;
+      } catch {
+        return false;
+      }
+    });
+
+  if (formattedUrls.length === 0) {
+    return { success: false, message: 'No valid host URLs provided' };
+  }
 
   const payload: IndexNowPayload = {
     host: INDEXNOW_HOST,

@@ -1,7 +1,18 @@
 import { NextResponse } from 'next/server';
-import { COMPANY_INFO } from '@/lib/seo';
+import { COMPANY_INFO } from '@/lib/constants';
+import { PACKAGES } from '@/lib/packages';
 
 export async function GET() {
+  const bundlesMarkdown = PACKAGES.filter((p) => p.id !== 'other')
+    .map(
+      (p, idx) => `### ${String.fromCharCode(65 + idx)}. Paket ${p.title} - ${p.price} / paket
+- **Peruntukan**: ${p.description}
+- **Kapasitas Ideal**: 30 - 50 peserta (dapat disesuaikan untuk grup lebih besar).
+- **Fasilitas Lengkap**:
+${p.features.map((f, i) => `  ${i + 1}. ${f}.`).join('\n')}`
+    )
+    .join('\n\n');
+
   const pricingMdContent = `# ${COMPANY_INFO.brand_name} - Dokumentasi Harga & Paket Resmi (Official Pricing Reference)
 
 > Dokumen referensi harga resmi (Machine-Readable Pricing Documentation) untuk layanan Outbound, Team Building, Experiential Learning, LDK OSIS, Indoor Training, dan Event Organizer (EO) Gathering oleh Growth Indonesia di Madiun, Sarangan, Magetan, Ponorogo, Ngawi, Pacitan, Kediri, Surabaya, dan Jawa Timur.
@@ -40,36 +51,7 @@ Berikut adalah estimasi investasi per peserta (kuota minimal 30 pax, dapat dises
 
 Untuk kemudahan penganggaran perusahaan, BUMN, instansi pemerintah, dan institusi pendidikan, Growth Indonesia menyediakan 3 paket bundel kolektif:
 
-### A. Paket Future Leaders Camp - Rp. 9.500.000 / paket
-- **Peruntukan**: Program komprehensif untuk pengembangan kepemimpinan masa depan, manajemen perubahan, Corporate Gathering eksklusif, atau LDK & Kawah Candradimuka tingkat lanjut.
-- **Kapasitas Ideal**: 30 - 50 peserta (dapat disesuaikan untuk grup lebih besar).
-- **Fasilitas Lengkap**:
-  1. Kurikulum kustom berbasis *Training Need Analysis* (TNA) sesuai nilai inti organisasi.
-  2. Supervisi langsung oleh Master Trainer berpengalaman (**Naftalyndho** & **Juprianto**).
-  3. Fasilitator pendamping rasio ideal (1 fasilitator untuk 10-12 peserta).
-  4. Peralatan simulasi *experiential learning* dan *high/low impact games* berstandar keselamatan UIAA/CE.
-  5. Dokumentasi lengkap mencakup fotografi profesional, video *aftermovie*, dan pengambilan gambar udara (*drone footage*).
-  6. Tim medis / P3K lapangan dengan protokol *Zero Accident Policy*.
-  7. Laporan evaluasi komprehensif (*Post-Training Assessment Report*) untuk HRD/manajemen.
-
-### B. Paket Next-Gen Summit - Rp. 7.000.000 / paket
-- **Peruntukan**: Program *Indoor Training*, *Capacity Building*, penyelarasan visi antar-divisi, serta seminar motivasi dan kepemimpinan manajerial/staf.
-- **Kapasitas Ideal**: 30 - 50 peserta.
-- **Fasilitas Lengkap**:
-  1. Modul pelatihan interaktif (*Experiential Indoor Learning* & studi kasus tim).
-  2. Dipandu oleh Master Trainer berpengalaman beserta tim co-fasilitator.
-  3. Peralatan simulasi kelompok, *worksheet*, dan perlengkapan *team challenge*.
-  4. Dokumentasi foto dan video kegiatan.
-  5. Tim pendukung teknis, P3K lapangan, serta ringkasan evaluasi program.
-
-### C. Paket Fun Synergy Outing - Rp. 5.500.000 / paket
-- **Peruntukan**: Aktivitas *Fun Games*, *Ice Breaking*, *Company Outing* rekreatif, dan penguatan keakraban tim dalam suasana santai.
-- **Kapasitas Ideal**: 30 - 50 peserta.
-- **Fasilitas Lengkap**:
-  1. Game Master profesional & fasilitator lapangan berpengalaman.
-  2. Properti permainan kelompok yang seru, aman, dan inklusif untuk seluruh usia.
-  3. Sound system portabel/lapangan untuk pemandu acara.
-  4. Dokumentasi foto kegiatan & P3K lapangan berstandar *Zero Accident Policy*.
+${bundlesMarkdown}
 
 ---
 

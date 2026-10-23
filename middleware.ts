@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import { CATEGORIES_SET } from '@/lib/categories';
+import { getLegacyServiceRedirect } from '@/lib/categories';
 
 export function middleware(request: NextRequest) {
   const url = request.nextUrl.clone();
@@ -22,35 +22,11 @@ export function middleware(request: NextRequest) {
   // Handle redirects for old path structure: /layanan/kategori-kota -> /layanan/kota/kategori
   if (pathname.startsWith('/layanan/')) {
     const segments = pathname.split('/').filter(Boolean);
-    
-    // We only want to rewrite if it closely matches the exact 2-segment pattern
-    // where segment 0 is "layanan" and segment 1 includes a hyphenated category-city.
     if (segments.length === 2 && segments[0] === 'layanan') {
-      const slug = segments[1];
-      
-      const parts = slug.split('-');
-      if (parts.length >= 3) {
-        const cat2 = `${parts[0]}-${parts[1]}`;
-        if (CATEGORIES_SET.has(cat2)) {
-          const city = parts.slice(2).join('-');
-          if (city) {
-            url.pathname = `/layanan/${city}/${cat2}`;
-            // Return 301 Permanent Redirect to consolidate Link Juice
-            return NextResponse.redirect(url, 301);
-          }
-        }
-      }
-
-      if (parts.length >= 2) {
-        const cat1 = parts[0];
-        if (CATEGORIES_SET.has(cat1)) {
-          const city = parts.slice(1).join('-');
-          if (city) {
-            url.pathname = `/layanan/${city}/${cat1}`;
-            // Return 301 Permanent Redirect to consolidate Link Juice
-            return NextResponse.redirect(url, 301);
-          }
-        }
+      const dest = getLegacyServiceRedirect(segments[1].toLowerCase());
+      if (dest) {
+        url.pathname = dest;
+        return NextResponse.redirect(url, 301);
       }
     }
   }

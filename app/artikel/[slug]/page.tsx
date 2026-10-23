@@ -82,14 +82,6 @@ export default async function ArtikelDetailPage({ params }: PageProps) {
   }
 
   const articleDate = article.frontmatter.date || '2026-06-24';
-  const startDateISO = `${articleDate}T08:00:00+07:00`;
-  const endDateISO = `${articleDate}T17:00:00+07:00`;
-
-  const isEventArticle = 
-    article.frontmatter.tags?.some((tag) =>
-      ['LDK OSIS', 'Outbound', 'Outbound Magetan', 'Character Building', 'Team Building', 'Corporate Training', 'Outdoor Learning', 'Gathering'].includes(tag)
-    ) ||
-    /kemah|outbound|training|gathering|learning|event|osis/i.test(article.frontmatter.title);
 
   const blogPostingSchema = {
     "@context": "https://schema.org",
@@ -126,51 +118,6 @@ export default async function ArtikelDetailPage({ params }: PageProps) {
     }
   };
 
-  const eventSchema = {
-    "@context": "https://schema.org",
-    "@type": "Event",
-    "@id": `https://growthindonesia.my.id/artikel/${slug}#event`,
-    "name": article.frontmatter.title,
-    "description": article.frontmatter.description,
-    "image": [article.frontmatter.image],
-    "startDate": startDateISO,
-    "endDate": endDateISO,
-    "eventStatus": "https://schema.org/EventScheduled",
-    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-    "location": {
-      "@type": "Place",
-      "name": "Ndalem Prabu Sarangan & Area Outbound Growth Indonesia",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": COMPANY_INFO.address_short,
-        "addressLocality": "Madiun",
-        "addressRegion": "Jawa Timur",
-        "postalCode": "63128",
-        "addressCountry": "ID"
-      }
-    },
-    "organizer": {
-      "@type": "Organization",
-      "name": COMPANY_INFO.brand_name,
-      "url": "https://growthindonesia.my.id"
-    },
-    "performer": {
-      "@type": "Person",
-      "name": "Naftalyndho Mycha Grace Mirawandi",
-      "jobTitle": "Lead Facilitator"
-    },
-    "offers": {
-      "@type": "Offer",
-      "price": "150000",
-      "priceCurrency": "IDR",
-      "url": "https://growthindonesia.my.id/#kontak",
-      "availability": "https://schema.org/InStock",
-      "validFrom": "2026-01-01"
-    }
-  };
-
-  const articleSchema = isEventArticle ? [blogPostingSchema, eventSchema] : [blogPostingSchema];
-
   return (
     <div className="relative min-h-screen flex flex-col bg-[#0A1628] text-white">
       <Navbar />
@@ -178,7 +125,7 @@ export default async function ArtikelDetailPage({ params }: PageProps) {
       {/* Structured Schema */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostingSchema) }}
       />
 
       <main className="flex-grow pt-[72px] md:pt-[88px]">

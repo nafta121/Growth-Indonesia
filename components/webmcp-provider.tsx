@@ -1,6 +1,8 @@
 'use client';
 
 import { useEffect } from 'react';
+import { COMPANY_INFO } from '@/lib/constants';
+import { CITIES } from '@/lib/cities';
 
 export interface WebMCPTool {
   name: string;
@@ -50,8 +52,9 @@ export function WebMCPProvider() {
           const tier = (args.tier as string) || 'standard';
           const city = (args.city as string) || 'Madiun';
 
-          const ratePerPerson = tier === 'exclusive' ? 350000 : tier === 'premium' ? 250000 : 175000;
-          const estimatedCost = participants * ratePerPerson * durationDays;
+          const ratePerPerson = tier === 'exclusive' ? 250000 : tier === 'premium' ? 200000 : 150000;
+          const durationMultiplier = durationDays === 3 ? 2.8 : durationDays === 2 ? 1.8 : 1;
+          const estimatedCost = Math.round(participants * ratePerPerson * durationMultiplier);
 
           return {
             status: 'success',
@@ -65,7 +68,7 @@ export function WebMCPProvider() {
               'Documentation (Photos & Videos)',
               'Banner & Welcome Gate',
             ],
-            bookingWhatsApp: `https://wa.me/6281234567890?text=${encodeURIComponent(
+            bookingWhatsApp: `https://wa.me/${COMPANY_INFO.whatsapp_number}?text=${encodeURIComponent(
               `Halo Growth Indonesia, saya ingin konsultasi paket outbound ${tier} untuk ${participants} orang di ${city} (${durationDays} hari). Est: Rp ${estimatedCost.toLocaleString('id-ID')}`
             )}`,
           };
@@ -147,18 +150,20 @@ export function WebMCPProvider() {
         },
         execute: (args) => {
           const city = String(args.cityName || 'Madiun');
+          const slug = city.toLowerCase().trim().replace(/\s+/g, '-');
+          const cityData = CITIES[slug];
           return {
             status: 'success',
-            cityName: city,
+            cityName: cityData?.name || city,
             serviceAvailable: true,
-            providerName: 'Growth Indonesia',
-            popularVenues: [
+            providerName: COMPANY_INFO.brand_name,
+            popularVenues: cityData?.popularVenues || [
               `Hutan Pinus & Taman Kota ${city}`,
               `Resort & Outbound Area ${city}`,
               `Bumi Perkemahan & Kampus ${city}`,
             ],
-            contactPhone: '+6281234567890',
-            infoUrl: `https://growthindonesia.my.id/layanan/outbound-${city.toLowerCase().replace(/\s+/g, '-')}`,
+            contactPhone: `+${COMPANY_INFO.whatsapp_number}`,
+            infoUrl: `https://growthindonesia.my.id/layanan/${cityData ? slug : 'madiun'}/outbound`,
           };
         },
       },
@@ -179,15 +184,15 @@ export function WebMCPProvider() {
           const msg = String(args.message || 'Saya ingin bertanya seputar paket outbound.');
 
           const waMessage = `Halo Growth Indonesia, saya ${name} dari ${org}. ${msg}`;
-          const waUrl = `https://wa.me/6281234567890?text=${encodeURIComponent(waMessage)}`;
+          const waUrl = `https://wa.me/${COMPANY_INFO.whatsapp_number}?text=${encodeURIComponent(waMessage)}`;
 
           return {
             status: 'success',
             consultant: 'Tim Growth Indonesia',
             whatsappUrl: waUrl,
-            email: 'info@growthindonesia.my.id',
+            email: COMPANY_INFO.email,
             workingHours: 'Senin - Sabtu: 08:00 - 17:00 WIB',
-            officeAddress: 'Madiun, Jawa Timur, Indonesia',
+            officeAddress: COMPANY_INFO.address,
           };
         },
       },

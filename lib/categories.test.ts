@@ -2,7 +2,8 @@ import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
-import { KATEGORI, CATEGORIES_SET } from './categories';
+import { KATEGORI, CATEGORIES_SET, getLegacyServiceRedirect } from './categories';
+import { getNearbyCities } from './city-proximity';
 import { PACKAGES } from './packages';
 import { getContentVariations } from './content-variations';
 import {
@@ -144,11 +145,27 @@ describe('SEO Audit & Programmatic SEO regression checks', () => {
     assert.doesNotMatch(raw, /Gemilang/i);
     const parsed = JSON.parse(raw);
     assert.equal(parsed.loopName, 'Weekly East Java pSEO & AI-Visibility Loop');
-    assert.equal(parsed.indexNowKeyFile, '/e368c11258e94b86a9bc1a862c3042da.txt');
+    assert.equal(parsed.indexNowKeyFile, `/${INDEXNOW_KEY}.txt`);
     assert.equal(parsed.lastExecutedAt, '2026-10-18T22:17:00Z');
     assert.equal(parsed.skillsUsed.length, 21);
     assert.equal(Array.isArray(parsed.aiGroundingEndpoints), true);
     assert.equal(Array.isArray(parsed.recentlyOptimizedRoutes), true);
+  });
+
+  it('redirects legacy /layanan/ slug patterns accurately', () => {
+    assert.equal(getLegacyServiceRedirect('outbound'), '/layanan/madiun/outbound');
+    assert.equal(getLegacyServiceRedirect('ldk-osis'), '/layanan/madiun/ldk-osis');
+    assert.equal(getLegacyServiceRedirect('outbound-surabaya'), '/layanan/surabaya/outbound');
+    assert.equal(getLegacyServiceRedirect('fun-games-batu'), '/layanan/batu/fun-games');
+    assert.equal(getLegacyServiceRedirect('madiun'), null);
+  });
+
+  it('returns geographically nearby cities instead of wrapping around to Madiun', () => {
+    const situbondoNearby = getNearbyCities('situbondo', 6);
+    assert.equal(situbondoNearby.length, 6);
+    assert.ok(situbondoNearby.includes('bondowoso'));
+    assert.ok(situbondoNearby.includes('banyuwangi'));
+    assert.equal(situbondoNearby.includes('madiun'), false);
   });
 });
 

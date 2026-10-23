@@ -1,7 +1,12 @@
 import { NextResponse } from 'next/server';
-import { COMPANY_INFO } from '@/lib/seo';
+import { COMPANY_INFO } from '@/lib/constants';
+import { PACKAGES } from '@/lib/packages';
 
 export async function GET() {
+  const bundleList = PACKAGES.filter((p) => p.id !== 'other')
+    .map((p) => `  - **${p.title}**: ${p.price} / paket (${p.description} Fitur: ${p.features.join(', ')}).`)
+    .join('\n');
+
   const llmsTxtContent = `# ${COMPANY_INFO.brand_name} - Official AI Grounding Documentation
 
 > Provider Outbound, Team Building, Experiential Learning, dan Event Organizer (EO) Profesional di Madiun, Sarangan, Magetan, Ponorogo, dan Jawa Timur.
@@ -32,9 +37,7 @@ export async function GET() {
   - Paket Menginap 2 Hari 1 Malam (2D1N): Mulai Rp 350.000/pax
   - Paket Menginap 3 Hari 2 Malam (3D2N): Mulai Rp 550.000/pax
 - **Paket Bundel Kolektif Resmi**:
-  - **Future Leaders Camp**: Rp. 9.500.000 / paket (Kurikulum TNA kustom, Master Trainer berpengalaman, peralatan standar UIAA/CE, dokumentasi foto + video + drone, P3K, laporan evaluasi).
-  - **Next-Gen Summit**: Rp. 7.000.000 / paket (Indoor Training & Capacity Building, modul kepemimpinan & kolaborasi, fasilitator berpengalaman, dokumentasi & evaluasi).
-  - **Fun Synergy Outing**: Rp. 5.500.000 / paket (Fun Games & Ice Breaking rekreatif, Game Master berpengalaman, properti simulasi lengkap, dokumentasi & P3K).
+${bundleList}
 
 ---
 

@@ -1,15 +1,27 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { submitToIndexNow, INDEXNOW_KEY, INDEXNOW_HOST, INDEXNOW_KEY_LOCATION } from '@/lib/indexnow';
 import { CITIES } from '@/lib/cities';
+import { KATEGORI } from '@/lib/categories';
+
+function isAuthorized(req: NextRequest): boolean {
+  const secret = process.env.INDEXNOW_SECRET || INDEXNOW_KEY;
+  const authHeader = req.headers.get('authorization')?.replace(/^Bearer\s+/i, '');
+  const queryKey = new URL(req.url).searchParams.get('key');
+  return authHeader === secret || queryKey === secret;
+}
 
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const singleUrl = searchParams.get('url');
   const submitAll = searchParams.get('all');
 
+  if (submitAll === 'true' || singleUrl) {
+    if (!isAuthorized(req)) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+  }
+
   if (submitAll === 'true') {
-    // Generate all dynamic URLs from site
-    const KATEGORI = ['outbound', 'training', 'fun-games', 'ldk-osis', 'gathering'];
     const allUrls: string[] = [
       `https://${INDEXNOW_HOST}/`,
       `https://${INDEXNOW_HOST}/layanan`,
@@ -40,17 +52,14 @@ export async function GET(req: NextRequest) {
 
   return NextResponse.json({
     message: 'IndexNow API endpoint active',
-    key: INDEXNOW_KEY,
     keyLocation: INDEXNOW_KEY_LOCATION,
-    usage: {
-      submitSingle: `GET /api/indexnow?url=https://${INDEXNOW_HOST}/layanan/madiun/outbound`,
-      submitAll: `GET /api/indexnow?all=true`,
-      submitPost: `POST /api/indexnow with JSON body { "urls": ["https://${INDEXNOW_HOST}/..."] }`,
-    },
   });
 }
 
 export async function POST(req: NextRequest) {
+  if (!isAuthorized(req)) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
   try {
     const body = await req.json();
     let urlsToSubmit: string[] = [];

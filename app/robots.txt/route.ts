@@ -6,9 +6,7 @@ Allow: /
 Allow: /_next/static/
 Allow: /llms.txt
 Allow: /pricing.md
-Allow: /e368c11258e94b86a9bc1a862c3042da.txt
 Allow: /2c11486128914291876d43ecd6d55580.txt
-Allow: /api/indexnow
 Disallow: /api/
 
 # AI Search Bots & Crawlers (GEO Grounding)

@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { MapPin, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { CITIES } from '@/lib/cities';
 import { getCityImage } from '@/lib/city-images';
-import { KATEGORI, CATEGORIES_SET } from '@/lib/categories';
+import { KATEGORI, getLegacyServiceRedirect } from '@/lib/categories';
 import { COMPANY_INFO } from '@/lib/constants';
 import { getContentVariations } from '@/lib/content-variations';
 import { getLocalBusinessSchema } from '@/lib/schema';
@@ -17,38 +17,13 @@ type Props = {
   params: Promise<{ kota: string }>;
 };
 
-function getRedirectDestination(slug: string): string | null {
-  if (CATEGORIES_SET.has(slug)) {
-    return `/layanan/madiun/${slug}`;
-  }
-
-  const parts = slug.split('-');
-  if (parts.length >= 3) {
-    const multiCat = `${parts[0]}-${parts[1]}`;
-    if (CATEGORIES_SET.has(multiCat)) {
-      const detectedCity = parts.slice(2).join('-');
-      return `/layanan/${detectedCity}/${multiCat}`;
-    }
-  }
-
-  if (parts.length >= 2) {
-    const singleCat = parts[0];
-    if (CATEGORIES_SET.has(singleCat)) {
-      const detectedCity = parts.slice(1).join('-');
-      return `/layanan/${detectedCity}/${singleCat}`;
-    }
-  }
-
-  return null;
-}
-
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { kota } = await params;
   const decodedKota = decodeURIComponent(kota).toLowerCase();
   const cityData = CITIES[decodedKota];
   
   if (!cityData) {
-    const redirectUrl = getRedirectDestination(decodedKota);
+    const redirectUrl = getLegacyServiceRedirect(decodedKota);
     if (redirectUrl) {
       permanentRedirect(redirectUrl);
     }
@@ -113,7 +88,7 @@ export default async function CityHubPage({ params }: Props) {
   const cityData = CITIES[decodedKota];
 
   if (!cityData) {
-    const redirectUrl = getRedirectDestination(decodedKota);
+    const redirectUrl = getLegacyServiceRedirect(decodedKota);
     if (redirectUrl) {
       permanentRedirect(redirectUrl);
     }

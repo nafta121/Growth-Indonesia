@@ -1,4 +1,4 @@
-import { MetadataRoute } from 'next';
+import type { MetadataRoute } from 'next';
 import { CITIES } from '@/lib/cities';
 import { KATEGORI } from '@/lib/categories';
 import { getArticleSlugs } from '@/lib/mdx';

@@ -54,7 +54,7 @@
     "indexNowPing": "Submit daftar URL yang diperbarui menggunakan kunci verifikasi IndexNow setelah build produksi lulus",
     "humanCheckpoint": "Perubahan klaim harga dasar atau penambahan kemitraan venue baru memerlukan tinjauan persetujuan sebelum dipublikasikan ke produksi"
   },
-  "indexNowKeyFile": "/e368c11258e94b86a9bc1a862c3042da.txt",
+  "indexNowKeyFile": "/2c11486128914291876d43ecd6d55580.txt",
   "aiGroundingEndpoints": [
     "/llms.txt",
     "/pricing.md",

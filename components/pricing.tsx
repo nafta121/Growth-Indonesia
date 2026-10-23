@@ -5,7 +5,7 @@ import ScrollReveal from '@/components/ui/scroll-reveal';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { PACKAGES } from '@/lib/packages';
-import { COMPANY_INFO } from '@/lib/seo';
+import { COMPANY_INFO } from '@/lib/constants';
 
 const RISK_REVERSAL_GUARANTEES = [
   {

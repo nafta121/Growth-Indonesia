@@ -161,7 +161,7 @@ export default function CredibilityPortfolio() {
     aggregateRating: {
       '@type': 'AggregateRating',
       ratingValue: '4.9',
-      reviewCount: '150',
+      reviewCount: '250',
       bestRating: '5',
       worstRating: '1',
     },
@@ -294,7 +294,7 @@ export default function CredibilityPortfolio() {
             </Badge>
             <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-amber-50 border border-amber-200 text-amber-800 rounded-full text-xs font-bold">
               <Star className="w-3.5 h-3.5 fill-amber-500 text-amber-500" />
-              <span>4.9 / 5.0 (150+ Ulasan & Kepuasan Klien)</span>
+              <span>4.9 / 5.0 (250+ Ulasan & Kepuasan Klien)</span>
             </div>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight font-display">

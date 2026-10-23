@@ -4,46 +4,34 @@ export async function GET() {
   const serverCard = {
     $schema: 'https://modelcontextprotocol.io/schemas/server-card/v1.json',
     serverInfo: {
-      name: 'Growth Indonesia MCP Server',
+      name: 'Growth Indonesia WebMCP Discovery',
       version: '1.0.0',
-      description: 'Model Context Protocol (MCP) server providing corporate outbound program discovery, venue coordination, experiential team building analytics, and event planning services for East Java.',
-    },
-    server: {
-      name: 'Growth Indonesia MCP Server',
-      version: '1.0.0',
-      description: 'Model Context Protocol (MCP) server providing corporate outbound program discovery, venue coordination, experiential team building analytics, and event planning services for East Java.',
+      description: 'Browser WebMCP and Markdown discovery endpoints providing corporate outbound program discovery, venue coordination, and event planning services for East Java.',
     },
     transports: [
       {
-        type: 'streamable-http',
-        endpoint: 'https://growthindonesia.my.id/api/mcp',
+        type: 'browser-webmcp',
+        endpoint: 'navigator.modelContext',
       },
       {
-        type: 'sse',
-        endpoint: 'https://growthindonesia.my.id/api/mcp/sse',
+        type: 'http-markdown',
+        endpoint: 'https://growthindonesia.my.id/api/markdown',
       },
     ],
-    transport: {
-      type: 'streamable-http',
-      endpoint: 'https://growthindonesia.my.id/api/mcp',
-    },
     capabilities: {
       resources: {
-        subscribe: true,
-        listChanged: true,
+        subscribe: false,
+        listChanged: false,
       },
       prompts: {
-        listChanged: true,
+        listChanged: false,
       },
       tools: {
-        listChanged: true,
+        listChanged: false,
       },
-      logging: {},
     },
     authentication: {
-      type: 'oauth2',
-      protected_resource: 'https://growthindonesia.my.id/.well-known/oauth-protected-resource',
-      authorization_server: 'https://growthindonesia.my.id/.well-known/oauth-authorization-server',
+      type: 'none',
     },
     documentationUrl: 'https://growthindonesia.my.id/docs/api',
   };
