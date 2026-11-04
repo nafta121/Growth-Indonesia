@@ -7,13 +7,13 @@ import './globals.css';
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ['latin'],
-  variable: '--font-sans',
+  variable: '--font-sans-loaded',
   display: 'swap',
 });
 
 const outfit = Outfit({
   subsets: ['latin'],
-  variable: '--font-display',
+  variable: '--font-display-loaded',
   display: 'swap',
 });
 
@@ -136,7 +136,7 @@ export default function RootLayout({
           strategy="lazyOnload"
         />
       </head>
-      <body suppressHydrationWarning className="font-sans antialiased bg-[#0A1628] text-white">
+      <body suppressHydrationWarning className="font-sans antialiased bg-navy text-white">
         <WebMCPProvider />
         {children}
         {process.env.NEXT_PUBLIC_GTM_ID && (

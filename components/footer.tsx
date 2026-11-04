@@ -7,8 +7,30 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#0A1628] pt-20 pb-28 md:pb-12 border-t border-white/5">
-      <div className="container mx-auto px-4 md:px-12">
+    <footer className="bg-navy pt-20 pb-28 md:pb-14 border-t border-navy-border text-white">
+      <div className="max-w-7xl mx-auto px-4 md:px-12">
+        {/* Statement Footer Header */}
+        <div className="pb-14 mb-14 border-b border-navy-border flex flex-col lg:flex-row lg:items-end justify-between gap-8">
+          <div className="max-w-2xl">
+            <h2 className="font-display text-3xl md:text-4xl font-black text-white tracking-tight leading-tight">
+              Siap Merancang Program Outbound &amp; Gathering Berikutnya?
+            </h2>
+            <p className="text-navy-muted text-base mt-3">
+              Konsultasikan kebutuhan proposal, skenario kegiatan, dan rincian RAB instansi Anda bersama tim praktisi kami di Madiun.
+            </p>
+          </div>
+          <div className="shrink-0">
+            <a
+              href={`https://wa.me/${COMPANY_INFO.whatsapp_number}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-12 items-center justify-center px-7 py-3.5 rounded-xl bg-brand-dark hover:bg-brand text-white text-sm font-bold transition-colors whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"
+            >
+              Diskusi via WhatsApp
+            </a>
+          </div>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
           {/* Brand Column */}
           <div className="lg:col-span-1">
@@ -23,14 +45,14 @@ export default function Footer() {
                 referrerPolicy="no-referrer"
               />
             </Link>
-            <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
+            <p className="text-navy-muted text-sm leading-relaxed max-w-xs">
               Mitra strategis pengembangan SDM, Outbound Training, Team Building, LDK Kepemimpinan, dan Event Organizer Korporat di Madiun serta Jawa Timur dengan metode Experiential Learning.
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-white font-bold mb-6 tracking-wide uppercase text-sm">Navigasi Cepat</h3>
+            <h3 className="text-white font-bold mb-6 text-base">Navigasi Cepat</h3>
             <ul className="space-y-3">
               {[
                 { label: 'Beranda', href: '/' },
@@ -42,7 +64,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <Link 
                     href={link.href} 
-                    className="text-slate-300 hover:text-white transition-colors inline-flex min-h-12 min-w-12 items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF4444] rounded-lg px-1"
+                    className="text-navy-muted hover:text-white transition-colors inline-flex min-h-11 items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus rounded-lg px-1"
                   >
                     {link.label}
                   </Link>
@@ -53,13 +75,13 @@ export default function Footer() {
 
           {/* Area Layanan */}
           <div>
-            <h3 className="text-white font-bold mb-6 tracking-wide uppercase text-sm">Area Utama</h3>
+            <h3 className="text-white font-bold mb-6 text-base">Area Utama</h3>
             <ul className="space-y-3">
               {PRIORITY_CITIES.map((city) => (
                 <li key={city}>
                   <Link 
                     href={`/layanan/${city}`} 
-                    className="text-slate-300 hover:text-white transition-colors capitalize inline-flex min-h-12 min-w-12 items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF4444] rounded-lg px-1"
+                    className="text-navy-muted hover:text-white transition-colors capitalize inline-flex min-h-11 items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus rounded-lg px-1"
                   >
                     Layanan di {city}
                   </Link>
@@ -70,13 +92,13 @@ export default function Footer() {
 
           {/* Contact Details */}
           <div>
-            <h3 className="text-white font-bold mb-6 tracking-wide uppercase text-sm">Alamat Kantor</h3>
+            <h3 className="text-white font-bold mb-6 text-base">Alamat Kantor</h3>
             <address className="not-italic">
               <a 
                 href={COMPANY_INFO.maps_url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-slate-300 hover:text-white transition-colors duration-200 leading-relaxed block min-h-12 min-w-12 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF4444] rounded-lg p-1 -ml-1"
+                className="text-navy-muted hover:text-white transition-colors duration-200 leading-relaxed block min-h-12 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus rounded-lg p-1 -ml-1"
                 aria-label={`Lihat lokasi ${COMPANY_INFO.brand_name} di Google Maps`}
               >
                 {COMPANY_INFO.address}
@@ -84,26 +106,26 @@ export default function Footer() {
             </address>
           </div>
 
-          {/* Social */}
+          {/* Direct Contact */}
           <div>
-            <h3 className="text-white font-bold mb-6 tracking-wide uppercase text-sm">Hubungi Kami</h3>
+            <h3 className="text-white font-bold mb-6 text-base">Hubungi Kami</h3>
             <div className="space-y-4">
               <div>
-                <p className="text-slate-400 mb-1 text-xs uppercase tracking-wider">WhatsApp:</p>
+                <p className="text-navy-muted mb-1 text-xs font-medium">WhatsApp Resmi</p>
                 <a 
                   href={`https://wa.me/${COMPANY_INFO.whatsapp_number}`} 
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-red-400 hover:text-red-300 font-black text-lg inline-flex items-center hover:scale-105 transition-transform origin-left min-h-12 min-w-12 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF4444] rounded-lg px-1 -ml-1 tabular-nums"
+                  className="text-brand hover:text-white font-black text-lg inline-flex items-center transition-colors min-h-11 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus rounded-lg px-1 -ml-1 num"
                 >
                   {COMPANY_INFO.whatsapp_display}
                 </a>
               </div>
               <div>
-                <p className="text-slate-400 mb-1 text-xs uppercase tracking-wider">Email:</p>
+                <p className="text-navy-muted mb-1 text-xs font-medium">Email</p>
                 <a 
                   href={`mailto:${COMPANY_INFO.email}`}
-                  className="text-slate-300 hover:text-white transition-colors duration-200 inline-flex items-center underline underline-offset-4 min-h-12 min-w-12 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF4444] rounded-lg px-1 -ml-1"
+                  className="text-navy-muted hover:text-white transition-colors duration-200 inline-flex items-center underline underline-offset-4 min-h-11 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus rounded-lg px-1 -ml-1"
                   aria-label={`Kirim email ke ${COMPANY_INFO.brand_name}`}
                 >
                   {COMPANY_INFO.email}
@@ -113,13 +135,13 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-slate-400 text-xs text-center md:text-left">
-            &copy; {currentYear} {COMPANY_INFO.brand_name}. All rights reserved.
+        <div className="pt-8 border-t border-navy-border flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-navy-muted text-xs text-center md:text-left">
+            &copy; {currentYear} {COMPANY_INFO.brand_name}. Seluruh hak cipta dilindungi.
           </p>
           <div className="flex gap-6">
-            <Link href="/#kontak" className="text-slate-400 hover:text-white text-xs transition-colors inline-flex min-h-11 min-w-11 items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF4444] rounded-lg px-2">Privacy Policy</Link>
-            <Link href="/#kontak" className="text-slate-400 hover:text-white text-xs transition-colors inline-flex min-h-11 min-w-11 items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF4444] rounded-lg px-2">Terms of Service</Link>
+            <Link href="/#kontak" className="text-navy-muted hover:text-white text-xs transition-colors inline-flex min-h-11 items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus rounded-lg px-2">Kebijakan Privasi</Link>
+            <Link href="/#kontak" className="text-navy-muted hover:text-white text-xs transition-colors inline-flex min-h-11 items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus rounded-lg px-2">Syarat &amp; Ketentuan</Link>
           </div>
         </div>
       </div>

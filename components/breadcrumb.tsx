@@ -26,20 +26,20 @@ export function Breadcrumb({
   const isDark = variant === 'dark';
 
   const containerClasses = isDark
-    ? 'text-slate-300'
-    : 'text-slate-600';
+    ? 'text-navy-muted'
+    : 'text-muted';
 
   const linkClasses = isDark
     ? 'hover:text-white transition-colors'
-    : 'hover:text-brand transition-colors';
+    : 'hover:text-brand-dark transition-colors';
 
   const activeClasses = isDark
     ? 'text-white font-semibold'
-    : 'text-gray-900 font-semibold';
+    : 'text-ink font-semibold';
 
   const separatorClasses = isDark
-    ? 'text-slate-500'
-    : 'text-slate-400';
+    ? 'text-navy-muted/60'
+    : 'text-muted';
 
   // Build JSON-LD BreadcrumbList Schema
   const schemaLd = {
@@ -102,7 +102,7 @@ export function Breadcrumb({
                 ) : (
                   <Link
                     href={item.href}
-                    className={`inline-flex min-h-6 py-1 items-center gap-1.5 ${linkClasses} truncate max-w-[140px] sm:max-w-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand rounded-md px-1 -mx-1`}
+                    className={`inline-flex min-h-6 py-1 items-center gap-1.5 ${linkClasses} truncate max-w-[140px] sm:max-w-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus rounded-md px-1 -mx-1`}
                   >
                     {isFirst && <Home className="w-3.5 h-3.5 shrink-0" />}
                     {item.label}

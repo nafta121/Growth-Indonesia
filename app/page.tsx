@@ -26,7 +26,7 @@ export default function Home() {
   };
 
   return (
-    <div className="relative min-h-screen selection:bg-[#EF4444] selection:text-white">
+    <div className="relative min-h-screen selection:bg-brand selection:text-white">
       {/* Root Schemas for Homepage Rich Snippets & Local EEAT */}
       <script
         type="application/ld+json"
@@ -59,9 +59,9 @@ export default function Home() {
 
       {/* Branding Footer Stripe */}
       <div className="h-1.5 w-full flex fixed bottom-0 z-[70] hidden md:flex">
-        <div className="h-full flex-grow bg-[#EF4444]" />
+        <div className="h-full flex-grow bg-brand" />
         <div className="h-full w-1/4 bg-white" />
-        <div className="h-full w-1/6 bg-[#EF4444]/50" />
+        <div className="h-full w-1/6 bg-brand/50" />
       </div>
     </div>
   );

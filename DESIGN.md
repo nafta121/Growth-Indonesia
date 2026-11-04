@@ -51,7 +51,7 @@ Growth Indonesia is a B2B corporate web portal for experiential learning, outbou
 
 ## Components
 
-- **Buttons:** Provide primary filled (`brand-dark`), bordered outline, and ghost variants across small, default, and large touch sizes. Enforce uppercase tracking, single-line label discipline, visible keyboard focus rings, and cross-platform minimum touch target heights.
+- **Buttons:** Provide primary filled (`brand-dark`), bordered outline, and ghost variants across small, default, and large touch sizes. Enforce sentence-case label discipline, single-line label discipline (`whitespace-nowrap`), visible keyboard focus rings, and cross-platform minimum touch target heights.
 - **Segmented Controls and Tabs:** Group service categories inside a pill-shaped tablist container with an animated active indicator, roving tabindex, and arrow-key navigation.
 - **Dialogs and Overlays:** Full-screen mobile navigation menus and media lightboxes must declare modal dialog semantics, lock background page scrolling while open, trap keyboard tab focus within the active overlay, support escape-key dismissal, and restore focus to the triggering control upon closure.
 - **Form Fields and Calculators:** Pair every input, select menu, and range slider with an explicit visible label, native autocomplete hints, semantic error alerts, and enlarged slider thumb touch targets.

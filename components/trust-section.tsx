@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShieldCheck, Video, Award, CheckCircle2, XCircle } from 'lucide-react';
+import { CheckCircle2, XCircle } from 'lucide-react';
 import ScrollReveal from '@/components/ui/scroll-reveal';
 
 export default function TrustSection({
@@ -11,21 +11,21 @@ export default function TrustSection({
 }) {
   const isDynamic = kategoriName && kotaName;
   const headingText = isDynamic 
-    ? `Mengapa Perusahaan Mempercayakan Program ${kategoriName} di ${kotaName} pada `
-    : 'Mengapa Perusahaan & Instansi Mempercayakan Agenda Mereka pada ';
+    ? `Mengapa Perusahaan Mempercayakan Program ${kategoriName} di ${kotaName} pada Growth Indonesia?`
+    : 'Mengapa Perusahaan & Instansi Mempercayakan Agenda Mereka pada Growth Indonesia?';
   const trustTiles = [
     {
-      icon: Award,
+      index: '01',
       title: 'Master Trainer Berpengalaman',
       description: 'Dipimpin langsung oleh praktisi Experiential Learning berpengalaman lebih dari 10 tahun dengan kurikulum berbasis asesmen kebutuhan tim (TNA).',
     },
     {
-      icon: ShieldCheck,
+      index: '02',
       title: 'Zero Accident & Plan B Cuaca',
       description: 'Dilengkapi peralatan berstandar keselamatan UIAA/CE, tim medis P3K lapangan, serta jaminan skenario Plan B (indoor/pendopo) jika turun hujan.',
     },
     {
-      icon: Video,
+      index: '03',
       title: 'Dokumentasi & Laporan Evaluasi',
       description: 'Mencakup produksi foto, video sinematik, dan drone, ditambah Laporan Evaluasi Performa Tim tertulis sebagai bukti pertanggungjawaban HRD.',
     },
@@ -64,29 +64,29 @@ export default function TrustSection({
       <div className="max-w-7xl mx-auto px-4 md:px-12">
         {/* Header Section */}
         <ScrollReveal className="text-center max-w-4xl mx-auto mb-16 md:mb-24">
-          <h2 className="font-display text-3xl md:text-5xl font-black tracking-tight text-[#0A1628] leading-[1.15]">
-            {headingText} <span className="text-[#EF4444]">Growth Indonesia?</span>
+          <h2 className="font-display text-3xl md:text-5xl font-black tracking-tight text-ink leading-[1.15]">
+            {headingText}
           </h2>
-          <p className="mt-6 text-lg text-slate-600 font-medium">
+          <p className="mt-6 text-lg text-muted font-medium">
             Setiap program dirancang berdasarkan asesmen kebutuhan tim (Training Need Analysis), dipandu langsung oleh Master Trainer dan fasilitator berpengalaman, serta dievaluasi secara terukur melalui laporan pasca-kegiatan.
           </p>
         </ScrollReveal>
 
-        {/* Trust Tiles */}
+        {/* Editorial Pillar Ledger */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20 md:mb-32">
           {trustTiles.map((tile, idx) => (
             <ScrollReveal 
               key={idx} 
-              delay={idx * 0.15} 
-              className="bg-slate-50 border border-slate-100 p-8 rounded-3xl hover:shadow-xl hover:-translate-y-2 hover:shadow-red-500/5 transition-all duration-300"
+              delay={idx * 0.12} 
+              className="bg-paper border border-rule border-t-4 border-t-brand-dark p-8 rounded-2xl hover:shadow-md transition-[transform,box-shadow,border-color] duration-200"
             >
-              <div className="w-14 h-14 bg-red-50 text-[#EF4444] rounded-2xl flex items-center justify-center mb-6">
-                <tile.icon className="w-7 h-7" />
-              </div>
-              <h3 className="text-xl md:text-2xl font-black font-display text-[#0A1628] mb-4">
+              <span className="font-display text-3xl font-black text-brand-dark block mb-4 num">
+                {tile.index}
+              </span>
+              <h3 className="text-xl md:text-2xl font-black font-display text-ink mb-4">
                 {tile.title}
               </h3>
-              <p className="text-slate-600 leading-relaxed font-medium">
+              <p className="text-muted leading-relaxed font-medium">
                 {tile.description}
               </p>
             </ScrollReveal>
@@ -96,30 +96,30 @@ export default function TrustSection({
         {/* Comparison Table */}
         <ScrollReveal delay={0.2} className="max-w-5xl mx-auto relative">
           <div className="text-center mb-10">
-            <h3 className="font-display text-2xl md:text-4xl font-black tracking-tight text-[#0A1628]">
-              Perbandingan Value & Kualitas
+            <h3 className="font-display text-2xl md:text-4xl font-black tracking-tight text-ink">
+              Perbandingan Nilai &amp; Kualitas Pengadaan
             </h3>
           </div>
 
-          <div className="bg-white border border-slate-200 rounded-[2.5rem] shadow-xl shadow-slate-200/50 overflow-hidden relative z-10">
+          <div className="bg-white border border-rule rounded-3xl shadow-md overflow-hidden relative z-10">
             {/* Desktop / Tab View */}
             <div className="hidden md:block">
-              <div className="grid grid-cols-12 bg-slate-50 border-b border-slate-200 p-6">
-                <div className="col-span-4 font-bold text-slate-500 uppercase tracking-wider text-sm">Aspek / Kriteria</div>
-                <div className="col-span-4 font-black text-[#0A1628] text-lg text-center flex items-center justify-center gap-2">
-                  Growth Indonesia <CheckCircle2 className="w-5 h-5 text-[#EF4444]" />
+              <div className="grid grid-cols-12 bg-paper border-b border-rule p-6">
+                <div className="col-span-4 font-bold text-muted text-sm">Aspek / Kriteria</div>
+                <div className="col-span-4 font-black text-ink text-lg text-center flex items-center justify-center gap-2">
+                  Growth Indonesia <CheckCircle2 className="w-5 h-5 text-brand-dark" />
                 </div>
-                <div className="col-span-4 font-bold text-slate-500 text-lg text-center flex items-center justify-center gap-2">
-                  Provider Lain <XCircle className="w-5 h-5 text-slate-400" />
+                <div className="col-span-4 font-bold text-muted text-lg text-center flex items-center justify-center gap-2">
+                  Provider Lain <XCircle className="w-5 h-5 text-muted" />
                 </div>
               </div>
               {comparisonData.map((row, idx) => (
-                <div key={idx} className={`grid grid-cols-12 p-6 items-center ${idx !== comparisonData.length - 1 ? 'border-b border-slate-100' : ''} hover:bg-slate-50/50 transition-colors`}>
-                  <div className="col-span-4 font-bold text-[#0A1628]">{row.feature}</div>
-                  <div className="col-span-4 text-center font-semibold text-[#EF4444] bg-red-50/50 py-3 rounded-xl">
+                <div key={idx} className={`grid grid-cols-12 p-6 items-center ${idx !== comparisonData.length - 1 ? 'border-b border-rule' : ''} hover:bg-paper/60 transition-colors`}>
+                  <div className="col-span-4 font-bold text-ink">{row.feature}</div>
+                  <div className="col-span-4 text-center font-semibold text-brand-dark bg-brand-tint/60 py-3 px-2 rounded-xl">
                     {row.us}
                   </div>
-                  <div className="col-span-4 text-center text-slate-500 font-medium">
+                  <div className="col-span-4 text-center text-muted font-medium">
                     {row.them}
                   </div>
                 </div>
@@ -129,29 +129,26 @@ export default function TrustSection({
             {/* Mobile View */}
             <div className="block md:hidden">
               {comparisonData.map((row, idx) => (
-                <div key={idx} className={`p-6 ${idx !== comparisonData.length - 1 ? 'border-b border-slate-200' : ''}`}>
-                  <div className="font-black text-[#0A1628] text-lg mb-4 text-center border-b border-slate-100 pb-2">
+                <div key={idx} className={`p-6 ${idx !== comparisonData.length - 1 ? 'border-b border-rule' : ''}`}>
+                  <div className="font-black text-ink text-lg mb-4 text-center border-b border-rule pb-2">
                     {row.feature}
                   </div>
                   <div className="grid grid-cols-2 gap-4">
-                    <div className="bg-red-50 rounded-2xl p-4 text-center border border-red-100 flex flex-col items-center justify-center">
-                      <div className="font-bold text-[#0A1628] text-xs mb-2 uppercase tracking-wide opacity-50">Growth ID</div>
-                      <CheckCircle2 className="w-6 h-6 text-[#EF4444] mx-auto mb-2" />
-                      <div className="font-bold text-[#EF4444] text-sm leading-snug">{row.us}</div>
+                    <div className="bg-brand-tint rounded-2xl p-4 text-center border border-brand-border flex flex-col items-center justify-center">
+                      <div className="font-bold text-ink text-xs mb-2">Growth Indonesia</div>
+                      <CheckCircle2 className="w-6 h-6 text-brand-dark mx-auto mb-2" />
+                      <div className="font-bold text-brand-dark text-sm leading-snug">{row.us}</div>
                     </div>
-                    <div className="bg-slate-50 rounded-2xl p-4 text-center border border-slate-100 flex flex-col items-center justify-center">
-                      <div className="font-bold text-slate-400 text-xs mb-2 uppercase tracking-wide">Provider Lain</div>
-                      <XCircle className="w-6 h-6 text-slate-300 mx-auto mb-2" />
-                      <div className="font-medium text-slate-500 text-sm leading-snug">{row.them}</div>
+                    <div className="bg-paper rounded-2xl p-4 text-center border border-rule flex flex-col items-center justify-center">
+                      <div className="font-bold text-muted text-xs mb-2">Provider Lain</div>
+                      <XCircle className="w-6 h-6 text-muted mx-auto mb-2" />
+                      <div className="font-medium text-muted text-sm leading-snug">{row.them}</div>
                     </div>
                   </div>
                 </div>
               ))}
             </div>
           </div>
-          
-          {/* Decorative Background Blob */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[120%] bg-gradient-to-r from-red-50 to-blue-50 blur-3xl opacity-50 -z-10 pointer-events-none rounded-[100%]" />
         </ScrollReveal>
       </div>
     </section>

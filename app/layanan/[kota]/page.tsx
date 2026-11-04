@@ -145,120 +145,112 @@ export default async function CityHubPage({ params }: Props) {
           <meta itemProp="serviceType" content="Corporate Outbound, Team Building & Event Organizer" />
 
           {/* City Hub Hero */}
-          <section className="relative pt-20 pb-20 md:pt-32 md:pb-28 bg-[#0A1628] overflow-hidden">
-          <div className="absolute inset-0 z-0">
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628] via-brand/10 to-[#0A1628]" />
-          </div>
-          
-          <div className="max-w-5xl mx-auto px-4 md:px-12 relative z-10 text-center flex flex-col items-center">
-            <div className="mb-6">
-              <Breadcrumb
-                items={[
-                  { label: 'Beranda', href: '/' },
-                  { label: 'Layanan', href: '/layanan' },
-                  { label: kotaName },
-                ]}
-                variant="dark"
-                includeSchema={true}
-              />
-            </div>
+          <section className="relative pt-20 pb-20 md:pt-32 md:pb-28 bg-navy overflow-hidden">
+            <div className="max-w-5xl mx-auto px-4 md:px-12 relative z-10 text-center flex flex-col items-center">
+              <div className="mb-6">
+                <Breadcrumb
+                  items={[
+                    { label: 'Beranda', href: '/' },
+                    { label: 'Layanan', href: '/layanan' },
+                    { label: kotaName },
+                  ]}
+                  variant="dark"
+                  includeSchema={true}
+                />
+              </div>
 
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/10 mb-8">
-               <MapPin className="w-5 h-5 text-brand" />
-               <span className="text-sm font-bold text-white tracking-wider uppercase">Layanan Regional</span>
-            </div>
-            <h1 className="font-display text-4xl sm:text-5xl md:text-7xl font-black tracking-tight text-white mb-6 leading-tight">
-              Layanan Outbound & Training di <span className="text-[#EF4444] break-words">{kotaName}</span>
-            </h1>
-            <p className="text-lg md:text-2xl text-slate-300 font-medium leading-relaxed max-w-3xl mx-auto">
-              {cityData.description} Berbagai pilihan program pengembangan SDM profesional dari {COMPANY_INFO.brand_name} yang dirancang khusus untuk kebutuhan organisasi Anda di wilayah {kotaName}.
-            </p>
-          </div>
-        </section>
-
-        {/* Kategori Layanan List */}
-        <section className="py-20 bg-white">
-          <div className="max-w-7xl mx-auto px-4 md:px-12">
-            <div className="text-center mb-16">
-               <h2 className="font-display text-3xl md:text-4xl font-black tracking-tight text-gray-900 mb-4">
-                 Pilih Kategori <span className="text-brand">Program</span>
-               </h2>
-               <p className="text-lg text-slate-500 max-w-2xl mx-auto font-medium">
-                 Jelajahi 5 solusi pelatihan dan event organizer profesional yang tersedia di area {kotaName}.
-               </p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {KATEGORI.map((kategori) => {
-                const kategoriName = formatSlug(kategori);
-                const variation = getContentVariations(kategori, kotaName);
-                return (
-                  <Link
-                    key={kategori}
-                    href={`/layanan/${decodedKota}/${kategori}`}
-                    className="group flex flex-col bg-slate-50 rounded-3xl overflow-hidden border border-gray-100 hover:border-brand/30 hover:shadow-2xl hover:shadow-brand/5 hover:-translate-y-1 transition-all duration-500"
-                  >
-                    <div className="p-8 pb-6 flex-grow">
-                      <div className="w-14 h-14 rounded-2xl bg-white shadow-sm flex items-center justify-center text-brand mb-6 border border-gray-100 group-hover:bg-brand group-hover:text-white transition-colors">
-                        <CheckCircle2 className="w-7 h-7" />
-                      </div>
-                      <h3 className="font-display font-bold text-2xl text-gray-900 mb-3 group-hover:text-brand transition-colors">
-                        {kategoriName} {kotaName}
-                      </h3>
-                      <p className="text-slate-600 font-medium leading-relaxed mb-4">
-                        {variation.bodyIntro}
-                      </p>
-                      <ul className="space-y-1.5 text-sm text-slate-600 font-medium">
-                        {variation.deliverables.slice(0, 2).map((item, idx) => (
-                          <li key={idx} className="flex items-start gap-2">
-                            <span className="w-1.5 h-1.5 rounded-full bg-brand mt-2 shrink-0" />
-                            <span>{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div className="px-8 py-5 border-t border-gray-100 bg-white group-hover:bg-red-50/50 transition-colors flex items-center justify-between">
-                       <span className="font-bold text-gray-900 group-hover:text-brand text-sm">Lihat Detail Program {kategoriName}</span>
-                       <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-brand group-hover:translate-x-1 transition-transform" />
-                    </div>
-                  </Link>
-                )
-              })}
-            </div>
-          </div>
-        </section>
-
-        {/* Local Information Context & Popular Venues */}
-        <section className="py-20 bg-slate-50 border-t border-gray-100">
-          <div className="max-w-5xl mx-auto px-4 md:px-12">
-            <div className="text-center mb-12">
-              <h2 className="font-display text-3xl md:text-4xl font-black text-gray-900 mb-6">
-                Keunggulan Lokasi & Rekomendasi Venue di <span className="text-brand">{kotaName}</span>
-              </h2>
-              <p className="text-lg text-slate-600 leading-relaxed font-medium max-w-3xl mx-auto">
-                {cityData.uniqueSellingPoint} Kami mengombinasikan akses ke berbagai lokasi strategis di {kotaName} dengan metode experiential learning yang teruji.
+              <h1 className="font-display text-4xl sm:text-5xl md:text-7xl font-black tracking-tight text-white mb-6 leading-tight">
+                Outbound &amp; Event Organizer {kotaName}
+              </h1>
+              <p className="text-lg md:text-2xl text-navy-muted font-medium leading-relaxed max-w-3xl mx-auto">
+                Program outbound, team building, dan event organizer profesional di wilayah {kotaName}.
               </p>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              {cityData.popularVenues.map((venue, idx) => (
-                <div
-                  key={idx}
-                  className="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm flex items-start gap-3"
-                >
-                  <MapPin className="w-5 h-5 text-brand shrink-0 mt-0.5" />
-                  <div>
-                    <p className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">
-                      Rekomendasi Venue #{idx + 1}
-                    </p>
-                    <h3 className="font-bold text-gray-900 text-base leading-snug">
-                      {venue}
-                    </h3>
-                  </div>
-                </div>
-              ))}
+          </section>
+
+          {/* Kategori Layanan List */}
+          <section className="py-20 bg-white">
+            <div className="max-w-7xl mx-auto px-4 md:px-12">
+              <div className="text-center mb-16">
+                <h2 className="font-display text-3xl md:text-4xl font-black tracking-tight text-ink mb-4">
+                  Pilih Kategori Program
+                </h2>
+                <p className="text-lg text-muted max-w-3xl mx-auto font-medium">
+                  {cityData.description} Jelajahi 5 solusi pelatihan dan event organizer profesional yang tersedia di area {kotaName}.
+                </p>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {KATEGORI.map((kategori) => {
+                  const kategoriName = formatSlug(kategori);
+                  const variation = getContentVariations(kategori, kotaName);
+                  return (
+                    <Link
+                      key={kategori}
+                      href={`/layanan/${decodedKota}/${kategori}`}
+                      className="group flex flex-col bg-paper rounded-3xl overflow-hidden border border-rule hover:border-brand/40 hover:shadow-lg hover:-translate-y-1 transition-[transform,border-color,box-shadow] duration-300"
+                    >
+                      <div className="p-8 pb-6 flex-grow">
+                        <div className="w-14 h-14 rounded-2xl bg-white shadow-sm flex items-center justify-center text-brand-dark mb-6 border border-rule group-hover:bg-brand-dark group-hover:text-white transition-colors">
+                          <CheckCircle2 className="w-7 h-7" />
+                        </div>
+                        <h3 className="font-display font-bold text-2xl text-ink mb-3 group-hover:text-brand-dark transition-colors">
+                          {kategoriName} {kotaName}
+                        </h3>
+                        <p className="text-ink-2 font-medium leading-relaxed mb-4">
+                          {variation.bodyIntro}
+                        </p>
+                        <ul className="space-y-1.5 text-sm text-muted font-medium">
+                          {variation.deliverables.slice(0, 2).map((item, idx) => (
+                            <li key={idx} className="flex items-start gap-2">
+                              <span className="w-1.5 h-1.5 rounded-full bg-brand-dark mt-2 shrink-0" />
+                              <span>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div className="px-8 py-5 border-t border-rule bg-white group-hover:bg-brand-tint/40 transition-colors flex items-center justify-between">
+                        <span className="font-bold text-ink group-hover:text-brand-dark text-sm">Lihat Detail Program {kategoriName}</span>
+                        <ArrowRight className="w-5 h-5 text-muted group-hover:text-brand-dark group-hover:translate-x-1 transition-transform" />
+                      </div>
+                    </Link>
+                  )
+                })}
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+
+          {/* Local Information Context & Popular Venues */}
+          <section className="py-20 bg-paper border-t border-rule">
+            <div className="max-w-5xl mx-auto px-4 md:px-12">
+              <div className="text-center mb-12">
+                <h2 className="font-display text-3xl md:text-4xl font-black text-ink mb-6">
+                  Keunggulan Lokasi &amp; Rekomendasi Venue di {kotaName}
+                </h2>
+                <p className="text-lg text-muted leading-relaxed font-medium max-w-3xl mx-auto">
+                  {cityData.uniqueSellingPoint} Kami mengombinasikan akses ke berbagai lokasi strategis di {kotaName} dengan metode experiential learning yang teruji.
+                </p>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                {cityData.popularVenues.map((venue, idx) => (
+                  <div
+                    key={idx}
+                    className="bg-white p-6 rounded-2xl border border-rule shadow-sm flex items-start gap-3"
+                  >
+                    <MapPin className="w-5 h-5 text-brand-dark shrink-0 mt-0.5" />
+                    <div>
+                      <h3 className="font-bold text-ink text-base leading-snug">
+                        {venue}
+                      </h3>
+                      <p className="text-xs font-semibold text-muted mt-1 num">
+                        Rekomendasi venue #{idx + 1}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
         </article>
 
         <TrustSection kategoriName="Program" kotaName={kotaName} />

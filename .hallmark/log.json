@@ -1,0 +1,24 @@
+[
+  {
+    "shape": "Catalogue",
+    "hero": "Stage",
+    "nav": "Utility bar",
+    "footer": "Statement footer",
+    "imagery": "Framed photo",
+    "entry": "Cold open",
+    "fingerprint": "Numbered sections",
+    "sections": 11,
+    "theme": "modern-minimal",
+    "prompt": "Hallmark full redesign for Growth Indonesia",
+    "signature": "Interactive RAB calculator and field photography ledger",
+    "axes": [
+      "light",
+      "geometric-sans",
+      "warm"
+    ],
+    "display": "Outfit",
+    "accentHue": 27,
+    "draw": "30f9b1",
+    "at": "2026-11-04T11:47:16.000Z"
+  }
+]

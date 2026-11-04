@@ -1,7 +1,7 @@
 export const PACKAGES = [
   {
     id: 'leaders',
-    title: 'GROWTH LEADERS TRAINING',
+    title: 'Growth Leaders Training',
     price: 'Rp. 9.500.000',
     description: 'Program pengembangan kepemimpinan dan sinergi lintas divisi berbasis Experiential Learning untuk manajer, supervisor, serta kader pemimpin korporat/BUMN.',
     features: [
@@ -13,11 +13,11 @@ export const PACKAGES = [
       'Laporan Evaluasi Performa Tim Pasca-Kegiatan',
     ],
     popular: false,
-    label: 'GROWTH LEADERS TRAINING',
+    label: 'Growth Leaders Training',
   },
   {
     id: 'generation',
-    title: 'GROWTH GENERATION',
+    title: 'Growth Generation',
     price: 'Rp. 7.000.000',
     description: 'Program pembentukan karakter, kedisiplinan, dan kepemimpinan organisasi untuk pengurus OSIS, MPK, BEM, serta kader muda institusi pendidikan.',
     features: [
@@ -28,11 +28,11 @@ export const PACKAGES = [
       'Dokumentasi Kegiatan Lengkap & Sertifikat Peserta',
     ],
     popular: true,
-    label: 'GROWTH GENERATION',
+    label: 'Growth Generation',
   },
   {
     id: 'fun',
-    title: "FUN, PLAY 'N GROW",
+    title: "Fun, Play 'n Grow",
     price: 'Rp. 5.500.000',
     description: 'Program penyegaran tim dan keakraban karyawan melalui rangkaian fun games kolaboratif untuk company outing, family gathering, maupun instansi.',
     features: [
@@ -43,7 +43,7 @@ export const PACKAGES = [
       'Dokumentasi Foto & Video Momen Kebersamaan',
     ],
     popular: false,
-    label: "FUN, PLAY 'N GROW",
+    label: "Fun, Play 'n Grow",
   },
   {
     id: 'other',

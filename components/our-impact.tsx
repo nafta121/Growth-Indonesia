@@ -93,7 +93,7 @@ const IMPACT_STATS = [
 
 export default function OurImpact() {
   return (
-    <section className="py-20 md:py-24 bg-gray-50 border-y border-gray-100 relative overflow-hidden" aria-labelledby="impact-title">
+    <section className="py-20 md:py-24 bg-paper border-y border-rule relative overflow-hidden" aria-labelledby="impact-title">
       <Image
         src="https://nafta121.sirv.com/OUTBOUND/2022-10-22%2009-00-09.jpeg"
         alt=""
@@ -106,10 +106,10 @@ export default function OurImpact() {
       />
       <div className="max-w-7xl mx-auto px-4 md:px-12 relative z-10">
         <ScrollReveal className="text-center mb-16">
-          <h2 id="impact-title" className="font-display text-4xl md:text-5xl font-black text-gray-900 leading-[1.1] mb-6 text-balance">
-            Jejak Langkah <span className="text-[#EF4444]">Penuh Makna</span>
+          <h2 id="impact-title" className="font-display text-4xl md:text-5xl font-black text-ink leading-[1.1] mb-6 text-balance">
+            Jejak Langkah &amp; Rekam Jejak Operasional
           </h2>
-          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed text-pretty">
+          <p className="text-lg md:text-xl text-muted max-w-3xl mx-auto leading-relaxed text-pretty">
             Sejak berdiri, Growth Indonesia telah menjadi katalis perubahan bagi ratusan perusahaan. Angka-angka ini adalah cerminan dari kepercayaan dan dedikasi kami.
           </p>
         </ScrollReveal>
@@ -120,18 +120,17 @@ export default function OurImpact() {
             return (
               <ScrollReveal 
                 key={idx} 
-                delay={idx * 0.15} 
-                className="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-xl hover:border-red-100 hover:-translate-y-1 transition-all duration-300 relative group overflow-hidden"
+                delay={idx * 0.12} 
+                className="bg-white p-8 rounded-3xl shadow-sm border border-rule hover:shadow-md hover:border-brand-border hover:-translate-y-1 transition-[transform,border-color,box-shadow] duration-200 relative group overflow-hidden"
               >
-                <div className="absolute -right-4 -top-4 w-24 h-24 bg-red-50 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-                <div className="w-14 h-14 bg-red-50 text-[#EF4444] rounded-2xl flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 group-hover:bg-[#EF4444] group-hover:text-white transition-all duration-300">
-                  <Icon className="w-7 h-7" />
+                <div className="w-12 h-12 bg-brand-tint text-brand-dark rounded-2xl flex items-center justify-center mb-6 group-hover:bg-brand-dark group-hover:text-white transition-colors duration-200">
+                  <Icon className="w-6 h-6" />
                 </div>
-                <div className="font-display text-5xl font-black text-gray-900 mb-2 tabular-nums">
+                <div className="font-display text-5xl font-black text-ink mb-2 num">
                   <Counter end={stat.value} suffix={stat.suffix} />
                 </div>
-                <h3 className="text-xl font-bold text-gray-800 mb-2">{stat.label}</h3>
-                <p className="text-gray-500 font-medium text-pretty">{stat.description}</p>
+                <h3 className="text-xl font-bold text-ink mb-2">{stat.label}</h3>
+                <p className="text-muted font-medium text-pretty">{stat.description}</p>
               </ScrollReveal>
             );
           })}

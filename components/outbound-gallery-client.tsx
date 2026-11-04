@@ -117,11 +117,11 @@ export default function OutboundGalleryClient({ photos, children }: OutboundGall
               setCurrentIndex(index);
             }}
             aria-label={`Lihat gambar ${index + 1}`}
-            className="group relative aspect-square overflow-hidden rounded-xl md:rounded-[2rem] cursor-pointer bg-white shadow-sm hover:shadow-2xl [@media(hover:hover)_and_(pointer:fine)]:hover:-translate-y-1 transition-[transform,box-shadow] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-red-500 text-left"
+            className="group relative aspect-square overflow-hidden rounded-xl md:rounded-[2rem] cursor-pointer bg-white shadow-sm hover:shadow-lg [@media(hover:hover)_and_(pointer:fine)]:hover:-translate-y-1 transition-[transform,box-shadow] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-focus text-left"
           >
             {child}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200 ease-out flex items-center justify-center">
-              <div className="bg-white/20 backdrop-blur-md p-3 md:p-4 rounded-xl border border-white/30 scale-95 group-hover:scale-100 transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)]">
+            <div className="absolute inset-0 bg-gradient-to-t from-navy/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200 ease-out flex items-center justify-center">
+              <div className="bg-navy p-3 md:p-4 rounded-xl border border-navy-border scale-95 group-hover:scale-100 transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)]">
                 <Maximize2 className="text-white w-6 h-6 md:w-8 md:h-8" aria-hidden="true" />
               </div>
             </div>
@@ -142,14 +142,14 @@ export default function OutboundGalleryClient({ photos, children }: OutboundGall
             exit={{ opacity: 0 }}
             transition={{ duration: 0.18, ease: [0.23, 1, 0.32, 1] }}
             onClick={handleClose}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-md p-4 md:p-12"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-navy/95 p-4 md:p-12"
           >
             <button
               ref={closeButtonRef}
               type="button"
               onClick={handleClose}
               aria-label="Tutup galeri"
-              className="absolute top-[max(1.5rem,env(safe-area-inset-top))] right-[max(1.5rem,env(safe-area-inset-right))] min-h-12 min-w-12 p-2.5 flex items-center justify-center bg-black/60 hover:bg-black/80 border border-white/20 text-white transition-colors duration-150 z-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-full"
+              className="absolute top-[max(1.5rem,env(safe-area-inset-top))] right-[max(1.5rem,env(safe-area-inset-right))] min-h-12 min-w-12 p-2.5 flex items-center justify-center bg-navy-2 hover:bg-brand-dark border border-navy-border text-white transition-colors duration-150 z-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-full"
             >
               <X className="w-7 h-7" aria-hidden="true" />
             </button>
@@ -159,7 +159,7 @@ export default function OutboundGalleryClient({ photos, children }: OutboundGall
                 type="button"
                 onClick={handlePrev}
                 aria-label="Gambar sebelumnya"
-                className="absolute left-2 md:-left-12 min-h-12 min-w-12 p-2.5 flex items-center justify-center bg-black/60 hover:bg-black/80 border border-white/20 text-white transition-colors duration-150 z-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-full"
+                className="absolute left-2 md:-left-12 min-h-12 min-w-12 p-2.5 flex items-center justify-center bg-navy-2 hover:bg-brand-dark border border-navy-border text-white transition-colors duration-150 z-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-full"
               >
                 <ChevronLeft className="w-8 h-8" aria-hidden="true" />
               </button>
@@ -185,14 +185,14 @@ export default function OutboundGalleryClient({ photos, children }: OutboundGall
                 type="button"
                 onClick={handleNext}
                 aria-label="Gambar selanjutnya"
-                className="absolute right-2 md:-right-12 min-h-12 min-w-12 p-2.5 flex items-center justify-center bg-black/60 hover:bg-black/80 border border-white/20 text-white transition-colors z-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-full"
+                className="absolute right-2 md:-right-12 min-h-12 min-w-12 p-2.5 flex items-center justify-center bg-navy-2 hover:bg-brand-dark border border-navy-border text-white transition-colors z-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-full"
               >
                 <ChevronRight className="w-8 h-8" aria-hidden="true" />
               </button>
             </div>
 
             {/* Counter */}
-            <div className="absolute bottom-[max(1.5rem,env(safe-area-inset-bottom))] left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-black/60 border border-white/15 text-white font-mono text-sm tabular-nums">
+            <div className="absolute bottom-[max(1.5rem,env(safe-area-inset-bottom))] left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-navy-2 border border-navy-border text-white font-mono text-sm num">
               {currentIndex + 1} / {photos.length}
             </div>
           </motion.div>

@@ -12,15 +12,14 @@ export default async function LatestArticles() {
   }
 
   return (
-    <section className="py-20 md:py-28 bg-gray-50 border-t border-gray-100">
+    <section className="py-20 md:py-28 bg-paper border-t border-rule">
       <div className="max-w-7xl mx-auto px-6">
-        
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="font-display text-3xl md:text-5xl font-black tracking-tight text-gray-900 mb-4">
-            Growth <span className="text-[#EF4444]">Insight</span>
+          <h2 className="font-display text-3xl md:text-5xl font-black tracking-tight text-ink mb-4">
+            Jurnal &amp; Insight Outbound
           </h2>
-          <p className="text-base md:text-lg text-slate-600 font-medium">
+          <p className="text-base md:text-lg text-muted font-medium">
             Temukan insight terbaru, strategi andal, dan tips praktis seputar pengembangan SDM dan program outbound terbaik dari kami.
           </p>
         </div>
@@ -31,17 +30,17 @@ export default async function LatestArticles() {
             <Link
               key={article.slug}
               href={`/artikel/${article.slug}`}
-              className="group flex flex-col bg-white rounded-3xl overflow-hidden border border-gray-100 hover:border-red-500/20 hover:shadow-2xl hover:shadow-red-500/5 [@media(hover:hover)_and_(pointer:fine)]:hover:-translate-y-1 transition-[transform,box-shadow,border-color] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)]"
+              className="group flex flex-col bg-white rounded-3xl overflow-hidden border border-rule hover:border-brand/40 hover:shadow-lg [@media(hover:hover)_and_(pointer:fine)]:hover:-translate-y-1 transition-[transform,box-shadow,border-color] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)]"
             >
               {/* Image Container */}
-              <div className="relative aspect-[16/10] overflow-hidden bg-slate-100">
+              <div className="relative aspect-[16/10] overflow-hidden bg-paper-2">
                 <Image
                   src={article.frontmatter.image}
                   alt={article.frontmatter.title}
                   fill
                   loading="lazy"
                   sizes="(max-width: 768px) 100vw, 33vw"
-                  className="object-cover [@media(hover:hover)_and_(pointer:fine)]:group-hover:scale-[1.03] transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)]"
+                  className="object-cover"
                   referrerPolicy="no-referrer"
                 />
               </div>
@@ -49,9 +48,9 @@ export default async function LatestArticles() {
               {/* Card Body */}
               <div className="p-6 md:p-8 flex flex-col flex-grow">
                 {/* Meta */}
-                <div className="flex flex-wrap items-center gap-4 text-xs font-medium text-slate-500 mb-3">
+                <div className="flex flex-wrap items-center gap-4 text-xs font-medium text-muted mb-3">
                   <div className="flex items-center gap-1.5">
-                    <Calendar className="w-4 h-4 text-[#EF4444]" />
+                    <Calendar className="w-4 h-4 text-brand-dark" />
                     <span>
                       {new Date(article.frontmatter.date).toLocaleDateString('id-ID', {
                         day: 'numeric',
@@ -61,24 +60,24 @@ export default async function LatestArticles() {
                     </span>
                   </div>
                   <div className="flex items-center gap-1.5">
-                    <Clock className="w-4 h-4 text-[#EF4444]" />
+                    <Clock className="w-4 h-4 text-brand-dark" />
                     <span>{article.frontmatter.readTime}</span>
                   </div>
                 </div>
 
                 {/* Title */}
-                <h3 className="font-display font-bold text-xl text-gray-900 mb-2 group-hover:text-[#EF4444] transition-colors duration-150 line-clamp-2 leading-tight">
+                <h3 className="font-display font-bold text-xl text-ink mb-2 group-hover:text-brand-dark transition-colors duration-150 line-clamp-2 leading-tight">
                   {article.frontmatter.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-slate-500 text-sm leading-relaxed mb-6 line-clamp-3 font-medium">
+                <p className="text-muted text-sm leading-relaxed mb-6 line-clamp-3 font-medium">
                   {article.frontmatter.description}
                 </p>
 
                 {/* Baca Selengkapnya Link */}
-                <span className="mt-auto inline-flex items-center text-xs font-extrabold text-[#EF4444] group-hover:text-red-700 uppercase tracking-wider">
-                  Baca Selengkapnya
+                <span className="mt-auto inline-flex items-center text-xs font-bold text-brand-dark group-hover:text-brand">
+                  Baca selengkapnya
                   <ArrowRight className="w-3.5 h-3.5 ml-1 group-hover:translate-x-1 transition-transform duration-150 ease-[cubic-bezier(0.23,1,0.32,1)]" />
                 </span>
               </div>
@@ -90,13 +89,12 @@ export default async function LatestArticles() {
         <div className="text-center">
           <Link
             href="/artikel"
-            className="inline-flex items-center justify-center bg-[#0A1628] hover:bg-slate-800 text-white font-extrabold px-8 py-4 rounded-2xl transition-[transform,background-color,box-shadow] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.98] hover:shadow-lg hover:shadow-red-500/5 text-sm md:text-base uppercase tracking-wider"
+            className="inline-flex items-center justify-center bg-navy hover:bg-navy-2 text-white font-bold px-8 py-4 rounded-2xl transition-[transform,background-color,box-shadow] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.98] hover:shadow-md text-sm md:text-base whitespace-nowrap"
           >
             Lihat Semua Artikel
             <ArrowRight className="w-4 h-4 ml-2" />
           </Link>
         </div>
-
       </div>
     </section>
   );

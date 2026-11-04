@@ -84,7 +84,7 @@ export default function NavbarMobile({ navLinks }: { navLinks: NavLink[] }) {
         ref={toggleButtonRef}
         id="mobile-menu-toggle"
         type="button"
-        className="relative z-50 min-h-12 min-w-12 p-3 text-slate-900 md:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-dark focus-visible:ring-offset-2 bg-gray-50 rounded-xl transition-transform duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-95 flex items-center justify-center"
+        className="relative z-50 min-h-12 min-w-12 p-3 text-ink md:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-dark focus-visible:ring-offset-2 bg-paper-2 rounded-xl transition-transform duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-95 flex items-center justify-center"
         onClick={() => setIsOpen(!isOpen)}
         aria-label={isOpen ? "Tutup menu" : "Buka menu"}
         aria-expanded={isOpen}
@@ -94,17 +94,17 @@ export default function NavbarMobile({ navLinks }: { navLinks: NavLink[] }) {
           <motion.div
             animate={isOpen ? { transform: 'translateY(0px) rotate(45deg)' } : { transform: 'translateY(-6px) rotate(0deg)' }}
             transition={{ duration: 0.18, ease: [0.23, 1, 0.32, 1] }}
-            className="absolute w-6 h-0.5 bg-gray-900 rounded-full"
+            className="absolute w-6 h-0.5 bg-ink rounded-full"
           />
           <motion.div
             animate={isOpen ? { opacity: 0, transform: 'translateX(-12px)' } : { opacity: 1, transform: 'translateX(0px)' }}
             transition={{ duration: 0.15, ease: [0.23, 1, 0.32, 1] }}
-            className="absolute w-6 h-0.5 bg-gray-900 rounded-full"
+            className="absolute w-6 h-0.5 bg-ink rounded-full"
           />
           <motion.div
             animate={isOpen ? { transform: 'translateY(0px) rotate(-45deg)' } : { transform: 'translateY(6px) rotate(0deg)' }}
             transition={{ duration: 0.18, ease: [0.23, 1, 0.32, 1] }}
-            className="absolute w-6 h-0.5 bg-gray-900 rounded-full"
+            className="absolute w-6 h-0.5 bg-ink rounded-full"
           />
         </div>
       </button>
@@ -136,7 +136,7 @@ export default function NavbarMobile({ navLinks }: { navLinks: NavLink[] }) {
                   <Link
                     href={link.href}
                     onClick={() => setIsOpen(false)}
-                    className="block py-3 min-h-12 text-2xl sm:text-3xl font-display font-bold text-gray-800 hover:text-brand-dark active:scale-95 transition-[transform,color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-dark rounded-xl"
+                    className="block py-3 min-h-12 text-2xl sm:text-3xl font-display font-bold text-ink hover:text-brand-dark active:scale-95 transition-[transform,color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-dark rounded-xl"
                   >
                     {link.name}
                   </Link>
@@ -146,46 +146,46 @@ export default function NavbarMobile({ navLinks }: { navLinks: NavLink[] }) {
 
             {/* Contact Info for Mobile Menu */}
             <div className="mt-auto w-full px-8 pt-6 pb-[max(3rem,env(safe-area-inset-bottom))] flex flex-col gap-6">
-              <div className="h-px w-full bg-gray-100 mb-4" />
+              <div className="h-px w-full bg-rule mb-4" />
               
               <a 
                 href={`https://wa.me/${COMPANY_INFO.whatsapp_number}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-4 p-4 rounded-2xl bg-slate-50 border border-gray-100 hover:bg-brand hover:border-brand transition-[transform,background-color,border-color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-95"
+                className="group flex items-center gap-4 p-4 rounded-2xl bg-paper border border-rule hover:bg-brand-dark hover:border-brand-dark transition-[transform,background-color,border-color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-95"
               >
-                <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-red-600 shadow-sm transition-colors group-hover:text-brand">
+                <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-brand-dark shadow-sm transition-colors">
                   <Phone className="w-5 h-5" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[10px] font-bold text-slate-500 group-hover:text-white/80 uppercase tracking-widest transition-colors">WhatsApp Kami</span>
-                  <span className="text-sm font-bold text-gray-900 group-hover:text-white tracking-tight transition-colors">{COMPANY_INFO.whatsapp_display}</span>
+                  <span className="text-xs font-semibold text-muted group-hover:text-white/80 transition-colors">WhatsApp Kami</span>
+                  <span className="text-sm font-bold text-ink group-hover:text-white tracking-tight transition-colors num">{COMPANY_INFO.whatsapp_display}</span>
                 </div>
               </a>
 
               <div className="grid grid-cols-2 gap-3">
                 <a 
                   href={`mailto:${COMPANY_INFO.email}`}
-                  className="flex flex-col items-center gap-2 p-4 rounded-2xl bg-slate-50 border border-gray-100 hover:bg-gray-100 transition-colors text-center"
+                  className="flex flex-col items-center gap-2 p-4 rounded-2xl bg-paper border border-rule hover:bg-paper-2 transition-colors text-center"
                 >
-                  <Mail className="w-5 h-5 text-red-600" />
-                  <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Email</span>
+                  <Mail className="w-5 h-5 text-brand-dark" />
+                  <span className="text-xs font-semibold text-muted">Email</span>
                 </a>
                 <a 
                   href={COMPANY_INFO.maps_url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex flex-col items-center gap-2 p-4 rounded-2xl bg-slate-50 border border-gray-100 hover:bg-gray-100 transition-colors text-center"
+                  className="flex flex-col items-center gap-2 p-4 rounded-2xl bg-paper border border-rule hover:bg-paper-2 transition-colors text-center"
                 >
-                  <MapPin className="w-5 h-5 text-red-600" />
-                  <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Location</span>
+                  <MapPin className="w-5 h-5 text-brand-dark" />
+                  <span className="text-xs font-semibold text-muted">Lokasi</span>
                 </a>
               </div>
             </div>
 
             {/* Decoration for Mobile Menu */}
             <div className="absolute bottom-6 left-0 right-0 flex justify-center opacity-5 pointer-events-none">
-              <span className="text-6xl font-display font-extrabold whitespace-nowrap text-gray-900">{COMPANY_INFO.brand_name}</span>
+              <span className="text-6xl font-display font-extrabold whitespace-nowrap text-ink">{COMPANY_INFO.brand_name}</span>
             </div>
           </motion.div>
         )}

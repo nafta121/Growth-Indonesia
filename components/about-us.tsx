@@ -14,15 +14,12 @@ export default function AboutUs() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Vision Section */}
           <ScrollReveal delay={0} duration={0.8} xOffset={-30} yOffset={0}>
-            <h2 id="tentang-title" className="font-display text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 leading-[1.1] mb-8">
-              Membangun Kualitas <span className="text-[#EF4444]">SDM Unggul</span> & Bermental Positif.
+            <h2 id="tentang-title" className="font-display text-4xl md:text-5xl lg:text-6xl font-black text-ink leading-[1.1] mb-8">
+              Membangun Kualitas SDM Unggul &amp; Bermental Positif
             </h2>
-            <div className="relative p-8 rounded-3xl bg-gray-50 border-l-4 border-[#EF4444] mb-8 group overflow-hidden">
-              <div className="absolute top-0 right-0 p-4 opacity-[0.03] group-hover:opacity-10 transition-opacity">
-                <span className="font-display text-8xl font-black italic">GROW</span>
-              </div>
-              <p className="italic font-medium text-gray-700 text-lg leading-relaxed relative z-10">
-                &quot;Terbaik dan terpercaya dalam layanan training & development untuk mewujudkan kualitas SDM yang unggul dan bersikap mental positif.&quot;
+            <div className="relative p-8 rounded-3xl bg-paper border-l-4 border-brand-dark mb-8 overflow-hidden">
+              <p className="italic font-medium text-ink-2 text-lg leading-relaxed relative z-10">
+                &ldquo;Terbaik dan terpercaya dalam layanan training &amp; development untuk mewujudkan kualitas SDM yang unggul dan bersikap mental positif.&rdquo;
               </p>
             </div>
           </ScrollReveal>
@@ -33,10 +30,8 @@ export default function AboutUs() {
             duration={0.8} 
             xOffset={30} 
             yOffset={0}
-            className="mt-12 lg:mt-0 bg-[#0A1628] p-8 md:p-12 lg:p-16 rounded-[2.5rem] md:rounded-[4rem] text-white shadow-2xl relative overflow-hidden group"
+            className="mt-12 lg:mt-0 bg-navy p-8 md:p-12 lg:p-16 rounded-[2.5rem] text-white shadow-lg border border-navy-border relative overflow-hidden"
           >
-            <div className="absolute -top-10 -right-10 w-40 h-40 bg-[#EF4444]/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-            
             <h3 className="font-display text-2xl md:text-3xl font-black text-white mb-6">Misi Utama Kami</h3>
             <ul className="space-y-6 md:space-y-8">
               {MISSIONS.map((mission, idx) => (
@@ -46,10 +41,10 @@ export default function AboutUs() {
                     yOffset={10}
                     className="flex gap-4 items-start group/item"
                   >
-                    <div className="mt-0.5 shrink-0 bg-slate-800 text-red-500 rounded-full w-8 h-8 flex items-center justify-center font-bold">
+                    <div className="mt-0.5 shrink-0 bg-navy-2 border border-navy-border text-brand rounded-full w-8 h-8 flex items-center justify-center font-bold num">
                       {idx + 1}
                     </div>
-                    <p className="text-gray-300 text-base md:text-lg leading-relaxed font-medium group-hover/item:text-white transition-colors duration-300">{mission}</p>
+                    <p className="text-navy-muted text-base md:text-lg leading-relaxed font-medium group-hover/item:text-white transition-colors duration-200">{mission}</p>
                   </ScrollReveal>
                 </li>
               ))}

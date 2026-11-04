@@ -279,81 +279,79 @@ export default function CredibilityPortfolio() {
   };
 
   return (
-    <section className="py-16 md:py-24 bg-slate-50 text-slate-900 border-t border-slate-200" id="portofolio-sertifikasi">
+    <section className="py-16 md:py-24 bg-paper text-ink border-t border-rule" id="portofolio-sertifikasi">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdData) }}
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-        {/* Header Title */}
         <div className="text-center max-w-3xl mx-auto">
           <div className="flex flex-wrap items-center justify-center gap-2 mb-3">
-            <Badge variant="default" className="px-3 py-1 border border-red-500/30 text-red-600 bg-red-50 font-semibold">
+            <Badge variant="default" className="px-3 py-1 border border-brand-border text-brand-dark bg-brand-tint font-semibold">
               Kredibilitas & Rekam Jejak Resmi
             </Badge>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-amber-50 border border-amber-200 text-amber-800 rounded-full text-xs font-bold">
-              <Star className="w-3.5 h-3.5 fill-amber-500 text-amber-500" />
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-gold-tint border border-rule text-ink rounded-full text-xs font-bold num">
+              <Star className="w-3.5 h-3.5 fill-gold text-gold" />
               <span>4.9 / 5.0 (250+ Ulasan & Kepuasan Klien)</span>
             </div>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight font-display">
-            Profil Fasilitator, Studi Kasus & <span className="text-red-600">Portofolio Klien</span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-ink tracking-tight font-display">
+            Profil Fasilitator, Studi Kasus & <span className="text-brand-dark">Portofolio Klien</span>
           </h2>
-          <p className="mt-4 text-slate-600 text-base sm:text-lg leading-relaxed">
+          <p className="mt-4 text-ink-2 text-base sm:text-lg leading-relaxed">
             Bukti nyata komitmen <strong>Growth Indonesia</strong> dalam menghadirkan program pengembangan SDM, outbound training, dan event management berstandar kompetensi profesional serta keamanan tinggi.
           </p>
         </div>
 
-        {/* SECTION 1: Profil & Kualifikasi Fasilitator */}
-        <div className="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-sm space-y-8">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-6">
+        <div className="bg-white rounded-3xl p-6 sm:p-10 border border-rule shadow-sm space-y-8">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-rule pb-6">
             <div className="flex items-center gap-3">
-              <div className="p-3 bg-red-100 text-red-600 rounded-2xl">
+              <div className="p-3 bg-brand-tint text-brand-dark rounded-2xl">
                 <ShieldCheck className="w-8 h-8" />
               </div>
               <div>
-                <h3 className="text-2xl font-bold text-slate-900 font-display">1. Profil & Kualifikasi Fasilitator</h3>
-                <p className="text-sm text-slate-500">Tim instruktur utama berpengalaman dengan standar kompetensi profesional</p>
+                <h3 className="text-2xl font-bold text-ink font-display">1. Profil & Kualifikasi Fasilitator</h3>
+                <p className="text-sm text-muted">Tim instruktur utama berpengalaman dengan standar kompetensi profesional</p>
               </div>
             </div>
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 text-slate-700 rounded-full text-xs font-bold uppercase tracking-wider">
-              <Award className="w-4 h-4 text-red-600" />
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-paper-2 text-ink-2 rounded-full text-xs font-bold">
+              <Award className="w-4 h-4 text-brand-dark" />
               Master Trainer & Praktisi Ahli
             </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {FACILITATORS.map((f, i) => (
-              <div key={i} className="bg-slate-50 border border-slate-200/80 rounded-2xl p-6 space-y-4 hover:border-red-300 transition-colors">
+              <div key={i} className="bg-paper border border-rule rounded-2xl p-6 space-y-4 hover:border-brand-border transition-colors">
                 <div className="flex items-start justify-between">
                   <div>
-                    <h4 className="text-xl font-bold text-slate-900 font-display">{f.name}</h4>
-                    <p className="text-sm font-semibold text-red-600">{f.role}</p>
+                    <h4 className="text-xl font-bold text-ink font-display">{f.name}</h4>
+                    <p className="text-sm font-semibold text-brand-dark">{f.role}</p>
                   </div>
-                  <span className="text-xs font-extrabold bg-red-600 text-white px-2.5 py-1 rounded-md">PRO</span>
+                  <span className="text-xs font-extrabold bg-brand-dark text-white px-2.5 py-1 rounded-md">Pro</span>
                 </div>
 
-                <div className="space-y-2 pt-2 border-t border-slate-200/60 text-sm">
+                <div className="space-y-2 pt-2 border-t border-rule text-sm">
                   <div className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-green-600 mt-0.5 shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-whatsapp mt-0.5 shrink-0" />
                     <div>
-                      <span className="font-semibold text-slate-800">Sertifikasi:</span> {f.certification}
+                      <span className="font-semibold text-ink">Sertifikasi:</span> {f.certification}
                     </div>
                   </div>
                   <div className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-green-600 mt-0.5 shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-whatsapp mt-0.5 shrink-0" />
                     <div>
-                      <span className="font-semibold text-slate-800">Penerbit:</span> {f.certificationBody}
+                      <span className="font-semibold text-ink">Penerbit:</span> {f.certificationBody}
                     </div>
                   </div>
                 </div>
 
                 <div className="pt-2">
-                  <span className="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-2">Spesialisasi Metodologi:</span>
+                  <span className="text-xs font-bold text-muted block mb-2">Spesialisasi Metodologi:</span>
                   <div className="flex flex-wrap gap-1.5">
                     {f.specialization.map((spec, sIdx) => (
-                      <span key={sIdx} className="bg-white border border-slate-200 text-slate-700 text-xs px-2.5 py-1 rounded-md font-medium">
+                      <span key={sIdx} className="bg-white border border-rule text-ink-2 text-xs px-2.5 py-1 rounded-md font-medium">
                         {spec}
                       </span>
                     ))}
@@ -363,60 +361,59 @@ export default function CredibilityPortfolio() {
             ))}
           </div>
 
-          <div className="bg-red-50 border border-red-200 rounded-2xl p-5 text-sm text-slate-700 leading-relaxed flex items-start gap-3">
-            <ShieldCheck className="w-5 h-5 text-red-600 shrink-0 mt-0.5" />
+          <div className="bg-brand-tint border border-brand-border rounded-2xl p-5 text-sm text-ink-2 leading-relaxed flex items-start gap-3">
+            <ShieldCheck className="w-5 h-5 text-brand-dark shrink-0 mt-0.5" />
             <div>
               <strong>Komitmen Keamanan & Metodologi:</strong> Seluruh kegiatan kami menerapkan <strong>Zero Accident Policy</strong> yang diawasi langsung oleh instruktur keselamatan tersertifikasi. Simulasi dirancang menggunakan metodologi <strong>Experiential Learning (Experience &rarr; Reflect &rarr; Conceptualize &rarr; Apply)</strong> sehingga tidak sekadar rekreasi, melainkan berdampak langsung pada kinerja individu dan organisasi.
             </div>
           </div>
         </div>
 
-        {/* SECTION 2: Portofolio & Studi Kasus */}
-        <div className="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-sm space-y-8">
-          <div className="flex items-center gap-3 border-b border-slate-100 pb-6">
-            <div className="p-3 bg-red-100 text-red-600 rounded-2xl">
+        <div className="bg-white rounded-3xl p-6 sm:p-10 border border-rule shadow-sm space-y-8">
+          <div className="flex items-center gap-3 border-b border-rule pb-6">
+            <div className="p-3 bg-brand-tint text-brand-dark rounded-2xl">
               <Briefcase className="w-8 h-8" />
             </div>
             <div>
-              <h3 className="text-2xl font-bold text-slate-900 font-display">2. Portofolio & Studi Kasus Program</h3>
-              <p className="text-sm text-slate-500">Rekam jejak pelaksanaan kegiatan outbound training, gathering, dan LDK OSIS</p>
+              <h3 className="text-2xl font-bold text-ink font-display">2. Portofolio & Studi Kasus Program</h3>
+              <p className="text-sm text-muted">Rekam jejak pelaksanaan kegiatan outbound training, gathering, dan LDK OSIS</p>
             </div>
           </div>
 
           <div className="space-y-6">
             {CASE_STUDIES.map((cs, idx) => (
-              <div key={idx} className="border border-slate-200 rounded-2xl p-6 bg-slate-50/50 hover:bg-white hover:shadow-md transition-all">
-                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-2 border-b border-slate-200/80 pb-4 mb-4">
+              <div key={idx} className="border border-rule rounded-2xl p-6 bg-paper hover:bg-white hover:shadow-md transition-[background-color,box-shadow] duration-200 ease-[cubic-bezier(0.22,1,0.36,1)]">
+                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-2 border-b border-rule pb-4 mb-4">
                   <div>
-                    <h4 className="text-lg sm:text-xl font-bold text-slate-900 font-display">{cs.title}</h4>
-                    <p className="text-base font-bold text-red-600">{cs.client}</p>
+                    <h4 className="text-lg sm:text-xl font-bold text-ink font-display">{cs.title}</h4>
+                    <p className="text-base font-bold text-brand-dark">{cs.client}</p>
                   </div>
-                  <div className="flex flex-wrap items-center gap-4 text-xs font-medium text-slate-600">
-                    <span className="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-lg border border-slate-200">
-                      <MapPin className="w-3.5 h-3.5 text-red-500" />
+                  <div className="flex flex-wrap items-center gap-4 text-xs font-medium text-ink-2">
+                    <span className="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-lg border border-rule">
+                      <MapPin className="w-3.5 h-3.5 text-brand-dark" />
                       {cs.location}
                     </span>
-                    <span className="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-lg border border-slate-200">
-                      <Calendar className="w-3.5 h-3.5 text-red-500" />
+                    <span className="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-lg border border-rule num">
+                      <Calendar className="w-3.5 h-3.5 text-brand-dark" />
                       {cs.date}
                     </span>
-                    <span className="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-lg border border-slate-200">
-                      <Users className="w-3.5 h-3.5 text-red-500" />
+                    <span className="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-lg border border-rule num">
+                      <Users className="w-3.5 h-3.5 text-brand-dark" />
                       {cs.participants}
                     </span>
                   </div>
                 </div>
 
                 <div className="space-y-3">
-                  <p className="text-sm text-slate-700 leading-relaxed">
-                    <strong className="text-slate-900">Tujuan Program:</strong> {cs.objective}
+                  <p className="text-sm text-ink-2 leading-relaxed">
+                    <strong className="text-ink">Tujuan Program:</strong> {cs.objective}
                   </p>
                   <div>
-                    <strong className="text-xs font-bold uppercase tracking-wider text-slate-800 block mb-2">Capaian & Hasil Terukur (Outcomes):</strong>
-                    <ul className="space-y-1.5 text-sm text-slate-700">
+                    <strong className="text-xs font-bold text-ink block mb-2">Capaian & Hasil Terukur (Outcomes):</strong>
+                    <ul className="space-y-1.5 text-sm text-ink-2">
                       {cs.outcomes.map((out, oIdx) => (
                         <li key={oIdx} className="flex items-start gap-2">
-                          <CheckCircle2 className="w-4 h-4 text-green-600 shrink-0 mt-0.5" />
+                          <CheckCircle2 className="w-4 h-4 text-whatsapp shrink-0 mt-0.5" />
                           <span dangerouslySetInnerHTML={{ __html: out.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') }} />
                         </li>
                       ))}
@@ -428,33 +425,32 @@ export default function CredibilityPortfolio() {
           </div>
         </div>
 
-        {/* SECTION 3: Daftar Klien */}
-        <div className="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-sm space-y-8">
-          <div className="flex items-center gap-3 border-b border-slate-100 pb-6">
-            <div className="p-3 bg-red-100 text-red-600 rounded-2xl">
+        <div className="bg-white rounded-3xl p-6 sm:p-10 border border-rule shadow-sm space-y-8">
+          <div className="flex items-center gap-3 border-b border-rule pb-6">
+            <div className="p-3 bg-brand-tint text-brand-dark rounded-2xl">
               <Users className="w-8 h-8" />
             </div>
             <div>
-              <h3 className="text-2xl font-bold text-slate-900 font-display">3. Daftar Klien & Mitra Strategis</h3>
-              <p className="text-sm text-slate-500">Instansi BUMN, perusahaan multinasional, sekolah, dan pemerintah yang mempercayai Growth Indonesia</p>
+              <h3 className="text-2xl font-bold text-ink font-display">3. Daftar Klien & Mitra Strategis</h3>
+              <p className="text-sm text-muted">Instansi BUMN, perusahaan multinasional, sekolah, dan pemerintah yang mempercayai Growth Indonesia</p>
             </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {CLIENT_CATEGORIES.map((cat, idx) => (
-              <div key={idx} className="bg-slate-50 border border-slate-200 rounded-2xl p-6 space-y-4">
-                <div className="flex items-center gap-2.5 border-b border-slate-200 pb-3">
-                  {cat.iconName === 'bumn' && <Building2 className="w-5 h-5 text-red-600" />}
-                  {cat.iconName === 'education' && <GraduationCap className="w-5 h-5 text-blue-600" />}
-                  {cat.iconName === 'government' && <Briefcase className="w-5 h-5 text-amber-600" />}
-                  <h4 className="font-bold text-slate-900 font-display text-base">{cat.category}</h4>
+              <div key={idx} className="bg-paper border border-rule rounded-2xl p-6 space-y-4">
+                <div className="flex items-center gap-2.5 border-b border-rule pb-3">
+                  {cat.iconName === 'bumn' && <Building2 className="w-5 h-5 text-brand-dark" />}
+                  {cat.iconName === 'education' && <GraduationCap className="w-5 h-5 text-ink" />}
+                  {cat.iconName === 'government' && <Briefcase className="w-5 h-5 text-gold" />}
+                  <h4 className="font-bold text-ink font-display text-base">{cat.category}</h4>
                 </div>
 
-                <ul className="space-y-2 text-sm text-slate-700">
+                <ul className="space-y-2 text-sm text-ink-2">
                   {cat.list.map((item, iIdx) => (
                     <li key={iIdx} className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-red-500 shrink-0" />
-                      <span className="font-medium text-slate-800">{item}</span>
+                      <span className="w-1.5 h-1.5 rounded-full bg-brand-dark shrink-0" />
+                      <span className="font-medium text-ink">{item}</span>
                     </li>
                   ))}
                 </ul>

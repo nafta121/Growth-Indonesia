@@ -55,7 +55,7 @@ export default function PortofolioPage() {
   };
 
   return (
-    <div className="relative min-h-screen bg-slate-50 selection:bg-[#EF4444] selection:text-white">
+    <div className="relative min-h-screen bg-paper selection:bg-brand selection:text-white">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaLd) }}
@@ -78,4 +78,3 @@ export default function PortofolioPage() {
     </div>
   );
 }
-

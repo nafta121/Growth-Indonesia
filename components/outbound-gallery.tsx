@@ -76,13 +76,15 @@ export const galleryItems = [
 
 export default function OutboundGallery() {
   return (
-    <section id="galeri" className="py-20 md:py-32 bg-gray-50 overflow-hidden" aria-labelledby="galeri-title">
+    <section id="galeri" className="py-20 md:py-32 bg-paper overflow-hidden" aria-labelledby="galeri-title">
       <div className="max-w-7xl mx-auto px-4 md:px-12">
         <div className="text-center mb-16 md:mb-24">
-          <h2 id="galeri-title" className="font-display text-4xl md:text-5xl lg:text-6xl font-black text-[#0A1628] leading-[1.1] mb-6">
-            Dokumentasi <span className="text-[#EF4444]">Kegiatan</span>
+          <h2 id="galeri-title" className="font-display text-4xl md:text-5xl lg:text-6xl font-black text-ink leading-[1.1] mb-4">
+            Dokumentasi Kegiatan Lapangan
           </h2>
-          <div className="w-16 h-2 bg-[#EF4444] mx-auto rounded-full" />
+          <p className="text-muted text-base md:text-lg max-w-2xl mx-auto">
+            Rekaman aktivitas nyata pelatihan outbound, capacity building, dan gathering instansi di berbagai kota Jawa Timur.
+          </p>
         </div>
 
         <OutboundGalleryClient photos={galleryItems}>
@@ -92,7 +94,7 @@ export default function OutboundGallery() {
               src={photo.url}
               alt={photo.alt}
               fill
-              className="object-cover transition-transform duration-700 group-hover:scale-110"
+              className="object-cover"
               sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
               referrerPolicy="no-referrer"
             />
@@ -102,4 +104,3 @@ export default function OutboundGallery() {
     </section>
   );
 }
-

@@ -1,5 +1,4 @@
 import { Users, Compass, Presentation, Map, CalendarCheck } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
 import ServicesTabs from '@/components/services-tabs';
 import ScrollReveal from '@/components/ui/scroll-reveal';
 
@@ -93,18 +92,14 @@ const SERVICES = {
 
 export default function Services() {
   return (
-    <section id="layanan" className="py-20 md:py-32 bg-[#0A1628] relative overflow-hidden" aria-labelledby="services-title">
-      {/* Background elements */}
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-[#EF4444]/5 skew-x-12 translate-x-32 hidden md:block" />
-      
+    <section id="layanan" className="py-20 md:py-32 bg-navy relative overflow-hidden" aria-labelledby="services-title">
       <div className="max-w-7xl mx-auto px-4 md:px-12 relative z-10">
         <ScrollReveal delay={0} duration={0.8} yOffset={20} className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
-          <Badge variant="dark" className="mb-4">Program Unggulan Growth Indonesia</Badge>
           <h2 id="services-title" className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.1] mb-6">
-            Layanan <span className="text-[#EF4444]">Provider Outbound & Event Organizer</span> Madiun
+            Layanan Provider Outbound &amp; Event Organizer Madiun
           </h2>
-          <p className="text-slate-300 text-sm md:text-base leading-relaxed max-w-2xl mx-auto">
-            Setiap program disusun secara presisi melalui tahapan <em>Training Need Analysis (TNA)</em> bersama komite atau HRD Anda, dipandu oleh Master Trainer & Praktisi Experiential Learning Berpengalaman (Naftalyndho & Juprianto), serta dilengkapi laporan evaluasi pasca-kegiatan yang terukur.
+          <p className="text-navy-muted text-sm md:text-base leading-relaxed max-w-2xl mx-auto">
+            Setiap program disusun secara presisi melalui tahapan <em>Training Need Analysis (TNA)</em> bersama komite atau HRD Anda, dipandu oleh Master Trainer &amp; Praktisi Experiential Learning Berpengalaman (Naftalyndho &amp; Juprianto), serta dilengkapi laporan evaluasi pasca-kegiatan yang terukur.
           </p>
         </ScrollReveal>
 
@@ -116,15 +111,15 @@ export default function Services() {
               return (
                 <div
                   key={service.title}
-                  className="flex flex-col p-6 rounded-3xl bg-white/[0.04] border border-white/10 hover:border-[#EF4444]/40 hover:bg-white/[0.07] transition-all duration-300"
+                  className="flex flex-col p-6 rounded-3xl bg-navy-2 border border-navy-border hover:border-brand/40 transition-[border-color,background-color] duration-200"
                 >
-                  <div className="w-11 h-11 rounded-xl bg-[#EF4444]/15 text-[#EF4444] flex items-center justify-center mb-4 shrink-0">
+                  <div className="w-11 h-11 rounded-xl bg-navy border border-navy-border text-brand flex items-center justify-center mb-4 shrink-0">
                     <Icon className="w-5 h-5" aria-hidden="true" />
                   </div>
                   <h3 className="text-base font-bold text-white mb-2 leading-snug">
                     {service.title}
                   </h3>
-                  <p className="text-slate-300 text-xs leading-relaxed">
+                  <p className="text-navy-muted text-xs leading-relaxed">
                     {service.description}
                   </p>
                 </div>
@@ -138,4 +133,3 @@ export default function Services() {
     </section>
   );
 }
-
