@@ -2,18 +2,10 @@
   "name": "growth-indonesia",
   "version": "0.1.0",
   "private": true,
-  "bin": {
-    "opennextjs-cloudflare": "./scripts/cf-shim.js"
-  },
   "scripts": {
-    "postinstall": "node scripts/postinstall.js",
     "clean": "node -e \"const fs = require('fs'); fs.rmSync('dist', { recursive: true, force: true });\"",
     "dev": "astro dev",
-    "build": "rm -rf dist && node scripts/prebuild.js && astro build && node scripts/postbuild.js",
-    "build:cf": "npm run build",
-    "build:next": "npm run build",
-    "deploy": "npm run build",
-    "upload": "npm run build",
+    "build": "rm -rf dist && node scripts/prebuild.js && astro build",
     "preview": "astro preview",
     "check": "astro check",
     "lint": "eslint .",
