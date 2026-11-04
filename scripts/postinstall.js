@@ -11,6 +11,7 @@ try {
   const pkgJson = {
     name: '@opennextjs/cloudflare',
     version: '99.0.0',
+    main: 'index.js',
     bin: {
       'opennextjs-cloudflare': 'cli.js'
     }
@@ -25,13 +26,19 @@ execSync('npm run build', { stdio: 'inherit' });
   fs.writeFileSync(cliPath, cliContent);
   fs.chmodSync(cliPath, 0o755);
 
+  const stubJs = `module.exports = { defineCloudflareConfig: (cfg = {}) => cfg };\n`;
+  fs.writeFileSync(path.join(pkgDir, 'index.js'), stubJs);
+  fs.writeFileSync(path.join(pkgDir, 'config.js'), stubJs);
+
   const binPath = path.join(binDir, 'opennextjs-cloudflare');
   try {
     fs.unlinkSync(binPath);
   } catch {
     // ignore
   }
-  fs.symlinkSync(cliPath, binPath);
+  // Write actual script file directly instead of relying on symlinks
+  fs.writeFileSync(binPath, cliContent);
+  fs.chmodSync(binPath, 0o755);
 } catch {
   // non-fatal
 }
