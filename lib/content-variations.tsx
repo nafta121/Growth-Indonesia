@@ -1,3 +1,4 @@
+import React from 'react';
 import type { ReactNode } from 'react';
 import { COMPANY_INFO } from '@/lib/constants';
 import { formatSlug } from './format';
