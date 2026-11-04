@@ -1,10 +1,9 @@
 import { MessageCircle } from 'lucide-react';
-import Link from 'next/link';
 import { COMPANY_INFO } from '@/lib/constants';
 
 export default function WhatsAppFAB() {
   return (
-    <Link
+    <a
       href={`https://wa.me/${COMPANY_INFO.whatsapp_number}`}
       target="_blank"
       rel="noopener noreferrer"
@@ -27,6 +26,6 @@ export default function WhatsAppFAB() {
           </div>
         </div>
       </div>
-    </Link>
+    </a>
   );
 }

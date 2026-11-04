@@ -1,13 +1,12 @@
 'use client';
 
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import Image from 'next/image';
 import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
 import { X, ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
 
 interface OutboundGalleryClientProps {
   photos: { id: number; url: string; alt: string }[];
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 export default function OutboundGalleryClient({ photos, children }: OutboundGalleryClientProps) {
@@ -105,28 +104,57 @@ export default function OutboundGalleryClient({ photos, children }: OutboundGall
   return (
     <>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-        {React.Children.map(children, (child, index) => (
-          <button
-            key={index}
-            ref={(el) => {
-              triggerRefs.current[index] = el;
-            }}
-            type="button"
-            onClick={() => {
-              lastTriggerIndexRef.current = index;
-              setCurrentIndex(index);
-            }}
-            aria-label={`Lihat gambar ${index + 1}`}
-            className="group relative aspect-square overflow-hidden rounded-xl md:rounded-[2rem] cursor-pointer bg-white shadow-sm hover:shadow-lg [@media(hover:hover)_and_(pointer:fine)]:hover:-translate-y-1 transition-[transform,box-shadow] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-focus text-left"
-          >
-            {child}
-            <div className="absolute inset-0 bg-gradient-to-t from-navy/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200 ease-out flex items-center justify-center">
-              <div className="bg-navy p-3 md:p-4 rounded-xl border border-navy-border scale-95 group-hover:scale-100 transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)]">
-                <Maximize2 className="text-white w-6 h-6 md:w-8 md:h-8" aria-hidden="true" />
-              </div>
-            </div>
-          </button>
-        ))}
+        {children
+          ? React.Children.map(children, (child, index) => (
+              <button
+                key={index}
+                ref={(el) => {
+                  triggerRefs.current[index] = el;
+                }}
+                type="button"
+                onClick={() => {
+                  lastTriggerIndexRef.current = index;
+                  setCurrentIndex(index);
+                }}
+                aria-label={`Lihat gambar ${index + 1}`}
+                className="group relative aspect-square overflow-hidden rounded-xl md:rounded-[2rem] cursor-pointer bg-white shadow-sm hover:shadow-lg [@media(hover:hover)_and_(pointer:fine)]:hover:-translate-y-1 transition-[transform,box-shadow] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-focus text-left"
+              >
+                {child}
+                <div className="absolute inset-0 bg-gradient-to-t from-navy/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200 ease-out flex items-center justify-center">
+                  <div className="bg-navy p-3 md:p-4 rounded-xl border border-navy-border scale-95 group-hover:scale-100 transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)]">
+                    <Maximize2 className="text-white w-6 h-6 md:w-8 md:h-8" aria-hidden="true" />
+                  </div>
+                </div>
+              </button>
+            ))
+          : photos.map((photo, index) => (
+              <button
+                key={photo.id || index}
+                ref={(el) => {
+                  triggerRefs.current[index] = el;
+                }}
+                type="button"
+                onClick={() => {
+                  lastTriggerIndexRef.current = index;
+                  setCurrentIndex(index);
+                }}
+                aria-label={`Lihat gambar ${index + 1}`}
+                className="group relative aspect-square overflow-hidden rounded-xl md:rounded-[2rem] cursor-pointer bg-white shadow-sm hover:shadow-lg [@media(hover:hover)_and_(pointer:fine)]:hover:-translate-y-1 transition-[transform,box-shadow] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-focus text-left"
+              >
+                <img
+                  src={photo.url}
+                  alt={photo.alt}
+                  decoding="async"
+                  className="w-full h-full object-cover"
+                  referrerPolicy="no-referrer"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200 ease-out flex items-center justify-center">
+                  <div className="bg-navy p-3 md:p-4 rounded-xl border border-navy-border scale-95 group-hover:scale-100 transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)]">
+                    <Maximize2 className="text-white w-6 h-6 md:w-8 md:h-8" aria-hidden="true" />
+                  </div>
+                </div>
+              </button>
+            ))}
       </div>
 
       {/* Lightbox Overlay */}
@@ -172,11 +200,11 @@ export default function OutboundGalleryClient({ photos, children }: OutboundGall
                 className="relative w-full h-full flex items-center justify-center"
                 onClick={(e) => e.stopPropagation()}
               >
-                <Image
+                <img
                   src={photos[currentIndex].url}
                   alt={photos[currentIndex].alt}
-                  fill
-                  className="object-contain"
+                  decoding="async"
+                  className="w-full h-full object-contain"
                   referrerPolicy="no-referrer"
                 />
               </motion.div>

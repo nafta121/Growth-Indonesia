@@ -1,11 +1,7 @@
 import { defineConfig } from "eslint/config";
-import next from "eslint-config-next";
 
 export default defineConfig([
     {
-        ignores: [".next/**", ".open-next/**", "out/**", "build/**"],
-    },
-    {
-        extends: [...next],
+        ignores: ["dist/**", ".astro/**", "node_modules/**"],
     },
 ]);

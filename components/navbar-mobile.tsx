@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import Link from 'next/link';
 import { Mail, MapPin, Phone } from 'lucide-react';
 import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
 import { COMPANY_INFO } from '@/lib/constants';
@@ -133,13 +132,13 @@ export default function NavbarMobile({ navLinks }: { navLinks: NavLink[] }) {
                   transition={{ duration: 0.2, delay: shouldReduceMotion ? 0 : 0.04 + i * 0.04, ease: [0.23, 1, 0.32, 1] }}
                   className="w-full text-center"
                 >
-                  <Link
+                  <a
                     href={link.href}
                     onClick={() => setIsOpen(false)}
                     className="block py-3 min-h-12 text-2xl sm:text-3xl font-display font-bold text-ink hover:text-brand-dark active:scale-95 transition-[transform,color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-dark rounded-xl"
                   >
                     {link.name}
-                  </Link>
+                  </a>
                 </motion.li>
               ))}
             </ul>

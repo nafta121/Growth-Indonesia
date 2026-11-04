@@ -1,9 +1,25 @@
+# Dependencies
 node_modules/
+
+# Build artifacts & runtime caches
+dist/
+.astro/
+.wrangler/
+
+# Agent teamwork metadata
+.agents/teamwork/
+
+# Legacy Next.js
 .next/
+.open-next/
+
+# Test coverage
 coverage/
+
+# OS & logs
 .DS_Store
 *.log
+
+# Environment
 .env*
 !.env.example
-.open-next/
-.open-next/

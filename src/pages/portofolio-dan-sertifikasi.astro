@@ -1,0 +1,44 @@
+---
+export const prerender = true;
+
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import CredibilityPortfolio from '@/components/credibility-portfolio';
+import Breadcrumb from '@/components/breadcrumb';
+import { getLocalBusinessSchema } from '@/lib/schema';
+import { COMPANY_INFO } from '@/lib/constants';
+
+const schemaLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'ProfilePage',
+      '@id': 'https://growthindonesia.my.id/portofolio-dan-sertifikasi#webpage',
+      name: `Portofolio Klien & Profil Fasilitator Profesional | ${COMPANY_INFO.brand_name}`,
+      url: 'https://growthindonesia.my.id/portofolio-dan-sertifikasi',
+      mainEntity: {
+        '@id': 'https://growthindonesia.my.id/#organization',
+      },
+    },
+    getLocalBusinessSchema(),
+  ],
+};
+---
+<BaseLayout
+  title={`Portofolio Klien & Profil Fasilitator Profesional | ${COMPANY_INFO.brand_name}`}
+  description="Profil fasilitator outbound berpengalaman, rekam jejak studi kasus, dan daftar klien BUMN, instansi, serta sekolah yang menggunakan jasa Growth Indonesia."
+  canonical="https://growthindonesia.my.id/portofolio-dan-sertifikasi"
+  schema={schemaLd}
+>
+  <div class="pt-[72px] md:pt-[88px] bg-paper min-h-screen text-ink">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 mb-8">
+      <Breadcrumb
+        items={[
+          { label: 'Beranda', href: '/' },
+          { label: 'Portofolio & Profil Praktisi' },
+        ]}
+        variant="light"
+      />
+    </div>
+    <CredibilityPortfolio />
+  </div>
+</BaseLayout>

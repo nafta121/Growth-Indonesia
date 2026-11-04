@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { Target, MapPin, CheckCircle2 } from 'lucide-react';
 import ScrollReveal from '@/components/ui/scroll-reveal';
 import { getCityImage } from '@/lib/city-images';
@@ -31,11 +30,11 @@ export default function CityContent({ kategoriName, kotaName, cityKey, cityData,
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           <ScrollReveal delay={0.2} xOffset={-30} className="relative">
             <div className="aspect-[4/3] rounded-3xl overflow-hidden relative border border-rule">
-              <Image 
+              <img 
                 src={contentImage}
                 alt={`Kegiatan ${kategoriName} Growth Indonesia di ${kotaName}`}
-                fill
-                className="object-cover"
+                decoding="async"
+                className="absolute inset-0 w-full h-full object-cover"
                 referrerPolicy="no-referrer"
               />
             </div>

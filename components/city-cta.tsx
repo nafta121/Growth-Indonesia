@@ -1,5 +1,3 @@
-import Link from 'next/link';
-import Image from 'next/image';
 import { MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -11,13 +9,11 @@ interface CityCtaProps {
 export default function CityCta({ kategoriName, kotaName }: CityCtaProps) {
   return (
     <section className="py-24 md:py-32 bg-navy relative overflow-hidden">
-      <Image
+      <img
         src="https://nafta121.sirv.com/OUTBOUND/2022-10-22%2009-00-09.jpeg"
         alt={`Dokumentasi Kegiatan ${kategoriName} bersama Fasilitator Growth Indonesia di ${kotaName}`}
-        fill
-        loading="lazy"
-        sizes="100vw"
-        className="object-cover object-center opacity-20 mix-blend-overlay absolute inset-0 -z-10"
+        decoding="async"
+        className="w-full h-full object-cover object-center opacity-20 mix-blend-overlay absolute inset-0 -z-10"
         referrerPolicy="no-referrer"
       />
       <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
@@ -29,10 +25,10 @@ export default function CityCta({ kategoriName, kotaName }: CityCtaProps) {
         </p>
         <div className="flex flex-wrap justify-center gap-4">
           <Button size="lg" className="h-16 px-8 rounded-full bg-brand-dark text-white hover:bg-brand shadow-md transition-[transform,background-color,box-shadow] duration-200 active:scale-95 flex items-center justify-center gap-2 whitespace-nowrap" asChild>
-            <Link href={`https://wa.me/6285704748186?text=Halo tim Growth Indonesia, saya ingin meminta draf proposal dan rincian RAB program ${kategoriName} untuk wilayah ${kotaName}.`} target="_blank" rel="noopener noreferrer" className="font-bold text-sm sm:text-base">
+            <a href={`https://wa.me/6285704748186?text=Halo tim Growth Indonesia, saya ingin meminta draf proposal dan rincian RAB program ${kategoriName} untuk wilayah ${kotaName}.`} target="_blank" rel="noopener noreferrer" className="font-bold text-sm sm:text-base">
               <MessageCircle className="w-5 h-5" />
               Minta Proposal &amp; RAB {kotaName}
-            </Link>
+            </a>
           </Button>
         </div>
       </div>

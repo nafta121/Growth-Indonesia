@@ -1,7 +1,6 @@
 'use client';
 
-import { Suspense, useCallback, useEffect, useState } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useCallback, useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { MapPin, Phone, MessageCircle, Send, CheckCircle2, ChevronDown, Calendar, Building2, User } from 'lucide-react';
 import { useForm } from 'react-hook-form';
@@ -23,14 +22,15 @@ type FormData = {
 };
 
 function PackageParamSync({ onSelect }: { onSelect: (pkg: string) => void }) {
-  const searchParams = useSearchParams();
-  const pkg = searchParams.get('package');
-
   useEffect(() => {
-    if (pkg) {
-      onSelect(pkg);
+    if (typeof window !== 'undefined') {
+      const searchParams = new URLSearchParams(window.location.search);
+      const pkg = searchParams.get('package');
+      if (pkg) {
+        onSelect(pkg);
+      }
     }
-  }, [pkg, onSelect]);
+  }, [onSelect]);
 
   return null;
 }
@@ -70,9 +70,7 @@ Mohon informasi rekomendasi venue dan estimasi anggaran sesuai kebutuhan tim kam
 
   return (
     <section id="kontak" className="py-20 md:py-32 bg-white relative overflow-hidden">
-      <Suspense fallback={null}>
-        <PackageParamSync onSelect={handleSelectPackage} />
-      </Suspense>
+      <PackageParamSync onSelect={handleSelectPackage} />
       <div className="max-w-7xl mx-auto px-4 md:px-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
           

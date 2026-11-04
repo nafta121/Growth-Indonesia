@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import Image from 'next/image';
 import { useInView } from 'motion/react';
 import ScrollReveal from '@/components/ui/scroll-reveal';
 import { Users, CalendarCheck, Briefcase, Target } from 'lucide-react';
@@ -94,14 +93,12 @@ const IMPACT_STATS = [
 export default function OurImpact() {
   return (
     <section className="py-20 md:py-24 bg-paper border-y border-rule relative overflow-hidden" aria-labelledby="impact-title">
-      <Image
+      <img
         src="https://nafta121.sirv.com/OUTBOUND/2022-10-22%2009-00-09.jpeg"
         alt=""
         aria-hidden="true"
-        fill
-        loading="lazy"
-        sizes="100vw"
-        className="object-cover object-center opacity-5 mix-blend-overlay absolute inset-0 -z-10"
+        decoding="async"
+        className="w-full h-full object-cover object-center opacity-5 mix-blend-overlay absolute inset-0 -z-10"
         referrerPolicy="no-referrer"
       />
       <div className="max-w-7xl mx-auto px-4 md:px-12 relative z-10">

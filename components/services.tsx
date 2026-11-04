@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import { Users, Compass, Presentation, Map, CalendarCheck } from 'lucide-react';
 import ServicesTabs from '@/components/services-tabs';
 import ScrollReveal from '@/components/ui/scroll-reveal';
@@ -35,7 +36,7 @@ export const servicesData = [
   },
 ];
 
-const SERVICES = {
+export const SERVICES = {
   training: [
     {
       title: servicesData[0].title,
@@ -90,7 +91,7 @@ const SERVICES = {
   ],
 };
 
-export default function Services() {
+export default function Services({ children }: { children?: ReactNode }) {
   return (
     <section id="layanan" className="py-20 md:py-32 bg-navy relative overflow-hidden" aria-labelledby="services-title">
       <div className="max-w-7xl mx-auto px-4 md:px-12 relative z-10">
@@ -128,7 +129,8 @@ export default function Services() {
           </div>
         </ScrollReveal>
 
-        <ServicesTabs services={SERVICES} />
+        {/* Slotted interactive tabs island or fallback */}
+        {children ? children : <ServicesTabs services={SERVICES} />}
       </div>
     </section>
   );

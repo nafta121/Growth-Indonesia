@@ -3,25 +3,25 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build:next": "node scripts/prebuild.js && next build",
-    "build": "node scripts/prebuild.js && next build && (test -n \"$VERCEL\" || opennextjs-cloudflare build --skipNextBuild)",
-    "build:cf": "opennextjs-cloudflare build",
-    "start": "next start",
+    "clean": "node -e \"const fs = require('fs'); fs.rmSync('dist', { recursive: true, force: true });\"",
+    "dev": "astro dev",
+    "build": "rm -rf dist && node scripts/prebuild.js && astro build",
+    "preview": "astro preview",
+    "check": "astro check",
     "lint": "eslint .",
-    "clean": "next clean",
     "test": "tsx --test lib/*.test.ts"
   },
   "dependencies": {
-    "@next/third-parties": "^16.2.4",
+    "@astrojs/cloudflare": "^12.0.0",
+    "@astrojs/mdx": "^4.0.0",
+    "@astrojs/react": "^4.0.0",
+    "astro": "^5.0.0",
     "autoprefixer": "^10.4.21",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "gray-matter": "^4.0.3",
     "lucide-react": "^0.553.0",
     "motion": "^12.23.24",
-    "next": "^15.4.9",
-    "next-mdx-remote": "^6.0.0",
     "postcss": "^8.5.6",
     "react": "^19.2.1",
     "react-dom": "^19.2.1",
@@ -29,25 +29,23 @@
     "tailwind-merge": "^3.3.1"
   },
   "devDependencies": {
-    "@opennextjs/cloudflare": "^1.20.1",
+    "@astrojs/check": "^0.9.4",
     "@tailwindcss/postcss": "4.1.11",
     "@tailwindcss/typography": "^0.5.19",
+    "@tailwindcss/vite": "^4.1.11",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "9.39.1",
-    "eslint-config-next": "16.0.8",
     "tailwindcss": "4.1.11",
     "tsx": "^4.19.3",
-    "typescript": "5.9.3"
+    "typescript": "5.9.3",
+    "wrangler": "^3.114.0"
   },
   "browserslist": [
     "> 0.5%",
     "last 2 versions",
     "not dead",
     "not ie <= 11"
-  ],
-  "overrides": {
-    "@aws-sdk/credential-provider-login": "3.970.0"
-  }
+  ]
 }

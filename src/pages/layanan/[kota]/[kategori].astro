@@ -1,0 +1,127 @@
+---
+export const prerender = true;
+
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import CityHero from '@/components/city-hero';
+import CityContent from '@/components/city-content';
+import { AiOverviewSection } from '@/components/ai-overview';
+import TrustSection from '@/components/trust-section';
+import CityCta from '@/components/city-cta';
+import KalkulatorBudget from '@/components/kalkulator-budget';
+import { NearbyCities } from '@/components/nearby-cities';
+import { CITIES } from '@/lib/cities';
+import { KATEGORI, CATEGORIES_SET } from '@/lib/categories';
+import { COMPANY_INFO } from '@/lib/constants';
+import { getServicePageSchema } from '@/lib/schema';
+import { getCategoryOgImage } from '@/lib/seo';
+import { formatSlug } from '@/lib/format';
+import { getContentVariations } from '@/lib/content-variations';
+
+export async function getStaticPaths() {
+  const paths = [];
+  for (const kota of Object.keys(CITIES)) {
+    for (const kategori of KATEGORI) {
+      paths.push({
+        params: { kota, kategori },
+        props: { cityData: CITIES[kota] },
+      });
+    }
+  }
+  return paths;
+}
+
+const { kota, kategori } = Astro.params;
+const decodedKota = decodeURIComponent(kota as string).toLowerCase();
+const decodedKategori = decodeURIComponent(kategori as string).toLowerCase();
+const cityData = Astro.props.cityData || CITIES[decodedKota];
+
+if (!cityData || !CATEGORIES_SET.has(decodedKategori)) {
+  return Astro.redirect('/404');
+}
+
+const kotaName = formatSlug(decodedKota);
+const kategoriName = formatSlug(decodedKategori);
+const content = getContentVariations(decodedKategori, kotaName);
+
+const title = content.title.replace(/\s*\|\s*Growth Indonesia$/i, '');
+const fullTitle = `${title} | ${COMPANY_INFO.brand_name}`;
+const description = `Jasa ${kategoriName.toLowerCase()} & event organizer profesional di ${kotaName}. ${cityData.description} Hubungi ${COMPANY_INFO.brand_name} untuk penawaran harga terbaik!`;
+const ogImages = getCategoryOgImage(decodedKategori, kotaName);
+const canonicalUrl = `https://growthindonesia.my.id/layanan/${decodedKota}/${decodedKategori}`;
+
+const schemaLd = getServicePageSchema({
+  kotaName,
+  cityKey: decodedKota,
+  kategoriName,
+  kategoriKey: decodedKategori,
+  cityDescription: cityData.description,
+  venues: cityData.popularVenues,
+});
+---
+<BaseLayout
+  title={fullTitle}
+  description={description}
+  canonical={canonicalUrl}
+  ogImage={ogImages[0].url}
+  schema={schemaLd}
+>
+  <div class="flex-1 w-full flex flex-col pt-[72px] md:pt-[88px]">
+    <article itemscope itemtype="https://schema.org/Service">
+      <meta itemprop="name" content={`${kategoriName} di ${kotaName}`} />
+      <meta itemprop="description" content={description} />
+      <meta itemprop="category" content={kategoriName} />
+      <meta itemprop="provider" content={COMPANY_INFO.brand_name} />
+      <meta itemprop="areaServed" content={kotaName} />
+      <meta itemprop="award" content="Fasilitator & Praktisi Experiential Learning Berpengalaman" />
+      <meta itemprop="serviceType" content={`${kategoriName} Outbound & Event Organizer`} />
+
+      <CityHero
+        kategoriName={kategoriName}
+        kotaName={kotaName}
+        cityKey={decodedKota}
+        cityDescription={cityData.description}
+        content={content}
+      />
+
+      <CityContent
+        kategoriName={kategoriName}
+        kotaName={kotaName}
+        cityKey={decodedKota}
+        cityData={cityData}
+        content={content}
+      />
+
+      <AiOverviewSection
+        cityName={kotaName}
+        cityKey={decodedKota}
+        kategoriName={kategoriName}
+        currentKategori={decodedKategori}
+        venues={cityData.popularVenues}
+      />
+
+      <TrustSection kategoriName={kategoriName} kotaName={kotaName} />
+      <CityCta kategoriName={kategoriName} kotaName={kotaName} />
+    </article>
+
+    <!-- Interactive Island: Kalkulator Budget -->
+    <section class="py-20 bg-white border-t border-rule">
+      <div class="max-w-7xl mx-auto px-4 md:px-12">
+        <div class="text-center mb-12">
+          <h2 class="font-display text-3xl md:text-5xl font-black tracking-tight text-ink leading-[1.1] mb-6">
+            Kalkulator Estimasi Investasi
+          </h2>
+          <p class="text-lg text-muted max-w-2xl mx-auto font-medium">
+            Simulasikan estimasi anggaran program Anda secara instan sebelum berkonsultasi dengan tim kami.
+          </p>
+        </div>
+        <KalkulatorBudget client:visible />
+      </div>
+    </section>
+
+    <NearbyCities
+      currentCityKey={decodedKota}
+      currentKategori={decodedKategori}
+      allCities={CITIES}
+    />
+  </div>
+</BaseLayout>

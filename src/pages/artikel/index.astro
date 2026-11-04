@@ -1,0 +1,139 @@
+---
+export const prerender = true;
+
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { Breadcrumb } from '@/components/breadcrumb';
+import { getAllArticles } from '@/lib/mdx';
+import { COMPANY_INFO } from '@/lib/constants';
+import { Calendar, User, Clock, ArrowRight } from 'lucide-react';
+
+const articles = await getAllArticles();
+
+const schemaLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  '@id': 'https://growthindonesia.my.id/artikel#webpage',
+  name: `Artikel & Edukasi Outbound Terbaik | ${COMPANY_INFO.brand_name}`,
+  description: `Kumpulan artikel, tips, panduan, dan edukasi seputar program outbound, training, team building, dan pengembangan SDM perusahaan dari ${COMPANY_INFO.brand_name}.`,
+  url: 'https://growthindonesia.my.id/artikel',
+};
+---
+<BaseLayout
+  title={`Artikel & Edukasi Outbound Terbaik | ${COMPANY_INFO.brand_name}`}
+  description={`Kumpulan artikel, tips, panduan, dan edukasi seputar program outbound, training, team building, dan pengembangan SDM perusahaan dari ${COMPANY_INFO.brand_name}.`}
+  canonical="https://growthindonesia.my.id/artikel"
+  schema={schemaLd}
+>
+  <div class="flex-grow pt-[72px] md:pt-[88px]">
+    <!-- Hub Hero Header -->
+    <section class="relative py-20 md:py-28 bg-navy overflow-hidden">
+      <div class="max-w-5xl mx-auto px-6 relative z-10 text-center flex flex-col items-center">
+        <div class="mb-6">
+          <Breadcrumb
+            items={[
+              { label: 'Beranda', href: '/' },
+              { label: 'Artikel & Edukasi' },
+            ]}
+            variant="dark"
+            includeSchema={true}
+          />
+        </div>
+
+        <h1 class="font-display text-4xl md:text-6xl font-black tracking-tight text-white mb-6 leading-tight">
+          Edukasi &amp; Artikel Outbound
+        </h1>
+        <p class="text-base md:text-xl text-navy-muted max-w-2xl mx-auto font-medium">
+          Panduan praktis pengembangan SDM, team building, dan kepanitiaan dari praktisi lapangan.
+        </p>
+      </div>
+    </section>
+
+    <!-- Article Grid Section -->
+    <section class="py-16 md:py-24 bg-paper text-ink">
+      <div class="max-w-7xl mx-auto px-6">
+        {articles.length === 0 ? (
+          <div class="text-center py-20 bg-white rounded-3xl border border-rule shadow-sm">
+            <p class="text-lg text-muted font-medium">Belum ada artikel yang dipublikasikan.</p>
+          </div>
+        ) : (
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {articles.map((article) => (
+              <a
+                href={`/artikel/${article.slug}`}
+                class="group flex flex-col bg-white rounded-3xl overflow-hidden border border-rule hover:border-brand/40 hover:shadow-lg hover:-translate-y-1.5 transition-[transform,border-color,box-shadow] duration-300"
+              >
+                <!-- Image -->
+                <div class="relative aspect-[16/10] overflow-hidden bg-paper-2">
+                  <img
+                    src={article.frontmatter.image}
+                    alt={article.frontmatter.title}
+                    loading="lazy"
+                    decoding="async"
+                    class="w-full h-full object-cover"
+                    referrerpolicy="no-referrer"
+                  />
+                  {article.frontmatter.tags && article.frontmatter.tags[0] && (
+                    <span class="absolute top-4 left-4 bg-navy text-white text-xs font-bold px-3.5 py-1.5 rounded-full shadow-sm">
+                      {article.frontmatter.tags[0]}
+                    </span>
+                  )}
+                </div>
+
+                <!-- Content -->
+                <div class="p-6 md:p-8 flex flex-col flex-grow">
+                  <!-- Meta -->
+                  <div class="flex flex-wrap items-center gap-4 text-xs font-medium text-muted mb-4">
+                    <div class="flex items-center gap-1.5">
+                      <Calendar className="w-4 h-4 text-brand-dark" />
+                      <span>
+                        {new Date(article.frontmatter.date).toLocaleDateString('id-ID', {
+                          day: 'numeric',
+                          month: 'short',
+                          year: 'numeric',
+                        })}
+                      </span>
+                    </div>
+                    <div class="flex items-center gap-1.5">
+                      <Clock className="w-4 h-4 text-brand-dark" />
+                      <span>{article.frontmatter.readTime}</span>
+                    </div>
+                  </div>
+
+                  <!-- Title -->
+                  <h2 class="font-display font-bold text-xl md:text-2xl text-ink mb-3 group-hover:text-brand-dark transition-colors line-clamp-2 leading-tight">
+                    {article.frontmatter.title}
+                  </h2>
+
+                  <!-- Description -->
+                  <p class="text-muted text-sm leading-relaxed mb-6 line-clamp-3 font-medium">
+                    {article.frontmatter.description}
+                  </p>
+
+                  <!-- Footer Link -->
+                  <div class="mt-auto pt-5 border-t border-rule flex items-center justify-between">
+                    <div class="flex items-center gap-2 text-xs font-bold text-ink-2">
+                      <User className="w-3.5 h-3.5 text-brand-dark" />
+                      <span>{article.frontmatter.author}</span>
+                    </div>
+                    <span class="inline-flex items-center text-xs font-bold text-brand-dark group-hover:text-brand">
+                      Baca selengkapnya
+                      <ArrowRight className="w-3.5 h-3.5 ml-1 group-hover:translate-x-1 transition-transform" />
+                    </span>
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+        )}
+      </div>
+    </section>
+  </div>
+
+  <style>
+    h2 {
+      overflow-wrap: break-word;
+      min-width: 0;
+      text-wrap: balance;
+    }
+  </style>
+</BaseLayout>

@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { MapPin, ArrowRight } from 'lucide-react';
 import ScrollReveal from '@/components/ui/scroll-reveal';
 import { getNearbyCities } from '@/lib/city-proximity';
@@ -46,7 +45,7 @@ export function NearbyCities({ currentCityKey, currentKategori, allCities }: Nea
               const city = allCities[key];
               if (!city) return null;
               return (
-                <Link 
+                <a 
                   key={key} 
                   href={`/layanan/${key}/${currentKategori}`}
                   className="group block h-full"
@@ -70,7 +69,7 @@ export function NearbyCities({ currentCityKey, currentKategori, allCities }: Nea
                       <ArrowRight className="w-4 h-4 ml-1.5 transition-transform duration-200 group-hover:translate-x-1" />
                     </div>
                   </div>
-                </Link>
+                </a>
               );
             })}
           </div>
@@ -88,20 +87,20 @@ export function NearbyCities({ currentCityKey, currentKategori, allCities }: Nea
                   </p>
                 </div>
                 <div className="flex flex-wrap items-center gap-3">
-                  <Link
+                  <a
                     href={`/layanan/${currentCityKey}`}
                     className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full bg-white border border-rule text-sm font-bold text-ink hover:border-brand-dark hover:text-brand-dark transition-colors whitespace-nowrap"
                   >
                     <span>Hub Layanan {currentCityName}</span>
                     <ArrowRight className="w-4 h-4" />
-                  </Link>
-                  <Link
+                  </a>
+                  <a
                     href="/layanan"
                     className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full bg-navy text-sm font-bold text-white hover:bg-brand-dark transition-colors whitespace-nowrap"
                   >
-                    <span>Indeks Direktori Jawa Timur</span>
+                    <span>Direktori Jawa Timur</span>
                     <ArrowRight className="w-4 h-4" />
-                  </Link>
+                  </a>
                 </div>
               </div>
 
@@ -110,7 +109,7 @@ export function NearbyCities({ currentCityKey, currentKategori, allCities }: Nea
                   const isActive = kat === currentKategori;
                   const label = formatCategoryName(kat);
                   return (
-                    <Link
+                    <a
                       key={kat}
                       href={`/layanan/${currentCityKey}/${kat}`}
                       aria-current={isActive ? 'page' : undefined}
@@ -134,7 +133,7 @@ export function NearbyCities({ currentCityKey, currentKategori, allCities }: Nea
                         <span>{label} {currentCityName}</span>
                         <ArrowRight className="w-4 h-4 shrink-0 text-muted group-hover:text-brand-dark group-hover:translate-x-0.5 transition-[transform,color]" />
                       </div>
-                    </Link>
+                    </a>
                   );
                 })}
               </div>

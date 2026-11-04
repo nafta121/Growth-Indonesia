@@ -1,13 +1,27 @@
-import Link from 'next/link';
-import Image from 'next/image';
+import React from 'react';
 import { Calendar, Clock, ArrowRight } from 'lucide-react';
-import { getAllArticles } from '@/lib/mdx';
 
-export default async function LatestArticles() {
-  const allArticles = await getAllArticles();
-  const articles = allArticles.slice(0, 3);
+export interface ArticleMeta {
+  slug: string;
+  frontmatter: {
+    title: string;
+    date: string;
+    description: string;
+    image: string;
+    tags?: string[];
+    author?: string;
+    readTime: string;
+  };
+}
 
-  if (articles.length === 0) {
+export interface LatestArticlesProps {
+  articles?: ArticleMeta[];
+}
+
+export default function LatestArticles({ articles = [] }: LatestArticlesProps) {
+  const displayArticles = articles.slice(0, 3);
+
+  if (displayArticles.length === 0) {
     return null;
   }
 
@@ -26,21 +40,19 @@ export default async function LatestArticles() {
 
         {/* Articles Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          {articles.map((article) => (
-            <Link
+          {displayArticles.map((article) => (
+            <a
               key={article.slug}
               href={`/artikel/${article.slug}`}
               className="group flex flex-col bg-white rounded-3xl overflow-hidden border border-rule hover:border-brand/40 hover:shadow-lg [@media(hover:hover)_and_(pointer:fine)]:hover:-translate-y-1 transition-[transform,box-shadow,border-color] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)]"
             >
               {/* Image Container */}
               <div className="relative aspect-[16/10] overflow-hidden bg-paper-2">
-                <Image
+                <img
                   src={article.frontmatter.image}
                   alt={article.frontmatter.title}
-                  fill
-                  loading="lazy"
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                  className="object-cover"
+                  decoding="async"
+                  className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
                 />
               </div>
@@ -55,7 +67,7 @@ export default async function LatestArticles() {
                       {new Date(article.frontmatter.date).toLocaleDateString('id-ID', {
                         day: 'numeric',
                         month: 'short',
-                        year: 'numeric'
+                        year: 'numeric',
                       })}
                     </span>
                   </div>
@@ -81,19 +93,19 @@ export default async function LatestArticles() {
                   <ArrowRight className="w-3.5 h-3.5 ml-1 group-hover:translate-x-1 transition-transform duration-150 ease-[cubic-bezier(0.23,1,0.32,1)]" />
                 </span>
               </div>
-            </Link>
+            </a>
           ))}
         </div>
 
         {/* Central Hub CTA */}
         <div className="text-center">
-          <Link
+          <a
             href="/artikel"
             className="inline-flex items-center justify-center bg-navy hover:bg-navy-2 text-white font-bold px-8 py-4 rounded-2xl transition-[transform,background-color,box-shadow] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.98] hover:shadow-md text-sm md:text-base whitespace-nowrap"
           >
             Lihat Semua Artikel
             <ArrowRight className="w-4 h-4 ml-2" />
-          </Link>
+          </a>
         </div>
       </div>
     </section>

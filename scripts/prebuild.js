@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const matter = require('gray-matter');
 
+const DIST_DIR = path.join(process.cwd(), 'dist');
 const ARTICLES_PATH = path.join(process.cwd(), 'content/artikel');
 const CACHE_DIR = path.join(process.cwd(), 'lib');
 const CACHE_PATH = path.join(CACHE_DIR, 'articles-cache.json');
@@ -56,6 +57,12 @@ function getAllArticles() {
 }
 
 try {
+  // Clean dist/ directory to guarantee build idempotency and prevent stale chunk/manifest collisions
+  if (fs.existsSync(DIST_DIR)) {
+    fs.rmSync(DIST_DIR, { recursive: true, force: true });
+    console.log(`Prebuild: Cleaned existing build directory at ${DIST_DIR}`);
+  }
+
   if (!fs.existsSync(CACHE_DIR)) {
     fs.mkdirSync(CACHE_DIR, { recursive: true });
   }
@@ -64,6 +71,6 @@ try {
   fs.writeFileSync(CACHE_PATH, JSON.stringify(articles, null, 2), 'utf8');
   console.log(`Prebuild: Saved ${articles.length} articles to ${CACHE_PATH}`);
 } catch (error) {
-  console.error('Error generating articles cache during prebuild:', error);
+  console.error('Error during prebuild:', error);
   process.exit(1);
 }

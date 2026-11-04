@@ -1,0 +1,63 @@
+---
+export const prerender = true;
+
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Hero from '@/components/hero';
+import TrustSignals from '@/components/trust-signals';
+import TrustSection from '@/components/trust-section';
+import OutboundGallery, { galleryItems } from '@/components/outbound-gallery';
+import OutboundGalleryClient from '@/components/outbound-gallery-client';
+import AboutUs from '@/components/about-us';
+import CredibilityPortfolio from '@/components/credibility-portfolio';
+import OurImpact from '@/components/our-impact';
+import Approach from '@/components/approach';
+import Services, { SERVICES } from '@/components/services';
+import ServicesTabs from '@/components/services-tabs';
+import ServiceAreas from '@/components/service-areas';
+import Pricing from '@/components/pricing';
+import KalkulatorBudget from '@/components/kalkulator-budget';
+import LatestArticles from '@/components/latest-articles';
+import Contact from '@/components/contact';
+import { getHomepageFaqSchema, getLocalBusinessSchema } from '@/lib/schema';
+import { getAllArticles } from '@/lib/mdx';
+
+const articles = await getAllArticles();
+const faqSchema = getHomepageFaqSchema();
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  ...getLocalBusinessSchema(),
+};
+const combinedSchema = [faqSchema, localBusinessSchema];
+---
+<BaseLayout
+  title="Corporate Outbound, Team Building & Event Organizer Madiun | Growth Indonesia"
+  schema={combinedSchema}
+>
+  <Hero />
+  <TrustSignals />
+  <TrustSection />
+  <OutboundGallery>
+    <OutboundGalleryClient client:visible photos={galleryItems} />
+  </OutboundGallery>
+  <AboutUs />
+  <CredibilityPortfolio />
+  <OurImpact client:visible />
+  <Approach />
+  <Services>
+    <ServicesTabs client:visible services={SERVICES} />
+  </Services>
+  <ServiceAreas />
+  <Pricing>
+    <div class="text-center mb-10">
+      <h3 class="font-display text-3xl md:text-4xl font-extrabold text-ink mb-3 leading-tight">
+        Kalkulator Estimasi Anggaran (RAB)
+      </h3>
+      <p class="text-muted text-sm md:text-base max-w-xl mx-auto leading-relaxed">
+        Simulasikan estimasi investasi program sesuai jumlah peserta dan durasi kegiatan tim Anda secara transparan.
+      </p>
+    </div>
+    <KalkulatorBudget client:visible />
+  </Pricing>
+  <LatestArticles articles={articles} />
+  <Contact client:visible />
+</BaseLayout>

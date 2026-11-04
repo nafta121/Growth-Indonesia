@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { MapPin, ArrowRight } from 'lucide-react';
 import ScrollReveal from '@/components/ui/scroll-reveal';
 import { Button } from '@/components/ui/button';
@@ -23,7 +22,7 @@ export default function ServiceAreas() {
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-12">
           {PRIORITY_CITIES.map((city, i) => (
             <ScrollReveal key={city} delay={0.05 * i} yOffset={12}>
-              <Link
+              <a
                 href={`/layanan/${city}`}
                 className="group flex flex-col items-center p-6 bg-white rounded-3xl border border-rule hover:border-brand/40 hover:shadow-md [@media(hover:hover)_and_(pointer:fine)]:hover:-translate-y-1 transition-[transform,box-shadow,border-color] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] h-full"
               >
@@ -33,7 +32,7 @@ export default function ServiceAreas() {
                 <h3 className="font-bold text-ink text-center capitalize group-hover:text-brand-dark transition-colors duration-150 text-sm md:text-base">
                   {city}
                 </h3>
-              </Link>
+              </a>
             </ScrollReveal>
           ))}
         </div>
@@ -41,9 +40,9 @@ export default function ServiceAreas() {
         <ScrollReveal delay={0.15} yOffset={12}>
           <div className="flex justify-center">
             <Button asChild size="lg" variant="outline" className="rounded-2xl flex items-center gap-2">
-              <Link href="/layanan">
+              <a href="/layanan">
                 Lihat Seluruh Area Layanan <ArrowRight className="w-4 h-4 ml-1" />
-              </Link>
+              </a>
             </Button>
           </div>
         </ScrollReveal>

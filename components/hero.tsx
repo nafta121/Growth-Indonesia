@@ -1,6 +1,4 @@
 import { MessageCircle, ShieldCheck, Award } from 'lucide-react';
-import Link from 'next/link';
-import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { COMPANY_INFO } from '@/lib/constants';
 
@@ -12,14 +10,13 @@ export default function Hero() {
     >
       {/* Subtle Ambient Backdrop */}
       <div className="absolute inset-0 z-0">
-        <Image
+        <img
           src="https://nafta121.sirv.com/OUTBOUND/2022-10-22%2009-00-09.jpeg"
           alt="Peserta Corporate Outbound dan Team Building Growth Indonesia di Madiun Jawa Timur"
-          fill
-          priority={true}
           fetchPriority="high"
-          sizes="100vw"
-          className="object-cover opacity-15 pointer-events-none"
+          loading="eager"
+          decoding="async"
+          className="w-full h-full object-cover opacity-15 pointer-events-none"
           referrerPolicy="no-referrer"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/95 to-navy/80" />
@@ -43,10 +40,10 @@ export default function Hero() {
                 size="lg"
                 className="bg-whatsapp-dark hover:bg-whatsapp-hover text-white border-0 shadow-md transition-[transform,background-color,box-shadow] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] group text-sm md:text-base h-14 px-8 rounded-xl whitespace-nowrap active:scale-[0.98] focus-visible:ring-whatsapp"
               >
-                <Link href={`https://wa.me/${COMPANY_INFO.whatsapp_number}`} target="_blank" rel="noopener noreferrer">
+                <a href={`https://wa.me/${COMPANY_INFO.whatsapp_number}`} target="_blank" rel="noopener noreferrer">
                   <MessageCircle className="w-5 h-5 mr-2 shrink-0" />
                   Konsultasi via WhatsApp
-                </Link>
+                </a>
               </Button>
               <Button
                 asChild
@@ -54,9 +51,9 @@ export default function Hero() {
                 size="lg"
                 className="bg-navy-2 border border-navy-border text-white hover:bg-navy hover:border-brand hover:text-white transition-[transform,background-color,border-color,color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] text-sm md:text-base h-14 px-8 rounded-xl group whitespace-nowrap active:scale-[0.98]"
               >
-                <Link href="#paket">
+                <a href="#paket">
                   Lihat Paket Program
-                </Link>
+                </a>
               </Button>
             </div>
 
@@ -81,13 +78,13 @@ export default function Hero() {
           <div className="lg:col-span-5 w-full">
             <figure className="rounded-3xl overflow-hidden border border-navy-border bg-navy-2 shadow-md">
               <div className="relative aspect-[4/3] sm:aspect-[16/10] lg:aspect-[4/4]">
-                <Image
+                <img
                   src="https://nafta121.sirv.com/OUTBOUND/2022-11-05%2009-09-46.jpeg"
                   alt="Dokumentasi Sesi Team Building & Outbound Training Korporat bersama Fasilitator Growth Indonesia"
-                  fill
-                  priority={true}
-                  sizes="(max-width: 1024px) 100vw, 42vw"
-                  className="object-cover"
+                  fetchPriority="high"
+                  loading="eager"
+                  decoding="async"
+                  className="absolute inset-0 w-full h-full object-cover"
                   referrerPolicy="no-referrer"
                 />
               </div>

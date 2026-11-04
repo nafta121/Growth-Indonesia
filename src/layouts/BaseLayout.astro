@@ -1,0 +1,173 @@
+---
+import '@/styles/globals.css';
+import Navbar, { NAV_LINKS } from '@/components/navbar';
+import NavbarMobile from '@/components/navbar-mobile';
+import Footer from '@/components/footer';
+import WhatsAppFAB from '@/components/whatsapp-fab';
+import { COMPANY_INFO } from '@/lib/constants';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  ogImage?: string;
+  ogType?: 'website' | 'article';
+  robots?: string;
+  schema?: Record<string, any> | Array<Record<string, any>>;
+  hideNavbar?: boolean;
+  hideFooter?: boolean;
+}
+
+const {
+  title,
+  description = 'Provider Corporate Outbound, Team Building, dan Event Organizer (EO) profesional di Madiun & Jawa Timur. Melayani corporate gathering, LDK OSIS & experiential learning.',
+  canonical,
+  ogImage = 'https://nafta121.sirv.com/OUTBOUND/2022-10-22%2009-00-09.jpeg',
+  ogType = 'website',
+  robots = 'index, follow, max-image-preview:large',
+  schema,
+  hideNavbar = false,
+  hideFooter = false,
+} = Astro.props;
+
+const defaultTitle = 'Corporate Outbound, Team Building & Event Organizer Madiun | Growth Indonesia';
+const fullTitle = title 
+  ? (title.includes('Growth Indonesia') ? title : `${title} | Growth Indonesia`)
+  : defaultTitle;
+
+const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
+const normalizedCanonical = canonical || `https://growthindonesia.my.id${pathname === '/' ? '' : pathname}`;
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': 'https://growthindonesia.my.id/#website',
+  name: 'Growth Indonesia',
+  alternateName: [
+    'Provider Outbound Madiun',
+    'Growth Indonesia Madiun',
+    'Event Organizer Madiun',
+  ],
+  url: 'https://growthindonesia.my.id/',
+};
+---
+<!DOCTYPE html>
+<html lang="id" class="overflow-x-clip">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content={robots} />
+    <link rel="canonical" href={normalizedCanonical} />
+    <meta name="google-site-verification" content="9tNB4XyeDckwcV1Iau651TCM4PfD-IW3Dnyna-_aZj8" />
+
+    <!-- Performance & Font Preconnects -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://nafta121.sirv.com" />
+    <link rel="dns-prefetch" href="https://nafta121.sirv.com" />
+
+    <!-- Google Fonts: Outfit & Plus Jakarta Sans -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" href="/icon.png" />
+    <link rel="apple-touch-icon" href="/icon.png" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={normalizedCanonical} />
+    <meta property="og:site_name" content="Growth Indonesia" />
+    <meta property="og:locale" content="id_ID" />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:image" content={ogImage} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- RFC 8288 / 9727 Discovery Links -->
+    <link rel="api-catalog" href="/.well-known/api-catalog" />
+    <link rel="service-doc" href="/docs/api" />
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+    <link rel="alternate" type="text/markdown" href={`/api/markdown?path=${pathname}`} />
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+    {schema && (
+      <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    )}
+
+    <!-- Google Tag Manager (GTM-524T7279) -->
+    <script is:inline>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-524T7279');
+    </script>
+
+    <!-- Microsoft Clarity -->
+    <script is:inline>
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "xwistj0ex8");
+    </script>
+
+    <!-- Cloudflare Web Analytics Beacon -->
+    <script
+      defer
+      src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon='{"token": "c16a501011484d829b65425d7d7743f9"}'
+    ></script>
+
+    <style is:global>
+      html, body {
+        overflow-x: clip;
+      }
+    </style>
+  </head>
+  <body class="overflow-x-clip font-sans antialiased bg-navy text-white selection:bg-brand selection:text-white min-h-screen flex flex-col">
+    <!-- GTM Noscript Fallback -->
+    <noscript>
+      <iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-524T7279"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"
+      ></iframe>
+    </noscript>
+
+    {!hideNavbar && (
+      <div class="relative">
+        <Navbar>
+          <NavbarMobile client:load navLinks={NAV_LINKS} />
+        </Navbar>
+      </div>
+    )}
+
+    <main class="flex-grow">
+      <slot />
+    </main>
+
+    {!hideFooter && <Footer />}
+
+    <WhatsAppFAB />
+
+    <!-- Hallmark Desktop Branding Footer Stripe -->
+    <div class="h-1.5 w-full flex fixed bottom-0 z-[70] hidden md:flex">
+      <div class="h-full flex-grow bg-brand"></div>
+      <div class="h-full w-1/4 bg-white"></div>
+      <div class="h-full w-1/6 bg-brand/50"></div>
+    </div>
+  </body>
+</html>

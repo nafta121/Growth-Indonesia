@@ -1,5 +1,3 @@
-import Image from 'next/image';
-import Link from 'next/link';
 import { COMPANY_INFO } from '@/lib/constants';
 import { PRIORITY_CITIES } from '@/components/service-areas';
 
@@ -34,17 +32,18 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
           {/* Brand Column */}
           <div className="lg:col-span-1">
-            <Link href="/" className="inline-flex items-center mb-6">
-              <Image 
+            <a href="/" className="inline-flex items-center mb-6">
+              <img 
                 src={COMPANY_INFO.logo_url} 
                 alt={`${COMPANY_INFO.brand_name} - Provider Outbound & Event Organizer Madiun Jawa Timur`} 
                 width={200} 
                 height={56} 
+                decoding="async"
                 className="h-14 w-auto object-contain"
                 style={{ width: 'auto' }}
                 referrerPolicy="no-referrer"
               />
-            </Link>
+            </a>
             <p className="text-navy-muted text-sm leading-relaxed max-w-xs">
               Mitra strategis pengembangan SDM, Outbound Training, Team Building, LDK Kepemimpinan, dan Event Organizer Korporat di Madiun serta Jawa Timur dengan metode Experiential Learning.
             </p>
@@ -62,12 +61,12 @@ export default function Footer() {
                 { label: 'Kontak', href: '/#kontak' },
               ].map((link) => (
                 <li key={link.label}>
-                  <Link 
+                  <a 
                     href={link.href} 
                     className="text-navy-muted hover:text-white transition-colors inline-flex min-h-11 items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus rounded-lg px-1"
                   >
                     {link.label}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>
@@ -79,12 +78,12 @@ export default function Footer() {
             <ul className="space-y-3">
               {PRIORITY_CITIES.map((city) => (
                 <li key={city}>
-                  <Link 
+                  <a 
                     href={`/layanan/${city}`} 
                     className="text-navy-muted hover:text-white transition-colors capitalize inline-flex min-h-11 items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus rounded-lg px-1"
                   >
                     Layanan di {city}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>
@@ -140,8 +139,8 @@ export default function Footer() {
             &copy; {currentYear} {COMPANY_INFO.brand_name}. Seluruh hak cipta dilindungi.
           </p>
           <div className="flex gap-6">
-            <Link href="/#kontak" className="text-navy-muted hover:text-white text-xs transition-colors inline-flex min-h-11 items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus rounded-lg px-2">Kebijakan Privasi</Link>
-            <Link href="/#kontak" className="text-navy-muted hover:text-white text-xs transition-colors inline-flex min-h-11 items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus rounded-lg px-2">Syarat &amp; Ketentuan</Link>
+            <a href="/#kontak" className="text-navy-muted hover:text-white text-xs transition-colors inline-flex min-h-11 items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus rounded-lg px-2">Kebijakan Privasi</a>
+            <a href="/#kontak" className="text-navy-muted hover:text-white text-xs transition-colors inline-flex min-h-11 items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus rounded-lg px-2">Syarat &amp; Ketentuan</a>
           </div>
         </div>
       </div>

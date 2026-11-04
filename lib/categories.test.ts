@@ -14,8 +14,8 @@ import {
   HOMEPAGE_FAQS,
 } from './schema';
 import { INDEXNOW_KEY } from './indexnow';
-import { GET as getLlmsTxt } from '../app/llms.txt/route';
-import { GET as getPricingMd } from '../app/pricing.md/route';
+import { GET as getLlmsTxt } from '../src/pages/llms.txt';
+import { GET as getPricingMd } from '../src/pages/pricing.md';
 
 describe('KATEGORI & CATEGORIES_SET', () => {
   it('contains all 5 canonical category slugs', () => {
@@ -53,7 +53,7 @@ describe('PACKAGES pricing alignment with DESIGN.md', () => {
 
 describe('/llms.txt AI grounding route', () => {
   it('returns status 200 and canonical /layanan/madiun/{kategori} URLs', async () => {
-    const response = await getLlmsTxt();
+    const response = await getLlmsTxt({} as any);
     assert.equal(response.status, 200);
     const body = await response.text();
 
@@ -104,7 +104,7 @@ describe('SEO Audit & Programmatic SEO regression checks', () => {
   });
 
   it('serves /pricing.md with status 200, official package prices, and no forbidden certification acronym', async () => {
-    const response = await getPricingMd();
+    const response = await getPricingMd({} as any);
     assert.equal(response.status, 200);
     const body = await response.text();
     assert.match(body, /Rp\. 9\.500\.000/);

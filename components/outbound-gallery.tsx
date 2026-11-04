@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import type { ReactNode } from 'react';
 import OutboundGalleryClient from './outbound-gallery-client';
 
 export const galleryItems = [
@@ -74,7 +74,7 @@ export const galleryItems = [
   },
 ];
 
-export default function OutboundGallery() {
+export default function OutboundGallery({ children }: { children?: ReactNode }) {
   return (
     <section id="galeri" className="py-20 md:py-32 bg-paper overflow-hidden" aria-labelledby="galeri-title">
       <div className="max-w-7xl mx-auto px-4 md:px-12">
@@ -87,19 +87,7 @@ export default function OutboundGallery() {
           </p>
         </div>
 
-        <OutboundGalleryClient photos={galleryItems}>
-          {galleryItems.map((photo) => (
-            <Image
-              key={photo.id}
-              src={photo.url}
-              alt={photo.alt}
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
-              referrerPolicy="no-referrer"
-            />
-          ))}
-        </OutboundGalleryClient>
+        {children ? children : <OutboundGalleryClient photos={galleryItems} />}
       </div>
     </section>
   );

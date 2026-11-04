@@ -1,6 +1,6 @@
+import type { ReactNode } from 'react';
 import { Check, ArrowRight, ShieldCheck, FileText, CloudRain, Download } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import Link from 'next/link';
 import ScrollReveal from '@/components/ui/scroll-reveal';
 import { Button } from '@/components/ui/button';
 import { PACKAGES } from '@/lib/packages';
@@ -33,7 +33,7 @@ const COMMITTEE_KIT_ITEMS = [
   'Matriks Perbandingan 15 Venue Terbaik Madiun Raya, Sarangan, Trawas & Batu',
 ];
 
-export default function Pricing() {
+export default function Pricing({ children }: { children?: ReactNode }) {
   const leadMagnetWaText = encodeURIComponent(
     'Halo Tim Growth Indonesia, saya ingin meminta Dokumen Kerja Gratis: Kit Panitia Outing, Gathering & LDK Jawa Timur 2026 (Template Proposal, Checklist H-30 s/d Hari-H, dan Matriks 15 Venue) untuk referensi rapat panitia kami. Terima kasih.'
   );
@@ -102,15 +102,22 @@ export default function Pricing() {
                   variant={(isAnchor || pkg.popular) ? "default" : "outline"}
                   className="mt-12 w-full flex items-center justify-center gap-2 font-bold text-sm"
                 >
-                  <Link href={`/?package=${pkg.id}#kontak`} scroll={false} aria-label={`Pilih Paket ${pkg.title}`}>
+                  <a href={`/?package=${pkg.id}#kontak`} aria-label={`Pilih Paket ${pkg.title}`}>
                     <span className="relative z-10">Pilih Paket</span>
                     <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-1" />
-                  </Link>
+                  </a>
                 </Button>
               </ScrollReveal>
             );
           })}
         </div>
+
+        {/* Slotted Budget Calculator Island */}
+        {children && (
+          <div className="mt-16 md:mt-24 pt-16 border-t border-rule max-w-3xl mx-auto">
+            {children}
+          </div>
+        )}
 
         {/* Blok 2 Kolom: Garansi Pengadaan B2B & Lead Magnet Kit Panitia 2026 */}
         <ScrollReveal delay={0.2} duration={0.7} className="mt-16 md:mt-24">

@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { Sparkles, ArrowUpRight } from 'lucide-react';
 import ScrollReveal from '@/components/ui/scroll-reveal';
 import { getCityServiceFaqs } from '@/lib/schema';
@@ -108,13 +107,13 @@ export function AiOverviewSection({
                         className={isCurrent ? 'bg-brand-tint/50' : 'hover:bg-paper/60 transition-colors'}
                       >
                         <td className="py-5 px-6 font-semibold text-ink">
-                          <Link
+                          <a
                             href={`/layanan/${resolvedCityKey}/${row.slug}`}
                             className="inline-flex items-center gap-1.5 text-ink hover:text-brand-dark transition-colors font-bold"
                           >
                             <span>{row.label} {cityName}</span>
                             <ArrowUpRight className="w-4 h-4 text-brand-dark shrink-0" aria-hidden="true" />
-                          </Link>
+                          </a>
                         </td>
                         <td className="py-5 px-6 text-muted">{row.focus}</td>
                         <td className="py-5 px-6 text-muted">{row.audience}</td>
@@ -128,20 +127,20 @@ export function AiOverviewSection({
             <div className="mt-4 flex flex-wrap items-center justify-between gap-3 text-sm text-muted px-2">
               <span>*Investasi dapat disesuaikan dengan kuota peserta, durasi, dan pilihan venue di {cityName}.</span>
               <div className="flex flex-wrap items-center gap-4">
-                <Link
+                <a
                   href="/pricing.md"
                   className="inline-flex items-center gap-1 font-semibold text-ink-2 hover:text-brand-dark transition-colors"
                 >
                   <span>Rincian Harga Lengkap (pricing.md)</span>
                   <ArrowUpRight className="w-3.5 h-3.5 text-brand-dark" aria-hidden="true" />
-                </Link>
-                <Link
+                </a>
+                <a
                   href="/portofolio-dan-sertifikasi"
                   className="inline-flex items-center gap-1 font-semibold text-ink-2 hover:text-brand-dark transition-colors"
                 >
                   <span>Portofolio &amp; Rekam Jejak</span>
                   <ArrowUpRight className="w-3.5 h-3.5 text-brand-dark" aria-hidden="true" />
-                </Link>
+                </a>
               </div>
             </div>
           </div>

@@ -1,6 +1,6 @@
 import { test, describe } from 'node:test';
 import assert from 'node:assert/strict';
-import sitemap from '../app/sitemap';
+import sitemap from '../lib/sitemap';
 
 describe('sitemap', () => {
   test('includes /llms.txt with high priority and weekly changeFrequency', async () => {
