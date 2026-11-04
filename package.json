@@ -6,6 +6,7 @@
     "opennextjs-cloudflare": "./scripts/cf-shim.js"
   },
   "scripts": {
+    "postinstall": "node scripts/postinstall.js",
     "clean": "node -e \"const fs = require('fs'); fs.rmSync('dist', { recursive: true, force: true });\"",
     "dev": "astro dev",
     "build": "rm -rf dist && node scripts/prebuild.js && astro build && node scripts/postbuild.js",
