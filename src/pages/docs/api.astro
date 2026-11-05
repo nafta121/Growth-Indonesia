@@ -26,10 +26,10 @@ import { COMPANY_INFO } from '@/lib/constants';
         </p>
       </div>
 
-      <div class="bg-navy-2 border border-navy-border rounded-2xl p-6 space-y-4">
+      <div class="bg-navy-2 border border-navy-border rounded-2xl p-6 space-y-4 overflow-hidden">
         <h2 class="text-xl font-semibold text-white">Sumber Daya Penemuan Standar</h2>
         <div class="grid gap-4 sm:grid-cols-2">
-          <div class="bg-navy p-5 rounded-xl border border-navy-border sm:col-span-2">
+          <div class="bg-navy p-5 rounded-xl border border-navy-border sm:col-span-2 min-w-0">
             <h3 class="font-semibold text-white">LLMs.txt &amp; Official Pricing Reference</h3>
             <p class="text-sm text-navy-muted mt-1">
               Dokumen referensi resmi berbasis teks dan Markdown untuk penemuan layanan, lokasi venue, serta struktur harga paket korporat.
@@ -41,54 +41,54 @@ import { COMPANY_INFO } from '@/lib/constants';
             </div>
           </div>
 
-          <div class="bg-navy p-5 rounded-xl border border-navy-border sm:col-span-2">
+          <div class="bg-navy p-5 rounded-xl border border-navy-border sm:col-span-2 min-w-0">
             <h3 class="font-semibold text-white">Client WebMCP Tools API</h3>
             <p class="text-sm text-navy-muted mt-1">
-              Implementasi WebMCP (W3C Web Machine Learning CG) melalui <code class="text-white font-mono">navigator.modelContext.provideContext()</code> menyediakan instrumen browser langsung untuk agen AI (kalkulator anggaran, pencarian layanan, cakupan kota, dan konsultasi WhatsApp).
+              Implementasi WebMCP (W3C Web Machine Learning CG) melalui <code class="text-white font-mono break-all">navigator.modelContext.provideContext()</code> menyediakan instrumen browser langsung untuk agen AI (kalkulator anggaran, pencarian layanan, cakupan kota, dan konsultasi WhatsApp).
             </p>
-            <span class="mt-3 inline-block text-xs font-mono text-brand">
+            <span class="mt-3 inline-block text-xs font-mono text-brand break-all">
               Client API: navigator.modelContext.provideContext()
             </span>
           </div>
 
-          <div class="bg-navy p-5 rounded-xl border border-navy-border">
+          <div class="bg-navy p-5 rounded-xl border border-navy-border min-w-0">
             <h3 class="font-semibold text-white">A2A Agent Card</h3>
             <p class="text-sm text-navy-muted mt-1">Kartu agen Agent-to-Agent (A2A) untuk penemuan keahlian dan endpoint Markdown.</p>
-            <a href="/.well-known/agent-card.json" class="mt-3 inline-block text-xs font-mono text-brand hover:underline">
+            <a href="/.well-known/agent-card.json" class="mt-3 inline-block text-xs font-mono text-brand hover:underline break-all">
               /.well-known/agent-card.json
             </a>
           </div>
 
-          <div class="bg-navy p-5 rounded-xl border border-navy-border">
+          <div class="bg-navy p-5 rounded-xl border border-navy-border min-w-0">
             <h3 class="font-semibold text-white">MCP Server Card</h3>
             <p class="text-sm text-navy-muted mt-1">Katalog penemuan Model Context Protocol (MCP) dan endpoint Markdown.</p>
-            <a href="/.well-known/mcp/server-card.json" class="mt-3 inline-block text-xs font-mono text-brand hover:underline">
+            <a href="/.well-known/mcp/server-card.json" class="mt-3 inline-block text-xs font-mono text-brand hover:underline break-all">
               /.well-known/mcp/server-card.json
             </a>
           </div>
 
-          <div class="bg-navy p-5 rounded-xl border border-navy-border">
+          <div class="bg-navy p-5 rounded-xl border border-navy-border min-w-0">
             <h3 class="font-semibold text-white">API Catalog Endpoint</h3>
             <p class="text-sm text-navy-muted mt-1">Spesifikasi JSON API Catalog sesuai standar RFC 9727.</p>
-            <a href="/.well-known/api-catalog" class="mt-3 inline-block text-xs font-mono text-brand hover:underline">
+            <a href="/.well-known/api-catalog" class="mt-3 inline-block text-xs font-mono text-brand hover:underline break-all">
               /.well-known/api-catalog
             </a>
           </div>
 
-          <div class="bg-navy p-5 rounded-xl border border-navy-border">
+          <div class="bg-navy p-5 rounded-xl border border-navy-border min-w-0">
             <h3 class="font-semibold text-white">XML Sitemap</h3>
             <p class="text-sm text-navy-muted mt-1">Indeks tautan sitemap untuk penjelajahan halaman layanan dan kota.</p>
-            <a href="/sitemap.xml" class="mt-3 inline-block text-xs font-mono text-brand hover:underline">
+            <a href="/sitemap.xml" class="mt-3 inline-block text-xs font-mono text-brand hover:underline break-all">
               /sitemap.xml
             </a>
           </div>
 
-          <div class="bg-navy p-5 rounded-xl border border-navy-border sm:col-span-2">
+          <div class="bg-navy p-5 rounded-xl border border-navy-border sm:col-span-2 min-w-0">
             <h3 class="font-semibold text-white">DNS for AI Discovery (RFC 9460 &amp; DNS-AID)</h3>
             <p class="text-sm text-navy-muted mt-1">
               Katalog dan konfigurasi DNS ServiceMode SVCB/HTTPS records untuk penemuan agen berbasis DNS.
             </p>
-            <a href="/.well-known/dns-aid" class="mt-3 inline-block text-xs font-mono text-brand hover:underline">
+            <a href="/.well-known/dns-aid" class="mt-3 inline-block text-xs font-mono text-brand hover:underline break-all">
               /.well-known/dns-aid
             </a>
           </div>

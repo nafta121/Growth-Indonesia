@@ -29,7 +29,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 xl:gap-12 mb-16">
           {/* Brand Column */}
           <div className="lg:col-span-1">
             <a href="/" className="inline-flex items-center mb-6">
@@ -106,7 +106,7 @@ export default function Footer() {
           </div>
 
           {/* Direct Contact */}
-          <div>
+          <div className="min-w-0">
             <h3 className="text-white font-bold mb-6 text-base">Hubungi Kami</h3>
             <div className="space-y-4">
               <div>
@@ -124,7 +124,7 @@ export default function Footer() {
                 <p className="text-navy-muted mb-1 text-xs font-medium">Email</p>
                 <a 
                   href={`mailto:${COMPANY_INFO.email}`}
-                  className="text-navy-muted hover:text-white transition-colors duration-200 inline-flex items-center underline underline-offset-4 min-h-11 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus rounded-lg px-1 -ml-1"
+                  className="text-navy-muted hover:text-white transition-colors duration-200 inline-flex items-center underline underline-offset-4 min-h-11 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus rounded-lg px-1 -ml-1 break-all"
                   aria-label={`Kirim email ke ${COMPANY_INFO.brand_name}`}
                 >
                   {COMPANY_INFO.email}

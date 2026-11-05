@@ -138,7 +138,8 @@ const CLIENT_CATEGORIES: ClientCategory[] = [
   },
 ];
 
-export default function CredibilityPortfolio() {
+export default function CredibilityPortfolio({ headingLevel = 'h2' }: { headingLevel?: 'h1' | 'h2' } = {}) {
+  const HeadingTag = headingLevel;
   const jsonLdData = {
     '@context': 'https://schema.org',
     '@type': 'ProfessionalService',
@@ -296,9 +297,9 @@ export default function CredibilityPortfolio() {
               <span>4.9 / 5.0 (250+ Ulasan & Kepuasan Klien)</span>
             </div>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-ink tracking-tight font-display">
+          <HeadingTag className="text-3xl sm:text-4xl lg:text-5xl font-black text-ink tracking-tight font-display">
             Profil Fasilitator, Studi Kasus & <span className="text-brand-dark">Portofolio Klien</span>
-          </h2>
+          </HeadingTag>
           <p className="mt-4 text-ink-2 text-base sm:text-lg leading-relaxed">
             Bukti nyata komitmen <strong>Growth Indonesia</strong> dalam menghadirkan program pengembangan SDM, outbound training, dan event management berstandar kompetensi profesional serta keamanan tinggi.
           </p>
