@@ -12,6 +12,8 @@ export default function CityCta({ kategoriName, kotaName }: CityCtaProps) {
       <img
         src="https://nafta121.sirv.com/OUTBOUND/2022-10-22%2009-00-09.jpeg"
         alt={`Dokumentasi Kegiatan ${kategoriName} bersama Fasilitator Growth Indonesia di ${kotaName}`}
+        width={1200}
+        height={800}
         decoding="async"
         className="w-full h-full object-cover object-center opacity-20 mix-blend-overlay absolute inset-0 -z-10"
         referrerPolicy="no-referrer"

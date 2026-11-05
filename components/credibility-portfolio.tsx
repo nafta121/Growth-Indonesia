@@ -140,6 +140,8 @@ const CLIENT_CATEGORIES: ClientCategory[] = [
 
 export default function CredibilityPortfolio({ headingLevel = 'h2' }: { headingLevel?: 'h1' | 'h2' } = {}) {
   const HeadingTag = headingLevel;
+  const SubHeadingTag = headingLevel === 'h1' ? 'h2' : 'h3';
+  const ItemHeadingTag = headingLevel === 'h1' ? 'h3' : 'h4';
   const jsonLdData = {
     '@context': 'https://schema.org',
     '@type': 'ProfessionalService',
@@ -305,14 +307,14 @@ export default function CredibilityPortfolio({ headingLevel = 'h2' }: { headingL
           </p>
         </div>
 
-        <div className="bg-white rounded-3xl p-6 sm:p-10 border border-rule shadow-sm space-y-8">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-rule pb-6">
+        <div className="pt-12 border-t border-rule space-y-8">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2">
             <div className="flex items-center gap-3">
               <div className="p-3 bg-brand-tint text-brand-dark rounded-2xl">
                 <ShieldCheck className="w-8 h-8" />
               </div>
               <div>
-                <h3 className="text-2xl font-bold text-ink font-display">1. Profil & Kualifikasi Fasilitator</h3>
+                <SubHeadingTag className="text-2xl font-bold text-ink font-display">1. Profil & Kualifikasi Fasilitator</SubHeadingTag>
                 <p className="text-sm text-muted">Tim instruktur utama berpengalaman dengan standar kompetensi profesional</p>
               </div>
             </div>
@@ -324,10 +326,10 @@ export default function CredibilityPortfolio({ headingLevel = 'h2' }: { headingL
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {FACILITATORS.map((f, i) => (
-              <div key={i} className="bg-paper border border-rule rounded-2xl p-6 space-y-4 hover:border-brand-border transition-colors">
+              <div key={i} className="bg-white border border-rule rounded-2xl p-6 space-y-4 hover:border-brand-border transition-colors">
                 <div className="flex items-start justify-between">
                   <div>
-                    <h4 className="text-xl font-bold text-ink font-display">{f.name}</h4>
+                    <ItemHeadingTag className="text-xl font-bold text-ink font-display">{f.name}</ItemHeadingTag>
                     <p className="text-sm font-semibold text-brand-dark">{f.role}</p>
                   </div>
                   <span className="text-xs font-extrabold bg-brand-dark text-white px-2.5 py-1 rounded-md">Pro</span>
@@ -352,7 +354,7 @@ export default function CredibilityPortfolio({ headingLevel = 'h2' }: { headingL
                   <span className="text-xs font-bold text-muted block mb-2">Spesialisasi Metodologi:</span>
                   <div className="flex flex-wrap gap-1.5">
                     {f.specialization.map((spec, sIdx) => (
-                      <span key={sIdx} className="bg-white border border-rule text-ink-2 text-xs px-2.5 py-1 rounded-md font-medium">
+                      <span key={sIdx} className="bg-paper border border-rule text-ink-2 text-xs px-2.5 py-1 rounded-md font-medium">
                         {spec}
                       </span>
                     ))}
@@ -364,41 +366,41 @@ export default function CredibilityPortfolio({ headingLevel = 'h2' }: { headingL
 
           <div className="bg-brand-tint border border-brand-border rounded-2xl p-5 text-sm text-ink-2 leading-relaxed flex items-start gap-3">
             <ShieldCheck className="w-5 h-5 text-brand-dark shrink-0 mt-0.5" />
-            <div>
+            <div className="max-w-[70ch]">
               <strong>Komitmen Keamanan & Metodologi:</strong> Seluruh kegiatan kami menerapkan <strong>Zero Accident Policy</strong> yang diawasi langsung oleh instruktur keselamatan tersertifikasi. Simulasi dirancang menggunakan metodologi <strong>Experiential Learning (Experience &rarr; Reflect &rarr; Conceptualize &rarr; Apply)</strong> sehingga tidak sekadar rekreasi, melainkan berdampak langsung pada kinerja individu dan organisasi.
             </div>
           </div>
         </div>
 
-        <div className="bg-white rounded-3xl p-6 sm:p-10 border border-rule shadow-sm space-y-8">
-          <div className="flex items-center gap-3 border-b border-rule pb-6">
+        <div className="pt-12 border-t border-rule space-y-8">
+          <div className="flex items-center gap-3 pb-2">
             <div className="p-3 bg-brand-tint text-brand-dark rounded-2xl">
               <Briefcase className="w-8 h-8" />
             </div>
             <div>
-              <h3 className="text-2xl font-bold text-ink font-display">2. Portofolio & Studi Kasus Program</h3>
+              <SubHeadingTag className="text-2xl font-bold text-ink font-display">2. Portofolio & Studi Kasus Program</SubHeadingTag>
               <p className="text-sm text-muted">Rekam jejak pelaksanaan kegiatan outbound training, gathering, dan LDK OSIS</p>
             </div>
           </div>
 
           <div className="space-y-6">
             {CASE_STUDIES.map((cs, idx) => (
-              <div key={idx} className="border border-rule rounded-2xl p-6 bg-paper hover:bg-white hover:shadow-md transition-[background-color,box-shadow] duration-200 ease-[cubic-bezier(0.22,1,0.36,1)]">
+              <div key={idx} className="border border-rule rounded-2xl p-6 bg-white hover:shadow-md transition-[background-color,box-shadow] duration-200 ease-[cubic-bezier(0.22,1,0.36,1)]">
                 <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-2 border-b border-rule pb-4 mb-4">
                   <div>
-                    <h4 className="text-lg sm:text-xl font-bold text-ink font-display">{cs.title}</h4>
+                    <ItemHeadingTag className="text-lg sm:text-xl font-bold text-ink font-display">{cs.title}</ItemHeadingTag>
                     <p className="text-base font-bold text-brand-dark">{cs.client}</p>
                   </div>
                   <div className="flex flex-wrap items-center gap-4 text-xs font-medium text-ink-2">
-                    <span className="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-lg border border-rule">
+                    <span className="flex items-center gap-1.5 bg-paper px-3 py-1.5 rounded-lg border border-rule">
                       <MapPin className="w-3.5 h-3.5 text-brand-dark" />
                       {cs.location}
                     </span>
-                    <span className="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-lg border border-rule num">
+                    <span className="flex items-center gap-1.5 bg-paper px-3 py-1.5 rounded-lg border border-rule num">
                       <Calendar className="w-3.5 h-3.5 text-brand-dark" />
                       {cs.date}
                     </span>
-                    <span className="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-lg border border-rule num">
+                    <span className="flex items-center gap-1.5 bg-paper px-3 py-1.5 rounded-lg border border-rule num">
                       <Users className="w-3.5 h-3.5 text-brand-dark" />
                       {cs.participants}
                     </span>
@@ -406,7 +408,7 @@ export default function CredibilityPortfolio({ headingLevel = 'h2' }: { headingL
                 </div>
 
                 <div className="space-y-3">
-                  <p className="text-sm text-ink-2 leading-relaxed">
+                  <p className="text-sm text-ink-2 leading-relaxed max-w-[70ch]">
                     <strong className="text-ink">Tujuan Program:</strong> {cs.objective}
                   </p>
                   <div>
@@ -426,25 +428,25 @@ export default function CredibilityPortfolio({ headingLevel = 'h2' }: { headingL
           </div>
         </div>
 
-        <div className="bg-white rounded-3xl p-6 sm:p-10 border border-rule shadow-sm space-y-8">
-          <div className="flex items-center gap-3 border-b border-rule pb-6">
+        <div className="pt-12 border-t border-rule space-y-8">
+          <div className="flex items-center gap-3 pb-2">
             <div className="p-3 bg-brand-tint text-brand-dark rounded-2xl">
               <Users className="w-8 h-8" />
             </div>
             <div>
-              <h3 className="text-2xl font-bold text-ink font-display">3. Daftar Klien & Mitra Strategis</h3>
+              <SubHeadingTag className="text-2xl font-bold text-ink font-display">3. Daftar Klien & Mitra Strategis</SubHeadingTag>
               <p className="text-sm text-muted">Instansi BUMN, perusahaan multinasional, sekolah, dan pemerintah yang mempercayai Growth Indonesia</p>
             </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {CLIENT_CATEGORIES.map((cat, idx) => (
-              <div key={idx} className="bg-paper border border-rule rounded-2xl p-6 space-y-4">
+              <div key={idx} className="bg-white border border-rule rounded-2xl p-6 space-y-4">
                 <div className="flex items-center gap-2.5 border-b border-rule pb-3">
                   {cat.iconName === 'bumn' && <Building2 className="w-5 h-5 text-brand-dark" />}
                   {cat.iconName === 'education' && <GraduationCap className="w-5 h-5 text-ink" />}
                   {cat.iconName === 'government' && <Briefcase className="w-5 h-5 text-gold" />}
-                  <h4 className="font-bold text-ink font-display text-base">{cat.category}</h4>
+                  <ItemHeadingTag className="font-bold text-ink font-display text-base">{cat.category}</ItemHeadingTag>
                 </div>
 
                 <ul className="space-y-2 text-sm text-ink-2">

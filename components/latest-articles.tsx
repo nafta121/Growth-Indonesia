@@ -51,6 +51,8 @@ export default function LatestArticles({ articles = [] }: LatestArticlesProps) {
                 <img
                   src={article.frontmatter.image}
                   alt={article.frontmatter.title}
+                  width={800}
+                  height={500}
                   decoding="async"
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"

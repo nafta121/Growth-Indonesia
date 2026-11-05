@@ -78,7 +78,7 @@ export default function TrustSection({
             <ScrollReveal 
               key={idx} 
               delay={idx * 0.12} 
-              className="bg-paper border border-rule border-t-4 border-t-brand-dark p-8 rounded-2xl hover:shadow-md transition-[transform,box-shadow,border-color] duration-200"
+              className="bg-paper border border-rule hover:border-brand-border p-8 rounded-2xl hover:shadow-md transition-[transform,box-shadow,border-color] duration-200"
             >
               <span className="font-display text-3xl font-black text-brand-dark block mb-4 num">
                 {tile.index}

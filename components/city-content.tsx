@@ -33,16 +33,18 @@ export default function CityContent({ kategoriName, kotaName, cityKey, cityData,
               <img 
                 src={contentImage}
                 alt={`Kegiatan ${kategoriName} Growth Indonesia di ${kotaName}`}
+                width={800}
+                height={600}
                 decoding="async"
                 className="absolute inset-0 w-full h-full object-cover"
                 referrerPolicy="no-referrer"
               />
             </div>
-            <div className="absolute -bottom-8 -right-8 w-48 h-48 bg-white p-6 rounded-3xl shadow-md border border-rule hidden md:block">
-              <div className="w-12 h-12 bg-brand-tint text-brand-dark rounded-2xl flex items-center justify-center mb-4">
-                <Target className="w-6 h-6" aria-hidden="true" />
+            <div className="absolute -bottom-8 -right-8 w-52 bg-white p-6 rounded-3xl shadow-md border border-rule hidden md:block">
+              <div className="flex items-center gap-3 mb-2">
+                <Target className="w-6 h-6 text-brand-dark shrink-0" aria-hidden="true" />
+                <div className="text-3xl font-black text-ink num">10+</div>
               </div>
-              <div className="text-3xl font-black text-ink mb-1 num">10+</div>
               <div className="text-sm font-semibold text-muted">Tahun Pengalaman</div>
             </div>
           </ScrollReveal>

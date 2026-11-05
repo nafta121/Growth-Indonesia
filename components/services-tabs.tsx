@@ -92,13 +92,13 @@ export default function ServicesTabs({ services }: { services: Record<string, { 
                 key={idx}
                 className="group relative flex flex-col p-8 rounded-3xl bg-navy-2 border border-navy-border hover:border-brand/40 [@media(hover:hover)_and_(pointer:fine)]:hover:-translate-y-1 transition-[transform,background-color,border-color] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] overflow-hidden cursor-default"
               >
-                <div className="w-12 h-12 rounded-2xl bg-navy border border-navy-border flex items-center justify-center text-brand mb-6 group-hover:bg-brand-dark group-hover:text-white transition-colors duration-200 ease-out">
-                  {activeTab === 'training' ? <Star className="w-6 h-6" aria-hidden="true" /> : <Sparkles className="w-6 h-6" aria-hidden="true" />}
+                <div className="flex items-start gap-3.5 mb-3">
+                  <span className="mt-1 text-brand shrink-0">
+                    {activeTab === 'training' ? <Star className="w-5 h-5" aria-hidden="true" /> : <Sparkles className="w-5 h-5" aria-hidden="true" />}
+                  </span>
+                  <h3 className="text-xl font-bold text-white tracking-tight group-hover:text-brand transition-colors duration-200">{item.title}</h3>
                 </div>
-                <div>
-                  <h3 className="text-xl font-bold text-white mb-3 tracking-tight group-hover:text-brand transition-colors duration-200">{item.title}</h3>
-                  <p className="text-navy-muted text-sm leading-relaxed mb-4">{item.desc}</p>
-                </div>
+                <p className="text-navy-muted text-sm leading-relaxed mb-4">{item.desc}</p>
                 <div className="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                   <div className="w-2 h-2 bg-brand rounded-full" />
                 </div>

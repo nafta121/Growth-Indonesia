@@ -26,12 +26,12 @@ import { COMPANY_INFO } from '@/lib/constants';
         </p>
       </div>
 
-      <div class="bg-navy-2 border border-navy-border rounded-2xl p-6 space-y-4 overflow-hidden">
+      <div class="pt-6 border-t border-navy-border space-y-4 overflow-hidden">
         <h2 class="text-xl font-semibold text-white">Sumber Daya Penemuan Standar</h2>
         <div class="grid gap-4 sm:grid-cols-2">
           <div class="bg-navy p-5 rounded-xl border border-navy-border sm:col-span-2 min-w-0">
             <h3 class="font-semibold text-white">LLMs.txt &amp; Official Pricing Reference</h3>
-            <p class="text-sm text-navy-muted mt-1">
+            <p class="text-sm text-navy-muted mt-1 max-w-[70ch]">
               Dokumen referensi resmi berbasis teks dan Markdown untuk penemuan layanan, lokasi venue, serta struktur harga paket korporat.
             </p>
             <div class="mt-3 flex flex-wrap gap-4">
@@ -43,7 +43,7 @@ import { COMPANY_INFO } from '@/lib/constants';
 
           <div class="bg-navy p-5 rounded-xl border border-navy-border sm:col-span-2 min-w-0">
             <h3 class="font-semibold text-white">Client WebMCP Tools API</h3>
-            <p class="text-sm text-navy-muted mt-1">
+            <p class="text-sm text-navy-muted mt-1 max-w-[70ch]">
               Implementasi WebMCP (W3C Web Machine Learning CG) melalui <code class="text-white font-mono break-all">navigator.modelContext.provideContext()</code> menyediakan instrumen browser langsung untuk agen AI (kalkulator anggaran, pencarian layanan, cakupan kota, dan konsultasi WhatsApp).
             </p>
             <span class="mt-3 inline-block text-xs font-mono text-brand break-all">
@@ -85,7 +85,7 @@ import { COMPANY_INFO } from '@/lib/constants';
 
           <div class="bg-navy p-5 rounded-xl border border-navy-border sm:col-span-2 min-w-0">
             <h3 class="font-semibold text-white">DNS for AI Discovery (RFC 9460 &amp; DNS-AID)</h3>
-            <p class="text-sm text-navy-muted mt-1">
+            <p class="text-sm text-navy-muted mt-1 max-w-[70ch]">
               Katalog dan konfigurasi DNS ServiceMode SVCB/HTTPS records untuk penemuan agen berbasis DNS.
             </p>
             <a href="/.well-known/dns-aid" class="mt-3 inline-block text-xs font-mono text-brand hover:underline break-all">
@@ -97,7 +97,7 @@ import { COMPANY_INFO } from '@/lib/constants';
 
       <div class="bg-navy-2 border border-navy-border rounded-2xl p-6 space-y-4">
         <h2 class="text-xl font-semibold text-white">Markdown for Agents (Content Negotiation)</h2>
-        <p class="text-sm text-navy-muted">
+        <p class="text-sm text-navy-muted max-w-[70ch]">
           Situs ini mendukung negosiasi konten Markdown untuk AI Agent. Setiap permintaan dengan header <code class="text-white font-mono">Accept: text/markdown</code> akan menerima konten berformat Markdown murni, header <code class="text-white font-mono">Content-Type: text/markdown; charset=utf-8</code>, dan estimasi <code class="text-white font-mono">x-markdown-tokens</code>.
         </p>
       </div>

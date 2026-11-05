@@ -24,7 +24,7 @@ export default function Navbar({ children }: { children?: ReactNode }) {
       <div className="max-w-7xl mx-auto h-20 px-6 md:px-12">
         <nav className="flex items-center justify-between h-full">
           {/* Logo */}
-          <a href="/" className="relative z-50 flex items-center shrink-0 group active:scale-95 transition-transform duration-150 ease-[cubic-bezier(0.23,1,0.32,1)]" aria-label="Growth Indonesia Home">
+          <a href="/" className="relative z-50 flex items-center shrink-0 min-h-11 group active:scale-95 transition-transform duration-150 ease-[cubic-bezier(0.23,1,0.32,1)]" aria-label="Growth Indonesia Home">
             <img 
               src={COMPANY_INFO.logo_url} 
               alt={`${COMPANY_INFO.brand_name} - Corporate Outbound & Event Organizer Madiun`} 

@@ -65,7 +65,7 @@ function PesertaSlider({ pax, setPax }: { pax: number, setPax: (pax: number) => 
         step="10"
         value={pax}
         onChange={(e) => setPax(Number(e.target.value))}
-        className="w-full h-3 bg-paper-3 rounded-lg appearance-none cursor-pointer accent-brand-dark hover:accent-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-7 [&::-webkit-slider-thumb]:h-7 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-brand-dark [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-white [&::-webkit-slider-thumb]:shadow-md [&::-moz-range-thumb]:w-7 [&::-moz-range-thumb]:h-7 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-brand-dark [&::-moz-range-thumb]:border-2 [&::-moz-range-thumb]:border-white [&::-moz-range-thumb]:shadow-md"
+        className="w-full min-h-11 h-11 bg-transparent appearance-none cursor-pointer touch-pan-y accent-brand-dark hover:accent-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 [&::-webkit-slider-runnable-track]:h-3 [&::-webkit-slider-runnable-track]:rounded-lg [&::-webkit-slider-runnable-track]:bg-paper-3 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:-mt-2 [&::-webkit-slider-thumb]:w-7 [&::-webkit-slider-thumb]:h-7 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-brand-dark [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-white [&::-webkit-slider-thumb]:shadow-md [&::-moz-range-track]:h-3 [&::-moz-range-track]:rounded-lg [&::-moz-range-track]:bg-paper-3 [&::-moz-range-thumb]:w-7 [&::-moz-range-thumb]:h-7 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-brand-dark [&::-moz-range-thumb]:border-2 [&::-moz-range-thumb]:border-white [&::-moz-range-thumb]:shadow-md"
       />
       <div className="flex justify-between text-xs font-semibold text-muted px-1 num">
         <span>20 Pax</span>
@@ -167,8 +167,7 @@ Mohon informasi opsi venue dan ketersediaan jadwal.`;
   };
 
   return (
-    <div className="bg-paper border border-rule rounded-[2rem] p-6 sm:p-8 text-center space-y-6 relative overflow-hidden">
-      <div className="absolute top-0 left-0 w-2 h-full bg-brand-dark"></div>
+    <div className="pt-2 text-center space-y-6 relative">
       <div>
         <p className="font-bold text-muted text-sm mb-2">Estimasi Total Investasi</p>
         <p className="font-display font-black text-4xl sm:text-5xl text-ink tracking-tight num" aria-live="polite">

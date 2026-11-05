@@ -30,8 +30,8 @@
   --color-accent-ink: oklch(99% 0.002 250);
   --color-focus: oklch(62.8% 0.225 25.3);
   --color-brand: oklch(62.8% 0.225 25.3);
-  --color-brand-dark: oklch(57.7% 0.215 27.3);
-  --color-brand-tint: oklch(95.5% 0.025 25);
+  --color-brand-dark: oklch(52.5% 0.205 27.3);
+  --color-brand-tint: oklch(96.8% 0.016 25);
   --color-brand-border: oklch(90% 0.05 25);
   --color-navy: oklch(19.5% 0.038 255);
   --color-navy-2: oklch(24% 0.04 255);

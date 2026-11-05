@@ -93,14 +93,6 @@ const IMPACT_STATS = [
 export default function OurImpact() {
   return (
     <section className="py-20 md:py-24 bg-paper border-y border-rule relative overflow-hidden" aria-labelledby="impact-title">
-      <img
-        src="https://nafta121.sirv.com/OUTBOUND/2022-10-22%2009-00-09.jpeg"
-        alt=""
-        aria-hidden="true"
-        decoding="async"
-        className="w-full h-full object-cover object-center opacity-5 mix-blend-overlay absolute inset-0 -z-10"
-        referrerPolicy="no-referrer"
-      />
       <div className="max-w-7xl mx-auto px-4 md:px-12 relative z-10">
         <ScrollReveal className="text-center mb-16">
           <h2 id="impact-title" className="font-display text-4xl md:text-5xl font-black text-ink leading-[1.1] mb-6 text-balance">
@@ -120,11 +112,13 @@ export default function OurImpact() {
                 delay={idx * 0.12} 
                 className="bg-white p-8 rounded-3xl shadow-sm border border-rule hover:shadow-md hover:border-brand-border hover:-translate-y-1 transition-[transform,border-color,box-shadow] duration-200 relative group overflow-hidden"
               >
-                <div className="w-12 h-12 bg-brand-tint text-brand-dark rounded-2xl flex items-center justify-center mb-6 group-hover:bg-brand-dark group-hover:text-white transition-colors duration-200">
-                  <Icon className="w-6 h-6" />
-                </div>
-                <div className="font-display text-5xl font-black text-ink mb-2 num">
-                  <Counter end={stat.value} suffix={stat.suffix} />
+                <div className="flex items-center justify-between gap-4 mb-4">
+                  <div className="font-display text-5xl font-black text-ink num">
+                    <Counter end={stat.value} suffix={stat.suffix} />
+                  </div>
+                  <div className="w-11 h-11 bg-brand-tint text-brand-dark rounded-2xl flex items-center justify-center shrink-0 group-hover:bg-brand-dark group-hover:text-white transition-colors duration-200">
+                    <Icon className="w-5 h-5" aria-hidden="true" />
+                  </div>
                 </div>
                 <h3 className="text-xl font-bold text-ink mb-2">{stat.label}</h3>
                 <p className="text-muted font-medium text-pretty">{stat.description}</p>

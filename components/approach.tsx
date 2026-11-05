@@ -46,12 +46,12 @@ export default function Approach() {
               yOffset={20}
               className="group relative bg-white p-8 md:p-10 rounded-3xl border border-rule transition-[transform,border-color,box-shadow] duration-200 hover:-translate-y-1 hover:shadow-md hover:border-brand-border cursor-default"
             >
-              <div className="mb-8 inline-flex p-4 rounded-2xl bg-brand-tint text-brand-dark transition-colors duration-200 group-hover:bg-brand-dark group-hover:text-white shadow-sm">
-                <pillar.icon className="w-8 h-8" />
+              <div className="flex items-start gap-3.5 mb-4 pb-4 border-b border-rule">
+                <pillar.icon className="w-6 h-6 text-brand-dark shrink-0 mt-1" aria-hidden="true" />
+                <h3 className="font-display text-xl md:text-2xl font-extrabold text-ink group-hover:text-brand-dark transition-colors duration-200 tracking-tight">
+                  {pillar.title}
+                </h3>
               </div>
-              <h3 className="font-display text-xl md:text-2xl font-extrabold text-ink mb-4 group-hover:text-brand-dark transition-colors duration-200 tracking-tight">
-                {pillar.title}
-              </h3>
               <p className="text-muted leading-relaxed font-medium text-sm md:text-base">
                 {pillar.description}
               </p>

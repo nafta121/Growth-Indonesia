@@ -17,7 +17,7 @@ export default function AboutUs() {
             <h2 id="tentang-title" className="font-display text-4xl md:text-5xl lg:text-6xl font-black text-ink leading-[1.1] mb-8">
               Membangun Kualitas SDM Unggul &amp; Bermental Positif
             </h2>
-            <div className="relative p-8 rounded-3xl bg-paper border-l-4 border-brand-dark mb-8 overflow-hidden">
+            <div className="relative p-8 rounded-3xl bg-paper border border-rule mb-8 overflow-hidden">
               <p className="italic font-medium text-ink-2 text-lg leading-relaxed relative z-10">
                 &ldquo;Terbaik dan terpercaya dalam layanan training &amp; development untuk mewujudkan kualitas SDM yang unggul dan bersikap mental positif.&rdquo;
               </p>
@@ -41,7 +41,7 @@ export default function AboutUs() {
                     yOffset={10}
                     className="flex gap-4 items-start group/item"
                   >
-                    <div className="mt-0.5 shrink-0 bg-navy-2 border border-navy-border text-brand rounded-full w-8 h-8 flex items-center justify-center font-bold num">
+                    <div className="mt-0.5 shrink-0 bg-navy-2 border border-navy-border text-white rounded-full w-8 h-8 flex items-center justify-center font-bold num">
                       {idx + 1}
                     </div>
                     <p className="text-navy-muted text-base md:text-lg leading-relaxed font-medium group-hover/item:text-white transition-colors duration-200">{mission}</p>

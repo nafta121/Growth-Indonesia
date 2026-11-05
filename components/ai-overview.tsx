@@ -65,7 +65,6 @@ export function AiOverviewSection({
         <ScrollReveal delay={0.1} yOffset={20}>
           {/* Quick Summary Block */}
           <div className="bg-paper border border-rule rounded-[2.5rem] p-8 md:p-10 mb-16 relative overflow-hidden shadow-sm">
-            <div className="absolute top-0 left-0 w-2 h-full bg-brand-dark"></div>
             <div className="flex flex-col md:flex-row items-start gap-6">
               <div className="bg-brand-tint p-4 rounded-2xl shrink-0">
                 <Sparkles className="w-8 h-8 text-brand-dark" aria-hidden="true" />
@@ -152,7 +151,7 @@ export function AiOverviewSection({
               {faqData.map((faq, index) => (
                 <div key={index} className="bg-white border border-rule p-6 md:p-8 rounded-[2rem] hover:border-brand-border hover:shadow-md transition-[border-color,box-shadow] duration-200">
                   <h4 className="font-display font-bold text-xl text-ink mb-3">{faq.question}</h4>
-                  <p className="text-muted leading-relaxed font-medium text-pretty">{faq.answer}</p>
+                  <p className="text-muted leading-relaxed font-medium text-pretty max-w-[70ch]">{faq.answer}</p>
                 </div>
               ))}
             </div>

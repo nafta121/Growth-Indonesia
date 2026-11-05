@@ -97,9 +97,6 @@ const TESTIMONIALS = [
 ];
 
 export default function TrustSignals() {
-  // Triple the list to ensure seamless infinite scroll on all screen sizes
-  const scrollItems = [...CLIENTS, ...CLIENTS, ...CLIENTS];
-
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -146,25 +143,23 @@ export default function TrustSignals() {
         </div>
       </div>
 
-      <div className="relative flex overflow-hidden py-8 md:py-12 bg-paper">
-        {/* Gradient overlays for smooth fading effect */}
-        <div className="absolute left-0 top-0 bottom-0 w-32 md:w-64 bg-gradient-to-r from-white via-white/80 to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-32 md:w-64 bg-gradient-to-l from-white via-white/80 to-transparent z-10 pointer-events-none" />
-
-        <div className="flex whitespace-nowrap gap-6 md:gap-10 items-center animate-marquee hover:[animation-play-state:paused]">
-          {scrollItems.map((client, i) => (
-            <div
-              key={`${client.name}-${i}`}
-              className="flex items-center gap-4 px-8 md:px-10 py-5 md:py-6 rounded-2xl md:rounded-3xl bg-white border border-rule hover:border-brand/40 hover:shadow-md transition-[transform,border-color,box-shadow] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] group [@media(hover:hover)_and_(pointer:fine)]:hover:-translate-y-1"
-            >
-              <div className="text-brand-dark opacity-70 group-hover:opacity-100 transition-opacity duration-200">
-                {client.icon}
+      <div className="py-8 md:py-12 bg-paper border-y border-rule">
+        <div className="max-w-7xl mx-auto px-4 md:px-12">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+            {CLIENTS.map((client) => (
+              <div
+                key={client.name}
+                className="flex items-center gap-3 px-5 py-4 rounded-2xl bg-white border border-rule hover:border-brand/40 hover:shadow-md transition-[transform,border-color,box-shadow] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] group [@media(hover:hover)_and_(pointer:fine)]:hover:-translate-y-1"
+              >
+                <div className="text-brand-dark opacity-80 group-hover:opacity-100 transition-opacity duration-200 shrink-0">
+                  {client.icon}
+                </div>
+                <span className="font-display font-bold text-ink-2 group-hover:text-ink transition-colors duration-200 tracking-tight text-sm leading-tight">
+                  {client.name}
+                </span>
               </div>
-              <span className="font-display font-bold text-ink-2 group-hover:text-ink transition-colors duration-200 tracking-tight text-sm md:text-base">
-                {client.name}
-              </span>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
 
