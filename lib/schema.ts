@@ -11,7 +11,7 @@ export function getLocalBusinessSchema(additionalArea?: string) {
     { "@type": "City", "name": "Surabaya" }
   ];
 
-  const areaServed = additionalArea 
+  const areaServed = additionalArea && !baseAreas.some((a) => a.name.toLowerCase() === additionalArea.toLowerCase())
     ? [...baseAreas, { "@type": "City", "name": additionalArea }]
     : baseAreas;
 
@@ -212,11 +212,11 @@ export interface BreadcrumbItem {
   url: string;
 }
 
-export function generateBreadcrumbSchema(items: BreadcrumbItem[]) {
+export function generateBreadcrumbSchema(items: BreadcrumbItem[], id?: string) {
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    "@id": "https://growthindonesia.my.id/#breadcrumb",
+    "@id": id || "https://growthindonesia.my.id/#breadcrumb",
     "name": "Navigasi Layanan Growth Indonesia",
     "itemListElement": items.map((crumb, idx) => ({
       "@type": "ListItem",
@@ -229,9 +229,10 @@ export function generateBreadcrumbSchema(items: BreadcrumbItem[]) {
   };
 }
 
-export function getBreadcrumbListSchema(items: BreadcrumbItemSchema[]) {
+export function getBreadcrumbListSchema(items: BreadcrumbItemSchema[], id?: string) {
   return generateBreadcrumbSchema(
-    items.map((crumb) => ({ name: crumb.name, url: crumb.item }))
+    items.map((crumb) => ({ name: crumb.name, url: crumb.item })),
+    id
   );
 }
 
@@ -289,12 +290,15 @@ export function getServicePageSchema({
   const cityUrl = `https://growthindonesia.my.id/layanan/${cityKey}`;
   const description = `Layanan profesional provider ${kategoriName.toLowerCase()} dan EO terbaik di ${kotaName} bersama ${COMPANY_INFO.brand_name}. ${cityDescription}`;
 
-  const breadcrumb = getBreadcrumbListSchema([
-    { name: "Home", item: "https://growthindonesia.my.id/" },
-    { name: "Layanan", item: "https://growthindonesia.my.id/layanan" },
-    { name: `Layanan ${kotaName}`, item: cityUrl },
-    { name: `${kategoriName} ${kotaName}`, item: serviceUrl },
-  ]);
+  const breadcrumb = getBreadcrumbListSchema(
+    [
+      { name: "Home", item: "https://growthindonesia.my.id/" },
+      { name: "Layanan", item: "https://growthindonesia.my.id/layanan" },
+      { name: `Layanan ${kotaName}`, item: cityUrl },
+      { name: `${kategoriName} ${kotaName}`, item: serviceUrl },
+    ],
+    `${serviceUrl}#breadcrumb`
+  );
 
   const service = getServiceSchema(kategoriName, kotaName, description, serviceUrl);
   const localBusiness = getLocalBusinessSchema(kotaName);
@@ -308,8 +312,8 @@ export function getServicePageSchema({
       localBusiness,
       {
         ...rawFaq,
-        "@id": "https://growthindonesia.my.id/#faq",
-        "name": "FAQ Seputar Layanan Growth Indonesia",
+        "@id": `${serviceUrl}#faq`,
+        "name": `FAQ Seputar ${kategoriName} ${kotaName} - Growth Indonesia`,
       },
     ],
   };

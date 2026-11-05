@@ -145,7 +145,7 @@ export default function CredibilityPortfolio({ headingLevel = 'h2' }: { headingL
   const jsonLdData = {
     '@context': 'https://schema.org',
     '@type': 'ProfessionalService',
-    '@id': `${COMPANY_INFO.brand_name.toLowerCase().replace(/\s+/g, '')}-credibility-portfolio`,
+    '@id': 'https://growthindonesia.my.id/#credibility-portfolio',
     name: `${COMPANY_INFO.brand_name} - Provider Outbound & Event Management`,
     url: 'https://growthindonesia.my.id',
     logo: COMPANY_INFO.logo_url,
@@ -262,7 +262,7 @@ export default function CredibilityPortfolio({ headingLevel = 'h2' }: { headingL
         address: {
           '@type': 'PostalAddress',
           streetAddress: cs.location,
-          addressLocality: 'Madiun',
+          addressLocality: cs.location.includes('Magetan') ? 'Magetan' : 'Madiun',
           addressRegion: 'Jawa Timur',
           postalCode: '63128',
           addressCountry: 'ID',
@@ -277,7 +277,7 @@ export default function CredibilityPortfolio({ headingLevel = 'h2' }: { headingL
         priceCurrency: 'IDR',
         availability: 'https://schema.org/InStock',
       },
-      description: `${cs.objective} Outcomes: ${cs.outcomes.join(' ')}`,
+      description: `${cs.objective} Outcomes: ${cs.outcomes.join(' ').replace(/\*\*/g, '')}`,
     })),
   };
 

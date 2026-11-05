@@ -1,6 +1,6 @@
 import { CITIES } from '@/lib/cities';
 import { KATEGORI } from '@/lib/categories';
-import { getArticleSlugs } from '@/lib/mdx';
+import { getAllArticles, getArticleSlugs } from '@/lib/mdx';
 
 export interface SitemapEntry {
   url: string;
@@ -79,12 +79,16 @@ export default async function sitemap(): Promise<SitemapEntry[]> {
     }
   }
 
+  const articles = await getAllArticles();
+  const articleDateMap = new Map(
+    articles.map((a) => [a.slug, a.frontmatter.date ? new Date(a.frontmatter.date) : currentDate])
+  );
   const articleSlugs = await getArticleSlugs();
   const articlePages: SitemapEntry[] = articleSlugs.map((slug) => {
     const cleanSlug = slug.replace(/\.(mdx|md)$/, '');
     return {
       url: `${baseUrl}/artikel/${cleanSlug}`,
-      lastModified: currentDate,
+      lastModified: articleDateMap.get(cleanSlug) || currentDate,
       changeFrequency: 'weekly',
       priority: 0.7,
     };

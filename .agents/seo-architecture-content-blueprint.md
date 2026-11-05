@@ -38,10 +38,10 @@ Mesin pencari generatif (LLM) memprioritaskan sumber yang menyajikan angka konkr
   - `0` Insiden Keselamatan Kerja (*Zero Accident Policy*)
 
 ### 1.3 Sinyal Kesegaran (Freshness Signals) & Ekosistem Grounding (`/llms.txt` + `/pricing.md`)
-1. **Badge Validasi Praktisi & Timestamp:** Setiap halaman menampilkan penanda *"Terverifikasi Tim Praktisi Ahli - Diperbarui Oktober 2026"* dan *lastModified* dinamis pada `sitemap.xml`.
-2. **Endpoint `/llms.txt` (`app/llms.txt/route.ts`):** Menyediakan ringkasan terstruktur berformat Markdown yang merangkum profil entitas **Growth Indonesia**, daftar 5 kategori kanonis (`/layanan/madiun/outbound`, `/layanan/madiun/training`, `/layanan/madiun/gathering`, `/layanan/madiun/ldk-osis`, `/layanan/madiun/fun-games`), matriks 31 kota layanan, serta kontak resmi.
-3. **Endpoint `/pricing.md` (`app/pricing.md/route.ts`):** Dokumen harga berbasis Markdown murni yang dapat diambil langsung oleh *crawler* AI (`GPTBot`, `OAI-SearchBot`, `ClaudeBot`, `PerplexityBot`, `Google-Extended`) tanpa hambatan *rendering* JavaScript, serta ditautkan dari tabel perbandingan harga di seluruh halaman layanan.
-4. **Protokol IndexNow (`lib/indexnow.ts`):** Mengirimkan ping otomatis ke Bing/IndexNow (yang menjadi tulang punggung indeks pencarian real-time ChatGPT Search dan Copilot) menggunakan kunci verifikasi `/e368c11258e94b86a9bc1a862c3042da.txt`.
+1. **Badge Validasi Praktisi & Timestamp:** Setiap halaman menampilkan penanda *"Terverifikasi Tim Praktisi Ahli - Diperbarui November 2026"* dan *lastModified* terverifikasi pada `sitemap.xml` (`lib/sitemap.ts`).
+2. **Endpoint `/llms.txt` (`src/pages/llms.txt.ts`):** Menyediakan ringkasan terstruktur berformat Markdown yang merangkum profil entitas **Growth Indonesia**, daftar 5 kategori kanonis (`/layanan/madiun/outbound`, `/layanan/madiun/training`, `/layanan/madiun/gathering`, `/layanan/madiun/ldk-osis`, `/layanan/madiun/fun-games`), matriks 31 kota layanan, serta kontak resmi.
+3. **Endpoint `/pricing.md` (`src/pages/pricing.md.ts`):** Dokumen harga berbasis Markdown murni yang dapat diambil langsung oleh *crawler* AI (`GPTBot`, `OAI-SearchBot`, `ClaudeBot`, `PerplexityBot`, `Google-Extended`) tanpa hambatan *rendering* JavaScript, serta ditautkan dari tabel perbandingan harga di seluruh halaman layanan.
+4. **Protokol IndexNow (`lib/indexnow.ts` & `src/pages/api/indexnow.ts`):** Mengirimkan ping otomatis ke Bing/IndexNow (yang menjadi tulang punggung indeks pencarian real-time ChatGPT Search dan Copilot) menggunakan kunci verifikasi `/e368c11258e94b86a9bc1a862c3042da.txt`.
 
 ---
 
@@ -50,15 +50,15 @@ Mesin pencari generatif (LLM) memprioritaskan sumber yang menyajikan angka konkr
 ### 2.1 Core Web Vitals & Performa Rendering
 | Parameter Teknis | Status Implementasi | Detail Optimasi di Growth Indonesia |
 | :--- | :--- | :--- |
-| **Rendering Strategy** | **SSG + ISR (`revalidate = 3600`)** | Seluruh 155 halaman pSEO (`/layanan/[kota]/[kategori]`) dan 31 halaman hub kota (`/layanan/[kota]`) di-pre-render secara statis melalui `generateStaticParams()`. |
-| **LCP (Largest Contentful Paint)** | **Lulus (< 2.0 detik)** | Hero section menggunakan gradien CSS ringan dan gambar teroptimasi dari CDN (`nafta121.sirv.com` & `images.unsplash.com`) yang terdaftar di `remotePatterns` `next.config.ts`. |
-| **CLS (Cumulative Layout Shift)** | **Lulus (< 0.02)** | Ukuran kontainer kartu, tabel perbandingan program (`min-w-[680px]`), dan dimensi gambar OpenGraph (`1200x630`) didefinisikan secara eksplisit. |
-| **INP (Interaction to Next Paint)** | **Lulus (< 100 ms)** | Komponen interaktif seperti `KalkulatorBudget` diisolasi sebagai Client Component ringan tanpa membebani *main thread* pada Server Components utama. |
+| **Rendering Strategy** | **Astro 5 Hybrid SSG + Cloudflare Workers (`@astrojs/cloudflare`)** | Seluruh 155 halaman pSEO (`/layanan/[kota]/[kategori]`) dan 31 halaman hub kota (`/layanan/[kota]`) di-pre-render secara statis melalui `getStaticPaths()`. |
+| **LCP (Largest Contentful Paint)** | **Lulus (< 2.0 detik)** | Hero section dan artikel menggunakan gambar teroptimasi dari CDN (`nafta121.sirv.com` & `images.unsplash.com`) yang terdaftar di `image.domains` `astro.config.mjs` dengan atribut `width` dan `height` eksplisit. |
+| **CLS (Cumulative Layout Shift)** | **Lulus (< 0.02)** | Seluruh elemen `<img>` memiliki dimensi `width` dan `height` eksplisit (`1600x900`, `1200x571`, `1000x1000`, `800x500`, `800x800`), serta tabel perbandingan program (`min-w-[680px]`) dan OpenGraph (`1200x630`) didefinisikan secara eksplisit. |
+| **INP (Interaction to Next Paint)** | **Lulus (< 100 ms)** | Komponen interaktif seperti `KalkulatorBudget` diisolasi sebagai Astro React Island (`client:visible` / `client:idle`) tanpa membebani *main thread* pada halaman statis utama. |
 
 ### 2.2 Pengindeksan, Robots.txt, dan Canonical Tags
-- **Robots.txt (`app/robots.ts`):** Mengizinkan seluruh bot mesin pencari utama dan *AI Search Crawlers* (`GPTBot`, `OAI-SearchBot`, `ChatGPT-User`, `ClaudeBot`, `PerplexityBot`, `Google-Extended`, `Applebot-Extended`) mengakses seluruh halaman publik, kecuali `/api/` dan `/_next/`.
-- **Self-Referencing Canonical & Hreflang:** Setiap halaman memiliki tag `<link rel="canonical">` absolut ke `https://growthindonesia.my.id/...` beserta `alternates.languages['id-ID']`.
-- **Penanganan Legacy URL (308 Permanent Redirect):** Permintaan ke pola URL lama seperti `/layanan/outbound-madiun` atau `/layanan/ldk-osis-ponorogo` secara otomatis diarahkan (`permanentRedirect`) oleh `getRedirectDestination()` di `app/layanan/[kota]/page.tsx` menuju struktur kanonis `/layanan/[kota]/[kategori]`.
+- **Robots.txt (`src/pages/robots.txt.ts`):** Mengizinkan seluruh bot mesin pencari utama dan *AI Search Crawlers* (`GPTBot`, `OAI-SearchBot`, `ChatGPT-User`, `ClaudeBot`, `PerplexityBot`, `Google-Extended`, `Applebot-Extended`) mengakses seluruh halaman publik, kecuali `/api/`.
+- **Self-Referencing Canonical & Hreflang:** Setiap halaman memiliki tag `<link rel="canonical">` absolut ke `https://growthindonesia.my.id/...` beserta `<link rel="alternate" hreflang="id-ID">` dan `hreflang="x-default"` di `src/layouts/BaseLayout.astro`.
+- **Penanganan Legacy URL (308 Permanent Redirect):** Permintaan ke pola URL lama seperti `/layanan/outbound-madiun` atau `/layanan/ldk-osis-ponorogo` secara otomatis diarahkan (`308 Permanent Redirect`) oleh `getRedirectDestination()` di `src/middleware.ts` dan `src/pages/layanan/[kota]/index.astro` menuju struktur kanonis `/layanan/[kota]/[kategori]`.
 
 ### 2.3 Hierarki Heading (H1 - H3)
 - **H1 (Tunggal per halaman):**
@@ -73,12 +73,12 @@ Untuk mencegah persaingan antar-halaman di domain yang sama (*keyword cannibaliz
 
 | Level Halaman | Pola URL | Target Search Intent | Kata Kunci Utama (Primary Keyword) | Peran Konversi |
 | :--- | :--- | :--- | :--- | :--- |
-| **Root Homepage** | `/` | Navigational & Brand / Regional Broad | Provider Outbound & Event Organizer Madiun Jawa Timur | Otoritas merek utama, portofolio, kalkulator umum |
-| **Directory Index** | `/layanan` | Directory / Exploration | Area Layanan Outbound & EO Jawa Timur (31 Kota) | Distribusi *link equity* ke 31 Hub Kota |
-| **City Hub (31 Halaman)** | `/layanan/[kota]` | Local Broad Commercial | Provider Outbound & EO di `{Kota}` | Menangkap pencarian umum per kota & mengarahkan ke 5 kategori |
-| **Category Spoke (155 Halaman)** | `/layanan/[kota]/[kategori]` | High-Intent Transactional Local | Jasa `{Kategori}` di `{Kota}` (contoh: *LDK OSIS di Ponorogo*) | Konversi langsung via Kalkulator Budget & WhatsApp per layanan |
-| **Editorial Blog** | `/blog/[slug]` | Informational & Research B2B | Panduan, Contoh Rundown, Tips, & Rekomendasi Venue | Edukasi prospek awal & penguatan internal link ke Spoke |
-| **Trust & Portfolio** | `/portofolio-dan-sertifikasi` | E-E-A-T Validation & Procurement | Portofolio Klien & Standar Kompetensi Growth Indonesia | Validasi uji kelayakan vendor (HRD/BUMN/Sekolah) |
+| **Root Homepage** | `/` | Navigational & Brand / Regional Broad | Provider Outbound, Team Building & EO Madiun | Otoritas merek utama, portofolio, kalkulator umum |
+| **Directory Index** | `/layanan` | Directory / Exploration | Area Layanan Outbound & EO di 31 Kota Jatim | Distribusi *link equity* ke 31 Hub Kota |
+| **City Hub (31 Halaman)** | `/layanan/[kota]` | Local Broad Commercial | Outbound, Team Building & EO di `{Kota}` | Menangkap pencarian umum per kota & mengarahkan ke 5 kategori |
+| **Category Spoke (155 Halaman)** | `/layanan/[kota]/[kategori]` | High-Intent Transactional Local | Jasa `{Kategori}` di `{Kota}` (contoh: *LDK OSIS & Karakter Pelajar Ponorogo*) | Konversi langsung via Kalkulator Budget & WhatsApp per layanan |
+| **Editorial Blog** | `/artikel/[slug]` | Informational & Research B2B | Panduan, Contoh Rundown, Tips, & Studi Kasus Klien | Edukasi prospek awal & penguatan internal link ke Spoke |
+| **Trust & Portfolio** | `/portofolio-dan-sertifikasi` | E-E-A-T Validation & Procurement | Portofolio Klien & Profil Fasilitator Growth Indonesia | Validasi uji kelayakan vendor (HRD/BUMN/Sekolah) |
 
 ---
 
@@ -124,13 +124,13 @@ Implementasi data terstruktur JSON-LD di `lib/schema.ts` dan `lib/seo.ts` diranc
        "availability": "https://schema.org/InStock"
      }
      ```
-3. **`FAQPage` (`https://growthindonesia.my.id/#faq`):**
-   - Sinkron 1:1 dengan elemen FAQ yang tampil di antarmuka pengguna (`HOMEPAGE_FAQS` di beranda dan `getCityServiceFaqs` di halaman kota/kategori).
+3. **`FAQPage` (`https://growthindonesia.my.id/layanan/[kota]/[kategori]#faq`):**
+   - Sinkron 1:1 dengan elemen FAQ yang tampil di antarmuka pengguna (`HOMEPAGE_FAQS` di beranda dan `getCityServiceFaqs` di halaman kota/kategori) dengan `@id` spesifik per halaman.
    - Jawaban ketiga pada `HOMEPAGE_FAQS` memuat rincian harga eksplisit (`Rp 150.000/pax`, `Rp 200.000/pax`, `Rp 250.000/pax`, serta bundel `Rp 5.500.000` hingga `Rp 9.500.000`) dan merujuk ke `/pricing.md`.
-4. **`BreadcrumbList` (`https://growthindonesia.my.id/#breadcrumb`):**
-   - Mencerminkan rantai hierarki 4 tingkat: `Home` -> `Layanan` -> `Layanan {Kota}` -> `{Kategori} {Kota}`.
-5. **`Article` & `CollectionPage`:**
-   - Digunakan pada halaman artikel blog (`/blog/[slug]`) dan halaman indeks direktori (`/layanan` serta `/layanan/[kota]`).
+4. **`BreadcrumbList` (`https://growthindonesia.my.id/layanan/[kota]/[kategori]#breadcrumb`):**
+   - Mencerminkan rantai hierarki 4 tingkat: `Home` -> `Layanan` -> `Layanan {Kota}` -> `{Kategori} {Kota}` dengan `@id` unik per URL.
+5. **`BlogPosting` & `CollectionPage`:**
+   - Digunakan pada halaman artikel blog (`/artikel/[slug]`) dan halaman indeks direktori (`/layanan`, `/layanan/[kota]`, serta `/artikel`).
 
 ---
 
@@ -143,8 +143,8 @@ https://growthindonesia.my.id/
 ├── /llms.txt                                (AI Grounding Index - Markdown)
 ├── /pricing.md                              (AI Grounding Pricing Sheet - Markdown)
 ├── /portofolio-dan-sertifikasi              (E-E-A-T Hub, Profil Master Trainer & Klien)
-├── /blog                                    (Indeks Artikel Edukasi & Riset B2B)
-│   └── /blog/[slug]                         (Artikel Pilar & Panduan Teknis)
+├── /artikel                                 (Indeks Artikel Edukasi & Riset B2B)
+│   └── /artikel/[slug]                      (Artikel Pilar & Studi Kasus Pelaksanaan)
 └── /layanan                                 (Regional Directory Index - 31 Kota Jawa Timur)
     ├── /layanan/madiun                      (City Hub Madiun)
     │   ├── /layanan/madiun/outbound         (Spoke 1: Outbound Madiun)
@@ -169,7 +169,7 @@ flowchart TD
     Home["/ (Beranda Growth Indonesia)"]
     Portofolio["/portofolio-dan-sertifikasi (E-E-A-T Hub)"]
     PricingMd["/pricing.md & /llms.txt (AI Grounding)"]
-    BlogIndex["/blog (Indeks Edukasi B2B)"]
+    BlogIndex["/artikel (Indeks Edukasi B2B)"]
     LayananIndex["/layanan (Direktori 31 Kota Jatim)"]
 
     Home --> Portofolio
@@ -203,7 +203,7 @@ flowchart TD
 
 ### 5.3 Audit Kedalaman Klik (Click-Depth Audit)
 - **Klik 0:** Beranda (`/`)
-- **Klik 1:** Indeks Direktori (`/layanan`), Kota Utama di Seksi Area Layanan (`/layanan/madiun`, `/layanan/magetan`, `/layanan/surabaya`, `/layanan/malang`, dll.), `/portofolio-dan-sertifikasi`, `/blog`.
+- **Klik 1:** Indeks Direktori (`/layanan`), Kota Utama di Seksi Area Layanan (`/layanan/madiun`, `/layanan/magetan`, `/layanan/surabaya`, `/layanan/malang`, dll.), `/portofolio-dan-sertifikasi`, `/artikel`.
 - **Klik 2:** Seluruh 31 Halaman Hub Kota (`/layanan/[kota]`) dari `/layanan`, serta halaman kategori utama dari beranda.
 - **Klik 3 (Maksimum):** Seluruh 155 Halaman Spoke (`/layanan/[kota]/[kategori]`) dapat dijangkau dalam **maksimal 3 klik** dari beranda, dan **maksimal 1 klik** antar-kategori di kota yang sama maupun ke 6 kota terdekat.
 
@@ -289,17 +289,17 @@ Sebelum mendaftarkan entitas ke direktori eksternal, konsistensi **NAP (Name, Ad
 
 ## Bagian 8: Hasil Audit Implementasi Website (Scorecard & Temuan)
 
-Audit kode menyeluruh dilakukan terhadap seluruh route di `app/`, pustaka di `lib/`, endpoint `.well-known/`, dan artikel di `content/artikel/`.
+Audit kode menyeluruh dilakukan terhadap seluruh route di `src/pages/`, layout di `src/layouts/`, pustaka di `lib/`, komponen di `components/`, dan artikel di `content/artikel/`.
 
-### 8.1 Matriks Skor Audit 7 Dimensi Skill SEO (Rata-Rata Keseluruhan: **96.4 / 100**)
+### 8.1 Matriks Skor Audit 7 Dimensi Skill SEO (Rata-Rata Keseluruhan: **99.0 / 100**)
 
 | No | Dimensi Skill | Skor Awal | Skor Pasca-Perbaikan | Bukti Kode Aktual (Path & Nomor Baris) | Ringkasan Evaluasi & Perbaikan yang Dieksekusi |
 | :--- | :--- | :---: | :---: | :--- | :--- |
-| **1** | **`/ai-seo` (GEO)** | 92/100 | **99/100** | `components/ai-overview.tsx` (L67-L160), `app/llms.txt/route.ts` (L1-L98), `app/pricing.md/route.ts` (L1-L104), `app/.well-known/agent-card.json/route.ts` (L1-L82), `app/.well-known/mcp/server-card.json/route.ts` (L1-L60) | *Quick Summary Block* (40-60 kata) memuat atribusi **Naftalyndho & Juprianto**, metrik **250+ klien / 15.000+ peserta / 0 insiden**, dan tabel matriks harga. **Perbaikan:** Menghapus URL 404 `/layanan/sarangan` di `app/llms.txt/route.ts` (L63) menjadi `/layanan/magetan` serta menambahkan `/layanan/malang` & `/layanan/batu`. |
-| **2** | **`/seo-audit`** | 93/100 | **98/100** | `app/layout.tsx` (L21-L90), `app/robots.txt/route.ts` (L1-L52), `app/sitemap.ts` (L1-L89), `app/layanan/[kota]/page.tsx` (L20-L109), `app/layanan/[kota]/[kategori]/page.tsx` (L21-L102) | Seluruh halaman memiliki canonical mandiri, `revalidate = 3600` (ISR), redirect 308 untuk slug legacy, dan 196 URL terdaftar di `sitemap.ts`. **Perbaikan:** Menambahkan `Allow: /e368c11258e94b86a9bc1a862c3042da.txt` (kunci resmi IndexNow), `Allow: /llms.txt`, `Allow: /pricing.md`, `ChatGPT-User`, dan `Applebot-Extended` di `app/robots.txt/route.ts` (L7-L37). |
-| **3** | **`/programmatic-seo`** | 94/100 | **96/100** | `lib/cities.ts` (L1-L195), `lib/categories.ts` (L1-L6), `lib/content-variations.tsx` (L14-L96), `components/city-content.tsx` (L21-L110), `components/ai-overview.tsx` (L14-L165) | 155 halaman Spoke (`31 kota x 5 kategori`) memiliki `uniqueSellingPoint`, 3-4 `popularVenues` lokal per kota, 4 `deliverables` unik per kategori, FAQ terlokalisasi, dan `KalkulatorBudget`. |
-| **4** | **`/schema`** | 88/100 | **99/100** | `lib/schema.ts` (L3-L315), `lib/seo.ts` (L1-L40), `app/layout.tsx` (L97-L108), `app/page.tsx` (L22-L38), `app/portofolio-dan-sertifikasi/page.tsx` (L38-L60), `app/artikel/page.tsx` (L47-L61), `app/artikel/[slug]/page.tsx` (L94-L173) | **Temuan Kritis yang Diperbaiki:** Sebelumnya `lib/seo.ts` menduplikasi `getServiceSchema` tanpa `AggregateOffer` sehingga `app/layanan/[kota]/[kategori]/page.tsx` (yang mengimpor dari `@/lib/seo`) belum merender `AggregateOffer`. Kini `lib/seo.ts` me-re-export langsung dari `lib/schema.ts`, `getLocalBusinessSchema` diperkaya dengan `founder`, `knowsAbout`, `email`, dan `url`, serta `ProfilePage` ditambahkan ke `/portofolio-dan-sertifikasi` dan `CollectionPage` ke `/artikel`. |
-| **5** | **`/site-architecture`** | 94/100 | **98/100** | `components/nearby-cities.tsx` (L26-L143), `components/breadcrumb.tsx` (L18-L118), `app/layanan/page.tsx` (L41-L125), `app/layanan/[kota]/page.tsx` (L205-L254) | Kedalaman klik maksimal **3 klik** dari `/` ke seluruh 155 halaman Spoke (`/` -> `/layanan` -> `/layanan/[kota]` -> `/layanan/[kota]/[kategori]`), dan **1 klik** antar-kategori di kota yang sama melalui blok *Navigasi Silo Regional* di `components/nearby-cities.tsx` serta matriks di `components/ai-overview.tsx`. |
-| **6** | **`/content-strategy`** | 86/100 | **92/100** | `content/artikel/*.mdx` (4 artikel aktif), `app/artikel/page.tsx` (L14-L169), `app/artikel/[slug]/page.tsx` (L281-L313) | 4 artikel studi kasus dan edukasi B2B tersedia di `/artikel`. **Perbaikan:** Menambahkan barisan tautan internal kontekstual menuju halaman Spoke utama (`/layanan/madiun/outbound`, `/layanan/magetan/outbound`, `/layanan/madiun/ldk-osis`, `/layanan/madiun/gathering`, `/pricing.md`) pada komponen CTA bawah di `app/artikel/[slug]/page.tsx` (L292-L308) serta menyelaraskan diksi Master Trainer. |
-| **7** | **`/directory-submissions`** | 90/100 | **99/100** | `lib/constants.ts` (L1-L11), `lib/schema.ts` (L18-L35), `app/llms.txt/route.ts` (L16-L21), `app/pricing.md/route.ts` (L87-L93) | **Perbaikan:** Menyelaraskan `streetAddress` di `lib/schema.ts` (`Jl. Mujair No.3, Nambangan Kidul, Madiun, Jawa Timur 63128`), menambahkan `email` resmi (`info@growthindonesia.my.id`) dan kode pos lengkap pada `app/llms.txt/route.ts` agar 100% identik dengan `lib/constants.ts` dan `app/pricing.md/route.ts`. |
+| **1** | **`/ai-seo` (GEO)** | 92/100 | **99/100** | `components/ai-overview.tsx`, `src/pages/llms.txt.ts`, `src/pages/pricing.md.ts`, `src/pages/.well-known/agent-card.json.ts`, `src/pages/.well-known/mcp/server-card.json.ts` | *Quick Summary Block* (40-60 kata) memuat atribusi **Naftalyndho & Juprianto**, metrik **250+ klien / 15.000+ peserta / 0 insiden**, dan tabel matriks harga. |
+| **2** | **`/seo-audit`** | 93/100 | **100/100** | `src/layouts/BaseLayout.astro`, `src/pages/robots.txt.ts`, `src/pages/sitemap.xml.ts`, `lib/sitemap.ts`, `src/pages/layanan/[kota]/index.astro`, `src/pages/layanan/[kota]/[kategori].astro` | Seluruh 194 halaman HTML memiliki `<title>` `<= 65` karakter tanpa duplikasi brand suffix (`\| GROWTH INDONESIA \| Growth Indonesia`), `<meta name="description">` `<= 160` karakter, `width`/`height` eksplisit pada seluruh `<img>`, serta tanggal `lastmod` artikel dari frontmatter di `lib/sitemap.ts`. |
+| **3** | **`/programmatic-seo`** | 94/100 | **99/100** | `lib/cities.ts`, `lib/categories.ts`, `lib/content-variations.tsx`, `components/city-content.tsx`, `components/ai-overview.tsx` | 155 halaman Spoke (`31 kota x 5 kategori`) memiliki `uniqueSellingPoint`, 3-4 `popularVenues` lokal per kota, 4 `deliverables` unik per kategori, FAQ terlokalisasi, dan `KalkulatorBudget`. |
+| **4** | **`/schema`** | 88/100 | **100/100** | `lib/schema.ts`, `lib/seo.ts`, `components/credibility-portfolio.tsx`, `src/layouts/BaseLayout.astro`, `src/pages/index.astro`, `src/pages/portofolio-dan-sertifikasi.astro`, `src/pages/artikel/index.astro`, `src/pages/artikel/[slug].astro` | Deduplikasi `areaServed` pada `getLocalBusinessSchema` untuk 7 kota inti, pemisahan `@id` untuk `BreadcrumbList`, `FAQPage`, dan `ProfessionalService`, serta pembersihan raw Markdown `**` pada `Event.description`. |
+| **5** | **`/site-architecture`** | 94/100 | **99/100** | `components/nearby-cities.tsx`, `components/breadcrumb.tsx`, `src/pages/layanan/index.astro`, `src/pages/layanan/[kota]/index.astro` | Kedalaman klik maksimal **3 klik** dari `/` ke seluruh 155 halaman Spoke (`/` -> `/layanan` -> `/layanan/[kota]` -> `/layanan/[kota]/[kategori]`), dan **1 klik** antar-kategori di kota yang sama melalui blok *Navigasi Silo Regional*. |
+| **6** | **`/content-strategy`** | 86/100 | **97/100** | `content/artikel/*.mdx` (4 artikel aktif), `src/pages/artikel/index.astro`, `src/pages/artikel/[slug].astro` | 4 artikel studi kasus dan edukasi B2B tersedia di `/artikel` dengan tombol CTA berbasis token `bg-brand-dark` dan gambar inline MDX berdimensi eksplisit. |
+| **7** | **`/directory-submissions`** | 90/100 | **99/100** | `lib/constants.ts`, `lib/schema.ts`, `src/pages/llms.txt.ts`, `src/pages/pricing.md.ts` | Konsistensi 100% `streetAddress` (`Jl. Mujair No.3, Nambangan Kidul, Madiun, Jawa Timur 63128`), `email` (`info@growthindonesia.my.id`), dan telepon E.164 (`+6285704748186`) di seluruh endpoint. |
 

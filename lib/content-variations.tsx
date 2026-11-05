@@ -15,7 +15,7 @@ export interface ContentVariation {
 export function getContentVariations(kategori: string, kotaName: string): ContentVariation {
   const contentMap: Record<string, ContentVariation> = {
     'outbound': {
-      title: `Provider Outbound & Jasa Outbound ${kotaName} - Corporate Gathering`,
+      title: `Jasa Outbound & Team Building ${kotaName}`,
       h1: <>Provider Outbound &amp; Jasa Outbound di {kotaName}</>,
       subheadline: `Ciptakan momen Corporate Gathering yang tak terlupakan dengan Jasa Outbound ${kotaName} terbaik. Tingkatkan soliditas tim dan kapasitas kepemimpinan melalui program Provider Outbound ${kotaName} yang dirancang khusus. Hubungi Growth Indonesia untuk desain penawaran eksklusif!`,
       providerType: 'provider outbound',
@@ -28,7 +28,7 @@ export function getContentVariations(kategori: string, kotaName: string): Conten
       ],
     },
     'training': {
-      title: `Indoor Training ${kotaName} & Pelatihan Soft Skill Motivasi`,
+      title: `Indoor Training & Pelatihan SDM ${kotaName}`,
       h1: <>Pusat Indoor Training &amp; Motivasi di {kotaName}</>,
       subheadline: `Tingkatkan Soft Skill karyawan Anda dengan Indoor Training ${kotaName} profesional. Growth Indonesia menyajikan program pengembangan SDM dan Motivasi yang aplikatif dan dirancang khusus untuk menjawab tantangan spesifik organisasi Anda. Mari transformasikan potensi tim Anda hari ini!`,
       providerType: 'penyelenggara indoor training',
@@ -41,7 +41,7 @@ export function getContentVariations(kategori: string, kotaName: string): Conten
       ],
     },
     'fun-games': {
-      title: `Fun Game ${kotaName} & Ice Breaking - Team Building`,
+      title: `Jasa Fun Games & Ice Breaking ${kotaName}`,
       h1: <>Jasa Fun Game &amp; Ice Breaking di {kotaName}</>,
       subheadline: `Cairkan suasana dan bangun keakraban tanpa batas melalui paket Fun Game ${kotaName} yang energik. Layanan kami yang penuh Ice Breaking ${kotaName} menjadi pilihan tepat untuk menyempurnakan program Team Building perusahaan Anda!`,
       providerType: 'penyedia layanan fun game',
@@ -54,7 +54,7 @@ export function getContentVariations(kategori: string, kotaName: string): Conten
       ],
     },
     'ldk-osis': {
-      title: `LDK OSIS ${kotaName} & Program Character Building - Pelatihan Siswa`,
+      title: `LDK OSIS & Character Building ${kotaName}`,
       h1: <>Lembaga LDK OSIS &amp; Character Building di {kotaName}</>,
       subheadline: `Bentuk mental generasi muda yang tangguh dengan program LDK OSIS ${kotaName} yang intensif. Jadikan kami mitra Pelatihan Siswa melalui Character Building ${kotaName} untuk membina kedisiplinan, kemandirian, dan problem solving peserta didik. Percayakan siswa Anda kepada ahlinya!`,
       providerType: 'fasilitator LDK OSIS',
@@ -67,7 +67,7 @@ export function getContentVariations(kategori: string, kotaName: string): Conten
       ],
     },
     'gathering': {
-      title: `EO Corporate Gathering & Family Gathering ${kotaName}`,
+      title: `EO Corporate & Family Gathering ${kotaName}`,
       h1: <>EO Corporate &amp; Family Gathering di {kotaName}</>,
       subheadline: `Wujudkan acara Corporate Gathering, Employee Gathering, dan Family Gathering di ${kotaName} yang berkesan dan terorganisir secara profesional. ${COMPANY_INFO.brand_name} siap merancang konsep acara, manajemen venue, hingga aktivitas kebersamaan yang mempererat solidaritas tim Anda!`,
       providerType: 'event organizer gathering',

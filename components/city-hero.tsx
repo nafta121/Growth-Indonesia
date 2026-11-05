@@ -26,6 +26,8 @@ export default function CityHero({ kategoriName, kotaName, cityKey, content }: C
         <img 
           src={heroImage}
           alt={`Kegiatan ${kategoriName} dan Team Building Growth Indonesia di ${kotaName}`}
+          width={1600}
+          height={900}
           fetchPriority="high"
           loading="eager"
           decoding="async"

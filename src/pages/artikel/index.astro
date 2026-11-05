@@ -19,8 +19,8 @@ const schemaLd = {
 };
 ---
 <BaseLayout
-  title={`Artikel & Edukasi Outbound Terbaik | ${COMPANY_INFO.brand_name}`}
-  description={`Kumpulan artikel, tips, panduan, dan edukasi seputar program outbound, training, team building, dan pengembangan SDM perusahaan dari ${COMPANY_INFO.brand_name}.`}
+  title="Artikel & Panduan Outbound Korporat | Growth Indonesia"
+  description="Kumpulan artikel, tips, panduan, dan edukasi seputar program outbound, training, team building, dan pengembangan SDM perusahaan dari Growth Indonesia."
   canonical="https://growthindonesia.my.id/artikel"
   schema={schemaLd}
 >
@@ -67,7 +67,8 @@ const schemaLd = {
                   <img
                     src={article.frontmatter.image}
                     alt={article.frontmatter.title}
-                    loading="lazy"
+                    width="800"
+                    height="500"
                     decoding="async"
                     class="w-full h-full object-cover"
                     referrerpolicy="no-referrer"

@@ -77,10 +77,25 @@ const blogPostingSchema = {
     '@id': `https://growthindonesia.my.id/artikel/${slug}`,
   },
 };
+const ARTICLE_SEO_TITLES: Record<string, string> = {
+  'membangun-karakter-pelajar-kemah-besar-smpn-1-geger-di-ndalem-prabu-sarangan':
+    'Kemah Besar & Outbound SMPN 1 Geger Sarangan',
+  'pentingnya-team-building-untuk-produktivitas-karyawan':
+    'Team Building untuk Produktivitas Karyawan',
+  'smpn-1-geger-gelar-outdoor-learning-di-ndalem-prabu-sarangan-tanamkan-karakter-jiwa-nasionalisme':
+    'Outdoor Learning SMPN 1 Geger di Sarangan',
+  'tips-memilih-provider-outbound-profesional':
+    'Tips Memilih Provider Outbound Profesional',
+};
+const seoTitle = ARTICLE_SEO_TITLES[slug as string] || article.frontmatter.title;
+const seoDescription =
+  article.frontmatter.description.length > 160
+    ? `${article.frontmatter.description.slice(0, 155).replace(/\s+\S*$/, '')}.`
+    : article.frontmatter.description;
 ---
 <BaseLayout
-  title={article.frontmatter.title}
-  description={article.frontmatter.description}
+  title={seoTitle}
+  description={seoDescription}
   ogImage={article.frontmatter.image}
   ogType="article"
   schema={blogPostingSchema}
@@ -154,6 +169,8 @@ const blogPostingSchema = {
           <img
             src={article.frontmatter.image}
             alt={article.frontmatter.title}
+            width="1200"
+            height="571"
             fetchpriority="high"
             loading="eager"
             decoding="async"

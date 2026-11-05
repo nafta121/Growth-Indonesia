@@ -144,6 +144,8 @@ export default function OutboundGalleryClient({ photos, children }: OutboundGall
                 <img
                   src={photo.url}
                   alt={photo.alt}
+                  width={800}
+                  height={800}
                   decoding="async"
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
@@ -203,6 +205,8 @@ export default function OutboundGalleryClient({ photos, children }: OutboundGall
                 <img
                   src={photos[currentIndex].url}
                   alt={photos[currentIndex].alt}
+                  width={1200}
+                  height={900}
                   decoding="async"
                   className="w-full h-full object-contain"
                   referrerPolicy="no-referrer"

@@ -13,6 +13,8 @@ export default function Hero() {
         <img
           src="https://nafta121.sirv.com/OUTBOUND/2022-10-22%2009-00-09.jpeg"
           alt="Peserta Corporate Outbound dan Team Building Growth Indonesia di Madiun Jawa Timur"
+          width={1600}
+          height={900}
           fetchPriority="high"
           loading="eager"
           decoding="async"
@@ -81,6 +83,8 @@ export default function Hero() {
                 <img
                   src="https://nafta121.sirv.com/OUTBOUND/2022-11-05%2009-09-46.jpeg"
                   alt="Dokumentasi Sesi Team Building & Outbound Training Korporat bersama Fasilitator Growth Indonesia"
+                  width={1000}
+                  height={1000}
                   fetchPriority="high"
                   loading="eager"
                   decoding="async"

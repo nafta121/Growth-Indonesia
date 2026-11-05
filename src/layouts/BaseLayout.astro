@@ -20,7 +20,7 @@ interface Props {
 
 const {
   title,
-  description = 'Provider Corporate Outbound, Team Building, dan Event Organizer (EO) profesional di Madiun & Jawa Timur. Melayani corporate gathering, LDK OSIS & experiential learning.',
+  description = 'Provider Corporate Outbound, Team Building & Event Organizer (EO) di Madiun & Jawa Timur. Melayani gathering, LDK OSIS & experiential learning.',
   canonical,
   ogImage = 'https://nafta121.sirv.com/OUTBOUND/2022-10-22%2009-00-09.jpeg',
   ogType = 'website',
@@ -30,10 +30,9 @@ const {
   hideFooter = false,
 } = Astro.props;
 
-const defaultTitle = 'Corporate Outbound, Team Building & Event Organizer Madiun | Growth Indonesia';
-const fullTitle = title 
-  ? (title.includes('Growth Indonesia') ? title : `${title} | Growth Indonesia`)
-  : defaultTitle;
+const defaultTitle = 'Provider Outbound, Team Building & EO Madiun | Growth Indonesia';
+const cleanTitle = title ? title.replace(/\s*\|\s*growth indonesia\s*$/i, '').trim() : '';
+const fullTitle = cleanTitle ? `${cleanTitle} | Growth Indonesia` : defaultTitle;
 
 const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
 const normalizedCanonical = canonical || `https://growthindonesia.my.id${pathname === '/' ? '' : pathname}`;
