@@ -10,7 +10,7 @@ export default function CityCta({ kategoriName, kotaName }: CityCtaProps) {
   return (
     <section className="py-24 md:py-32 bg-navy relative overflow-hidden">
       <img
-        src="https://nafta121.sirv.com/OUTBOUND/2022-10-22%2009-00-09.jpeg"
+        src="https://growthindonesia.my.id/cdn/outbound/2022-10-22-09-00-09.webp"
         alt={`Dokumentasi Kegiatan ${kategoriName} bersama Fasilitator Growth Indonesia di ${kotaName}`}
         width={1200}
         height={800}

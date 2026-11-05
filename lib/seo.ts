@@ -2,23 +2,23 @@ import { COMPANY_INFO } from './constants';
 
 export const CATEGORY_IMAGES: Record<string, { url: string; alt: string }> = {
   'outbound': {
-    url: 'https://nafta121.sirv.com/OUTBOUND/2022-10-22%2009-00-09.jpeg',
+    url: 'https://growthindonesia.my.id/cdn/outbound/2022-10-22-09-00-09.webp',
     alt: 'Kegiatan Outbound & Team Building'
   },
   'training': {
-    url: 'https://nafta121.sirv.com/OUTBOUND/2022-12-08%2009-01-25.jpeg',
+    url: 'https://growthindonesia.my.id/cdn/outbound/2022-12-08-09-01-25.webp',
     alt: 'Indoor Training & Motivasi Karyawan'
   },
   'fun-games': {
-    url: 'https://nafta121.sirv.com/OUTBOUND/2022-11-05%2006-52-48.jpeg',
+    url: 'https://growthindonesia.my.id/cdn/outbound/2022-11-05-06-52-48.webp',
     alt: 'Fun Games & Ice Breaking'
   },
   'ldk-osis': {
-    url: 'https://nafta121.sirv.com/OUTBOUND/SMP%201%20GEGER%202026/20260623_144948.jpg',
+    url: 'https://growthindonesia.my.id/cdn/smp-1-geger-2026/20260623-144948.webp',
     alt: 'LDK OSIS & Character Building Siswa'
   },
   'gathering': {
-    url: 'https://nafta121.sirv.com/OUTBOUND/2023-01-07%2007-48-27.jpeg',
+    url: 'https://growthindonesia.my.id/cdn/outbound/2023-01-07-07-48-27.webp',
     alt: 'Corporate & Family Gathering'
   }
 };
@@ -26,7 +26,7 @@ export const CATEGORY_IMAGES: Record<string, { url: string; alt: string }> = {
 export function getCategoryOgImage(kategoriKey: string, kotaName?: string) {
   const normalizedKey = kategoriKey.toLowerCase();
   const categoryData = CATEGORY_IMAGES[normalizedKey] || {
-    url: 'https://nafta121.sirv.com/Screenshot_20260430_171224_Chrome.jpg',
+    url: 'https://growthindonesia.my.id/cdn/outbound/screenshot-20260430-171224.webp',
     alt: 'Layanan Growth Indonesia'
   };
 

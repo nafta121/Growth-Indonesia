@@ -44,8 +44,9 @@ export function simulateMiddleware(pathname, headers = {}) {
     accept.includes('text/markdown') &&
     !pathname.startsWith('/_next') &&
     !pathname.startsWith('/_astro') &&
+    !pathname.startsWith('/cdn') &&
     !pathname.startsWith('/api') &&
-    !pathname.match(/\.(png|jpg|jpeg|gif|svg|ico|css|js|json|xml|txt)$/)
+    !pathname.match(/\.(png|jpg|jpeg|gif|webp|svg|ico|css|js|json|xml|txt)$/)
   ) {
     result.rewrittenTo = `/api/markdown?path=${encodeURIComponent(pathname)}`;
     return result;

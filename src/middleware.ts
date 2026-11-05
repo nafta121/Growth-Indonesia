@@ -10,8 +10,9 @@ export const onRequest = defineMiddleware(async (context, next) => {
     acceptHeader.includes('text/markdown') &&
     !pathname.startsWith('/_astro') &&
     !pathname.startsWith('/_next') &&
+    !pathname.startsWith('/cdn') &&
     !pathname.startsWith('/api') &&
-    !pathname.match(/\.(png|jpg|jpeg|gif|svg|ico|css|js|json|xml|txt|md)$/)
+    !pathname.match(/\.(png|jpg|jpeg|gif|webp|svg|ico|css|js|json|xml|txt|md)$/)
   ) {
     const rewritePath = `/api/markdown?path=${encodeURIComponent(pathname)}`;
     return context.rewrite(rewritePath);

@@ -30,7 +30,7 @@ function getArticleBySlug(slug) {
       title: data.title || 'Untitled',
       date: data.date || '2026-06-24',
       description: data.description || '',
-      image: data.image || 'https://nafta121.sirv.com/OUTBOUND/2022-10-22%2009-00-09.jpeg',
+      image: data.image || 'https://growthindonesia.my.id/cdn/outbound/2022-10-22-09-00-09.webp',
       tags: Array.isArray(data.tags) ? data.tags : [],
       author: data.author || 'Admin',
       readTime: data.readTime || '5 min baca',

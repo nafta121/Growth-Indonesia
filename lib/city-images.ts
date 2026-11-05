@@ -5,9 +5,9 @@ export function getCityImage(cityKey: string): string {
   const index = allCities.indexOf(cityKey);
   
   const images = [
-    "https://nafta121.sirv.com/OUTBOUND/2022-10-22%2009-00-09.jpeg",
-    "https://nafta121.sirv.com/OUTBOUND/2022-11-05%2006-52-48.jpeg",
-    "https://nafta121.sirv.com/Screenshot_20260430_171224_Chrome.jpg"
+    "https://growthindonesia.my.id/cdn/outbound/2022-10-22-09-00-09.webp",
+    "https://growthindonesia.my.id/cdn/outbound/2022-11-05-06-52-48.webp",
+    "https://growthindonesia.my.id/cdn/outbound/screenshot-20260430-171224.webp"
   ];
   
   if (index === -1) return images[0];

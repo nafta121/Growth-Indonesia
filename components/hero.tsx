@@ -11,7 +11,7 @@ export default function Hero() {
       {/* Subtle Ambient Backdrop */}
       <div className="absolute inset-0 z-0">
         <img
-          src="https://nafta121.sirv.com/OUTBOUND/2022-10-22%2009-00-09.jpeg"
+          src="https://growthindonesia.my.id/cdn/outbound/2022-10-22-09-00-09.webp"
           alt="Peserta Corporate Outbound dan Team Building Growth Indonesia di Madiun Jawa Timur"
           width={1600}
           height={900}
@@ -81,7 +81,7 @@ export default function Hero() {
             <figure className="rounded-3xl overflow-hidden border border-navy-border bg-navy-2 shadow-md">
               <div className="relative aspect-[4/3] sm:aspect-[16/10] lg:aspect-[4/4]">
                 <img
-                  src="https://nafta121.sirv.com/OUTBOUND/2022-11-05%2009-09-46.jpeg"
+                  src="https://growthindonesia.my.id/cdn/outbound/2022-11-05-09-09-46.webp"
                   alt="Dokumentasi Sesi Team Building & Outbound Training Korporat bersama Fasilitator Growth Indonesia"
                   width={1000}
                   height={1000}

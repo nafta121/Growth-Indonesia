@@ -26,9 +26,8 @@ export default defineConfig({
   ],
   image: {
     domains: [
-      'pub-50a5fd46ec724773a854a130ecf7860c.r2.dev',
+      'growthindonesia.my.id',
       'picsum.photos',
-      'nafta121.sirv.com',
       'images.unsplash.com',
     ],
   },

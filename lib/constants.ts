@@ -6,6 +6,6 @@ export const COMPANY_INFO = {
   address_short: 'Jl. Mujair No.3, Nambangan Kidul, Kota Madiun, Jawa Timur',
   address_html: 'Jl. Mujair No.3, Nambangan Kidul,<br className="hidden md:block" /> Kota Madiun, Jawa Timur',
   maps_url: 'https://maps.app.goo.gl/s5sLVajjti61reWw8?g_st=ac',
-  logo_url: 'https://pub-50a5fd46ec724773a854a130ecf7860c.r2.dev/LOGO/SVG%20LOGO%20GROWTH.svg',
+  logo_url: 'https://growthindonesia.my.id/cdn/logo-growth-indonesia.svg',
   brand_name: 'GROWTH INDONESIA',
 };
