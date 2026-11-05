@@ -24,7 +24,7 @@ export default function Navbar({ children }: { children?: ReactNode }) {
       <div className="max-w-7xl mx-auto h-20 px-6 md:px-12">
         <nav className="flex items-center justify-between h-full">
           {/* Logo */}
-          <a href="/" className="relative z-50 flex items-center group active:scale-95 transition-transform duration-150 ease-[cubic-bezier(0.23,1,0.32,1)]" aria-label="Growth Indonesia Home">
+          <a href="/" className="relative z-50 flex items-center shrink-0 group active:scale-95 transition-transform duration-150 ease-[cubic-bezier(0.23,1,0.32,1)]" aria-label="Growth Indonesia Home">
             <img 
               src={COMPANY_INFO.logo_url} 
               alt={`${COMPANY_INFO.brand_name} - Corporate Outbound & Event Organizer Madiun`} 
@@ -40,8 +40,8 @@ export default function Navbar({ children }: { children?: ReactNode }) {
           </a>
 
           {/* Desktop Nav & CTA */}
-          <div className="hidden md:flex items-center gap-6 lg:gap-8">
-            <ul className="flex items-center gap-4 lg:gap-6">
+          <div className="hidden lg:flex items-center gap-4 xl:gap-8">
+            <ul className="flex items-center gap-1.5 xl:gap-5">
               {NAV_LINKS.map((link) => (
                 <li key={link.name}>
                   <a

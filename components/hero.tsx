@@ -58,18 +58,18 @@ export default function Hero() {
             </div>
 
             {/* Field Operations Ledger */}
-            <dl className="mt-10 pt-8 border-t border-navy-border grid grid-cols-3 gap-6 w-full max-w-lg">
-              <div>
+            <dl className="mt-10 pt-8 border-t border-navy-border grid grid-cols-3 gap-4 sm:gap-8 w-full max-w-xl">
+              <div className="min-w-0">
                 <dt className="text-xs font-medium text-navy-muted">Rekam Jejak</dt>
-                <dd className="font-display text-2xl sm:text-3xl font-black text-white mt-1 num">250+ Klien</dd>
+                <dd className="font-display text-lg sm:text-2xl xl:text-3xl font-black text-white mt-1 leading-tight num">250+ Klien</dd>
               </div>
-              <div>
+              <div className="min-w-0">
                 <dt className="text-xs font-medium text-navy-muted">Kapasitas Alumni</dt>
-                <dd className="font-display text-2xl sm:text-3xl font-black text-white mt-1 num">15.000+ Pax</dd>
+                <dd className="font-display text-lg sm:text-2xl xl:text-3xl font-black text-white mt-1 leading-tight num">15.000+ Pax</dd>
               </div>
-              <div>
+              <div className="min-w-0">
                 <dt className="text-xs font-medium text-navy-muted">Kantor Operasional</dt>
-                <dd className="font-display text-2xl sm:text-3xl font-black text-white mt-1">Madiun, Jatim</dd>
+                <dd className="font-display text-lg sm:text-2xl xl:text-3xl font-black text-white mt-1 leading-tight">Madiun, Jatim</dd>
               </div>
             </dl>
           </div>

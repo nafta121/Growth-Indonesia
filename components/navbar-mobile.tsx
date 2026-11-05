@@ -83,7 +83,7 @@ export default function NavbarMobile({ navLinks }: { navLinks: NavLink[] }) {
         ref={toggleButtonRef}
         id="mobile-menu-toggle"
         type="button"
-        className="relative z-50 min-h-12 min-w-12 p-3 text-ink md:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-dark focus-visible:ring-offset-2 bg-paper-2 rounded-xl transition-transform duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-95 flex items-center justify-center"
+        className="relative z-50 min-h-12 min-w-12 p-3 text-ink lg:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-dark focus-visible:ring-offset-2 bg-paper-2 rounded-xl transition-transform duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-95 flex items-center justify-center"
         onClick={() => setIsOpen(!isOpen)}
         aria-label={isOpen ? "Tutup menu" : "Buka menu"}
         aria-expanded={isOpen}
@@ -121,7 +121,7 @@ export default function NavbarMobile({ navLinks }: { navLinks: NavLink[] }) {
             animate={shouldReduceMotion ? { opacity: 1 } : { opacity: 1, transform: 'translateX(0%)' }}
             exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, transform: 'translateX(100%)' }}
             transition={{ duration: 0.25, ease: [0.32, 0.72, 0, 1] }}
-            className="fixed inset-0 z-40 flex flex-col bg-white md:hidden overflow-y-auto"
+            className="fixed inset-0 z-40 flex flex-col bg-white lg:hidden overflow-y-auto overflow-x-hidden"
           >
             <ul className="flex flex-col items-center gap-4 w-full px-8 pt-24">
               {navLinks.map((link, i) => (
@@ -183,7 +183,7 @@ export default function NavbarMobile({ navLinks }: { navLinks: NavLink[] }) {
             </div>
 
             {/* Decoration for Mobile Menu */}
-            <div className="absolute bottom-6 left-0 right-0 flex justify-center opacity-5 pointer-events-none">
+            <div className="absolute bottom-6 left-0 right-0 flex justify-center opacity-5 pointer-events-none overflow-hidden">
               <span className="text-6xl font-display font-extrabold whitespace-nowrap text-ink">{COMPANY_INFO.brand_name}</span>
             </div>
           </motion.div>
