@@ -29,12 +29,12 @@ Panitia dan komite pengadaan menggunakan portal ini saat menyusun rencana kegiat
 - Menjelajahi direktori kapabilitas layanan berdasarkan kategori program atau lokasi kota/kabupaten di Jawa Timur (`/layanan/[city]/[category]`).
 - Menggunakan **Kalkulator Budget B2B** interaktif untuk menyimulasikan estimasi investasi berdasarkan jumlah peserta (*pax*), durasi hari, pilihan lokasi, dan fasilitas tambahan (*add-ons*).
 - Memverifikasi bukti legalitas, lisensi standar kompetensi fasilitasi nasional, standar K3, dan rekam jejak klien institusi pada halaman portofolio & sertifikasi.
-- Mengirimkan rincian simulasi anggaran atau permintaan proposal teknis (*Request for Proposal*) secara langsung ke konsultan Growth Indonesia melalui WhatsApp (`+62 852-9033-8538`) atau formulir kontak resmi (`info@growthindonesia.com`).
+- Mengirimkan rincian simulasi anggaran atau permintaan proposal teknis (*Request for Proposal*) secara langsung ke konsultan Growth Indonesia melalui WhatsApp (`+62 857-0474-8186`) atau formulir kontak resmi (`info@growthindonesia.my.id`).
 
 ## Capabilities and Constraints
 
 - **Arsitektur Web & Runtime:** Dibangun di atas Astro 5 (`output: 'static'` hybrid) dan di-deploy ke Cloudflare Workers (`@astrojs/cloudflare`), menggunakan Tailwind CSS v4 serta komponen pulau interaktif React 19 (`@astrojs/react`) yang dibatasi secara ketat pada 6 pulau interaktif (`navbar-mobile`, `services-tabs`, `outbound-gallery-client`, `our-impact`, `kalkulator-budget`, `contact`).
-- **Direktori Programmatic SEO (pSEO):** Menyediakan 190 halaman layanan regional statis yang mencakup 38 kota/kabupaten di Jawa Timur × 4 kategori layanan utama, ditambah pusat artikel edukasi berbasis MDX Content Collections (`src/content/artikel/`).
+- **Direktori Programmatic SEO (pSEO):** Menyediakan 186 halaman layanan regional statis yang mencakup 31 hub kota/kabupaten di Jawa Timur × 5 kategori layanan kanonis (`outbound`, `training`, `fun-games`, `ldk-osis`, `gathering`) + 31 halaman hub kota, ditambah pusat artikel edukasi berbasis MDX Content Collections (`src/content/artikel/`).
 - **Standar Web Agent-Ready:** Mendukung penemuan dan konsumsi oleh agen AI melalui `/llms.txt`, RFC 9727 API Catalog (`/.well-known/api-catalog`), metadata OAuth/OIDC discovery, MCP Server Card (`/.well-known/mcp/server-card.json`), indeks Agent Skills (`/.well-known/agent-skills/index.json`), JSON-LD terstruktur, endpoint API (`/api/services`, `/api/contact`, `/api/mdx/[slug]`), serta deklarasi WebMCP (`navigator.modelContext.provideContext()`).
 - **Disiplin Bahasa:** Seluruh teks antarmuka pengguna ditulis dalam Bahasa Indonesia B2B yang formal, lugas, dan spesifik; penamaan simbol dan struktur kode menggunakan Bahasa Inggris.
 
@@ -47,7 +47,7 @@ Panitia dan komite pengadaan menggunakan portal ini saat menyusun rencana kegiat
 
 - **Sertifikasi & Lisensi Resmi:** Kompetensi Fasilitator Experiential Learning & Outbound (Standar Kompetensi Fasilitasi Nasional), Sertifikasi K3 Outbound & Manajemen Risiko Lapangan, dan Asesor Kompetensi Metodologi Pelatihan (`src/pages/portofolio-dan-sertifikasi.astro`, `components/credibility-portfolio.tsx`).
 - **Portofolio Institusi & Studi Kasus:** Bank Jatim, Pemprov Jatim, Petrokimia Gresik, Universitas Airlangga, PT INKA (Persero), dan SMAN 2 Madiun (`components/clients.tsx`, `components/credibility-portfolio.tsx`, `components/testimonials.tsx`).
-- **Aset Visual & Data Regional:** Dokumentasi lapangan asli di `public/images/outbound/`, logo klien di `public/images/clients/`, serta basis data 38 kota/kabupaten Jawa Timur di `lib/pseo-data.ts`.
+- **Aset Visual & Data Regional:** Dokumentasi lapangan asli di `public/images/outbound/`, logo klien di `public/images/clients/`, serta basis data kota dan kategori layanan Jawa Timur di `lib/cities.ts` dan `lib/categories.ts`.
 - **Batasan Fakta:** Pekerjaan desain atau konten di masa depan tidak boleh mengarang testimoni, nama klien, nomor sertifikasi, atau klaim harga baru di luar bukti yang telah terverifikasi.
 
 ## Product Principles
