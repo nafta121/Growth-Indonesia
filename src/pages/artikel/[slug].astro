@@ -6,7 +6,7 @@ import { Breadcrumb } from '@/components/breadcrumb';
 import { getAllArticles, getArticleBySlug } from '@/lib/mdx';
 import type { Article } from '@/lib/mdx';
 import { COMPANY_INFO } from '@/lib/constants';
-import { ArrowLeft, Calendar, User, Clock, Tag, MessageSquare } from 'lucide-react';
+import { ArrowLeft, Calendar, User, Clock, Tag, MessageSquare, Sparkles } from 'lucide-react';
 
 export async function getStaticPaths() {
   const articles = await getAllArticles();
@@ -40,6 +40,7 @@ const matchingEntry = Object.values(mdxModules).find((mod: any) =>
 const Content = matchingEntry?.Content || matchingEntry?.default;
 
 const articleDate = article.frontmatter.date || '2026-06-24';
+const articleModifiedDate = '2026-11-10';
 const blogPostingSchema = {
   '@context': 'https://schema.org',
   '@type': 'BlogPosting',
@@ -48,7 +49,7 @@ const blogPostingSchema = {
   description: article.frontmatter.description,
   image: [article.frontmatter.image],
   datePublished: articleDate,
-  dateModified: articleDate,
+  dateModified: articleModifiedDate,
   author: {
     '@type': 'Person',
     name:
@@ -87,7 +88,20 @@ const ARTICLE_SEO_TITLES: Record<string, string> = {
   'tips-memilih-provider-outbound-profesional':
     'Tips Memilih Provider Outbound Profesional',
 };
+const ARTICLE_SUMMARY_ANSWERS: Record<string, string> = {
+  'membangun-karakter-pelajar-kemah-besar-smpn-1-geger-di-ndalem-prabu-sarangan':
+    'Kemah Besar dan LDK OSIS SMPN 1 Geger di Ndalem Prabu Sarangan bersama Growth Indonesia membekali pelajar dengan kepemimpinan, kedisiplinan, dan kerja sama tim melalui metode experiential learning. Didukung Zero Accident Policy dan pengalaman melayani 250+ instansi (15.000+ peserta), paket edukasi pelajar tersedia mulai Rp 150.000/pax.',
+  'pentingnya-team-building-untuk-produktivitas-karyawan':
+    'Program Corporate Team Building berbasis experiential learning terbukti menyelaraskan komunikasi lintas divisi, menurunkan gesekan kerja, dan meningkatkan produktivitas karyawan. Growth Indonesia telah mendampingi 250+ perusahaan, BUMN, dan instansi (15.000+ peserta) di Jawa Timur dengan standar Zero Accident Policy dan investasi mulai Rp 150.000/pax.',
+  'smpn-1-geger-gelar-outdoor-learning-di-ndalem-prabu-sarangan-tanamkan-karakter-jiwa-nasionalisme':
+    'Program Outdoor Learning SMPN 1 Geger di Ndalem Prabu Sarangan mengintegrasikan simulasi karakter, wawasan kebangsaan, dan ketangguhan mental siswa di alam terbuka. Dipandu langsung oleh fasilitator ahli Growth Indonesia berstandar Zero Accident Policy, program karakter pelajar ini dirancang terukur dengan biaya mulai Rp 150.000/pax.',
+  'tips-memilih-provider-outbound-profesional':
+    'Memilih provider outbound profesional wajib mempertimbangkan 5 indikator utama: kurikulum berbasis Training Need Analysis (TNA), jam terbang Master Trainer, standar keselamatan Zero Accident Policy, transparansi RAB, serta rekam jejak nyata (seperti Growth Indonesia yang telah dipercaya 250+ instansi dan 15.000+ peserta di Jawa Timur).',
+};
 const seoTitle = ARTICLE_SEO_TITLES[slug as string] || article.frontmatter.title;
+const summaryAnswer =
+  ARTICLE_SUMMARY_ANSWERS[slug as string] ||
+  `${article.frontmatter.description} Program ini dirancang oleh tim Master Trainer Growth Indonesia dengan standar Zero Accident Policy dan rekam jejak melayani 250+ klien korporat serta sekolah di Jawa Timur.`;
 const seoDescription =
   article.frontmatter.description.length > 160
     ? `${article.frontmatter.description.slice(0, 155).replace(/\s+\S*$/, '')}.`
@@ -184,6 +198,26 @@ const seoDescription =
     <!-- Article Content -->
     <section class="py-16 md:py-24 bg-white text-ink">
       <div class="max-w-4xl mx-auto px-6">
+        <!-- AI Overview / Direct Answer Summary Block -->
+        <aside aria-label="Ringkasan Inti Artikel" class="bg-paper border border-rule rounded-3xl p-6 md:p-8 mb-12 shadow-sm">
+          <div class="flex items-start gap-4">
+            <div class="bg-brand-tint p-3 rounded-2xl shrink-0">
+              <Sparkles className="w-6 h-6 text-brand-dark" aria-hidden="true" />
+            </div>
+            <div>
+              <h2 class="font-display font-extrabold text-xl md:text-2xl text-ink mb-2 tracking-tight">
+                Ringkasan Inti Artikel
+              </h2>
+              <p class="text-ink-2 text-base md:text-lg leading-relaxed font-medium text-pretty">
+                {summaryAnswer}
+              </p>
+              <p class="text-xs font-semibold text-brand-dark mt-3">
+                Ditinjau oleh Naftalyndho (Master Trainer Experiential Learning) • Diperbarui 10 November 2026
+              </p>
+            </div>
+          </div>
+        </aside>
+
         <div class="prose prose-slate prose-lg md:prose-xl max-w-none hover:prose-headings:text-brand-dark prose-headings:font-display prose-headings:font-extrabold prose-a:text-brand-dark">
           {Content ? <Content /> : <div set:html={article.content} />}
         </div>

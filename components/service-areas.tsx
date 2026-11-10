@@ -2,7 +2,20 @@ import { MapPin, ArrowRight } from 'lucide-react';
 import ScrollReveal from '@/components/ui/scroll-reveal';
 import { Button } from '@/components/ui/button';
 
-export const PRIORITY_CITIES = ['madiun', 'surabaya', 'kediri', 'malang', 'magetan', 'ponorogo'];
+export const PRIORITY_CITIES = [
+  'madiun',
+  'surabaya',
+  'kediri',
+  'malang',
+  'magetan',
+  'ponorogo',
+  'batu',
+  'mojokerto',
+  'ngawi',
+  'pacitan',
+  'banyuwangi',
+  'jember',
+];
 
 export default function ServiceAreas() {
   return (

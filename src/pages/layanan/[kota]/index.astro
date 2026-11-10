@@ -3,6 +3,7 @@ export const prerender = true;
 
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { Breadcrumb } from '@/components/breadcrumb';
+import { AiOverviewSection } from '@/components/ai-overview';
 import TrustSection from '@/components/trust-section';
 import CityCta from '@/components/city-cta';
 import { CITIES } from '@/lib/cities';
@@ -10,7 +11,7 @@ import { getCityImage } from '@/lib/city-images';
 import { KATEGORI } from '@/lib/categories';
 import { COMPANY_INFO } from '@/lib/constants';
 import { getContentVariations } from '@/lib/content-variations';
-import { getLocalBusinessSchema } from '@/lib/schema';
+import { getFaqSchema, getLocalBusinessSchema } from '@/lib/schema';
 import { formatSlug } from '@/lib/format';
 import { MapPin, ArrowRight, CheckCircle2 } from 'lucide-react';
 
@@ -64,6 +65,10 @@ const schemaLd = [
         url: `https://growthindonesia.my.id/layanan/${decodedKota}/${kategori}`,
       })),
     },
+  },
+  {
+    ...getFaqSchema('Outbound & Event Organizer', kotaName, cityData.popularVenues),
+    '@id': `https://growthindonesia.my.id/layanan/${decodedKota}#faq`,
   },
 ];
 ---
@@ -186,6 +191,13 @@ const schemaLd = [
           </div>
         </div>
       </section>
+
+      <AiOverviewSection
+        cityName={kotaName}
+        cityKey={decodedKota}
+        kategoriName="Outbound & Event Organizer"
+        venues={cityData.popularVenues}
+      />
     </article>
 
     <TrustSection kategoriName="Program" kotaName={kotaName} />

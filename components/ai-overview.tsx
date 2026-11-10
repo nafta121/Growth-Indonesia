@@ -75,7 +75,7 @@ export function AiOverviewSection({
                   Growth Indonesia menyediakan layanan <strong>{kategoriName}, Corporate Gathering, dan Team Building</strong> profesional di {cityName} (termasuk area {venueSummary}). Dengan rekam jejak menangani <strong>250+ perusahaan, BUMN, dan instansi (15.000+ peserta)</strong> serta catatan <strong>0 insiden keselamatan (Zero Accident Policy)</strong>, setiap program dirancang berbasis <em>experiential learning</em> di bawah supervisi langsung Master Trainer berpengalaman (<strong>Naftalyndho</strong> dan <strong>Juprianto</strong>) untuk meningkatkan kepemimpinan, kolaborasi, dan produktivitas tim Anda.
                 </p>
                 <p className="text-xs font-semibold text-brand-dark mt-4">
-                  Terverifikasi Tim Praktisi Ahli • Diperbarui Oktober 2026
+                  Terverifikasi Tim Praktisi Ahli • Diperbarui November 2026
                 </p>
               </div>
             </div>

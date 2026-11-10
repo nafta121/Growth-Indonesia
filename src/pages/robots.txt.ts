@@ -12,6 +12,12 @@ Allow: /2c11486128914291876d43ecd6d55580.txt
 Disallow: /api/
 
 # AI Search Bots & Crawlers (GEO Grounding)
+User-agent: Googlebot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
 User-agent: GPTBot
 Allow: /
 
@@ -27,10 +33,13 @@ Allow: /
 User-agent: ClaudeBot
 Allow: /
 
-User-agent: Google-Extended
+User-agent: Claude-SearchBot
 Allow: /
 
 User-agent: Applebot-Extended
+Allow: /
+
+User-agent: meta-webindexer
 Allow: /
 
 User-agent: Bingbot

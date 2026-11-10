@@ -7,30 +7,35 @@ export const servicesData = [
   {
     icon: Users,
     title: "Outbound & Team Building Korporat",
+    href: "/layanan/madiun/outbound",
     description:
       "Simulasi kolaborasi berbasis Experiential Learning untuk mencairkan sekat komunikasi antar-divisi, membangun kepercayaan tim, dan menyelaraskan budaya kerja di BUMN, instansi pemerintah, maupun perusahaan swasta.",
   },
   {
     icon: Compass,
     title: "LDK OSIS, MPK & Character Building",
+    href: "/layanan/madiun/ldk-osis",
     description:
       "Kurikulum kepemimpinan pelajar dan mahasiswa yang terstruktur untuk membentuk kedisiplinan, tanggung jawab organisasi, komunikasi publik, serta ketangguhan mental generasi muda.",
   },
   {
     icon: Presentation,
     title: "Indoor Training & Capacity Building SDM",
+    href: "/layanan/madiun/training",
     description:
       "Pelatihan intensif di dalam ruangan (in-house training) yang berfokus pada kepemimpinan manajerial, pelayanan prima (service excellence), pemecahan masalah, dan motivasi kerja terukur.",
   },
   {
     icon: Map,
     title: "Corporate Outing & Wisata Edukasi Terpadu",
+    href: "/layanan/madiun/fun-games",
     description:
       "Rangkaian perjalanan penyegaran karyawan (company outing) dan kunjungan edukatif dengan skenario permainan kelompok yang mempererat keakraban di destinasi unggulan Jawa Timur.",
   },
   {
     icon: CalendarCheck,
     title: "Manajemen Acara & Family Gathering",
+    href: "/layanan/madiun/gathering",
     description:
       "Pengelolaan acara menyeluruh (end-to-end event organizer) mulai dari perancangan konsep, seleksi venue dan katering, panggung hiburan, hingga dokumentasi sinematik dan pengamanan medis.",
   },
@@ -110,20 +115,21 @@ export default function Services({ children }: { children?: ReactNode }) {
             {servicesData.map((service) => {
               const Icon = service.icon;
               return (
-                <div
+                <a
                   key={service.title}
-                  className="flex flex-col p-6 rounded-3xl bg-navy-2 border border-navy-border hover:border-brand/40 transition-[border-color,background-color] duration-200"
+                  href={service.href}
+                  className="group flex flex-col p-6 rounded-3xl bg-navy-2 border border-navy-border hover:border-brand/40 transition-[border-color,background-color] duration-200"
                 >
                   <div className="flex items-start gap-3 mb-3">
                     <Icon className="w-5 h-5 text-brand shrink-0 mt-0.5" aria-hidden="true" />
-                    <h3 className="text-base font-bold text-white leading-snug">
+                    <h3 className="text-base font-bold text-white group-hover:text-brand transition-colors leading-snug">
                       {service.title}
                     </h3>
                   </div>
                   <p className="text-navy-muted text-xs leading-relaxed">
                     {service.description}
                   </p>
-                </div>
+                </a>
               );
             })}
           </div>
