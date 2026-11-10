@@ -1,6 +1,7 @@
 import React from 'react';
 import type { ReactNode } from 'react';
 import { COMPANY_INFO } from '@/lib/constants';
+import { CITIES, getCityOperationalProfile } from '@/lib/cities';
 import { formatSlug } from './format';
 
 export interface ContentVariation {
@@ -13,70 +14,82 @@ export interface ContentVariation {
 }
 
 export function getContentVariations(kategori: string, kotaName: string): ContentVariation {
+  const cityKey = kotaName.toLowerCase().trim().replace(/\s+/g, '-');
+  const cityData = CITIES[cityKey];
+  const profile = getCityOperationalProfile(cityKey);
+  const primaryVenues =
+    cityData && cityData.popularVenues.length > 0
+      ? cityData.popularVenues.slice(0, 2).join(' dan ')
+      : `lokasi strategis ${kotaName}`;
+  const allVenues =
+    cityData && cityData.popularVenues.length > 0
+      ? cityData.popularVenues.join(', ')
+      : `venue unggulan ${kotaName}`;
+
   const contentMap: Record<string, ContentVariation> = {
     'outbound': {
       title: `Jasa Outbound & Team Building ${kotaName}`,
       h1: <>Provider Outbound &amp; Jasa Outbound di {kotaName}</>,
-      subheadline: `Ciptakan momen Corporate Gathering yang tak terlupakan dengan Jasa Outbound ${kotaName} terbaik. Tingkatkan soliditas tim dan kapasitas kepemimpinan melalui program Provider Outbound ${kotaName} yang dirancang khusus. Hubungi Growth Indonesia untuk desain penawaran eksklusif!`,
+      subheadline: `Hilangkan risiko acara monoton, kendala cuaca, atau pembengkakan anggaran pada agenda Outbound & Team Building instansi Anda di ${kotaName} (${allVenues}). Dipandu langsung oleh Master Trainer berpengalaman dengan jaminan Zero Accident Policy, Garansi Plan B Cuaca (aula/pendopo indoor), serta draf Proposal, Rundown, RAB, dan dokumen LPJ resmi siap dalam 1x24 jam.`,
       providerType: 'provider outbound',
-      bodyIntro: `Sebagai provider outbound B2B terpercaya di ${kotaName}, kami merancang simulasi outdoor berbasis experiential learning yang menerjemahkan Core Values perusahaan ke dalam tantangan lapangan yang terukur, aman (Zero Accident Policy), dan berdampak nyata pada kolaborasi lintas divisi.`,
+      bodyIntro: `Sebagai provider outbound B2B, BUMN, dan instansi pemerintah di ${kotaName} (${profile.corridorName}), kami merancang simulasi experiential learning di ${primaryVenues} dengan karakter medan ${profile.terrainType.toLowerCase()}. ${profile.mobilizationSla}, memastikan Core Values organisasi diterjemahkan menjadi kolaborasi lintas divisi yang terukur dan bebas insiden.`,
       deliverables: [
-        'Low & High Impact Team Challenge',
-        'Simulasi Leadership & Problem Solving',
-        'Debriefing Reflektif Berbasis KPI Tim',
-        'Fasilitator Berpengalaman & Tim Medis Siaga',
+        `Simulasi Low & High Impact Team Challenge di ${primaryVenues}`,
+        'Asesmen TNA Pra-Acara & Debriefing Reflektif Berbasis KPI Tim',
+        'Garansi Plan B Cuaca (Aula/Pendopo) & Tim Medis P3K Siaga',
+        'Draf Proposal, RAB Transparan, Laporan Evaluasi SDM & Dokumen LPJ',
       ],
     },
     'training': {
       title: `Indoor Training & Pelatihan SDM ${kotaName}`,
       h1: <>Pusat Indoor Training &amp; Motivasi di {kotaName}</>,
-      subheadline: `Tingkatkan Soft Skill karyawan Anda dengan Indoor Training ${kotaName} profesional. Growth Indonesia menyajikan program pengembangan SDM dan Motivasi yang aplikatif dan dirancang khusus untuk menjawab tantangan spesifik organisasi Anda. Mari transformasikan potensi tim Anda hari ini!`,
+      subheadline: `Jangan biarkan anggaran pelatihan SDM di ${kotaName} habis hanya untuk seminar satu arah tanpa perubahan perilaku kerja. Growth Indonesia menghadirkan Indoor Training & Capacity Building berbasis Training Need Analysis (TNA) di ${allVenues}, lengkap dengan studi kasus operasional, terukur lewat Laporan Evaluasi Kompetensi SDM dan kelengkapan LPJ pengadaan.`,
       providerType: 'penyelenggara indoor training',
-      bodyIntro: `Program Indoor Training dan Capacity Building kami di ${kotaName} menggabungkan metodologi andragogi modern, studi kasus industri, serta roleplay interaktif untuk mengakselerasi kompetensi kepemimpinan, komunikasi efektif, dan etos kerja berkinerja tinggi.`,
+      bodyIntro: `Program Indoor Training dan Capacity Building kami di ${kotaName} (${profile.corridorName}) menggabungkan metodologi andragogi modern, simulasi kepemimpinan manajerial, dan roleplay pelayanan prima pada fasilitas ${profile.terrainType.toLowerCase()}. ${profile.mobilizationSla}, mendukung peningkatan produktivitas staf hingga jajaran supervisor dan aparatur.`,
       deliverables: [
-        'Training Needs Analysis (TNA) Pra-Acara',
-        'Modul Leadership, Communication & Service Excellence',
-        'Workshop Interaktif, Roleplay & Case Study',
-        'Laporan Evaluasi Kompetensi Pasca-Pelatihan',
+        `Training Needs Analysis (TNA) & Kurikulum Kustom Instansi ${kotaName}`,
+        'Modul Leadership, Communication & Service Excellence Terapan',
+        'Workshop Interaktif, Roleplay & Simulasi Problem Solving',
+        'Laporan Evaluasi Kompetensi Pasca-Pelatihan & Dokumen LPJ Resmi',
       ],
     },
     'fun-games': {
       title: `Jasa Fun Games & Ice Breaking ${kotaName}`,
       h1: <>Jasa Fun Game &amp; Ice Breaking di {kotaName}</>,
-      subheadline: `Cairkan suasana dan bangun keakraban tanpa batas melalui paket Fun Game ${kotaName} yang energik. Layanan kami yang penuh Ice Breaking ${kotaName} menjadi pilihan tepat untuk menyempurnakan program Team Building perusahaan Anda!`,
+      subheadline: `Pastikan agenda penyegaran karyawan (company outing) di ${kotaName} berjalan cair, aman bagi seluruh usia termasuk peserta senior, dan bebas canggung. Paket Fun Games & Ice Breaking kami di ${allVenues} dirancang inklusif (low-risk, high-impact) mulai Rp 150.000/pax untuk 1 hari penuh dengan Garansi Plan B Cuaca dan dukungan RAB satu pintu.`,
       providerType: 'penyedia layanan fun game',
-      bodyIntro: `Paket Fun Games dan Ice Breaking kami di ${kotaName} dirancang khusus untuk mencairkan kekakuan komunikasi, menyegarkan kembali semangat kerja (refreshment), dan membangun keakraban inklusif bagi seluruh peserta dari berbagai jenjang jabatan.`,
+      bodyIntro: `Paket Fun Games dan Ice Breaking kami di ${kotaName} (${profile.corridorName}) memanfaatkan area ${primaryVenues} (${profile.terrainType.toLowerCase()}) untuk mencairkan sekat komunikasi antar-divisi dan memulihkan energi kerja. ${profile.mobilizationSla}, dipimpin oleh Master of Games profesional dengan standar keselamatan Zero Accident Policy.`,
       deliverables: [
-        'Energizer & Mass Ice Breaking Interaktif',
-        'Kompetisi Kelompok Berbasis Kekompakan',
-        'Peralatan Permainan Lengkap & Aman',
-        'Master of Games & Pemandu Acara Profesional',
+        `Energizer & Mass Ice Breaking Inklusif di ${primaryVenues}`,
+        'Kompetisi Kelompok Low-Risk High-Impact (Ramah Semua Usia)',
+        'Peralatan Permainan Lengkap, Sound System & Garansi Plan B Cuaca',
+        'Master of Games Berpengalaman, Tim P3K & Rincian RAB Transparan',
       ],
     },
     'ldk-osis': {
       title: `LDK OSIS & Character Building ${kotaName}`,
       h1: <>Lembaga LDK OSIS &amp; Character Building di {kotaName}</>,
-      subheadline: `Bentuk mental generasi muda yang tangguh dengan program LDK OSIS ${kotaName} yang intensif. Jadikan kami mitra Pelatihan Siswa melalui Character Building ${kotaName} untuk membina kedisiplinan, kemandirian, dan problem solving peserta didik. Percayakan siswa Anda kepada ahlinya!`,
+      subheadline: `Bentuk karakter kepemimpinan pelajar dan mahasiswa di ${kotaName} melalui kurikulum LDK OSIS modern yang disiplin, edukatif, dan 100% bebas perpeloncoan maupun kekerasan fisik. Dilaksanakan di ${allVenues} dengan pengawasan ketat K3 lapangan, tim medis P3K siaga, Garansi Plan B Cuaca, serta laporan evaluasi kesiswaan lengkap.`,
       providerType: 'fasilitator LDK OSIS',
-      bodyIntro: `Program Latihan Dasar Kepemimpinan (LDK) OSIS dan Character Building pelajar di ${kotaName} disusun dengan pendekatan edukatif, disiplin positif, dan simulasi organisasi untuk mencetak pengurus siswa serta generasi muda yang berintegritas, mandiri, dan komunikatif.`,
+      bodyIntro: `Program Latihan Dasar Kepemimpinan (LDK) OSIS, MPK, dan Character Building pelajar di ${kotaName} (${profile.corridorName}) dirancang khusus di kawasan ${primaryVenues} (${profile.terrainType.toLowerCase()}). ${profile.mobilizationSla}, membekali pengurus siswa SMP, SMA/SMK, dan BEM kampus dengan disiplin positif, manajemen organisasi, serta komunikasi publik.`,
       deliverables: [
-        'Kurikulum Kepemimpinan Siswa & Manajemen Organisasi',
-        'Public Speaking, Sidang & Dinamika Kelompok',
-        'Outbond Karakter, Bela Negara & Kemandirian',
-        'Pendampingan Instruktur Berpengalaman & Ramah Anak',
+        `Kurikulum Kepemimpinan Siswa & Manajemen Organisasi di ${kotaName}`,
+        'Simulasi Public Speaking, Persidangan & Problem Solving Kelompok',
+        'Outbound Karakter Bebas Perpeloncoan dengan Standar K3 & Medis P3K',
+        'Sertifikat Peserta, Dokumentasi Kegiatan & Laporan Evaluasi Sekolah',
       ],
     },
     'gathering': {
       title: `EO Corporate & Family Gathering ${kotaName}`,
       h1: <>EO Corporate &amp; Family Gathering di {kotaName}</>,
-      subheadline: `Wujudkan acara Corporate Gathering, Employee Gathering, dan Family Gathering di ${kotaName} yang berkesan dan terorganisir secara profesional. ${COMPANY_INFO.brand_name} siap merancang konsep acara, manajemen venue, hingga aktivitas kebersamaan yang mempererat solidaritas tim Anda!`,
+      subheadline: `Bebaskan panitia internal Anda dari kerumitan mengurus ratusan detail vendor saat menyelenggarakan Corporate & Family Gathering di ${kotaName} (${allVenues}). Kami menangani eksekusi satu pintu (terima beres) mulai dari reservasi venue/hotel, katering higienis, fun games keluarga, Gala Dinner, dokumentasi drone, hingga dokumen LPJ resmi.`,
       providerType: 'event organizer gathering',
-      bodyIntro: `Sebagai Event Organizer (EO) Corporate & Family Gathering di ${kotaName}, kami menangani perencanaan acara dari hulu ke hilir, mulai dari kurasi venue dan akomodasi, rundown acara malam keakraban (Gala Dinner), hingga aktivitas keluarga dan hiburan yang berkesan.`,
+      bodyIntro: `Sebagai Event Organizer (EO) Corporate, Employee, dan Family Gathering satu pintu di ${kotaName} (${profile.corridorName}), kami mengelola rangkaian acara di ${primaryVenues} (${profile.terrainType.toLowerCase()}) untuk skala 30 hingga 500+ peserta. ${profile.mobilizationSla}, sehingga panitia dapat ikut menikmati acara tanpa khawatir keterlambatan konsumsi atau kendala cuaca.`,
       deliverables: [
-        'Manajemen Rundown, Venue, Akomodasi & Konsumsi',
-        'Konsep Gala Dinner, Awarding Night & Hiburan',
-        'Aktivitas Family & Employee Bonding Terpadu',
-        'Dokumentasi Foto, Video & Drone Sinematik',
+        `Manajemen Satu Pintu Venue, Hotel & Konsumsi di ${primaryVenues}`,
+        'Produksi Panggung Gala Dinner, Awarding Night, Musik & Hiburan',
+        'Aktivitas Family & Employee Bonding + Garansi Plan B Indoor',
+        'Dokumentasi Foto, Video & Drone Sinematik serta Dokumen LPJ/SPJ',
       ],
     }
   };
@@ -84,14 +97,14 @@ export function getContentVariations(kategori: string, kotaName: string): Conten
   return contentMap[kategori.toLowerCase()] || {
     title: `Provider & Jasa ${formatSlug(kategori)} ${kotaName} - Event Organizer`,
     h1: <>Provider {formatSlug(kategori)} di {kotaName}</>,
-    subheadline: `${COMPANY_INFO.brand_name} adalah Event Organizer (EO) yang menghadirkan layanan profesional ${formatSlug(kategori).toLowerCase()} di ${kotaName}. Transformasi budaya perusahaan dan semangat kolaborasi tim Anda bersama instruktur profesional ${COMPANY_INFO.brand_name} untuk hasil yang terukur dan berkesinambungan.`,
+    subheadline: `${COMPANY_INFO.brand_name} adalah Event Organizer (EO) satu pintu yang menghadirkan layanan profesional ${formatSlug(kategori).toLowerCase()} di ${kotaName} (${allVenues}) dengan jaminan Zero Accident Policy, Garansi Plan B Cuaca, dan draf Proposal & RAB siap dalam 1x24 jam.`,
     providerType: `penyedia layanan ${formatSlug(kategori).toLowerCase()}`,
-    bodyIntro: `Sebagai mitra pengembangan SDM dan Event Organizer di ${kotaName}, ${COMPANY_INFO.brand_name} merancang program ${formatSlug(kategori).toLowerCase()} dengan pendekatan experiential learning yang selaras dengan visi dan budaya kerja institusi Anda.`,
+    bodyIntro: `Sebagai mitra pengembangan SDM dan Event Organizer di ${kotaName} (${profile.corridorName}), ${COMPANY_INFO.brand_name} merancang program ${formatSlug(kategori).toLowerCase()} di ${primaryVenues} dengan pendekatan experiential learning yang selaras dengan visi dan budaya kerja institusi Anda.`,
     deliverables: [
-      'Perancangan Program Kustom Sesuai Objektif',
-      'Fasilitator & Instruktur Berpengalaman',
-      'Standar Keselamatan Zero Accident Policy',
-      'Dokumentasi & Evaluasi Kegiatan Lengkap',
+      `Perancangan Program Kustom Berbasis TNA di ${kotaName}`,
+      'Fasilitator & Master Trainer Berpengalaman',
+      'Standar Keselamatan Zero Accident Policy & Garansi Plan B Cuaca',
+      'Dokumentasi, Evaluasi Kegiatan & Dokumen LPJ Lengkap',
     ],
   };
 }

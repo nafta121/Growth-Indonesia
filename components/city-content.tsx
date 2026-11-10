@@ -1,6 +1,7 @@
-import { Target, MapPin, CheckCircle2 } from 'lucide-react';
+import { Target, MapPin, CheckCircle2, ShieldCheck } from 'lucide-react';
 import ScrollReveal from '@/components/ui/scroll-reveal';
 import { getCityImage } from '@/lib/city-images';
+import { getCityOperationalProfile } from '@/lib/cities';
 
 interface CityContentProps {
   kategoriName: string;
@@ -19,6 +20,7 @@ interface CityContentProps {
 
 export default function CityContent({ kategoriName, kotaName, cityKey, cityData, content }: CityContentProps) {
   const contentImage = getCityImage(cityKey);
+  const operationalProfile = getCityOperationalProfile(cityKey);
   const bodyIntro =
     content?.bodyIntro ||
     `Sebagai mitra pengembangan SDM pilihan untuk layanan ${kategoriName.toLowerCase()} di ${kotaName}, kami merancang program berbasis experiential learning yang 100% selaras dengan visi, misi institusi, serta budaya kerja Anda.`;
@@ -76,16 +78,42 @@ export default function CityContent({ kategoriName, kotaName, cityKey, cityData,
               </div>
             )}
             
-            <div className="bg-brand-tint border border-brand-border rounded-3xl p-6 md:p-8 mb-10 relative overflow-hidden group transition-[transform,box-shadow] duration-200 hover:shadow-md hover:-translate-y-1">
+            <div className="bg-brand-tint border border-brand-border rounded-3xl p-6 md:p-8 mb-8 relative overflow-hidden group transition-[transform,box-shadow] duration-200 hover:shadow-md hover:-translate-y-1">
               <div className="relative z-10">
                 <div className="flex items-center gap-3 mb-4">
                   <MapPin className="text-brand-dark w-6 h-6" aria-hidden="true" />
-                  <h3 className="font-display font-extrabold tracking-tight text-ink text-2xl">Keunggulan Lokal di {kotaName}</h3>
+                  <h3 className="font-display font-extrabold tracking-tight text-ink text-2xl">Keunggulan Lokal &amp; Mitigasi Cuaca di {kotaName}</h3>
                 </div>
-                <p className="text-ink-2 leading-relaxed font-medium text-pretty">
+                <p className="text-ink-2 leading-relaxed font-medium text-pretty mb-3">
                   {cityData.uniqueSellingPoint}
                 </p>
+                <p className="text-ink-2 text-sm leading-relaxed font-medium text-pretty">
+                  {operationalProfile.planBContingency}
+                </p>
               </div>
+            </div>
+
+            <div className="bg-paper border border-rule rounded-3xl p-6 md:p-8 mb-10">
+              <div className="flex items-center gap-3 mb-4">
+                <ShieldCheck className="text-brand-dark w-6 h-6 shrink-0" aria-hidden="true" />
+                <h3 className="font-display font-extrabold tracking-tight text-ink text-xl">
+                  Standar Pengadaan 3 Segmen Institusi di {kotaName}
+                </h3>
+              </div>
+              <ul className="space-y-3 text-sm text-ink-2 font-medium leading-relaxed">
+                <li className="flex items-start gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-brand-dark shrink-0 mt-1" aria-hidden="true" />
+                  <span>{operationalProfile.institutionalSegments.corporate}</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-brand-dark shrink-0 mt-1" aria-hidden="true" />
+                  <span>{operationalProfile.institutionalSegments.government}</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-brand-dark shrink-0 mt-1" aria-hidden="true" />
+                  <span>{operationalProfile.institutionalSegments.education}</span>
+                </li>
+              </ul>
             </div>
 
             <div className="space-y-6">

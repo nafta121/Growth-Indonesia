@@ -8,7 +8,7 @@ interface CityCtaProps {
 
 export default function CityCta({ kategoriName, kotaName }: CityCtaProps) {
   return (
-    <section className="py-24 md:py-32 bg-navy relative overflow-hidden">
+    <section id="cta-proposal" className="py-24 md:py-32 bg-navy relative overflow-hidden">
       <img
         src="https://growthindonesia.my.id/cdn/outbound/2022-10-22-09-00-09.webp"
         alt={`Dokumentasi Kegiatan ${kategoriName} bersama Fasilitator Growth Indonesia di ${kotaName}`}

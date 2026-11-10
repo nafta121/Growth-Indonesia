@@ -56,17 +56,17 @@ export default function CityHero({ kategoriName, kotaName, cityKey, content }: C
             {content.h1}
           </h1>
           <p className="text-base sm:text-lg md:text-xl text-navy-muted leading-relaxed max-w-2xl mb-8 text-pretty">
-            Layanan {kategoriName.toLowerCase()}, team building, dan gathering instansi profesional di wilayah {kotaName}.
+            Eksekusi satu pintu {kategoriName.toLowerCase()}, proposal, dan RAB resmi di {kotaName}.
           </p>
           <div className="flex flex-wrap items-center gap-4">
             <Button size="lg" className="h-14 px-8 rounded-full bg-brand-dark text-white hover:bg-brand shadow-md transition-[transform,background-color,box-shadow] duration-200 active:scale-[0.98] flex items-center justify-center gap-2 whitespace-nowrap" asChild>
-              <a href="/#kontak" aria-label={`Konsultasi ${kategoriName} ${kotaName}`} className="text-sm font-bold">
-                Konsultasi Program <ArrowRight className="w-5 h-5" />
+              <a href="#cta-proposal" aria-label={`Minta Proposal dan RAB ${kategoriName} ${kotaName}`} className="text-sm font-bold whitespace-nowrap">
+                Minta Proposal &amp; RAB <ArrowRight className="w-5 h-5" />
               </a>
             </Button>
             <Button size="lg" asChild className="h-14 px-8 rounded-full bg-navy-2 border border-navy-border text-white hover:bg-navy hover:border-brand transition-[transform,background-color,border-color,color] duration-200 active:scale-[0.98] flex items-center justify-center whitespace-nowrap">
-              <a href="/#paket" className="text-sm font-bold">
-                Lihat Paket Harga
+              <a href="#kalkulator-rab" className="text-sm font-bold whitespace-nowrap">
+                Simulasi RAB Instan
               </a>
             </Button>
           </div>

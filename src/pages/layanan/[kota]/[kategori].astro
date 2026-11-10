@@ -104,17 +104,17 @@ const schemaLd = getServicePageSchema({
     </article>
 
     <!-- Interactive Island: Kalkulator Budget -->
-    <section class="py-20 bg-white border-t border-rule">
+    <section id="kalkulator-rab" class="py-20 bg-white border-t border-rule">
       <div class="max-w-7xl mx-auto px-4 md:px-12">
         <div class="text-center mb-12">
           <h2 class="font-display text-3xl md:text-5xl font-black tracking-tight text-ink leading-[1.1] mb-6">
-            Kalkulator Estimasi Investasi
+            Kalkulator Estimasi Investasi {kategoriName} {kotaName}
           </h2>
           <p class="text-lg text-muted max-w-2xl mx-auto font-medium">
-            Simulasikan estimasi anggaran program Anda secara instan sebelum berkonsultasi dengan tim kami.
+            Simulasikan estimasi anggaran program {kategoriName.toLowerCase()} di {kotaName} sesuai kuota peserta dan durasi sebelum meminta draf proposal resmi.
           </p>
         </div>
-        <KalkulatorBudget client:visible />
+        <KalkulatorBudget client:visible defaultCategory={decodedKategori} cityName={kotaName} />
       </div>
     </section>
 

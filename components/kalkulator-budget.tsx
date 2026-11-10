@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Calculator, Users, Compass, Clock, MessageCircle } from 'lucide-react';
+import { Calculator, Users, Compass, Clock, MessageCircle, CheckCircle2 } from 'lucide-react';
 
 const ACTIVITIES = [
   { id: 'outbound', label: 'Outbound & Team Building', pricePerPax: 150000 },
@@ -139,13 +139,18 @@ function KalkulatorResult({
   totalEstimate,
   pax,
   program,
-  duration
+  duration,
+  cityName,
 }: {
   totalEstimate: number;
   pax: number;
   program: Activity;
   duration: Duration;
+  cityName?: string;
 }) {
+  const perPaxEstimate = Math.round(totalEstimate / pax);
+  const locationLabel = cityName ? `Wilayah ${cityName}` : 'Jawa Timur';
+
   const handleWhatsAppClick = () => {
     const priorityScale =
       pax >= 100 || duration.id !== '1-day'
@@ -154,9 +159,10 @@ function KalkulatorResult({
 
     const text = `Halo tim Growth Indonesia, saya ingin meminta rincian RAB dan draf proposal kegiatan dengan estimasi berikut:
 - Kategori Layanan: ${program.label}
+- Lokasi Pelaksanaan: ${locationLabel}
 - Durasi Program: ${duration.name}
 - Jumlah Peserta: ${pax} Pax
-- Estimasi Awal: ${formatRupiah(totalEstimate)}
+- Estimasi Awal: ${formatRupiah(totalEstimate)} (${formatRupiah(perPaxEstimate)}/pax)
 - Skala Prioritas: ${priorityScale}
 - Dokumen yang Diminta: Draf Proposal, Opsi Rundown & Estimasi RAB Resmi
 
@@ -169,14 +175,43 @@ Mohon informasi opsi venue dan ketersediaan jadwal.`;
   return (
     <div className="pt-2 text-center space-y-6 relative">
       <div>
-        <p className="font-bold text-muted text-sm mb-2">Estimasi Total Investasi</p>
+        <p className="font-bold text-muted text-sm mb-2">
+          Estimasi Total Investasi {cityName ? `(${cityName})` : ''}
+        </p>
         <p className="font-display font-black text-4xl sm:text-5xl text-ink tracking-tight num" aria-live="polite">
           {formatRupiah(totalEstimate)}
         </p>
+        <p className="text-xs font-bold text-brand-dark mt-2 num">
+          Setara {formatRupiah(perPaxEstimate)}/pax • Tersedia pula Paket Bundel Institusi Rp 5,5 Juta - Rp 9,5 Juta
+        </p>
+      </div>
+
+      <div className="bg-paper border border-rule rounded-2xl p-4 text-left space-y-2">
+        <p className="text-xs font-extrabold text-ink">
+          Cakupan Fasilitas dalam Estimasi Ini:
+        </p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-ink-2 font-medium">
+          <div className="flex items-start gap-2">
+            <CheckCircle2 className="w-4 h-4 text-brand-dark shrink-0 mt-0.5" aria-hidden="true" />
+            <span>Master Trainer &amp; Fasilitator Ahli</span>
+          </div>
+          <div className="flex items-start gap-2">
+            <CheckCircle2 className="w-4 h-4 text-brand-dark shrink-0 mt-0.5" aria-hidden="true" />
+            <span>Properti Simulasi, K3 &amp; Tim P3K</span>
+          </div>
+          <div className="flex items-start gap-2">
+            <CheckCircle2 className="w-4 h-4 text-brand-dark shrink-0 mt-0.5" aria-hidden="true" />
+            <span>Garansi Plan B Cuaca (Aula Indoor)</span>
+          </div>
+          <div className="flex items-start gap-2">
+            <CheckCircle2 className="w-4 h-4 text-brand-dark shrink-0 mt-0.5" aria-hidden="true" />
+            <span>Draf Proposal, Rundown &amp; LPJ Resmi</span>
+          </div>
+        </div>
       </div>
 
       <p className="text-xs sm:text-sm text-muted font-medium leading-relaxed max-w-md mx-auto">
-        *Estimasi mencakup fasilitator berpengalaman, properti program, dan standar keselamatan. Rincian final disesuaikan dengan pilihan venue, katering, serta akomodasi.
+        *Rincian final dapat disesuaikan dengan pagu anggaran RKAP/DIPA/BOS, pilihan venue, katering, serta akomodasi.
       </p>
 
       <button
@@ -191,9 +226,22 @@ Mohon informasi opsi venue dan ketersediaan jadwal.`;
   );
 }
 
-export default function KalkulatorBudget() {
+function resolveInitialActivity(defaultCategory?: string): Activity {
+  if (!defaultCategory) return ACTIVITIES[0];
+  const normalized = defaultCategory.toLowerCase().trim();
+  const mappedId = normalized === 'fun-games' ? 'fun-game' : normalized;
+  return ACTIVITIES.find((a) => a.id === mappedId) || ACTIVITIES[0];
+}
+
+export default function KalkulatorBudget({
+  defaultCategory,
+  cityName,
+}: {
+  defaultCategory?: string;
+  cityName?: string;
+} = {}) {
   const [pax, setPax] = useState<number>(50);
-  const [program, setProgram] = useState<Activity>(ACTIVITIES[0]);
+  const [program, setProgram] = useState<Activity>(() => resolveInitialActivity(defaultCategory));
   const [duration, setDuration] = useState<Duration>(DURATIONS[0]);
 
   const totalEstimate = pax * program.pricePerPax * duration.multiplier;
@@ -214,6 +262,7 @@ export default function KalkulatorBudget() {
           pax={pax}
           program={program}
           duration={duration}
+          cityName={cityName}
         />
       </div>
     </div>
