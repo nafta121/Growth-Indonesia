@@ -14,6 +14,7 @@ import {
   HOMEPAGE_FAQS,
 } from './schema';
 import { INDEXNOW_KEY } from './indexnow';
+import { getArticleBySlug } from './mdx';
 import { GET as getLlmsTxt } from '../src/pages/llms.txt';
 import { GET as getPricingMd } from '../src/pages/pricing.md';
 
@@ -178,6 +179,22 @@ describe('SEO Audit & Programmatic SEO regression checks', () => {
     assert.match(layoutSource, /contact_consultant/);
     const clientLoadMatches = layoutSource.match(/client:load/g) || [];
     assert.equal(clientLoadMatches.length, 1);
+  });
+
+  it('guards context.request.headers with context.isPrerendered and resolves article slugs without node:path', async () => {
+    const middlewareSource = fs.readFileSync(path.join(process.cwd(), 'src', 'middleware.ts'), 'utf8');
+    assert.match(middlewareSource, /context\.isPrerendered/);
+
+    const mdxSource = fs.readFileSync(path.join(process.cwd(), 'lib', 'mdx.ts'), 'utf8');
+    assert.doesNotMatch(mdxSource, /import\s+path\s+from/);
+
+    const targetSlug = 'membangun-karakter-pelajar-kemah-besar-smpn-1-geger-di-ndalem-prabu-sarangan';
+    const plain = await getArticleBySlug(targetSlug);
+    const withExt = await getArticleBySlug(`${targetSlug}.mdx`);
+    const withPath = await getArticleBySlug(`/artikel/${targetSlug}.mdx`);
+    assert.ok(plain);
+    assert.equal(withExt?.slug, targetSlug);
+    assert.equal(withPath?.slug, targetSlug);
   });
 });
 

@@ -1,4 +1,3 @@
-import path from 'path';
 import articlesCache from './articles-cache.json';
 
 export interface ArticleFrontmatter {
@@ -25,7 +24,7 @@ export async function getArticleSlugs(): Promise<string[]> {
 }
 
 export async function getArticleBySlug(slug: string): Promise<Article | null> {
-  const realSlug = path.basename(slug).replace(/\.mdx$/, '');
+  const realSlug = (slug.split(/[\\/]/).pop() || '').replace(/\.(mdx|md)$/, '');
   return articles.find((art) => art.slug === realSlug) || null;
 }
 

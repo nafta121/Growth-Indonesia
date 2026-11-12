@@ -3,7 +3,7 @@ import { getLegacyServiceRedirect } from '@/lib/categories';
 
 export const onRequest = defineMiddleware(async (context, next) => {
   const { pathname } = context.url;
-  const acceptHeader = context.request.headers.get('accept') || '';
+  const acceptHeader = context.isPrerendered ? '' : (context.request.headers.get('accept') || '');
 
   // 1. Handle Markdown content negotiation rewrite for AI agents
   if (
