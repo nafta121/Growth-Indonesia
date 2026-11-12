@@ -1,5 +1,6 @@
 import type { APIRoute } from 'astro';
-import { CITIES } from '@/lib/cities';
+import { CITIES, getCityOperationalProfile } from '@/lib/cities';
+import { getContentVariations } from '@/lib/content-variations';
 import { PACKAGES } from '@/lib/packages';
 import { COMPANY_INFO } from '@/lib/constants';
 import { getAllArticles, getArticleBySlug } from '@/lib/mdx';
@@ -50,10 +51,17 @@ ${Object.entries(CITIES)
 
     if (citySlug && CITIES[citySlug]) {
       const city = CITIES[citySlug];
+      const profile = getCityOperationalProfile(citySlug);
+      const variation = categorySlug ? getContentVariations(categorySlug, city.name) : null;
       markdownContent = `# Layanan Outbound & Team Building di ${city.name} - Growth Indonesia
 
 ## Overview
 ${city.description}
+
+## Profil Koridor Operasional (${profile.corridorName})
+- **Karakter Medan**: ${profile.terrainType}
+- **SLA Mobilisasi**: ${profile.mobilizationSla}
+- **Mitigasi Cuaca**: ${profile.planBContingency}
 
 ## Keunggulan Utama di ${city.name}
 ${city.uniqueSellingPoint}
@@ -61,8 +69,11 @@ ${city.uniqueSellingPoint}
 ## Rekomendasi Venue Popular
 ${city.popularVenues.map((v) => `- ${v}`).join('\n')}
 
-${categorySlug ? `## Kategori Spesifik: ${categorySlug.toUpperCase()}\nProgram disesuaikan khusus untuk modul ${categorySlug} di ${city.name}.\n` : ''}
-
+${
+  variation
+    ? `## Kategori Spesifik: ${variation.title}\n${variation.subheadline}\n\n${variation.bodyIntro}\n\n### Deliverables Utama\n${variation.deliverables.map((d) => `- ${d}`).join('\n')}\n`
+    : ''
+}
 ## Paket Program Tersedia
 ${PACKAGES.map((p) => `- **${p.title}** (${p.price}): ${p.description}`).join('\n')}
 

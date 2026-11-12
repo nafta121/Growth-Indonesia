@@ -17,6 +17,7 @@ import { INDEXNOW_KEY } from './indexnow';
 import { getArticleBySlug } from './mdx';
 import { GET as getLlmsTxt } from '../src/pages/llms.txt';
 import { GET as getPricingMd } from '../src/pages/pricing.md';
+import { GET as getMarkdown } from '../src/pages/api/markdown';
 
 describe('KATEGORI & CATEGORIES_SET', () => {
   it('contains all 5 canonical category slugs', () => {
@@ -195,6 +196,18 @@ describe('SEO Audit & Programmatic SEO regression checks', () => {
     assert.ok(plain);
     assert.equal(withExt?.slug, targetSlug);
     assert.equal(withPath?.slug, targetSlug);
+  });
+
+  it('enriches /api/markdown pSEO output with corridor profile and category deliverables', async () => {
+    const response = await getMarkdown({
+      url: new URL('https://growthindonesia.my.id/api/markdown?path=/layanan/madiun/outbound'),
+    } as any);
+    assert.equal(response.status, 200);
+    assert.equal(response.headers.get('Content-Type'), 'text/markdown; charset=utf-8');
+    const body = await response.text();
+    assert.match(body, /Koridor Mataraman/);
+    assert.match(body, /Zero Accident/);
+    assert.match(body, /Wana Wisata Graha/);
   });
 });
 
