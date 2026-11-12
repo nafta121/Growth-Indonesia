@@ -19,6 +19,12 @@ import { GET as getLlmsTxt } from '../src/pages/llms.txt';
 import { GET as getPricingMd } from '../src/pages/pricing.md';
 import { GET as getMarkdown } from '../src/pages/api/markdown';
 import { POST as postIndexNow } from '../src/pages/api/indexnow';
+import { GET as getRobotsTxt } from '../src/pages/robots.txt';
+import { GET as getSitemapXml } from '../src/pages/sitemap.xml';
+import { GET as getAgentCard } from '../src/pages/.well-known/agent-card.json';
+import { GET as getApiCatalog } from '../src/pages/.well-known/api-catalog';
+import { GET as getDnsAid } from '../src/pages/.well-known/dns-aid';
+import { GET as getMcpServerCard } from '../src/pages/.well-known/mcp/server-card.json';
 
 describe('KATEGORI & CATEGORIES_SET', () => {
   it('contains all 5 canonical category slugs', () => {
@@ -251,6 +257,36 @@ describe('SEO Audit & Programmatic SEO regression checks', () => {
       url: new URL('https://growthindonesia.my.id/api/indexnow'),
     } as any);
     assert.equal(oversizedRes.status, 400);
+  });
+
+  it('serves robots.txt, sitemap.xml, and .well-known discovery endpoints via real route handlers', async () => {
+    const robotsRes = await getRobotsTxt({} as any);
+    assert.equal(robotsRes.status, 200);
+    assert.equal(
+      robotsRes.headers.get('Content-Signal'),
+      'ai-train=no, search=yes, ai-input=yes'
+    );
+    const robotsBody = await robotsRes.text();
+    assert.match(robotsBody, /OAI-SearchBot/);
+    assert.match(robotsBody, /Claude-SearchBot/);
+    assert.match(robotsBody, /PerplexityBot/);
+    assert.match(robotsBody, /Applebot/);
+    assert.match(robotsBody, /Sitemap: https:\/\/growthindonesia\.my\.id\/sitemap\.xml/);
+
+    const sitemapRes = await getSitemapXml({} as any);
+    assert.equal(sitemapRes.status, 200);
+    assert.match(sitemapRes.headers.get('Content-Type') || '', /application\/xml/);
+    const sitemapBody = await sitemapRes.text();
+    assert.match(sitemapBody, /<lastmod>2026-11-12T00:00:00\.000Z<\/lastmod>/);
+
+    const wellKnownHandlers = [getAgentCard, getApiCatalog, getDnsAid, getMcpServerCard];
+    for (const handler of wellKnownHandlers) {
+      const res = await handler({} as any);
+      assert.equal(res.status, 200);
+      const parsed = JSON.parse(await res.text());
+      assert.equal(typeof parsed, 'object');
+      assert.notEqual(parsed, null);
+    }
   });
 });
 
