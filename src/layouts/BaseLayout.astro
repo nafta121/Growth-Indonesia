@@ -127,6 +127,117 @@ const websiteSchema = {
       data-cf-beacon='{"token": "c16a501011484d829b65425d7d7743f9"}'
     ></script>
 
+    <!-- WebMCP Browser Discovery Registration (navigator.modelContext) -->
+    <script is:inline>
+      (function () {
+        if (typeof window === 'undefined' || typeof navigator === 'undefined') return;
+        var tools = [
+          {
+            name: 'calculate_outbound_budget',
+            description: 'Calculate estimated budget and package recommendations for outbound training, team building, or LDK OSIS in East Java.',
+            inputSchema: {
+              type: 'object',
+              properties: {
+                participants: { type: 'integer', description: 'Number of participants (min 30)' },
+                durationDays: { type: 'integer', description: 'Duration in days (1, 2, or 3)' },
+                tier: { type: 'string', enum: ['standard', 'premium', 'exclusive'] },
+                city: { type: 'string', description: 'Target city in East Java' }
+              },
+              required: ['participants', 'durationDays']
+            },
+            execute: function (args) {
+              var pax = Math.max(30, Number(args && args.participants) || 30);
+              var days = Number(args && args.durationDays) || 1;
+              var tier = (args && args.tier) || 'standard';
+              var city = (args && args.city) || 'Madiun';
+              var rate = tier === 'exclusive' ? 250000 : tier === 'premium' ? 200000 : 150000;
+              var mult = days === 3 ? 2.8 : days === 2 ? 1.8 : 1;
+              var total = Math.round(pax * rate * mult);
+              return {
+                status: 'success',
+                estimatedCostIDR: total,
+                formattedCost: 'Rp ' + total.toLocaleString('id-ID'),
+                city: city,
+                pricingReference: 'https://growthindonesia.my.id/pricing.md'
+              };
+            }
+          },
+          {
+            name: 'search_services',
+            description: 'Search outbound, training, fun-games, ldk-osis, and gathering programs.',
+            inputSchema: {
+              type: 'object',
+              properties: { query: { type: 'string' } },
+              required: ['query']
+            },
+            execute: function (args) {
+              var q = String((args && args.query) || '').toLowerCase();
+              var catalog = ['outbound', 'training', 'fun-games', 'ldk-osis', 'gathering'];
+              var matched = catalog.filter(function (c) { return c.indexOf(q) !== -1; });
+              return { status: 'success', matchedCategories: matched.length ? matched : catalog };
+            }
+          },
+          {
+            name: 'get_city_coverage',
+            description: 'Get service URL for any of the 31 East Java cities.',
+            inputSchema: {
+              type: 'object',
+              properties: { cityName: { type: 'string' } },
+              required: ['cityName']
+            },
+            execute: function (args) {
+              var slug = String((args && args.cityName) || 'madiun').toLowerCase().trim().replace(/\s+/g, '-');
+              return {
+                status: 'success',
+                citySlug: slug,
+                hubUrl: 'https://growthindonesia.my.id/layanan/' + slug,
+                outboundUrl: 'https://growthindonesia.my.id/layanan/' + slug + '/outbound'
+              };
+            }
+          },
+          {
+            name: 'contact_consultant',
+            description: 'Generate direct WhatsApp consultation link for Growth Indonesia.',
+            inputSchema: {
+              type: 'object',
+              properties: {
+                clientName: { type: 'string' },
+                organization: { type: 'string' },
+                message: { type: 'string' }
+              }
+            },
+            execute: function (args) {
+              var name = String((args && args.clientName) || 'PIC');
+              var org = String((args && args.organization) || 'Instansi');
+              var msg = String((args && args.message) || 'Mohon info proposal dan RAB.');
+              var text = encodeURIComponent('Halo Growth Indonesia, saya ' + name + ' dari ' + org + '. ' + msg);
+              return {
+                status: 'success',
+                whatsappUrl: 'https://wa.me/6285848715836?text=' + text
+              };
+            }
+          }
+        ];
+        if (!navigator.modelContext) {
+          navigator.modelContext = {
+            tools: tools,
+            getTools: function () { return tools; },
+            provideContext: function (ctx) {
+              if (ctx && Array.isArray(ctx.tools)) navigator.modelContext.tools = ctx.tools;
+            },
+            registerTool: function (t) {
+              if (navigator.modelContext && Array.isArray(navigator.modelContext.tools)) {
+                navigator.modelContext.tools.push(t);
+              }
+            }
+          };
+        } else if (typeof navigator.modelContext.provideContext === 'function') {
+          try { navigator.modelContext.provideContext({ tools: tools }); } catch (e) {}
+        }
+        window.__WEBMCP_TOOLS__ = tools;
+      })();
+    </script>
+
     <style is:global>
       html, body {
         overflow-x: clip;

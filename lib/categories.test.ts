@@ -167,6 +167,18 @@ describe('SEO Audit & Programmatic SEO regression checks', () => {
     assert.ok(situbondoNearby.includes('banyuwangi'));
     assert.equal(situbondoNearby.includes('madiun'), false);
   });
+
+  it('registers navigator.modelContext and 4 WebMCP tools inline in BaseLayout.astro', () => {
+    const layoutPath = path.join(process.cwd(), 'src', 'layouts', 'BaseLayout.astro');
+    const layoutSource = fs.readFileSync(layoutPath, 'utf8');
+    assert.match(layoutSource, /navigator\.modelContext/);
+    assert.match(layoutSource, /calculate_outbound_budget/);
+    assert.match(layoutSource, /search_services/);
+    assert.match(layoutSource, /get_city_coverage/);
+    assert.match(layoutSource, /contact_consultant/);
+    const clientLoadMatches = layoutSource.match(/client:load/g) || [];
+    assert.equal(clientLoadMatches.length, 1);
+  });
 });
 
 
