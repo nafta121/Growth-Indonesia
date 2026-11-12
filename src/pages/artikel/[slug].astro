@@ -52,6 +52,7 @@ const blogPostingSchema = {
   dateModified: articleModifiedDate,
   author: {
     '@type': 'Person',
+    '@id': 'https://growthindonesia.my.id/portofolio-dan-sertifikasi#naftalyndho',
     name:
       article.frontmatter.author &&
       article.frontmatter.author !== 'Admin' &&
@@ -59,13 +60,16 @@ const blogPostingSchema = {
         ? article.frontmatter.author
         : 'Naftalyndho Mycha Grace Mirawandi',
     jobTitle: 'Lead Facilitator & Master Trainer',
+    url: 'https://growthindonesia.my.id/portofolio-dan-sertifikasi',
     worksFor: {
       '@type': 'Organization',
+      '@id': 'https://growthindonesia.my.id/#organization',
       name: COMPANY_INFO.brand_name,
     },
   },
   publisher: {
     '@type': 'Organization',
+    '@id': 'https://growthindonesia.my.id/#organization',
     name: COMPANY_INFO.brand_name,
     url: 'https://growthindonesia.my.id',
     logo: {

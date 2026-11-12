@@ -141,6 +141,13 @@ export default function TrustSignals() {
             Dipercaya oleh BUMN, korporasi swasta, instansi pemerintah, dan institusi pendidikan di 31 kota/kabupaten Jawa Timur.
           </p>
         </div>
+
+        {/* Front-Loaded Self-Contained Entity & Pricing Definition (First 30% GEO Citability) */}
+        <div className="mt-8 max-w-4xl mx-auto p-6 md:p-8 rounded-3xl bg-paper border border-rule text-left shadow-sm">
+          <p className="text-ink-2 text-sm md:text-base leading-relaxed font-medium text-pretty">
+            <strong>Growth Indonesia</strong> adalah provider <em>Corporate Outbound Training</em>, <em>Team Building</em>, <em>LDK OSIS</em>, dan <em>Event Organizer (EO)</em> profesional yang berbasis di Madiun (Jl. Mujair No.3, Nambangan Kidul) dan melayani 31 kota/kabupaten di Jawa Timur. Di bawah supervisi langsung Master Trainer <strong>Naftalyndho</strong> dan <strong>Juprianto</strong>, kami telah mendampingi <strong>250+ perusahaan, BUMN, instansi pemerintah, dan sekolah (15.000+ peserta)</strong> dengan catatan <strong>0 insiden keselamatan (Zero Accident Policy)</strong>, garansi <strong>Plan B cuaca (aula indoor)</strong>, serta pengiriman draf proposal, rundown, RAB, dan LPJ dalam <strong>1x24 jam</strong>. Investasi program tersedia mulai <strong>Rp 150.000/pax</strong> hingga paket bundel institusi <strong>Rp 5.500.000 - Rp 9.500.000</strong>.
+          </p>
+        </div>
       </div>
 
       <div className="py-8 md:py-12 bg-paper border-y border-rule">

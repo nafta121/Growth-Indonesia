@@ -2,13 +2,16 @@ import { COMPANY_INFO } from './constants';
 
 export function getLocalBusinessSchema(additionalArea?: string) {
   const baseAreas = [
+    { "@type": "AdministrativeArea", "name": "Jawa Timur" },
     { "@type": "City", "name": "Madiun" },
     { "@type": "City", "name": "Magetan" },
     { "@type": "City", "name": "Ponorogo" },
     { "@type": "City", "name": "Ngawi" },
     { "@type": "City", "name": "Pacitan" },
     { "@type": "City", "name": "Kediri" },
-    { "@type": "City", "name": "Surabaya" }
+    { "@type": "City", "name": "Surabaya" },
+    { "@type": "City", "name": "Malang" },
+    { "@type": "City", "name": "Batu" }
   ];
 
   const areaServed = additionalArea && !baseAreas.some((a) => a.name.toLowerCase() === additionalArea.toLowerCase())
@@ -40,13 +43,17 @@ export function getLocalBusinessSchema(additionalArea?: string) {
     "founder": [
       {
         "@type": "Person",
+        "@id": "https://growthindonesia.my.id/portofolio-dan-sertifikasi#naftalyndho",
         "name": "Naftalyndho",
-        "jobTitle": "Co-Founder & Master Trainer Experiential Learning"
+        "jobTitle": "Co-Founder & Master Trainer Experiential Learning",
+        "url": "https://growthindonesia.my.id/portofolio-dan-sertifikasi"
       },
       {
         "@type": "Person",
+        "@id": "https://growthindonesia.my.id/portofolio-dan-sertifikasi#juprianto",
         "name": "Juprianto",
-        "jobTitle": "Co-Founder & Master Trainer Experiential Learning"
+        "jobTitle": "Co-Founder & Master Trainer Experiential Learning",
+        "url": "https://growthindonesia.my.id/portofolio-dan-sertifikasi"
       }
     ],
     "knowsAbout": [

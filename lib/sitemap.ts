@@ -11,7 +11,7 @@ export interface SitemapEntry {
 
 export default async function sitemap(): Promise<SitemapEntry[]> {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://growthindonesia.my.id';
-  const currentDate = new Date();
+  const currentDate = new Date('2026-11-12T00:00:00.000Z');
   const allCities = Object.keys(CITIES);
 
   const corePages: SitemapEntry[] = [

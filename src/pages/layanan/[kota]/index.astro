@@ -6,14 +6,14 @@ import { Breadcrumb } from '@/components/breadcrumb';
 import { AiOverviewSection } from '@/components/ai-overview';
 import TrustSection from '@/components/trust-section';
 import CityCta from '@/components/city-cta';
-import { CITIES } from '@/lib/cities';
+import { CITIES, getCityOperationalProfile } from '@/lib/cities';
 import { getCityImage } from '@/lib/city-images';
 import { KATEGORI } from '@/lib/categories';
 import { COMPANY_INFO } from '@/lib/constants';
 import { getContentVariations } from '@/lib/content-variations';
 import { getFaqSchema, getLocalBusinessSchema } from '@/lib/schema';
 import { formatSlug } from '@/lib/format';
-import { MapPin, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { MapPin, ArrowRight, CheckCircle2, ShieldCheck } from 'lucide-react';
 
 export async function getStaticPaths() {
   return Object.keys(CITIES).map((kota) => ({
@@ -31,6 +31,8 @@ if (!cityData) {
 }
 
 const kotaName = formatSlug(decodedKota);
+const operationalProfile = getCityOperationalProfile(decodedKota);
+const primaryVenuesText = cityData.popularVenues.slice(0, 3).join(', ');
 const title = `Outbound, Team Building & EO di ${kotaName}`;
 const description = `Provider outbound, team building & event organizer (EO) profesional di ${kotaName}. Melayani corporate gathering, training SDM & LDK OSIS.`;
 const cityImage = getCityImage(decodedKota);
@@ -115,6 +117,26 @@ const schemaLd = [
       <!-- 5 Categories Grid -->
       <section class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 md:px-12">
+          <!-- Front-Loaded Direct Answer Block (First 30% GEO Citability) -->
+          <aside
+            aria-label={`Ringkasan Eksekutif Layanan di ${kotaName}`}
+            class="mb-16 p-6 md:p-8 rounded-3xl bg-paper border border-rule shadow-sm max-w-5xl mx-auto"
+          >
+            <div class="flex flex-col md:flex-row items-start gap-4">
+              <div class="w-12 h-12 rounded-2xl bg-brand-tint flex items-center justify-center text-brand-dark shrink-0">
+                <ShieldCheck className="w-6 h-6" aria-hidden="true" />
+              </div>
+              <div>
+                <h2 class="font-display text-xl md:text-2xl font-extrabold text-ink mb-2 tracking-tight">
+                  Profil Layanan Outbound &amp; EO {kotaName}
+                </h2>
+                <p class="text-ink-2 text-sm md:text-base leading-relaxed font-medium text-pretty">
+                  <strong>Growth Indonesia</strong> adalah provider <em>Corporate Outbound</em>, <em>Team Building</em>, <em>LDK OSIS</em>, dan <em>Event Organizer (EO)</em> profesional yang melayani wilayah <strong>{kotaName}</strong> ({operationalProfile.corridorName}, termasuk {primaryVenuesText}). Dengan jangkauan {operationalProfile.mobilizationSla} dan rekam jejak menangani <strong>250+ instansi (15.000+ peserta)</strong> berstandar <strong>Zero Accident Policy</strong>, kami menyediakan skenario cadangan cuaca (<em>Plan B</em> aula indoor), draf proposal, rundown, RAB, serta LPJ lengkap dalam 1x24 jam dengan investasi mulai <strong>Rp 150.000/pax</strong> hingga paket bundel institusi <strong>Rp 5.500.000 - Rp 9.500.000</strong>.
+                </p>
+              </div>
+            </div>
+          </aside>
+
           <div class="text-center mb-16">
             <h2 class="font-display text-3xl md:text-4xl font-black tracking-tight text-ink mb-4">
               Pilih Kategori Program

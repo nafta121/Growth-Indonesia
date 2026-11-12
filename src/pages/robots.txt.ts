@@ -11,41 +11,53 @@ Allow: /pricing.md
 Allow: /2c11486128914291876d43ecd6d55580.txt
 Disallow: /api/
 
-# AI Search Bots & Crawlers (GEO Grounding)
+# 1. Search & AI Citation Crawlers (Google AIO/AI Mode, ChatGPT Search, Claude Search, Perplexity, Apple, Bing)
 User-agent: Googlebot
 Allow: /
 
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: meta-webindexer
+Allow: /
+
+# 2. User-Triggered AI Browsing Agents
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# 3. AI Model Training & Grounding Crawlers
 User-agent: Google-Extended
 Allow: /
 
 User-agent: GPTBot
 Allow: /
 
-User-agent: OAI-SearchBot
-Allow: /
-
-User-agent: ChatGPT-User
-Allow: /
-
-User-agent: PerplexityBot
-Allow: /
-
 User-agent: ClaudeBot
-Allow: /
-
-User-agent: Claude-SearchBot
 Allow: /
 
 User-agent: Applebot-Extended
 Allow: /
 
-User-agent: meta-webindexer
+User-agent: CCBot
 Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-Content-Signal: ai-train=no, search=yes, ai-input=yes
 
 Sitemap: https://growthindonesia.my.id/sitemap.xml
 `;

@@ -45,7 +45,21 @@ const content = getContentVariations(decodedKategori, kotaName);
 
 const title = content.title.replace(/\s*\|\s*Growth Indonesia$/i, '');
 const fullTitle = `${title} | Growth Indonesia`;
-const description = `Jasa ${kategoriName.toLowerCase()} & EO profesional di ${kotaName}. ${cityData.description} Konsultasi RAB & proposal bersama Growth Indonesia.`;
+const primaryVenue = cityData.popularVenues[0] || kotaName;
+const categoryDescriptions: Record<string, string> = {
+  outbound: `Jasa Outbound & Team Building di ${kotaName} (${primaryVenue}). Kurikulum experiential learning, Zero Accident & tarif mulai Rp 150rb/pax.`,
+  training: `Program Indoor Training & Capacity Building SDM di ${kotaName} (${primaryVenue}). Dipandu Master Trainer ahli, RAB & LPJ siap 1x24 jam.`,
+  'fun-games': `Paket EO Fun Games & Company Outing seru di ${kotaName} (${primaryVenue}). Properti aman, Plan B cuaca & investasi mulai Rp 150rb/pax.`,
+  'ldk-osis': `Pelatihan LDK OSIS & Character Building pelajar di ${kotaName} (${primaryVenue}). Metode disiplin positif, Zero Accident & mulai Rp 150rb/pax.`,
+  gathering: `Jasa EO Corporate & Family Gathering satu pintu di ${kotaName} (${primaryVenue}). Manajemen venue, gala dinner & draf RAB siap 1x24 jam.`,
+};
+const rawDescription =
+  categoryDescriptions[decodedKategori] ||
+  `Jasa ${kategoriName.toLowerCase()} & EO profesional di ${kotaName} (${primaryVenue}). Standar Zero Accident & tarif mulai Rp 150rb/pax.`;
+const description =
+  rawDescription.length > 158
+    ? `${rawDescription.slice(0, 155).replace(/\s+\S*$/, '')}.`
+    : rawDescription;
 const ogImages = getCategoryOgImage(decodedKategori, kotaName);
 const canonicalUrl = `https://growthindonesia.my.id/layanan/${decodedKota}/${decodedKategori}`;
 
