@@ -1,6 +1,7 @@
 export const INDEXNOW_KEY = '2c11486128914291876d43ecd6d55580';
 export const INDEXNOW_HOST = 'growthindonesia.my.id';
 export const INDEXNOW_KEY_LOCATION = `https://${INDEXNOW_HOST}/${INDEXNOW_KEY}.txt`;
+export const MAX_INDEXNOW_BATCH_SIZE = 250;
 
 export const INDEXNOW_ENDPOINTS = [
   'https://api.indexnow.org/indexnow',
@@ -22,6 +23,7 @@ export async function submitToIndexNow(urls: string[]) {
 
   // Normalize URLs and restrict to INDEXNOW_HOST
   const formattedUrls = urls
+    .filter((u): u is string => typeof u === 'string' && u.trim().length > 0)
     .map((u) => {
       if (u.startsWith('http://') || u.startsWith('https://')) {
         return u;
@@ -36,7 +38,9 @@ export async function submitToIndexNow(urls: string[]) {
       }
     });
 
-  if (formattedUrls.length === 0) {
+  const uniqueUrls = Array.from(new Set(formattedUrls)).slice(0, MAX_INDEXNOW_BATCH_SIZE);
+
+  if (uniqueUrls.length === 0) {
     return { success: false, message: 'No valid host URLs provided' };
   }
 
@@ -44,7 +48,7 @@ export async function submitToIndexNow(urls: string[]) {
     host: INDEXNOW_HOST,
     key: INDEXNOW_KEY,
     keyLocation: INDEXNOW_KEY_LOCATION,
-    urlList: formattedUrls,
+    urlList: uniqueUrls,
   };
 
   const results = await Promise.all(
@@ -80,7 +84,7 @@ export async function submitToIndexNow(urls: string[]) {
   return {
     success: anySuccess,
     results,
-    submittedCount: formattedUrls.length,
-    urls: formattedUrls,
+    submittedCount: uniqueUrls.length,
+    urls: uniqueUrls,
   };
 }

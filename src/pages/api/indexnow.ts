@@ -1,7 +1,14 @@
 import type { APIRoute } from 'astro';
-import { submitToIndexNow, INDEXNOW_KEY, INDEXNOW_HOST, INDEXNOW_KEY_LOCATION } from '@/lib/indexnow';
+import {
+  submitToIndexNow,
+  INDEXNOW_KEY,
+  INDEXNOW_HOST,
+  INDEXNOW_KEY_LOCATION,
+  MAX_INDEXNOW_BATCH_SIZE,
+} from '@/lib/indexnow';
 import { CITIES } from '@/lib/cities';
 import { KATEGORI } from '@/lib/categories';
+import { getAllArticles } from '@/lib/mdx';
 
 export const prerender = false;
 
@@ -26,10 +33,14 @@ export const GET: APIRoute = async ({ request, url }) => {
   }
 
   if (submitAll === 'true') {
+    const articles = await getAllArticles();
     const allUrls: string[] = [
       `https://${INDEXNOW_HOST}/`,
       `https://${INDEXNOW_HOST}/layanan`,
+      `https://${INDEXNOW_HOST}/portofolio-dan-sertifikasi`,
       `https://${INDEXNOW_HOST}/artikel`,
+      `https://${INDEXNOW_HOST}/docs/api`,
+      ...articles.map((a) => `https://${INDEXNOW_HOST}/artikel/${a.slug}`),
     ];
 
     Object.keys(CITIES).forEach((kota) => {
@@ -101,6 +112,16 @@ export const POST: APIRoute = async ({ request, url }) => {
     if (urlsToSubmit.length === 0) {
       return new Response(
         JSON.stringify({ error: 'No valid URLs provided in body. Pass { urls: [...] }' }),
+        {
+          status: 400,
+          headers: { 'Content-Type': 'application/json; charset=utf-8' },
+        }
+      );
+    }
+
+    if (urlsToSubmit.length > MAX_INDEXNOW_BATCH_SIZE) {
+      return new Response(
+        JSON.stringify({ error: 'Batch size exceeds maximum limit of 250 URLs' }),
         {
           status: 400,
           headers: { 'Content-Type': 'application/json; charset=utf-8' },

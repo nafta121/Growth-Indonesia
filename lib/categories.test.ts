@@ -13,11 +13,12 @@ import {
   getServiceSchema,
   HOMEPAGE_FAQS,
 } from './schema';
-import { INDEXNOW_KEY } from './indexnow';
+import { INDEXNOW_KEY, MAX_INDEXNOW_BATCH_SIZE } from './indexnow';
 import { getArticleBySlug } from './mdx';
 import { GET as getLlmsTxt } from '../src/pages/llms.txt';
 import { GET as getPricingMd } from '../src/pages/pricing.md';
 import { GET as getMarkdown } from '../src/pages/api/markdown';
+import { POST as postIndexNow } from '../src/pages/api/indexnow';
 
 describe('KATEGORI & CATEGORIES_SET', () => {
   it('contains all 5 canonical category slugs', () => {
@@ -208,6 +209,48 @@ describe('SEO Audit & Programmatic SEO regression checks', () => {
     assert.match(body, /Koridor Mataraman/);
     assert.match(body, /Zero Accident/);
     assert.match(body, /Wana Wisata Graha/);
+  });
+
+  it('bounds and validates POST /api/indexnow payloads', async () => {
+    const unauthRes = await postIndexNow({
+      request: new Request('https://growthindonesia.my.id/api/indexnow', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ urls: ['https://growthindonesia.my.id/'] }),
+      }),
+      url: new URL('https://growthindonesia.my.id/api/indexnow'),
+    } as any);
+    assert.equal(unauthRes.status, 401);
+
+    const emptyRes = await postIndexNow({
+      request: new Request('https://growthindonesia.my.id/api/indexnow', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${INDEXNOW_KEY}`,
+        },
+        body: JSON.stringify({ urls: [] }),
+      }),
+      url: new URL('https://growthindonesia.my.id/api/indexnow'),
+    } as any);
+    assert.equal(emptyRes.status, 400);
+
+    const oversizedUrls = Array.from(
+      { length: MAX_INDEXNOW_BATCH_SIZE + 1 },
+      (_, i) => `https://growthindonesia.my.id/layanan/madiun?idx=${i}`
+    );
+    const oversizedRes = await postIndexNow({
+      request: new Request('https://growthindonesia.my.id/api/indexnow', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${INDEXNOW_KEY}`,
+        },
+        body: JSON.stringify({ urls: oversizedUrls }),
+      }),
+      url: new URL('https://growthindonesia.my.id/api/indexnow'),
+    } as any);
+    assert.equal(oversizedRes.status, 400);
   });
 });
 
