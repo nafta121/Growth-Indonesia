@@ -36,6 +36,7 @@ import { COMPANY_INFO } from '@/lib/constants';
             </p>
             <div class="mt-3 flex flex-wrap gap-4">
               <a href="/llms.txt" class="text-xs font-mono text-brand hover:underline">/llms.txt</a>
+              <a href="/llms-full.txt" class="text-xs font-mono text-brand hover:underline">/llms-full.txt</a>
               <a href="/pricing.md" class="text-xs font-mono text-brand hover:underline">/pricing.md</a>
               <a href="/api/markdown?path=/" class="text-xs font-mono text-brand hover:underline">/api/markdown</a>
             </div>
@@ -98,8 +99,24 @@ import { COMPANY_INFO } from '@/lib/constants';
       <div class="bg-navy-2 border border-navy-border rounded-2xl p-6 space-y-4">
         <h2 class="text-xl font-semibold text-white">Markdown for Agents (Content Negotiation)</h2>
         <p class="text-sm text-navy-muted max-w-[70ch]">
-          Situs ini mendukung negosiasi konten Markdown untuk AI Agent. Setiap permintaan dengan header <code class="text-white font-mono">Accept: text/markdown</code> akan menerima konten berformat Markdown murni, header <code class="text-white font-mono">Content-Type: text/markdown; charset=utf-8</code>, dan estimasi <code class="text-white font-mono">x-markdown-tokens</code>.
+          Situs ini mendukung negosiasi konten Markdown untuk AI Agent. Setiap permintaan ke halaman HTML dengan header <code class="text-white font-mono">Accept: text/markdown</code> akan menerima konten berformat Markdown murni yang diperkaya profil koridor operasional dan deliverables kategori, beserta header <code class="text-white font-mono">Content-Type: text/markdown; charset=utf-8</code> dan estimasi <code class="text-white font-mono">x-markdown-tokens</code>.
         </p>
+        <div class="space-y-3 pt-2">
+          <h3 class="text-sm font-bold text-white">Contoh Integrasi CLI &amp; Agen AI</h3>
+          <pre class="bg-navy border border-navy-border rounded-xl p-4 text-xs font-mono text-navy-muted overflow-x-auto"><code>{`# 1. Negosiasi Markdown langsung pada halaman layanan kota
+curl -H "Accept: text/markdown" https://growthindonesia.my.id/layanan/madiun/outbound
+
+# 2. Mengambil dokumentasi grounding lengkap (31 kota + harga + FAQ)
+curl https://growthindonesia.my.id/llms-full.txt
+
+# 3. Menemukan katalog API (RFC 9727) dan kartu agen A2A / MCP
+curl https://growthindonesia.my.id/.well-known/api-catalog
+curl https://growthindonesia.my.id/.well-known/agent-card.json
+curl https://growthindonesia.my.id/.well-known/mcp/server-card.json`}</code></pre>
+          <p class="text-sm text-navy-muted max-w-[70ch]">
+            Pada lingkungan browser yang mendukung W3C WebMCP, seluruh halaman Growth Indonesia secara otomatis mendaftarkan empat instrumen (<code class="text-white font-mono">calculate_outbound_budget</code>, <code class="text-white font-mono">search_services</code>, <code class="text-white font-mono">get_city_coverage</code>, dan <code class="text-white font-mono">contact_consultant</code>) pada <code class="text-white font-mono">navigator.modelContext</code> tanpa menambah beban hidrasi antarmuka. Seluruh endpoint penemuan dapat diakses secara terbuka tanpa autentikasi API key, dilengkapi header keamanan standar dan dukungan CORS lintas origin.
+          </p>
+        </div>
       </div>
     </div>
   </div>

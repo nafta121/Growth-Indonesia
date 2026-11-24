@@ -199,6 +199,7 @@ export interface CityOperationalProfile {
   terrainType: string;
   mobilizationSla: string;
   planBContingency: string;
+  localProof: string;
   institutionalSegments: {
     corporate: string;
     government: string;
@@ -364,17 +365,46 @@ const CORRIDOR_MAP: Record<string, { corridorName: string; terrainType: string; 
   },
 };
 
+const TIER1_LOCAL_PROOF: Record<string, string> = {
+  madiun:
+    'Rekam jejak lokal Madiun: Dipercaya oleh PT INKA (Persero) Madiun, SMA Negeri 1 Madiun, SMAN 2 Madiun, dan instansi daerah Madiun Raya dengan tingkat kepuasan 99% dan 0 insiden.',
+  magetan:
+    'Rekam jejak lokal Magetan & Sarangan: Menangani Kemah Besar & Outdoor Learning SMPN 1 Geger di Ndalem Prabu Sarangan serta agenda tahunan RS Karya Husada di lereng Lawu.',
+  ponorogo:
+    'Rekam jejak lokal Ponorogo: Mendampingi program corporate gathering dan team building Bank Jatim Ponorogo serta instansi pendidikan di kawasan Telaga Ngebel.',
+  ngawi:
+    'Rekam jejak lokal Ngawi: Menyelenggarakan capacity building dan penguatan sinergi pegawai bagi Dinas Kehutanan Ngawi serta instansi pemerintahan daerah.',
+  pacitan:
+    'Rekam jejak lokal Pacitan: Dipercaya BPR Pacitan untuk program corporate outing dan team building lintas unit dengan manajemen keselamatan lapangan penuh.',
+  kediri:
+    'Rekam jejak lokal Kediri: Menyelenggarakan program experiential learning pemecahan silo lintas divisi untuk tim HR Development Gudang Garam dan perusahaan industri Brantas.',
+  surabaya:
+    'Rekam jejak lokal Surabaya & Gerbangkertosusila: Dipercaya oleh Bank Jatim, Pemprov Jatim, Maspion Group, Kapal Api, Wings Group, dan Universitas Airlangga.',
+  gresik:
+    'Rekam jejak lokal Gresik: Dipercaya oleh korporasi industri besar termasuk Petrokimia Gresik dan Semen Indonesia untuk pelatihan kepemimpinan dan team building.',
+  sidoarjo:
+    'Rekam jejak lokal Sidoarjo: Melayani perusahaan manufaktur dan BUMN koridor Surabaya-Sidoarjo dengan eksekusi satu pintu dari mobilisasi armada hingga laporan evaluasi SDM.',
+  malang:
+    'Rekam jejak lokal Malang: Dipercaya Universitas Brawijaya serta rombongan korporat Jawa Timur untuk program retreat, indoor training, dan outbound dataran tinggi.',
+  batu:
+    'Rekam jejak lokal Kota Batu: Mengelola corporate gathering, gala dinner, dan outbound skala 30 hingga 500+ peserta dengan cadangan ballroom hotel bintang empat dan aula indoor.',
+};
+
 export function getCityOperationalProfile(cityKey: string): CityOperationalProfile {
   const normalized = cityKey.toLowerCase().trim();
   const city = CITIES[normalized] || CITIES.madiun;
   const venueList = city.popularVenues.join(', ');
   const base = CORRIDOR_MAP[normalized] || CORRIDOR_MAP.madiun;
+  const localProof =
+    TIER1_LOCAL_PROOF[normalized] ||
+    `Rekam jejak koridor ${city.name}: Bagian dari cakupan resmi 250+ klien perusahaan, BUMN, instansi pemerintah, dan sekolah Growth Indonesia (15.000+ peserta) se-Jawa Timur dengan 0 insiden keselamatan.`;
 
   return {
     corridorName: base.corridorName,
     terrainType: base.terrainType,
     mobilizationSla: base.mobilizationSla,
     planBContingency: `Garansi Plan B Cuaca: Setiap pelaksanaan di ${city.name} (${venueList}) dilengkapi reservasi cadangan aula indoor atau pendopo semi-outdoor representatif agar agenda tetap berjalan 100% sesuai rundown meskipun turun hujan.`,
+    localProof,
     institutionalSegments: {
       corporate: `Korporat & BUMN di ${city.name}: Kurikulum berbasis Training Need Analysis (TNA), simulasi sinergi lintas divisi, serta Laporan Evaluasi Performa SDM tertulis untuk HRD dan manajemen.`,
       government: `Instansi Pemerintah & OPD di ${city.name}: Penguatan kapasitas aparatur dan rapat kerja satu pintu dengan rincian RAB transparan, kepatuhan pajak/e-Faktur, serta kelengkapan dokumen LPJ/SPJ.`,

@@ -26,6 +26,8 @@ interface Props {
 }
 
 const { slug } = Astro.params;
+const allArticles = await getAllArticles();
+const relatedArticles = allArticles.filter((a) => a.slug !== slug);
 const article: Article | null = Astro.props.article || (await getArticleBySlug(slug as string));
 
 if (!article) {
@@ -40,7 +42,7 @@ const matchingEntry = Object.values(mdxModules).find((mod: any) =>
 const Content = matchingEntry?.Content || matchingEntry?.default;
 
 const articleDate = article.frontmatter.date || '2026-06-24';
-const articleModifiedDate = '2026-11-10';
+const articleModifiedDate = '2026-11-24';
 const blogPostingSchema = {
   '@context': 'https://schema.org',
   '@type': 'BlogPosting',
@@ -50,6 +52,10 @@ const blogPostingSchema = {
   image: [article.frontmatter.image],
   datePublished: articleDate,
   dateModified: articleModifiedDate,
+  speakable: {
+    '@type': 'SpeakableSpecification',
+    cssSelector: ['.article-summary', 'h1'],
+  },
   author: {
     '@type': 'Person',
     '@id': 'https://growthindonesia.my.id/portofolio-dan-sertifikasi#naftalyndho',
@@ -84,13 +90,13 @@ const blogPostingSchema = {
 };
 const ARTICLE_SEO_TITLES: Record<string, string> = {
   'membangun-karakter-pelajar-kemah-besar-smpn-1-geger-di-ndalem-prabu-sarangan':
-    'Kemah Besar & Outbound SMPN 1 Geger Sarangan',
+    'Kemah Besar SMPN 1 Geger Sarangan',
   'pentingnya-team-building-untuk-produktivitas-karyawan':
-    'Team Building untuk Produktivitas Karyawan',
+    'Team Building Produktivitas Karyawan',
   'smpn-1-geger-gelar-outdoor-learning-di-ndalem-prabu-sarangan-tanamkan-karakter-jiwa-nasionalisme':
-    'Outdoor Learning SMPN 1 Geger di Sarangan',
+    'Outdoor Learning SMPN 1 Geger Sarangan',
   'tips-memilih-provider-outbound-profesional':
-    'Tips Memilih Provider Outbound Profesional',
+    'Tips Memilih Provider Outbound Ahli',
 };
 const ARTICLE_SUMMARY_ANSWERS: Record<string, string> = {
   'membangun-karakter-pelajar-kemah-besar-smpn-1-geger-di-ndalem-prabu-sarangan':
@@ -203,7 +209,7 @@ const seoDescription =
     <section class="py-16 md:py-24 bg-white text-ink">
       <div class="max-w-4xl mx-auto px-6">
         <!-- AI Overview / Direct Answer Summary Block -->
-        <aside aria-label="Ringkasan Inti Artikel" class="bg-paper border border-rule rounded-3xl p-6 md:p-8 mb-12 shadow-sm">
+        <aside aria-label="Ringkasan Inti Artikel" class="article-summary bg-paper border border-rule rounded-3xl p-6 md:p-8 mb-12 shadow-sm">
           <div class="flex items-start gap-4">
             <div class="bg-brand-tint p-3 rounded-2xl shrink-0">
               <Sparkles className="w-6 h-6 text-brand-dark" aria-hidden="true" />
@@ -216,15 +222,15 @@ const seoDescription =
                 {summaryAnswer}
               </p>
               <p class="text-xs font-semibold text-brand-dark mt-3">
-                Ditinjau oleh Naftalyndho (Master Trainer Experiential Learning) • Diperbarui 10 November 2026
+                Ditinjau oleh Naftalyndho (Master Trainer Experiential Learning) • Diperbarui 24 November 2026
               </p>
             </div>
           </div>
         </aside>
 
-        <div class="prose prose-slate prose-lg md:prose-xl max-w-none hover:prose-headings:text-brand-dark prose-headings:font-display prose-headings:font-extrabold prose-a:text-brand-dark">
+        <article class="prose prose-slate prose-lg md:prose-xl max-w-none hover:prose-headings:text-brand-dark prose-headings:font-display prose-headings:font-extrabold prose-a:text-brand-dark">
           {Content ? <Content /> : <div set:html={article.content} />}
-        </div>
+        </article>
 
         <!-- In-Article WhatsApp Banner -->
         <div class="mt-16 p-8 md:p-12 bg-navy text-white rounded-3xl border border-navy-border relative overflow-hidden shadow-md">
@@ -261,12 +267,36 @@ const seoDescription =
                 rel="noopener noreferrer"
                 class="inline-flex items-center gap-2 bg-brand-dark hover:bg-brand text-white font-bold px-6 py-4 rounded-xl transition-colors duration-200 text-sm md:text-base whitespace-nowrap"
               >
-                <MessageSquare className="w-5 h-5 fill-current" />
+                <MessageSquare className="w-5 h-5 fill-current" aria-hidden="true" />
                 Hubungi via WhatsApp
               </a>
             </div>
           </div>
         </div>
+
+        {relatedArticles.length > 0 && (
+          <nav aria-label="Artikel Terkait" class="mt-14 pt-10 border-t border-rule">
+            <h2 class="font-display font-extrabold text-2xl text-ink mb-6 tracking-tight">
+              Baca Panduan &amp; Studi Kasus Lainnya
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+              {relatedArticles.map((rel) => (
+                <a
+                  href={`/artikel/${rel.slug}`}
+                  class="group flex flex-col p-5 rounded-2xl bg-paper border border-rule hover:border-brand-border hover:shadow-sm transition-[border-color,box-shadow] duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-dark"
+                >
+                  <span class="text-xs font-bold text-brand-dark mb-2">{rel.frontmatter.tags?.[0] || 'Panduan'}</span>
+                  <h3 class="font-display font-bold text-base text-ink group-hover:text-brand-dark transition-colors leading-snug mb-2">
+                    {rel.frontmatter.title}
+                  </h3>
+                  <p class="text-xs text-muted leading-relaxed line-clamp-2 mt-auto">
+                    {rel.frontmatter.description}
+                  </p>
+                </a>
+              ))}
+            </div>
+          </nav>
+        )}
       </div>
     </section>
   </div>

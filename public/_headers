@@ -1,6 +1,13 @@
-# Global static asset hardening
+# Global security, discovery, and content negotiation headers
 /*
   X-Content-Type-Options: nosniff
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.clarity.ms https://scripts.clarity.ms https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' https://growthindonesia.my.id https://www.googletagmanager.com https://c.clarity.ms https://c.bing.com data: blob:; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://*.clarity.ms https://cloudflareinsights.com; frame-src 'self' https://www.googletagmanager.com; object-src 'none'; base-uri 'self'; frame-ancestors 'self'
+  Vary: Accept
+  Link: </.well-known/api-catalog>; rel="api-catalog", </docs/api>; rel="service-doc", </sitemap.xml>; rel="sitemap"
 
 # Well-Known Discovery Endpoints
 /.well-known/api-catalog
@@ -29,6 +36,11 @@
   Access-Control-Allow-Origin: *
   Cache-Control: public, max-age=86400
 
+/llms-full.txt
+  Content-Type: text/plain; charset=utf-8
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=86400
+
 /pricing.md
   Content-Type: text/markdown; charset=utf-8
   Access-Control-Allow-Origin: *
@@ -36,6 +48,7 @@
 
 /robots.txt
   Content-Type: text/plain; charset=utf-8
+  Content-Signal: ai-train=no, search=yes, ai-input=yes
   Cache-Control: public, max-age=86400
 
 /sitemap.xml

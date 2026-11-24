@@ -16,6 +16,7 @@ import {
 import { INDEXNOW_KEY, MAX_INDEXNOW_BATCH_SIZE } from './indexnow';
 import { getArticleBySlug } from './mdx';
 import { GET as getLlmsTxt } from '../src/pages/llms.txt';
+import { GET as getLlmsFullTxt } from '../src/pages/llms-full.txt';
 import { GET as getPricingMd } from '../src/pages/pricing.md';
 import { GET as getMarkdown } from '../src/pages/api/markdown';
 import { POST as postIndexNow } from '../src/pages/api/indexnow';
@@ -310,6 +311,50 @@ describe('SEO Audit & Programmatic SEO regression checks', () => {
 
     const fabSource = fs.readFileSync(path.join(process.cwd(), 'components', 'whatsapp-fab.tsx'), 'utf8');
     assert.match(fabSource, /group-focus-visible:opacity-100/);
+  });
+
+  it('enforces Agentic SEO Phase 1-3 Cloudflare routing, security headers, llms.txt Markdown links, llms-full.txt, and AEO signals', async () => {
+    const wrangler = fs.readFileSync(path.join(process.cwd(), 'wrangler.jsonc'), 'utf8');
+    assert.match(wrangler, /"html_handling":\s*"drop-trailing-slash"/);
+    assert.match(wrangler, /"run_worker_first":\s*true/);
+    assert.match(wrangler, /"main":\s*"\.\/src\/cloudflare-worker\.ts"/);
+
+    const headersFile = fs.readFileSync(path.join(process.cwd(), 'public', '_headers'), 'utf8');
+    assert.match(headersFile, /Strict-Transport-Security:/);
+    assert.match(headersFile, /Content-Security-Policy:/);
+    assert.match(headersFile, /X-Frame-Options:/);
+    assert.match(headersFile, /Referrer-Policy:/);
+    assert.match(headersFile, /Permissions-Policy:/);
+    assert.match(headersFile, /Vary:\s*Accept/);
+    assert.match(headersFile, /rel="api-catalog"/);
+
+    assert.equal(fs.existsSync(path.join(process.cwd(), 'public', '_redirects')), true);
+
+    const llmsRes = await getLlmsTxt({} as any);
+    const llmsBody = await llmsRes.text();
+    assert.match(llmsBody, /\[Katalog Harga Resmi \(Markdown\)\]\(https:\/\/growthindonesia\.my\.id\/pricing\.md\)/);
+    assert.match(llmsBody, /\[Dokumentasi AI Lengkap \(llms-full\.txt\)\]\(https:\/\/growthindonesia\.my\.id\/llms-full\.txt\)/);
+
+    const llmsFullRes = await getLlmsFullTxt({} as any);
+    assert.equal(llmsFullRes.status, 200);
+    const llmsFullBody = await llmsFullRes.text();
+    assert.match(llmsFullBody, /Complete AI Grounding Reference/);
+    assert.match(llmsFullBody, /Koridor Mataraman/);
+
+    const robotsRes = await getRobotsTxt({} as any);
+    const robotsBody = await robotsRes.text();
+    assert.match(robotsBody, /User-agent: Amazonbot/);
+    assert.match(robotsBody, /User-agent: FacebookBot/);
+    assert.match(robotsBody, /User-agent: anthropic-ai/);
+    assert.match(robotsBody, /User-agent: Bytespider/);
+
+    const articleTemplate = fs.readFileSync(path.join(process.cwd(), 'src', 'pages', 'artikel', '[slug].astro'), 'utf8');
+    assert.match(articleTemplate, /<article\s+class=/);
+    assert.match(articleTemplate, /SpeakableSpecification/);
+
+    const baseLayout = fs.readFileSync(path.join(process.cwd(), 'src', 'layouts', 'BaseLayout.astro'), 'utf8');
+    assert.match(baseLayout, /property="og:image:width"/);
+    assert.match(baseLayout, /property="og:image:height"/);
   });
 });
 

@@ -12,6 +12,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 // https://astro.build/config
 export default defineConfig({
   site: 'https://growthindonesia.my.id',
+  trailingSlash: 'never',
   output: 'server',
   adapter: cloudflare({
     imageService: 'passthrough',
@@ -37,6 +38,7 @@ export default defineConfig({
     ],
     resolve: {
       alias: [
+        { find: 'react-dom/server', replacement: 'react-dom/server.edge' },
         { find: /^@\/layouts\/(.*)/, replacement: path.resolve(__dirname, './src/layouts/$1') },
         { find: /^@\/styles\/(.*)/, replacement: path.resolve(__dirname, './src/styles/$1') },
         { find: '@', replacement: path.resolve(__dirname, './') },

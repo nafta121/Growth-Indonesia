@@ -107,10 +107,10 @@ export default function TrustSection({
               <div className="grid grid-cols-12 bg-paper border-b border-rule p-6">
                 <div className="col-span-4 font-bold text-muted text-sm">Aspek / Kriteria</div>
                 <div className="col-span-4 font-black text-ink text-lg text-center flex items-center justify-center gap-2">
-                  Growth Indonesia <CheckCircle2 className="w-5 h-5 text-brand-dark" />
+                  Growth Indonesia <CheckCircle2 className="w-5 h-5 text-brand-dark" aria-hidden="true" />
                 </div>
                 <div className="col-span-4 font-bold text-muted text-lg text-center flex items-center justify-center gap-2">
-                  Provider Lain <XCircle className="w-5 h-5 text-muted" />
+                  Provider Lain <XCircle className="w-5 h-5 text-muted" aria-hidden="true" />
                 </div>
               </div>
               {comparisonData.map((row, idx) => (
@@ -136,12 +136,12 @@ export default function TrustSection({
                   <div className="grid grid-cols-2 gap-4">
                     <div className="bg-brand-tint rounded-2xl p-4 text-center border border-brand-border flex flex-col items-center justify-center">
                       <div className="font-bold text-ink text-xs mb-2">Growth Indonesia</div>
-                      <CheckCircle2 className="w-6 h-6 text-brand-dark mx-auto mb-2" />
+                      <span aria-hidden="true" className="w-6 h-6 rounded-full bg-brand-dark text-white text-xs font-black flex items-center justify-center mx-auto mb-2">&#10003;</span>
                       <div className="font-bold text-brand-dark text-sm leading-snug">{row.us}</div>
                     </div>
                     <div className="bg-paper rounded-2xl p-4 text-center border border-rule flex flex-col items-center justify-center">
                       <div className="font-bold text-muted text-xs mb-2">Provider Lain</div>
-                      <XCircle className="w-6 h-6 text-muted mx-auto mb-2" />
+                      <span aria-hidden="true" className="w-6 h-6 rounded-full bg-paper-3 text-muted text-xs font-black flex items-center justify-center mx-auto mb-2">&#10005;</span>
                       <div className="font-medium text-muted text-sm leading-snug">{row.them}</div>
                     </div>
                   </div>

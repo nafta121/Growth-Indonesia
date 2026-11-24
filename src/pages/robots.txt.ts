@@ -7,6 +7,7 @@ export const GET: APIRoute = async () => {
 Allow: /
 Allow: /_astro/
 Allow: /llms.txt
+Allow: /llms-full.txt
 Allow: /pricing.md
 Allow: /2c11486128914291876d43ecd6d55580.txt
 Disallow: /api/
@@ -57,6 +58,18 @@ User-agent: Applebot-Extended
 Allow: /
 
 User-agent: CCBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+User-agent: Bytespider
 Allow: /
 
 Sitemap: https://growthindonesia.my.id/sitemap.xml

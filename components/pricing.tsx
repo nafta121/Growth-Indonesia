@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { Check, ArrowRight, ShieldCheck, FileText, CloudRain, Download } from 'lucide-react';
+import { ArrowRight, ShieldCheck, FileText, CloudRain, Download } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import ScrollReveal from '@/components/ui/scroll-reveal';
 import { Button } from '@/components/ui/button';
@@ -89,9 +89,12 @@ export default function Pricing({ children }: { children?: ReactNode }) {
                 <div className="space-y-5 mb-auto">
                   {pkg.features.map((feat) => (
                     <div key={feat} className="flex items-start gap-4 text-sm text-ink-2 group/item">
-                      <div className="w-5 h-5 rounded-full bg-brand-tint flex items-center justify-center shrink-0 group-hover/item:bg-brand-dark group-hover/item:text-white transition-colors duration-150">
-                        <Check className="w-3 h-3 text-brand-dark group-hover/item:text-white transition-colors duration-150" />
-                      </div>
+                      <span
+                        aria-hidden="true"
+                        className="w-5 h-5 rounded-full bg-brand-tint text-brand-dark text-xs font-black flex items-center justify-center shrink-0 group-hover/item:bg-brand-dark group-hover/item:text-white transition-colors duration-150"
+                      >
+                        &#10003;
+                      </span>
                       <span className="font-medium">{feat}</span>
                     </div>
                   ))}

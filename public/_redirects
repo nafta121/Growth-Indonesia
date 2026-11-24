@@ -1,0 +1,17 @@
+# Legacy service category redirects (301 Permanent)
+/layanan/outbound /layanan/madiun/outbound 301
+/layanan/training /layanan/madiun/training 301
+/layanan/fun-games /layanan/madiun/fun-games 301
+/layanan/ldk-osis /layanan/madiun/ldk-osis 301
+/layanan/gathering /layanan/madiun/gathering 301
+/layanan/outbound-madiun /layanan/madiun/outbound 301
+/layanan/outbound-surabaya /layanan/surabaya/outbound 301
+/layanan/outbound-malang /layanan/malang/outbound 301
+/layanan/outbound-batu /layanan/batu/outbound 301
+/layanan/outbound-magetan /layanan/magetan/outbound 301
+/layanan/outbound-kediri /layanan/kediri/outbound 301
+/layanan/outbound-ponorogo /layanan/ponorogo/outbound 301
+/layanan/outbound-ngawi /layanan/ngawi/outbound 301
+/layanan/fun-games-batu /layanan/batu/fun-games 301
+/layanan/gathering-madiun /layanan/madiun/gathering 301
+/layanan/ldk-osis-madiun /layanan/madiun/ldk-osis 301

@@ -126,7 +126,8 @@ export function getLocalBusinessSchema(additionalArea?: string) {
     },
     "sameAs": [
       "https://www.instagram.com/growthindonesia/",
-      "https://www.facebook.com/growthindonesia/"
+      "https://www.facebook.com/growthindonesia/",
+      COMPANY_INFO.maps_url
     ]
   };
 }

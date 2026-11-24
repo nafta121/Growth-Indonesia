@@ -1,16 +1,21 @@
 import { MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { getCityImage } from '@/lib/city-images';
 
 interface CityCtaProps {
   kategoriName: string;
   kotaName: string;
+  cityKey?: string;
 }
 
-export default function CityCta({ kategoriName, kotaName }: CityCtaProps) {
+export default function CityCta({ kategoriName, kotaName, cityKey }: CityCtaProps) {
+  const normalizedCity = cityKey || kotaName.toLowerCase().trim().replace(/\s+/g, '-');
+  const ctaImage = getCityImage(normalizedCity, 2);
+
   return (
     <section id="cta-proposal" className="py-24 md:py-32 bg-navy relative overflow-hidden">
       <img
-        src="https://growthindonesia.my.id/cdn/outbound/2022-10-22-09-00-09.webp"
+        src={ctaImage}
         alt={`Dokumentasi Kegiatan ${kategoriName} bersama Fasilitator Growth Indonesia di ${kotaName}`}
         width={1200}
         height={800}
@@ -28,7 +33,7 @@ export default function CityCta({ kategoriName, kotaName }: CityCtaProps) {
         <div className="flex flex-wrap justify-center gap-4">
           <Button size="lg" className="h-16 px-8 rounded-full bg-brand-dark text-white hover:bg-brand shadow-md transition-[transform,background-color,box-shadow] duration-200 active:scale-95 flex items-center justify-center gap-2 whitespace-nowrap" asChild>
             <a href={`https://wa.me/6285704748186?text=Halo tim Growth Indonesia, saya ingin meminta draf proposal dan rincian RAB program ${kategoriName} untuk wilayah ${kotaName}.`} target="_blank" rel="noopener noreferrer" className="font-bold text-sm sm:text-base">
-              <MessageCircle className="w-5 h-5" />
+              <MessageCircle className="w-5 h-5" aria-hidden="true" />
               Minta Proposal &amp; RAB {kotaName}
             </a>
           </Button>

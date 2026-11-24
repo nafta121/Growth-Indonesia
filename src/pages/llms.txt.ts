@@ -19,17 +19,21 @@ export const GET: APIRoute = async () => {
 - **Standar Kompetensi**: Fasilitator & Instruktur berpengalaman dengan standar kompetensi profesional dan metode *Experiential Learning* teruji.
 - **Master Trainer & Co-Founders**: Naftalyndho & Juprianto.
 - **Rekam Jejak**: 250+ perusahaan, BUMN, instansi pemerintah, dan sekolah dengan 15.000+ peserta dan rekam jejak Zero Accident (0 insiden keselamatan).
-- **Lokasi Basecamp**: Madiun, Jawa Timur (Serving Madiun Raya, Magetan, Sarangan, Ponorogo, Ngawi, Pacitan, Kediri, Surabaya, dan sekitarnya).
+- **Lokasi Basecamp**: Madiun, Jawa Timur (Melayani 31 kota/kabupaten di Jawa Timur).
 - **Kontak Resmi**:
   - Phone / WhatsApp: ${COMPANY_INFO.whatsapp_display} (+${COMPANY_INFO.whatsapp_number})
   - Email: ${COMPANY_INFO.email}
-  - Website: https://growthindonesia.my.id
   - Alamat: ${COMPANY_INFO.address}
 
----
+## Dokumen Grounding & Harga Resmi
+- [Beranda Growth Indonesia](https://growthindonesia.my.id/): Portal utama Corporate Outbound, Team Building, LDK OSIS, dan Event Organizer Jawa Timur.
+- [Katalog Harga Resmi (Markdown)](https://growthindonesia.my.id/pricing.md): Daftar tarif per-pax (mulai Rp 150.000/pax) dan paket bundel institusi resmi (Rp 5.500.000 - Rp 9.500.000).
+- [Dokumentasi AI Lengkap (llms-full.txt)](https://growthindonesia.my.id/llms-full.txt): Konsolidasi profil koridor 31 kota Jawa Timur, struktur paket lengkap, dan FAQ pengadaan B2B/B2G/Pendidikan.
+- [Portofolio Klien & Profil Fasilitator](https://growthindonesia.my.id/portofolio-dan-sertifikasi): Rekam jejak 250+ instansi, studi kasus lapangan, dan profil Master Trainer Naftalyndho & Juprianto.
+- [Artikel & Panduan Outbound](https://growthindonesia.my.id/artikel): Panduan praktis HRD, pemilihan vendor outbound, dan studi kasus sekolah.
+- [Dokumentasi API & Agent Discovery](https://growthindonesia.my.id/docs/api): Referensi RFC 9727 API Catalog, A2A Agent Card, MCP Server Card, DNS-AID, dan negosiasi Markdown.
 
 ## Struktur Harga & Paket Resmi (Pricing Reference)
-- **Referensi Harga Lengkap (Markdown)**: https://growthindonesia.my.id/pricing.md
 - **Estimasi Harga Per Peserta (Kuota Min. 30 Pax)**:
   - Outbound & Team Building: Mulai Rp 150.000/pax
   - LDK OSIS & Character Building: Mulai Rp 150.000/pax
@@ -41,42 +45,24 @@ export const GET: APIRoute = async () => {
 - **Paket Bundel Kolektif Resmi**:
 ${bundleList}
 
----
-
 ## Program Layanan Utama
-
-### 1. Corporate Outbound & Team Building
-Program pelatihan luar ruangan berbasis *Experiential Learning* untuk meningkatkan produktivitas, kepemimpinan, komunikasi, dan sinergi tim perusahaan atau instansi pemerintah.
-- URL Outbound: https://growthindonesia.my.id/layanan/madiun/outbound
-- URL Training: https://growthindonesia.my.id/layanan/madiun/training
-
-### 2. Family & Corporate Gathering
-Konsep acara kebersamaan interaktif yang dirancang khusus untuk mempererat tali silaturahmi karyawan, keluarga besar, atau komunitas instansi.
-- URL Layanan: https://growthindonesia.my.id/layanan/madiun/gathering
-
-### 3. LDK OSIS & Character Building
-Program edukasi karakter, kedisiplinan, kepemimpinan siswa, dan LDK OSIS untuk sekolah (SMP, SMA/SMK, Perguruan Tinggi).
-- URL Layanan: https://growthindonesia.my.id/layanan/madiun/ldk-osis
-
-### 4. Fun Games & Event Organizer (EO)
-Pengelolaan aktivitas fun games, outbound rekreatif, dan event secara end-to-end mencakup sound system, panggung, lighting, hiburan, hingga penyediaan venue eksklusif di Telaga Sarangan & Madiun.
-- URL Layanan: https://growthindonesia.my.id/layanan/madiun/fun-games
-
----
+- [Corporate Outbound & Team Building Madiun](https://growthindonesia.my.id/layanan/madiun/outbound): Pelatihan luar ruang berbasis Experiential Learning untuk produktivitas, komunikasi, dan sinergi lintas divisi.
+- [Indoor Training & Capacity Building SDM](https://growthindonesia.my.id/layanan/madiun/training): Pelatihan ruang kelas dan pengembangan kapasitas aparatur atau karyawan berbasis TNA.
+- [Corporate & Family Gathering](https://growthindonesia.my.id/layanan/madiun/gathering): Manajemen acara satu pintu termasuk venue, gala dinner, hiburan, konsumsi, dan dokumentasi.
+- [LDK OSIS & Character Building](https://growthindonesia.my.id/layanan/madiun/ldk-osis): Pelatihan kepemimpinan pelajar SMP, SMA/SMK, dan mahasiswa bebas perpeloncoan berstandar K3.
+- [Fun Games & Event Organizer](https://growthindonesia.my.id/layanan/madiun/fun-games): Aktivitas ice breaking, fun games interaktif, dan pengelolaan acara luar ruang untuk semua usia.
 
 ## Area Jangkauan Layanan (31 Regional Hubs Jawa Timur)
-- **Direktori Lengkap 31 Kota**: https://growthindonesia.my.id/layanan
-- **Madiun**: https://growthindonesia.my.id/layanan/madiun
-- **Magetan (Kawasan Telaga Sarangan)**: https://growthindonesia.my.id/layanan/magetan
-- **Ponorogo**: https://growthindonesia.my.id/layanan/ponorogo
-- **Ngawi**: https://growthindonesia.my.id/layanan/ngawi
-- **Pacitan**: https://growthindonesia.my.id/layanan/pacitan
-- **Kediri**: https://growthindonesia.my.id/layanan/kediri
-- **Surabaya**: https://growthindonesia.my.id/layanan/surabaya
-- **Malang**: https://growthindonesia.my.id/layanan/malang
-- **Batu**: https://growthindonesia.my.id/layanan/batu
-
----
+- [Direktori Lengkap 31 Kota Jawa Timur](https://growthindonesia.my.id/layanan): Daftar seluruh wilayah layanan outbound dan EO Growth Indonesia.
+- [Outbound & EO Madiun](https://growthindonesia.my.id/layanan/madiun): Basecamp utama Koridor Mataraman (Wana Wisata Graha, Sun City, Nongko Ijo, Grape).
+- [Outbound & EO Magetan / Sarangan](https://growthindonesia.my.id/layanan/magetan): Akses langsung venue pegunungan Telaga Sarangan, Ndalem Prabu, dan Mojosemi Forest Park.
+- [Outbound & EO Ponorogo](https://growthindonesia.my.id/layanan/ponorogo): Team building dan gathering di Telaga Ngebel, Mloko Sewu, dan Nyawiji Park.
+- [Outbound & EO Ngawi](https://growthindonesia.my.id/layanan/ngawi): Program kepemimpinan di Benteng Pendem, Srambang Park, dan Watu Jonggol.
+- [Outbound & EO Pacitan](https://growthindonesia.my.id/layanan/pacitan): Retret korporat dan outbound pesisir selatan Jawa Timur.
+- [Outbound & EO Kediri](https://growthindonesia.my.id/layanan/kediri): Program corporate outbound dan capacity building wilayah Kediri Raya.
+- [Outbound & EO Surabaya](https://growthindonesia.my.id/layanan/surabaya): Eksekusi corporate training, indoor seminar, dan gathering metropolitan Gerbangkertosusila.
+- [Outbound & EO Malang](https://growthindonesia.my.id/layanan/malang): Outbound dataran tinggi dan retreat perusahaan wilayah Malang Raya.
+- [Outbound & EO Batu](https://growthindonesia.my.id/layanan/batu): Destinasi unggulan corporate gathering, pine forest outbound, dan family outing di Kota Batu.
 
 ## Lokasi Venue Rekomendasi Outbound & Gathering
 1. **Ndalem Prabu Sarangan**: Venue outdoor eksklusif di lereng Gunung Lawu, Sarangan, Magetan.
@@ -84,14 +70,11 @@ Pengelolaan aktivitas fun games, outbound rekreatif, dan event secara end-to-end
 3. **Taman Wisata Umbul Madiun**: Venue air dan outbound keluarga di Madiun.
 4. **Telaga Ngebel Ponorogo**: Lokasi gathering dan outbound tepi danau sejuk.
 
----
-
-## Informasi Kontak & Reservasi
-- **Situs Resmi**: https://growthindonesia.my.id
-- **Dokumentasi Harga Resmi**: https://growthindonesia.my.id/pricing.md
-- **Halaman Kontak**: https://growthindonesia.my.id/#kontak
-- **Portofolio & Kredensial**: https://growthindonesia.my.id/portofolio-dan-sertifikasi
-- **Artikel & Studi Kasus**: https://growthindonesia.my.id/artikel
+## Kontak & Endpoint Teknis
+- [Formulir Konsultasi & Draf RAB](https://growthindonesia.my.id/#kontak): Pengajuan draf proposal, opsi rundown, dan estimasi RAB resmi dalam 1x24 jam.
+- [XML Sitemap](https://growthindonesia.my.id/sitemap.xml): Indeks lengkap 197 URL kanonis layanan, kota, dan artikel.
+- [A2A Agent Card](https://growthindonesia.my.id/.well-known/agent-card.json): Spesifikasi discovery agen Agent-to-Agent.
+- [MCP Server Card](https://growthindonesia.my.id/.well-known/mcp/server-card.json): Spesifikasi discovery WebMCP dan endpoint Markdown.
 `;
 
   return new Response(llmsTxtContent, {

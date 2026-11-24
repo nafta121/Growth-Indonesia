@@ -19,8 +19,30 @@ interface CityContentProps {
 }
 
 export default function CityContent({ kategoriName, kotaName, cityKey, cityData, content }: CityContentProps) {
-  const contentImage = getCityImage(cityKey);
+  const contentImage = getCityImage(cityKey, 1);
   const operationalProfile = getCityOperationalProfile(cityKey);
+  const isEducationCategory = kategoriName.toLowerCase().includes('ldk');
+  const relatedGuides = isEducationCategory
+    ? [
+        {
+          href: '/artikel/membangun-karakter-pelajar-kemah-besar-smpn-1-geger-di-ndalem-prabu-sarangan',
+          title: 'Studi Kasus Kemah Besar & LDK OSIS SMPN 1 Geger di Sarangan',
+        },
+        {
+          href: '/artikel/tips-memilih-provider-outbound-profesional',
+          title: 'Checklist Memilih Provider Outbound & LDK Berstandar K3',
+        },
+      ]
+    : [
+        {
+          href: '/artikel/tips-memilih-provider-outbound-profesional',
+          title: 'Panduan HRD Memilih Provider Outbound & Transparansi RAB',
+        },
+        {
+          href: '/artikel/pentingnya-team-building-untuk-produktivitas-karyawan',
+          title: 'Dampak Team Building Berbasis Experiential Learning pada Kinerja Tim',
+        },
+      ];
   const bodyIntro =
     content?.bodyIntro ||
     `Sebagai mitra pengembangan SDM pilihan untuk layanan ${kategoriName.toLowerCase()} di ${kotaName}, kami merancang program berbasis experiential learning yang 100% selaras dengan visi, misi institusi, serta budaya kerja Anda.`;
@@ -87,8 +109,11 @@ export default function CityContent({ kategoriName, kotaName, cityKey, cityData,
                 <p className="text-ink-2 leading-relaxed font-medium text-pretty mb-3">
                   {cityData.uniqueSellingPoint}
                 </p>
-                <p className="text-ink-2 text-sm leading-relaxed font-medium text-pretty">
+                <p className="text-ink-2 text-sm leading-relaxed font-medium text-pretty mb-3">
                   {operationalProfile.planBContingency}
+                </p>
+                <p className="text-brand-dark text-xs sm:text-sm leading-relaxed font-bold text-pretty">
+                  {operationalProfile.localProof}
                 </p>
               </div>
             </div>
@@ -130,6 +155,23 @@ export default function CityContent({ kategoriName, kotaName, cityKey, cityData,
                     <span className="font-bold text-ink text-base">{venue}</span>
                   </div>
                 ))}
+              </div>
+
+              <div className="pt-4 border-t border-rule">
+                <p className="text-sm font-bold text-ink-2 mb-3">
+                  Referensi Panduan untuk Panitia {kotaName}
+                </p>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  {relatedGuides.map((guide) => (
+                    <a
+                      key={guide.href}
+                      href={guide.href}
+                      className="flex-1 p-4 rounded-2xl bg-paper border border-rule hover:border-brand-border hover:bg-brand-tint/40 text-sm font-bold text-ink hover:text-brand-dark transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-dark"
+                    >
+                      {guide.title}
+                    </a>
+                  ))}
+                </div>
               </div>
             </div>
           </ScrollReveal>
