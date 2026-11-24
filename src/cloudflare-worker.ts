@@ -85,6 +85,12 @@ export default {
       return Response.redirect(dest, 301);
     }
 
+    // 1b. Serve /icon.png for legacy /favicon.ico browser requests (avoids console 404)
+    if (pathname === '/favicon.ico') {
+      const iconRes = await env.ASSETS.fetch(new Request(new URL('/icon.png', url.origin).toString(), request));
+      return applyResponseHeaders(iconRes, '/icon.png');
+    }
+
     // 2. Fast pass-through for immutable media, JS/CSS bundles, and static text/JSON/XML files
     if (
       pathname.startsWith('/_astro/') ||
