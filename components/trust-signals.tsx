@@ -2,18 +2,18 @@ import { Building2, Globe, GraduationCap, HardHat, Landmark, Ship, TowerControl 
 import { COMPANY_INFO } from '@/lib/constants';
 
 const CLIENTS = [
-  { name: 'Petrokimia Gresik', icon: <HardHat className="w-5 h-5" /> },
-  { name: 'Semen Indonesia', icon: <Building2 className="w-5 h-5" /> },
-  { name: 'Bank Jatim', icon: <Landmark className="w-5 h-5" /> },
-  { name: 'Maspion Group', icon: <Globe className="w-5 h-5" /> },
-  { name: 'Kapal Api', icon: <Ship className="w-5 h-5" /> },
-  { name: 'PT KAI', icon: <Truck className="w-5 h-5" /> },
-  { name: 'Pertamina', icon: <Tower className="w-5 h-5" /> },
-  { name: 'Universitas Brawijaya', icon: <GraduationCap className="w-5 h-5" /> },
-  { name: 'Wings Group', icon: <Building2 className="w-5 h-5" /> },
-  { name: 'Gudang Garam', icon: <Globe className="w-5 h-5" /> },
-  { name: 'PLN Persero', icon: <Tower className="w-5 h-5" /> },
-  { name: 'WIKA', icon: <HardHat className="w-5 h-5" /> },
+  { name: 'Petrokimia Gresik', icon: <HardHat className="w-5 h-5" aria-hidden="true" /> },
+  { name: 'Semen Indonesia', icon: <Building2 className="w-5 h-5" aria-hidden="true" /> },
+  { name: 'Bank Jatim', icon: <Landmark className="w-5 h-5" aria-hidden="true" /> },
+  { name: 'Maspion Group', icon: <Globe className="w-5 h-5" aria-hidden="true" /> },
+  { name: 'Kapal Api', icon: <Ship className="w-5 h-5" aria-hidden="true" /> },
+  { name: 'PT KAI', icon: <Truck className="w-5 h-5" aria-hidden="true" /> },
+  { name: 'Pertamina', icon: <Tower className="w-5 h-5" aria-hidden="true" /> },
+  { name: 'Universitas Brawijaya', icon: <GraduationCap className="w-5 h-5" aria-hidden="true" /> },
+  { name: 'Wings Group', icon: <Building2 className="w-5 h-5" aria-hidden="true" /> },
+  { name: 'Gudang Garam', icon: <Globe className="w-5 h-5" aria-hidden="true" /> },
+  { name: 'PLN Persero', icon: <Tower className="w-5 h-5" aria-hidden="true" /> },
+  { name: 'WIKA', icon: <HardHat className="w-5 h-5" aria-hidden="true" /> },
 ];
 
 const TESTIMONIALS = [
@@ -179,17 +179,22 @@ export default function TrustSignals() {
         </div>
         
         {/* CSS Scroll Snapping Carousel */}
-        <div className="flex overflow-x-auto gap-4 sm:gap-6 pb-12 pt-4 px-4 -mx-4 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+        <div
+          role="region"
+          aria-label="Testimoni klien Growth Indonesia"
+          tabIndex={0}
+          className="flex overflow-x-auto gap-4 sm:gap-6 pb-12 pt-4 px-4 -mx-4 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-dark focus-visible:rounded-2xl"
+        >
           {TESTIMONIALS.map((t, idx) => (
             <div 
               key={idx}
               className="flex-none w-[85vw] sm:w-[350px] md:w-[400px] snap-center shrink-0 bg-white border border-rule rounded-3xl p-6 sm:p-8 shadow-sm hover:shadow-md [@media(hover:hover)_and_(pointer:fine)]:hover:-translate-y-1 hover:border-brand-border transition-[transform,box-shadow,border-color] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] relative group"
             >
-              <div className="absolute top-6 right-6 text-paper-3 group-hover:text-brand-tint transition-colors duration-200">
-                <Quote className="w-12 h-12 fill-current" />
+              <div className="absolute top-6 right-6 text-paper-3 group-hover:text-brand-tint transition-colors duration-200" aria-hidden="true">
+                <Quote className="w-12 h-12 fill-current" aria-hidden="true" />
               </div>
               <div className="relative z-10 flex flex-col h-full">
-                <p className="text-muted text-sm md:text-base leading-relaxed mb-8 flex-grow line-clamp-3">
+                <p className="text-muted text-sm md:text-base leading-relaxed mb-8 flex-grow text-pretty">
                   {t.quote}
                 </p>
                 <div className="flex items-center gap-4 border-t border-rule pt-6 mt-auto">

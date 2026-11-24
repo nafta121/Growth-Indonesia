@@ -213,7 +213,7 @@ const websiteSchema = {
               var text = encodeURIComponent('Halo Growth Indonesia, saya ' + name + ' dari ' + org + '. ' + msg);
               return {
                 status: 'success',
-                whatsappUrl: 'https://wa.me/6285848715836?text=' + text
+                whatsappUrl: 'https://wa.me/6285704748186?text=' + text
               };
             }
           }
@@ -255,15 +255,23 @@ const websiteSchema = {
       ></iframe>
     </noscript>
 
+    <!-- Skip to Main Content Link (Keyboard Accessibility) -->
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[80] focus:inline-flex focus:min-h-11 focus:items-center focus:px-5 focus:py-2.5 focus:rounded-xl focus:bg-brand-dark focus:text-white focus:font-bold focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-white"
+    >
+      Lewati ke konten utama
+    </a>
+
     {!hideNavbar && (
       <div class="relative">
-        <Navbar>
-          <NavbarMobile client:load navLinks={NAV_LINKS} />
+        <Navbar currentPath={pathname}>
+          <NavbarMobile client:load navLinks={NAV_LINKS} currentPath={pathname} />
         </Navbar>
       </div>
     )}
 
-    <main class="flex-grow">
+    <main id="main-content" tabindex="-1" class="flex-grow focus:outline-none">
       <slot />
     </main>
 

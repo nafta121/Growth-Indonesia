@@ -179,7 +179,7 @@ export default function OutboundGalleryClient({ photos, children }: OutboundGall
               type="button"
               onClick={handleClose}
               aria-label="Tutup galeri"
-              className="absolute top-[max(1.5rem,env(safe-area-inset-top))] right-[max(1.5rem,env(safe-area-inset-right))] min-h-12 min-w-12 p-2.5 flex items-center justify-center bg-navy-2 hover:bg-brand-dark border border-navy-border text-white transition-colors duration-150 z-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-full"
+              className="absolute top-[max(1.5rem,env(safe-area-inset-top))] right-[max(1.5rem,env(safe-area-inset-right))] min-h-12 min-w-12 p-2.5 flex items-center justify-center bg-navy-2 hover:bg-brand-dark border border-navy-border text-white transition-colors duration-150 z-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-full cursor-pointer"
             >
               <X className="w-7 h-7" aria-hidden="true" />
             </button>
@@ -189,7 +189,7 @@ export default function OutboundGalleryClient({ photos, children }: OutboundGall
                 type="button"
                 onClick={handlePrev}
                 aria-label="Gambar sebelumnya"
-                className="absolute left-2 md:-left-12 min-h-12 min-w-12 p-2.5 flex items-center justify-center bg-navy-2 hover:bg-brand-dark border border-navy-border text-white transition-colors duration-150 z-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-full"
+                className="absolute left-2 md:-left-12 min-h-12 min-w-12 p-2.5 flex items-center justify-center bg-navy-2 hover:bg-brand-dark border border-navy-border text-white transition-colors duration-150 z-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-full cursor-pointer"
               >
                 <ChevronLeft className="w-8 h-8" aria-hidden="true" />
               </button>
@@ -217,7 +217,7 @@ export default function OutboundGalleryClient({ photos, children }: OutboundGall
                 type="button"
                 onClick={handleNext}
                 aria-label="Gambar selanjutnya"
-                className="absolute right-2 md:-right-12 min-h-12 min-w-12 p-2.5 flex items-center justify-center bg-navy-2 hover:bg-brand-dark border border-navy-border text-white transition-colors z-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-full"
+                className="absolute right-2 md:-right-12 min-h-12 min-w-12 p-2.5 flex items-center justify-center bg-navy-2 hover:bg-brand-dark border border-navy-border text-white transition-colors z-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-full cursor-pointer"
               >
                 <ChevronRight className="w-8 h-8" aria-hidden="true" />
               </button>

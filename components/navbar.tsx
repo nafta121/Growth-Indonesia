@@ -13,7 +13,20 @@ export const NAV_LINKS = [
   { name: 'Kontak', href: '/#kontak' },
 ];
 
-export default function Navbar({ children }: { children?: ReactNode }) {
+function isLinkActive(href: string, currentPath?: string): boolean {
+  if (!currentPath || href.startsWith('/#')) return false;
+  const normalized = currentPath.replace(/\/$/, '') || '/';
+  if (href === '/') return normalized === '/';
+  return normalized === href || normalized.startsWith(`${href}/`);
+}
+
+export default function Navbar({
+  children,
+  currentPath,
+}: {
+  children?: ReactNode;
+  currentPath?: string;
+}) {
   return (
     <header
       id="navbar"
@@ -22,7 +35,7 @@ export default function Navbar({ children }: { children?: ReactNode }) {
       )}
     >
       <div className="max-w-7xl mx-auto h-20 px-6 md:px-12">
-        <nav className="flex items-center justify-between h-full">
+        <nav aria-label="Navigasi Utama" className="flex items-center justify-between h-full">
           {/* Logo */}
           <a href="/" className="relative z-50 flex items-center shrink-0 min-h-11 group active:scale-95 transition-transform duration-150 ease-[cubic-bezier(0.23,1,0.32,1)]" aria-label="Growth Indonesia Home">
             <img 
@@ -42,17 +55,29 @@ export default function Navbar({ children }: { children?: ReactNode }) {
           {/* Desktop Nav & CTA */}
           <div className="hidden lg:flex items-center gap-4 xl:gap-8">
             <ul className="flex items-center gap-1.5 xl:gap-5">
-              {NAV_LINKS.map((link) => (
-                <li key={link.name}>
-                  <a
-                    href={link.href}
-                    className="group relative inline-flex min-h-12 items-center py-1 text-sm font-bold tracking-tight text-ink transition-colors duration-150 ease-out hover:text-brand-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-dark focus-visible:ring-offset-2 rounded-lg px-2 whitespace-nowrap"
-                  >
-                    {link.name}
-                    <span className="absolute -bottom-1 inset-x-2 h-0.5 origin-left scale-x-0 bg-brand-dark transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:scale-x-100" />
-                  </a>
-                </li>
-              ))}
+              {NAV_LINKS.map((link) => {
+                const isActive = isLinkActive(link.href, currentPath);
+                return (
+                  <li key={link.name}>
+                    <a
+                      href={link.href}
+                      aria-current={isActive ? 'page' : undefined}
+                      className={cn(
+                        'group relative inline-flex min-h-12 items-center py-1 text-sm font-bold tracking-tight transition-colors duration-150 ease-out hover:text-brand-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-dark focus-visible:ring-offset-2 rounded-lg px-2 whitespace-nowrap',
+                        isActive ? 'text-brand-dark' : 'text-ink'
+                      )}
+                    >
+                      {link.name}
+                      <span
+                        className={cn(
+                          'absolute -bottom-1 inset-x-2 h-0.5 origin-left bg-brand-dark transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:scale-x-100',
+                          isActive ? 'scale-x-100' : 'scale-x-0'
+                        )}
+                      />
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
             <a
               href="/#kontak"
@@ -63,7 +88,7 @@ export default function Navbar({ children }: { children?: ReactNode }) {
           </div>
 
           {/* Slotted mobile drawer island or fallback */}
-          {children ? children : <NavbarMobile navLinks={NAV_LINKS} />}
+          {children ? children : <NavbarMobile navLinks={NAV_LINKS} currentPath={currentPath} />}
         </nav>
       </div>
     </header>

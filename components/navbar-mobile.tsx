@@ -10,7 +10,20 @@ interface NavLink {
   href: string;
 }
 
-export default function NavbarMobile({ navLinks }: { navLinks: NavLink[] }) {
+function isMobileLinkActive(href: string, currentPath?: string): boolean {
+  if (!currentPath || href.startsWith('/#')) return false;
+  const normalized = currentPath.replace(/\/$/, '') || '/';
+  if (href === '/') return normalized === '/';
+  return normalized === href || normalized.startsWith(`${href}/`);
+}
+
+export default function NavbarMobile({
+  navLinks,
+  currentPath,
+}: {
+  navLinks: NavLink[];
+  currentPath?: string;
+}) {
   const [isOpen, setIsOpen] = useState(false);
   const shouldReduceMotion = useReducedMotion();
   const toggleButtonRef = useRef<HTMLButtonElement>(null);
@@ -83,7 +96,7 @@ export default function NavbarMobile({ navLinks }: { navLinks: NavLink[] }) {
         ref={toggleButtonRef}
         id="mobile-menu-toggle"
         type="button"
-        className="relative z-50 min-h-12 min-w-12 p-3 text-ink lg:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-dark focus-visible:ring-offset-2 bg-paper-2 rounded-xl transition-transform duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-95 flex items-center justify-center"
+        className="relative z-50 min-h-12 min-w-12 p-3 text-ink lg:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-dark focus-visible:ring-offset-2 bg-paper-2 rounded-xl transition-transform duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-95 flex items-center justify-center cursor-pointer"
         onClick={() => setIsOpen(!isOpen)}
         aria-label={isOpen ? "Tutup menu" : "Buka menu"}
         aria-expanded={isOpen}
@@ -124,23 +137,29 @@ export default function NavbarMobile({ navLinks }: { navLinks: NavLink[] }) {
             className="fixed inset-0 z-40 flex flex-col bg-white lg:hidden overflow-y-auto overflow-x-hidden"
           >
             <ul className="flex flex-col items-center gap-4 w-full px-8 pt-24">
-              {navLinks.map((link, i) => (
-                <motion.li
-                  key={link.name}
-                  initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, transform: 'translateY(8px)' }}
-                  animate={shouldReduceMotion ? { opacity: 1 } : { opacity: 1, transform: 'translateY(0px)' }}
-                  transition={{ duration: 0.2, delay: shouldReduceMotion ? 0 : 0.04 + i * 0.04, ease: [0.23, 1, 0.32, 1] }}
-                  className="w-full text-center"
-                >
-                  <a
-                    href={link.href}
-                    onClick={() => setIsOpen(false)}
-                    className="block py-3 min-h-12 text-2xl sm:text-3xl font-display font-bold text-ink hover:text-brand-dark active:scale-95 transition-[transform,color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-dark rounded-xl"
+              {navLinks.map((link, i) => {
+                const isActive = isMobileLinkActive(link.href, currentPath);
+                return (
+                  <motion.li
+                    key={link.name}
+                    initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, transform: 'translateY(8px)' }}
+                    animate={shouldReduceMotion ? { opacity: 1 } : { opacity: 1, transform: 'translateY(0px)' }}
+                    transition={{ duration: 0.2, delay: shouldReduceMotion ? 0 : 0.04 + i * 0.04, ease: [0.23, 1, 0.32, 1] }}
+                    className="w-full text-center"
                   >
-                    {link.name}
-                  </a>
-                </motion.li>
-              ))}
+                    <a
+                      href={link.href}
+                      onClick={() => setIsOpen(false)}
+                      aria-current={isActive ? 'page' : undefined}
+                      className={`block py-3 min-h-12 text-2xl sm:text-3xl font-display font-bold hover:text-brand-dark active:scale-95 transition-[transform,color,background-color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-dark rounded-xl ${
+                        isActive ? 'text-brand-dark bg-brand-tint/60' : 'text-ink'
+                      }`}
+                    >
+                      {link.name}
+                    </a>
+                  </motion.li>
+                );
+              })}
             </ul>
 
             {/* Contact Info for Mobile Menu */}
@@ -154,7 +173,7 @@ export default function NavbarMobile({ navLinks }: { navLinks: NavLink[] }) {
                 className="group flex items-center gap-4 p-4 rounded-2xl bg-paper border border-rule hover:bg-brand-dark hover:border-brand-dark transition-[transform,background-color,border-color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-95"
               >
                 <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-brand-dark shadow-sm transition-colors">
-                  <Phone className="w-5 h-5" />
+                  <Phone className="w-5 h-5" aria-hidden="true" />
                 </div>
                 <div className="flex flex-col">
                   <span className="text-xs font-semibold text-muted group-hover:text-white/80 transition-colors">WhatsApp Kami</span>
@@ -167,7 +186,7 @@ export default function NavbarMobile({ navLinks }: { navLinks: NavLink[] }) {
                   href={`mailto:${COMPANY_INFO.email}`}
                   className="flex flex-col items-center gap-2 p-4 rounded-2xl bg-paper border border-rule hover:bg-paper-2 transition-colors text-center"
                 >
-                  <Mail className="w-5 h-5 text-brand-dark" />
+                  <Mail className="w-5 h-5 text-brand-dark" aria-hidden="true" />
                   <span className="text-xs font-semibold text-muted">Email</span>
                 </a>
                 <a 
@@ -176,7 +195,7 @@ export default function NavbarMobile({ navLinks }: { navLinks: NavLink[] }) {
                   rel="noopener noreferrer"
                   className="flex flex-col items-center gap-2 p-4 rounded-2xl bg-paper border border-rule hover:bg-paper-2 transition-colors text-center"
                 >
-                  <MapPin className="w-5 h-5 text-brand-dark" />
+                  <MapPin className="w-5 h-5 text-brand-dark" aria-hidden="true" />
                   <span className="text-xs font-semibold text-muted">Lokasi</span>
                 </a>
               </div>

@@ -288,6 +288,29 @@ describe('SEO Audit & Programmatic SEO regression checks', () => {
       assert.notEqual(parsed, null);
     }
   });
+
+  it('enforces UI/UX Pro Max accessibility, form ergonomics, and WebMCP contact parity', () => {
+    const layoutSource = fs.readFileSync(path.join(process.cwd(), 'src', 'layouts', 'BaseLayout.astro'), 'utf8');
+    assert.match(layoutSource, /href="#main-content"/);
+    assert.match(layoutSource, /id="main-content"/);
+    assert.match(layoutSource, /wa\.me\/6285704748186/);
+    assert.doesNotMatch(layoutSource, /wa\.me\/6285848715836/);
+
+    const contactSource = fs.readFileSync(path.join(process.cwd(), 'components', 'contact.tsx'), 'utf8');
+    assert.match(contactSource, /mode:\s*"onTouched"/);
+    assert.match(contactSource, /contact-error-summary-title/);
+    assert.match(contactSource, /useReducedMotion/);
+
+    const baseCss = fs.readFileSync(path.join(process.cwd(), 'src', 'styles', 'base.css'), 'utf8');
+    assert.match(baseCss, /scroll-padding-bottom/);
+    assert.match(baseCss, /touch-action:\s*manipulation/);
+
+    const navbarSource = fs.readFileSync(path.join(process.cwd(), 'components', 'navbar.tsx'), 'utf8');
+    assert.match(navbarSource, /aria-current=/);
+
+    const fabSource = fs.readFileSync(path.join(process.cwd(), 'components', 'whatsapp-fab.tsx'), 'utf8');
+    assert.match(fabSource, /group-focus-visible:opacity-100/);
+  });
 });
 
 

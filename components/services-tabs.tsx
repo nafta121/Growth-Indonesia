@@ -57,7 +57,7 @@ export default function ServicesTabs({ services }: { services: Record<string, { 
             onClick={() => setActiveTab(cat.id)}
             onKeyDown={(e) => handleTabKeyDown(e, index)}
             className={cn(
-              "relative z-10 flex-1 min-w-fit min-h-12 shrink-0 snap-center py-4 md:py-5 px-6 text-sm md:text-base font-bold transition-[color,background-color,transform] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] rounded-xl md:rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus whitespace-nowrap active:scale-[0.98]",
+              "relative z-10 flex-1 min-w-fit min-h-12 shrink-0 snap-center py-4 md:py-5 px-6 text-sm md:text-base font-bold transition-[color,background-color,transform] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] rounded-xl md:rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus whitespace-nowrap active:scale-[0.98] cursor-pointer",
               activeTab === cat.id ? "text-white" : "text-navy-muted hover:bg-navy hover:text-white"
             )}
           >
