@@ -32,7 +32,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 xl:gap-12 mb-16">
           {/* Brand Column */}
           <div className="lg:col-span-1">
-            <a href="/" className="inline-flex items-center mb-6">
+            <a href="/" aria-label="Growth Indonesia Beranda" className="inline-flex items-center mb-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus rounded-lg">
               <img 
                 src={COMPANY_INFO.logo_url} 
                 alt={`${COMPANY_INFO.brand_name} - Provider Outbound & Event Organizer Madiun Jawa Timur`} 
@@ -58,6 +58,8 @@ export default function Footer() {
                 { label: 'Tentang Kami', href: '/#tentang' },
                 { label: 'Layanan', href: '/layanan' },
                 { label: 'Paket Program', href: '/#paket' },
+                { label: 'Artikel & Panduan', href: '/artikel' },
+                { label: 'API & AI Docs', href: '/docs/api' },
                 { label: 'Kontak', href: '/#kontak' },
               ].map((link) => (
                 <li key={link.label}>
@@ -138,9 +140,10 @@ export default function Footer() {
           <p className="text-navy-muted text-xs text-center md:text-left">
             &copy; {currentYear} {COMPANY_INFO.brand_name}. Seluruh hak cipta dilindungi.
           </p>
-          <div className="flex gap-6">
-            <a href="/#kontak" className="text-navy-muted hover:text-white text-xs transition-colors inline-flex min-h-11 items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus rounded-lg px-2">Kebijakan Privasi</a>
-            <a href="/#kontak" className="text-navy-muted hover:text-white text-xs transition-colors inline-flex min-h-11 items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus rounded-lg px-2">Syarat &amp; Ketentuan</a>
+          <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
+            <a href="/artikel#standar-editorial" className="text-navy-muted hover:text-white text-xs transition-colors inline-flex min-h-11 items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus rounded-lg px-2">Kebijakan Editorial</a>
+            <a href="/portofolio-dan-sertifikasi#kebijakan-privasi" className="text-navy-muted hover:text-white text-xs transition-colors inline-flex min-h-11 items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus rounded-lg px-2">Kebijakan Privasi</a>
+            <a href="/portofolio-dan-sertifikasi#syarat-ketentuan" className="text-navy-muted hover:text-white text-xs transition-colors inline-flex min-h-11 items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus rounded-lg px-2">Syarat &amp; Ketentuan</a>
           </div>
         </div>
       </div>

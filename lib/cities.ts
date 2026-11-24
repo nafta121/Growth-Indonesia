@@ -365,7 +365,57 @@ const CORRIDOR_MAP: Record<string, { corridorName: string; terrainType: string; 
   },
 };
 
-const TIER1_LOCAL_PROOF: Record<string, string> = {
+export const EAST_JAVA_WIKIDATA_URL = 'https://www.wikidata.org/wiki/Q3586';
+
+// Verified Wikidata QIDs via live Wikidata Query Service (wd:Q3586 East Java)
+export const CITY_WIKIDATA_QIDS: Record<string, string> = {
+  madiun: 'Q11444',
+  ponorogo: 'Q11118',
+  magetan: 'Q11092',
+  ngawi: 'Q11108',
+  nganjuk: 'Q11098',
+  pacitan: 'Q11111',
+  kediri: 'Q11443',
+  surabaya: 'Q11462',
+  malang: 'Q11445',
+  batu: 'Q11434',
+  sidoarjo: 'Q11129',
+  gresik: 'Q11077',
+  mojokerto: 'Q11096',
+  jombang: 'Q11082',
+  jember: 'Q11080',
+  banyuwangi: 'Q11067',
+  probolinggo: 'Q11121',
+  pasuruan: 'Q11115',
+  trenggalek: 'Q11139',
+  tulungagung: 'Q11143',
+  blitar: 'Q11069',
+  lamongan: 'Q11086',
+  tuban: 'Q11141',
+  bojonegoro: 'Q11071',
+  bangkalan: 'Q11066',
+  sampang: 'Q11127',
+  pamekasan: 'Q11112',
+  sumenep: 'Q11137',
+  lumajang: 'Q11087',
+  bondowoso: 'Q11076',
+  situbondo: 'Q11134',
+};
+
+export function getCityWikidataUrl(cityKeyOrName: string): string | undefined {
+  const normalized = cityKeyOrName
+    .toLowerCase()
+    .trim()
+    .replace(/^(kota|kabupaten)\s+/, '')
+    .replace(/\s+/g, '-');
+  if (normalized === 'jawa-timur' || normalized === 'east-java') {
+    return EAST_JAVA_WIKIDATA_URL;
+  }
+  const qid = CITY_WIKIDATA_QIDS[normalized];
+  return qid ? `https://www.wikidata.org/wiki/${qid}` : undefined;
+}
+
+const LOCAL_PROOF: Record<string, string> = {
   madiun:
     'Rekam jejak lokal Madiun: Dipercaya oleh PT INKA (Persero) Madiun, SMA Negeri 1 Madiun, SMAN 2 Madiun, dan instansi daerah Madiun Raya dengan tingkat kepuasan 99% dan 0 insiden.',
   magetan:
@@ -388,6 +438,26 @@ const TIER1_LOCAL_PROOF: Record<string, string> = {
     'Rekam jejak lokal Malang: Dipercaya Universitas Brawijaya serta rombongan korporat Jawa Timur untuk program retreat, indoor training, dan outbound dataran tinggi.',
   batu:
     'Rekam jejak lokal Kota Batu: Mengelola corporate gathering, gala dinner, dan outbound skala 30 hingga 500+ peserta dengan cadangan ballroom hotel bintang empat dan aula indoor.',
+  mojokerto:
+    'Kesiapan koridor Mojokerto (Pacet & Trawas): Jaringan langsung dengan resort pegunungan Welirang, operator rafting berstandar K3, dan aula Plan B untuk rombongan korporat Surabaya-Madiun.',
+  jombang:
+    'Kesiapan koridor Jombang & Wonosalam: Akses cepat exit Tol Trans-Jawa dengan opsi venue agrowisata Bale Tani dan villa retreat Wonosalam untuk agenda One Day maupun 2H1M.',
+  nganjuk:
+    'Kesiapan koridor Nganjuk: Mobilisasi 45 menit dari Basecamp Madiun via Tol Trans-Jawa untuk program outbound OPD, perbankan, dan sekolah di kawasan lereng Wilis serta Sedudo.',
+  pasuruan:
+    'Kesiapan koridor Pasuruan (Prigen & Tretes): Kurasi hotel resort berkapasitas besar untuk executive retreat, leadership training, dan family gathering skala 50-500+ peserta.',
+  probolinggo:
+    'Kesiapan koridor Probolinggo & Bromo: Pengelolaan terpadu armada Jeep 4x4, perlengkapan suhu dingin, dan pengawalan tim medis P3K untuk corporate adventure di Tengger dan BJBR.',
+  jember:
+    'Kesiapan koridor Jember & Tapal Kuda: Mendukung agenda capacity building perbankan, korporasi agribisnis, universitas, dan OPD di Pantai Papuma, Taman Botani, dan Rembangan.',
+  banyuwangi:
+    'Kesiapan koridor Banyuwangi: Manajemen penuh program gathering multi-hari (2H1M/3H2M) yang memadukan team building di De Djawatan, Pantai Boom, dan gala dinner korporat.',
+  blitar:
+    'Kesiapan koridor Blitar: Koordinasi satu pintu tiket rombongan, manajemen bus pariwisata, dan fasilitasi outbound karakter di kawasan Kampung Coklat serta destinasi historis.',
+  tulungagung:
+    'Kesiapan koridor Tulungagung: Penataan rute bus besar dan pos medis lapangan untuk program team building korporat dan sekolah di Waduk Wonorejo serta Pantai Gemah.',
+  trenggalek:
+    'Kesiapan koridor Trenggalek: Rasio fasilitator 1:12 dan prosedur pengamanan pesisir ketat untuk agenda outing dan team building di kawasan Teluk Prigi dan Karanggongso.',
 };
 
 export function getCityOperationalProfile(cityKey: string): CityOperationalProfile {
@@ -396,7 +466,7 @@ export function getCityOperationalProfile(cityKey: string): CityOperationalProfi
   const venueList = city.popularVenues.join(', ');
   const base = CORRIDOR_MAP[normalized] || CORRIDOR_MAP.madiun;
   const localProof =
-    TIER1_LOCAL_PROOF[normalized] ||
+    LOCAL_PROOF[normalized] ||
     `Rekam jejak koridor ${city.name}: Bagian dari cakupan resmi 250+ klien perusahaan, BUMN, instansi pemerintah, dan sekolah Growth Indonesia (15.000+ peserta) se-Jawa Timur dengan 0 insiden keselamatan.`;
 
   return {

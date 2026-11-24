@@ -1,21 +1,30 @@
 import { COMPANY_INFO } from './constants';
+import { EAST_JAVA_WIKIDATA_URL, getCityWikidataUrl } from './cities';
 
 export function getLocalBusinessSchema(additionalArea?: string) {
   const baseAreas = [
-    { "@type": "AdministrativeArea", "name": "Jawa Timur" },
-    { "@type": "City", "name": "Madiun" },
-    { "@type": "City", "name": "Magetan" },
-    { "@type": "City", "name": "Ponorogo" },
-    { "@type": "City", "name": "Ngawi" },
-    { "@type": "City", "name": "Pacitan" },
-    { "@type": "City", "name": "Kediri" },
-    { "@type": "City", "name": "Surabaya" },
-    { "@type": "City", "name": "Malang" },
-    { "@type": "City", "name": "Batu" }
+    { "@type": "AdministrativeArea", "name": "Jawa Timur", "sameAs": EAST_JAVA_WIKIDATA_URL },
+    { "@type": "City", "name": "Madiun", "sameAs": getCityWikidataUrl("madiun") },
+    { "@type": "City", "name": "Magetan", "sameAs": getCityWikidataUrl("magetan") },
+    { "@type": "City", "name": "Ponorogo", "sameAs": getCityWikidataUrl("ponorogo") },
+    { "@type": "City", "name": "Ngawi", "sameAs": getCityWikidataUrl("ngawi") },
+    { "@type": "City", "name": "Pacitan", "sameAs": getCityWikidataUrl("pacitan") },
+    { "@type": "City", "name": "Kediri", "sameAs": getCityWikidataUrl("kediri") },
+    { "@type": "City", "name": "Surabaya", "sameAs": getCityWikidataUrl("surabaya") },
+    { "@type": "City", "name": "Malang", "sameAs": getCityWikidataUrl("malang") },
+    { "@type": "City", "name": "Batu", "sameAs": getCityWikidataUrl("batu") },
   ];
 
+  const extraWikidata = additionalArea ? getCityWikidataUrl(additionalArea) : undefined;
   const areaServed = additionalArea && !baseAreas.some((a) => a.name.toLowerCase() === additionalArea.toLowerCase())
-    ? [...baseAreas, { "@type": "City", "name": additionalArea }]
+    ? [
+        ...baseAreas,
+        {
+          "@type": "City",
+          "name": additionalArea,
+          ...(extraWikidata ? { "sameAs": extraWikidata } : {}),
+        },
+      ]
     : baseAreas;
 
   return {
@@ -57,11 +66,41 @@ export function getLocalBusinessSchema(additionalArea?: string) {
       }
     ],
     "knowsAbout": [
-      "Corporate Outbound Training",
-      "Team Building & Experiential Learning",
-      "Indoor Training & Capacity Building",
-      "LDK OSIS & Character Building",
-      "Event Organizer Corporate & Family Gathering"
+      {
+        "@type": "Thing",
+        "name": "Corporate Outbound Training & Outdoor Education",
+        "sameAs": "https://www.wikidata.org/wiki/Q1508666"
+      },
+      {
+        "@type": "Thing",
+        "name": "Team Building",
+        "sameAs": "https://www.wikidata.org/wiki/Q1568322"
+      },
+      {
+        "@type": "Thing",
+        "name": "Experiential Learning",
+        "sameAs": "https://www.wikidata.org/wiki/Q1307600"
+      },
+      {
+        "@type": "Thing",
+        "name": "Indoor Training & Capacity Building",
+        "sameAs": "https://www.wikidata.org/wiki/Q918385"
+      },
+      {
+        "@type": "Thing",
+        "name": "LDK OSIS & Leadership Character Building",
+        "sameAs": "https://www.wikidata.org/wiki/Q484275"
+      },
+      {
+        "@type": "Thing",
+        "name": "Event Organizer Corporate & Family Gathering",
+        "sameAs": "https://www.wikidata.org/wiki/Q1381931"
+      },
+      {
+        "@type": "Thing",
+        "name": "Organizational Development",
+        "sameAs": "https://www.wikidata.org/wiki/Q110406476"
+      }
     ],
     "openingHoursSpecification": [
       {
@@ -265,7 +304,8 @@ export function getServiceSchema(
     },
     "areaServed": {
       "@type": "City",
-      "name": kotaName
+      "name": kotaName,
+      ...(getCityWikidataUrl(kotaName) ? { "sameAs": getCityWikidataUrl(kotaName) } : {}),
     },
     "offers": {
       "@type": "AggregateOffer",

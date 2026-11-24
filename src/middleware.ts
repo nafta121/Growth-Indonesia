@@ -32,7 +32,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
 
   // 3. Inject standard discovery, Link, and security headers for all SSR responses
   const response = await next();
-  response.headers.set('Vary', 'Accept');
+  response.headers.set('Vary', 'Accept, Accept-Encoding');
   response.headers.set(
     'Link',
     '</.well-known/api-catalog>; rel="api-catalog", </docs/api>; rel="service-doc", </sitemap.xml>; rel="sitemap"'

@@ -171,6 +171,11 @@ export default function CredibilityPortfolio({ headingLevel = 'h2' }: { headingL
     review: [
       {
         '@type': 'Review',
+        itemReviewed: {
+          '@type': 'LocalBusiness',
+          '@id': 'https://growthindonesia.my.id/#organization',
+          name: COMPANY_INFO.brand_name,
+        },
         author: {
           '@type': 'Organization',
           name: 'Bank Jatim (Cabang Madiun & Ponorogo)',
@@ -185,6 +190,11 @@ export default function CredibilityPortfolio({ headingLevel = 'h2' }: { headingL
       },
       {
         '@type': 'Review',
+        itemReviewed: {
+          '@type': 'LocalBusiness',
+          '@id': 'https://growthindonesia.my.id/#organization',
+          name: COMPANY_INFO.brand_name,
+        },
         author: {
           '@type': 'Organization',
           name: 'SMP Negeri 1 Geger',
@@ -199,6 +209,11 @@ export default function CredibilityPortfolio({ headingLevel = 'h2' }: { headingL
       },
       {
         '@type': 'Review',
+        itemReviewed: {
+          '@type': 'LocalBusiness',
+          '@id': 'https://growthindonesia.my.id/#organization',
+          name: COMPANY_INFO.brand_name,
+        },
         author: {
           '@type': 'Organization',
           name: 'Petrokimia Gresik & Semen Indonesia Group',
@@ -227,11 +242,31 @@ export default function CredibilityPortfolio({ headingLevel = 'h2' }: { headingL
       },
     })),
     knowsAbout: [
-      'Experiential Learning',
-      'Professional Outbound Facilitation',
-      'Corporate Team Building',
-      'Outdoor Safety & Zero Accident Policy',
-      'LDK OSIS & Youth Leadership Training',
+      {
+        '@type': 'Thing',
+        name: 'Experiential Learning',
+        sameAs: 'https://www.wikidata.org/wiki/Q1307600',
+      },
+      {
+        '@type': 'Thing',
+        name: 'Outdoor Education & Professional Outbound Facilitation',
+        sameAs: 'https://www.wikidata.org/wiki/Q1508666',
+      },
+      {
+        '@type': 'Thing',
+        name: 'Corporate Team Building',
+        sameAs: 'https://www.wikidata.org/wiki/Q1568322',
+      },
+      {
+        '@type': 'Thing',
+        name: 'Event Management',
+        sameAs: 'https://www.wikidata.org/wiki/Q1381931',
+      },
+      {
+        '@type': 'Thing',
+        name: 'Leadership & LDK OSIS Youth Training',
+        sameAs: 'https://www.wikidata.org/wiki/Q484275',
+      },
     ],
     memberOf: CLIENT_CATEGORIES.flatMap((c) =>
       c.list.map((client) => ({

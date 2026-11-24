@@ -22,9 +22,14 @@ function applyResponseHeaders(response: Response, pathname: string): Response {
   headers.set('Content-Security-Policy', CSP_POLICY);
 
   if (!headers.has('Vary')) {
-    headers.set('Vary', 'Accept');
-  } else if (!headers.get('Vary')!.toLowerCase().includes('accept')) {
-    headers.set('Vary', `${headers.get('Vary')}, Accept`);
+    headers.set('Vary', 'Accept, Accept-Encoding');
+  } else {
+    const existingVary = headers.get('Vary')!;
+    const varyLower = existingVary.toLowerCase();
+    const tokens = [existingVary];
+    if (!varyLower.includes('accept-encoding')) tokens.push('Accept-Encoding');
+    if (!/(^|[,\s])accept($|[,\s])/.test(varyLower)) tokens.push('Accept');
+    headers.set('Vary', tokens.join(', '));
   }
 
   if (!headers.has('Link')) {
@@ -89,6 +94,66 @@ export default {
     if (pathname === '/favicon.ico') {
       const iconRes = await env.ASSETS.fetch(new Request(new URL('/icon.png', url.origin).toString(), request));
       return applyResponseHeaders(iconRes, '/icon.png');
+    }
+
+    // 1c. Handle /mcp cleanly for Cloudflare WebMCP bridge discovery (avoids 404/500 console noise)
+    if (pathname === '/mcp') {
+      if (request.method === 'OPTIONS') {
+        return new Response(null, {
+          status: 204,
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'GET, POST, HEAD, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type, Accept',
+          },
+        });
+      }
+
+      if (request.method === 'POST') {
+        let rpcId: string | number | null = null;
+        let rpcMethod = '';
+        try {
+          const body = (await request.json()) as { id?: string | number | null; method?: string };
+          rpcId = body?.id ?? null;
+          rpcMethod = body?.method || '';
+        } catch {
+          // Non-JSON body falls back to discovery payload
+        }
+        const result =
+          rpcMethod === 'tools/list'
+            ? { tools: [] }
+            : {
+                protocolVersion: '2024-11-05',
+                serverInfo: { name: 'Growth Indonesia WebMCP Discovery', version: '1.0.0' },
+                capabilities: { tools: {} },
+                documentationUrl: 'https://growthindonesia.my.id/docs/api',
+              };
+        const rpcRes = new Response(JSON.stringify({ jsonrpc: '2.0', id: rpcId, result }), {
+          status: 200,
+          headers: {
+            'Content-Type': 'application/json; charset=utf-8',
+            'Access-Control-Allow-Origin': '*',
+          },
+        });
+        return applyResponseHeaders(rpcRes, '/.well-known/mcp/server-card.json');
+      }
+
+      const payload = JSON.stringify({
+        name: 'Growth Indonesia WebMCP Discovery',
+        version: '1.0.0',
+        serverCard: 'https://growthindonesia.my.id/.well-known/mcp/server-card.json',
+        documentationUrl: 'https://growthindonesia.my.id/docs/api',
+        transports: ['browser-webmcp', 'http-markdown'],
+      });
+      const mcpRes = new Response(request.method === 'HEAD' ? null : payload, {
+        status: 200,
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8',
+          'Access-Control-Allow-Origin': '*',
+          'Cache-Control': 'public, max-age=3600',
+        },
+      });
+      return applyResponseHeaders(mcpRes, '/.well-known/mcp/server-card.json');
     }
 
     // 2. Fast pass-through for immutable media, JS/CSS bundles, and static text/JSON/XML files

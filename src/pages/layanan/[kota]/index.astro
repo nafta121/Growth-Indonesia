@@ -6,8 +6,9 @@ import { Breadcrumb } from '@/components/breadcrumb';
 import { AiOverviewSection } from '@/components/ai-overview';
 import TrustSection from '@/components/trust-section';
 import CityCta from '@/components/city-cta';
-import { CITIES, getCityOperationalProfile } from '@/lib/cities';
+import { CITIES, getCityOperationalProfile, getCityWikidataUrl } from '@/lib/cities';
 import { getCityImage } from '@/lib/city-images';
+import { getNearbyCities } from '@/lib/city-proximity';
 import { KATEGORI } from '@/lib/categories';
 import { COMPANY_INFO } from '@/lib/constants';
 import { getContentVariations } from '@/lib/content-variations';
@@ -37,6 +38,9 @@ const title = `Outbound, Team Building & EO di ${kotaName}`;
 const description = `Provider outbound, team building & event organizer (EO) profesional di ${kotaName}. Melayani corporate gathering, training SDM & LDK OSIS.`;
 const cityImage = getCityImage(decodedKota);
 const canonicalUrl = `https://growthindonesia.my.id/layanan/${decodedKota}`;
+const cityWikidataUrl = getCityWikidataUrl(decodedKota);
+const nearbyCityKeys = getNearbyCities(decodedKota, 6);
+const baseLocalBusiness = getLocalBusinessSchema(kotaName);
 
 const schemaLd = [
   {
@@ -49,14 +53,15 @@ const schemaLd = [
     about: {
       '@type': 'Place',
       name: kotaName,
+      ...(cityWikidataUrl ? { sameAs: cityWikidataUrl } : {}),
     },
   },
   {
     '@context': 'https://schema.org',
-    ...getLocalBusinessSchema(kotaName),
+    ...baseLocalBusiness,
     image: cityImage,
     description: `Provider Outbound Training, Team Building, dan Event Organizer (EO) profesional di ${kotaName}. ${cityData.uniqueSellingPoint}`,
-    knowsAbout: cityData.popularVenues,
+    knowsAbout: [...baseLocalBusiness.knowsAbout, ...cityData.popularVenues],
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: `Katalog Layanan Outbound & Event Organizer ${kotaName}`,
@@ -222,7 +227,52 @@ const schemaLd = [
       />
     </article>
 
+    <section class="py-16 bg-white border-t border-rule">
+      <div class="max-w-7xl mx-auto px-4 md:px-12">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+          <div>
+            <h2 class="font-display text-2xl md:text-3xl font-black text-ink tracking-tight">
+              Kota Terdekat di Koridor Jawa Timur
+            </h2>
+            <p class="text-sm md:text-base text-muted font-medium mt-2">
+              Bandingkan opsi lokasi outbound, team building, dan corporate gathering sekitar {kotaName}.
+            </p>
+          </div>
+          <a
+            href="/layanan"
+            class="inline-flex min-h-11 items-center px-5 py-2.5 rounded-full bg-paper border border-rule text-sm font-bold text-ink hover:border-brand-dark hover:text-brand-dark transition-colors whitespace-nowrap"
+          >
+            Semua 31 Kota Jawa Timur
+          </a>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {nearbyCityKeys.map((nearKey) => {
+            const nearCity = CITIES[nearKey];
+            if (!nearCity) return null;
+            return (
+              <div class="p-5 rounded-2xl bg-paper border border-rule flex flex-col justify-between gap-4">
+                <div>
+                  <a
+                    href={`/layanan/${nearKey}`}
+                    class="font-display font-bold text-lg text-ink hover:text-brand-dark transition-colors"
+                  >
+                    Layanan Outbound &amp; EO {nearCity.name}
+                  </a>
+                  <p class="text-xs text-muted mt-1 line-clamp-2">{nearCity.description}</p>
+                </div>
+                <div class="flex flex-wrap gap-2 pt-2 border-t border-rule">
+                  <a href={`/layanan/${nearKey}/outbound`} class="px-3 py-1.5 rounded-lg bg-white border border-rule text-xs font-bold text-ink hover:border-brand-dark hover:text-brand-dark transition-colors">Outbound {nearCity.name}</a>
+                  <a href={`/layanan/${nearKey}/training`} class="px-3 py-1.5 rounded-lg bg-white border border-rule text-xs font-bold text-ink hover:border-brand-dark hover:text-brand-dark transition-colors">Training {nearCity.name}</a>
+                  <a href={`/layanan/${nearKey}/gathering`} class="px-3 py-1.5 rounded-lg bg-white border border-rule text-xs font-bold text-ink hover:border-brand-dark hover:text-brand-dark transition-colors">Gathering {nearCity.name}</a>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+
     <TrustSection kategoriName="Program" kotaName={kotaName} />
-    <CityCta kategoriName="Outbound & Training" kotaName={kotaName} />
+    <CityCta kategoriName="Outbound & Training" kotaName={kotaName} cityKey={decodedKota} />
   </div>
 </BaseLayout>

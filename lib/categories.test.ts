@@ -356,6 +356,50 @@ describe('SEO Audit & Programmatic SEO regression checks', () => {
     assert.match(baseLayout, /property="og:image:width"/);
     assert.match(baseLayout, /property="og:image:height"/);
   });
+
+  it('enforces Wave 1-2 Agentic SEO fixes and Wikidata QID enrichment on knowsAbout and areaServed', () => {
+    const schema = getLocalBusinessSchema('Mojokerto');
+    const areaServed = schema.areaServed as Array<{ name: string; sameAs?: string }>;
+    const jatim = areaServed.find((a) => a.name === 'Jawa Timur');
+    const madiun = areaServed.find((a) => a.name === 'Madiun');
+    const mojokerto = areaServed.find((a) => a.name === 'Mojokerto');
+    assert.equal(jatim?.sameAs, 'https://www.wikidata.org/wiki/Q3586');
+    assert.equal(madiun?.sameAs, 'https://www.wikidata.org/wiki/Q11444');
+    assert.equal(mojokerto?.sameAs, 'https://www.wikidata.org/wiki/Q11096');
+
+    const knowsAbout = schema.knowsAbout as Array<{ '@type': string; name: string; sameAs: string }>;
+    assert.ok(knowsAbout.some((k) => k.sameAs === 'https://www.wikidata.org/wiki/Q1307600'));
+    assert.ok(knowsAbout.some((k) => k.sameAs === 'https://www.wikidata.org/wiki/Q1568322'));
+    assert.ok(knowsAbout.some((k) => k.sameAs === 'https://www.wikidata.org/wiki/Q1381931'));
+
+    const serviceSchema = getServiceSchema('Outbound', 'Surabaya', 'Desc', 'https://growthindonesia.my.id/layanan/surabaya/outbound');
+    assert.equal((serviceSchema.areaServed as { sameAs?: string }).sameAs, 'https://www.wikidata.org/wiki/Q11462');
+
+    const credSource = fs.readFileSync(path.join(process.cwd(), 'components', 'credibility-portfolio.tsx'), 'utf8');
+    assert.match(credSource, /itemReviewed:/);
+    assert.match(credSource, /wikidata\.org\/wiki\/Q1307600/);
+
+    const workerSource = fs.readFileSync(path.join(process.cwd(), 'src', 'cloudflare-worker.ts'), 'utf8');
+    assert.match(workerSource, /Accept, Accept-Encoding/);
+    assert.match(workerSource, /pathname === '\/mcp'/);
+
+    const headersFile = fs.readFileSync(path.join(process.cwd(), 'public', '_headers'), 'utf8');
+    assert.match(headersFile, /Vary:\s*Accept, Accept-Encoding/);
+
+    const baseLayout = fs.readFileSync(path.join(process.cwd(), 'src', 'layouts', 'BaseLayout.astro'), 'utf8');
+    assert.match(baseLayout, /name="indexnow"/);
+    assert.doesNotMatch(baseLayout, /static\.cloudflareinsights\.com\/beacon\.min\.js/);
+
+    const constantsFile = fs.readFileSync(path.join(process.cwd(), 'lib', 'constants.ts'), 'utf8');
+    assert.match(constantsFile, /https:\/\/www\.google\.com\/maps\/place\/Growth\+Indonesia/);
+    assert.doesNotMatch(constantsFile, /maps\.app\.goo\.gl/);
+
+    const footerFile = fs.readFileSync(path.join(process.cwd(), 'components', 'footer.tsx'), 'utf8');
+    assert.match(footerFile, /aria-label="Growth Indonesia Beranda"/);
+    assert.match(footerFile, /href:\s*'\/docs\/api'/);
+    assert.match(footerFile, /\/artikel#standar-editorial/);
+    assert.match(footerFile, /\/portofolio-dan-sertifikasi#kebijakan-privasi/);
+  });
 });
 
 
